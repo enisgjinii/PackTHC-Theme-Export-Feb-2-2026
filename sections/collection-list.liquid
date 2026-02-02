@@ -1,0 +1,396 @@
+{%- liquid
+	assign section_id   = '#shopify-section-' | append: section.id
+	assign animation    = settings.section_animation
+	assign full         = section.settings.full
+	assign heading      = section.settings.heading_text
+	assign heading_size = section.settings.heading_size
+	assign show_arrows  = section.settings.show_arrows
+	assign show_dots    = section.settings.show_dots
+	assign column       = section.settings.columns
+	assign column_gap   = section.settings.column_gap
+-%}
+
+<style>
+	{{ section_id }} .wrapper-collection{
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .wrapper-collection{
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .swiper:not(.swiper-initialized) .swiper-slide {
+			width: calc( ( 100% - {{ column | minus: 1 | times: column_gap }}px ) / {{ column }} );
+			margin-right: {{ column_gap }}px;
+		}
+	}
+
+	@media (max-width: 991px) {
+		{{ section_id }} .swiper:not(.swiper-initialized) .swiper-slide {
+			margin-right: {{ column_gap }}px;
+		}
+	}
+</style>
+<div class="wrapper-collection {% if full %}stretch-section stretch-padding{% else %}container{% endif %} color-{{ section.settings.color_scheme }}">
+	{%- if heading != blank -%}
+		<div class="title-wrapper">
+			<h2 class="heading {{ heading_size }}{% if section.settings.heading_upper %} text-uppercase{% endif %} rte">{{- heading -}}</h2>
+		</div>
+	{%- endif -%}
+
+	<div class="section-wrapper featured-collection carousel-swiper{% if animation %} scroll-trigger{% endif %}">
+		<template data-options data-pagination-mobile data-css-mode="off">
+			{
+				{%- if section.settings.loop -%}
+					"loop": true,
+				{%- endif -%}
+				{%- if section.settings.autoplay -%}
+					"autoplay": {
+						"delay": {{ section.settings.delay | times: 1000 }},
+						"disableOnInteraction": false,
+						"pauseOnMouseEnter": true
+					},
+				{%- endif -%}
+				{%- if show_arrows -%}
+					"navigation": {
+						"nextEl": "{{ section_id }} .swiper-button-next",
+						"prevEl": "{{ section_id }} .swiper-button-prev"
+					},
+				{%- endif -%}
+				{%- if show_dots -%}
+					"pagination": {
+						"el": "{{ section_id }} .swiper-pagination",
+						"clickable": true
+					},
+				{%- endif -%}
+				"spaceBetween": {{ column_gap }},
+				"slidesPerView": {{ column }},
+				"breakpoints": {
+					"240": {
+						"slidesPerView": 1.3,
+						"spaceBetween": 24
+					},
+					"992": {
+						"slidesPerView": {{ column }}
+					}
+				}
+			}
+		</template>
+
+		<div class="swiper" data-id="{{ section.settings.layout }}">
+			<div class="swiper-wrapper">
+				{%- for block in section.blocks -%}
+					{%- liquid
+						assign collection_image = block.settings.collection.featured_image
+						assign url              = block.settings.collection.url
+
+						unless collection_image
+							for product in block.settings.collection.products
+								if product.featured_image
+									assign collection_image = product.featured_image
+
+									break
+								endif
+							endfor
+						endunless
+					-%}
+
+					<div class="swiper-slide card-item" data-href="{{ url }}" {{ block.shopify_attributes }}  data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+						<div class="card-item-inner">
+							<div class="adapt-media">
+								<a class="link-collection" href="{{ url }}">
+									<div class="card-media {{ section.settings.media_ratio }}{% if settings.image_lazy and collection_image != blank %} lazy-image{% endif %}">
+										{%- liquid
+											if collection_image != blank
+												assign image_load = 'eager'
+
+												if forloop.index > 1
+													assign image_load = 'lazy'
+												endif
+
+												render 'lazy-image', image: collection_image, width: 300, lazy: image_load
+											else
+												render 'icon', code: 'placeholder' , height: 300
+											endif
+										-%}
+									</div>
+								</a>
+							</div>
+
+							<div class="card-info text-center">
+								<h5 class="collection-title">
+									{%- liquid
+										if block.settings.collection != blank
+											echo block.settings.collection.title
+										else
+											echo 'onboarding.collections.title' | t
+										endif
+									-%}
+								</h5>
+
+								{%- if block.settings.collection != blank -%}
+									<div class="collection-count">
+										{%- liquid
+											assign counts = block.settings.collection.all_products_count
+
+											echo 'sections.collection_list.count_collection' | t: count: counts
+										-%}
+									</div>
+								{%- endif -%}
+							</div>
+						</div>
+					</div>
+				{%- else -%}
+					{%- for i in (1..3) -%}
+						<div class="swiper-slide card-item" data-href="#" data-title="{{- 'onboarding.collections.title' | t -}}" {{ block.shopify_attributes }}  data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+							<div class="card-item-inner">
+								<div class="card-info">
+									<span class="collection-title">{{ 'onboarding.collections.title' | t }}</span>
+								</div>
+
+								<div class="card-media {{ section.settings.media_ratio }}">
+									{%- render 'icon', code: 'placeholder' -%}
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				{%- endfor -%}
+			</div>
+		</div>
+
+		{%- if show_arrows or show_dots -%}
+			<div class="swiper-controls">
+				{%- if show_arrows -%}
+					<button class="swiper-button-prev" title ="{{ 'general.swipper.prev' | t }}" aria-label="{{ 'general.swipper.prev' | t }}" id="{{ 'general.swipper.prev' | t }}" aria-labelledby="{{ 'general.swipper.prev' | t }}">{%- render 'icon', code: 'arrow-left-slider' -%}</button>
+				{%- endif -%}
+
+				{%- if show_dots -%}
+					<div class="swiper-pagination" tabindex="-1"></div>
+				{%- endif -%}
+
+				{%- if show_arrows -%}
+					<button class="swiper-button-next" title ="{{ 'general.swipper.next' | t }}" aria-label="{{ 'general.swipper.next' | t }}" id="{{ 'general.swipper.next' | t }}" aria-labelledby="{{ 'general.swipper.next' | t }}">{%- render 'icon', code: 'arrow-right-slider' -%}</button>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+{% schema %}
+{
+	"name": "t:sections.collection-list.name",
+	"tag": "section",
+	"class": "collection-list-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h5",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h4",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "select",
+			"id": "media_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.main-product.settings.media.adapt.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.main-product.settings.media.square.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.main-product.settings.media.portrait.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.main-product.settings.media.label"
+		},
+		{
+			"type": "range",
+			"id": "columns",
+			"min": 1,
+			"max": 6,
+			"step": 1,
+			"default": 4,
+			"label": "t:general.slider.column.label"
+		},
+		{
+			"type": "range",
+			"id": "column_gap",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"default": 30,
+			"unit": "px",
+			"label": "t:general.slider.column_gap.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.featured-collection.settings.header_carousel.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_arrows",
+			"default": true,
+			"label": "t:general.slider.show_arrows.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_dots",
+			"default": true,
+			"label": "t:general.slider.show_dots.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "loop",
+			"default": false,
+			"label": "t:general.slider.loop.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "autoplay",
+			"default": false,
+			"label": "t:general.slider.autoplay.label"
+		},
+		{
+			"type": "range",
+			"id": "delay",
+			"min": 3,
+			"max": 20,
+			"step": 1,
+			"default": 5,
+			"label": "t:general.slider.delay.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 2,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "collection",
+			"name": "t:sections.collection-list.blocks.collection.name",
+			"settings": [
+				{
+					"type": "collection",
+					"id": "collection",
+					"label": "t:sections.collection-list.blocks.collection.name"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.collection-list.name",
+			"blocks": [
+				{
+					"type": "collection"
+				},
+				{
+					"type": "collection"
+				},
+				{
+					"type": "collection"
+				},
+				{
+					"type": "collection"
+				},
+				{
+					"type": "collection"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

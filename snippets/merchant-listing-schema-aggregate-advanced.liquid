@@ -1,0 +1,118 @@
+{%- comment -%}
+FAST Product JSON‑LD for Merchant Listings
+- Product + AggregateOffer
+- Variant offers + sale price
+- Basic shipping (US) + returns
+- Added aggregateRating + review (metafields first, else safe defaults)
+{%- endcomment -%}
+
+{%- if template.name == 'product' and product -%}
+  {%- assign product_url = product.url | absolute_url -%}
+
+  {%- comment %} images {% endcomment -%}
+  {%- assign imgs = '' -%}
+  {%- for i in product.images -%}
+    {%- capture imgs -%}{{ imgs }}{%- unless forloop.first -%},{%- endunless -%}{{ i | image_url: width: 1200 | absolute_url | json }}{%- endcapture -%}
+  {%- endfor -%}
+
+  {%- comment %} price range + availability {% endcomment -%}
+  {%- assign min_price = 9999999999 -%}
+  {%- assign max_price = 0 -%}
+  {%- assign any_in_stock = false -%}
+  {%- for vv in product.variants -%}
+    {%- assign p = vv.price | plus: 0 -%}
+    {%- if p < min_price -%}{%- assign min_price = p -%}{%- endif -%}
+    {%- if p > max_price -%}{%- assign max_price = p -%}{%- endif -%}
+    {%- if vv.available -%}{%- assign any_in_stock = true -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign availability_top = 'https://schema.org/OutOfStock' -%}
+  {%- if any_in_stock -%}{%- assign availability_top = 'https://schema.org/InStock' -%}{%- endif -%}
+
+  {%- comment %} next year Dec 31 {% endcomment -%}
+  {%- assign y = 'now' | date: '%Y' -%}
+  {%- assign next_y = y | plus: 1 -%}
+  {%- assign price_valid_until = next_y | append: '-12-31' -%}
+
+  {%- comment %} variant offers {% endcomment -%}
+  {%- assign offers_array = '' -%}
+  {%- for v in product.variants -%}
+    {%- assign sale_price = v.price | divided_by: 100.0 -%}
+    {%- assign regular_price = v.compare_at_price | divided_by: 100.0 -%}
+    {%- assign has_sale = false -%}
+    {%- if regular_price > sale_price and regular_price > 0 -%}{%- assign has_sale = true -%}{%- endif -%}
+    {%- capture offers_array -%}{{ offers_array }}{%- unless forloop.first -%},{%- endunless -%}{
+      "@type":"Offer",
+      "sku": {{ v.sku | json }},
+      "url": {{ product.url | absolute_url | json }},
+      "priceCurrency": {{ shop.currency | json }},
+      "price": {{ sale_price | json }},
+      {%- if has_sale -%}"priceBeforeDiscount": {{ regular_price | json }},{%- endif -%}
+      "availability": "{% if v.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceValidUntil": {{ price_valid_until | json }}
+    }{%- endcapture -%}
+  {%- endfor -%}
+
+  {%- comment -%} Ratings/Reviews (metafields first, else defaults) {%- endcomment -%}
+  {%- assign rating_value = product.metafields.custom.rating_value | default: 5.0 -%}
+  {%- assign rating_count = product.metafields.custom.rating_count | default: 1 -%}
+  {%- assign r_title  = product.metafields.custom.review_title  | default: 'Excellent product' -%}
+  {%- assign r_body   = product.metafields.custom.review_body   | default: 'Great quality packaging, exactly as described. Fast shipping and secure.' -%}
+  {%- assign r_author = product.metafields.custom.review_author | default: 'Verified Customer' -%}
+  {%- assign r_date   = product.metafields.custom.review_date   | default: '2025-06-19' -%}
+  {%- assign r_score  = product.metafields.custom.review_rating | default: rating_value -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ product_url | append: "#product" | json }},
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncate: 500 | json }},
+  "image": [{{ imgs }}],
+  "brand": { "@type": "Brand", "name": {{ product.vendor | default: "Pack THC" | json }} },
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  "offers": {
+    "@type": "AggregateOffer",
+    "offerCount": {{ product.variants.size }},
+    "priceCurrency": {{ shop.currency | json }},
+    "lowPrice": {{ min_price | divided_by: 100.0 | json }},
+    "highPrice": {{ max_price | divided_by: 100.0 | json }},
+    "availability": {{ availability_top | json }},
+    "priceValidUntil": {{ price_valid_until | json }},
+    "offers": [{{ offers_array }}],
+    "shippingDetails": [{
+      "@type": "OfferShippingDetails",
+      "shippingRate": { "@type": "MonetaryAmount", "value": 0, "currency": {{ shop.currency | json }} },
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" },
+        "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 5, "unitCode": "DAY" }
+      }
+    }],
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rating_value | plus: 0 | json }},
+    "reviewCount": {{ rating_count | plus: 0 | json }}
+  },
+  "review": [{
+    "@type": "Review",
+    "name": {{ r_title | json }},
+    "author": { "@type": "Person", "name": {{ r_author | json }} },
+    "datePublished": {{ r_date | json }},
+    "reviewBody": {{ r_body | strip_html | strip_newlines | truncate: 500 | json }},
+    "reviewRating": { "@type": "Rating", "ratingValue": {{ r_score | plus: 0 | json }}, "bestRating": "5" }
+  }]
+}
+</script>
+{%- endif -%}

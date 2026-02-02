@@ -1,0 +1,299 @@
+{%- liquid
+	assign section_id     = '#shopify-section-' | append: section.id
+	assign animation      = settings.section_animation
+	assign rows           = section.settings.rows
+	assign columns        = section.settings.columns | times: 1
+	assign columns_mobile = section.settings.columns_mobile | times: 1
+	assign total          = rows | times: columns
+
+	echo 'list-collection.css' | asset_url | stylesheet_tag
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		--item-gap: 2rem 1rem;
+		--template-columns: repeat({{ columns_mobile }}, minmax(0, 1fr));
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			--item-gap: 3rem;
+			--template-columns: repeat({{ columns }}, minmax(0, 1fr));
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }} text-center">
+	<div class="container">
+		{%- if section.settings.title != blank -%}
+			<h1 class="title{% if animation %} scroll-trigger{% endif %}">{{- section.settings.title | escape -}}</h1>
+		{%- endif -%}
+
+		{%- if section.settings.description != blank -%}
+			<div class="description{% if animation %} scroll-trigger{% endif %}">{{- section.settings.description -}}</div>
+		{%- endif -%}
+
+		{%- paginate collections by total -%}
+			{%- liquid
+				case section.settings.sort
+					when 'products_high' or 'products_low'
+						assign collections = collections | sort: 'all_products_count'
+					when 'date' or 'date_reversed'
+						assign collections = collections | sort: 'published_at'
+				endcase
+
+				if section.settings.sort == 'products_high' or section.settings.sort == 'date_reversed' or section.settings.sort == 'alphabetical_reversed'
+					assign collections = collections | reverse
+				endif
+			-%}
+
+			<div class="collection-grid">
+				{%- for collection in collections -%}
+					<div class="collection-card{% if animation %} scroll-trigger{% endif %} color-{{ section.settings.color_scheme_card }}">
+						<div class="card-media {{ section.settings.image_ratio }}-media">
+							<a href="{{ collection.url }}" class="card-link"><span class="sr-only">{{- collection.title -}}</span></a>
+
+							<div class="card-media-wrapper{% if settings.image_lazy and collection.featured_image != blank %} lazy-image{% endif %}">
+								{%- liquid
+									if collection.featured_image != blank
+										render 'lazy-image', image: collection.featured_image, width: 768
+									else
+										render 'icon', code: 'placeholder'
+									endif
+								-%}
+							</div>
+						</div>
+
+						<div class="card-meta">
+							<h2 class="card-title h5">
+								<a href="{{ collection.url }}" class="card-url link-underline-transparent">
+									{%- liquid
+										echo collection.title
+									-%}
+								</a>
+							</h2>
+
+							{%- if collection.description != blank -%}
+								<p class="card-desc">
+									{{- collection.description | strip_html | truncatewords: 12 -}}
+								</p>
+							{%- endif -%}
+
+							<div class="collection-count">
+								{%- liquid
+									assign counts = collection.all_products_count
+
+									echo 'sections.collection_list.count_collection' | t: count: counts
+								-%}
+							</div>
+							<a href="{{ collection.url }}" class="card-url link-underline-transparent" title="{{ collection.url }}">
+								{{- 'sections.collection_list.all_product' | t -}}
+
+								{% if settings.select_button == 'direction' %}
+									{%- render 'icon', code: 'direction-button' -%}
+								{% elsif settings.select_button == 'arrow' %}
+									{%- render 'icon', code: 'arrow-button' -%}
+								{% endif %}
+							</a>
+						</div>
+					</div>
+				{%- endfor -%}
+			</div>
+
+			{%- if paginate.pages > 1 -%}
+				{%- render 'pagination', paginate: paginate, alignment: 'center' -%}
+			{%- endif -%}
+		{%- endpaginate -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-list-collection.name",
+	"class": "list-collection-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"label": "t:general.typography.heading.label",
+			"default": "Collections"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"label": "t:general.typography.description.label",
+			"default": "<h4>Discover a curated selection of natural wines from small batch producers all around the world</h4>"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme_card",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-2"
+		},
+		{
+			"type": "range",
+			"id": "rows",
+			"min": 1,
+			"max": 20,
+			"step": 1,
+			"default": 3,
+			"label": "t:general.slider.row.label"
+		},
+		{
+			"type": "select",
+			"id": "columns",
+			"default": "4",
+			"options": [
+				{
+					"value": "2",
+					"label": "2"
+				},
+				{
+					"value": "3",
+					"label": "3"
+				},
+				{
+					"value": "4",
+					"label": "4"
+				},
+				{
+					"value": "5",
+					"label": "5"
+				},
+				{
+					"value": "6",
+					"label": "6"
+				}
+			],
+			"label": "t:general.slider.items_per_row_desktop.label"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"default": "2",
+			"options": [
+				{
+					"value": "1",
+					"label": "1"
+				},
+				{
+					"value": "2",
+					"label": "2"
+				}
+			],
+			"label": "t:general.slider.items_per_row_mobile.label"
+		},
+		{
+			"type": "select",
+			"id": "sort",
+			"options": [
+				{
+					"value": "alphabetical",
+					"label": "t:sections.main-list-collection.settings.sort.options__1.label"
+				},
+				{
+					"value": "alphabetical_reversed",
+					"label": "t:sections.main-list-collection.settings.sort.options__2.label"
+				},
+				{
+					"value": "date_reversed",
+					"label": "t:sections.main-list-collection.settings.sort.options__3.label"
+				},
+				{
+					"value": "date",
+					"label": "t:sections.main-list-collection.settings.sort.options__4.label"
+				},
+				{
+					"value": "products_high",
+					"label": "t:sections.main-list-collection.settings.sort.options__5.label"
+				},
+				{
+					"value": "products_low",
+					"label": "t:sections.main-list-collection.settings.sort.options__6.label"
+				}
+			],
+			"default": "products_high",
+			"label": "t:sections.main-list-collection.settings.sort.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.main-list-collection.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.main-list-collection.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.main-list-collection.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "square",
+			"label": "t:sections.main-list-collection.settings.image_ratio.label",
+			"info": "t:sections.main-list-collection.settings.image_ratio.info"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	]
+}
+{% endschema %}

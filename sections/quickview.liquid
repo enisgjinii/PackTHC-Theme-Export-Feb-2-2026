@@ -1,0 +1,262 @@
+{%- assign product_form_id = 'quickview-product-form' -%}
+
+{% comment %} Gallery {% endcomment %}
+<div class="product-gallery">
+	{%- if product.media.size > 1 -%}
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				{%- for media in product.media -%}
+					<div class="swiper-slide" data-id="{{ media.id }}">
+						{% render 'product-media', media: media, image_only: true, position: forloop.index, loop: section.settings.video_looping, modal_id: media.id, role: 'main' %}
+					</div>
+				{%- endfor -%}
+			</div>
+
+			<div class="swiper-controls">
+				<div class="swiper-pagination"></div>
+				<span class="swiper-button-prev">{%- render 'icon', code: 'chevron-left' -%}</span>
+				<span class="swiper-button-next">{%- render 'icon', code: 'chevron-right' -%}</span>
+			</div>
+		</div>
+	{%- else -%}
+		{% render 'product-media', media: product.media[0], image_only: true position: 0, loop: false, modal_id: 0, role: 'main' %}
+	{%- endif -%}
+</div>
+
+{% comment %} Summary {% endcomment %}
+<div class="product-summary">
+	<div class="product-summary-inner">
+		{% comment %} Sale label {% endcomment %}
+		{%- liquid
+			capture sale_number
+				render 'saved-price'
+			endcapture
+		-%}
+
+		{%- if sale_number != blank -%}
+			<div class="product-sale-label">
+				<span class="sr-only">{{ 'products.product.on_sale' | t }}: </span>
+				{{ 'products.product.save' | t }}
+				<span class="sale-total">{{- sale_number -}}%</span>
+			</div>
+		{%- endif -%}
+
+		{% comment %} Title {% endcomment %}
+		<h2 class="product-title">
+			<a href="{{ product.url | split: '?' | first }}" class="product-url">
+				{{- product.title | escape -}}
+			</a>
+		</h2>
+
+		{% comment %} Reviews {% endcomment %}
+		{%- liquid
+			assign reviews       = product.metafields.spr.reviews
+			assign review_count  = reviews | split: '"reviewCount": "' | last | split: '"' | first | plus: 0
+			assign review_rating = reviews | split: '"ratingValue": "' | last | split: '"' | first | plus: 0 | round: 2
+		-%}
+
+		<div class="product-rating">
+			<span class="rating-star">{%- render 'icon', code: 'star' -%}</span>
+
+			{%- if review_count > 0 -%}
+				<span class="rating-value">{{ review_rating }}/5</span>
+				<span class="rating-count">({{ 'products.product.reviews' | t: count: review_count }})</span>
+			{%- else -%}
+				<span class="rating-count">{{ 'products.product.no_reviews' | t }}</span>
+			{%- endif -%}
+		</div>
+
+		{% comment %} Price {% endcomment %}
+		<div class="product-price-wrap">
+			{%- render 'price', product: product, price_class: '' -%}
+
+			{%- form 'product', product, id: 'product-form-installment', class: 'installment' -%}
+				<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+				{{ form | payment_terms }}
+			{%- endform -%}
+		</div>
+
+		{% comment %} Description {% endcomment %}
+		{%- if product.description != blank -%}
+			<div class="product-description">
+				{{- product.description -}}
+			</div>
+		{%- endif -%}
+
+		{% comment %} Variant picker {% endcomment %}
+		{%- unless product.has_only_default_variant -%}
+			{%- liquid
+				assign swatch       = 'image'
+				assign option_index = 0
+			-%}
+
+			<div class="product-variants variant-swatch swatches-{{ settings.swatch_style }}" data-url="{{ product.url }}">
+				{%- for option in product.options_with_values -%}
+					{%- liquid
+						assign selected_value = option.selected_value
+						assign id           = 'option-' | append : section.id | append: '-' | append: forloop.index
+						assign name         = option.name | downcase
+						assign is_color     = false
+						assign option_index = forloop.index0
+
+						if name == 'color' or name == 'colour'
+							assign is_color = true
+						endif
+					-%}
+
+					<div class="variant-field">
+						<div class="field-title">
+							{{- option.name -}}:
+							<span class="selected-value{% unless is_color %} sr-only{% endunless %}">{{- selected_value -}}</span>
+						</div>
+
+						<div class="field-wrap">
+							<div class="field-wrap-inner">
+								{%- assign values = '' -%}
+
+								{%- for variant in product.variants -%}
+									{%- liquid
+										assign value    = variant.options[option_index]
+										assign quantity = variant.inventory_quantity
+
+										capture stock_status
+											if quantity == 0 and variant.available == false
+												echo ' soldout'
+											endif
+										endcapture
+									-%}
+
+									{%- unless values contains value -%}
+										{%- liquid
+											assign values = values | join: ','
+											assign values = values | append: ',' | append: value
+											assign values = values | split: ','
+										-%}
+
+										<input type="radio" id="{{ id | append: forloop.index }}"
+											name="{{ option.name | escape }}"
+											value="{{ value | escape }}"
+											form="{{ product_form_id }}"
+											data-value="{{ value }}"
+											class="field-value sr-only" {% if selected_value == value %}checked{% endif %}>
+
+										{%- if is_color -%}
+											{%- liquid
+												assign color = value | handle | remove: '-'
+
+												if variant.metafields.color.value
+													assign color = variant.metafields.color.value
+												endif
+
+												assign contrast = color | color_contrast: '#ffffff'
+											-%}
+
+											{%- if swatch == 'color' -%}
+												<label class="field-label swatch swatch-{{ swatch }}{% if contrast < 4.5 %} dark{% endif %}{{ stock_status }}" style="background-color: {{ color }};" for="{{ id | append: forloop.index }}"></label>
+											{%- elsif swatch == 'image' -%}
+												<label class="field-label swatch swatch-{% if variant.image %}image{% else %}color{% if contrast < 4.5 %} dark{% endif %}{% endif %}{{ stock_status }}" for="{{ id | append: forloop.index }}"{% unless variant.image %} style="background-color: {{ color }};"{% endunless %}>
+													{%- liquid
+														if variant.image
+															echo variant.image | image_url: width: 150, height: 150, crop: 'center' | image_tag: loading: 'lazy'
+														endif
+													-%}
+												</label>
+											{%- else -%}
+												<label class="field-label field-button{{ stock_status }}" for="{{ id | append: forloop.index }}">{{- value -}}</label>
+											{%- endif -%}
+										{%- else -%}
+											<label class="field-label field-button{{ stock_status }}" for="{{ id | append: forloop.index }}">{{- value -}}</label>
+										{%- endif -%}
+									{%- endunless -%}
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+				{%- endfor -%}
+			</div>
+
+			{% comment %} Product variant data {% endcomment %}
+			<script data-product-variants>
+				{{ product.variants | json }}
+			</script>
+
+			{% comment %} Product quantity data {% endcomment %}
+			<script data-inventory-quantity>
+				[{%- liquid
+					for var in product.variants
+						echo '{"id":' | append: var.id | append: ',"qty":' | append: var.inventory_quantity | append: '}'
+
+						unless forloop.last
+							echo ','
+						endunless
+					endfor
+				-%}]
+			</script>
+		{%- endunless -%}
+
+		{% comment %} Add to cart {% endcomment %}
+		{%- form 'product', product, id: product_form_id, class: 'product-buy', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+			<div class="item-field">
+				<div class="product-quantity">
+					{% render 'quantity' %}
+				</div>
+
+				<button type="submit" name="add" class="button add-to-cart-button primary-button" {%- if product.selected_or_first_available_variant.available == false -%}disabled{%- endif -%}>
+					{%- liquid
+						if product.selected_or_first_available_variant.available
+							echo 'products.product.add_to_cart' | t
+						else
+							echo 'products.product.out_of_stock' | t
+						endif
+					-%}
+				</button>
+			</div>
+		{%- endform -%}
+
+		{% comment %} Share {% endcomment %}
+		<div class="product-share">
+			{%- liquid
+				assign product_url = shop.url | append: product.url
+			-%}
+
+			<ul class="social-media-list" role="list">
+				<li>
+					<a href="//facebook.com/sharer/sharer.php?u={{ product_url }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.facebook' | t }}">
+						{%- render 'icon', code: 'facebook' -%}
+						<span class="tooltip tooltip-top">{{- 'general.social.links.facebook' | t -}}</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="//twitter.com/intent/tweet?text={{ product.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.twitter' | t }}">
+						{%- render 'icon', code: 'twitter' -%}
+						<span class="tooltip tooltip-top">{{- 'general.social.links.twitter' | t -}}</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="//linkedin.com/shareArticle?mini=true&url={{ product_url }}&title={{ product.title }}&summary={{ product.description | strip_html }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.linkedin' | t }}">
+						{%- render 'icon', code: 'linkedin' -%}
+						<span class="tooltip tooltip-top">{{- 'general.social.links.linkedin' | t -}}</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="//pinterest.com/pin/create/button/?url={{ product_url }}&media={{ product.featured_media | image_url: width: 992 }}&description={{ product.description | strip_html }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.pinterest' | t }}">
+						{%- render 'icon', code: 'pinterest' -%}
+						<span class="tooltip tooltip-top">{{- 'general.social.links.pinterest' | t -}}</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="mailto:info@example.com?&subject=&cc=&bcc=&body={{ product_url }}%0A{{ product.title }}" class="icon" target="_blank" rel="noopener" aria-label="{{ 'general.social.links.email' | t }}">
+						{%- render 'icon', code: 'email' -%}
+						<span class="tooltip tooltip-top">{{- 'general.social.links.email' | t -}}</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+{% comment %}
+  Responsive Image Snippet - Optimized for Performance
+  Usage: {% render 'responsive-image', image: image_object, title: 'Alt Text' %}
+{% endcomment %}
+
+{% liquid
+  assign alt_text = title | default: 'Child-Resistant Packaging Solutions'
+  assign image_width = image.width
+  assign image_height = image.height
+%}
+
+<img 
+  src="{{ image | image_url: width: 320 }}"
+  srcset="
+    {{ image | image_url: width: 200 }} 200w,
+    {{ image | image_url: width: 320 }} 320w,
+    {{ image | image_url: width: 400 }} 400w,
+    {{ image | image_url: width: 640 }} 640w
+  "
+  sizes="
+    (max-width: 767px) 50vw,
+    (max-width: 1024px) 33vw,
+    25vw
+  "
+  alt="{{ alt_text }}"
+  loading="lazy"
+  width="{{ image_width }}"
+  height="{{ image_height }}"
+  decoding="async"
+>

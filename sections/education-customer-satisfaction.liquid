@@ -1,0 +1,456 @@
+{% comment %}
+  Section: Customer Satisfaction Features
+  Usage: Add this file to sections folder as 'customer-satisfaction.liquid'
+{% endcomment %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    padding: 60px 0;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  #shopify-section-{{ section.id }} .header-content {
+    margin-bottom: 50px;
+  }
+
+  #shopify-section-{{ section.id }} .main-title {
+    font-size: 56px;
+    font-weight: 800;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .main-description {
+    font-size: 16px;
+    color: {{ section.settings.description_color }};
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .feature-card {
+    background: {{ section.settings.card_background }};
+    border: {{ section.settings.card_border_width }}px solid {{ section.settings.card_border_color }};
+    border-radius: {{ section.settings.card_border_radius }}px;
+    padding: 40px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  #shopify-section-{{ section.id }} .feature-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .feature-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: {{ section.settings.icon_color }};
+  }
+
+  #shopify-section-{{ section.id }} .feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .feature-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: {{ section.settings.feature_title_color }};
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  #shopify-section-{{ section.id }} .feature-description {
+    font-size: 14px;
+    color: {{ section.settings.feature_description_color }};
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+
+  #shopify-section-{{ section.id }} .feature-list li {
+    font-size: 14px;
+    color: {{ section.settings.feature_description_color }};
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .feature-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+
+  #shopify-section-{{ section.id }} .feature-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+    border-bottom: 2px solid {{ section.settings.link_color }};
+    padding-bottom: 2px;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .feature-link:hover {
+    opacity: 0.7;
+  }
+
+  #shopify-section-{{ section.id }} .feature-link:after {
+    content: "→";
+    font-size: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .feature-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (max-width: 1200px) {
+    #shopify-section-{{ section.id }} .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} {
+      padding: 40px 0;
+    }
+
+    #shopify-section-{{ section.id }} .container {
+      padding: 0 20px;
+    }
+
+    #shopify-section-{{ section.id }} .main-title {
+      font-size: 36px;
+    }
+
+    #shopify-section-{{ section.id }} .features-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .feature-card {
+      padding: 30px 25px;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="header-content">
+    {% if section.settings.title != blank %}
+      <h2 class="main-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="main-description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="features-grid">
+    {% for block in section.blocks %}
+      <div class="feature-card" {{ block.shopify_attributes }}>
+        {% if block.settings.icon != blank %}
+          <div class="feature-icon">
+            {{ block.settings.icon | image_url: width: 100 | image_tag: alt: block.settings.title }}
+          </div>
+        {% elsif block.settings.icon_svg != blank %}
+          <div class="feature-icon">
+            {{ block.settings.icon_svg }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.title != blank %}
+          <h3 class="feature-title">{{ block.settings.title }}</h3>
+        {% endif %}
+
+        {% if block.settings.description != blank %}
+          <div class="feature-description">{{ block.settings.description }}</div>
+        {% endif %}
+
+        {% if block.settings.list_items != blank %}
+          <ul class="feature-list">
+            {% assign items = block.settings.list_items | split: '|' %}
+            {% for item in items %}
+              <li>{{ item | strip }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div class="feature-links">
+          {% if block.settings.link_1_text != blank and block.settings.link_1_url != blank %}
+            <a href="{{ block.settings.link_1_url }}" class="feature-link">
+              {{ block.settings.link_1_text }}
+            </a>
+          {% endif %}
+
+          {% if block.settings.link_2_text != blank and block.settings.link_2_url != blank %}
+            <a href="{{ block.settings.link_2_url }}" class="feature-link">
+              {{ block.settings.link_2_text }}
+            </a>
+          {% endif %}
+
+          {% if block.settings.link_3_text != blank and block.settings.link_3_url != blank %}
+            <a href="{{ block.settings.link_3_url }}" class="feature-link">
+              {{ block.settings.link_3_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Customer Satisfaction",
+  "tag": "section",
+  "class": "customer-satisfaction-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Customer Satisfaction. Guaranteed."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "From free seeds to fast shipping, we are committed to providing you with seeds that germ, and resources to support your success as growers."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f4e4c1"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Card Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Card Border Width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "feature_title_color",
+      "label": "Feature Title Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "feature_description_color",
+      "label": "Feature Description Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#1a1a1a"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG Code",
+          "info": "Use SVG code if no image selected"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "textarea",
+          "id": "list_items",
+          "label": "List Items",
+          "info": "Separate items with | symbol. Example: Item 1 | Item 2 | Item 3"
+        },
+        {
+          "type": "text",
+          "id": "link_1_text",
+          "label": "Link 1 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_2_text",
+          "label": "Link 2 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_3_text",
+          "label": "Link 3 Text"
+        },
+        {
+          "type": "url",
+          "id": "link_3_url",
+          "label": "Link 3 URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Satisfaction",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "FREE SEEDS WITH EVERY PURCHASE",
+            "description": "Every retail seed pack purchased, whether here online or in a store, comes with free extra seeds to help you succeed!",
+            "link_1_text": "Free Seed Program",
+            "link_1_url": "/pages/free-seeds"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "FAST, SECURE SHIPPING",
+            "list_items": "Worldwide Shipping | Fast & Discreet Shipping | Free Shipping on Orders Over $120",
+            "link_1_text": "Shipping Policy",
+            "link_1_url": "/pages/shipping"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "GERMINATION GUARANTEE",
+            "description": "All of our cannabis seeds are tested for highest germination quality standards.",
+            "link_1_text": "Germination Grow Guide",
+            "link_1_url": "/pages/germination-guide",
+            "link_2_text": "Germination Support Form",
+            "link_2_url": "/pages/support"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "ATLAS SEED GROWER SUPPORT",
+            "description": "Ask questions and get direct grower support on our Discord",
+            "link_1_text": "Atlas Seed Discord",
+            "link_1_url": "https://discord.com",
+            "link_2_text": "Atlas Seed Subreddit",
+            "link_2_url": "https://reddit.com",
+            "link_3_text": "Grower Guide",
+            "link_3_url": "/pages/grower-guide"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

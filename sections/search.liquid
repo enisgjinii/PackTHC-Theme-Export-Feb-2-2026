@@ -1,0 +1,42 @@
+<div class="fetch-search">
+	{%- if search.results_count > 0 -%}
+		<div class="search-head">
+			<h3 class="heading">{{- 'general.search.search_results' | t -}}</h3>
+
+			<span class="products-found" href="{{ routes.search_url }}?q={{ search.terms | handle }}">
+				{{- 'general.search.results_with_count' | t: count: search.results.size -}}
+			</span>
+		</div>
+
+		<div class="main-content grid grid-4 grid-tablet-2 grid-mobile-2">
+			{%- assign highlight = search.terms | split: ' AND ' | last | remove_first: '*' -%}
+
+			{%- for item in search.results limit: 8 -%}
+				<div class="grid-item">
+					{%- liquid
+						case item.object_type
+							when 'product'
+								render 'product-card', product: item, highlight: highlight
+							when 'article'
+								render 'post-card', article: item, in_search_results: true, highlight: highlight
+						endcase
+					-%}
+				</div>
+			{%- endfor -%}
+		</div>
+
+		{%- if search.results.size > 8 -%}
+			<div class="view-more-results">
+				<a class="button primary-button medium-button" href="{{ routes.search_url }}?q={{ search.terms | handle }}">
+					{%- liquid
+						echo 'general.search.view_all_results' | t
+
+						render 'icon', code: 'arrow-right'
+					-%}
+				</a>
+			</div>
+		{%- endif -%}
+	{%- else -%}
+		<p class="no-results h4">{{- 'general.search.no_results' | t -}}</p>
+	{%- endif -%}
+</div>

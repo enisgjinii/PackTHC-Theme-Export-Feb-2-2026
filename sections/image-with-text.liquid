@@ -1,0 +1,252 @@
+{%- liquid
+	assign section_id    = '#shopify-section-' | append: section.id
+	assign animation     = settings.section_animation
+	assign full          = section.settings.full
+	assign layout        = section.settings.layout
+	assign image         = section.settings.image
+	assign heading       = section.settings.heading_text
+	assign heading_size  = section.settings.heading_size
+	assign description   = section.settings.text
+	assign align         = section.settings.align
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .image {
+			width: {{ section.settings.width }}%;
+		}
+
+		{{ section_id }} .content {
+			width: {{ 100 | minus: section.settings.width }}%;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section{% else %}container{% endif %}">
+		<div class="image-with-text {{ layout }}-first">
+			<div class="image adapt-media{% if animation %} scroll-trigger{% endif %}">
+				<div class="{% if image == blank %}adapt-svg-placeholder{% endif %}{% if settings.image_lazy and image %} lazy-image{% endif %}">
+					{%- liquid
+						if image != blank
+							render 'lazy-image', image: image, width: 1200
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+				</div>
+			</div>
+
+			<div class="content flex-justify-{% if align == 'left' %}start{% elsif align == 'right' %}end{% else %}center{% endif %}">
+				<div class="content-inner text-{{ align }} flex-align-{% if align == 'left' %}start{% elsif align == 'right' %}end{% else %}center{% endif %}">
+					{%- if heading != blank -%}
+						<h2 class="heading {{ heading_size }} rte{% if animation %} scroll-trigger{% endif %}">{{- heading -}}</h2>
+					{%- endif -%}
+
+					{%- if description != blank -%}
+						<div class="description rte{% if animation %} scroll-trigger{% endif %}">{{- description -}}</div>
+					{%- endif -%}
+
+					{%- if section.settings.button_label != blank -%}
+						<a class="button primary-button{% if animation %} scroll-trigger{% endif %}" href="{{ section.settings.button_link | default: '#' }}">
+							{{- section.settings.button_label -}}
+
+							{% if settings.select_button == 'direction' %}
+								{%- render 'icon', code: 'direction-button' -%}
+							{% elsif settings.select_button == 'arrow' %}
+								{%- render 'icon', code: 'arrow-button' -%}
+							{% endif %}
+						</a>
+					{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.image-with-text.name",
+	"tag": "section",
+	"class": "image-with-text-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "image",
+					"label": "t:sections.image-with-text.settings.layout.option_1.label"
+				},
+				{
+					"value": "text",
+					"label": "t:sections.image-with-text.settings.layout.option_2.label"
+				}
+			],
+			"default": "image",
+			"label": "t:sections.image-with-text.settings.layout.label",
+			"info": "t:sections.image-with-text.settings.layout.info"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "range",
+			"id": "width",
+			"min": 30,
+			"max": 80,
+			"step": 1,
+			"default": 50,
+			"unit": "%",
+			"label": "t:general.dimensions.width.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-with-text.settings.header_content.content"
+		},
+		{
+			"type": "select",
+			"id": "align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "left",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Image with text",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "richtext",
+			"id": "text",
+			"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"default": "Button label",
+			"label": "t:general.typography.button_label.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:general.typography.link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-with-text.presets.name"
+		}
+	]
+}
+{% endschema %}

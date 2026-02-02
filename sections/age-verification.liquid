@@ -1,0 +1,267 @@
+{%- liquid
+	assign section_id = '#shopify-section-' | append: section.id
+	assign delay_time = section.settings.delay_time | times: 1000
+	assign form_class = 'newsletter-popup-form'
+	assign image      = section.settings.image
+
+	if section.settings.first_visit
+		assign form_class = 'newsletter-popup-form first-visit'
+	endif
+-%}
+
+<style>
+	{{section_id}} .newsletter-content{
+		padding-top: {{ section.settings.padding_top}}px;
+		padding-bottom: {{ section.settings.padding_bottom}}px;
+	}
+
+	@media (max-width: 991px) {
+		{{section_id}} .newsletter-content{
+			padding-top: {{ section.settings.padding_top_mobile}}px;
+			padding-bottom: {{ section.settings.padding_bottom_mobile}}px;
+		}
+	}
+	{%- for block in section.blocks -%}
+		{%- if block.type != 'image' -%}
+			{{ section_id }} [data-id="{{ block.id }}"] {
+				padding-top: {{ block.settings.padding_top }}px;
+				padding-bottom: {{ block.settings.padding_bottom }}px;
+			}
+		{%- endif -%}
+	{%- endfor -%}
+</style>
+
+{%- form 'customer', id: nil, class: form_class, data-delay: delay_time, data-mode: section.settings.mode, data-id: section_id -%}
+	<input type="hidden" name="contact[tags]" value="newsletter">
+	{% comment %} start form allow {% endcomment %}
+	<div class="newsletter-inner allow color-{{ section.settings.color_scheme }}">
+		<div class="newsletter-image">
+			<div class="popup-media popup-item popup">
+				<div class="popup-media-inner{% if settings.image_lazy and image != blank %} lazy-image{% endif %}">
+					{%- liquid
+						if image != blank
+							render 'lazy-image', image: image, width: 960
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+				</div>
+			</div>
+		</div>
+
+		<div class="newsletter-content text-center">
+			<div class="popup-item popup">
+				{% if section.settings.heading != blank %}
+					<div class="heading">{{- section.settings.heading -}}</div>
+				{% endif %}
+
+				{% if section.settings.description != blank %}
+				<div class="description rte">{{- section.settings.description -}}</div>
+				{% endif %}
+
+			</div>
+			<span class="primary-button yes-btn">{{- section.settings.approve_button -}}</span>
+			<span class="secondary-button no-btn">{{- section.settings.decline_button -}}</span>
+		</div>
+	</div>
+	{% comment %} end form allow {% endcomment %}
+
+	{% comment %} start form not-allow {% endcomment %}
+	<div class="newsletter-inner not-allow hidden color-{{ section.settings.color_scheme }}">
+		<div class="newsletter-image">
+			<div class="popup-media popup-item popup">
+				<div class="popup-media-inner{% if settings.image_lazy and image != blank %} lazy-image{% endif %}">
+					{%- liquid
+						if image != blank
+							render 'lazy-image', image: image, width: 960
+						else
+							render 'icon', code: 'placeholder'
+						endif
+					-%}
+				</div>
+			</div>
+		</div>
+
+		<div class="newsletter-content text-center">
+			<div class="popup-item popup">
+				{% if section.settings.heading_decline != blank %}
+					<div class="heading">{{- section.settings.heading_decline -}}</div>
+				{% endif %}
+
+				{% if section.settings.description_decline != blank %}
+				<div class="description rte">{{- section.settings.description_decline -}}</div>
+				{% endif %}
+
+			</div>
+			<span class="primary-button back-btn">{{- section.settings.return_button -}}</span>
+		</div>
+	</div>
+	{% comment %} end form not-allow {% endcomment %}
+{%- endform -%}
+
+{% schema %}
+{
+	"name": "t:sections.age-verification.name",
+	"tag": "section",
+	"class": "age-verification-section closed",
+	"limit": 1,
+	"enabled_on": {
+		"groups": ["footer"]
+	},
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+				{
+			"type": "select",
+			"id": "mode",
+			"options": [
+				{
+					"value": "test",
+					"label": "t:general.mode.option_1.label"
+				},
+				{
+					"value": "",
+					"label": "t:general.mode.option_2.label"
+				}
+			],
+			"default": "test",
+			"label": "t:general.mode.label",
+			"info": "t:general.mode.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "first_visit",
+			"label": "t:sections.age-verification.settings.first_visit.label",
+			"info": "t:sections.age-verification.settings.first_visit.info",
+			"default": true
+		},
+		{
+			"type": "range",
+			"id": "delay_time",
+			"label": "t:sections.age-verification.settings.delay_time.label",
+			"info": "t:sections.age-verification.settings.delay_time.info",
+			"default": 3,
+			"min": 0,
+			"max": 10,
+			"step": 1,
+			"unit": "s"
+		},
+		{
+			"type": "image_picker",
+			"id": "image",
+			"label": "t:general.image.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.age-verification.settings.description.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading",
+			"default": "<h3>Are you 18 or older?</h3>",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"default": "<p>You must be 18 years of age or older to enter this site. Please confirm your age.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "text",
+			"id": "decline_button",
+			"default": "No, I’m not",
+			"label": "t:sections.age-verification.settings.decline_button.label"
+		},
+		{
+			"type": "text",
+			"id": "approve_button",
+			"default": "Yes I am",
+			"label": "t:sections.age-verification.settings.approve_button.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.age-verification.settings.decline.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:sections.age-verification.settings.guide.label"
+		},
+		{
+			"type": "richtext",
+			"id": "heading_decline",
+			"default": "<h3>Are you 18 or older?</h3>",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "richtext",
+			"id": "description_decline",
+			"default": "<p>You must be 18 years of age or older to enter this site. Please confirm your age.</p>",
+			"label": "t:general.typography.description.label"
+		},
+		{
+			"type": "text",
+			"id": "return_button",
+			"default": "Oops, I entered incorrectly",
+			"label": "t:sections.age-verification.settings.return_button.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 50,
+			"max": 150,
+			"step": 1,
+			"default": 100,
+			"unit": "px",
+			"label": "t:general.padding.padding_top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 50,
+			"max": 150,
+			"step": 1,
+			"default": 100,
+			"unit": "px",
+			"label": "t:general.padding.padding_bottom.label"
+		},
+				{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.age-verification.presets.name"
+		}
+	]
+}
+{% endschema %}

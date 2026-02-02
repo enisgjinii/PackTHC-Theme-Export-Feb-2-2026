@@ -1,0 +1,27 @@
+{%- assign animation = settings.section_animation -%}
+
+<div class="container">
+	<h1 class="title{% if animation %} scroll-trigger{% endif %}">
+		{{- page.title | escape -}}
+	</h1>
+
+	<div class="content{% if animation %} scroll-trigger{% endif %}">
+		{{ page.content }}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-page.name",
+	"tag": "section",
+	"class": "main-page-section"
+}
+{% endschema %}
+
+
+
+
+
+
+
+

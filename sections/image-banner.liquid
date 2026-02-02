@@ -1,0 +1,455 @@
+{%- liquid
+	assign section_id       = '#shopify-section-' | append: section.id
+	assign full             = section.settings.full
+	assign animation        = settings.section_animation
+	assign image_background = section.settings.image_background
+	assign overlay          = section.settings.overlay
+	assign height           = section.settings.height
+
+	case height
+		when 'small'
+			assign height_value = '420px'
+		when 'medium'
+			assign height_value = '560px'
+		when 'large'
+			assign height_value = '720px'
+	endcase
+
+	case height
+		when 'small'
+			assign height_mobile_value = '280px'
+		when 'medium'
+			assign height_mobile_value = '350px'
+		when 'large'
+			assign height_mobile_value = '400px'
+	endcase
+-%}
+
+<style>
+	{{ section_id }} .image-banner-blocks {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+	{%- if height != 'auto' -%}
+		{{ section_id }} .section-wrapper .background-item.height-{{ height }} {
+			height: {{ height_mobile_value }};
+		}
+	{% endif %}
+
+	{% if image_background != blank %}
+		{{ section_id }} .section-wrapper .background-item:before {
+			background: linear-gradient(to bottom,{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%},{%- if overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ overlay }}){%- endif -%});
+			pointer-events: none; /* allow clicks through the overlay so the anchor receives them */
+		}
+	{% endif %}
+
+	/* Ensure image anchor fills the image and is above the overlay */
+	{{ section_id }} .image-banner-link {
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		z-index: 3;
+		text-decoration: none;
+	}
+	{{ section_id }} .image-banner-link img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	@media (min-width: 992px)  {
+		{{ section_id }} .image-banner-blocks {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{%- if height != 'auto' -%}
+			{{ section_id }} .section-wrapper .background-item.height-{{ height }} {
+				height: {{ height_value }};
+			}
+		{% endif %}
+	}
+
+	@media (min-width: 1200px) {
+		{{ section_id }} .image-banner-blocks {
+			width: {{ section.settings.width }}%;
+			margin: 0 auto;
+		}
+	}
+</style>
+{%- comment -%} Preload hero image for faster LCP {%- endcomment -%}
+{% if image_background != blank %}
+  <link rel="preload" as="image"
+        href="{{ image_background | image_url: width: 1600 }}"
+        imagesrcset="
+          {{ image_background | image_url: width: 800  }} 800w,
+          {{ image_background | image_url: width: 1200 }} 1200w,
+          {{ image_background | image_url: width: 1600 }} 1600w,
+          {{ image_background | image_url: width: 1920 }} 1920w"
+        imagesizes="100vw">
+{% endif %}
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+  <div class="background-item height-{{ height }}">
+    <div class="image adapt-media">
+      {%- comment -%} LCP image: no lazy wrapper; render high priority <img> {%- endcomment -%}
+        <div>
+			{% if image_background != blank %}
+				{% if section.settings.image_link and section.settings.image_link != '' %}
+				<a href="{{ section.settings.image_link }}"
+					{%- if section.settings.image_link_new_tab -%} target="_blank" rel="noopener noreferrer"{%- endif -%}
+					class="image-banner-link">
+					{{ image_background
+					| image_url: width: 1920
+					| image_tag:
+						alt: image_background.alt | default: section.settings.title,
+						loading: 'eager',
+						decoding: 'async',
+						fetchpriority: 'high',
+						sizes: '100vw',
+						widths: '800,1200,1600,1920' }}
+				</a>
+				{% else %}
+				{{ image_background
+					| image_url: width: 1920
+					| image_tag:
+					alt: image_background.alt | default: section.settings.title,
+					loading: 'eager',
+					decoding: 'async',
+					fetchpriority: 'high',
+					sizes: '100vw',
+					widths: '800,1200,1600,1920' }}
+				{% endif %}
+
+			{% else %}
+				{% render 'icon', code: 'placeholder' %}
+			{% endif %}
+		</div>
+    <div class="image-banner-blocks vertical-{{ section.settings.vertical }}">
+      <div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+        <div class="image-banner-content">
+          <div class="text-{{ section.settings.align }} text-{{ section.settings.mobile_alignment }}-mobile">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when '@app' -%}
+                  {%- render block -%}
+                {%- when 'heading' -%}
+                  <div class="heading {{ block.settings.heading_size }}{% if animation %} scroll-trigger{% endif %}" data-{{ block.id }} {{ block.shopify_attributes }}>{{- block.settings.content -}}</div>
+                {%- when 'text' -%}
+                  <div class="text rte{% if animation %} scroll-trigger{% endif %}" {{ block.shopify_attributes }}>{{- block.settings.content -}}</div>
+                {%- when 'button' -%}
+                  <div class="button-wrapper">
+                    <a href="{{ block.settings.link }}" class="btn-wrp button {{ block.settings.style }}-button{% if animation %} scroll-trigger{% endif %}" {{ block.shopify_attributes }}>
+                      {{- block.settings.label | escape -}}
+                      {% if settings.select_button == 'direction' %}
+                        {%- render 'icon', code: 'direction-button' -%}
+                      {% elsif settings.select_button == 'arrow' %}
+                        {%- render 'icon', code: 'arrow-button' -%}
+                      {% endif %}
+                    </a>
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.image-banner.name",
+	"tag": "section",
+	"class": "image-banner-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "image_picker",
+			"id": "image_background",
+			"label": "t:general.background.image.label"
+		},
+		{
+			"type": "url",
+			"id": "image_link",
+			"label": "Image redirect URL"
+		},
+		{
+			"type": "checkbox",
+			"id": "image_link_new_tab",
+			"label": "Open link in new tab",
+			"default": false
+		},
+		{
+			"type": "select",
+			"id": "height",
+			"options": [
+				{
+					"value": "auto",
+					"label": "t:sections.image-banner.settings.height.option_1.label"
+				},
+				{
+					"value": "small",
+					"label": "t:sections.image-banner.settings.height.option_2.label"
+				},
+				{
+					"value": "medium",
+					"label": "t:sections.image-banner.settings.height.option_3.label"
+				},
+				{
+					"value": "large",
+					"label": "t:sections.image-banner.settings.height.option_4.label"
+				}
+			],
+			"default": "medium",
+			"label": "t:sections.image-banner.settings.height.label"
+		},
+		{
+			"type": "range",
+			"id": "overlay",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "%",
+			"label": "t:sections.video-background.settings.overlay.label",
+			"info": "t:sections.video-background.settings.overlay.info"
+		},
+		{
+			"type": "select",
+			"id": "vertical",
+			"default": "middle",
+			"label": "t:general.layout.vertical.label",
+			"info": "t:general.layout.vertical.mobile_middle.label",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:general.layout.vertical.option_1.label"
+				},
+				{
+					"value": "middle",
+					"label": "t:general.layout.vertical.option_2.label"
+				},
+				{
+					"value": "bottom",
+					"label": "t:general.layout.vertical.option_3.label"
+				}
+			]
+		},
+		{
+			"type": "select",
+			"id": "align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "select",
+			"id": "mobile_alignment",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.mobile_alignment.label"
+		},
+		{
+			"type": "range",
+			"id": "width",
+			"min": 30,
+			"max": 100,
+			"step": 2,
+			"default": 100,
+			"unit": "%",
+			"label": "t:general.dimensions.content_width.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "heading",
+			"name": "t:general.typography.heading.label",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "content",
+					"default": "<p>Talk about your brand</p>",
+					"label": "t:general.typography.content.label"
+				},
+				{
+					"type": "select",
+					"id": "heading_size",
+					"options": [
+						{
+							"value": "h4",
+							"label": "t:general.typography.heading_size.option_1.label"
+						},
+						{
+							"value": "h3",
+							"label": "t:general.typography.heading_size.option_2.label"
+						},
+						{
+							"value": "h2",
+							"label": "t:general.typography.heading_size.option_3.label"
+						},
+						{
+							"value": "h1",
+							"label": "t:general.typography.heading_size.option_4.label"
+						}
+					],
+					"default": "h2",
+					"label": "t:general.typography.font_size.label"
+				}
+			]
+		},
+		{
+			"type": "text",
+			"name": "t:general.typography.text.label",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "content",
+					"default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+					"label": "t:general.typography.content.label"
+				}
+			]
+		},
+		{
+			"type": "button",
+			"name": "t:general.typography.button.label",
+			"settings": [
+				{
+					"type": "text",
+					"id": "label",
+					"default": "Button label",
+					"label": "t:general.typography.button_label.label"
+				},
+				{
+					"type": "url",
+					"id": "link",
+					"label": "t:general.typography.link.label"
+				},
+				{
+					"type": "select",
+					"id": "style",
+					"options": [
+						{
+							"value": "primary",
+							"label": "t:sections.image-banner.blocks.button.settings.style.option_1.label"
+						},
+						{
+							"value": "secondary",
+							"label": "t:sections.image-banner.blocks.button.settings.style.option_2.label"
+						}
+					],
+					"default": "primary",
+					"label": "t:sections.image-banner.blocks.button.settings.style.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.image-banner.name",
+			"blocks": [
+				{
+					"type": "heading"
+				},
+				{
+					"type": "text"
+				},
+				{
+					"type": "button"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

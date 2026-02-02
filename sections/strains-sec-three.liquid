@@ -1,0 +1,417 @@
+<div class="strain-effects-helps-container">
+  <div class="seh-left-section">
+    <h2 class="seh-heading">{{ section.settings.strain_name }} strain effects</h2>
+
+    <div class="seh-section">
+      <h3 class="seh-section-title">POSITIVE EFFECTS</h3>
+      <div class="seh-cards">
+        {% for block in section.blocks %}
+          {% if block.type == 'positive_effect' %}
+            <div class="seh-card">
+              <div class="seh-card-icon">{{ block.settings.icon }}</div>
+              <div class="seh-card-label">{{ block.settings.label }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="seh-section">
+      <h3 class="seh-section-title">NEGATIVE EFFECTS</h3>
+      <div class="seh-cards">
+        {% for block in section.blocks %}
+          {% if block.type == 'negative_effect' %}
+            <div class="seh-card">
+              <div class="seh-card-icon">{{ block.settings.icon }}</div>
+              <div class="seh-card-label">{{ block.settings.label }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="seh-section">
+      <h3 class="seh-section-title">{{ section.settings.strain_name }} strain flavors</h3>
+      <div class="seh-cards">
+        {% for block in section.blocks %}
+          {% if block.type == 'flavor' %}
+            <div class="seh-card">
+              <div class="seh-card-icon">{{ block.settings.icon }}</div>
+              <div class="seh-card-label">{{ block.settings.label }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="seh-right-section">
+    <h2 class="seh-heading">{{ section.settings.strain_name }} strain helps with</h2>
+    
+    <div class="seh-helps-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'helps_with' %}
+          <div class="seh-help-item">
+            <h3 class="seh-help-title">{{ block.settings.condition }}</h3>
+            <p class="seh-help-percentage">{{ block.settings.percentage }}% of people say it helps with {{ block.settings.condition_lower }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="seh-disclaimer">
+      {{ section.settings.disclaimer_text }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .strain-effects-helps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .seh-left-section {
+    border-right: 1px solid #e5e5e5;
+    padding-right: 40px;
+  }
+
+  .seh-right-section {
+    padding-left: 20px;
+  }
+
+  .seh-heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .seh-subheading {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .seh-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    color: #999;
+    cursor: pointer;
+  }
+
+  .seh-section {
+    margin-bottom: 35px;
+  }
+
+  .seh-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .seh-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .seh-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px 15px;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .seh-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .seh-card-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .seh-card-label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .seh-helps-list {
+    margin-bottom: 25px;
+  }
+
+  .seh-help-item {
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .seh-help-item:first-child {
+    padding-top: 10px;
+  }
+
+  .seh-help-item:last-child {
+    border-bottom: none;
+  }
+
+  .seh-help-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .seh-help-percentage {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .seh-disclaimer {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 968px) {
+    .strain-effects-helps-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .seh-left-section {
+      border-right: none;
+      border-bottom: 1px solid #e5e5e5;
+      padding-right: 0;
+      padding-bottom: 40px;
+    }
+
+    .seh-right-section {
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .seh-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Strain Effects & Helps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "strain_name",
+      "label": "Strain Name",
+      "default": "Bubba Kush"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer Text",
+      "default": "This info is sourced from our readers and is not a substitute for professional medical advice. Seek the advice of a health professional before using cannabis for a medical condition."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "positive_effect",
+      "name": "Positive Effect",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (SVG or Emoji)",
+          "default": "💤"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Effect Label",
+          "default": "sleepy"
+        }
+      ]
+    },
+    {
+      "type": "negative_effect",
+      "name": "Negative Effect",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (SVG or Emoji)",
+          "default": "🥤"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Effect Label",
+          "default": "dry mouth"
+        }
+      ]
+    },
+    {
+      "type": "flavor",
+      "name": "Flavor",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (SVG or Emoji)",
+          "default": "☕"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Flavor Label",
+          "default": "coffee"
+        }
+      ]
+    },
+    {
+      "type": "helps_with",
+      "name": "Helps With",
+      "settings": [
+        {
+          "type": "text",
+          "id": "condition",
+          "label": "Condition Name",
+          "default": "Stress"
+        },
+        {
+          "type": "text",
+          "id": "condition_lower",
+          "label": "Condition Name (lowercase)",
+          "default": "stress"
+        },
+        {
+          "type": "number",
+          "id": "percentage",
+          "label": "Percentage",
+          "default": 36
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Strain Effects & Helps",
+      "blocks": [
+        {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "💤",
+            "label": "sleepy"
+          }
+        },
+        {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "😌",
+            "label": "relaxed"
+          }
+        },
+        {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "🍔",
+            "label": "hungry"
+          }
+        },
+        {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "🥤",
+            "label": "dry mouth"
+          }
+        },
+        {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "👁️",
+            "label": "dry eyes"
+          }
+        },
+        {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "😵",
+            "label": "dizzy"
+          }
+        },
+        {
+          "type": "flavor",
+          "settings": {
+            "icon": "☕",
+            "label": "coffee"
+          }
+        },
+        {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌿",
+            "label": "earthy"
+          }
+        },
+        {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌶️",
+            "label": "pungent"
+          }
+        },
+        {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Stress",
+            "condition_lower": "stress",
+            "percentage": 36
+          }
+        },
+        {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Pain",
+            "condition_lower": "pain",
+            "percentage": 33
+          }
+        },
+        {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Insomnia",
+            "condition_lower": "insomnia",
+            "percentage": 29
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

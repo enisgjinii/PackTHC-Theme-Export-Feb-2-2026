@@ -1,0 +1,133 @@
+{%- comment -%}
+Auto BreadcrumbList JSON‑LD (menu-driven, @id style)
+Usage: {% render 'breadcrumbs-schema-advanced', menu_handle: 'main-menu' %}
+{%- endcomment -%}
+
+{%- assign menu_handle = menu_handle | default: 'main-menu' -%}
+{%- assign pos = 1 -%}
+{%- assign trail = '' -%}
+{%- assign last_url = '' -%}
+
+{%- capture trail -%}
+{
+  "@type": "ListItem",
+  "position": {{ pos }},
+  "name": "Home",
+  "item": { "@id": {{ shop.url | json }} }
+}
+{%- endcapture -%}
+{%- assign pos = pos | plus: 1 -%}
+{%- assign last_url = shop.url -%}
+
+{%- assign level1 = linklists[menu_handle].links -%}
+{%- if level1 and level1.size > 0 -%}
+  {%- for l1 in level1 -%}{% if l1.active or l1.child_active %}
+    {%- capture trail -%}{{ trail }},{
+      "@type":"ListItem","position":{{ pos }},"name":{{ l1.title | json }},"item":{"@id":{{ l1.url | absolute_url | json }}}
+    }{%- endcapture -%}
+    {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l1.url | absolute_url -%}
+
+    {%- assign level2 = l1.links -%}{% if level2 and level2.size > 0 -%}
+      {%- for l2 in level2 -%}{% if l2.active or l2.child_active %}
+        {%- capture trail -%}{{ trail }},{
+          "@type":"ListItem","position":{{ pos }},"name":{{ l2.title | json }},"item":{"@id":{{ l2.url | absolute_url | json }}}
+        }{%- endcapture -%}
+        {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l2.url | absolute_url -%}
+
+        {%- assign level3 = l2.links -%}{% if level3 and level3.size > 0 -%}
+          {%- for l3 in level3 -%}{% if l3.active or l3.child_active %}
+            {%- capture trail -%}{{ trail }},{
+              "@type":"ListItem","position":{{ pos }},"name":{{ l3.title | json }},"item":{"@id":{{ l3.url | absolute_url | json }}}
+            }{%- endcapture -%}
+            {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l3.url | absolute_url -%}
+
+            {%- assign level4 = l3.links -%}{% if level4 and level4.size > 0 -%}
+              {%- for l4 in level4 -%}{% if l4.active or l4.child_active %}
+                {%- capture trail -%}{{ trail }},{
+                  "@type":"ListItem","position":{{ pos }},"name":{{ l4.title | json }},"item":{"@id":{{ l4.url | absolute_url | json }}}
+                }{%- endcapture -%}
+                {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l4.url | absolute_url -%}
+
+                {%- assign level5 = l4.links -%}{% if level5 and level5.size > 0 -%}
+                  {%- for l5 in level5 -%}{% if l5.active or l5.child_active %}
+                    {%- capture trail -%}{{ trail }},{
+                      "@type":"ListItem","position":{{ pos }},"name":{{ l5.title | json }},"item":{"@id":{{ l5.url | absolute_url | json }}}
+                    }{%- endcapture -%}
+                    {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l5.url | absolute_url -%}
+
+                    {%- assign level6 = l5.links -%}{% if level6 and level6.size > 0 -%}
+                      {%- for l6 in level6 -%}{% if l6.active or l6.child_active %}
+                        {%- capture trail -%}{{ trail }},{
+                          "@type":"ListItem","position":{{ pos }},"name":{{ l6.title | json }},"item":{"@id":{{ l6.url | absolute_url | json }}}
+                        }{%- endcapture -%}
+                        {%- assign pos = pos | plus: 1 -%}{%- assign last_url = l6.url | absolute_url -%}
+                        {%- break -%}{% endif %}{%- endfor -%}
+                    {%- endif -%}
+                    {%- break -%}{% endif %}{%- endfor -%}
+                {%- endif -%}
+                {%- break -%}{% endif %}{%- endfor -%}
+            {%- endif -%}
+            {%- break -%}{% endif %}{%- endfor -%}
+        {%- endif -%}
+        {%- break -%}{% endif %}{%- endfor -%}
+    {%- endif -%}
+    {%- break -%}{% endif %}{%- endfor -%}
+{%- endif -%}
+
+{%- comment %} Append current page if needed (and not duplicate of last menu item) {% endcomment -%}
+{%- if template.name == 'collection' -%}
+  {%- assign cur = collection.url | absolute_url -%}
+  {%- if cur != last_url -%}
+    {%- capture trail -%}{{ trail }},{
+      "@type":"ListItem","position":{{ pos }},"name":{{ collection.title | json }},"item":{"@id":{{ cur | json }}}
+    }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+  {%- endif -%}
+{%- elsif template.name == 'product' -%}
+  {%- assign crumb_collection = collection -%}
+  {%- if crumb_collection == nil and product.collections.size > 0 -%}
+    {%- assign crumb_collection = product.collections.first -%}
+  {%- endif -%}
+  {%- if crumb_collection -%}
+    {%- assign curc = crumb_collection.url | absolute_url -%}
+    {%- if curc != last_url -%}
+      {%- capture trail -%}{{ trail }},{
+        "@type":"ListItem","position":{{ pos }},"name":{{ crumb_collection.title | json }},"item":{"@id":{{ curc | json }}}
+      }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}{%- assign last_url = curc -%}
+    {%- endif -%}
+  {%- endif -%}
+  {%- assign curp = product.url | absolute_url -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ product.title | json }},"item":{"@id":{{ curp | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- elsif template.name == 'article' -%}
+  {%- assign cura = article.url | absolute_url -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ article.title | json }},"item":{"@id":{{ cura | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- elsif template.name == 'blog' -%}
+  {%- assign curb = blog.url | absolute_url -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ blog.title | json }},"item":{"@id":{{ curb | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- elsif template.name == 'page' -%}
+  {%- assign curpg = page.url | absolute_url -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ page.title | json }},"item":{"@id":{{ curpg | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- elsif template.name == 'search' -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ 'Search' | json }},"item":{"@id":{{ routes.search_url | absolute_url | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- elsif template.name == 'cart' -%}
+  {%- capture trail -%}{{ trail }},{
+    "@type":"ListItem","position":{{ pos }},"name":{{ 'Cart' | json }},"item":{"@id":{{ routes.cart_url | absolute_url | json }}}
+  }{%- endcapture -%}{%- assign pos = pos | plus: 1 -%}
+{%- endif -%}
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[ {{ trail }} ]
+}
+</script>

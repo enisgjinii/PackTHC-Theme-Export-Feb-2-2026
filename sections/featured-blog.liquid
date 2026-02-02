@@ -1,0 +1,302 @@
+{%- liquid
+	assign section_id      = '#shopify-section-' | append: section.id
+	assign animation       = settings.section_animation
+	assign full            = section.settings.full
+	assign blog            = section.settings.blog
+	assign total           = section.settings.total
+	assign heading         = section.settings.heading_text
+	assign heading_size    = section.settings.heading_size
+	assign subheading      = section.settings.sub_heading_text
+	assign align           = section.settings.text_align
+-%}
+
+<style>
+	{{ section_id }} .section-wrapper {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		{%- if heading != blank or subheading != blank -%}
+			<div class="title-wrapper{% if animation %} scroll-trigger{% endif %} text-{{ align }}">
+				{%- if subheading != blank -%}
+					<div class="sub-heading badge-heading rte">{{- subheading -}}</div>
+				{%- endif -%}
+
+				{%- if heading != blank -%}
+					<h2 class="heading rte {{ heading_size }}">{{- heading -}}</h2>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		<div class="grid{% if total == 4 %} featured-blog{% else %} grid-{{ total }}{% endif %}">
+			{%- for article in blog.articles limit: total -%}
+				{%- liquid
+					assign article_image = article.image
+				-%}
+
+				<div class="grid-item{% unless article_image %} no-media{% endunless %}" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+					<article class="article-card{% if animation %} scroll-trigger{% endif %}">
+						{%- if article_image != blank -%}
+							<div class="article-media-wrap adapt-media">
+								<a href="{{ article.url }}" class="article-image{% if settings.image_lazy %} lazy-image{% endif %}">
+									{%- liquid
+										assign image_load = 'eager'
+
+										if forloop.index > 1
+											assign image_load = 'lazy'
+										endif
+
+										assign show_aspect_ratio = true
+
+										render 'lazy-image', image: article_image, width: 850, height: 490, lazy: image_load, show_aspect_ratio: show_aspect_ratio
+									-%}
+								</a>
+							</div>
+						{%- endif -%}
+
+						<div class="article-info">
+							<h2 class="article-title h{% if forloop.index == 1 and total == 4 %}3{% else %}4{% endif %}">
+								<a href="{{ article.url }}" class="link-hover">
+									{{- article.title | escape -}}
+								</a>
+							</h2>
+
+							{% comment %} Description {% endcomment %}
+								{%- if article.excerpt.size > 0 or article.content.size > 0 and forloop.index0 == 0 and total == 4 -%}
+									<p class="article-excerpt">
+										{%- liquid
+											if article.excerpt.size > 0
+												echo article.excerpt | strip_html | truncatewords: 20
+											else
+												echo article.content | strip_html | truncatewords: 20
+											endif
+										-%}
+									</p>
+								{%- endif -%}
+
+							<div class="article-meta">
+								<span class="mitem">
+									<a href="{{ blog.url }}" class="article-blog link-hover">
+										{{- blog.title | escape -}}
+									</a>
+								</span>
+
+								<span class="article-date mitem">
+									{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+								</span>
+
+								{%- if blog.comments_enabled? -%}
+									<a class="aritcle-comment link-hover" href="{{ article.comment_post_url }}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+								{%- endif -%}
+							</div>
+						</div>
+					</article>
+				</div>
+			{%- else -%}
+				{%- for i in (1..total) -%}
+					<div class="grid-item{% if animation %} scroll-trigger{% endif %}" data-{{ forloop.index0 }}>
+						<article class="article-card">
+							<div class="article-media-wrap article-image adapt-media">
+								{%- render 'icon', code: 'placeholder' -%}
+							</div>
+
+							<div class="article-info">
+								<h2 class="article-title h{% if forloop.index == 1 and total == 4 %}3{% else %}4{% endif %}">
+									{{- 'onboarding.blogs.title' | t -}}
+								</h2>
+
+								{% if forloop.index == 1 and total == 4 %}<p class="article-expert">{{- 'blogs.article.expert' | t -}}</p>{% endif %}
+
+								<span class="article-meta">
+									<span class="mitem">{{- 'onboarding.blogs.cate' | t -}}</span>
+									<span class="mitem">{{- 'onboarding.blogs.date' | t -}}</span>
+									<span class="comment">{{- 'blogs.article.comments' | t: count: 0 -}}</span>
+								</span>
+							</div>
+						</article>
+					</div>
+				{%- endfor -%}
+			{%- endfor -%}
+		</div>
+
+		{%- if section.settings.view_all and blog.articles_count > total -%}
+			<div class="blog-button text-{{ align }}">
+				{%- liquid
+					assign tag = 'button'
+
+					if section.settings.blog != blank
+						assign tag = 'a'
+					endif
+				-%}
+
+				<{{ tag }} class="button primary-button" {%- if section.settings.blog != blank -%}href="{{ section.settings.blog.url }}"{%- endif -%}>
+					{{ 'sections.posts.view_all' | t }}
+				</{{ tag }}>
+			</div>
+		{%- endif -%}
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.featured-blog.name",
+	"tag": "section",
+	"class": "featured-blog-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "blog",
+			"id": "blog",
+			"label": "t:sections.featured-blog.settings.blog.label"
+		},
+		{
+			"type": "range",
+			"id": "total",
+			"min": 2,
+			"max": 4,
+			"step": 1,
+			"default": 4,
+			"label": "t:general.slider.total.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.image-with-text.settings.header_content.content"
+		},
+		{
+			"type": "select",
+			"id": "text_align",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			],
+			"default": "center",
+			"label": "t:general.layout.alignment.label"
+		},
+		{
+			"type": "text",
+			"id": "sub_heading_text",
+			"default": "Sub heading",
+			"label": "t:general.typography.sub_heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Heading",
+			"label": "t:general.typography.heading.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h4",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h3",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h3",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "view_all",
+			"default": true,
+			"label": "t:sections.featured-blog.settings.view_all.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.featured-blog.name"
+		}
+	]
+}
+{% endschema %}

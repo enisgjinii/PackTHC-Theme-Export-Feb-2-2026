@@ -1,0 +1,369 @@
+{%- liquid
+	assign section_id    = '#shopify-section-' | append: section.id
+	assign animation     = settings.section_animation
+	assign full          = section.settings.full
+	assign image         = section.settings.image
+	assign color_overlay = section.settings.color_overlay
+	assign heading       = section.settings.heading_text
+	assign heading_size  = section.settings.heading_size
+	assign description   = section.settings.description
+	assign button        = section.settings.button_text
+	assign layout        = section.settings.layout_animated
+-%}
+
+<style>
+	{{ section_id }} {
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+		background-color: rgb(var(--background-color));
+	}
+
+	{{ section_id }} .marquee-content{
+		margin: 0.8rem 0;
+	}
+
+	{%- if color_overlay != blank -%}
+		{{ section_id }} .image-with-text-overlay:before {
+			background: {{ color_overlay }};
+		}
+	{%- endif -%}
+
+	@media (min-width: 992px) {
+		{{ section_id }} {
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+
+		{{ section_id }} .marquee-content{
+			margin: 1.4rem 0;
+		}
+
+		{{ section_id }} .image-with-text-overlay .content {
+			height: {% if section.settings.height == 0 %}auto{% else %}{{ section.settings.height }}px{% endif %};
+		}
+	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}{% if layout == 'three-columns' %} has-three-columns {% endif %}">
+	<div class="{% if full %}stretch-section{% else %}container{% endif %}">
+		<div class="image-with-text-overlay{% if layout == 'three-columns' %} has-three-columns{% endif %}">
+			{%- if heading != blank or button != blank -%}
+				<div class="content horizontal-center vertical-{{ section.settings.vertical }}">
+					<div class="content-inner text-{{ section.settings.alignment }}">
+						{%- if heading != blank -%}
+							<h2 class="heading rte {{ heading_size }}">{{- heading -}}</h2>
+						{%- endif -%}
+
+						{%- if description != blank -%}
+							<div class="description rte">{{- description -}}</div>
+						{%- endif -%}
+
+						{%- if button != blank -%}
+							<a class="button primary-button" href="{{ section.settings.button_link | default: '#' }}">{{- button -}}
+							{% if settings.select_button == 'direction' %}
+								{%- render 'icon', code: 'direction-button' -%}
+							{% elsif settings.select_button == 'arrow' %}
+								{%- render 'icon', code: 'arrow-button' -%}
+							{% endif %}</a>
+						{%- endif -%}
+					</div>
+				</div>
+			{%- endif -%}
+
+			<div class="two-columns">
+				<marquee-vertical class="two-marquee marquee{% if layout == 'three-columns' %} three-columns{% endif %} rte">
+					<div class="marquee-wrapper marquee-animation even-blocks">
+						{%- for block in section.blocks -%}
+							{%- assign image = block.settings.image -%}
+							<div class="marquee-content" data-{{ block.id }}>
+								<div class="image-wrap small-media">
+									<div class="collage-image-wrapper{% if settings.image_lazy and image %} lazy-image{% endif %}">
+										{% if image != blank %}
+											{% render 'lazy-image', image: image, width: 480 %}
+										{% else %}
+											{% render 'icon', code: 'placeholder', width: 480 %}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</marquee-vertical>
+				<marquee-vertical class="two-marquee marquee rte">
+					<div class="marquee-wrapper marquee-animation odd-blocks">
+						{%- for block in section.blocks -%}
+							{%- assign image = block.settings.image -%}
+							<div class="marquee-content" data-{{ block.id }}>
+								<div class="image-wrap small-media">
+									<div class="collage-image-wrapper{% if settings.image_lazy and image %} lazy-image{% endif %}">
+										{% if image != blank %}
+											{% render 'lazy-image', image: image, width: 480 %}
+										{% else %}
+											{% render 'icon', code: 'placeholder', width: 480 %}
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						{%- endfor -%}
+					</div>
+				</marquee-vertical>
+
+				{% if layout == 'three-columns' %}
+					<marquee-vertical class="two-marquee marquee{% if layout == 'three-columns' %} three-columns{% endif %} rte">
+						<div class="marquee-wrapper marquee-animation even-blocks">
+							{%- for block in section.blocks -%}
+								{%- assign image = block.settings.image -%}
+								<div class="marquee-content" data-{{ block.id }}>
+									<div class="image-wrap small-media">
+										<div class="collage-image-wrapper{% if settings.image_lazy and image %} lazy-image{% endif %}">
+											{% if image != blank %}
+												{% render 'lazy-image', image: image, width: 480 %}
+											{% else %}
+												{% render 'icon', code: 'placeholder', width: 480 %}
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							{%- endfor -%}
+						</div>
+					</marquee-vertical>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.animated-image-collage.name",
+	"tag": "section",
+	"class": "animated-image-collage two-animated image-with-text-overlay-section",
+	"disabled_on": {
+		"groups": ["header", "footer"]
+	},
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout_animated",
+			"options": [
+				{
+					"value": "two-columns",
+					"label": "t:sections.animated-image-collage.settings.layout-animated.option_1.label"
+				},
+				{
+					"value": "three-columns",
+					"label": "t:sections.animated-image-collage.settings.layout-animated.option_2.label"
+				}
+			],
+			"default": "two-columns",
+			"label": "t:sections.animated-image-collage.settings.layout-animated.label"
+		},
+		{
+			"type": "range",
+			"id": "height",
+			"min": 300,
+			"max": 1300,
+			"step": 10,
+			"default": 700,
+			"unit": "px",
+			"label": "t:general.dimensions.height.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.animated-image-collage.settings.header_content.content"
+		},
+		{
+			"type": "select",
+			"id": "vertical",
+			"default": "middle",
+			"label": "t:general.layout.vertical.label",
+			"info": "t:general.layout.vertical.mobile_middle.label",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:general.layout.vertical.option_1.label"
+				},
+				{
+					"value": "middle",
+					"label": "t:general.layout.vertical.option_2.label"
+				},
+				{
+					"value": "bottom",
+					"label": "t:general.layout.vertical.option_3.label"
+				}
+			]
+		},
+		{
+			"type": "select",
+			"id": "alignment",
+			"default": "center",
+			"label": "t:general.layout.alignment.label",
+			"info": "t:general.layout.alignment.mobile_center.label",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:general.layout.alignment.option_1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:general.layout.alignment.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:general.layout.alignment.option_3.label"
+				}
+			]
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.heading.label"
+		},
+		{
+			"type": "inline_richtext",
+			"id": "heading_text",
+			"default": "Heading",
+			"label": "t:general.typography.text.label"
+		},
+		{
+			"type": "select",
+			"id": "heading_size",
+			"options": [
+				{
+					"value": "h2",
+					"label": "t:general.typography.heading_size.option_1.label"
+				},
+				{
+					"value": "h1",
+					"label": "t:general.typography.heading_size.option_2.label"
+				},
+				{
+					"value": "h0",
+					"label": "t:general.typography.heading_size.option_3.label"
+				}
+			],
+			"default": "h1",
+			"label": "t:general.typography.heading_size.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.description.label"
+		},
+		{
+			"type": "richtext",
+			"id": "description",
+			"default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+			"label": "t:general.typography.text.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.typography.button.label"
+		},
+		{
+			"type": "text",
+			"id": "button_text",
+			"default": "Shop all",
+			"label": "t:general.typography.text.label"
+		},
+		{
+			"type": "url",
+			"id": "button_link",
+			"label": "t:general.typography.link.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 0,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "image",
+			"name": "t:general.image.label",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.animated-image-collage.presets.name",
+			"blocks": [
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				},
+				{
+					"type": "image"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,108 @@
+{%- liquid
+	capture go_back
+		render 'icon', code: 'arrow-button-left'
+		echo 'general.text.back' | t
+	endcapture
+
+	assign section_id = '#shopify-section-' | append: section.id
+-%}
+
+{%- for block in section.blocks -%}
+	{%- case block.type -%}
+		{%- when 'mega_menu' -%}
+			{%- liquid
+				assign mega_item       = block.settings.mega_item | upcase
+				assign link_title      = link.title | upcase
+			-%}
+
+			{%- if block.settings.image != blank -%}
+				{%- capture image -%}
+					<div class="image-wrapper" >
+						{%- if block.settings.link != blank -%}<a class="image-link" href="{{ block.settings.link }}" arial-label="link">{%- endif -%}
+							<img srcset= "{{ block.settings.image | image_url: width: 540 }} 1x, {{ block.settings.image | image_url: width: 768 }} 2x"
+								src="{{ block.settings.image | image_url: width: 740 }}"
+								loading="lazy"
+								width="370"
+								height="210"
+								alt="image">
+						{%- if block.settings.link != blank -%}</a>{%- endif -%}
+					</div>
+				{%- endcapture -%}
+			{%- endif -%}
+			{%- if block.settings.data == 'menu' and block.settings.data_menu != blank and mega_item == link_title -%}
+				<div class="sub-menu mega-menu-wrap color-{{ section.settings.menu_color_scheme }}" data-{{ block.id }} data-navigation data-level="2">
+					<div class="container{% if full %}-fluid{% endif %}">
+                        <ul class="mega-menu{% if block.settings.image != blank %} has-image-item{% endif %}">
+							<li class="back">{{- go_back -}}</li>
+
+							{% comment %} Menu items {% endcomment %}
+							{%- for mega in block.settings.data_menu.links -%}
+								<li class="menu-item{% if mega.current %} current-menu{% endif %}">
+									<a href="{{ mega.url }}" class="menu-link{% if mega.links != blank %} has-children menu-heading{% endif %}">
+										<span class="menu-text">{{- mega.title -}}</span>
+
+										{%- if mega.links != blank -%}
+											<span class="menu-arrow hidden-desktop">{%- render 'icon', code: 'arrow-button-right' -%}</span>
+										{%- endif -%}
+									</a>
+									
+
+									{%- if mega.links != blank -%}
+										<ul class="sub-mega-menu" data-level="3">
+											<li class="back">{{- go_back -}}</li>
+
+											{%- for mega_sub in mega.links -%}
+												<li class="menu-item{% if mega_sub.current %} current-menu{% endif %}{% if mega_sub.links != blank %} has-heading{% endif %}">
+													<a href="{{ mega_sub.url }}" class="menu-link{% if mega_sub.links != blank %} has-children menu-heading{% endif %}">
+														<span class="menu-text" >{{ mega_sub.title }}</span>
+													</a>
+												</li>
+											{%- endfor -%}
+										</ul>
+									{%- endif -%}
+								</li>
+							{%- endfor -%}
+							{% comment %} Image {% endcomment %}
+							{%- if block.settings.image != blank -%}
+								<li class="menu-item has-image">{{- image -}}</li>
+							{%- endif -%}
+							
+						</ul>
+					</div>
+				</div>
+			{%- elsif block.settings.data == 'collection' and block.settings.data_collection != blank and mega_item == link_title -%}
+				<div class="sub-menu mega-menu-wrap color-{{ section.settings.menu_color_scheme }}" data-{{ block.id }} data-collection data-level="2">
+					<div class="container{% if full %}-fluid{% endif %}">
+						<ul class="mega-menu{% if block.settings.image != blank %} has-image-item{% endif %}">
+							<li class="back">{{- go_back -}}</li>
+
+							{% comment %} Menu items {% endcomment %}
+							{%- for product in block.settings.data_collection.products limit: 4 -%}
+								<li class="menu-item">
+									<a class="product-title {{ block.settings.image_ratio }}-media" href="{{ product.url | split: '?' | first }}">
+										{%- if product.featured_media -%}
+											<img class="product-image"
+												src="{{ product.featured_media | image_url: width: 450 }}"
+												alt="{{ product.featured_media.alt | escape }}"
+												loading="lazy"
+												width="180"
+												height="120">
+										{%- endif -%}
+									</a>
+
+									<a class="product-link" href="{{ product.url | split: '?' | first }}">
+										{{- product.title | escape -}}
+									</a>
+								</li>
+							{%- endfor -%}
+
+							{% comment %} Image {% endcomment %}
+							{%- if block.settings.image != blank -%}
+								<li class="menu-item has-image">{{- image -}}</li>
+							{%- endif -%}
+						</ul>
+					</div>
+				</div>
+			{%- endif -%}
+	{%- endcase -%}
+{%- endfor -%}

@@ -1,0 +1,351 @@
+{% comment %}
+  Why Choose PackTHC Section - Optimized for Shopify
+{% endcomment %}
+
+<div class="packthc-why-choose-wrapper">
+  <div class="packthc-why-choose-container">
+    <div class="packthc-image-section">
+      <div class="packthc-img-container">
+        {% if section.settings.why_choose_image != blank %}
+          {{
+            section.settings.why_choose_image |
+            image_url: width: 800 |
+            image_tag:
+              loading: 'lazy',
+              width: section.settings.why_choose_image.width,
+              height: section.settings.why_choose_image.height,
+              alt: section.settings.image_alt_text,
+              preload: false
+          }}
+        {% else %}
+          <img 
+            src="https://cdn.shopify.com/s/files/1/0618/1925/6945/files/Why_Choose_PackTHC_87f5a272-a637-4ce6-a487-28e551fe154a.webp?v=1755887674" 
+            alt="{{ section.settings.image_alt_text | default: 'Why Choose PackTHC' }}"
+            loading="lazy"
+            width="800"
+            height="700"
+          >
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="packthc-content-section">
+      <h2 class="packthc-hero-title">
+        <span style="color: #202425;">{{ section.settings.title_part1 | default: 'Why Choose' }}</span> 
+        {{ section.settings.title_part2 | default: 'PackTHC?' }}
+      </h2>
+
+      {% for block in section.blocks %}
+        {% if block.type == 'accordion_item' %}
+          <div class="packthc-accordion-item" {{ block.shopify_attributes }}>
+            <div class="packthc-accordion-header" data-toggle="{{ block.id }}">
+              <h3 class="packthc-accordion-title">{{ block.settings.accordion_title }}</h3>
+              <svg class="packthc-chevron-icon {% if forloop.first %}rotated{% endif %}" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+            <div class="packthc-accordion-content {% if forloop.first %}expanded{% endif %}" data-content="{{ block.id }}">
+              <p class="packthc-text-content">
+                {{ block.settings.accordion_content }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.packthc-why-choose-wrapper {
+  font-family: Poppins, sans-serif;
+  background-color: #ffffff;
+  padding: 40px 0;
+  line-height: 1.6;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.packthc-why-choose-wrapper * {
+  box-sizing: border-box;
+}
+
+.packthc-why-choose-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  background: white;
+  padding: 0 60px 0 0;
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+  min-height: 80vh;
+}
+
+.packthc-image-section {
+  width: 40%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.packthc-content-section {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.packthc-img-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.packthc-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.packthc-hero-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #004A26;
+  margin: 0 0 30px 0;
+  letter-spacing: -0.5px;
+}
+
+.packthc-accordion-item {
+  border-bottom: 2px solid #202425;
+  margin-bottom: 0;
+}
+
+.packthc-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.packthc-accordion-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #004A26;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.packthc-chevron-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+  color: #202425;
+  flex-shrink: 0;
+}
+
+.packthc-chevron-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.packthc-accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.packthc-accordion-content.expanded {
+  max-height: 500px;
+  padding: 20px 0 25px 0;
+}
+
+.packthc-text-content {
+  font-size: 16px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .packthc-why-choose-wrapper {
+    padding: 30px 40px;
+  }
+  
+  .packthc-why-choose-container {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .packthc-why-choose-wrapper {
+    padding: 20px;
+  }
+  
+  .packthc-why-choose-container {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+    min-height: auto;
+  }
+  
+  .packthc-image-section, 
+  .packthc-content-section {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .packthc-hero-title {
+    font-size: 30px;
+  }
+  
+  .packthc-accordion-title {
+    font-size: 20px;
+  }
+}
+</style>
+
+<script>
+(function() {
+  if (typeof window.packthcAccordionInit !== 'undefined') return;
+  window.packthcAccordionInit = true;
+
+  function initAccordion() {
+    const headers = document.querySelectorAll('.packthc-accordion-header');
+    
+    headers.forEach(function(header) {
+      header.addEventListener('click', function() {
+        const toggleId = this.getAttribute('data-toggle');
+        const currentContent = document.querySelector('[data-content="' + toggleId + '"]');
+        const currentChevron = this.querySelector('.packthc-chevron-icon');
+        const isCurrentlyOpen = currentContent.classList.contains('expanded');
+        
+        const allContents = document.querySelectorAll('.packthc-accordion-content');
+        const allChevrons = document.querySelectorAll('.packthc-chevron-icon');
+        
+        allContents.forEach(function(content) {
+          content.classList.remove('expanded');
+        });
+        
+        allChevrons.forEach(function(chevron) {
+          chevron.classList.remove('rotated');
+        });
+        
+        if (!isCurrentlyOpen) {
+          currentContent.classList.add('expanded');
+          currentChevron.classList.add('rotated');
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordion);
+  } else {
+    initAccordion();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Why Choose PackTHC",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "why_choose_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image Alt Text",
+      "default": "Why Choose PackTHC"
+    },
+    {
+      "type": "text",
+      "id": "title_part1",
+      "label": "Title Part 1",
+      "default": "Why Choose"
+    },
+    {
+      "type": "text",
+      "id": "title_part2",
+      "label": "Title Part 2",
+      "default": "PackTHC?"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "accordion_title",
+          "label": "Accordion Title",
+          "default": "Accordion Title"
+        },
+        {
+          "type": "textarea",
+          "id": "accordion_content",
+          "label": "Accordion Content",
+          "default": "Add your content here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose PackTHC",
+      "blocks": [
+        {
+          "type": "accordion_item",
+          "settings": {
+            "accordion_title": "Trusted Partner in Flowers Packaging",
+            "accordion_content": "We provide compliant, custom, and high-quality packaging—helping your brand grow with speed and precision."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "accordion_title": "Massive Product Catalog",
+            "accordion_content": "2,500+ certified, child-resistant SKUs including vials, bags, jars & tubes for dispensaries and processors across the U.S."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "accordion_title": "Industry Experts",
+            "accordion_content": "Deep knowledge of flowers laws and market trends to ensure your packaging is always effective and compliant."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "accordion_title": "Fast Nationwide Fulfillment",
+            "accordion_content": "Multiple centers for quick shipping, large order handling, and seamless B2B support."
+          }
+        },
+        {
+          "type": "accordion_item",
+          "settings": {
+            "accordion_title": "Unbeatable Pricing",
+            "accordion_content": "Competitive rates, auto-applied bulk discounts, custom quotes, and loyalty deals—no hidden fees."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

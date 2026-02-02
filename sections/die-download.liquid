@@ -1,0 +1,654 @@
+{% comment %}
+  Easy Die Lines Page Template for Shopify
+  Save as: sections/die-lines.liquid
+{% endcomment %}
+
+<style>
+    .die-lines-page {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: {{ section.settings.text_color | default: '#333' }};
+        background: {{ section.settings.background_color | default: '#ffffff' }};
+        min-height: 100vh;
+    }
+
+    .die-lines-container {
+        max-width: {{ section.settings.container_width | default: '1200px' }};
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .die-lines-header {
+        text-align: center;
+        margin-bottom: 40px;
+        background: {{ section.settings.header_background | default: '#ffffff' }};
+        padding: 30px;
+    }
+
+    .die-lines-title {
+        color: {{ section.settings.primary_color | default: '#004A26' }};
+        font-size: {{ section.settings.heading_size | default: '2.5em' }};
+        margin-bottom: 15px;
+    }
+
+    .die-lines-description {
+        font-size: 1.1em;
+        color: {{ section.settings.description_color | default: '#666' }};
+        margin-bottom: 20px;
+    }
+
+    .die-section {
+        background: {{ section.settings.section_background | default: '#ffffff' }};
+        margin: 30px 0;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 74, 38, 0.1);
+        border: 2px solid {{ section.settings.primary_color | default: '#004A26' }};
+    }
+
+    .die-section-title {
+        color: {{ section.settings.primary_color | default: '#004A26' }};
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        border-bottom: 2px solid {{ section.settings.primary_color | default: '#004A26' }};
+        padding-bottom: 10px;
+    }
+
+    .die-links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .die-link {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: {{ section.settings.primary_color | default: '#004A26' }};
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 74, 38, 0.2);
+    }
+
+    .die-link:hover {
+        transform: translateY(-3px);
+        background: {{ section.settings.hover_color | default: '#005A30' }};
+        color: white;
+        text-decoration: none;
+    }
+
+    .die-link i {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+
+    .die-link-text {
+        font-weight: 500;
+        flex: 1;
+    }
+
+    .die-link-icon {
+        font-size: 1.3em;
+    }
+
+    @media (max-width: 768px) {
+        .die-lines-container {
+            padding: 10px;
+        }
+        
+        .die-lines-title {
+            font-size: 2em;
+        }
+        
+        .die-links-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="die-lines-page">
+    <div class="die-lines-container">
+        <div class="die-lines-header">
+            <h1 class="die-lines-title">{{ section.settings.page_title | default: 'Die Lines' }}</h1>
+            <p class="die-lines-description">
+                {{ section.settings.page_description | default: 'Download high-quality die line templates for your projects' }}
+            </p>
+        </div>
+
+        {% for block in section.blocks %}
+            <div class="die-section" {{ block.shopify_attributes }}>
+                <h2 class="die-section-title">{{ block.settings.section_title }}</h2>
+                <div class="die-links-grid">
+                    
+                    {% if block.settings.pdf_file_1 or block.settings.pdf_url_1 %}
+                        <a href="{% if block.settings.pdf_file_1 %}{{ block.settings.pdf_file_1 }}{% else %}{{ block.settings.pdf_url_1 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_1 | default: 'Download PDF 1' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if block.settings.pdf_file_2 or block.settings.pdf_url_2 %}
+                        <a href="{% if block.settings.pdf_file_2 %}{{ block.settings.pdf_file_2 }}{% else %}{{ block.settings.pdf_url_2 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_2 | default: 'Download PDF 2' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if block.settings.pdf_file_3 or block.settings.pdf_url_3 %}
+                        <a href="{% if block.settings.pdf_file_3 %}{{ block.settings.pdf_file_3 }}{% else %}{{ block.settings.pdf_url_3 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_3 | default: 'Download PDF 3' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if block.settings.pdf_file_4 or block.settings.pdf_url_4 %}
+                        <a href="{% if block.settings.pdf_file_4 %}{{ block.settings.pdf_file_4 }}{% else %}{{ block.settings.pdf_url_4 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_4 | default: 'Download PDF 4' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if block.settings.pdf_file_5 or block.settings.pdf_url_5 %}
+                        <a href="{% if block.settings.pdf_file_5 %}{{ block.settings.pdf_file_5 }}{% else %}{{ block.settings.pdf_url_5 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_5 | default: 'Download PDF 5' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    {% if block.settings.pdf_file_6 or block.settings.pdf_url_6 %}
+                        <a href="{% if block.settings.pdf_file_6 %}{{ block.settings.pdf_file_6 }}{% else %}{{ block.settings.pdf_url_6 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_6 | default: 'Download PDF 6' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_7 or block.settings.pdf_url_7 %}
+                        <a href="{% if block.settings.pdf_file_7 %}{{ block.settings.pdf_file_7 }}{% else %}{{ block.settings.pdf_url_7 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_7 | default: 'Download PDF 7' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_8 or block.settings.pdf_url_8 %}
+                        <a href="{% if block.settings.pdf_file_8 %}{{ block.settings.pdf_file_8 }}{% else %}{{ block.settings.pdf_url_8 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_8 | default: 'Download PDF 8' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_9 or block.settings.pdf_url_9 %}
+                        <a href="{% if block.settings.pdf_file_9 %}{{ block.settings.pdf_file_9 }}{% else %}{{ block.settings.pdf_url_9 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_9 | default: 'Download PDF 9' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_10 or block.settings.pdf_url_10 %}
+                        <a href="{% if block.settings.pdf_file_10 %}{{ block.settings.pdf_file_10 }}{% else %}{{ block.settings.pdf_url_10 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_10 | default: 'Download PDF 10' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_11 or block.settings.pdf_url_11 %}
+                        <a href="{% if block.settings.pdf_file_11 %}{{ block.settings.pdf_file_11 }}{% else %}{{ block.settings.pdf_url_11 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_11 | default: 'Download PDF 11' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_12 or block.settings.pdf_url_12 %}
+                        <a href="{% if block.settings.pdf_file_12 %}{{ block.settings.pdf_file_12 }}{% else %}{{ block.settings.pdf_url_12 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_12 | default: 'Download PDF 12' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_13 or block.settings.pdf_url_13 %}
+                        <a href="{% if block.settings.pdf_file_13 %}{{ block.settings.pdf_file_13 }}{% else %}{{ block.settings.pdf_url_13 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_13 | default: 'Download PDF 13' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_14 or block.settings.pdf_url_14 %}
+                        <a href="{% if block.settings.pdf_file_14 %}{{ block.settings.pdf_file_14 }}{% else %}{{ block.settings.pdf_url_14 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_14 | default: 'Download PDF 14' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_15 or block.settings.pdf_url_15 %}
+                        <a href="{% if block.settings.pdf_file_15 %}{{ block.settings.pdf_file_15 }}{% else %}{{ block.settings.pdf_url_15 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_15 | default: 'Download PDF 15' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_16 or block.settings.pdf_url_16 %}
+                        <a href="{% if block.settings.pdf_file_16 %}{{ block.settings.pdf_file_16 }}{% else %}{{ block.settings.pdf_url_16 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_16 | default: 'Download PDF 16' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_17 or block.settings.pdf_url_17 %}
+                        <a href="{% if block.settings.pdf_file_17 %}{{ block.settings.pdf_file_17 }}{% else %}{{ block.settings.pdf_url_17 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_17 | default: 'Download PDF 17' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_18 or block.settings.pdf_url_18 %}
+                        <a href="{% if block.settings.pdf_file_18 %}{{ block.settings.pdf_file_18 }}{% else %}{{ block.settings.pdf_url_18 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_18 | default: 'Download PDF 18' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_19 or block.settings.pdf_url_19 %}
+                        <a href="{% if block.settings.pdf_file_19 %}{{ block.settings.pdf_file_19 }}{% else %}{{ block.settings.pdf_url_19 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_19 | default: 'Download PDF 19' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+                    {% if block.settings.pdf_file_20 or block.settings.pdf_url_20 %}
+                        <a href="{% if block.settings.pdf_file_20 %}{{ block.settings.pdf_file_20 }}{% else %}{{ block.settings.pdf_url_20 }}{% endif %}" class="die-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i>
+                            <span class="die-link-text">{{ block.settings.pdf_name_20 | default: 'Download PDF 20' }}</span>
+                            <i class="fas fa-download die-link-icon"></i>
+                        </a>
+                    {% endif %}
+
+                    
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Die Lines Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page Title",
+      "default": "Die Lines"
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Page Description",
+      "default": "Download high-quality die line templates for your projects"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#004A26"
+    },
+    {
+      "type": "color",
+      "id": "hover_color",
+      "label": "Hover Color",
+      "default": "#005A30"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Header Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "default": "2.5em"
+    },
+    {
+      "type": "text",
+      "id": "container_width",
+      "label": "Container Max Width",
+      "default": "1200px"
+    }
+  ],
+  "blocks": [
+    {
+  "type": "die_section",
+  "name": "Die Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Heading",
+      "default": "Mylar Bag Die Lines"
+    },
+    {
+      "type": "header",
+      "content": "PDF 1"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_1",
+      "label": "PDF URL 1"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_1",
+      "label": "Display Name",
+      "default": "Download PDF"
+    },
+    {
+      "type": "header",
+      "content": "PDF 2"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_2",
+      "label": "PDF URL 2"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_2",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 3"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_3",
+      "label": "PDF URL 3"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_3",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 4"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_4",
+      "label": "PDF URL 4"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_4",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 5"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_5",
+      "label": "PDF URL 5"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_5",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 6"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_6",
+      "label": "PDF URL 6"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_6",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 7"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_7",
+      "label": "PDF URL 7"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_7",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 8"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_8",
+      "label": "PDF URL 8"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_8",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 9"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_9",
+      "label": "PDF URL 9"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_9",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 10"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_10",
+      "label": "PDF URL 10"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_10",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 11"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_11",
+      "label": "PDF URL 11"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_11",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 12"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_12",
+      "label": "PDF URL 12"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_12",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 13"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_13",
+      "label": "PDF URL 13"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_13",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 14"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_14",
+      "label": "PDF URL 14"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_14",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 15"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_15",
+      "label": "PDF URL 15"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_15",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 16"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_16",
+      "label": "PDF URL 16"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_16",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 17"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_17",
+      "label": "PDF URL 17"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_17",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 18"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_18",
+      "label": "PDF URL 18"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_18",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 19"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_19",
+      "label": "PDF URL 19"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_19",
+      "label": "Display Name"
+    },
+    {
+      "type": "header",
+      "content": "PDF 20"
+    },
+    {
+      "type": "url",
+      "id": "pdf_url_20",
+      "label": "PDF URL 20"
+    },
+    {
+      "type": "text",
+      "id": "pdf_name_20",
+      "label": "Display Name"
+    }
+  ]
+}
+
+  ],
+  "presets": [
+    {
+      "name": "Die Lines Page"
+    }
+  ]
+}
+{% endschema %}

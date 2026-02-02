@@ -1,0 +1,55 @@
+{%- liquid
+	assign progress_threshold_dollars = settings.minimum_amount
+	assign progress_threshold         = progress_threshold_dollars | times: 100
+	assign pre_goal_message_template  = settings.cart_pre_goal_message
+	assign post_goal_message          = settings.cart_post_goal_message
+	assign cart_total                 = cart.total_price
+	assign progress_percentage        = cart_total | times: 100 | divided_by: progress_threshold
+
+	if progress_percentage > 100
+		assign progress_percentage = 100
+	endif
+
+	assign remaining_for_goal = progress_threshold | minus: cart_total
+
+	if remaining_for_goal < 0
+		assign remaining_for_goal = 0
+	endif
+
+	assign remaining_for_goal_formatted = remaining_for_goal | money
+	assign dynamic_pre_goal_message     = pre_goal_message_template | replace: '[amount]', remaining_for_goal_formatted
+-%}
+
+{% comment %} Cart progress bar {% endcomment %}
+{%- if settings.show_free_shipping_bar -%}
+	<div id="cart-progress-wrapper" class="cart-progress-bar-wrapper{% if progress_percentage == 100 %} full{% endif %}" data-threshold="{{ progress_threshold }}" data-pre-goal-message-template="{{ pre_goal_message_template | escape }}" data-post-goal-message="{{ post_goal_message | escape }}" data-money-format="{{ shop.money_format | escape }}">
+		<div class="goal-message">
+			{%- liquid
+				if remaining_for_goal > 0
+					echo dynamic_pre_goal_message
+				else
+					echo post_goal_message
+				endif
+			-%}
+		</div>
+
+		<div class="cart-progress-bar-container">
+			<div id="cart-progress-bar" style="width: {{ progress_percentage }}%;">
+				<div class="progress-truck-wrapper">
+					{%- render 'icon', code: 'icon-shipping-truck' -%}
+				</div>
+			</div>
+		</div>
+	</div>
+{%- endif -%}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all offer text <p> elements
+    const offerParagraphs = document.querySelectorAll(".offer-option p");
+
+    offerParagraphs.forEach(p => {
+      // Replace just the percentage number (like 10%) from the inner text
+      p.innerHTML = p.innerHTML.replace(/\d+%/, '');
+    });
+  });
+</script>

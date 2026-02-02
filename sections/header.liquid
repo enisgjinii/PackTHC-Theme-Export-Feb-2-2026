@@ -1,0 +1,751 @@
+{%- liquid
+	assign section_id             = '#shopify-section-' | append: section.id
+	assign full                   = section.settings.full
+	assign layout                 = section.settings.layout
+	assign logo_width             = section.settings.logo_width
+	assign logo_tag               = 'div'
+	assign sticky_header          = section.settings.enable_sticky_header
+	assign desktop_menu           = section.settings.menu
+	assign toggle_menu            = section.settings.mobile_menu | default: desktop_menu
+	assign logo_image             = section.settings.logo_image
+	assign logo_mobile_image      = section.settings.logo_mobile_image
+	assign drawer_logo_image      = section.settings.drawer_logo_image
+	assign text_transform         = section.settings.text_transform
+	assign logo_position          = section.settings.logo_position
+	assign overlay_logo_image = section.settings.overlay_logo_image
+	assign overlay_header     = section.settings.enable_overlay_header
+
+	if request.page_type == 'index'
+		assign logo_tag = 'h1'
+	endif
+
+	if section.settings.country_selector and localization.available_countries.size > 1
+		assign country_selector = true
+	endif
+
+	if section.settings.language_selector and localization.available_languages.size > 1
+		assign language_selector = true
+	endif
+
+	unless routes.account_login_url == '/account/login'
+		assign new_customer_account = ' new-customer-accounts'
+	endunless
+-%}
+
+{%- capture shop_name -%}
+	<span class="site-branding-name">MARIJUANA PACKAGING</span>
+{%- endcapture -%}
+
+
+{%- capture header_logo -%}
+  
+	<{{ logo_tag }} class="site-branding-wrap ">
+		<a class="site-branding" href="{{ routes.root_url }}">
+			<span class="site-branding-inner{% if logo_mobile_image != blank %} hidden-tablet hidden-mobile{% endif %}">
+				{%- liquid
+					if overlay_header and overlay_logo_image != blank and request.page_type == 'index'
+						assign logo_height = logo_width | divided_by: logo_image.aspect_ratio | ceil
+
+						echo overlay_logo_image | image_url: width: 1000 | image_tag: width: logo_width, height: logo_height, loading: 'lazy', class: 'overlay-logo', alt: 'PackTHC Logo'
+					endif
+
+					if logo_image != blank
+						assign logo_height = logo_width | divided_by: logo_image.aspect_ratio | ceil
+
+						echo logo_image | image_url: width: 1000 | image_tag: width: logo_width, height: logo_height, loading: 'lazy', class: 'site-branding-image', alt: 'PackTHC Log'
+					else
+						echo shop_name
+					endif
+				-%}
+			</span>
+
+			{%- if logo_mobile_image != blank -%}
+				<span class="hidden-desktop">
+					{{- logo_mobile_image | image_url: width: 1000 | image_tag: width: logo_width, height: logo_mobile_image.height, loading: 'lazy', class: 'site-branding-image', alt: 'PackTHC Logo' -}}
+				</span>
+			{%- endif -%}
+
+			{%- if logo_image != blank or overlay_logo_image != blank -%}
+				<span class="sr-only">MARIJUANA PACKAGING</span>
+			{%- endif -%}
+		</a>
+	</{{ logo_tag }}>
+      
+{%- endcapture -%}
+
+{%- capture drawer_header_logo -%}
+  
+	<{{ logo_tag }} class="site-branding-wrap h1">
+		<a class="site-branding" href="{{ routes.root_url }}">
+			<span class="site-branding-inner">
+				{%- liquid
+					if drawer_logo_image != blank
+						echo drawer_logo_image | image_url: width: 1000 | image_tag: width: logo_width, height: logo_mobile_image.height, loading: 'lazy', class: 'site-branding-image'
+					elsif logo_image != blank
+						assign logo_height = logo_width | divided_by: logo_image.aspect_ratio | ceil
+
+						echo logo_image | image_url: width: 1000 | image_tag: width: logo_width, height: logo_height, loading: 'lazy', class: 'site-branding-image'
+					else
+						echo shop.name
+					endif
+				-%}
+			</span>
+
+			{%- if logo_image != blank or drawer_logo_image != blank -%}
+				<span class="sr-only">MARIJUANA PACKAGING</span>
+			{%- endif -%}
+		</a>
+	</{{ logo_tag }}>
+{%- endcapture -%}
+
+{%- capture language_country_selector -%}
+	{%- if language_selector or country_selector -%}
+		{%- form 'localization', id: nil, class: 'localization-form' -%}
+			{% comment %} Language {% endcomment %}
+			{%- if language_selector -%}
+				<div class="toggle-dropdown no-js-hidden">
+					<input type="hidden" name="locale_code" value="{{ form.current_locale.iso_code }}">
+					<span class="sr-only">{{- 'localization.language_label' | t -}}</span>
+
+					<button class="dropdown-summary{% if text_transform != 'none' %} text-{{ text_transform }}{% endif %}" type="button" aria-expanded="false">
+						{{- localization.language.iso_code | capitalize -}}
+						<span class="dropdown-icon">{%- render 'icon', code: 'arrow-down' -%}</span>
+					</button>
+
+					<div class="dropdown-content">
+						<div class="dropdown-content-inner">
+							<header class="dropdown-content-header">
+								<span class="dropdown-content-title">{{- 'localization.language_label' | t -}}</span>
+								{% render 'icon', code: 'close' %}
+							</header>
+
+							<ul class="content" role="list">
+								{%- for language in localization.available_languages -%}
+									<li>
+										<button type="submit" name="locale_code" class="submit" value="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %}>
+											{{- language.endonym_name | capitalize -}}
+										</button>
+									</li>
+								{%- endfor -%}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<noscript>
+					<select name="locale_code" class="select-language" data-noui>
+						{%- for language in localization.available_languages -%}
+							<option value="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %}selected aria-current="true"{% endif %}>
+								{{- language.iso_code | capitalize -}}
+							</option>
+						{%- endfor -%}
+					</select>
+				</noscript>
+			{%- endif -%}
+
+			{% comment %} Country {% endcomment %}
+			{%- if country_selector -%}
+				<div class="toggle-dropdown no-js-hidden">
+					<input type="hidden" name="currency_code" value="{{ form.current_currency.iso_code }}">
+					<span class="sr-only">{{- 'localization.currency_label' | t -}}</span>
+
+					<button class="dropdown-summary{% if text_transform != 'none' %} text-{{ text_transform }}{% endif %}" type="button" aria-expanded="false" aria-expanded="false">
+						<span class="country-flag">{{- localization.country | image_url: width: 20 | image_tag -}}</span>
+						{{- localization.country.currency.iso_code -}}
+						<span class="dropdown-icon">{%- render 'icon', code: 'arrow-down' -%}</span>
+					</button>
+
+					<div class="dropdown-content">
+						<div class="dropdown-content-inner">
+							<header class="dropdown-content-header">
+								<span class="dropdown-content-title">{{- 'localization.currency_label' | t -}}</span>
+								{% render 'icon', code: 'close' %}
+							</header>
+
+							<ul class="content" role="list">
+								{%- for country in localization.available_countries -%}
+									<li>
+										<button type="submit" name="country_code" class="submit" value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %}>
+											<span class="country-flag">{{- country | image_url: width: 20 | image_tag -}}</span>
+											{{- country.name }} ({{ country.currency.iso_code }}{% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%})
+										</button>
+									</li>
+								{%- endfor -%}
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<noscript>
+					<select name="country_code" class="select-currency" data-noui>
+						{%- for country in localization.available_countries -%}
+							<option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected aria-current="true"{% endif %}>
+								{{- country.name }} ({{ country.currency.iso_code }}{% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%})
+							</option>
+						{%- endfor -%}
+					</select>
+				</noscript>
+			{%- endif -%}
+
+			<noscript>
+				<button type="submit" class="primary-button">{{- 'sections.footer.submit' | t -}}</button>
+			</noscript>
+		{%- endform -%}
+	{%- endif -%}
+{%- endcapture -%}
+
+{%- capture header_icons -%}
+	<div class="header-icons">
+		{% comment %} Icons {% endcomment %}
+		<a href="{{ routes.search_url }}" class="header-icon action-search">
+			<span class="sr-only">{{- 'accessibility.search' | t -}}</span>
+
+			{%- render 'icon', code: 'search' -%}
+		</a>
+
+		{{- language_country_selector -}}
+
+        {%- if shop.customer_accounts_enabled -%}
+           <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header-icon action-account{{ new_customer_account }}">
+                    
+             <span class="sr-only">
+                 {%- liquid
+                          if customer
+                            echo 'customer.account_fallback' | t
+                          else
+                            echo 'customer.log_in' | t
+                          endif
+                  -%}
+               </span>
+                  
+                      {%- render 'icon', code: 'account' -%}
+                  
+                <span>
+                    {%- if customer -%}
+                          &nbsp;My Account
+                    {%- else -%}
+                          &nbsp;Create an Account/Login
+                    {%- endif -%}
+             </span>
+                
+           </a>
+        {%- endif -%}
+
+| 
+		 <a href="{{ routes.cart_url }}" class="header-icon action-cart">
+			{%- render 'icon', code: 'cart1' -%}<span class="menu-text{% if text_transform != 'none' %} text-{{ text_transform }}{% endif %}">{{ 'templates.cart.cart' | t }}</span>
+			<span class="item-count cart-item-count">{%- if cart != empty -%}{{- cart.item_count -}}{% else %}0{%- endif -%}</span>
+			<span class="sr-only">{%- if cart.item_count == 0 or cart.item_count == 1 -%}{{ 'sections.header.cart_count.one' | t }}{% else %}{{ 'sections.header.cart_count.other' | t }}{% endif %}</span>
+		</a>
+	</div>
+{%- endcapture -%}
+
+<style>
+	{{ section_id }} .header-inner {
+		font-size: {{ section.settings.font_size_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .header-navigation > .menu-item > .menu-link {
+			padding: {{ section.settings.menu_space }}px 2rem;
+		}
+
+		{{ section_id }} .desktop-nav {
+			padding: {{ section.settings.menu_space }}px 4rem;
+			padding-left: 0;
+		}
+
+		{{ section_id }} .header-navigation > .menu-item:first-of-type > .menu-link {
+			padding-left: 0;
+		}
+
+		{{ section_id }} .header-navigation > .menu-item:last-of-type > .menu-link {
+			padding-right: 0;
+		}
+
+		{{ section_id }} .site-branding-image,
+		{{ section_id }} .overlay-logo {
+			max-width: {{ logo_width }}px;
+		}
+
+		{{ section_id }} .site-branding svg {
+			width: {{ logo_width }}px;
+		}
+
+		{{ section_id }} .header-inner {
+			font-size: {{ section.settings.font_size }}px;
+		}
+
+		{% comment %} Overlay header{% endcomment %}
+		{%- if overlay_header and template.name == 'index' and section.settings.overlay_text_color != blank -%}
+			{{ section_id }} .header:not(.solid-sticky) .header-navigation>.menu-item>.menu-link>.menu-text,
+			{{ section_id }} .header:not(.solid-sticky) .header-icons a,
+			{{ section_id }} .header:not(.solid-sticky) .localization-form .dropdown-summary,
+			{{ section_id }} .header:not(.solid-sticky) .site-branding-wrap {
+				color: {{ section.settings.overlay_text_color }};
+				text-decoration-color: {{ section.settings.overlay_text_color }};
+			}
+
+			{{ section_id }} .header:not(.solid-sticky) .header-navigation>.menu-item>.menu-link>.menu-arrow svg path {
+				fill: {{ section.settings.overlay_text_color }};
+			}
+		{%- endif -%}
+
+		{%- if overlay_header and template.name == 'index' and layout == 'layout-2' and section.settings.overlay_bg_color != blank -%}
+			{{ section_id }} .header:not(.solid-sticky).overlay-header .header-wrapper {
+				background-color: {{ section.settings.overlay_bg_color }};
+			}
+		{%- endif -%}
+
+		{%- if overlay_header and template.name == 'index' and layout == 'layout-1' and section.settings.overlay_bg_color != blank -%}
+			{{ section_id }} .header:not(.solid-sticky).overlay-header {
+				background-color: {{ section.settings.overlay_bg_color }};
+			}
+		{%- endif -%}
+	}
+
+	{%- if sticky_header -%}
+		{{ section_id }} {
+			position: sticky;
+			top: 0;
+			z-index: 99;
+		}
+	{%- endif -%}
+
+	{% comment %} Sticky {% endcomment %}
+	{%- if sticky_header and template.name == 'product' -%}
+		.product-summary .product-summary-inner,
+		.main-product-section .main-product .product-gallery[data-id=layout-2] .group-image-thumb .group-image-thumb-inner {
+			top: 10rem;
+		}
+	{%- endif -%}
+
+	{% comment %} Logo width {% endcomment %}
+	@media (max-width: 991px) {
+		{{ section_id }} .site-branding-image,
+		{{ section_id }} .site-branding svg {
+			width: {{ logo_width | times: 0.8 }}px;
+			max-width: 100%;
+		}
+	}
+
+	{%- for block in section.blocks -%}
+		{%- case block.type -%}
+			{%- when 'dropdown' -%}
+			{{ section_id }} .site-panel-desktop .promo-image-wrapper:before {
+				background: linear-gradient(to bottom,{%- if block.settings.overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ block.settings.overlay }}){%- endif -%},{%- if block.settings.overlay == 100 -%}rgb(0,0,0){%- else -%}rgba(0,0,0,0.{{ block.settings.overlay }}){%- endif -%});
+			}
+		{%- endcase -%}
+	{%- endfor -%}
+</style>
+
+<header class="header{% if layout == 'layout-1' %} color-{{ section.settings.color_scheme }}{% else %} layout-2 container{% endif %}{% if sticky_header %} is-sticky{% endif %}{% if overlay_header %} overlay-header{% endif %}" data-id="{{ layout }}">
+	<div class="header-wrapper{% if layout == 'layout-2' %} color-{{ section.settings.color_scheme }}{% endif %}{% if full %} stretch-section stretch-padding{% else %} container{% endif %}">
+		<div class="header-inner {{ logo_position }}">
+			{%- if section.settings.desktop_drawer_menu != blank -%}
+				<div class="desktop-nav hidden-tablet hidden-mobile">
+					{% comment %} Toggle {% endcomment %}
+					<div class="toggle-panel">
+						<span class="desktop-toggle-button" tabindex="0">
+							{%- render 'icon', code: 'draw' -%}
+						</span>
+					</div>
+                 
+				</div>
+			{%- endif -%}
+			<div class="header-nav">
+              
+				{% comment %} Toggle {% endcomment %}
+				<div class="toggle-panel hidden-desktop">
+					<span class="toggle-panel-button" tabindex="0">
+						{%- render 'icon', code: 'draw' -%}
+					</span>
+				</div>
+              
+
+				{% comment %} Main menu {% endcomment %}
+				{%- if desktop_menu != blank -%}
+					<nav class="site-navigation{% if text_transform != 'none' %} text-{{ text_transform }}{% endif %}">
+						{%- render 'main-menu', menu: desktop_menu.links, class: 'header-navigation menu', full: full, scheme: section.settings.menu_color_scheme, arrow-down: 'arrow-down' -%}
+					</nav>
+              
+				{%- endif -%}
+    
+			</div>
+		
+			{% comment %} <div class="whatsapp-container-1">
+				<a href="https://www.whatsapp.com/channel/0029Vb6x5sl7z4kgvuEDXo0j" target="_blank" rel="noopener noreferrer">
+					<img
+					src="https://cdn.shopify.com/s/files/1/0618/1925/6945/files/Plugin_icon_-_1.webp?v=1762297584"
+					alt="WhatsApp Channel"
+					class="whatsapp-icon-1"
+					height="110px"
+					width="140px"
+					>
+				</a>
+			</div> {% endcomment %}
+			
+			{%- liquid
+				# Logo
+				echo header_logo
+
+				# Header icons
+				echo header_icons
+			-%}
+
+			{%- render 'quick-search' -%}
+		</div>
+
+		{% comment %} Panel content {% endcomment %}
+		<div class="site-panel">
+			<div class="site-panel-inner">
+				<div class="panel-header">
+					{{- drawer_header_logo | replace: '<h1 class', '<div class' | replace: '</h1>', '</div>' -}}
+
+					<button class="site-panel-close close-button">{%- render 'icon', code: 'close' -%}</button>
+				</div>
+
+				<div class="panel-content">
+					{%- render 'main-menu', menu: linklists[toggle_menu].links, class: 'toggle-navigation', arrow-down: 'arrow-down' -%}
+				</div>
+
+				<div class="panel-footer{% unless language_selector or country_selector %} single-selector{% endunless %}">
+					{%- render 'social-media' -%}
+
+					{%- if shop.customer_accounts_enabled -%}
+						<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="action-account hidden-desktop{{ new_customer_account }}">
+							{%- render 'icon', code: 'account' -%}
+
+							<span>
+								{%- liquid
+									if customer
+										echo 'customer.account_fallback' | t
+									else
+										echo 'customer.log_in' | t
+									endif
+								-%}
+							</span>
+						</a>
+					{%- endif -%}
+
+					{{- language_country_selector -}}
+				</div>
+			</div>
+		</div>
+
+		{% comment %} Destop panel content {% endcomment %}
+		{%- if section.settings.desktop_drawer_menu != blank -%}
+			<div class="site-panel-desktop color-{{ section.settings.drawer_color_scheme }}">
+				<div class="site-panel-inner">
+					<div class="panel-header">
+						<button class="site-panel-close close-button">{%- render 'icon', code: 'close' -%}</button>
+					</div>
+
+					<div class="panel-content">
+						{%- render 'main-menu', menu: linklists[section.settings.desktop_drawer_menu].links, class: 'desktop-toggle-navigation', arrow-down: 'arrow-down' -%}
+					</div>
+
+					<div class="panel-footer">
+
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</header>
+{% schema %}
+{
+	"name": "t:sections.header.name",
+	"class": "header-section",
+	"settings": [
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "layout-1",
+					"label": "t:sections.header.settings.layout.option_1.label"
+				},
+				{
+					"value": "layout-2",
+					"label": "t:sections.header.settings.layout.option_2.label"
+				}
+			],
+			"default": "layout-1",
+			"label": "t:sections.header.settings.layout.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_sticky_header",
+			"default": false,
+			"label": "t:sections.header.settings.enable_sticky_header.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.header_logo.content"
+		},
+		{
+			"type": "select",
+			"id": "logo_position",
+			"options": [
+				{
+					"value": "logo-left",
+					"label": "t:sections.header.settings.logo_position.option_1.label"
+				},
+				{
+					"value": "logo-center",
+					"label": "t:sections.header.settings.logo_position.option_2.label"
+				}
+			],
+			"default": "logo-center",
+			"label": "t:sections.header.settings.logo_position.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "logo_image",
+			"label": "t:sections.header.settings.logo_image.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "logo_mobile_image",
+			"label": "t:sections.header.settings.logo_mobile_image.label"
+		},
+		{
+			"type": "range",
+			"id": "logo_width",
+			"min": 50,
+			"max": 250,
+			"step": 5,
+			"default": 120,
+			"unit": "px",
+			"label": "t:general.dimensions.width.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.overlay_header.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "enable_overlay_header",
+			"default": false,
+			"label": "t:sections.header.settings.enable_overlay_header.label"
+		},
+		{
+			"type": "color",
+			"id": "overlay_bg_color",
+			"label": "t:general.background.color.label"
+		},
+		{
+			"type": "color",
+			"id": "overlay_text_color",
+			"label": "t:general.colors.text.label"
+		},
+		{
+			"type": "image_picker",
+			"id": "overlay_logo_image",
+			"label": "t:sections.header.settings.logo_image.label",
+			"info": "t:sections.header.settings.overlay_logo_image.info"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.main_menu.content"
+		},
+		{
+			"type": "color_scheme",
+			"id": "menu_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "link_list",
+			"id": "menu",
+			"default": "main-menu",
+			"label": "t:sections.header.settings.menu.label"
+		},
+		{
+			"type": "link_list",
+			"id": "mobile_menu",
+			"label": "t:sections.header.settings.mobile_menu.label",
+			"info": "t:sections.header.settings.mobile_menu.info"
+		},
+		{
+			"type": "range",
+			"id": "menu_space",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 29,
+			"unit": "px",
+			"label": "t:general.padding.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.drawer.content"
+		},
+		{
+			"type": "color_scheme",
+			"id": "drawer_color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "link_list",
+			"id": "desktop_drawer_menu",
+			"label": "t:sections.header.settings.menu.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.header.settings.font.content"
+		},
+		{
+			"type": "select",
+			"id": "text_transform",
+			"options": [
+				{
+					"value": "none",
+					"label": "t:sections.header.settings.text_transform.options_1.label"
+				},
+				{
+					"value": "uppercase",
+					"label": "t:sections.header.settings.text_transform.options_2.label"
+				},
+				{
+					"value": "capitalize",
+					"label": "t:sections.header.settings.text_transform.options_3.label"
+				}
+			],
+			"default": "uppercase",
+			"label": "t:sections.header.settings.text_transform.label"
+		},
+		{
+			"type": "range",
+			"id": "font_size",
+			"min": 10,
+			"max": 24,
+			"step": 1,
+			"default": 18,
+			"unit": "px",
+			"label": "t:sections.header.settings.font_size.label"
+		},
+		{
+			"type": "range",
+			"id": "font_size_mobile",
+			"min": 10,
+			"max": 20,
+			"step": 1,
+			"default": 14,
+			"unit": "px",
+			"label": "t:sections.header.settings.font_size_mobile.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.shopify.header_language.content",
+			"info": "t:general.shopify.header_language.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "language_selector",
+			"default": true,
+			"label": "t:general.shopify.show_language.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.shopify.header_currency.content",
+			"info": "t:general.shopify.header_currency.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "country_selector",
+			"default": true,
+			"label": "t:general.shopify.show_currency.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "mega_menu",
+			"name": "t:sections.header.blocks.mega_menu.name",
+			"settings": [
+				{
+					"type": "text",
+					"id": "mega_item",
+					"label": "t:sections.header.blocks.mega_menu.settings.mega_item.label",
+					"info": "t:sections.header.blocks.mega_menu.settings.mega_item.info"
+				},
+				{
+					"type": "select",
+					"id": "image_ratio",
+					"options": [
+						{
+							"value": "adapt",
+							"label": "t:sections.header.blocks.mega_menu.settings.image_ratio.option_1.label"
+						},
+						{
+							"value": "portrait",
+							"label": "t:sections.header.blocks.mega_menu.settings.image_ratio.option_2.label"
+						},
+						{
+							"value": "square",
+							"label": "t:sections.header.blocks.mega_menu.settings.image_ratio.option_3.label"
+						}
+					],
+					"default": "square",
+					"label": "t:sections.header.blocks.mega_menu.settings.image_ratio.label",
+					"info": "t:sections.header.blocks.mega_menu.settings.image_ratio.info"
+				},
+				{
+					"type": "select",
+					"id": "data",
+					"options": [
+						{
+							"value": "menu",
+							"label": "t:sections.header.blocks.mega_menu.settings.data.option_1.label"
+						},
+						{
+							"value": "collection",
+							"label": "t:sections.header.blocks.mega_menu.settings.data.option_2.label"
+						}
+					],
+					"default": "menu",
+					"label": "t:sections.header.blocks.mega_menu.settings.data.label"
+				},
+				{
+					"type": "link_list",
+					"id": "data_menu",
+					"label": "t:sections.header.blocks.mega_menu.settings.data.option_1.label"
+				},
+				{
+					"type": "collection",
+					"id": "data_collection",
+					"label": "t:sections.header.blocks.mega_menu.settings.data.option_2.label"
+				},
+				{
+					"type": "header",
+					"content": "t:sections.header.blocks.mega_menu.settings.header_1.content"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "url",
+					"id": "link",
+					"label": "t:general.typography.link.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

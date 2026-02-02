@@ -1,0 +1,354 @@
+{% schema %}
+{
+  "name": "Chubby Landing Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "DO IT NOW. RUN ON AIR"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "RUNNING<br>SHOES"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "GET YOURS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image_desktop",
+          "label": "Desktop Background Image",
+          "info": "Recommended size: 2000x1200px"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_mobile",
+          "label": "Mobile Background Image",
+          "info": "Recommended size: 800x1200px"
+        },
+        {
+          "type": "url",
+          "id": "slide_link",
+          "label": "Slide Link",
+          "info": "Link for the entire banner slide"
+        },
+        {
+          "type": "collection",
+          "id": "linked_collection",
+          "label": "Linked Collection",
+          "info": "Optional: Link to a specific collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chubby Landing Hero",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .hero-sections {
+    height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.8s ease-in-out;
+    overflow: hidden;
+  }
+
+  /* Background overlay */
+  .hero-sections::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .containers {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contents {
+    color: white;
+    max-width: 500px;
+  }
+
+  .tagline {
+    font-size: 14.4px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #E0131A;
+    margin-bottom: -50px;
+  }
+
+  .main-titles {
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .cta-button {
+    display: none;
+    background: #202425;
+    color: #ffffff;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .cta-button:hover {
+    background: #E0131A;
+    transform: translateY(-2px);
+  }
+
+  /* Navigation Controls */
+  .nav-controls {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+  }
+
+  .nav-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+
+  .nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Banner Link Overlay */
+  .banner-link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-sections {
+      padding: 16px;
+      background-image: var(--mobile-bg-image) !important;
+      height: 100vh;
+    }
+
+    .main-titles {
+      font-size: clamp(32px, 10vw, 48px);
+    }
+
+    .nav-controls {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .nav-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tagline {
+      display: none;
+    }
+    .main-titles {
+      display: none;
+    }
+    .cta-button {
+      display: none;
+    }
+  }
+</style>
+
+<section class="hero-sections" id="heroSection" 
+         style="--mobile-bg-image: url('{{ section.blocks.first.settings.background_image_mobile | img_url: '800x' }}');
+                background-image: url('{{ section.blocks.first.settings.background_image_desktop | img_url: '2000x' }}')">
+  <div class="containers">
+    <div class="contents">
+      <div class="tagline">{{ section.settings.tagline }}</div>
+      <h1 class="main-titles">{{ section.settings.title }}</h1>
+      <a href="{{ section.settings.button_link }}" class="cta-button">{{ section.settings.button_text }}</a>
+    </div>
+  </div>
+
+  <!-- Banner Link Overlay -->
+  <a href="{{ section.blocks.first.settings.slide_link | default: section.blocks.first.settings.linked_collection.url }}" 
+     class="banner-link-overlay" 
+     id="bannerLink"></a>
+
+  <!-- Navigation Controls -->
+  <div class="nav-controls">
+    <button class="nav-btn" id="prevBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <button class="nav-btn" id="nextBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get slides data from Shopify
+    const slides = [
+      {% for block in section.blocks %}
+        {
+          desktop: '{{ block.settings.background_image_desktop | img_url: '2000x' }}',
+          mobile: '{{ block.settings.background_image_mobile | img_url: '800x' }}',
+          link: '{{ block.settings.slide_link | default: block.settings.linked_collection.url }}'
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    let currentIndex = 0;
+    const heroSection = document.getElementById('heroSection');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const bannerLink = document.getElementById('bannerLink');
+    let autoSlideInterval;
+
+    function updateBackground() {
+      if(slides.length > 0 && slides[currentIndex]) {
+        heroSection.style.backgroundImage = `url('${slides[currentIndex].desktop}')`;
+        heroSection.style.setProperty('--mobile-bg-image', `url('${slides[currentIndex].mobile}')`);
+        
+        // Update banner link
+        if (slides[currentIndex].link) {
+          bannerLink.href = slides[currentIndex].link;
+          bannerLink.style.display = 'block';
+        } else {
+          bannerLink.style.display = 'none';
+        }
+      }
+    }
+
+    function nextBackground() {
+      if(slides.length > 0) {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateBackground();
+        resetAutoSlide(); // Reset timer on manual navigation
+      }
+    }
+
+    function prevBackground() {
+      if(slides.length > 0) {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateBackground();
+        resetAutoSlide(); // Reset timer on manual navigation
+      }
+    }
+
+    // Auto slide functionality
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextBackground, 3000); // 3 seconds interval
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    // Pause auto-slide when hovering over the banner
+    heroSection.addEventListener('mouseenter', () => {
+      clearInterval(autoSlideInterval);
+    });
+
+    // Resume auto-slide when mouse leaves
+    heroSection.addEventListener('mouseleave', () => {
+      startAutoSlide();
+    });
+
+    // Event listeners
+    if(nextBtn) nextBtn.addEventListener('click', nextBackground);
+    if(prevBtn) prevBtn.addEventListener('click', prevBackground);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevBackground();
+      } else if (e.key === 'ArrowRight') {
+        nextBackground();
+      }
+    });
+
+    // Initialize
+    updateBackground();
+    
+    // Start auto-sliding only if there are multiple slides
+    if (slides.length > 1) {
+      startAutoSlide();
+    }
+  });
+</script>

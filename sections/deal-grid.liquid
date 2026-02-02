@@ -1,0 +1,273 @@
+{% comment %}
+Deal Grid Section
+Displays deals or promotions in a grid layout similar to Walmart ads.
+{% endcomment %}
+
+<section id="shopify-section-{{ section.id }}" class="deal-grid-section">
+  <style>
+    .deal-grid-section {
+      padding: 40px 0;
+      background: #fff;
+    }
+
+    .deal-grid-section .section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .deal-grid-section .section-header h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+
+    .deal-grid-section .section-header p {
+      color: #666;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* grid layout */
+    .deal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 0 auto;
+      padding: 0px 16px;
+    }
+
+    .deal-card {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .deal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .deal-image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #f8f8f8;
+    }
+
+    .deal-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .deal-card:hover .deal-image-wrapper img {
+      transform: scale(1.05);
+    }
+
+    /* top-left badge */
+    .deal-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #4f46e5;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .deal-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .deal-content small {
+      font-size: 12px;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .deal-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #111;
+    }
+
+    .deal-btn {
+      display: block;
+      width: 100%;
+      background: #4338ca;
+      color: #fff;
+      text-align: center;
+      font-weight: 600;
+      border: none;
+      padding: 10px 0;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .deal-btn:hover {
+      background: #3730a3;
+    }
+
+    .deal-links {
+      font-size: 13px;
+      text-align: center;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    .deal-links a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .deal-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <div class="section-header">
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtext != blank %}
+      <p>{{ section.settings.subtext }}</p>
+    {% endif %}
+  </div>
+
+  <div class="deal-grid">
+    {% for block in section.blocks %}
+      <div class="deal-card">
+        <div class="deal-image-wrapper">
+          {% if block.settings.badge != blank %}
+            <div class="deal-badge">{{ block.settings.badge }}</div>
+          {% endif %}
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 800 | image_tag: alt: block.settings.title }}
+          {% else %}
+            <div style="height:100%;display:flex;align-items:center;justify-content:center;color:#999;">No image</div>
+          {% endif %}
+        </div>
+
+        <div class="deal-content">
+          {% if block.settings.brand != blank %}
+            <small>{{ block.settings.brand }}</small>
+          {% endif %}
+
+          {% if block.settings.title != blank %}
+            <h3>{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.button_link %}
+            <a href="{{ block.settings.button_link }}" class="deal-btn" target="_blank">
+              {{ block.settings.button_text | default: 'Get Deal' }}
+            </a>
+          {% endif %}
+
+          {% if block.settings.compare_text != blank %}
+            <div class="deal-links">
+              {{ block.settings.compare_text }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Deal Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Browse 43 Deals in this Walmart Ad"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Price subject to availability"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "deal",
+      "name": "Deal Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text",
+          "default": "Available Now"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Deal image"
+        },
+        {
+          "type": "text",
+          "id": "brand",
+          "label": "Brand name",
+          "default": "Walmart"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Deal title",
+          "default": "Gift For Her Fashion, Tech & More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Get Deal"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "compare_text",
+          "label": "Comparison text",
+          "default": "Compare on <a href='#'>Amazon</a> or <a href='#'>Walmart</a>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Deal Grid",
+      "blocks": [
+        { "type": "deal" },
+        { "type": "deal" },
+        { "type": "deal" }
+      ]
+    }
+  ]
+}
+{% endschema %}

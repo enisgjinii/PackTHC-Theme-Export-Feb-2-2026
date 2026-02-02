@@ -1,0 +1,283 @@
+{%- liquid
+	assign section_id     = '#shopify-section-' | append: section.id
+	assign animation      = settings.section_animation
+	assign full           = section.settings.full
+	assign layout         = section.settings.layout
+	assign content_width  = section.settings.content_width
+	assign rows           = section.settings.rows
+	assign columns        = section.settings.columns | times: 1
+	assign columns_mobile = section.settings.columns_mobile | times: 1
+	assign total          = rows | times: columns
+-%}
+
+<style>
+	@media (min-width: 1024px) {
+		{{ section_id }} .search-content {
+			max-width: {{ content_width }}%;
+			margin: 0 auto;
+		}
+	}
+
+	{{ section_id }} .section-wrapper {
+		--item-gap: 2rem 1rem;
+		--template-columns: repeat({{ columns_mobile }}, minmax(0, 1fr));
+		padding-top: {{ section.settings.padding_top_mobile }}px;
+		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+	}
+
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			--item-gap: 6rem 3rem;
+			--template-columns: repeat({{ columns }}, minmax(0, 1fr));
+			padding-top: {{ section.settings.padding_top }}px;
+			padding-bottom: {{ section.settings.padding_bottom }}px;
+		}
+	}
+</style>
+
+{{ 'search-page.css' | asset_url | stylesheet_tag }}
+{{ 'filter.css' | asset_url | stylesheet_tag }}
+{{ 'nouislider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'nouislider.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'filter.js' | asset_url }}" defer="defer"></script>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+		<div class="has-product-filters filters-{{ layout }}{% if layout == 'left' or layout == 'right' %} filters-sidebar{% endif %} search-content{% if search.results_count == 0 %} search-empty{% endif %}" data-id="{{ section.id }}">
+			<div class="search-header{% if animation %} scroll-trigger{% endif %}">
+				<h1 class="heading">
+					{%- liquid
+						if search.performed
+							echo 'templates.search.title' | t
+						else
+							echo 'general.search.label' | t
+						endif
+					-%}
+				</h1>
+
+				<form action="{{ routes.search_url }}" method="get" role="search" class="form search-form">
+					<label class="field-label sr-only" for="{{ section.id | append: '-field-input' }}" aria-hidden="true">{{- 'general.search.label' | t -}}</label>
+					<input class="field-input" type="search" id="{{ section.id | append: '-field-input' }}" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.typing' | t }}" {% if search.performed %}autofocus{% endif %} data-noui>
+					<input type="hidden" name="type" value="{{ settings.search_type }}">
+					<input name="options[prefix]" type="hidden" value="last">
+					<input type="hidden" name="options[unavailable_products]" value="{{ settings.search_unavailable_products }}">
+
+					<div class="mini-results"></div>
+
+					<button class="field-button" aria-label="{{ 'general.search.label' | t }}">
+						{%- render 'icon', code: 'search' -%}
+					</button>
+				</form>
+			</div>
+
+			{% comment %} Products filter {% endcomment %}
+			{%- if search.performed -%}
+				{%- paginate search.results by total -%}
+					<div class="search-results content{% if animation %} scroll-trigger{% endif %}" data-type="search">
+						{%- render 'filter', results: search, ssettings: section.settings, paginate: paginate -%}
+					</div>
+				{%- endpaginate -%}
+			{%- endif -%}
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-search.name",
+	"tag": "section",
+	"class": "search-page-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "select",
+			"id": "layout",
+			"options": [
+				{
+					"value": "top",
+					"label": "t:sections.main-collection.settings.layout.option_1.label"
+				},
+				{
+					"value": "left",
+					"label": "t:sections.main-collection.settings.layout.option_2.label"
+				},
+				{
+					"value": "right",
+					"label": "t:sections.main-collection.settings.layout.option_3.label"
+				},
+				{
+					"value": "none",
+					"label": "t:sections.main-collection.settings.layout.option_4.label"
+				}
+			],
+			"default": "top",
+			"label": "t:sections.main-collection.settings.layout.label",
+			"info": "t:sections.main-collection.settings.layout.info"
+		},
+		{
+			"type": "checkbox",
+			"id": "full",
+			"default": false,
+			"label": "t:general.layout.full.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.main-search.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.main-search.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.main-search.settings.image_ratio.options__3.label"
+				}
+			],
+			"default": "portrait",
+			"label": "t:sections.main-search.settings.image_ratio.label"
+		},
+		{
+			"type": "range",
+			"id": "content_width",
+			"default": 100,
+			"min": 60,
+			"max": 100,
+			"step": 1,
+			"unit": "%",
+			"label": "t:general.dimensions.content_width.label"
+		},
+		{
+			"type": "range",
+			"id": "rows",
+			"default": 1,
+			"min": 1,
+			"max": 20,
+			"step": 1,
+			"label": "t:sections.main-collection.settings.rows.label"
+		},
+		{
+			"type": "select",
+			"id": "columns",
+			"default": "4",
+			"options": [
+				{
+					"value": "2",
+					"label": "2"
+				},
+				{
+					"value": "3",
+					"label": "3"
+				},
+				{
+					"value": "4",
+					"label": "4"
+				},
+				{
+					"value": "5",
+					"label": "5"
+				},
+				{
+					"value": "6",
+					"label": "6"
+				}
+			],
+			"label": "t:general.layout.columns.label"
+		},
+		{
+			"type": "select",
+			"id": "columns_mobile",
+			"default": "2",
+			"options": [
+				{
+					"value": "1",
+					"label": "1"
+				},
+				{
+					"value": "2",
+					"label": "2"
+				}
+			],
+			"label": "t:general.layout.columns_mobile.label"
+		},
+		{
+			"type": "header",
+			"content": "t:sections.main-collection.settings.header_filters.content"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_sorting",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_sorting.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_results_count",
+			"default": false,
+			"label": "t:sections.main-collection.settings.show_results_count.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "show_filter_count",
+			"default": true,
+			"label": "t:sections.main-collection.settings.show_filter_count.label"
+		},
+		{
+			"type": "header",
+			"content": "t:general.padding.header_padding.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 40,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 60,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		},
+		{
+			"type": "paragraph",
+			"content": "t:general.padding.paragraph_mobile.content"
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 20,
+			"unit": "px",
+			"label": "t:general.padding.top.label"
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"default": 50,
+			"unit": "px",
+			"label": "t:general.padding.bottom.label"
+		}
+	]
+}
+{% endschema %}
