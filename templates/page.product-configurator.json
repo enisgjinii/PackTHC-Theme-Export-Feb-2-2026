@@ -10,7 +10,7 @@
       "settings": {
         "heading": "Customize Your Product",
         "subheading": "Design your perfect packaging with our interactive configurator",
-        "configurator_base_url": "https://your-configurator-url.com/embed",
+        "configurator_base_url": "https://dram-product-customizer.vercel.app/",
         "iframe_height": 700,
         "padding_top": 40,
         "padding_bottom": 40
