@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "product-configurator": {
+      "type": "product-configurator",
+      "settings": {
+        "heading": "Customize Your Product",
+        "subheading": "Design your perfect packaging with our interactive configurator",
+        "configurator_base_url": "https://your-configurator-url.com/embed",
+        "iframe_height": 700,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": ["main", "product-configurator"]
+}

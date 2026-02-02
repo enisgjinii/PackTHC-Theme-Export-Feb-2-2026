@@ -1,0 +1,379 @@
+{%- liquid
+  assign section_id = '#shopify-section-' | append: section.id
+  assign configurator_url = section.settings.configurator_base_url
+  assign iframe_height = section.settings.iframe_height
+-%}
+
+<style>
+  {{ section_id }} .configurator-wrapper {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  {{ section_id }} .configurator-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+
+  {{ section_id }} .configurator-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #004A26;
+    margin-bottom: 10px;
+  }
+
+  {{ section_id }} .configurator-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+  }
+
+  {{ section_id }} .product-info-bar {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  {{ section_id }} .product-info-bar img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+
+  {{ section_id }} .product-info-details {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  {{ section_id }} .product-info-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  {{ section_id }} .product-info-sku {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  {{ section_id }} .product-info-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #004A26;
+  }
+
+  {{ section_id }} .back-to-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #004A26;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 20px;
+    background: #e8f5e9;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  {{ section_id }} .back-to-product:hover {
+    background: #004A26;
+    color: #fff;
+  }
+
+  {{ section_id }} .configurator-iframe-container {
+    margin: 0 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  {{ section_id }} .configurator-iframe {
+    width: 100%;
+    height: {{ iframe_height }}px;
+    border: none;
+    display: block;
+  }
+
+  {{ section_id }} .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  {{ section_id }} .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e0e0e0;
+    border-top-color: #004A26;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  {{ section_id }} .no-product-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff3cd;
+    border-radius: 10px;
+    margin: 0 20px;
+  }
+
+  {{ section_id }} .no-product-message h3 {
+    color: #856404;
+    margin-bottom: 15px;
+  }
+
+  {{ section_id }} .no-product-message a {
+    color: #004A26;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    {{ section_id }} .configurator-title {
+      font-size: 1.5rem;
+    }
+
+    {{ section_id }} .product-info-bar {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    {{ section_id }} .configurator-iframe {
+      height: 500px;
+    }
+  }
+</style>
+
+<div class="configurator-wrapper">
+  <div class="configurator-header">
+    <h1 class="configurator-title">{{ section.settings.heading | default: 'Product Configurator' }}</h1>
+    <p class="configurator-subtitle">{{ section.settings.subheading | default: 'Customize your product with our easy-to-use configurator' }}</p>
+  </div>
+
+  <div id="product-info-container">
+    <!-- Product info will be populated by JavaScript -->
+  </div>
+
+  <div id="configurator-container" class="configurator-iframe-container" style="position: relative; display: none;">
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="loading-spinner"></div>
+    </div>
+    <iframe 
+      id="configurator-iframe"
+      class="configurator-iframe"
+      title="Product Configurator"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div id="no-product-message" class="no-product-message" style="display: none;">
+    <h3>No Product Selected</h3>
+    <p>Please select a product to customize from our <a href="/collections/all">product catalog</a>.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get product data from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const productHandle = urlParams.get('product');
+  const productId = urlParams.get('product_id');
+  const variantId = urlParams.get('variant_id');
+  const productTitle = urlParams.get('title');
+  const productImage = urlParams.get('image');
+  const productPrice = urlParams.get('price');
+  const productSku = urlParams.get('sku');
+  const productVendor = urlParams.get('vendor');
+
+  const configuratorBaseUrl = '{{ configurator_url }}';
+  const productInfoContainer = document.getElementById('product-info-container');
+  const configuratorContainer = document.getElementById('configurator-container');
+  const noProductMessage = document.getElementById('no-product-message');
+  const iframe = document.getElementById('configurator-iframe');
+  const loadingOverlay = document.getElementById('loading-overlay');
+
+  if (productHandle || productId) {
+    // Show product info bar
+    let productInfoHTML = `
+      <div class="product-info-bar">
+        ${productImage ? `<img src="${decodeURIComponent(productImage)}" alt="${productTitle || 'Product'}" />` : ''}
+        <div class="product-info-details">
+          <div class="product-info-title">${decodeURIComponent(productTitle || 'Custom Product')}</div>
+          ${productSku ? `<div class="product-info-sku">SKU: ${productSku}</div>` : ''}
+          ${productVendor ? `<div class="product-info-sku">By: ${decodeURIComponent(productVendor)}</div>` : ''}
+        </div>
+        ${productPrice ? `<div class="product-info-price">$${productPrice}</div>` : ''}
+        <a href="/products/${productHandle || ''}" class="back-to-product">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Product
+        </a>
+      </div>
+    `;
+    productInfoContainer.innerHTML = productInfoHTML;
+
+    // Build iframe URL with product parameters
+    let iframeUrl = configuratorBaseUrl;
+    const params = new URLSearchParams();
+    
+    if (productHandle) params.append('product', productHandle);
+    if (productId) params.append('product_id', productId);
+    if (variantId) params.append('variant_id', variantId);
+    if (productTitle) params.append('title', productTitle);
+    if (productSku) params.append('sku', productSku);
+    if (productVendor) params.append('vendor', productVendor);
+    if (productImage) params.append('image', productImage);
+    if (productPrice) params.append('price', productPrice);
+    
+    // Add shop info
+    params.append('shop', '{{ shop.permanent_domain }}');
+    params.append('shop_name', '{{ shop.name | escape }}');
+    
+    const separator = configuratorBaseUrl.includes('?') ? '&' : '?';
+    iframeUrl = configuratorBaseUrl + separator + params.toString();
+
+    // Set iframe source
+    iframe.src = iframeUrl;
+    configuratorContainer.style.display = 'block';
+
+    // Hide loading when iframe loads
+    iframe.onload = function() {
+      loadingOverlay.style.display = 'none';
+    };
+
+    // Timeout for loading
+    setTimeout(function() {
+      loadingOverlay.style.display = 'none';
+    }, 10000);
+
+  } else {
+    // No product specified
+    noProductMessage.style.display = 'block';
+  }
+
+  // Listen for messages from iframe (for add to cart, etc.)
+  window.addEventListener('message', function(event) {
+    // Handle messages from the configurator iframe
+    if (event.data && event.data.type === 'addToCart') {
+      // Add customized product to cart
+      const cartData = {
+        id: event.data.variantId || variantId,
+        quantity: event.data.quantity || 1,
+        properties: event.data.properties || {}
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cartData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Notify iframe of success
+        iframe.contentWindow.postMessage({ type: 'cartAddSuccess', data: data }, '*');
+        // Optionally redirect to cart
+        if (event.data.redirectToCart) {
+          window.location.href = '/cart';
+        }
+      })
+      .catch(error => {
+        iframe.contentWindow.postMessage({ type: 'cartAddError', error: error.message }, '*');
+      });
+    }
+
+    if (event.data && event.data.type === 'goToCart') {
+      window.location.href = '/cart';
+    }
+
+    if (event.data && event.data.type === 'goBack') {
+      window.history.back();
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Product Configurator",
+  "tag": "section",
+  "class": "product-configurator-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Product Configurator"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Customize your product with our easy-to-use configurator"
+    },
+    {
+      "type": "url",
+      "id": "configurator_base_url",
+      "label": "Configurator Iframe URL",
+      "info": "The base URL of your external configurator. Product data will be passed as URL parameters."
+    },
+    {
+      "type": "range",
+      "id": "iframe_height",
+      "label": "Iframe Height (px)",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Configurator"
+    }
+  ]
+}
+{% endschema %}
