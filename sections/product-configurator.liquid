@@ -275,18 +275,83 @@ document.addEventListener('DOMContentLoaded', function() {
     noProductMessage.style.display = 'block';
   }
 
+  // Debounce and rate limit protection for cart adds
+  let isAddingToCart = false;
+  let lastCartAddTime = 0;
+  const CART_ADD_COOLDOWN = 2000; // 2 seconds between cart adds
+  
+  // Helper function to add to cart with retry
+  async function addToCartWithRetry(cartData, retries = 3, delay = 1000) {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(cartData)
+        });
+        
+        console.log('Cart response status:', response.status);
+        
+        if (response.status === 429) {
+          // Rate limited - wait and retry
+          console.log(`Rate limited, waiting ${delay}ms before retry ${i + 1}/${retries}`);
+          await new Promise(resolve => setTimeout(resolve, delay));
+          delay *= 2; // Exponential backoff
+          continue;
+        }
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          try {
+            const errorJson = JSON.parse(errorText);
+            throw new Error(errorJson.description || errorJson.message || 'Failed to add to cart');
+          } catch (parseError) {
+            throw new Error('Failed to add to cart - please try again');
+          }
+        }
+        
+        return await response.json();
+      } catch (error) {
+        if (i === retries - 1) throw error;
+        console.log(`Cart add attempt ${i + 1} failed, retrying...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
+    }
+  }
+
   // Listen for messages from iframe (for add to cart, etc.)
   window.addEventListener('message', function(event) {
-    console.log('Message received from iframe:', event.data);
+    // Only log addToCart messages to reduce noise
+    if (event.data && event.data.type) {
+      console.log('Message received from iframe:', event.data.type);
+    }
     
     // Handle messages from the configurator iframe
     if (event.data && event.data.type === 'addToCart') {
+      // Prevent duplicate/rapid cart adds
+      const now = Date.now();
+      if (isAddingToCart) {
+        console.log('Cart add already in progress, ignoring duplicate request');
+        return;
+      }
+      if (now - lastCartAddTime < CART_ADD_COOLDOWN) {
+        console.log('Cart add cooldown active, please wait');
+        showCartNotification('Please wait a moment before adding again', null, true);
+        return;
+      }
+      
+      isAddingToCart = true;
+      lastCartAddTime = now;
+      
       // Get the variant ID - use the one from the message, or fallback to URL param
       const itemVariantId = event.data.variantId || variantId;
       
       if (!itemVariantId) {
         console.error('No variant ID available for cart add');
         showCartNotification('Error: No product variant selected', null, true);
+        isAddingToCart = false;
         return;
       }
       
@@ -309,24 +374,11 @@ document.addEventListener('DOMContentLoaded', function() {
       
       console.log('Adding to cart:', cartData);
 
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(cartData)
-      })
-      .then(response => {
-        console.log('Cart response status:', response.status);
-        if (!response.ok) {
-          return response.json().then(err => {
-            throw new Error(err.description || err.message || 'Failed to add to cart');
-          });
-        }
-        return response.json();
-      })
+      addToCartWithRetry(cartData)
       .then(data => {
         console.log('Cart add success:', data);
+        isAddingToCart = false;
+        
         // Notify iframe of success
         iframe.contentWindow.postMessage({ type: 'cartAddSuccess', data: data }, '*');
         
@@ -343,6 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .catch(error => {
         console.error('Cart add error:', error);
+        isAddingToCart = false;
         iframe.contentWindow.postMessage({ type: 'cartAddError', error: error.message }, '*');
         showCartNotification('Failed to add to cart. Please try again.', null, true);
       });
