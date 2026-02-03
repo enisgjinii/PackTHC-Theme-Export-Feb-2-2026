@@ -1,0 +1,145 @@
+{%- liquid
+  assign section_id = '#shopify-section-' | append: section.id
+-%}
+
+<style>
+  {{ section_id }} .career-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  {{ section_id }} .career-hero {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  {{ section_id }} .career-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #004A26;
+    margin-bottom: 20px;
+  }
+
+  {{ section_id }} .career-hero p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  {{ section_id }} .job-listings {
+    display: grid;
+    gap: 30px;
+  }
+
+  {{ section_id }} .job-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+  {{ section_id }} .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,74,38,0.15);
+    border-color: #004A26;
+  }
+
+  {{ section_id }} .job-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #004A26;
+    margin-bottom: 15px;
+  }
+
+  {{ section_id }} .job-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    {{ section_id }} .career-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    {{ section_id }} .career-hero p {
+      font-size: 1rem;
+    }
+
+    {{ section_id }} .job-card {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="career-wrapper">
+  <div class="career-hero">
+    <h1>{{ section.settings.hero_title }}</h1>
+    <p>{{ section.settings.hero_description }}</p>
+  </div>
+
+  <div class="job-listings">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'job_listing' -%}
+          <div class="job-card" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.job_title }}</h3>
+            <p>{{ block.settings.job_description }}</p>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Career Page",
+  "tag": "section",
+  "class": "career-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "We're Hiring Talented People"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "Be part of a growing team that's revolutionizing the packaging industry."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "job_listing",
+      "name": "Job Listing",
+      "settings": [
+        {
+          "type": "text",
+          "id": "job_title",
+          "label": "Job Title",
+          "default": "Position Title"
+        },
+        {
+          "type": "textarea",
+          "id": "job_description",
+          "label": "Job Description",
+          "default": "Describe the role and responsibilities."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Career Page"
+    }
+  ]
+}
+{% endschema %}
