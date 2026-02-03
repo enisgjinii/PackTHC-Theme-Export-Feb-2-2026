@@ -55,6 +55,14 @@
             "padding_bottom": 10
           }
         },
+        "custom_liquid_cti3Ny": {
+          "type": "custom-liquid",
+          "name": "Customization Btn",
+          "settings": {
+            "custom-liquid": "{% render 'product-customize-button', product: product %}",
+            "padding_bottom": 20
+          }
+        },
         "custom_liquid_PPFPBE": {
           "type": "custom-liquid",
           "settings": {
@@ -148,6 +156,7 @@
         "title",
         "judge_me_reviews_preview_badge_gFX3GF",
         "price",
+        "custom_liquid_cti3Ny",
         "custom_liquid_PPFPBE",
         "availability_KXzfjK",
         "variant-picker",
