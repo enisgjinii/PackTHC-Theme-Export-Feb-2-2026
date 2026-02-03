@@ -467,14 +467,41 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('/cart.js')
       .then(response => response.json())
       .then(cart => {
-        // Try to update cart count elements
-        const cartCountElements = document.querySelectorAll('.cart-count, .cart-count-bubble, [data-cart-count]');
+        console.log('Updating cart count to:', cart.item_count);
+        
+        // Target all possible cart count elements in the theme
+        const selectors = [
+          '.item-count',
+          '.cart-item-count', 
+          '.cart-count',
+          '.cart-count-bubble',
+          '.header-cart-count',
+          '[data-cart-count]',
+          '.CartCount',
+          '.cart-items-count'
+        ];
+        
+        const cartCountElements = document.querySelectorAll(selectors.join(','));
+        console.log('Found cart count elements:', cartCountElements.length);
+        
         cartCountElements.forEach(el => {
           el.textContent = cart.item_count;
-          el.style.display = cart.item_count > 0 ? '' : 'none';
+          // Make sure element is visible if count > 0
+          if (cart.item_count > 0) {
+            el.style.display = '';
+            el.classList.remove('hide', 'hidden');
+          }
         });
+        
+        // Also trigger Shopify's native cart update event
+        document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+        
+        // Try to trigger side cart update if it exists
+        if (window.Shopify && window.Shopify.theme && window.Shopify.theme.sections) {
+          document.dispatchEvent(new Event('cart:refresh'));
+        }
       })
-      .catch(err => console.log('Could not update cart count'));
+      .catch(err => console.log('Could not update cart count:', err));
   }
 });
 </script>
