@@ -293,17 +293,32 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         body: JSON.stringify(cartData)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to add to cart');
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log('Cart add success:', data);
         // Notify iframe of success
         iframe.contentWindow.postMessage({ type: 'cartAddSuccess', data: data }, '*');
+        
+        // Show success notification
+        showCartNotification('Product added to cart!', data);
+        
+        // Update cart count in header if possible
+        updateCartCount();
+        
         // Optionally redirect to cart
         if (event.data.redirectToCart) {
           window.location.href = '/cart';
         }
       })
       .catch(error => {
+        console.error('Cart add error:', error);
         iframe.contentWindow.postMessage({ type: 'cartAddError', error: error.message }, '*');
+        showCartNotification('Failed to add to cart. Please try again.', null, true);
       });
     }
 
@@ -315,6 +330,73 @@ document.addEventListener('DOMContentLoaded', function() {
       window.history.back();
     }
   });
+  
+  // Helper function to show cart notification
+  function showCartNotification(message, data, isError) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: ${isError ? '#ef4444' : '#004A26'};
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 99999;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: slideIn 0.3s ease;
+    `;
+    
+    notification.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        ${isError 
+          ? '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'
+          : '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
+        }
+      </svg>
+      <span>${message}</span>
+      ${!isError ? '<a href="/cart" style="background:white;color:#004A26;padding:6px 12px;border-radius:4px;text-decoration:none;margin-left:8px;">View Cart</a>' : ''}
+    `;
+    
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+      notification.style.animation = 'slideIn 0.3s ease reverse';
+      setTimeout(() => notification.remove(), 300);
+    }, 5000);
+  }
+  
+  // Helper function to update cart count in header
+  function updateCartCount() {
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        // Try to update cart count elements
+        const cartCountElements = document.querySelectorAll('.cart-count, .cart-count-bubble, [data-cart-count]');
+        cartCountElements.forEach(el => {
+          el.textContent = cart.item_count;
+          el.style.display = cart.item_count > 0 ? '' : 'none';
+        });
+      })
+      .catch(err => console.log('Could not update cart count'));
+  }
 });
 </script>
 
