@@ -277,14 +277,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Listen for messages from iframe (for add to cart, etc.)
   window.addEventListener('message', function(event) {
+    console.log('Message received from iframe:', event.data);
+    
     // Handle messages from the configurator iframe
     if (event.data && event.data.type === 'addToCart') {
+      // Get the variant ID - use the one from the message, or fallback to URL param
+      const itemVariantId = event.data.variantId || variantId;
+      
+      if (!itemVariantId) {
+        console.error('No variant ID available for cart add');
+        showCartNotification('Error: No product variant selected', null, true);
+        return;
+      }
+      
+      // Clean properties - ensure no values are too long
+      const cleanProperties = {};
+      if (event.data.properties) {
+        Object.keys(event.data.properties).forEach(key => {
+          const value = String(event.data.properties[key] || '');
+          // Shopify has ~255 char limit per property value
+          cleanProperties[key] = value.substring(0, 250);
+        });
+      }
+      
       // Add customized product to cart
       const cartData = {
-        id: event.data.variantId || variantId,
+        id: itemVariantId,
         quantity: event.data.quantity || 1,
-        properties: event.data.properties || {}
+        properties: cleanProperties
       };
+      
+      console.log('Adding to cart:', cartData);
 
       fetch('/cart/add.js', {
         method: 'POST',
@@ -294,8 +317,11 @@ document.addEventListener('DOMContentLoaded', function() {
         body: JSON.stringify(cartData)
       })
       .then(response => {
+        console.log('Cart response status:', response.status);
         if (!response.ok) {
-          throw new Error('Failed to add to cart');
+          return response.json().then(err => {
+            throw new Error(err.description || err.message || 'Failed to add to cart');
+          });
         }
         return response.json();
       })
