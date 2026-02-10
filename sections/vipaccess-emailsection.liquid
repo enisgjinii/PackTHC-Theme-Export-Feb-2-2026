@@ -1,0 +1,462 @@
+{%- liquid
+  assign section_id = '#shopify-section-' | append: section.id
+  assign animation = settings.section_animation
+  assign heading = section.settings.heading_text
+  assign heading_size = section.settings.heading_size
+-%}
+
+<style>
+  	{{ section_id }} .section-wrapper {
+  		padding-top: {{ section.settings.padding_top_mobile }}px;
+  		padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  	}
+
+  	/* Layout: mobile stacked; desktop 2-column (left info, right grid) */
+  	{{ section_id }} .two-column-layout {
+  		display: block;
+  		gap: 1rem;
+  	}
+
+  	/* Left info column (newsletter) */
+  	{{ section_id }} .info-column {
+  		margin-bottom: 1rem;
+  	}
+
+  	/* Right grid column */
+  	{{ section_id }} .grid-column {
+  		width: 100%;
+  	}
+
+  	/* Grid styles */
+  	{{ section_id }} .image-grid {
+  		display: grid;
+  		grid-template-columns: repeat(2, 1fr); /* mobile 2 columns */
+  		gap: 0.75rem;
+  	}
+
+  	/* Grid items are square and equal-height */
+  	{{ section_id }} .image-grid .grid-item {
+  		position: relative;
+  		overflow: hidden;
+  		border-radius: .375rem;
+  		/* modern browsers */
+  		aspect-ratio: 1 / 1;
+  		/* fallback for older browsers — keeps height consistent */
+  		min-height: 0;
+  	}
+
+  	/* fallback: ensure square via inner wrapper */
+  	{{ section_id }} .grid-item .collage-image-wrapper {
+  		position: absolute;
+  		inset: 0;
+  		width: 100%;
+  		height: 100%;
+  	}
+
+  	/* image/placeholder fill the card */
+  	{{ section_id }} .collage-image-wrapper img,
+  	{{ section_id }} .collage-image-wrapper .placeholder {
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		width: 100%;
+  		height: 100%;
+  		object-fit: cover;
+  	}
+
+  	/* preserve any older marquee-content spacing */
+  	{{ section_id }} .marquee-content{
+  		margin: 0;
+  	}
+
+  @media (min-width: 991px) {
+  	{{ section_id }} .section-wrapper {
+  		padding-top: {{ section.settings.padding_top }}px;
+  		padding-bottom: {{ section.settings.padding_bottom }}px;
+  	}
+
+  	/* Equal-width columns on desktop */
+  	{{ section_id }} .two-column-layout {
+  		display: grid;
+  		grid-template-columns: 1fr 1fr; /* BOTH columns equal width now */
+  		align-items: center;            /* vertical center for both columns */
+  		gap: 2rem;
+  	}
+
+  	/* Make the left column a flexbox so the newsletter content centers vertically */
+  	{{ section_id }} .info-column {
+  		display: flex;
+  		align-items: center;   /* vertical center */
+  		justify-content: center; /* horizontal centering inside left column */
+  		padding-right: 1rem;   /* small breathing room */
+  		margin-bottom: 0;
+  		min-height: 1px;       /* avoid collapsing */
+  	}
+
+  	/* Ensure the newsletter inner wrapper can shrink/expand nicely */
+  	{{ section_id }} .vip-access-inner {
+  		width: 100%;
+  		max-width: 420px; /* optional cap so the form doesn't get too wide */
+  	}
+
+  	/* Right column grid — make it a 4-column grid visually if desired */
+  	{{ section_id }} .image-grid {
+  		grid-template-columns: repeat(2, 1fr);
+  		gap: 1rem;
+  	}
+
+  	/* Keep images square and scaled correctly */
+  	{{ section_id }} .grid-item .collage-image-wrapper {
+  		position: relative;
+  		inset: 0;
+  		width: 100%;
+  		height: 0;
+  		padding-bottom: 100%; /* keeps the square aspect */
+  	}
+  	{{ section_id }} .collage-image-wrapper img,
+  	{{ section_id }} .collage-image-wrapper .placeholder {
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		width: 100%;
+  		height: 100%;
+  		object-fit: cover;
+  	}
+  }
+
+
+  	/* Slightly larger grid on medium screens */
+  	@media (min-width: 768px) and (max-width: 990px) {
+  		{{ section_id }} .image-grid {
+  			grid-template-columns: repeat(3, 1fr);
+  		}
+  	}
+
+  	/* newsletter height behaviour */
+  	{{ section_id }} .newsletter-form {
+  		width: 100%;
+  	}
+  	{{ section_id }} .vip-access-inner { width: 100%; }
+
+  	/* small responsive tweaks */
+  	@media (max-width: 420px) {
+  		{{ section_id }} .image-grid { gap: 0.5rem; }
+  	}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+  <div class="container">
+    <div class="image-with-text-overlay">
+      <div class="two-column-layout">
+        <div class="info-column">
+          <div class="newsletter-form vertical-{{ section.settings.vertical }} text-{{ section.settings.alignment }}">
+            {%- form 'customer', id: null -%}
+              <!-- add vip-access tag to created/updated customer -->
+              <input type="hidden" name="customer[tags]" value="vip-access">
+
+              <div class="vip-access-inner">
+                {%- if heading != blank -%}
+                  <h2 class="heading rte {{ heading_size }}">{{- heading -}}</h2>
+                {%- endif -%}
+
+                {%- if section.settings.description != blank -%}
+                  <div class="description rte">{{- section.settings.description -}}</div>
+                {%- endif -%}
+
+                <div class="field-wrapper">
+                  <label for="{{ section.id }}-field" class="sr-only">{{ 'templates.form.email' | t }}</label>
+
+                  <input
+                    class="field-input"
+                    id="{{ section.id }}-field"
+                    type="email"
+                    name="customer[email]"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus
+                      aria-invalid="true"
+                      aria-describedby="{{ section.id }}-contact-error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="{{ section.id }}-contact-success"
+                    {% endif %}
+                    placeholder="{{ section.settings.placeholder | default: 'Email' }}"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                    required
+                  >
+
+                  <button type="submit" class="button primary-button">
+                    {{- 'newsletter.button_label' | t -}}
+                    {% if settings.select_button == 'direction' %}
+                      {%- render 'icon', code: 'direction-button' -%}
+                    {% elsif settings.select_button == 'arrow' %}
+                      {%- render 'icon', code: 'arrow-button' -%}
+                    {% endif %}
+                  </button>
+                </div>
+
+                {%- if form.errors -%}
+                  <small class="message error-message" id="{{ section.id }}-contact-error">
+                    {%- liquid
+                      render 'icon', code: 'error'
+                      echo form.errors.translated_fields.email | capitalize
+                      echo form.errors.messages.email
+                    -%}
+                  </small>
+                {%- endif -%}
+              </div>
+
+              {%- if form.posted_successfully? -%}
+                <h3 class="message success-message" id="{{ section.id }}-contact-success" tabindex="-1" autofocus>
+                  {%- liquid
+                    render 'icon', code: 'success'
+                    echo 'newsletter.success' | t
+                  -%}
+                </h3>
+              {%- endif -%}
+            {%- endform -%}
+
+          </div>
+        </div>
+
+        <!-- RIGHT: grid column -->
+        <div class="grid-column">
+          {% if section.blocks.size > 0 %}
+            <div class="image-grid" role="list">
+              {%- for block in section.blocks limit: 4 -%}
+                {%- assign image = block.settings.image -%}
+                <div class="grid-item" data-{{ block.id }} role="listitem">
+                  <div class="collage-image-wrapper{% if settings.image_lazy and image %} lazy-image{% endif %}">
+                    {% if image != blank %}
+                      {% render 'lazy-image', image: image, width: 200 %}
+                    {% else %}
+                      {% render 'icon', code: 'placeholder', width: 200 %}
+                    {% endif %}
+                  </div>
+                </div>
+              {%- endfor -%}
+
+              {%- comment -%}
+                Optional placeholders to always show 16 slots:
+              {%- endcomment -%}
+              {%- assign current = section.blocks | size -%}
+              {%- if current < 4 -%}
+                {%- assign missing = 4 | minus: current -%}
+                {%- for i in (1..missing) -%}
+                  <div class="grid-item empty-slot" aria-hidden="true">
+                    <div class="collage-image-wrapper">
+                      {% render 'icon', code: 'placeholder', width: 200 %}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      <!-- /.two-column-layout -->
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "vipaccess email sectrion",
+  "tag": "section",
+  "class": "newsletter-section two-animated",
+  "limit": 1,
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings_schema.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 300,
+      "max": 1300,
+      "step": 10,
+      "default": 700,
+      "unit": "px",
+      "label": "t:general.dimensions.height.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.animated-image-collage.settings.header_content.content"
+    },
+    {
+      "type": "select",
+      "id": "vertical",
+      "default": "middle",
+      "label": "t:general.layout.vertical.label",
+      "info": "t:general.layout.vertical.mobile_middle.label",
+      "options": [
+        {
+          "value": "top",
+          "label": "t:general.layout.vertical.option_1.label"
+        },
+        {
+          "value": "middle",
+          "label": "t:general.layout.vertical.option_2.label"
+        },
+        {
+          "value": "bottom",
+          "label": "t:general.layout.vertical.option_3.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "default": "center",
+      "label": "t:general.layout.alignment.label",
+      "info": "t:general.layout.alignment.mobile_center.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:general.layout.alignment.option_1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:general.layout.alignment.option_2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:general.layout.alignment.option_3.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:general.typography.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "heading_text",
+      "default": "<h4>Join our newsletter<h4>",
+      "label": "t:general.typography.heading.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h4",
+          "label": "t:general.typography.heading_size.option_1.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:general.typography.heading_size.option_2.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:general.typography.heading_size.option_3.label"
+        }
+      ],
+      "default": "h2",
+      "label": "t:general.typography.heading_size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "default": "<p>Sign up for our newsletter and receive 10% off your first order!</p>",
+      "label": "t:general.typography.description.label"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "default": "Enter your email address",
+      "label": "t:sections.newsletter.settings.placeholder.label"
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding.header_padding.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60,
+      "unit": "px",
+      "label": "t:general.padding.top.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60,
+      "unit": "px",
+      "label": "t:general.padding.bottom.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:general.padding.paragraph_mobile.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "px",
+      "label": "t:general.padding.top.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "px",
+      "label": "t:general.padding.bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:general.image.label",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:general.image.label",
+		      "info": "Recommended size: 600 x 600 px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "vipaccess email sectrion",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

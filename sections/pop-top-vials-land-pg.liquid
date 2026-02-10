@@ -1,0 +1,2120 @@
+  
+<div class="pcg-wrapper">
+  <div class="pcg-container">
+    <div class="pcg-left-section">
+      <!-- Gallery Container -->
+      <div class="pcg-gallery-container">
+        <div class="pcg-thumbnail-column" id="pcgThumbnailColumn">
+          <!-- Thumbnails will be loaded here when product is selected -->
+        </div>
+        
+        <div class="pcg-main-image">
+          <div id="pcgMainImageContainer">
+            <!-- Default product image when none selected -->
+            {% if section.settings.default_product != blank %}
+              {% assign default_product = all_products[section.settings.default_product] %}
+              <img src="{{ default_product.featured_image | img_url: '600x600' }}" 
+                   alt="{{ default_product.title }}" 
+                   id="pcgMainProductImage"
+                   class="default-product-image">
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="pcg-mobile-variants-toggle">
+  <div class="pcg-hamburger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <span class="pcg-toggle-text">Product Variants</span>
+</div>
+
+      <!-- Product Segments Container - Now separate -->
+      <div class="pcg-segments-container">
+        <div class="pcg-product-segments" id="pcgProductSegments" style="display: none;">
+          <div class="pcg-segments-header">
+            <h4>Product Variants</h4>
+          </div>
+          <div class="pcg-segments-tabs-wrapper">
+            <div class="pcg-segments-tabs" id="pcgSegmentsTabs">
+              <!-- Product segment tabs will be populated here -->
+            </div>
+          </div>
+        </div>
+
+        
+
+
+        
+      </div>
+    </div>
+
+    <div class="pcg-right-section">
+      <div class="pcg-product-header">
+        <h1 class="pcg-section-title" id="pcgSelectedProductTitle">
+          {% if section.settings.default_product != blank %}
+            {{ all_products[section.settings.default_product].title }}
+          {% else %}
+            Select a product
+          {% endif %}
+        </h1>
+      </div>
+      
+      <!-- Collections Tabs -->
+      <div class="pcg-collections-tabs">
+        {% for block in section.blocks %}
+          {% if block.type == 'collection' %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% if collection != blank %}
+              <button class="pcg-collection-tab {% if forloop.first %}pcg-active{% endif %}" 
+                      data-collection="{{ collection.handle }}"
+                      data-collection-id="{{ collection.id }}">
+                <span class="pcg-tab-dram">{{ block.settings.tab_dram | default: '13 dram' }}</span>
+                <span class="pcg-tab-count">{{ block.settings.tab_count | default: '315 count' }}</span>
+              </button>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Products Grid -->
+      <div class="pcg-products-container">
+        {% for block in section.blocks %}
+          {% if block.type == 'collection' %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% if collection != blank %}
+              <div class="pcg-collection-products {% if forloop.first %}pcg-active{% endif %}" 
+                   data-collection="{{ collection.handle }}">
+                <div class="pcg-products-grid">
+                  {% for product in collection.products limit: block.settings.products_limit %}
+                    <div class="pcg-product-card" data-product-handle="{{ product.handle }}" data-product-available="{{ product.available }}">
+                      <!-- Product Tooltip HTML -->
+                      <div class="pcg-product-tooltip">
+                        <div class="pcg-tooltip-content">
+                        <!--  <div class="pcg-tooltip-title">{{ product.title }}</div> -->
+                          <div class="pcg-tooltip-price">
+                            {% if product.metafields.custom.unit_price != blank %}
+                              {% if product.metafields.custom.unit_price.type == 'money' %}
+                                {{ product.metafields.custom.unit_price | money }}
+                              {% else %}
+                                {{ product.metafields.custom.unit_price }}
+                              {% endif %}
+                            {% else %}
+                              {{ product.price | money }}
+                            {% endif %}
+                          </div>
+                          <div class="pcg-tooltip-status">
+                            {% if product.available %}
+                              <span class="status-available">In Stock</span>
+                            {% else %}
+                              <span class="status-unavailable">Out of Stock</span>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="pcg-product-image">
+                        {% if product.featured_image %}
+                          <img src="{{ product.featured_image | img_url: '200x200' }}" 
+                               alt="{{ product.title }}" 
+                               loading="lazy">
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- Buy Now Section with Quantity -->
+      <div class="pcg-buy-now-container" id="pcgBuyNowContainer" style="{% unless section.settings.default_product != blank %}display: none;{% endunless %}">
+        <div class="pcg-quantity-section">
+          <label for="pcgQuantity" class="pcg-quantity-label">Quantity:</label>
+          <div class="pcg-quantity-controls">
+            <button type="button" class="pcg-quantity-btn pcg-quantity-minus" onclick="pcgChangeQuantity(-1)">-</button>
+            <input type="number" id="pcgQuantity" class="pcg-quantity-input" value="1" min="1">
+            <button type="button" class="pcg-quantity-btn pcg-quantity-plus" onclick="pcgChangeQuantity(1)">+</button>
+          </div>
+        </div>
+        <div class="pcg-buttons-container">
+  
+  <button class="pcg-buy-now-button" id="pcgBuyNowButton">Buy Now</button>
+          <button class="pcg-add-to-cart-button" id="pcgAddToCartButton">Add to Cart</button>
+</div>
+
+        <div class="pcg-pricing-table-container" id="pcgPricingTableContainer">
+          <!-- Table will be populated here via JavaScript -->
+        </div>
+
+        <div class="pcg-collection-image-container" id="pcgCollectionImageContainer">
+          {% if section.settings.default_product != blank %}
+            {% assign default_collection = all_products[section.settings.default_product].collections.first %}
+            {% for block in section.blocks %}
+              {% if block.settings.collection == default_collection.handle and block.settings.collection_image != blank %}
+                <img src="{{ block.settings.collection_image | img_url: '800x' }}" 
+                     alt="{{ default_collection.title }}" 
+                     class="pcg-collection-image"
+                     loading="lazy">
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact Modal for Sold Out Products -->
+<div id="pcgContactModal" class="pcg-modal">
+  <div class="pcg-modal-content">
+    <div class="pcg-modal-header">
+      <h3>Product Currently Unavailable</h3>
+      <span class="pcg-close">&times;</span>
+    </div>
+    <div class="pcg-modal-body">
+      <p>This product is currently unavailable. If you are interested in purchasing it, please contact us.</p>
+      <div class="pcg-modal-buttons">
+        <a href="{{ section.settings.contact_form_url | default: '/pages/contact' }}" class="pcg-contact-btn">Contact Now</a>
+        <button class="pcg-close-btn" onclick="pcgCloseModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+
+
+
+
+
+
+
+
+
+
+  
+.pcg-wrapper * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pcg-wrapper {
+  padding: 20px 5px;
+  background: #f5f5f5;
+}
+
+.pcg-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.pcg-left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcg-thumbnail-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+  /* Gallery Container */
+.pcg-gallery-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.pcg-thumbnail {
+  width: 60px;
+  height: 60px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.pcg-thumbnail.pcg-active {
+  border-color: #004A26;
+  background: #e6f0ed;
+}
+
+.pcg-thumbnail:hover {
+  border-color: #004A26;
+  background: #e6f0ed;
+}
+
+.pcg-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pcg-main-image {
+  flex: 1;
+  display: flex;
+  align-items: flex-start; /* Changed from center to flex-start */
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 15px;
+  /*  min-height: 400px; */
+}
+
+.pcg-main-image img {
+  align-self: flex-start;
+  margin-top: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+  .pcg-main-image img.pcg-loading {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.pcg-right-section {
+  flex: 1;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcg-section-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pcg-collections-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.pcg-collection-tab {
+  padding: 12px 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.pcg-collection-tab.pcg-active {
+  border-color: #004A26;
+  background: #e6f0ed;
+  color: #004A26;
+}
+
+.pcg-collection-tab:hover {
+  border-color: #004A26; 
+  background: #e6f0ed;
+}
+
+.pcg-tab-dram {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pcg-tab-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.pcg-products-container {
+  position: relative;
+  flex-grow: 1;
+  overflow-x: hidden;
+  max-height: 400px;
+  padding-right: 10px;
+}
+
+.pcg-collection-products {
+  display: none;
+}
+
+.pcg-collection-products.pcg-active {
+  display: block;
+}
+
+.pcg-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+}
+
+.pcg-product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  /* Ensure z-index for proper layering */
+  z-index: 1;
+}
+
+.pcg-product-card:hover {
+  border-color: #004A26; 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 74, 38, 0.2); 
+  z-index: 10; /* Increase z-index on hover */
+}
+
+.pcg-product-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pcg-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pcg-buy-now-container {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: start;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.pcg-quantity-section {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.pcg-quantity-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-right: 5px;
+}
+
+.pcg-quantity-controls {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  background: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pcg-quantity-controls:focus-within {
+  border-color: #004A26; 
+  box-shadow: 0 0 0 3px rgba(0, 74, 38, 0.1); 
+}
+
+.pcg-quantity-btn {
+  background: transparent;
+  border: none;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.pcg-quantity-btn:hover {
+  background: #e6f0ed; 
+  color: #004A26;
+}
+
+.pcg-quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.pcg-quantity-input {
+  border: none;
+  outline: none;
+  width: 60px;
+  height: 35px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  background: transparent;
+}
+
+.pcg-quantity-input::-webkit-outer-spin-button,
+.pcg-quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pcg-quantity-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Replace existing .pcg-buy-now-button CSS and add these: */
+
+.pcg-buttons-container {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 15px;
+}
+
+.pcg-add-to-cart-button {
+  background-color: transparent;
+  color: #004A26;
+  border: 2px solid #004A26;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 74, 38, 0.1);
+}
+
+.pcg-add-to-cart-button:hover {
+  background-color: #004A26;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 74, 38, 0.2);
+}
+
+.pcg-buy-now-button {
+  background-color: #004A26;
+  color: white;
+  border: 2px solid #004A26;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 74, 38, 0.2);
+}
+
+.pcg-buy-now-button:hover {
+  background-color: #00381D;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 74, 38, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .pcg-gallery-container {
+  display: block;
+}
+  .pcg-buttons-container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .pcg-add-to-cart-button,
+  .pcg-buy-now-button {
+    width: 100%;
+    margin-bottom: 8px;
+    max-width: 250px;
+  }
+}
+.pcg-collection-image{
+  margin-top: 20px;
+}
+/* New Sold Out Styles with Blur Effect */
+.pcg-product-card.sold-out {
+  cursor: pointer;
+  position: relative;
+}
+
+.pcg-product-card.sold-out .pcg-product-image {
+  filter: blur(3px);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.pcg-product-card.sold-out:hover .pcg-product-image {
+  filter: blur(2px);
+  opacity: 0.8;
+}
+
+.pcg-product-card.sold-out:hover {
+  border-color: #ff6b6b;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(255, 107, 107, 0.2);
+}
+
+/* Modal Styles */
+.pcg-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.pcg-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 0;
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: pcgModalSlideIn 0.3s ease-out;
+}
+
+@keyframes pcgModalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pcg-modal-header {
+  background: #004A26;
+  color: white;
+  padding: 20px 25px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pcg-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff
+}
+
+.pcg-close {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.pcg-close:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.pcg-modal-body {
+  padding: 25px;
+  text-align: center;
+}
+
+.pcg-modal-body p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.pcg-modal-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pcg-contact-btn {
+  background: linear-gradient(135deg, #004A26, #00381D); 
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 74, 38, 0.2);
+}
+
+.pcg-contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 74, 38, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+.pcg-close-btn {
+  background: #e0e0e0;
+  color: #666;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pcg-close-btn:hover {
+  background: #d0d0d0;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .pcg-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .pcg-left-section {
+    flex-direction: column;
+  }
+
+  .pcg-thumbnail-column {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pcg-products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+  }
+
+  .pcg-collections-tabs {
+    justify-content: center;
+  }
+  
+  .pcg-right-section {
+    padding-left: 0;
+  }
+
+  .pcg-modal-content {
+    margin: 20% auto;
+    width: 95%;
+  }
+
+  .pcg-modal-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pcg-quantity-section {
+    flex-direction: column;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .pcg-buy-now-button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .pcg-contact-btn,
+  .pcg-close-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+
+  .pcg-pricing-table-container {
+  margin-top: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.pcg-pricing-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 12px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.pcg-pricing-table-container th,
+.pcg-pricing-table-container td {
+  font-size: 11px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.pcg-pricing-table-container th {
+  background: #004A26;
+  color: white;
+  font-weight: 600;
+}
+
+.pcg-pricing-table-container .email,
+.pcg-pricing-table-container .mob {
+  color: #E0131A;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pcg-pricing-table-container .email:hover,
+.pcg-pricing-table-container .mob:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .pcg-pricing-table-container th,
+  .pcg-pricing-table-container td {
+    font-size: 10px;
+    padding: 6px;
+  }
+  
+  .pcg-pricing-table-container .email,
+  .pcg-pricing-table-container .mob {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+  /* Professional Tooltip Styles */
+.pcg-product-tooltip {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: 0;
+  border-radius: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  min-width: 100px;
+  max-width: 250px;
+}
+
+.pcg-tooltip-content {
+  padding: 12px 16px;
+  position: relative;
+}
+
+.pcg-product-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #2c3e50;
+  z-index: 1;
+}
+
+.pcg-product-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #34495e;
+  z-index: 2;
+  margin-top: -1px;
+}
+
+.pcg-product-card:hover .pcg-product-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-100%) translateY(-8px);
+}
+
+.pcg-tooltip-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #ffffff;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.pcg-tooltip-price {
+  font-size: 13px;
+  color: #4CAF50;
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pcg-tooltip-price::before {
+  content: '💰';
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.pcg-tooltip-status {
+  font-size: 11px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-available {
+  color: #4CAF50;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-available::before {
+  content: '✓';
+  font-size: 12px;
+  background: #4CAF50;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.status-unavailable {
+  color: #f44336;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-unavailable::before {
+  content: '✕';
+  font-size: 12px;
+  background: #f44336;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .pcg-product-tooltip {
+    font-size: 12px;
+    min-width: 50px;
+    top: 80px;
+    max-width: 200px;
+  }
+  
+  .pcg-tooltip-content {
+    padding: 10px 12px;
+  }
+  
+  .pcg-tooltip-title {
+    font-size: 13px;
+    max-width: 160px;
+  }
+  
+  .pcg-tooltip-price {
+    font-size: 12px;
+  }
+  
+  .pcg-tooltip-status {
+    font-size: 10px;
+  }
+  
+ /* .pcg-products-container {
+    padding-top: 60px;
+    margin-top: -60px;
+  } */
+  
+/*  .pcg-products-grid {
+    padding-top: 30px;
+  } */
+}
+  /* Additional improvements for better UX */
+.pcg-product-card:hover .pcg-product-image {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.pcg-product-image {
+  transition: transform 0.3s ease;
+}
+
+/* Smooth animation for tooltip appearance */
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100%) translateY(10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-100%) translateY(-8px) scale(1);
+  }
+}
+
+.pcg-product-card:hover .pcg-product-tooltip {
+  animation: tooltipFadeIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+
+
+
+
+
+
+/* Segments Container - Now separate and scrollable */
+.pcg-segments-container {
+  flex-shrink: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+  .pcg-product-segments {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+}
+
+.pcg-segments-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.pcg-segments-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pcg-segment-tab {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+  text-align: center;
+}
+
+.pcg-segment-tab:hover {
+  border-color: #004A26;
+  background: #e6f0ed;
+}
+
+.pcg-segment-tab.active {
+  border-color: #004A26;
+  background: #004A26;
+  color: white;
+}
+
+.pcg-segment-title {
+  font-weight: 600;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.pcg-segment-price {
+  font-size: 10px;
+  color: #666;
+}
+
+.pcg-segment-tab.active .pcg-segment-price {
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .pcg-product-segments {
+    margin-top: 15px;
+    padding: 12px;
+  }
+  
+  .pcg-segments-tabs {
+    gap: 6px;
+  }
+  
+  .pcg-segment-tab {
+    padding: 8px 10px;
+  }
+}
+
+
+
+
+
+  /* Selected product card highlighting */
+.pcg-product-card.pcg-selected {
+  border-color: #004A26;
+  background: #e6f0ed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 74, 38, 0.3);
+  z-index: 10;
+}
+
+.pcg-product-card.pcg-selected .pcg-product-image {
+  transform: scale(1.05);
+}
+
+/* Selected segment tab highlighting */
+.pcg-segment-tab.active {
+  border-color: #004A26;
+  background: #004A26;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 74, 38, 0.3);
+}
+
+.pcg-segment-tab.active .pcg-segment-price {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Smooth transitions */
+.pcg-product-card,
+.pcg-segment-tab {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pcg-product-card .pcg-product-image {
+  transition: transform 0.3s ease;
+}
+
+/* Mobile Variants Toggle Styles */
+.pcg-mobile-variants-toggle {
+  display: none; /* Hidden by default */
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.pcg-hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 20px;
+}
+
+.pcg-hamburger-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #333;
+  transition: all 0.3s ease;
+}
+
+.pcg-toggle-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .pcg-mobile-variants-toggle {
+    display: flex;
+  }
+  
+  .pcg-segments-container {
+    display: none; /* Hidden by default on mobile */
+    margin-top: 0;
+    width: 100%;
+  }
+  
+  .pcg-segments-container.pcg-mobile-visible {
+    display: block;
+    animation: pcgFadeIn 0.3s ease;
+  }
+  
+  .pcg-product-segments {
+    margin-top: 0;
+    border-radius: 0 0 12px 12px;
+    border-top: none;
+  }
+}
+
+/* Active state for hamburger icon */
+.pcg-hamburger-icon.pcg-active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.pcg-hamburger-icon.pcg-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.pcg-hamburger-icon.pcg-active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.pcg-mobile-variants-toggle.pcg-active {
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+  background: #e6f0ed;
+  border-color: #004A26;
+}
+
+@keyframes pcgFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize with default product if set
+  {% if section.settings.default_product != blank %}
+    {% assign default_product = all_products[section.settings.default_product] %}
+    const defaultProductData = {
+      title: "{{ default_product.title | escape }}",
+      featured_image: "{{ default_product.featured_image | img_url: '600x600' }}",
+      images: [
+        {% for image in default_product.images %}
+          "{{ image | img_url: '600x600' }}"{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ],
+      price: {{ default_product.price }},
+      compare_at_price: {{ default_product.compare_at_price | default: default_product.price }},
+      variants: [
+        {
+          id: {{ default_product.variants.first.id }}  // FIXED: Removed quotes around variant ID
+        }
+      ],
+      available: {{ default_product.available }}
+    };
+    
+    // If no default product image exists, clear the container
+    if (!defaultProductData.featured_image.includes('no-image')) {
+      pcgUpdateGallery(defaultProductData);
+    } else {
+      document.getElementById('pcgMainImageContainer').innerHTML = '';
+    }
+    
+    // FIXED: Set up both buttons for default product
+    const buyNowButton = document.getElementById('pcgBuyNowButton');
+    const addToCartButton = document.getElementById('pcgAddToCartButton');
+    
+    if (buyNowButton) {
+      buyNowButton.onclick = function() {
+        const quantity = document.getElementById('pcgQuantity').value || 1;
+        window.location.href = `/cart/add?id=${defaultProductData.variants[0].id}&quantity=${quantity}`;
+      };
+    }
+    
+    // FIXED: Add to cart functionality for default product
+    if (addToCartButton) {
+      addToCartButton.onclick = function() {
+        const quantity = document.getElementById('pcgQuantity').value || 1;
+        
+        // Disable button during processing
+        addToCartButton.disabled = true;
+        addToCartButton.textContent = 'Adding...';
+        
+        // Add to cart via fetch
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: defaultProductData.variants[0].id,  // FIXED: Using numeric ID
+            quantity: parseInt(quantity)
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Update cart count and drawer
+          updateCartAfterAdd();
+          
+          // Show success message
+          addToCartButton.textContent = 'Added!';
+          addToCartButton.style.backgroundColor = '#4CAF50';
+          addToCartButton.style.borderColor = '#4CAF50';
+          
+          setTimeout(() => {
+            addToCartButton.textContent = 'Add to Cart';
+            addToCartButton.style.backgroundColor = '';
+            addToCartButton.style.borderColor = '';
+            addToCartButton.disabled = false;
+          }, 2000);
+        })
+        .catch(error => {
+          console.error('Error adding to cart:', error);
+          addToCartButton.textContent = 'Error';
+          addToCartButton.style.backgroundColor = '#f44336';
+          addToCartButton.style.borderColor = '#f44336';
+          
+          setTimeout(() => {
+            addToCartButton.textContent = 'Add to Cart';
+            addToCartButton.style.backgroundColor = '';
+            addToCartButton.style.borderColor = '';
+            addToCartButton.disabled = false;
+          }, 2000);
+        });
+      };
+    }
+    
+    updatePricingTable('{{ all_products[section.settings.default_product].handle }}');
+
+    const firstTab = document.querySelector('.pcg-collection-tab');
+    if (firstTab) {
+      updateProductSegments(firstTab.dataset.collection);
+    }
+  {% endif %}
+
+  // Handle collection tabs
+  const pcgCollectionTabs = document.querySelectorAll('.pcg-collection-tab');
+  const pcgCollectionProducts = document.querySelectorAll('.pcg-collection-products');
+  
+  // Find this part in your existing code:
+pcgCollectionTabs.forEach(tab => {
+  tab.addEventListener('click', function() {
+    const collectionHandle = this.dataset.collection;
+    const collectionId = this.dataset.collectionId;
+    
+    // Update active tab
+    pcgCollectionTabs.forEach(t => t.classList.remove('pcg-active'));
+    this.classList.add('pcg-active');
+    
+    // Show corresponding products
+    pcgCollectionProducts.forEach(cp => {
+      cp.classList.remove('pcg-active');
+      if (cp.dataset.collection === collectionHandle) {
+        cp.classList.add('pcg-active');
+      }
+    });
+    
+    // Update collection image
+    updateCollectionImage(collectionId);
+    
+    // ADD THIS LINE:
+    updateProductSegments(collectionHandle);
+  });
+});
+
+  // Add this function to handle product card highlighting
+function highlightProductCard(productHandle) {
+  // Remove existing highlights
+  document.querySelectorAll('.pcg-product-card').forEach(card => {
+    card.classList.remove('pcg-selected');
+  });
+  
+  // Highlight the selected product card
+  const selectedCard = document.querySelector(`.pcg-product-card[data-product-handle="${productHandle}"]`);
+  if (selectedCard) {
+    selectedCard.classList.add('pcg-selected');
+  }
+}
+  // Add this function to handle segment highlighting
+function highlightSegmentTab(productHandle) {
+  // Remove existing highlights
+  document.querySelectorAll('.pcg-segment-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  
+  // Highlight the selected segment tab
+  const selectedTab = document.querySelector(`.pcg-segment-tab[data-product-handle="${productHandle}"]`);
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
+}
+
+const toggleButton = document.querySelector('.pcg-mobile-variants-toggle');
+  const segmentsContainer = document.querySelector('.pcg-segments-container');
+  
+  if (toggleButton && segmentsContainer) {
+    toggleButton.addEventListener('click', function() {
+      segmentsContainer.classList.toggle('pcg-mobile-visible');
+      this.classList.toggle('pcg-active');
+      
+      // Animate hamburger icon
+      const hamburger = this.querySelector('.pcg-hamburger-icon');
+      if (hamburger) {
+        hamburger.classList.toggle('pcg-active');
+      }
+    });
+  }
+
+  // Add this function after the existing functions
+function updateProductSegments(collectionHandle) {
+  const segmentsContainer = document.getElementById('pcgProductSegments');
+  const segmentsTabs = document.getElementById('pcgSegmentsTabs');
+  
+  if (!segmentsContainer || !segmentsTabs) return;
+  
+  // Clear existing segments
+  segmentsTabs.innerHTML = '';
+  
+  // Get products from the active collection
+  const activeCollection = document.querySelector(`.pcg-collection-products[data-collection="${collectionHandle}"]`);
+  if (!activeCollection) {
+    segmentsContainer.style.display = 'none';
+    return;
+  }
+  
+  const productCards = activeCollection.querySelectorAll('.pcg-product-card');
+  
+  if (productCards.length === 0) {
+    segmentsContainer.style.display = 'none';
+    return;
+  }
+  
+  // Create segment tabs for each product
+  productCards.forEach((card, index) => {
+    const productHandle = card.dataset.productHandle;
+    const isAvailable = card.dataset.productAvailable === 'true';
+    
+    // Fetch product data to get title and price
+    fetch(`/products/${productHandle}.js`)
+      .then(response => response.json())
+      .then(product => {
+        const segmentTab = document.createElement('div');
+        segmentTab.className = 'pcg-segment-tab';
+        segmentTab.dataset.productHandle = productHandle;
+        
+        segmentTab.innerHTML = `
+          <div class="pcg-segment-title">${product.title.substring(0, 50)}${product.title.length > 50 ? '...' : ''}</div>
+          <div class="pcg-segment-price">${(product.price / 100).toFixed(2)} USD</div>
+        `;
+        
+        if (!isAvailable) {
+          segmentTab.style.opacity = '0.6';
+          segmentTab.style.cursor = 'not-allowed';
+        }
+        
+        // Add click event
+        segmentTab.addEventListener('click', function() {
+  if (!isAvailable) {
+    pcgShowContactModal();
+    return;
+  }
+  
+  const productHandle = this.dataset.productHandle;
+  
+  // Highlight this segment and corresponding product card
+  highlightSegmentTab(productHandle);
+  highlightProductCard(productHandle);
+  
+  // Update with smooth transitions
+  setTimeout(() => {
+    pcgUpdateGallery(product);
+  }, 100);
+  
+  setTimeout(() => {
+    updateSelectedProductTitle(product.title);
+  }, 150);
+  
+  setTimeout(() => {
+    updatePricingTable(product.handle);
+    showBuyNowButton(product);
+  }, 200);
+});
+        
+        segmentsTabs.appendChild(segmentTab);
+      })
+      .catch(error => {
+        console.error('Error fetching product for segment:', error);
+      });
+  });
+  
+  // Show the segments container
+  segmentsContainer.style.display = 'block';
+}
+
+  // Add this new function to handle collection image updates
+function updateCollectionImage(collectionId) {
+  const imageContainer = document.getElementById('pcgCollectionImageContainer');
+  if (!imageContainer) return;
+  
+  // Find the block that matches this collection
+  {% for block in section.blocks %}
+    {% if block.type == 'collection' and block.settings.collection_image != blank %}
+      if ({{ collections[block.settings.collection].id }} == collectionId) {
+        imageContainer.innerHTML = `
+          <img src="{{ block.settings.collection_image | img_url: '800x' }}" 
+               alt="{{ collections[block.settings.collection].title }}" 
+               class="pcg-collection-image"
+               loading="lazy">
+        `;
+        return;
+      }
+    {% endif %}
+  {% endfor %}
+  
+  // If no image found for this collection, clear the container
+  imageContainer.innerHTML = '';
+}
+  
+  // Add sold out class to product cards
+  document.querySelectorAll('.pcg-product-card').forEach(card => {
+    const isAvailable = card.dataset.productAvailable === 'true';
+    
+    if (!isAvailable) {
+      card.classList.add('sold-out');
+    }
+  });
+  
+// Handle product card clicks - existing function में ye add karo
+document.querySelectorAll('.pcg-product-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const productHandle = this.dataset.productHandle;
+    const isAvailable = this.dataset.productAvailable === 'true';
+    
+    // If product is sold out, show modal
+    if (!isAvailable) {
+      pcgShowContactModal();
+      return;
+    }
+    
+    // Highlight this product card and corresponding segment
+    highlightProductCard(productHandle);
+    highlightSegmentTab(productHandle);
+    
+    // Fetch product data and update gallery for available products
+    fetch(`/products/${productHandle}.js`)
+      .then(response => response.json())
+      .then(product => {
+        pcgUpdateGallery(product);
+        updateSelectedProductTitle(product.title);
+        updatePricingTable(product.handle);
+        showBuyNowButton(product);
+      })
+      .catch(error => {
+        console.error('Error fetching product:', error);
+      });
+  });
+});
+
+  // Ye new function add karo
+function updatePricingTable(productHandle) {
+  const tableContainer = document.getElementById('pcgPricingTableContainer');
+  if (!tableContainer) return;
+  
+  // Find the product data from the page
+  {% for block in section.blocks %}
+    {% if block.type == 'collection' %}
+      {% assign collection = collections[block.settings.collection] %}
+      {% if collection != blank %}
+        {% for product in collection.products %}
+          if ('{{ product.handle }}' === productHandle) {
+            {% assign qty_list = product.metafields.custom.quantity_table %}
+            {% assign unit_list = product.metafields.custom.unit_table %}
+            {% assign price_list = product.metafields.custom.price_table %}
+            
+            {% if qty_list and unit_list and price_list %}
+              tableContainer.innerHTML = `
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="2">Quantity</th>
+                      <th>Price Per Case</th>
+                      <th>Price Per Piece</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% assign qty_array = qty_list | split: ',' %}
+                    {% assign unit_array = unit_list | split: ',' %}
+                    {% assign price_array = price_list | split: ',' %}
+                    
+                    {% for i in (0..qty_array.size) %}
+                      {% if i < qty_array.size %}
+                        <tr>
+                          <td colspan="2">{{ qty_array[i] }}</td>
+                          <td>{{ price_array[i] }}</td>
+                          <td>{{ unit_array[i] }}</td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                    <tr>
+                      <td colspan="4" style="font-weight:bold;">
+                        For Higher Quantity Pricing, Please 
+                        <a class="email" href="mailto:hello@packthc.com">Email Us</a> or Call 
+                        <a href="tel:+18167225842" class="mob">+1(816)PACKTHC</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              `;
+            {% else %}
+              tableContainer.innerHTML = '<p style="text-align: center; color: #666;">Pricing table not available for this product.</p>';
+            {% endif %}
+            return;
+          }
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+}
+  
+  // Function to update the gallery with product images
+  function pcgUpdateGallery(product) {
+  // Add loading state
+  const mainImage = document.getElementById('pcgMainProductImage');
+  if (mainImage) {
+    mainImage.classList.add('pcg-loading');
+  }
+  
+  // Update thumbnails with delay for smooth transition
+  const thumbnailColumn = document.getElementById('pcgThumbnailColumn');
+  if (thumbnailColumn) {
+    thumbnailColumn.style.opacity = '0.5';
+    
+    setTimeout(() => {
+      thumbnailColumn.innerHTML = '';
+      
+      if (product.images && product.images.length > 0) {
+        product.images.slice(0, 4).forEach((image, index) => {
+          const thumbnail = document.createElement('div');
+          thumbnail.className = `pcg-thumbnail ${index === 0 ? 'pcg-active' : ''}`;
+          thumbnail.dataset.image = image;
+          
+          const img = document.createElement('img');
+          img.src = image.replace('.jpg', '_60x60.jpg').replace('.png', '_60x60.png');
+          img.alt = product.title;
+          img.loading = 'lazy';
+          
+          thumbnail.appendChild(img);
+          thumbnailColumn.appendChild(thumbnail);
+          
+          // Add click event
+          thumbnail.addEventListener('click', function() {
+            document.querySelectorAll('.pcg-thumbnail').forEach(t => t.classList.remove('pcg-active'));
+            this.classList.add('pcg-active');
+            
+            const mainImg = document.getElementById('pcgMainProductImage');
+            if (mainImg) {
+              mainImg.classList.add('pcg-loading');
+              setTimeout(() => {
+                mainImg.src = this.dataset.image;
+                mainImg.classList.remove('pcg-loading');
+              }, 150);
+            }
+          });
+        });
+      }
+      
+      thumbnailColumn.style.opacity = '1';
+    }, 200);
+  }
+  
+  // Update main image smoothly
+  const mainImageContainer = document.getElementById('pcgMainImageContainer');
+  if (mainImageContainer && product.featured_image) {
+    setTimeout(() => {
+      if (mainImage) {
+        mainImage.src = product.featured_image;
+        mainImage.classList.remove('pcg-loading');
+      } else {
+        const newMainImage = document.createElement('img');
+        newMainImage.src = product.featured_image;
+        newMainImage.alt = product.title;
+        newMainImage.id = 'pcgMainProductImage';
+        mainImageContainer.innerHTML = '';
+        mainImageContainer.appendChild(newMainImage);
+      }
+    }, 300);
+  }
+}
+  
+  // Function to update the selected product title
+ function updateSelectedProductTitle(title) {
+  const titleElement = document.getElementById('pcgSelectedProductTitle');
+  if (titleElement) {
+    titleElement.classList.add('pcg-updating');
+    
+    setTimeout(() => {
+      titleElement.textContent = title;
+      titleElement.classList.remove('pcg-updating');
+    }, 150);
+  }
+}
+
+  // Function to update cart after adding item
+function updateCartAfterAdd() {
+  // Update cart count in header
+  updateCartCount();
+  
+  // Add click event to cart icons to refresh page smoothly
+  addCartRefreshListeners();
+  
+  // Add smooth success indication
+  showCartUpdateSuccess();
+}
+
+  // Show smooth success indication
+function showCartUpdateSuccess() {
+  // Create or update success indicator
+  let successIndicator = document.getElementById('pcg-cart-success');
+  if (!successIndicator) {
+    successIndicator = document.createElement('div');
+    successIndicator.id = 'pcg-cart-success';
+    successIndicator.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 10000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    `;
+    successIndicator.textContent = '✓ Added to cart';
+    document.body.appendChild(successIndicator);
+  }
+  
+  // Show with smooth animation
+  setTimeout(() => {
+    successIndicator.style.opacity = '1';
+    successIndicator.style.transform = 'translateY(0)';
+  }, 100);
+  
+  // Hide after 2 seconds
+  setTimeout(() => {
+    successIndicator.style.opacity = '0';
+    successIndicator.style.transform = 'translateY(-20px)';
+  }, 2000);
+}
+
+// Simple cart count update function with cache busting
+function updateCartCount() {
+  // Add timestamp to prevent cache issues
+  fetch('/cart.js?t=' + Date.now())
+    .then(response => response.json())
+    .then(cart => {
+      // Update cart count badge - adjust selectors based on your theme
+      const cartCountElements = document.querySelectorAll([
+        '.cart-count',
+        '.cart-count-bubble',
+        '.cart-item-count',
+        '.header-cart-count',
+        '[data-cart-count]',
+        '.cart-icon .count',
+        '.cart-link .count'
+      ].join(','));
+      
+      cartCountElements.forEach(element => {
+        if (element) {
+          element.textContent = cart.item_count;
+          element.style.display = cart.item_count > 0 ? 'inline-flex' : 'none';
+          
+          // Add center alignment CSS for cart count
+          element.style.alignItems = 'center';
+          element.style.justifyContent = 'center';
+          element.style.textAlign = 'center';
+          element.style.lineHeight = '1';
+          element.style.height = '18px';
+          element.style.borderRadius = '30px';
+          element.style.fontSize = '16px';
+          element.style.fontWeight = 'bold';
+        }
+      });
+      
+      // Also update any cart total displays
+      const cartTotalElements = document.querySelectorAll([
+        '.cart-total',
+        '.cart-subtotal',
+        '[data-cart-total]'
+      ].join(','));
+      
+      cartTotalElements.forEach(element => {
+        if (element && window.Shopify && window.Shopify.formatMoney) {
+          element.textContent = window.Shopify.formatMoney(cart.total_price);
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error updating cart count:', error);
+    });
+}
+
+
+  // Add refresh listeners to cart links
+// Add refresh listeners to cart links with better smoothness
+function addCartRefreshListeners() {
+  const cartLinks = document.querySelectorAll([
+    '.cart-link',
+    '.header-cart',
+    '.cart-icon',
+    '.cart-drawer-toggle',
+    '.cart-button',
+    '[href="/cart"]',
+    '[data-cart-drawer]',
+    'a[href*="cart"]',
+    '.cart-count-bubble'
+  ].join(','));
+  
+  cartLinks.forEach(link => {
+    // Remove existing listeners to prevent duplicates
+    link.removeEventListener('click', cartRefreshHandler);
+    
+    // Add smooth hover effect
+    link.style.transition = 'all 0.3s ease';
+    
+    // Add new listener with smooth transition
+    link.addEventListener('click', cartRefreshHandler);
+    
+    // Add hover effect for better UX
+    link.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+    });
+  });
+}
+
+// Cart refresh handler with smooth transition
+function cartRefreshHandler(event) {
+  event.preventDefault();
+  
+  // Add smooth fade out effect
+  document.body.style.transition = 'opacity 0.3s ease';
+  document.body.style.opacity = '0.8';
+  
+  // Show subtle loading indication
+  const link = event.currentTarget;
+  if (link.textContent && link.textContent.trim() !== '') {
+    link.style.opacity = '0.7';
+  }
+  
+  // Use window.location.href instead of redirect to prevent cache issues
+  setTimeout(() => {
+    // This ensures fresh cart data when user comes back
+    window.location.href = '/cart?timestamp=' + Date.now();
+  }, 250);
+}
+
+// Initialize cart refresh listeners on page load
+document.addEventListener('DOMContentLoaded', function() {
+  addCartRefreshListeners();
+  
+  // Force cart count update when page loads (for back button scenarios)
+  updateCartCount();
+});
+
+  // Also update cart count when user comes back to page
+window.addEventListener('pageshow', function(event) {
+  // This fires when user uses back button
+  if (event.persisted) {
+    // Force fresh cart count update
+    setTimeout(() => {
+      updateCartCount();
+    }, 100);
+  }
+});
+
+// Update cart count when page becomes visible again
+document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) {
+    setTimeout(() => {
+      updateCartCount();
+    }, 100);
+  }
+});
+
+  
+  
+  // Function to show the Buy Now button and set up its functionality
+  function showBuyNowButton(product) {
+  const buyNowContainer = document.getElementById('pcgBuyNowContainer');
+  const buyNowButton = document.getElementById('pcgBuyNowButton');
+  const addToCartButton = document.getElementById('pcgAddToCartButton');
+  
+  if (buyNowContainer && buyNowButton && addToCartButton) {
+    buyNowContainer.style.display = 'block';
+    
+    // Set up Add to Cart functionality
+    addToCartButton.onclick = function() {
+      const quantity = document.getElementById('pcgQuantity').value || 1;
+      
+      // Disable button during processing
+      addToCartButton.disabled = true;
+      addToCartButton.textContent = 'Adding...';
+      
+      // Add to cart via fetch
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: product.variants[0].id,
+          quantity: parseInt(quantity)
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Update cart count and drawer
+        updateCartAfterAdd();
+        
+        // Show success message
+        addToCartButton.textContent = 'Added!';
+        addToCartButton.style.backgroundColor = '#4CAF50';
+        addToCartButton.style.borderColor = '#4CAF50';
+        
+        setTimeout(() => {
+          addToCartButton.textContent = 'Add to Cart';
+          addToCartButton.style.backgroundColor = '';
+          addToCartButton.style.borderColor = '';
+          addToCartButton.disabled = false;
+        }, 2000);
+      })
+      .catch(error => {
+        console.error('Error adding to cart:', error);
+        addToCartButton.textContent = 'Error';
+        addToCartButton.style.backgroundColor = '#f44336';
+        addToCartButton.style.borderColor = '#f44336';
+        
+        setTimeout(() => {
+          addToCartButton.textContent = 'Add to Cart';
+          addToCartButton.style.backgroundColor = '';
+          addToCartButton.style.borderColor = '';
+          addToCartButton.disabled = false;
+        }, 2000);
+      });
+    };
+    
+    // Set up Buy Now functionality (existing)
+    buyNowButton.onclick = function() {
+      const quantity = document.getElementById('pcgQuantity').value || 1;
+      window.location.href = `/cart/add?id=${product.variants[0].id}&quantity=${quantity}`;
+    };
+
+    
+  }
+    
+}
+});
+
+// Modal functions
+function pcgShowContactModal() {
+  document.getElementById('pcgContactModal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function pcgCloseModal() {
+  document.getElementById('pcgContactModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('pcgContactModal');
+  if (event.target === modal) {
+    pcgCloseModal();
+  }
+}
+
+// Close modal with escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    pcgCloseModal();
+  }
+});
+
+// Close modal when clicking the X button
+document.querySelector('.pcg-close').onclick = function() {
+  pcgCloseModal();
+}
+
+// Quantity control functions
+function pcgChangeQuantity(change) {
+  const quantityInput = document.getElementById('pcgQuantity');
+  const currentValue = parseInt(quantityInput.value) || 1;
+  const newValue = Math.max(1, currentValue + change);
+  quantityInput.value = newValue;
+}
+
+// Handle quantity input changes
+document.addEventListener('DOMContentLoaded', function() {
+  const quantityInput = document.getElementById('pcgQuantity');
+  if (quantityInput) {
+    quantityInput.addEventListener('input', function() {
+      let value = parseInt(this.value);
+      if (isNaN(value) || value < 1) {
+        this.value = 1;
+      }
+      // No upper limit check
+    });
+
+    quantityInput.addEventListener('blur', function() {
+      if (this.value === '' || parseInt(this.value) < 1) {
+        this.value = 1;
+      }
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "land 1",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "Product Collections"
+    },
+    {
+      "type": "product",
+      "id": "default_product",
+      "label": "Default Product",
+      "info": "Select a product to display initially"
+    },
+    {
+      "type": "text",
+      "id": "contact_form_url",
+      "label": "Contact Form URL",
+      "info": "Enter the URL of your contact form page",
+      "default": "/pages/contact"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "tab_dram",
+          "label": "Tab Dram (e.g. 13 dram)",
+          "default": "13 dram"
+        },
+        {
+          "type": "text",
+          "id": "tab_count",
+          "label": "Tab Count (e.g. 315 count)",
+          "default": "315 count"
+        },
+        {
+          "type": "range",
+          "id": "products_limit",
+          "label": "Products Limit",
+          "min": 4,
+          "max": 80,
+          "step": 1,
+          "default": 8
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "Collection Image",
+          "info": "Image to display below Buy Now button for this collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "land 1",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

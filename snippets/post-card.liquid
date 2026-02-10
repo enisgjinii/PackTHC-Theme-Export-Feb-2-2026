@@ -1,0 +1,132 @@
+{%- liquid
+	assign animation = settings.section_animation
+-%}
+
+<article class="article-card{% if animation %} scroll-trigger{% endif %}">
+	<div class="{% if in_search_results %}{{ settings.card_image_ratio }}{% else %}{{ section.settings.image_ratio }}{% endif %}-media{% unless article.image %} no-media{% endunless %}">
+		{%- if article.image -%}
+			<a href="{{ article.url }}" class="card-image{% if settings.image_lazy and article.image %} lazy-image{% endif %}">
+				{%- liquid
+					assign image_load = 'eager'
+
+					if forloop.index > 1
+						assign image_load = 'lazy'
+					endif
+
+					if section.settings.image_ratio == 'adapt'
+						assign show_aspect_ratio = true
+					endif
+
+					if article.image
+						render 'lazy-image', image: article.image, width: 740, lazy: image_load, show_aspect_ratio: show_aspect_ratio
+					endif
+				-%}
+
+				{% if in_search_results %}
+					<span class="badge">{{- 'blogs.article.blog' | t -}}</span>
+				{% endif %}
+			</a>
+		{%- else -%}
+			<h2 class="article-title h5">
+				<a href="{{ article.url }}" class="article-link">
+					{{- article.title | escape -}}
+				</a>
+			</h2>
+		{%- endif -%}
+	</div>
+
+	{%- if in_search_results -%}
+		{%- if article.image -%}
+			<h2 class="card-title h5{% if section.settings.heading_upper %} text-uppercase{% endif %}">
+				<a href="{{ article.url }}">
+					{% if highlight %}{{ article.title | highlight: highlight }}{% else %}{{- article.title | escape -}}{% endif %}
+				</a>
+			</h2>
+		{%- endif -%}
+
+		<div class="card-info{% if section.settings.post_meta_upper %} text-uppercase{% endif %}">
+			{% comment %} Blog {% endcomment %}
+			<span class="info-item">
+				<span class="info-by">{{ 'blogs.article.by' | t }} </span>{{- article.author -}}
+			</span>
+
+			{%- render 'icon', code: 'star-2' -%}
+
+			{% comment %} Date {% endcomment %}
+			<span class="info-item">
+				{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+			</span>
+
+			{%- render 'icon', code: 'star-2' -%}
+
+			{% comment %} Comment {% endcomment %}
+			{%- if blog.comments_enabled? -%}
+				<a class="info-item" href="{{ article.comment_post_url }}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+			{%- endif -%}
+		</div>
+	{%- else -%}
+		{% comment %} Title {% endcomment %}
+		{%- if section.settings.show_title -%}
+			<h2 class="article-title h5{% if section.settings.heading_upper %} text-uppercase{% endif %}">
+				<a href="{{ article.url }}">
+					{{- article.title | escape -}}
+				</a>
+			</h2>
+		{%- endif -%}
+
+		{%- if section.settings.show_blog or section.settings.show_date or section.settings.show_comment -%}
+        	<div class="card-info{% if section.settings.post_meta_upper %} text-uppercase{% endif %}">
+        		{% comment %} Author {% endcomment %}
+				{%- if section.settings.show_author -%}
+					<span class="info-item">
+						<span class="info-by">{{ 'blogs.article.by' | t }} </span>{{- article.author -}}
+					</span>
+
+					{%- render 'icon', code: 'spikes' -%}
+				{%- endif -%}
+
+				{% comment %} Date {% endcomment %}
+				{%- if section.settings.show_date -%}
+					<span class="info-item">
+						{{- article.published_at | time_tag: format: 'short_month_day_year' -}}
+					</span>
+
+					{%- render 'icon', code: 'spikes' -%}
+				{%- endif -%}
+
+				{% comment %} Blog {% endcomment %}
+				{%- if section.settings.show_blog -%}
+					<span class="info-item">
+						<a href="{{ blog.url }}">
+							{{- blog.title | escape -}}
+						</a>
+					</span>
+
+					{%- render 'icon', code: 'spikes' -%}
+				{%- endif -%}
+
+				{% comment %} Comment {% endcomment %}
+				{%- if section.settings.show_comment and blog.comments_enabled? -%}
+					<a class="info-item" href="{{ article.comment_post_url }}">{{ 'blogs.article.comments' | t: count: article.comments_count }}</a>
+				{%- endif -%}
+			</div>
+		{%- endif -%}
+
+		{% comment %} Description {% endcomment %}
+		{%- if section.settings.show_excerpt and article.excerpt.size > 0 or article.content.size > 0 -%}
+			<p class="card-excerpt">
+				{%- liquid
+					if article.excerpt.size > 0
+						echo article.excerpt | strip_html | truncatewords: 20
+					else
+						echo article.content | strip_html | truncatewords: 20
+					endif
+				-%}
+			</p>
+		{%- endif -%}
+
+		{%- if section.settings.read_more != blank -%}
+			<a class="link-underline read-more" href="{{ article.url }}">{{- section.settings.read_more -}}</a>
+		{%- endif -%}
+	{%- endif -%}
+</article>

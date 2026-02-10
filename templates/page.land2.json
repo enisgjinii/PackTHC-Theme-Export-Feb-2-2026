@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "land2_nNh9UK": {
+      "type": "land2",
+      "blocks": {
+        "collection_YKetiR": {
+          "type": "collection",
+          "settings": {
+            "collection": "mylar-bags",
+            "tab_dram": "MYLAR BAGS",
+            "tab_count": "315 count",
+            "products_limit": 80
+          }
+        }
+      },
+      "block_order": [
+        "collection_YKetiR"
+      ],
+      "name": "land 2",
+      "settings": {
+        "main_title": "Product Collections",
+        "default_product": "black-mylar-bags-1-oz",
+        "contact_form_url": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "land2_nNh9UK"
+  ]
+}

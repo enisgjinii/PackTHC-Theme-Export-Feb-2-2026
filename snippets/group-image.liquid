@@ -1,0 +1,18 @@
+{% comment %}
+	Renders group image
+
+	Usage:
+		{%- render 'group-image', product: product, label: color, section: section, role: role -%}
+{% endcomment %}
+
+{%- for media in product.media -%}
+	{%- liquid
+		assign alt = media.alt | split: '_' | first
+	-%}
+
+	{%- if alt != blank and alt == label -%}
+		{%- if role == 'main' -%}<div class="main-item" data-{{ media.media_type | escape }}>{%- endif -%}
+			{%- render 'product-media', media: media, position: forloop.index, loop: section.settings.video_looping, modal_id: section.id, role: role -%}
+		{%- if role == 'main' -%}</div>{%- endif -%}
+	{%- endif -%}
+{%- endfor -%}

@@ -9,598 +9,176 @@
  */
 {
   "sections": {
-    "breadcrumbs_DgnWDV": {
-      "type": "breadcrumbs",
+    "rich_text_Ra3deP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9adVjC": {
+          "type": "heading",
+          "settings": {
+            "content": "About Us",
+            "heading_size": "h2"
+          }
+        },
+        "text_Rz37Hc": {
+          "type": "text",
+          "settings": {
+            "content": "<p><a href=\"https://maps.app.goo.gl/RY4HjQeiCiDrDWQbA\" target=\"_blank\" title=\"https://maps.app.goo.gl/RY4HjQeiCiDrDWQbA\">TX Warehouse: 15031 Woodham Dr., Ste # 330, Houston, TX 77073, United States</a></p><p><a href=\"https://maps.app.goo.gl/VpbLZMQ3h6FuYQxC8\" target=\"_blank\" title=\"https://maps.app.goo.gl/VpbLZMQ3h6FuYQxC8\">NY Warehouse : 108A New South Rd, Hicksville, NY 11801, United States</a></p>"
+          }
+        },
+        "button_K4re4K": {
+          "type": "button",
+          "settings": {
+            "label": "Lean More",
+            "link": "shopify://pages/contact",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9adVjC",
+        "text_Rz37Hc",
+        "button_K4re4K"
+      ],
+      "disabled": true,
       "settings": {
-        "container": "fixed",
-        "text_alignment": "start",
-        "padding_top": 16,
-        "padding_bottom": 20
+        "full": false,
+        "color_scheme": "",
+        "align": "center",
+        "width": 100,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "custom_about_qJKyK3": {
+      "type": "custom-about",
+      "blocks": {
+        "feature_q8UKjc": {
+          "type": "feature",
+          "settings": {
+            "icon": "📦",
+            "title": "Comprehensive Range",
+            "description": "From 6 DRAM vials to 90 DRAM containers, glass jars to plastic solutions – we have everything you need for secure packaging."
+          }
+        },
+        "feature_XLdzhH": {
+          "type": "feature",
+          "settings": {
+            "icon": "⚡",
+            "title": "Fast Delivery",
+            "description": "Quick turnaround times and reliable shipping ensure your packaging supplies arrive exactly when you need them."
+          }
+        },
+        "feature_9MnJ69": {
+          "type": "feature",
+          "settings": {
+            "icon": "🎯",
+            "title": "Quality Assured",
+            "description": "Every product meets strict quality standards. We test durability, seal integrity, and material safety for your peace of mind."
+          }
+        },
+        "feature_afNAie": {
+          "type": "feature",
+          "settings": {
+            "icon": "💼",
+            "title": "Business Focus",
+            "description": "We understand business needs – competitive pricing, bulk discounts, and flexible ordering options for growing companies."
+          }
+        },
+        "stat_3yxXAf": {
+          "type": "stat",
+          "settings": {
+            "number": 500,
+            "label": "Happy Clients"
+          }
+        },
+        "stat_jUQayC": {
+          "type": "stat",
+          "settings": {
+            "number": 1200,
+            "label": "SKU"
+          }
+        },
+        "stat_QNf6Uz": {
+          "type": "stat",
+          "settings": {
+            "number": 3,
+            "label": "Years Experience"
+          }
+        },
+        "stat_hXewdi": {
+          "type": "stat",
+          "settings": {
+            "number": 99,
+            "label": "Quality Rating %"
+          }
+        },
+        "stat_YYUr3L": {
+          "type": "stat",
+          "settings": {
+            "number": 20,
+            "label": "Countries Served"
+          }
+        },
+        "stat_xfRLBf": {
+          "type": "stat",
+          "settings": {
+            "number": 1,
+            "label": "1M+ Units Delivered"
+          }
+        }
+      },
+      "block_order": [
+        "feature_q8UKjc",
+        "feature_XLdzhH",
+        "feature_9MnJ69",
+        "feature_afNAie",
+        "stat_3yxXAf",
+        "stat_jUQayC",
+        "stat_QNf6Uz",
+        "stat_hXewdi",
+        "stat_YYUr3L",
+        "stat_xfRLBf"
+      ],
+      "name": "About Page",
+      "settings": {
+        "hero_title": "Premium Packaging Solutions",
+        "hero_subtitle": "Your Trusted Partner for Quality Containers & Supplies",
+        "hero_tagline": "Delivering Excellence in Every Package",
+        "about_title": "About Our Company",
+        "about_subtitle": "",
+        "expertise_title": "Industry Expertise",
+        "expertise_description": "At PackTHC, we specialize in providing high-quality, compliant packaging solutions tailored for the wellness industry. Our product line includes pop-top vials, glass and plastic jars, concentrate containers, and protective gear.",
+        "expertise_additional": "We proudly serve businesses of all sizes—from emerging brands to large-scale enterprises—offering reliable, durable, and cost-effective packaging designed to meet both functional and regulatory needs.",
+        "commitment_title": "Our Commitment",
+        "commitment_description": "Quality is at the core of everything we do. Every product in our inventory is handpicked to meet the highest standards of durability, safety, and performance.",
+        "commitment_additional": "We recognize the importance of packaging in preserving product integrity, enhancing brand reputation, and ensuring customer trust. That’s why we only partner with trusted manufacturers to bring you packaging you can rely on.",
+        "vision_title": "Our Vision",
+        "vision_description": "To become the most trusted global partner for innovative, compliant, and sustainable packaging—empowering brands to grow with confidence and credibility.",
+        "mission_title": "Our Mission",
+        "mission_description": "At PackTHC, our mission is to deliver premium-quality packaging solutions that combine durability, compliance, and design excellence. We aim to:",
+        "mission_point_1": "Support businesses of all sizes with cost-effective, scalable packaging.",
+        "mission_point_2": "Promote safe and sustainable packaging practices.",
+        "mission_point_3": "Enable brand differentiation through custom branding options.",
+        "mission_point_4": "Ensure fast, reliable fulfillment with exceptional customer service.",
+        "stats_title": "Our Track Record",
+        "stats_subtitle": "Numbers that speak for our commitment to excellence",
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Contact us today for competitive pricing on bulk orders and discover why leading businesses trust us for their packaging needs.",
+        "cta_button_text": "Get Quote Now",
+        "cta_link": "shopify://pages/contact"
       }
     },
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-        "container": "fixed",
-        "text_alignment": "center",
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "image_with_text_overlay_3FrkpM": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_MEEHjQ": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Your Trusted Partner for Quality Containers & Supplies"
-          }
-        },
-        "heading_W8mPfG": {
-          "type": "heading",
-          "settings": {
-            "heading": "Premium Packaging Solutions",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd1"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_MEEHjQ",
-        "heading_W8mPfG"
-      ],
-      "custom_css": [
-        ".rich-text {max-width: 52rem;}"
-      ],
-      "settings": {
-        "container": "fixed",
-        "desktop_height": "medium",
-        "overlay_opacity": 30,
-        "enable_parallax": false,
-        "parallax_direction": "vertical",
-        "color_scheme": "",
-        "content_position": "top-left",
-        "content_alignment": "left",
-        "mobile_height": "adapt",
-        "content_position_mobile": "middle-center-mobile",
-        "content_alignment_mobile": "left",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "enable_preload_image": true
-      }
-    },
-    "rich_text_kyFd96": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_Y9MMVQ": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>About Our Company</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Y9MMVQ"
-      ],
-      "custom_css": [
-        ".rich-text {max-width: 78rem; margin: 0 auto;}",
-        "@media (max-width: 1023px) {.rich-text__heading {max-width: 50rem; margin: 0 auto; }}"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "tabs_content_9WnceM": {
-      "type": "tabs-content",
-      "blocks": {
-        "image_with_text_gajJeR": {
-          "type": "image_with_text",
-          "settings": {
-            "navigation_title": "Industry Expertise",
-            "desktop_image_position": "left",
-            "image_aspect_ratio": "adapt",
-            "heading": "<strong>Industry Expertise</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2",
-            "subheading": "",
-            "description": "<p>At PackTHC, we specialize in providing high-quality, compliant packaging solutions tailored for the wellness industry. Our product line includes pop-top vials, glass and plastic jars, concentrate containers, and protective gear.</p><p>We proudly serve businesses of all sizes—from emerging brands to large-scale enterprises—offering reliable, durable, and cost-effective packaging designed to meet both functional and regulatory needs.</p>",
-            "description_size": "text-lg",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "icon_1": "check",
-            "heading_1": "",
-            "icon_2": "check",
-            "heading_2": "",
-            "icon_3": "check",
-            "heading_3": ""
-          }
-        },
-        "image_with_text_rY3DtH": {
-          "type": "image_with_text",
-          "settings": {
-            "navigation_title": "Our Commitment",
-            "desktop_image_position": "left",
-            "image_aspect_ratio": "adapt",
-            "heading": "<strong>Our Commitment</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2",
-            "subheading": "",
-            "description": "<p>Quality is at the core of everything we do. Every product in our inventory is handpicked to meet the highest standards of durability, safety, and performance.</p><p>We recognize the importance of packaging in preserving product integrity, enhancing brand reputation, and ensuring customer trust. That’s why we only partner with trusted manufacturers to bring you packaging you can rely on.</p>",
-            "description_size": "text-lg",
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "icon_1": "check",
-            "heading_1": "",
-            "icon_2": "check",
-            "heading_2": "",
-            "icon_3": "check",
-            "heading_3": ""
-          }
-        },
-        "image_with_text_PfDQ6d": {
-          "type": "image_with_text",
-          "settings": {
-            "navigation_title": "Our Vision",
-            "desktop_image_position": "left",
-            "image_aspect_ratio": "adapt",
-            "heading": "<strong>Our Vision</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2",
-            "subheading": "",
-            "description": "<p>To become the most trusted global partner for innovative, compliant, and sustainable packaging—empowering brands to grow with confidence and credibility.</p>",
-            "description_size": "text-lg",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "icon_1": "check",
-            "heading_1": "",
-            "icon_2": "check",
-            "heading_2": "",
-            "icon_3": "check",
-            "heading_3": ""
-          }
-        },
-        "image_with_text_47xM38": {
-          "type": "image_with_text",
-          "settings": {
-            "navigation_title": "Our Mission",
-            "desktop_image_position": "left",
-            "image_aspect_ratio": "adapt",
-            "heading": "<strong>Our Mission</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2",
-            "subheading": "",
-            "description": "<p>At PackTHC, our mission is to deliver premium-quality packaging solutions that combine durability, compliance, and design excellence. We aim to:<br/></p><ul><li>Promote safe and sustainable packaging practices.</li><li>Enable brand differentiation through custom branding options.</li><li>Ensure fast, reliable fulfillment with exceptional customer service.</li><li>Support businesses of all sizes with cost-effective, scalable packaging.</li></ul>",
-            "description_size": "text-lg",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none",
-            "icon_1": "check",
-            "heading_1": "",
-            "icon_2": "check",
-            "heading_2": "",
-            "icon_3": "check",
-            "heading_3": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_with_text_gajJeR",
-        "image_with_text_rY3DtH",
-        "image_with_text_PfDQ6d",
-        "image_with_text_47xM38"
-      ],
-      "name": "t:sections.tabs-content.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "navigation_style": "buttons",
-        "navigation_alignment": "start",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "rich_text_rHJhwp": {
-      "type": "rich-text",
-      "blocks": {
-        "text_yLtziH": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>PackTHC does not sell any products to individuals under the age of 21, and every order is subject to strict age verification and compliance checks with applicable laws in the regions we serve.</strong></p>",
-            "text_size": "text-lg",
-            "text_line_limit": "none",
-            "button_style": "btn--plain",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "text_yLtziH"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "multicolumn_36XTkC": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_pa39WP": {
-          "type": "column",
-          "settings": {
-            "title": "About our age policy",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>PackTHC is a 21+ brand, and our website, marketing, and sales channels are intended solely for adults of legal age to purchase cannabis-related packaging and accessories. By using our site or placing an order, customers confirm that they are at least 21 years old and legally allowed to purchase these products in their jurisdiction.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_WRPAwc": {
-          "type": "column",
-          "settings": {
-            "title": "How we verify and monitor",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>To prevent underage access, PackTHC uses an age‑gate on our website and requires visitors to confirm they are of legal age before viewing age‑restricted cannabis packaging products.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_ikYHeg": {
-          "type": "column",
-          "settings": {
-            "title": "Our commitment to compliance",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>PackTHC follows strict industry and regulatory standards for age‑restricted goods and continuously updates internal protocols to stay aligned with evolving cannabis, packaging, and age‑verification rules.​All products are designed and sourced with child‑resistant, tamper‑evident, and clear warning requirements in mind to help customers meet local and federal cannabis packaging laws.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "column_pa39WP",
-        "column_WRPAwc",
-        "column_ikYHeg"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "content_alignment": "left",
-        "show_col_count": true,
-        "show_image": false,
-        "columns_desktop": 3,
-        "column_gap": "none",
-        "row_gap": "inherit",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 40,
-        "padding_bottom": 60
-      }
-    },
-    "multicolumn_9BwARB": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_bttKeh": {
-          "type": "column",
-          "settings": {
-            "title": "Comprehensive Range",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>From 6 DRAM vials to 90 DRAM containers, glass jars to plastic solutions – we have everything you need for secure packaging.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_LLGf3k": {
-          "type": "column",
-          "settings": {
-            "title": "Fast Delivery",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Quick turnaround times and reliable shipping ensure your packaging supplies arrive exactly when you need them.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_eKRLxn": {
-          "type": "column",
-          "settings": {
-            "title": "Quality Assured",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>Every product meets strict quality standards. We test durability, seal integrity, and material safety for your peace of mind.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "column_pqLDtA": {
-          "type": "column",
-          "settings": {
-            "title": "Business Focus",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h4",
-            "text": "<p>We understand business needs – competitive pricing, bulk discounts, and flexible ordering options for growing companies.</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "column_bttKeh",
-        "column_LLGf3k",
-        "column_eKRLxn",
-        "column_pqLDtA"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "left",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "content_alignment": "left",
-        "show_col_count": false,
-        "show_image": false,
-        "columns_desktop": 4,
-        "column_gap": "medium",
-        "row_gap": "inherit",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 40,
-        "padding_bottom": 60
-      }
-    },
-    "buttons_with_icon_AgEzEN": {
-      "type": "buttons-with-icon",
-      "blocks": {
-        "button_item_NPDpma": {
-          "type": "button_item",
-          "settings": {
-            "button_label": "500+ Happy Clients",
-            "button_link": "shopify://collections",
-            "icon": "check"
-          }
-        },
-        "button_item_mrBjfX": {
-          "type": "button_item",
-          "settings": {
-            "button_label": "1200+ SKU",
-            "button_link": "shopify://collections",
-            "icon": "check"
-          }
-        },
-        "button_item_dgkFBa": {
-          "type": "button_item",
-          "settings": {
-            "button_label": "15+ Years Experience",
-            "button_link": "shopify://collections",
-            "icon": "check"
-          }
-        },
-        "button_item_7wMiwV": {
-          "type": "button_item",
-          "settings": {
-            "button_label": "100m+ Units Delivered",
-            "button_link": "shopify://collections",
-            "icon": "check"
-          }
-        }
-      },
-      "block_order": [
-        "button_item_NPDpma",
-        "button_item_mrBjfX",
-        "button_item_dgkFBa",
-        "button_item_7wMiwV"
-      ],
-      "custom_css": [
-        ".section__header {--header-padding-bottom: 2.4rem;}",
-        ".section__heading {max-width: 45rem;}"
-      ],
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "scheme-9",
-        "section_header_alignment": "center",
-        "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "<strong>Our Track Record</strong>",
-        "highlight_style": "none",
-        "highlight_font_style": "italic",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h2",
-        "item_alignment": "center",
-        "item_button_style": "btn--primary",
-        "item_button_font": "button",
-        "enable_slider": true,
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 20,
-        "padding_bottom": 16
-      }
-    },
-    "rich_text_KkBCMM": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_A6nfB9": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Ready to Get Started?</strong>",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd1"
-          }
-        },
-        "text_iGQwKM": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Contact us today for competitive pricing on bulk orders and discover why leading businesses trust us for their packaging needs.</p>",
-            "text_size": "text-lg",
-            "text_line_limit": "none",
-            "button_style": "btn--underline",
-            "button_icon": "none"
-          }
-        },
-        "button_6V7tTJ": {
-          "type": "button",
-          "settings": {
-            "button_label": "Contact Us",
-            "button_link": "shopify://pages/contact",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "heading_A6nfB9",
-        "text_iGQwKM",
-        "button_6V7tTJ"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "use_color_scheme_in_container": false,
-        "content_spacing": "standard",
-        "content_alignment": "center",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
+      "settings": {}
     }
   },
   "order": [
-    "breadcrumbs_DgnWDV",
-    "main",
-    "image_with_text_overlay_3FrkpM",
-    "rich_text_kyFd96",
-    "tabs_content_9WnceM",
-    "rich_text_rHJhwp",
-    "multicolumn_36XTkC",
-    "multicolumn_9BwARB",
-    "buttons_with_icon_AgEzEN",
-    "rich_text_KkBCMM"
+    "rich_text_Ra3deP",
+    "custom_about_qJKyK3",
+    "main"
   ]
 }

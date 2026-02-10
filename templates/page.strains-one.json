@@ -1,0 +1,575 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "strain_amaan_6HUHdH": {
+      "type": "strain-amaan",
+      "blocks": {
+        "main_info_qgKiMw": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/AK47_3.png",
+            "image_description": "AK47 is an Indica-dominant hybrid recognized for its deeply relaxing and sedative effects, often associated with physical calm and mental ease. Despite its bold name, the experience is typically smooth and grounding, making it a common reference strain for evening or wind-down use.",
+            "product_name": "AK47",
+            "genetics": "AK47 is an Indica-dominant hybrid",
+            "badge_1": "Indica Dominant Hybrid",
+            "badge_2": "THC 17–21%",
+            "badge_3": "CBD > 2%",
+            "effect_1": "Sedative",
+            "effect_2": "Relaxing",
+            "effect_3": "Calming",
+            "effect_4": "Pain",
+            "effect_5": "Stress",
+            "terpene_1": "Alpha-Pinene (Green)",
+            "terpene_2": "Beta-Caryophyllene (Pink)",
+            "terpene_3": "D-Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "energy_level": 20,
+            "thc_level": 85
+          }
+        },
+        "description_qg4i6G": {
+          "type": "description",
+          "settings": {
+            "title": "Description",
+            "description_1": "AK47 is an Indica-dominant hybrid recognized for its deeply relaxing and sedative effects, often associated with physical calm and mental ease. Despite its bold name, the experience is typically smooth and grounding, making it a common reference strain for evening or wind-down use.",
+            "description_2": "This strain profile is presented strictly for educational and informational purposes, helping explain how terpene-rich flower benefits from proper storage. Effective packaging plays a key role in maintaining aroma, potency, and overall freshness—especially for strains with complex terpene blends like AK47.",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage.",
+            "bud_image": "shopify://shop_images/AK47_3_20ccda17-6b82-4edc-878c-8037aecf8cfa.png",
+            "bud_image_2": "shopify://shop_images/AK47_4.png",
+            "bud_image_3": "shopify://shop_images/AK47.webp",
+            "bud_image_4": "shopify://shop_images/AK47.png"
+          }
+        },
+        "product_selection_496D7Q": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1-grams-black-runtz-mylar-bag",
+            "product_2": "1-grams-galaxy-green-mylar-bag",
+            "product_3": "3-5-grams-blue-zushi-mylar-bags",
+            "left_content_title": "115+ compliant packaging formats",
+            "left_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "right_content_title": "220+ packaging solutions & storage options",
+            "right_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "product_4": "100ml-spiral-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-400-count",
+            "product_5": "100ml-spiral-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-opaque-white-bottle-with-opaque-white-closure-400-count",
+            "product_6": "100mm-aviator-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-black-closure-500-count"
+          }
+        },
+        "categories_info_6iTzBT": {
+          "type": "categories_info",
+          "settings": {
+            "info_title": "Basic Information",
+            "info_1_label": "CATEGORY",
+            "info_1_value": "Reference Strain",
+            "info_2_label": "GENOTYPE",
+            "info_2_value": "AK47 × Ruderalis",
+            "info_3_label": "PHENOTYPE",
+            "info_3_value": "Indica Dominant",
+            "info_4_label": "FLOWERING TIME",
+            "info_4_value": "42–56 days",
+            "info_5_label": "THC",
+            "info_5_value": "Medium–High / 17–21%",
+            "info_6_label": "CBD",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_hFga4W": {
+          "type": "effects_yield",
+          "settings": {
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Sedative",
+            "effect_tag_2": "Relaxing",
+            "effect_tag_3": "Calming",
+            "effect_tag_4": "Body-Heavy",
+            "effect_tag_5": "Stress Relief",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_2": "Earthy",
+            "taste_tag_3": "Fruity",
+            "taste_tag_4": "Spices",
+            "terp_tag_1": "Alpha-Pinene",
+            "terp_tag_2": "Beta-Caryophyllene",
+            "terp_tag_3": "Beta-Pinene",
+            "terp_tag_4": "D-Limonene",
+            "terp_tag_5": "Linalool",
+            "terp_tag_6": "",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "YIELD",
+            "yield_value": "Medium — 500 gr/m² Indoor / 60–90 gr per plant Outdoor <br>"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_qgKiMw",
+        "description_qg4i6G",
+        "product_selection_496D7Q",
+        "categories_info_6iTzBT",
+        "effects_yield_hFga4W"
+      ],
+      "name": "Strains Details Section",
+      "settings": {}
+    },
+    "strains_sec_demo_qrkMmc": {
+      "type": "strains-sec-demo",
+      "blocks": {
+        "slide_j8eMnd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_2_b7f1985b-064d-40f7-88cc-bfdb099947db.webp"
+          }
+        },
+        "slide_YEiP9Y": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem.webp"
+          }
+        },
+        "slide_wmRW3r": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_6.webp"
+          }
+        },
+        "slide_KqaLr4": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_5.webp"
+          }
+        }
+      },
+      "block_order": [
+        "slide_j8eMnd",
+        "slide_YEiP9Y",
+        "slide_wmRW3r",
+        "slide_KqaLr4"
+      ],
+      "disabled": true,
+      "name": "Premium Split Content",
+      "settings": {
+        "section_height": 60,
+        "heading": "Fried Bananas",
+        "heading_size": 70,
+        "description": "<p>Freshly fried flavor. Bred from Apples & Bananas x Gelato 41 by the team at Cookies’ One Log HQ in Humboldt and selected by Berner, this gorgeous bud is drenched in trichomes and stacked with power. Popping out the bag with an aroma like a vanilla wafer soaked in banana pudding and gas, the flavor matches the smell with an extra hint of caramel. The first coordinated nationwide strain drop in Cookies history, we’re out to fry the wo</p>",
+        "text_size": 20,
+        "image_radius": 20,
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "accent_color": "#004a26",
+        "description_color": "#ffffff",
+        "heading_gradient": "linear-gradient(135deg, #ffffff 0%, #999999 100%)",
+        "shape_gradient": "linear-gradient(135deg, #ff6b00 0%, #ffd700 100%)"
+      }
+    },
+    "starains_sec_one_kFRwkW": {
+      "type": "starains-sec-one",
+      "blocks": {
+        "image_HhQVbV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_3.png",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "image_mK8NRA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_4.png",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "image_Geic9D": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_2.png",
+            "caption": "",
+            "subcaption": ""
+          }
+        },
+        "image_mYVbEk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem.png",
+            "caption": "",
+            "subcaption": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_HhQVbV",
+        "image_mK8NRA",
+        "image_Geic9D",
+        "image_mYVbEk"
+      ],
+      "disabled": true,
+      "name": "Product strains",
+      "settings": {
+        "title": "24k Gold (Feminized Cannabis Strain)",
+        "label": "DESCRIPTION",
+        "description": "24k Gold is an indica-dominant hybrid bred from Kosher Kush × Tangie, combining Kush-driven body relaxation with Tangie’s citrus-forward aromatic brightness. This strain is widely appreciated for its strong but balanced psychoactive profile, making it suitable for experienced consumers seeking depth rather than overwhelming sedation.",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "background_color": "#000000",
+        "title_color": "#ffffff",
+        "label_color": "#ffffff",
+        "description_color": "#cccccc",
+        "button_background": "#ffffff",
+        "button_text_color": "#000000",
+        "button_hover_background": "#f0f0f0"
+      }
+    },
+    "strains_sec_two_PbkWJG": {
+      "type": "strains-sec-two",
+      "blocks": {
+        "effect_qtt8eJ": {
+          "type": "effect",
+          "settings": {
+            "icon": "😴",
+            "label": "Sleepy"
+          }
+        },
+        "effect_bdfqpq": {
+          "type": "effect",
+          "settings": {
+            "icon": "😌",
+            "label": "Relaxed"
+          }
+        },
+        "effect_izbi4Q": {
+          "type": "effect",
+          "settings": {
+            "icon": "🍔",
+            "label": "Hungry"
+          }
+        },
+        "flavor_p8PDFx": {
+          "type": "flavor",
+          "settings": {
+            "icon": "☕",
+            "label": "Coffee"
+          }
+        },
+        "flavor_rEkced": {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌿",
+            "label": "Earthy"
+          }
+        },
+        "flavor_RzPDYJ": {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌶️",
+            "label": "Pungent"
+          }
+        },
+        "terpene_kdHgr9": {
+          "type": "terpene",
+          "settings": {
+            "name": "Caryophyllene",
+            "color": "pink"
+          }
+        },
+        "terpene_dpEeRn": {
+          "type": "terpene",
+          "settings": {
+            "name": "Limonene",
+            "color": "yellow"
+          }
+        },
+        "terpene_8TCYYL": {
+          "type": "terpene",
+          "settings": {
+            "name": "Myrcene",
+            "color": "blue"
+          }
+        }
+      },
+      "block_order": [
+        "effect_qtt8eJ",
+        "effect_bdfqpq",
+        "effect_izbi4Q",
+        "flavor_p8PDFx",
+        "flavor_rEkced",
+        "flavor_RzPDYJ",
+        "terpene_kdHgr9",
+        "terpene_dpEeRn",
+        "terpene_8TCYYL"
+      ],
+      "disabled": true,
+      "name": "Strain Information",
+      "settings": {
+        "strain_image": "shopify://shop_images/24k_Gold_fem_2_d8b270e2-f3db-40ad-87cf-31fe095bf56c.png",
+        "strain_name": "24k Gold (Feminized Cannabis Strain)",
+        "aka": "Indica Dominant, Feminized, Intermediate",
+        "strain_type": "Indica Dominant",
+        "thc_percentage": 17,
+        "cbd_percentage": 30,
+        "description": "<p>24k Gold is an indica-dominant hybrid from Kosher Kush × Tangie, known for its strong yet balanced effects, combining deep body relaxation with bright citrus aromas.<br/></p>",
+        "calming_energizing": 30,
+        "thc_level": 15
+      }
+    },
+    "strains_sec_three_6fbMcJ": {
+      "type": "strains-sec-three",
+      "blocks": {
+        "positive_effect_zDAjwy": {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "💤",
+            "label": "sleepy"
+          }
+        },
+        "positive_effect_PrDwaV": {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "😌",
+            "label": "relaxed"
+          }
+        },
+        "positive_effect_9xmhe3": {
+          "type": "positive_effect",
+          "settings": {
+            "icon": "🍔",
+            "label": "hungry"
+          }
+        },
+        "negative_effect_QhmRet": {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "🥤",
+            "label": "dry mouth"
+          }
+        },
+        "negative_effect_6LBUXq": {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "👁️",
+            "label": "dry eyes"
+          }
+        },
+        "negative_effect_xCmYh6": {
+          "type": "negative_effect",
+          "settings": {
+            "icon": "😵",
+            "label": "dizzy"
+          }
+        },
+        "flavor_NFB4Jk": {
+          "type": "flavor",
+          "settings": {
+            "icon": "☕",
+            "label": "coffee"
+          }
+        },
+        "flavor_UHxyB3": {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌿",
+            "label": "earthy"
+          }
+        },
+        "flavor_HHPCJP": {
+          "type": "flavor",
+          "settings": {
+            "icon": "🌶️",
+            "label": "pungent"
+          }
+        },
+        "helps_with_KDjqFB": {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Stress",
+            "condition_lower": "stress",
+            "percentage": 36
+          }
+        },
+        "helps_with_CHYQDg": {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Pain",
+            "condition_lower": "pain",
+            "percentage": 33
+          }
+        },
+        "helps_with_7p9dAT": {
+          "type": "helps_with",
+          "settings": {
+            "condition": "Insomnia",
+            "condition_lower": "insomnia",
+            "percentage": 29
+          }
+        }
+      },
+      "block_order": [
+        "positive_effect_zDAjwy",
+        "positive_effect_PrDwaV",
+        "positive_effect_9xmhe3",
+        "negative_effect_QhmRet",
+        "negative_effect_6LBUXq",
+        "negative_effect_xCmYh6",
+        "flavor_NFB4Jk",
+        "flavor_UHxyB3",
+        "flavor_HHPCJP",
+        "helps_with_KDjqFB",
+        "helps_with_CHYQDg",
+        "helps_with_7p9dAT"
+      ],
+      "disabled": true,
+      "name": "Strain Effects & Helps",
+      "settings": {
+        "strain_name": "24k Gold",
+        "disclaimer_text": "This information is for educational purposes only and is not intended as medical advice."
+      }
+    },
+    "strains_sec_four_rMMX3T": {
+      "type": "strains-sec-four",
+      "blocks": {
+        "terpene_GnBhRt": {
+          "type": "terpene",
+          "settings": {
+            "name": "24k Gold terpenes",
+            "flavor": "herbal",
+            "color": "#d946ef",
+            "description": "The most abundant terpene in 24k Gold is myrcene, followed by alpha-pinene and beta-caryophyllene."
+          }
+        },
+        "terpene_cjkNqc": {
+          "type": "terpene",
+          "settings": {
+            "name": "Myrcene",
+            "flavor": "herbal",
+            "color": "#fbbf24",
+            "description": "Earthy, herbal terpene that promotes deep body relaxation and contributes to the strain’s calming, grounding effects."
+          }
+        },
+        "terpene_fzGpiU": {
+          "type": "terpene",
+          "settings": {
+            "name": "Alpha-Pinene",
+            "flavor": "pine",
+            "color": "#1e3a8a",
+            "description": "Fresh pine-scented terpene that helps maintain mental clarity and alertness while balancing heavy indica effects."
+          }
+        }
+      },
+      "block_order": [
+        "terpene_GnBhRt",
+        "terpene_cjkNqc",
+        "terpene_fzGpiU"
+      ],
+      "disabled": true,
+      "name": "Strain Science",
+      "settings": {
+        "strain_name": "24k Gold",
+        "phenotype": "Indica Dominant",
+        "phenotype_color": "#7c5ac2",
+        "dominant_terpene": "Myrcene",
+        "dominant_terpene_type": "herbal",
+        "dominant_terpene_color": "#d946ef",
+        "terpenes_intro": "The most abundant terpene in Bubba Kush is caryophyllene, followed by limonene and myrcene."
+      }
+    },
+    "starains_sec_two_xejL6E": {
+      "type": "starains-sec-two",
+      "blocks": {
+        "tab_dnPgJg": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Features",
+            "layout": "two-column",
+            "content_title": "Amazing Features",
+            "content_description": "Discover what makes our product unique and exceptional.",
+            "content_list": "",
+            "image": "shopify://shop_images/24k_Gold_fem.webp",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "tab_tQ3pYr": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Specifications",
+            "layout": "two-column",
+            "content_title": "Technical Specs",
+            "content_description": "All the technical details you need to know.",
+            "content_list": "",
+            "image": "shopify://shop_images/24k_Gold_fem_2.webp",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "tab_Cka88U": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Reviews",
+            "layout": "two-column",
+            "content_title": "Customer Reviews",
+            "content_description": "See what our customers are saying about this product.",
+            "content_list": "",
+            "image": "shopify://shop_images/24k_Gold_fem_4.webp",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_dnPgJg",
+        "tab_tQ3pYr",
+        "tab_Cka88U"
+      ],
+      "disabled": true,
+      "name": "Tabbed Content",
+      "settings": {
+        "title": "Details",
+        "background_color": "#000000",
+        "title_color": "#ffffff",
+        "border_color": "#333333",
+        "tab_color": "#999999",
+        "tab_hover_color": "#cccccc",
+        "tab_active_color": "#ffffff",
+        "content_title_color": "#ffffff",
+        "content_color": "#cccccc",
+        "button_background": "#ffffff",
+        "button_text_color": "#000000",
+        "button_hover_background": "#cccccc"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "strain_amaan_6HUHdH",
+    "strains_sec_demo_qrkMmc",
+    "starains_sec_one_kFRwkW",
+    "strains_sec_two_PbkWJG",
+    "strains_sec_three_6fbMcJ",
+    "strains_sec_four_rMMX3T",
+    "starains_sec_two_xejL6E"
+  ]
+}

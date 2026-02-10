@@ -1,0 +1,484 @@
+{% schema %}
+{
+  "name": "Shop by Category",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "New Arrivals"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "color",
+          "id": "gradient_color_start",
+          "label": "Gradient Start Color",
+          "default": "#1e3a8a"
+        },
+        {
+          "type": "color",
+          "id": "gradient_color_end",
+          "label": "Gradient End Color",
+          "default": "#3b82f6"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Shop by Category",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "New Arrivals"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Best Sellers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .shop-by-category {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    padding: 40px 0 40px 40px;
+    position: relative;
+  }
+
+  .shop-by-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(248, 249, 250, 0.85);
+    z-index: 0;
+  }
+
+  .shop-by-category__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .shop-by-category__header {
+    margin-bottom: 30px;
+  }
+
+  .shop-by-category__title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #202425;
+    line-height: 1.2;
+  }
+
+  .shop-by-category__scroll-container {
+    position: relative;
+    overflow: hidden;
+    margin-right: 40px; /* Added margin to prevent cards from touching edge */
+  }
+
+  .shop-by-category__cards-wrapper {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+    cursor: grab;
+    padding-right: 0;
+  }
+
+  .shop-by-category__cards-wrapper:active {
+    cursor: grabbing;
+  }
+
+  .shop-by-category__card {
+    min-width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+  }
+
+  .shop-by-category__card-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .shop-by-category__card:hover {
+    transform: translateY(-5px);
+  }
+
+  .shop-by-category__card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+  }
+
+  .shop-by-category__card-title {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 10px;
+  }
+
+  .shop-by-category__arrow-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+  }
+
+  .shop-by-category__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  .shop-by-category__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(26, 54, 93, 0.3);
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .shop-by-category__dot--active {
+    background: #1a365d;
+  }
+
+  @media (max-width: 768px) {
+    .shop-by-category {
+      padding: 30px 0 30px 30px;
+    }
+    
+    .shop-by-category__scroll-container {
+      margin-right: 30px;
+    }
+    
+    .shop-by-category__card {
+      min-width: 250px;
+      height: 320px;
+    }
+    
+    .shop-by-category__title {
+      font-size: 32px;
+    }
+    
+    .shop-by-category__card-title {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .shop-by-category {
+      padding: 20px 0 20px 20px;
+    }
+    
+    .shop-by-category__scroll-container {
+      margin-right: 20px;
+    }
+    
+    .shop-by-category__card {
+      min-width: 220px;
+      height: 280px;
+    }
+    
+    .shop-by-category__title {
+      font-size: 28px;
+    }
+    
+    .shop-by-category__card-title {
+      font-size: 20px;
+    }
+    
+    .shop-by-category__card-overlay {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="shop-by-category">
+  <div class="shop-by-category__content">
+    <div class="shop-by-category__header">
+      <h1 class="shop-by-category__title">Shop<br>By Category</h1>
+    </div>
+
+    <div class="shop-by-category__scroll-container">
+      <div class="shop-by-category__cards-wrapper" id="shopByCategoryCardsWrapper">
+        {% for block in section.blocks %}
+          {% assign bg_image = block.settings.background_image | img_url: '800x' %}
+          {% assign gradient_start = block.settings.gradient_color_start | default: '#1e3a8a' %}
+          {% assign gradient_end = block.settings.gradient_color_end | default: '#3b82f6' %}
+          
+          <div class="shop-by-category__card"
+            style="background-image:
+              linear-gradient(135deg, {{ gradient_start | color_modify: 'alpha', 0.2 }}, {{ gradient_end | color_modify: 'alpha', 0.2 }}),
+              {% if bg_image != blank %}url({{ bg_image }}){% else %}linear-gradient(135deg, {{ gradient_start }}, {{ gradient_end }}){% endif %};"
+            aria-label="{{ block.settings.title | escape }}"
+            {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link | default: '#' }}" class="shop-by-category__card-link">
+              <div class="shop-by-category__arrow-icon" aria-hidden="true">↗</div>
+              <div class="shop-by-category__card-overlay">
+                <div class="shop-by-category__card-content">
+                  <h3 class="shop-by-category__card-title">{{ block.settings.title | newline_to_br }}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="shop-by-category__dots" id="shopByCategoryDots">
+      {% for block in section.blocks %}
+        <div class="shop-by-category__dot {% if forloop.first %}shop-by-category__dot--active{% endif %}" 
+             data-slide="{{ forloop.index0 }}" 
+             aria-label="Go to slide {{ forloop.index }}"></div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const wrapper = document.getElementById('shopByCategoryCardsWrapper');
+  const container = document.querySelector('.shop-by-category__scroll-container');
+  const dots = document.querySelectorAll('.shop-by-category__dot');
+  let currentSlide = 0;
+  let isDragging = false;
+  let startPos = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let maxSlides = 0;
+  
+  // Calculate visible cards and max slides
+  function calculateMaxSlides() {
+    const containerWidth = container.offsetWidth;
+    const cardWidth = getCardWidth();
+    const visibleCards = Math.floor(containerWidth / cardWidth);
+    const totalCards = dots.length;
+    
+    maxSlides = Math.max(0, totalCards - visibleCards);
+    
+    // Update dots visibility based on whether sliding is needed
+    const dotsContainer = document.getElementById('shopByCategoryDots');
+    if (maxSlides === 0) {
+      dotsContainer.style.display = 'none';
+    } else {
+      dotsContainer.style.display = 'flex';
+    }
+    
+    return maxSlides;
+  }
+  
+  // Calculate card width dynamically
+  function getCardWidth() {
+    const card = document.querySelector('.shop-by-category__card');
+    if (!card) return 320;
+    return card.offsetWidth + parseInt(window.getComputedStyle(wrapper).gap || '20');
+  }
+  
+  // Update slide position with boundary check
+  function updateSlide() {
+    maxSlides = calculateMaxSlides();
+    
+    // Ensure currentSlide doesn't exceed maxSlides
+    if (currentSlide > maxSlides) {
+      currentSlide = maxSlides;
+    }
+    
+    const cardWidth = getCardWidth();
+    const translateX = -currentSlide * cardWidth;
+    wrapper.style.transform = `translateX(${translateX}px)`;
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('shop-by-category__dot--active', index === currentSlide);
+    });
+  }
+  
+  let touchStartTime = 0;
+  let hasMoved = false;
+  
+  // Touch events for mobile
+  wrapper.addEventListener('touchstart', touchStart, { passive: true });
+  wrapper.addEventListener('touchend', touchEnd, { passive: false });
+  wrapper.addEventListener('touchmove', touchMove, { passive: false });
+  
+  // Mouse events for desktop
+  wrapper.addEventListener('mousedown', touchStart);
+  wrapper.addEventListener('mouseup', touchEnd);
+  wrapper.addEventListener('mouseleave', touchEnd);
+  wrapper.addEventListener('mousemove', touchMove);
+  
+  function touchStart(e) {
+    touchStartTime = Date.now();
+    hasMoved = false;
+    
+    if (e.type === 'touchstart') {
+      startPos = e.touches[0].clientX;
+    } else {
+      isDragging = true;
+      startPos = e.clientX;
+    }
+    
+    prevTranslate = currentTranslate;
+    wrapper.style.transition = 'none';
+  }
+  
+  function touchEnd(e) {
+    const touchEndTime = Date.now();
+    const touchDuration = touchEndTime - touchStartTime;
+    
+    // If it's a quick tap (< 200ms) and no movement, allow link click
+    if (!hasMoved && touchDuration < 200) {
+      isDragging = false;
+      wrapper.style.transition = 'transform 0.5s ease';
+      updateSlide();
+      return; // Allow the click event to proceed
+    }
+    
+    // Prevent click if user was dragging
+    if (hasMoved) {
+      e.preventDefault();
+    }
+    
+    isDragging = false;
+    wrapper.style.transition = 'transform 0.5s ease';
+    
+    const cardWidth = getCardWidth();
+    const movedBy = currentTranslate - prevTranslate;
+    
+    // Check boundaries before moving
+    if (Math.abs(movedBy) > 50) {
+      if (movedBy < 0 && currentSlide < maxSlides) {
+        currentSlide++;
+      } else if (movedBy > 0 && currentSlide > 0) {
+        currentSlide--;
+      }
+    }
+    
+    currentTranslate = 0;
+    prevTranslate = 0;
+    updateSlide();
+  }
+  
+  function touchMove(e) {
+    let currentPosition;
+    
+    if (e.type === 'touchmove') {
+      currentPosition = e.touches[0].clientX;
+      const diff = Math.abs(currentPosition - startPos);
+      
+      // Only start dragging if moved more than 10px
+      if (diff > 10) {
+        hasMoved = true;
+        isDragging = true;
+        e.preventDefault(); // Now prevent scrolling
+      }
+      
+      if (!isDragging) return;
+    } else {
+      if (!isDragging) return;
+      currentPosition = e.clientX;
+      hasMoved = true;
+    }
+    
+    const diff = currentPosition - startPos;
+    const cardWidth = getCardWidth();
+    const maxTranslate = -maxSlides * cardWidth;
+    
+    // Calculate new position with boundaries
+    let newTranslate = -currentSlide * cardWidth + diff;
+    
+    // Add resistance at boundaries
+    if (newTranslate > 0) {
+      newTranslate = diff * 0.3;
+    } else if (newTranslate < maxTranslate) {
+      newTranslate = maxTranslate + (diff * 0.3);
+    }
+    
+    wrapper.style.transform = `translateX(${newTranslate}px)`;
+    currentTranslate = diff;
+  }
+  
+  // Dot navigation with boundary check
+  dots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const targetSlide = parseInt(this.dataset.slide);
+      if (targetSlide <= maxSlides) {
+        currentSlide = targetSlide;
+        updateSlide();
+      }
+    });
+  });
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    // Recalculate on resize
+    setTimeout(updateSlide, 100);
+  });
+  
+  // Initialize
+  setTimeout(() => {
+    updateSlide();
+  }, 100);
+});
+</script>

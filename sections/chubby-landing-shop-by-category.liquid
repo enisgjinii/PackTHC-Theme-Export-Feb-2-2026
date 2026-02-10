@@ -1,0 +1,806 @@
+{% schema %}
+{
+  "name": "chubby landing shop cat",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop by Collection"
+    },
+    
+    {
+      "type": "checkbox",
+      "id": "show_product_price",
+      "label": "Show Product Price",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "layout_style",
+      "label": "Layout Style",
+      "options": [
+        {
+          "value": "sidebar",
+          "label": "Sidebar Layout"
+        },
+        {
+          "value": "tabs",
+          "label": "Tabs Layout"
+        }
+      ],
+      "default": "sidebar"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "chubby landing shop cat",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .collection-navigator {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: "ITC Avant Garde Gothic", sans-serif;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #202425;
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: #E0131A;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    font-size: 14px;
+  }
+
+  .mobile-menu-btn:hover {
+    background: #202425;
+    transform: translateY(-1px);
+  }
+
+  .hamburger-icon {
+    width: 18px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-icon span {
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn.active .hamburger-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .mobile-menu-btn.active .hamburger-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active .hamburger-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Mobile Overlay */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Sidebar Layout */
+  .layout-sidebar {
+    display: flex;
+    gap: 100px;
+    align-items: flex-start;
+  }
+
+  .collections-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+  }
+
+  .collections-sidebar h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #202425;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .collection-item {
+    padding: 14px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #555;
+    border: 1px solid transparent;
+    position: relative;
+  }
+
+  .collection-item:hover {
+    background: #f8f9fa;
+    color: #1a1a1a;
+    transform: translateX(4px);
+  }
+
+  .collection-item.active {
+    background: linear-gradient(135deg, #E0131A 0%, #8B0000 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+
+  .collection-item.active::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: #E0131A;
+    border-radius: 2px;
+  }
+
+  /* Tabs Layout */
+  .layout-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .collections-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow-x: auto;
+  }
+
+  .collections-tabs .collection-item {
+    padding: 12px 24px;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 500;
+    color: #666;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .collections-tabs .collection-item:hover {
+    background: #e9ecef;
+    color: #1a1a1a;
+    transform: none;
+  }
+
+  .collections-tabs .collection-item.active {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .collections-tabs .collection-item.active::before {
+    display: none;
+  }
+
+  /* Products Grid */
+  .products-container {
+    flex-grow: 1;
+    min-height: 400px;
+  }
+
+  .collection-navigator .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-color: #E0131A;
+    border: 1px solid #E0131A;
+  }
+
+  .product-image {
+    height: 220px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+
+  .product-info {
+    padding: 20px;
+  }
+
+  .product-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #202425;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #667eea;
+  }
+
+  .product-price .compare-price {
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-right: 8px;
+    font-size: 0.95rem;
+  }
+
+  .loading-state, .no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #E0131A;
+    border-top: 3px solid #202425;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .collection-navigator {
+      padding: 30px 15px;
+    }
+    
+    .layout-sidebar {
+      gap: 30px;
+    }
+    
+    .collections-sidebar {
+      width: 240px;
+    }
+    
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+  }
+
+/* REPLACE your mobile CSS with this STRONG override */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 30px;
+  }
+  
+  /* Show mobile menu button */
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  /* Layout changes for mobile */
+  .layout-sidebar {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  /* Mobile sidebar */
+  .collections-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    z-index: 999;
+    border-radius: 0;
+    overflow-y: auto;
+    padding: 60px 24px 24px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+    transition: left 0.3s ease;
+  }
+  
+  .collections-sidebar.mobile-open {
+    left: 0;
+  }
+  
+  .collections-sidebar h3 {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: #202425;
+  }
+  
+  .collection-item.active::before {
+    display: none;
+  }
+  
+  /* STRONG MOBILE GRID FIX - यह आपका main problem solve करेगा */
+  .collection-navigator .products-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .collection-navigator .products-grid .product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 0 !important;
+    flex: none !important;
+    display: block !important;
+  }
+  
+  /* Override any flex properties that might be interfering */
+  .products-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .product-info {
+    padding: 12px;
+  }
+  
+  .product-title {
+    font-size: 13px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  
+  .product-price {
+    font-size: 1rem;
+  }
+  
+  /* Tabs layout on mobile */
+  .layout-tabs .collections-tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+  
+  .layout-tabs .collections-tabs .collection-item {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+  @media (max-width: 320px) {
+    .collections-sidebar {
+      width: 280px;
+      left: -280px;
+    }
+    
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    
+    .product-image {
+      height: 120px;
+    }
+    
+    .product-info {
+      padding: 8px;
+    }
+    
+    .product-title {
+      font-size: 0.85rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    
+    .product-price {
+      font-size: 0.9rem;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+    
+    .collection-navigator {
+      padding: 20px 10px;
+    }
+  }
+</style>
+
+<section class="collection-navigator">
+  <div class="section-header">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+  </div>
+
+  <div class="layout-{{ section.settings.layout_style }}">
+    {% if section.settings.layout_style == 'sidebar' %}
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>Collections</span>
+      </button>
+      
+      <!-- Mobile Overlay -->
+      <div class="mobile-overlay" id="mobileOverlay"></div>
+      
+      <div class="collections-sidebar" id="collectionsSidebar">
+        <h3>Collections</h3>
+        <div class="collection-list">
+          {% for block in section.blocks %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% if collection %}
+              <div class="collection-item" data-collection-handle="{{ collection.handle }}">
+                {{ collection.title }}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class="collections-tabs">
+        {% for block in section.blocks %}
+          {% assign collection = collections[block.settings.collection] %}
+          {% if collection %}
+            <div class="collection-item" data-collection-handle="{{ collection.handle }}">
+              {{ collection.title }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    <div class="products-container">
+      <div class="products-grid" id="productsGrid">
+        {% if section.blocks.size > 0 %}
+          <div class="no-products">
+            <h3>Select a collection to explore products</h3>
+            <p>Choose from our carefully curated collections above</p>
+          </div>
+        {% else %}
+          <div class="no-products">
+            <h3>No collections added yet</h3>
+            <p>Please add collections in the section settings</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  'use strict';
+  
+  let isMenuOpen = false;
+  
+  // Wait for DOM to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeCollectionNavigator();
+  });
+  
+  function initializeCollectionNavigator() {
+    // Initialize mobile menu
+    setupMobileMenu();
+    
+    // Initialize collection items
+    setupCollectionItems();
+    
+    // Load first collection automatically
+    loadFirstCollection();
+  }
+  
+  function setupMobileMenu() {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const overlay = document.getElementById('mobileOverlay');
+    
+    if (menuBtn) {
+      menuBtn.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', closeMobileMenu);
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768 && isMenuOpen) {
+        closeMobileMenu();
+      }
+    });
+  }
+  
+  function setupCollectionItems() {
+    const collectionItems = document.querySelectorAll('.collection-item');
+    
+    collectionItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        const handle = this.getAttribute('data-collection-handle');
+        if (handle) {
+          showCollectionProducts(handle, this);
+        }
+      });
+    });
+  }
+  
+  function loadFirstCollection() {
+    const firstCollection = document.querySelector('.collection-item');
+    if (firstCollection) {
+      const handle = firstCollection.getAttribute('data-collection-handle');
+      if (handle) {
+        showCollectionProducts(handle, firstCollection);
+      }
+    }
+  }
+  
+  function toggleMobileMenu() {
+    if (isMenuOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+  
+  function openMobileMenu() {
+    const sidebar = document.getElementById('collectionsSidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    
+    if (sidebar && overlay && menuBtn) {
+      sidebar.classList.add('mobile-open');
+      overlay.classList.add('active');
+      menuBtn.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      isMenuOpen = true;
+    }
+  }
+  
+  function closeMobileMenu() {
+    const sidebar = document.getElementById('collectionsSidebar');
+    const overlay = document.getElementById('mobileOverlay');
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    
+    if (sidebar && overlay && menuBtn) {
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+      menuBtn.classList.remove('active');
+      document.body.style.overflow = '';
+      isMenuOpen = false;
+    }
+  }
+
+  function showCollectionProducts(collectionHandle, clickedElement) {
+    // Update active collection
+    document.querySelectorAll('.collection-item').forEach(function(item) {
+      item.classList.remove('active');
+    });
+    clickedElement.classList.add('active');
+    
+    // Close mobile menu if open
+    if (isMenuOpen && window.innerWidth <= 768) {
+      setTimeout(function() {
+        closeMobileMenu();
+      }, 200);
+    }
+    
+    // Show loading state
+    const productsGrid = document.getElementById('productsGrid');
+    if (productsGrid) {
+      productsGrid.innerHTML = '\
+        <div class="loading-state">\
+          <div class="loading-spinner"></div>\
+          <p>Loading products...</p>\
+        </div>';
+    }
+    
+    // Fetch collection products
+    fetch('/collections/' + collectionHandle + '/products.json')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.products && data.products.length > 0) {
+          renderProducts(data.products);
+        } else {
+          showNoProducts('No products found', 'This collection doesn\'t contain any products yet');
+        }
+      })
+      .catch(function(error) {
+        console.error('Error loading products:', error);
+        showNoProducts('Error loading products', 'Please try again later');
+      });
+  }
+
+  function renderProducts(products) {
+    const productsGrid = document.getElementById('productsGrid');
+    const showPrice = {{ section.settings.show_product_price | json }};
+    
+    if (!productsGrid) return;
+    
+    let html = '';
+    
+    products.forEach(function(product) {
+      const featuredImage = product.images && product.images[0] ? product.images[0] : {
+        src: 'https://via.placeholder.com/400x400/f8f9fa/666?text=No+Image',
+        alt: 'No image available'
+      };
+      
+      // Format price
+      const price = formatPrice(product.price);
+      const compareAtPrice = product.compare_at_price ? formatPrice(product.compare_at_price) : null;
+      
+      html += '\
+        <a href="/products/' + product.handle + '" class="product-card">\
+          <div class="product-image">\
+            <img src="' + featuredImage.src + '" alt="' + (product.title || '') + '" loading="lazy">\
+          </div>\
+          <div class="product-info">\
+            <h4 class="product-title">' + (product.title || '') + '</h4>';
+      
+      if (showPrice) {
+        html += '<div class="product-price">';
+        if (compareAtPrice) {
+          html += '<span class="compare-price">' + compareAtPrice + '</span>';
+        }
+        html += price + '</div>';
+      }
+      
+      html += '\
+          </div>\
+        </a>';
+    });
+    
+    productsGrid.innerHTML = html || showNoProducts('No products found', 'This collection is currently empty');
+  }
+  
+  function formatPrice(priceInCents) {
+    if (!priceInCents) return '';
+    
+    const price = priceInCents / 100;
+    return '₹' + price.toLocaleString('en-IN', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+  }
+  
+  function showNoProducts(title, message) {
+    const productsGrid = document.getElementById('productsGrid');
+    if (productsGrid) {
+      productsGrid.innerHTML = '\
+        <div class="no-products">\
+          <h3>' + title + '</h3>\
+          <p>' + message + '</p>\
+        </div>';
+    }
+  }
+  
+})();
+</script>

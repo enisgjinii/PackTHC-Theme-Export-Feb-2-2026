@@ -1,0 +1,685 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "packthc_studio_4NC7pH": {
+      "type": "packthc-studio",
+      "blocks": {
+        "hero_slide_pxKxfX": {
+          "type": "hero_slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165_4124aa89-e4a1-4ad4-8f8d-2fbb802f76e6.webp",
+            "badge": "PACKTHC DIGITAL AGENCY",
+            "title": "ELEVATE YOUR DISPENSARY",
+            "text": "",
+            "button_text": "LEARN MORE",
+            "button_link": ""
+          }
+        },
+        "hero_slide_UBfWtG": {
+          "type": "hero_slide",
+          "settings": {
+            "image": "shopify://shop_images/home-one_6aa243e8-b06c-46b7-948e-196ac1bd2a08.webp",
+            "badge": "PACKTHC DIGITAL AGENCY",
+            "title": "ELEVATE YOUR DISPENSARY",
+            "text": "",
+            "button_text": "LEARN MORE",
+            "button_link": ""
+          }
+        },
+        "service_category_aQpEfj": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "digital-marketing",
+            "category_name": "Digital Marketing"
+          }
+        },
+        "service_category_3jQMy7": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "Register-your-business",
+            "category_name": "Register Your Business"
+          }
+        },
+        "service_category_WDHn3G": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "Protect-your-brand",
+            "category_name": "Protect Your Brand"
+          }
+        },
+        "service_category_b4PQLj": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "Business-to-go",
+            "category_name": "Business To-Go"
+          }
+        },
+        "service_DcCJaQ": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Identity_3.webp",
+            "popup_image": "shopify://shop_images/Web_Design_Developnment_1.webp",
+            "title": "Brand Identity",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "At PackTHC Studio, we get it. Whether it’s the logo, the fonts, or the words right there on your packaging, we help your cannabis brand stand out. You won’t just get noticed—you’ll stay on everyone’s mind and at the front of the shelf. We’re all about working together. Show up with a half-formed idea or a detailed plan—either way, we’ll help you shape a creative direction that ties your look, packaging, and voice together everywhere your brand shows up.",
+            "features": "Stand Out in a Saturated Market + | Aligned, Long-Term Vision + | Built Around Your Customer +",
+            "faqs": "Stand Out in a Saturated Market | Let’s face it—cannabis shelves are packed. Your brand identity is what helps you break through the noise. When you show up with a look and voice that actually mean something, customers notice. || Aligned, Long-Term Vision | Get clear on what you stand for—your mission, purpose, and values—so your customers and team move in the same direction. || Built Around Your Customer | When your brand connects with what people believe in, you don’t just get attention—you build loyalty.",
+            "tabs": "Collaborative Vision | We’re all about working together. Show up with a half-formed idea or a detailed plan—either way, we’ll help you shape a creative direction that ties your look, packaging, and voice together everywhere your brand shows up. || Personality-Driven Branding | Design catches the eye, sure. But when you add some personality? That’s when people start buying. We mix your style with messaging that feels true to you, so your customers hit “add to cart” without a second thought. || Naming & Taglines | Naming a cannabis brand isn’t easy—there’s gut instinct, legal stuff, and just plain taste. We’ll brainstorm with you, test ideas, and land on names and taglines that feel right for you and instantly click with your crowd.",
+            "link": "shopify://pages/contact"
+          }
+        },
+        "service_fpQMWA": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Web_Design_Developnment.webp",
+            "title": "Web Design & Development",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_wMVY4k": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Digital_Advertising.webp",
+            "title": "Digital Advertising",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_6npqUf": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Social_Media.webp",
+            "title": "Social Media",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_JEpbLt": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Dispensary_Launch_3.webp",
+            "title": "Dispensary Launch",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_Bca9Fi": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SEO.webp",
+            "title": "Search Engine Optimization",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_HTiwUC": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Photography_Videography.webp",
+            "title": "Print & Packaging Design",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_MF99Bp": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Launch.webp",
+            "title": "Brand Launch",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_48tyxx": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Photography_Videography_3acb01bb-edbd-4471-83f9-4c2461c9b649.webp",
+            "title": "Photography & Videography",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_xrhrfB": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Email_Marketing.webp",
+            "title": "Email Marketing",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_fe8ngD": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SMS_Marketing.webp",
+            "title": "Sms Marketing",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_NAHy7N": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Public_Relation.webp",
+            "title": "Public Relation",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_Tqrb99": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/LIMITED_LIABILITY_COMPANY_LLC.webp",
+            "title": "Limited Liability Company (LLC)",
+            "category": "Register-your-business",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_MqGgD8": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/CORPORATION_C_CORP_S_CORP.webp",
+            "title": "Corporation ( C Corp & S Corp)",
+            "category": "Register-your-business",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_pVb8yC": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/DOING_BUSINESS_AS_DBA.webp",
+            "title": "Doing Business As (DBA)",
+            "category": "Register-your-business",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_rtKhXU": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/NON-PROFIT.webp",
+            "title": "Non-Profit",
+            "category": "Register-your-business",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_38BGJq": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SOLE_PROPRIETORSHIP.webp",
+            "title": "Sole Proprietorship",
+            "category": "Register-your-business",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_e6QDLf": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/TRADEMARK_REGISTRATION.webp",
+            "title": "Trademark Registration",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_twGEa3": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/COMPREHENSIVE_TRADEMARK_SEARCH.webp",
+            "title": "Comprehensive Trademark Search",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_R4RpHw": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/FREE_TRADEMARK_SEARCH.webp",
+            "title": "Free Trademark Search",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_qbAaeF": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/TRADEMARK_MONITORING.webp",
+            "title": "Trademark Monitoring",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_WEUw94": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/PROVISION_PATENT.webp",
+            "title": "Provisional Patent",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_iFw4FT": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/COPYRIGHT.webp",
+            "title": "Copyright",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_PKNEm6": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_COMPLIANCE_COVERAGE.webp",
+            "title": "Business Compliance Coverage",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_YJgAKR": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/ANNUAL_REPORT.webp",
+            "title": "Annual Report",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_zzLpxa": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_LICENSE.webp",
+            "title": "Business License",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_eAeNAK": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/OPERATING_AGREEMENT.webp",
+            "title": "Operating Agreement",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_jnWKrg": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/REGISTERED_AGENT.webp",
+            "title": "Registered Agent",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_iGBdgE": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/STUDIO_VIRTUAL.webp",
+            "title": "Studio Virtual Mail",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_CYWHnW": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/DISSOLUTION.webp",
+            "title": "Dissolution",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_acptdC": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_CREDIT.webp",
+            "title": "Business Credit",
+            "category": "Business-to-go",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "process_card_VTkwhe": {
+          "type": "process_card",
+          "settings": {
+            "title": "Discovery & Research",
+            "description": "We start by understanding your brand, audience, market, and goals. This foundation guides every decision we make."
+          }
+        },
+        "process_card_hDXenQ": {
+          "type": "process_card",
+          "settings": {
+            "title": "Strategy Planning",
+            "description": "We map out a clear, actionable plan—branding, messaging, platforms, and timelines—built to scale with your growth."
+          }
+        },
+        "process_card_ijkbET": {
+          "type": "process_card",
+          "settings": {
+            "title": "Brand & Experience Design",
+            "description": "Our designers shape your visual identity and digital experience—making sure everything feels cohesive and on-brand."
+          }
+        },
+        "process_card_LkJnxT": {
+          "type": "process_card",
+          "settings": {
+            "title": "Build & Development",
+            "description": "We bring designs to life through clean development, content integration, and platform setup—built for performance."
+          }
+        },
+        "process_card_tqbbzK": {
+          "type": "process_card",
+          "settings": {
+            "title": "Integrate & Test",
+            "description": "Before launch, we test everything—design, performance, responsiveness, and compliance—to ensure a smooth rollout."
+          }
+        },
+        "process_card_ABJ7h4": {
+          "type": "process_card",
+          "settings": {
+            "title": "Launch & Optimize",
+            "description": "We launch your brand with confidence, then track performance and optimize continuously for long-term success."
+          }
+        },
+        "process_step_3prLGk": {
+          "type": "process_step",
+          "settings": {
+            "title": "Discovery & Strategy",
+            "description": "We start by understanding your brand, your market, and your goals. Through research, audits, and competitor analysis, we build a clear strategy that guides every decision moving forward.",
+            "image": "shopify://shop_images/Discovery.webp"
+          }
+        },
+        "process_step_heGtBb": {
+          "type": "process_step",
+          "settings": {
+            "title": "Creative Planning & Direction",
+            "description": "Once the strategy is locked in, we define the creative direction. This includes messaging, visuals, content structure, and platform planning—making sure everything feels cohesive and on-brand.",
+            "image": "shopify://shop_images/Creative_planning.webp"
+          }
+        },
+        "process_step_qB9q3c": {
+          "type": "process_step",
+          "settings": {
+            "title": "Design, Build & Launch",
+            "description": "Our team brings everything to life—designing, developing, testing, and refining until it’s ready to launch. The result is polished, compliant, and built to perform across digital, print, and real-world touchpoints.",
+            "image": "shopify://shop_images/Design_and_Launch.webp"
+          }
+        },
+        "testimonial_f6g7t6": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_1.webp",
+            "text": "\"As a small grow, we needed packaging that looked national but still fit our local rules. The studio mapped every label to PackTHC formats and saved us so much time.\"",
+            "name": "Craft Grow",
+            "role": "Founder",
+            "rating": 5
+          }
+        },
+        "testimonial_cB6bbY": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_2_45ce7ead-3a45-4aad-8289-4f2e30ea2a90.webp",
+            "text": "\"PackTHC Studio rebuilt our dispensary brand from the ground up. The new site is easier for customers to navigate and easier for our legal team to approve.\"",
+            "name": "Adult-Use Dispensary",
+            "role": "Retail Director",
+            "rating": 5
+          }
+        },
+        "testimonial_GHNAci": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_3.webp",
+            "text": "\"Their team understands both the creative and the compliance side. We got a brand guide, web components, and label templates that plug directly into our workflow.\"",
+            "name": "Multi-State Brand",
+            "role": "Marketing Lead",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "hero_slide_pxKxfX",
+        "hero_slide_UBfWtG",
+        "service_category_aQpEfj",
+        "service_category_3jQMy7",
+        "service_category_WDHn3G",
+        "service_category_b4PQLj",
+        "service_DcCJaQ",
+        "service_fpQMWA",
+        "service_wMVY4k",
+        "service_6npqUf",
+        "service_JEpbLt",
+        "service_Bca9Fi",
+        "service_HTiwUC",
+        "service_MF99Bp",
+        "service_48tyxx",
+        "service_xrhrfB",
+        "service_fe8ngD",
+        "service_NAHy7N",
+        "service_Tqrb99",
+        "service_MqGgD8",
+        "service_pVb8yC",
+        "service_rtKhXU",
+        "service_38BGJq",
+        "service_e6QDLf",
+        "service_twGEa3",
+        "service_R4RpHw",
+        "service_qbAaeF",
+        "service_WEUw94",
+        "service_iFw4FT",
+        "service_PKNEm6",
+        "service_YJgAKR",
+        "service_zzLpxa",
+        "service_eAeNAK",
+        "service_jnWKrg",
+        "service_iGBdgE",
+        "service_CYWHnW",
+        "service_acptdC",
+        "process_card_VTkwhe",
+        "process_card_hDXenQ",
+        "process_card_ijkbET",
+        "process_card_LkJnxT",
+        "process_card_tqbbzK",
+        "process_card_ABJ7h4",
+        "process_step_3prLGk",
+        "process_step_heGtBb",
+        "process_step_qB9q3c",
+        "testimonial_f6g7t6",
+        "testimonial_cB6bbY",
+        "testimonial_GHNAci"
+      ],
+      "name": "PackTHC Studio",
+      "settings": {
+        "services_badge": "OUR SERVICES",
+        "services_title": "WHAT WE DO FOR CANNABIS BRANDS",
+        "about_badge": "ABOUT US",
+        "about_title": "Driving Innovation In Cannabis Packaging",
+        "about_text": "The team behind PackTHC Studio has worked across branding, compliance, and packaging manufacturing, giving clients a single partner from concept to finished product.packthc+1​ From first sketch to final shipment, every project is built to be retail‑ready, compliant, and scalable as your brand grows",
+        "about_image": "shopify://shop_images/420x470.webp",
+        "features_title": "PackTHC Identity",
+        "feature_1": "Brand Strategy",
+        "feature_2": "Visual Branding",
+        "feature_3": "Identity Build",
+        "feature_4": "Marketing Strategy",
+        "years": "15",
+        "process_badge": "OUR PROCESS",
+        "process_title": "How PackTHC Studio Brings Brands To Life",
+        "process_text": "Every strong cannabis brand starts with a clear process. At PackTHC Studio, we combine strategy, creativity, and execution into a smooth, collaborative workflow. From first idea to final launch, we make sure every move supports your brand, stays compliant, and drives real growth.",
+        "cards_badge": "OUR PROCESS",
+        "cards_title": "How PackTHC Studio Brings Your Brand To Life",
+        "testimonial_badge": "TESTIMONIALS",
+        "testimonial_title": "What Our Cannabis Clients Say",
+        "cta_text": "Trusted By 17k+ Worldwide Brand & Customers",
+        "cta_button": "LEARN MORE",
+        "cta_link": "",
+        "cta_bg_image": "shopify://shop_images/Frame_165.webp"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "packthc_studio_4NC7pH"
+  ]
+}

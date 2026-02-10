@@ -1,0 +1,472 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_banner_zeN6Ut": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_6Ddaqm": {
+          "type": "heading",
+          "settings": {
+            "content": "<p>BRED FOR AGRICULTURE</p>",
+            "heading_size": "h2"
+          }
+        },
+        "text_Ltz3UY": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Breeder Direct California Cannabis Seeds</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6Ddaqm",
+        "text_Ltz3UY"
+      ],
+      "name": "t:sections.image-banner.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-8e9d32cc-f46f-4364-8319-50b51f464c10",
+        "image_background": "shopify://shop_images/ndispensable-zwc6BD4_RDE-unsplash.jpg",
+        "image_link": "",
+        "image_link_new_tab": false,
+        "height": "auto",
+        "overlay": 0,
+        "vertical": "middle",
+        "align": "center",
+        "mobile_alignment": "center",
+        "width": 100,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
+      }
+    },
+    "education_strains_LEfq6Q": {
+      "type": "education-strains",
+      "blocks": {
+        "custom_HBKCyw": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/AK47_3_20ccda17-6b82-4edc-878c-8037aecf8cfa.png",
+            "title": "Ak47",
+            "show_title": true,
+            "link": "shopify://pages/strains-one",
+            "price": "$29.99",
+            "show_price": false
+          }
+        },
+        "custom_AmNPVU": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Green_Crack_3.png",
+            "title": "Green Crack",
+            "show_title": true,
+            "link": "",
+            "price": "$29.99",
+            "show_price": false
+          }
+        },
+        "custom_gwGpYx": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Miracle_Alien_Cookies_3.png",
+            "title": "Miracle Alien Cookies",
+            "show_title": true,
+            "link": "",
+            "price": "",
+            "show_price": false
+          }
+        },
+        "custom_n43RTL": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Girl_Scout_Cookies_3.png",
+            "title": "Girl Scout Cookies",
+            "show_title": true,
+            "link": "",
+            "price": "",
+            "show_price": false
+          }
+        },
+        "custom_z7kz7P": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/GMO_Cookies_3.png",
+            "title": "GMO Cookies",
+            "show_title": true,
+            "link": "",
+            "price": "$29.99",
+            "show_price": false
+          }
+        },
+        "custom_CNfma9": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Godfather_OG_3.png",
+            "title": "Godfather OG",
+            "show_title": true,
+            "link": "",
+            "price": "",
+            "show_price": false
+          }
+        },
+        "custom_nVRD6W": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Acapulco_Gold_3.png",
+            "title": "Acapulco Gold",
+            "show_title": true,
+            "link": "",
+            "price": "",
+            "show_price": false
+          }
+        },
+        "custom_UQ4pVV": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Blue_Dream_3.png",
+            "title": "Blue Dream",
+            "show_title": true,
+            "link": "",
+            "price": "",
+            "show_price": false
+          }
+        }
+      },
+      "block_order": [
+        "custom_HBKCyw",
+        "custom_AmNPVU",
+        "custom_gwGpYx",
+        "custom_n43RTL",
+        "custom_z7kz7P",
+        "custom_CNfma9",
+        "custom_nVRD6W",
+        "custom_UQ4pVV"
+      ],
+      "name": "Education Strains",
+      "settings": {
+        "background_color": "#ffffff",
+        "button_color": "#004a26",
+        "button_hover_color": "#246952",
+        "card_background": "#f5f5f5",
+        "subtitle": "Fresh from the Field",
+        "subtitle_color": "#666666",
+        "title": "Discover Our Latest Strains",
+        "title_color": "#202425",
+        "card_text_color": "#1a1a1a",
+        "price_color": "#004a26"
+      }
+    },
+    "cannabis_seeds_F4EU6N": {
+      "type": "Cannabis-Seeds",
+      "name": "Grower-Breeder Section",
+      "settings": {
+        "pre_title": "GROWER-BREEDER DEVELOPED",
+        "main_title": "Research & Industry Study",
+        "image_1": "shopify://shop_images/Green_Crack_3.png",
+        "image_2": "shopify://shop_images/Acapulco_Gold_3.png",
+        "image_3": "shopify://shop_images/AK47.webp",
+        "rotation_speed": 0.5,
+        "icon_svg": "",
+        "content_title": "California cannabis growers, seed breeders, and producers.",
+        "content_description": "Cannabis packaging plays a critical role in protecting product quality, ensuring compliance, and supporting safe handling throughout the supply chain. Modern marijuana packaging is developed based on real-world industry experience, regulatory requirements, and practical use by growers, processors, and retailers.",
+        "feature_list": "Dried flower storage | First to market with feminized F1 hybrid cannabis autoflowers. | Innovated novel cannabis genetics, seed types, processes, and terminology",
+        "background_color": "#ffffff",
+        "circle_border_color": "#cccccc",
+        "pre_title_color": "#1a1a1a",
+        "title_color": "#1a1a1a",
+        "content_title_color": "#1a1a1a",
+        "description_color": "#333333",
+        "bullet_color": "#1a1a1a"
+      }
+    },
+    "shop_premium_cannabis_pDcfrQ": {
+      "type": "shop-premium-cannabis",
+      "blocks": {
+        "category_YtWmKb": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Blue_Dream_3.png",
+            "label": "DAY NEUTRAL",
+            "title": "Autoflower Cannabis Seeds",
+            "link": ""
+          }
+        },
+        "category_GW8kmA": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Acapulco_Gold_3.png",
+            "label": "PHOTOPERIOD",
+            "title": "Full Term Cannabis Seeds",
+            "link": ""
+          }
+        },
+        "category_WUrLW9": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Godfather_OG_3.png",
+            "label": "PHOTOPERIOD",
+            "title": "Semi-Full Term Cannabis Seeds",
+            "link": ""
+          }
+        },
+        "category_VYYAg7": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Girl_Scout_Cookies_3.png",
+            "label": "0% THC",
+            "title": "Hemp & CBD Seeds",
+            "link": ""
+          }
+        },
+        "category_LXEKPH": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Miracle_Alien_Cookies_3.png",
+            "label": "PHOTOPERIOD",
+            "title": "Full Term Cannabis Seeds",
+            "link": ""
+          }
+        },
+        "category_HDyVyy": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Green_Crack_3.png",
+            "label": "0% THC",
+            "title": "Hemp & CBD Seeds",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_YtWmKb",
+        "category_GW8kmA",
+        "category_WUrLW9",
+        "category_VYYAg7",
+        "category_LXEKPH",
+        "category_HDyVyy"
+      ],
+      "name": "Shop Premium Cannabis",
+      "settings": {
+        "subtitle": "High Yielding, High potency, Mold resistant",
+        "title": "Shop Premium Cannabis",
+        "background_color": "#ffffff",
+        "subtitle_color": "#666666",
+        "title_color": "#1a1a1a",
+        "button_color": "#2d7a5e",
+        "button_hover_color": "#246952",
+        "card_background": "#1a1a1a",
+        "label_color": "#ffffff",
+        "category_title_color": "#ffffff"
+      }
+    },
+    "seeds_collection_Hct3dD": {
+      "type": "seeds-collection",
+      "blocks": {
+        "collection_RVbFqk": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Blue_Dream_3.png",
+            "title": "Feminized seeds",
+            "count": "69",
+            "link": ""
+          }
+        },
+        "collection_dFeCai": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/AK47.webp",
+            "title": "Feminized F1",
+            "count": "69",
+            "link": ""
+          }
+        },
+        "collection_FfWPRp": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Godfather_OG_3.png",
+            "title": "Fast Version",
+            "count": "69",
+            "link": ""
+          }
+        },
+        "collection_AtgxhC": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Miracle_Alien_Cookies_3.png",
+            "title": "Auto Flowering",
+            "count": "29",
+            "link": ""
+          }
+        },
+        "collection_b7DQTW": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Green_Crack_3.png",
+            "title": "Auto Flowering F1",
+            "count": "24",
+            "link": ""
+          }
+        },
+        "collection_CqdQ4k": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/GMO_Cookies_3.png",
+            "title": "Regular",
+            "count": "69",
+            "link": ""
+          }
+        },
+        "collection_MEe7wP": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/Godfather_OG_3.png",
+            "title": "CBD",
+            "count": "41",
+            "link": ""
+          }
+        },
+        "collection_PAB9wQ": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify://shop_images/AK47_4.png",
+            "title": "Auto CBD",
+            "count": "69",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_RVbFqk",
+        "collection_dFeCai",
+        "collection_FfWPRp",
+        "collection_AtgxhC",
+        "collection_b7DQTW",
+        "collection_CqdQ4k",
+        "collection_MEe7wP",
+        "collection_PAB9wQ"
+      ],
+      "name": "Top USA Collection",
+      "settings": {
+        "title": "Top USA Marijuana Seeds Collection",
+        "view_all_text": "All weed seed collection",
+        "view_all_link": "",
+        "background_color": "#ffffff",
+        "title_color": "#202425",
+        "link_color": "#1a1a1a",
+        "card_title_color": "#ffffff",
+        "card_count_color": "#ffffff",
+        "card_arrow_color": "#ffffff"
+      }
+    },
+    "education_customer_satisfaction_VqrdjT": {
+      "type": "education-customer-satisfaction",
+      "blocks": {
+        "feature_3KmcBe": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "title": "FREE SEEDS WITH EVERY PURCHASE",
+            "description": "Every retail seed pack purchased, whether here online or in a store, comes with free extra seeds to help you succeed!",
+            "list_items": "",
+            "link_1_text": "Free Seed Program",
+            "link_1_url": "/pages/free-seeds",
+            "link_2_text": "",
+            "link_2_url": "",
+            "link_3_text": "",
+            "link_3_url": ""
+          }
+        },
+        "feature_JEBNpA": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "title": "FAST, SECURE SHIPPING",
+            "description": "",
+            "list_items": "Worldwide Shipping | Fast & Discreet Shipping | Free Shipping on Orders Over $120",
+            "link_1_text": "Shipping Policy",
+            "link_1_url": "/pages/shipping",
+            "link_2_text": "",
+            "link_2_url": "",
+            "link_3_text": "",
+            "link_3_url": ""
+          }
+        },
+        "feature_69E8j8": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "title": "GERMINATION GUARANTEE",
+            "description": "All of our cannabis seeds are tested for highest germination quality standards.",
+            "list_items": "",
+            "link_1_text": "Germination Grow Guide",
+            "link_1_url": "/pages/germination-guide",
+            "link_2_text": "Germination Support Form",
+            "link_2_url": "/pages/support",
+            "link_3_text": "",
+            "link_3_url": ""
+          }
+        },
+        "feature_MEE3bz": {
+          "type": "feature",
+          "settings": {
+            "icon_svg": "",
+            "title": "ATLAS SEED GROWER SUPPORT",
+            "description": "Ask questions and get direct grower support on our Discord",
+            "list_items": "",
+            "link_1_text": "PackTHC Seed Discord",
+            "link_1_url": "https://discord.com",
+            "link_2_text": "PackTHC Seed Subreddit",
+            "link_2_url": "https://reddit.com",
+            "link_3_text": "Grower Guide",
+            "link_3_url": "/pages/grower-guide"
+          }
+        }
+      },
+      "block_order": [
+        "feature_3KmcBe",
+        "feature_JEBNpA",
+        "feature_69E8j8",
+        "feature_MEE3bz"
+      ],
+      "name": "Customer Satisfaction",
+      "settings": {
+        "title": "Customer Satisfaction. Guaranteed.",
+        "description": "From free seeds to fast shipping, we are committed to providing you with seeds that germ, and resources to support your success as growers.",
+        "background_color": "#f4e4c1",
+        "title_color": "#1a1a1a",
+        "description_color": "#333333",
+        "card_background": "#ffffff",
+        "card_border_color": "#1a1a1a",
+        "card_border_width": 2,
+        "card_border_radius": 20,
+        "icon_color": "#1a1a1a",
+        "feature_title_color": "#1a1a1a",
+        "feature_description_color": "#333333",
+        "link_color": "#1a1a1a"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_zeN6Ut",
+    "education_strains_LEfq6Q",
+    "cannabis_seeds_F4EU6N",
+    "shop_premium_cannabis_pDcfrQ",
+    "seeds_collection_Hct3dD",
+    "education_customer_satisfaction_VqrdjT"
+  ]
+}

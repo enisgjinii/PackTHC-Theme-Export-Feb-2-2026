@@ -1,0 +1,38 @@
+{%- comment -%}
+	Get max saved price percent on product variant
+
+	Accepts:
+	- product: {Object} Product Liquid object
+
+	Usage:
+		{% render 'max-saved-price', product: product %}
+{%- endcomment -%}
+
+{%- liquid
+	assign upto_number = 0
+
+	for var in product.variants
+		if var.compare_at_price == nil or var.available == false
+			continue
+		endif
+
+		if var.compare_at_price > var.price
+			assign calc_price = var.compare_at_price | minus: var.price | times: 100.0 | divided_by: var.compare_at_price
+
+			if calc_price > upto_number
+				assign upto_number = calc_price
+			endif
+		endif
+	endfor
+
+	if upto_number > 0
+		assign upto_number_split = upto_number | split: '.'
+		assign final_upto_number = upto_number | round: 2
+
+		if upto_number_split[1] == '0' or upto_number_split[1] == '00'
+			assign final_upto_number = upto_number_split[0]
+		endif
+	endif
+
+	echo final_upto_number
+-%}

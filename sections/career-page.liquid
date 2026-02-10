@@ -1,0 +1,458 @@
+{%- liquid
+  assign section_id = '#shopify-section-' | append: section.id
+-%}
+
+<style>
+  {{ section_id }} .career-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  {{ section_id }} .career-heading {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+
+  {{ section_id }} .career-description {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+  }
+
+  {{ section_id }} .job-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  {{ section_id }} .job-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  {{ section_id }} .job-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+
+  {{ section_id }} .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  {{ section_id }} .job-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  {{ section_id }} .job-type {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  {{ section_id }} .job-description {
+    font-size: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  {{ section_id }} .job-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+
+  {{ section_id }} .job-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.5rem;
+  }
+
+  {{ section_id }} .job-meta-item svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    font-size: 1.5rem;
+  }
+
+  {{ section_id }} .job-arrow {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  {{ section_id }} .job-card:hover .job-arrow {
+    background: #333;
+    transform: scale(1.1);
+  }
+
+  {{ section_id }} .job-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+  }
+
+  @media (max-width: 768px) {
+    {{ section_id }} .job-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    {{ section_id }} .career-heading {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    {{ section_id }} .career-description {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    {{ section_id }} .job-card {
+      padding: 24px;
+    }
+
+    {{ section_id }} .job-title {
+      font-size: 1.3rem;
+    }
+
+    {{ section_id }} .job-type {
+      font-size: 0.95rem;
+    }
+
+    {{ section_id }} .job-description {
+      font-size: 1rem;
+    }
+
+    {{ section_id }} .job-meta {
+      font-size: 0.9rem;
+    }
+
+    {{ section_id }} .job-arrow {
+      top: 24px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>
+
+<div class="career-wrapper">
+  <h1 class="career-heading">{{ section.settings.heading }}</h1>
+  
+  {%- if section.settings.description != blank -%}
+    <p class="career-description">{{ section.settings.description }}</p>
+  {%- endif -%}
+
+  <div class="job-grid">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'job_listing' -%}
+          <div class="job-card job-card-clickable" data-job-title="{{ block.settings.job_title | escape }}" {{ block.shopify_attributes }}>
+            <div class="job-header">
+              <div>
+                {%- if block.settings.job_title != blank -%}
+                  <h3 class="job-title">{{ block.settings.job_title }}</h3>
+                {%- endif -%}
+              </div>
+              <div class="job-arrow" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
+                </svg>
+              </div>
+            </div>
+            
+            {%- if block.settings.job_type != blank -%}
+              <div class="job-type">{{ block.settings.job_type }}</div>
+            {%- endif -%}
+            
+            {%- if block.settings.job_description != blank -%}
+              <p class="job-description">{{ block.settings.job_description }}</p>
+            {%- endif -%}
+            
+            {%- if block.settings.location != blank or block.settings.salary != blank -%}
+              <div class="job-meta">
+                {%- if block.settings.location != blank -%}
+                  <div class="job-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                    </svg>
+                    <span>{{ block.settings.location }}</span>
+                  </div>
+                {%- endif -%}
+                
+                {%- if block.settings.salary != blank -%}
+                  <div class="job-meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M21 4h-3V3c0-.6-.4-1-1-1H7c-.6 0-1 .4-1 1v1H3c-.6 0-1 .4-1 1v3c0 .6.4 1 1 1h1v9c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9h1c.6 0 1-.4 1-1V5c0-.6-.4-1-1-1zM8 4h8v1H8V4zm10 14H6V9h12v9z"/>
+                    </svg>
+                    <span>{{ block.settings.salary }}</span>
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Small delay to ensure all elements are loaded
+  setTimeout(function() {
+    const jobCards = document.querySelectorAll('.job-card-clickable');
+    
+    jobCards.forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const jobTitle = this.getAttribute('data-job-title');
+        console.log('Clicked job:', jobTitle);
+        
+        // Multiple strategies to find the form section
+        let formSection = null;
+        
+        // Strategy 1: Look for shopify-section containing the form
+        const shopifySections = document.querySelectorAll('.shopify-section');
+        for (let section of shopifySections) {
+          if (section.querySelector('form[data-testid="form"]') || 
+              section.querySelector('[data-form-root="true"]') ||
+              section.querySelector('shopify-forms-embed')) {
+            formSection = section;
+            break;
+          }
+        }
+        
+        // Strategy 2: Find by form attributes
+        if (!formSection) {
+          const formEmbed = document.querySelector('[data-form-root="true"]');
+          if (formEmbed) {
+            formSection = formEmbed.closest('.shopify-section') || formEmbed.closest('section') || formEmbed;
+          }
+        }
+        
+        // Strategy 3: Find shopify-forms-embed
+        if (!formSection) {
+          const formsEmbed = document.querySelector('shopify-forms-embed');
+          if (formsEmbed) {
+            formSection = formsEmbed.closest('.shopify-section') || formsEmbed.closest('section') || formsEmbed;
+          }
+        }
+        
+        // Strategy 4: Find by role="dialog"
+        if (!formSection) {
+          const dialogSection = document.querySelector('section[role="dialog"]');
+          if (dialogSection) {
+            formSection = dialogSection.closest('.shopify-section') || dialogSection;
+          }
+        }
+        
+        console.log('Form section found:', formSection);
+        
+        if (formSection) {
+          // Scroll with multiple attempts
+          formSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Backup scroll method
+          setTimeout(function() {
+            const rect = formSection.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetPosition = rect.top + scrollTop - 50; // 50px offset from top
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }, 100);
+          
+          // Pre-fill the position radio button after scrolling
+          setTimeout(function() {
+            // Wait for shadow DOM to be accessible
+            const shadowHost = document.querySelector('shopify-forms-embed');
+            
+            if (shadowHost && shadowHost.shadowRoot) {
+              // Access shadow DOM
+              const positionRadios = shadowHost.shadowRoot.querySelectorAll('input[name="custom#position_applying_for"]');
+              positionRadios.forEach(function(radio) {
+                if (radio.value === jobTitle) {
+                  radio.checked = true;
+                  radio.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+              });
+              
+              // Focus on first input
+              const firstInput = shadowHost.shadowRoot.querySelector('input[type="text"]');
+              if (firstInput) {
+                firstInput.focus();
+              }
+            } else {
+              // Fallback for regular DOM
+              const positionRadios = document.querySelectorAll('input[name="custom#position_applying_for"]');
+              positionRadios.forEach(function(radio) {
+                if (radio.value === jobTitle) {
+                  radio.checked = true;
+                  radio.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+              });
+              
+              const firstInput = document.querySelector('input[type="text"]');
+              if (firstInput) {
+                firstInput.focus();
+              }
+            }
+          }, 1000);
+        } else {
+          console.error('Form section not found on the page');
+          alert('Application form not found. Please scroll down to apply.');
+        }
+      });
+    });
+  }, 500);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Career Listings",
+  "tag": "section",
+  "class": "career-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page Heading",
+      "default": "Currently open positions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Join our team and be part of something amazing. We're looking for talented individuals to help us grow."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "job_listing",
+      "name": "Job Listing",
+      "settings": [
+        {
+          "type": "text",
+          "id": "job_title",
+          "label": "Job Title",
+          "default": "UI/UX & Product Designer"
+        },
+        {
+          "type": "text",
+          "id": "job_type",
+          "label": "Employment Type",
+          "default": "Full Time"
+        },
+        {
+          "type": "textarea",
+          "id": "job_description",
+          "label": "Job Description",
+          "default": "Product design encompasses both UX/UI design, but it also in-volves a broader understanding of the entire product."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "London, UK"
+        },
+        {
+          "type": "text",
+          "id": "salary",
+          "label": "Salary Range",
+          "default": "$23k-30k"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Career Listings",
+      "blocks": [
+        {
+          "type": "job_listing",
+          "settings": {
+            "job_title": "Graphic Designer",
+            "job_type": "Full Time",
+            "job_description": "Graphic designers combine art and technology to communicate ideas through images and the layout of web and printed pages.",
+            "location": "New York",
+            "salary": "$25k-35k"
+          }
+        },
+        {
+          "type": "job_listing",
+          "settings": {
+            "job_title": "Web Developer",
+            "job_type": "Remote",
+            "job_description": "Encompasses a long list of tasks including web design, front and back-end development & server management.",
+            "location": "New York",
+            "salary": "$45k-55k"
+          }
+        },
+        {
+          "type": "job_listing",
+          "settings": {
+            "job_title": "Digital Marketer",
+            "job_type": "Full Time",
+            "job_description": "Marketing efforts closely, with our deep intents, such as product development, sales & analytics requirement.",
+            "location": "London, UK",
+            "salary": "$30k-40k"
+          }
+        },
+        {
+          "type": "job_listing",
+          "settings": {
+            "job_title": "Sales",
+            "job_type": "Remote",
+            "job_description": "Encompasses a mix of task including web design, front and back-end development, & server management.",
+            "location": "United State",
+            "salary": "$35k-50k"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,49 @@
+{%- liquid
+	assign featured_image   = product.featured_media
+-%}
+
+{% comment %} Add to cart {% endcomment %}
+{%- capture product_add_to_cart -%}
+	{%- form 'product', product, class: 'form-add-to-cart', novalidate: 'novalidate', data-type: 'add-to-cart-form', id: nil -%}
+		<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+		{%- if product.available -%}
+				<button type="submit" name="add" class="button primary-button add-to-cart-button">
+					{{- 'general.text.add' | t -}}
+				</button>
+		{%- endif -%}
+	{%- endform -%}
+{%- endcapture -%}
+
+<div class="product-item" data-product-id="{{ product.id }}">
+	{%- if featured_image -%}
+		<a href="{{ product.url | split: '?' | first }}" class="product-image{% if settings.image_lazy and featured_image %} lazy-image{% endif %}" arial-label="{{ product.title }}">
+			{%- render 'lazy-image', image: featured_image, width: 300, lazy: image_load -%}
+		</a>
+	{%- endif -%}
+
+	<div class="product-info">
+		<div class="product-info-left">
+			{% comment %} Title {% endcomment %}
+			<h2 class="product-name">
+				<a href="{{ product.url | default: '#' }}" tabindex="-1">
+					{{- product.title | escape -}}
+				</a>
+			</h2>
+
+			{% comment %} Price {% endcomment %}
+			{%- liquid
+				if settings.card_show_price
+					render 'price', product: product
+				endif
+			-%}
+
+			<div class="product-warning error-message message"></div>
+		</div>
+
+		<div class="product-info-right">
+			{% comment %} Add to cart {% endcomment %}
+			{{- product_add_to_cart -}}
+		</div>
+	</div>
+</div>

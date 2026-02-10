@@ -1,0 +1,98 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_aNF9FK": {
+      "type": "breadcrumb",
+      "name": "t:sections.breadcrumb.presets.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "alignment": "flex-start",
+        "show_title": false,
+        "title_font": "--heading-font-family",
+        "title_size": 48,
+        "title_space": 20,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_YGnLLt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fHpX94": {
+          "type": "heading",
+          "settings": {
+            "content": "{{ page.title }}",
+            "heading_size": "h2"
+          }
+        },
+        "text_kHXczi": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Compartment pouch containers are designed for dual-storage versatility, providing both convenience and compliance in a compact format. With a premium product finish and high-quality design, they deliver reliable performance for storing and organizing multiple items securely. Recognized by dispensaries as a trusted packaging solution, these containers are practical, durable, and easy to use. Offering an eco-friendly choice over traditional packaging, they also serve as a smart alternative to durable storage bags. Their stylish packaging enhances presentation, making them ideal for modern businesses and proudly offered by PackTHC.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fHpX94",
+        "text_kHXczi"
+      ],
+      "custom_css": [
+        "p {margin-left: 15%; margin-right: 15%;}"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "align": "center",
+        "width": 100,
+        "padding_top": 20,
+        "padding_bottom": 10,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 5
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "collection_grid_aV6MCb": {
+      "type": "collection-grid",
+      "blocks": {
+        "collection_block_aCUVyH": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "dual-compartment-pouch-containers"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_aCUVyH"
+      ],
+      "custom_css": [
+        ".collection-grid-wrapper {display: block;}"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "columns": 2
+      }
+    }
+  },
+  "order": [
+    "breadcrumb_aNF9FK",
+    "rich_text_YGnLLt",
+    "main",
+    "collection_grid_aV6MCb"
+  ]
+}

@@ -1,0 +1,134 @@
+<!-- sections/top-lines.liquid -->
+{% schema %}
+{
+  "name": "Top Lines",
+  "tag": "section",
+  "class": "top-bar",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Top Lines",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+} 
+.top-bar {
+  background-color: #dbdfd8;
+  padding: 5px 0;
+  text-align: left;
+}
+
+.top-bar__container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.top-bar__menu {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.top-bar__menu li {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar__menu li a {
+  color: #3B4238;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar__menu li a:hover {
+  text-decoration: underline;
+}
+
+.top-bar__menu li i {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.top-bar__menu li a .fa-question-circle {
+  color: #007bff;
+}
+
+.top-bar__menu li a .fa-whatsapp {
+  color: #25D366;
+}
+
+.top-bar__menu li a .fa-lock {
+  color: grey;
+}
+
+.top-bar__menu li a .trustpilot-icon {
+  color: #00b67a;
+}
+
+.top-bar__right-menu {
+  display: flex;
+  margin-left: auto;
+}
+
+@media (max-width: 1024px) {
+  .top-bar__menu li {
+    display: none;
+  }
+
+  .top-bar__menu .help-center-section,
+  .top-bar__menu .trustpilot-section {
+    display: flex;
+  }
+}
+</style>
+
+<div class="top-bar__container">
+  <nav>
+    <ul class="top-bar__menu">
+      <!-- Left Side Items -->
+      <li class="help-center-section">
+        <a href="{{ shop.url }}/pages/help">
+          <span>
+            <img src="https://cdn.shopify.com/s/files/1/0750/1725/7259/files/ques_icon_addf57bc-3d69-4637-a592-ed481a47e71c.svg?v=1734597524" alt="Help Center Icon" class="icon">
+          </span> 
+          Help Center
+        </a>
+      </li>
+      <li>
+        <a href="https://api.whatsapp.com/send/?phone=%2B18329510700&text=I%27m+interested+in+the+product%3A++-+https%3A%2F%2Fpackthismeal.com&type=phone_number&app_absent=0" target="_blank">
+          <span>
+            <img src="https://cdn.shopify.com/s/files/1/0750/1725/7259/files/whats_icon_a1a036b0-d050-4172-82cd-a9951198199f.svg?v=1734597524" alt="WhatsApp Icon" class="icon">
+          </span> 
+          Order on WhatsApp
+        </a>
+      </li>
+
+      <!-- Right Side Items -->
+      <div class="top-bar__right-menu">
+        <li class="trustpilot-section">
+          <a href="https://www.trustpilot.com/review/{{ shop.permanent_domain }}" target="_blank" rel="noopener">
+            <span>
+              <img src="https://cdn.shopify.com/s/files/1/0750/1725/7259/files/trust_icon_95a917ee-a558-49d2-8a79-ee828eca661e.svg?v=1734597524" alt="Trustpilot Icon" class="icon">
+            </span> 
+            Review Us on Trustpilot
+          </a>
+        </li>
+      </div>
+    </ul>
+  </nav>
+</div>

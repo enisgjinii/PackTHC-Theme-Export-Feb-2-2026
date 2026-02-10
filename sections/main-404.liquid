@@ -1,22 +1,188 @@
-{% style %}
-  .template-404 p {
-    margin: 1.6rem 0 0;
-  }
-  .template-404 .btn {
-    margin-top: 3.2rem;
-  }
-{% endstyle %}
-<div
-  class="template-404 section section--padding"
-  style="--section-padding-top: 100px;--section-padding-bottom: 100px;"
->
-  <div class="page-width text-center">
-    <h1 class="title h2">{{ 'templates.404.title' | t }}</h1>
-    <p class="text-base text-subtext">{{ 'templates.404.subtext' | t }}</p>
-    <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">
-      <span class="btn__text">
-        {{ 'general.continue_shopping' | t }}
-      </span>
-    </a>
-  </div>
+{%- liquid
+	assign section_id = '#shopify-section-' | append: section.id
+
+	echo '404.css' | asset_url | stylesheet_tag
+-%}
+
+<style>
+	@media (min-width: 992px) {
+		{{ section_id }} .section-wrapper {
+			{%- if section.settings.bg_image != blank -%}
+				background-image: url({{ section.settings.bg_image | image_url: width: 1920 }});
+			{%- endif -%}
+		}
+	}
+
+	{%- for block in section.blocks -%}
+		{%- case block.type -%}
+			{%- when 'space' -%}
+				{{ section_id }} [data-block-{{ block.id }}] {
+					flex-shrink: 0;
+					height: {{ block.settings.height_mobile }}px;
+				}
+
+				@media (min-width: 992px) {
+					{{ section_id }} [data-block-{{ block.id }}] {
+						height: {{ block.settings.height }}px;
+					}
+				}
+			{%- when 'logo' -%}
+				{{ section_id }} [data-block-{{ block.id }}] .logo img {
+					max-width: {{ block.settings.width }}px;
+				}
+		{%- endcase -%}
+	{%- endfor -%}
+</style>
+
+<div class="section-wrapper color-{{ section.settings.color_scheme }}">
+	<div class="container">
+		<div class="error-content-page">
+			{%- for block in section.blocks -%}
+				<div class="list-item" data-block-{{ block.id }}>
+					{%- case block.type -%}
+						{%- when 'logo' -%}
+							{%- liquid
+								assign logo_width        = block.settings.width | times: 2
+								assign logo_width_retina = block.settings.width | times: 4
+							-%}
+
+							<h1 class="logo">
+								<a href="{{ routes.root_url }}">
+									{%- if block.settings.image != blank -%}
+										<img srcset="{{ block.settings.image | image_url: width: logo_width }} 1x, {{ block.settings.image | image_url: width: logo_width_retina }} 2x"
+											src="{{ block.settings.image | image_url: width: logo_width }}"
+											class="site-branding-image"
+											width="{{ block.settings.image.width }}"
+											height="{{ block.settings.image.height }}"
+											alt="{{ block.settings.image.alt | default: shop.name | escape }}"
+											loading="lazy">
+									{%- else -%}
+										{{- shop.name -}}
+									{%- endif -%}
+								</a>
+							</h1>
+						{%- when 'content' -%}
+							{%- if block.settings.content != blank -%}
+								<div class="content rte">{{- block.settings.content -}}</div>
+							{%- endif -%}
+						{%- when 'form' -%}
+							<form action="{{ routes.search_url }}" method="get" role="search" class="error-search-form">
+								<label class="field-label sr-only" for="search-in-template" aria-hidden="true">{{- 'general.search.label' | t -}}</label>
+								<input class="field-input" id="{{ block.id }}-search" type="search" name="{{ block.id }}-search" value="{{ search.terms | escape }}" placeholder="{{ block.settings.input_text }}" {% if search.performed %}autofocus{% endif %} required>
+								<input type="hidden" name="type" value="{{ settings.search_type }}">
+								<input name="options[prefix]" type="hidden" value="last">
+								<input type="hidden" name="options[unavailable_products]" value="{{ settings.search_unavailable_products }}">
+
+								<button class="field-button button primary-button" aria-label="{{ 'general.search.label' | t }}">{{- block.settings.submit_text -}}</button>
+							</form>
+					{%- endcase -%}
+				</div>
+			{%- endfor -%}
+		</div>
+	</div>
 </div>
+
+{% schema %}
+{
+	"name": "t:sections.404.name",
+	"tag": "section",
+	"class": "error-section",
+	"settings": [
+		{
+			"type": "color_scheme",
+			"id": "color_scheme",
+			"label": "t:settings_schema.colors.label",
+			"default": "scheme-1"
+		},
+		{
+			"type": "image_picker",
+			"id": "bg_image",
+			"label": "t:general.background.image.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "@app"
+		},
+		{
+			"type": "logo",
+			"name": "t:sections.404.blocks.logo.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:general.image.label"
+				},
+				{
+					"type": "range",
+					"id": "width",
+					"default": 100,
+					"step": 5,
+					"min": 50,
+					"max": 500,
+					"unit": "px",
+					"label": "t:general.dimensions.width.width_px"
+				}
+			]
+		},
+		{
+			"type": "space",
+			"name": "t:general.dimensions.space.label",
+			"settings": [
+				{
+					"type": "range",
+					"id": "height",
+					"default": 100,
+					"step": 1,
+					"min": 1,
+					"max": 100,
+					"unit": "px",
+					"label": "t:general.dimensions.height.label"
+				},
+				{
+					"type": "range",
+					"id": "height_mobile",
+					"default": 50,
+					"step": 1,
+					"min": 1,
+					"max": 100,
+					"unit": "px",
+					"label": "t:general.dimensions.height_mobile.label"
+				}
+			]
+		},
+		{
+			"type": "content",
+			"name": "t:general.typography.content.label",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "content",
+					"default": "<p>Seems like something went wrong.</p>",
+					"label": "t:general.typography.text.label"
+				}
+			]
+		},
+		{
+			"type": "form",
+			"name": "t:sections.404.blocks.form.name",
+			"limit": 1,
+			"settings": [
+				{
+					"type": "text",
+					"id": "input_text",
+					"default": "Enter keyword...",
+					"label": "t:sections.404.blocks.form.settings.input_text.label"
+				},
+				{
+					"type": "text",
+					"id": "submit_text",
+					"default": "Search",
+					"label": "t:sections.404.blocks.form.settings.submit_text.label"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

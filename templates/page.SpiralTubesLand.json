@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pop_top_vials_land_pg_zExNa3": {
+      "type": "pop-top-vials-land-pg",
+      "blocks": {
+        "collection_faLLmB": {
+          "type": "collection",
+          "settings": {
+            "collection": "spiral-xl-containers",
+            "tab_dram": "SPIRAL XL CONTAINER",
+            "tab_count": "With Counts",
+            "products_limit": 80
+          }
+        },
+        "collection_Rqi7Vz": {
+          "type": "collection",
+          "settings": {
+            "collection": "spiral-containers",
+            "tab_dram": "SPIRAL CONTAINER",
+            "tab_count": "With Counts",
+            "products_limit": 80
+          }
+        },
+        "collection_fC6Ndf": {
+          "type": "collection",
+          "settings": {
+            "collection": "spiral-tubes",
+            "tab_dram": "SPIRAL TUBES",
+            "tab_count": "With Counts",
+            "products_limit": 80
+          }
+        }
+      },
+      "block_order": [
+        "collection_faLLmB",
+        "collection_Rqi7Vz",
+        "collection_fC6Ndf"
+      ],
+      "name": "ptv land page",
+      "settings": {
+        "main_title": "Product Collections",
+        "default_product": "7-5oz-220cc-spiral-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-100-count",
+        "contact_form_url": "/pages/contact"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "pop_top_vials_land_pg_zExNa3",
+    "main"
+  ]
+}

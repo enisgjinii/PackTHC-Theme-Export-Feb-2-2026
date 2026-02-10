@@ -1,0 +1,12 @@
+<script>window.is_hulkpo_installed=true</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all offer text <p> elements
+    const offerParagraphs = document.querySelectorAll(".offer-option p");
+
+    offerParagraphs.forEach(p => {
+      // Replace just the percentage number (like 10%) from the inner text
+      p.innerHTML = p.innerHTML.replace(/\d+%/, '');
+    });
+  });
+</script>

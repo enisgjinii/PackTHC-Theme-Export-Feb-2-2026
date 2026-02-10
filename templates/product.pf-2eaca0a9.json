@@ -1,0 +1,400 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_cyhcMz": {
+      "type": "breadcrumb",
+      "custom_css": [
+        ".section-wrapper {background: #ffffff;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "alignment": "flex-start",
+        "show_title": false,
+        "title_font": "--heading-font-family",
+        "title_size": 10,
+        "title_space": 10,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_top_mobile": 5,
+        "padding_bottom_mobile": 5
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor_EKQiFe": {
+          "type": "vendor",
+          "settings": {
+            "padding_bottom": 10
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "font_size": "h4",
+            "padding_bottom": 10
+          }
+        },
+        "judge_me_reviews_preview_badge_gFX3GF": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "font_size_price": "h4",
+            "padding_bottom": 10
+          }
+        },
+        "custom_liquid_cti3Ny": {
+          "type": "custom-liquid",
+          "name": "Customization Btn",
+          "settings": {
+            "custom-liquid": "{% render 'product-customize-button', product: product %}",
+            "padding_bottom": 20
+          }
+        },
+        "custom_liquid_PPFPBE": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom-liquid": "<style>\n  .sku-label {\n    background-color: #004A26;\n    color: white;\n    display: inline-block;\n    padding: 6px;\n    border-radius: 5px;\n    font-size: 14px;\n    margin:0;\n  }\n</style>\n\n<p class=\"sku-label\">\n  SKU:\n  {% if product.variants.size > 1 %}\n    {% for variant in product.variants %}\n      {{ variant.sku }}{% if forloop.last == false %}, {% endif %}\n    {% endfor %}\n  {% else %}\n    {{ product.variants.first.sku }}\n  {% endif %}\n</p>",
+            "padding_bottom": 10
+          }
+        },
+        "availability_KXzfjK": {
+          "type": "availability",
+          "disabled": true,
+          "settings": {
+            "low_stock": 0,
+            "padding_bottom": 10
+          }
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "picker_type": "swatch",
+            "padding_bottom": 12
+          }
+        },
+        "divider_QfLhA7": {
+          "type": "divider",
+          "settings": {
+            "color": "",
+            "height": 10
+          }
+        },
+        "add-to-cart": {
+          "type": "add-to-cart",
+          "settings": {
+            "text_transform": "uppercase",
+            "quantity_selector": true,
+            "dynamic_checkout": false,
+            "show_gift_card": false,
+            "padding_bottom": 0
+          }
+        },
+        "custom_liquid_EjXDDK": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom-liquid": "<style>\nth, td \n  {\n   font-size:13px;\n   text-align:center;\n   padding:8px;\n  } \n.email, .mob, th\n{\ncolor:#004A26;\nfont-size:15px;\n}\n  @media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n.email, .mob{\n    font-size: 12px;\n  }\n}\n</style>\n{% assign qty_list = product.metafields.custom.quantity_table %}\n{% assign unit_list = product.metafields.custom.unit_table %}\n{% assign price_list = product.metafields.custom.price_table %}\n{% if qty_list and unit_list and price_list %}\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody>\n      {% assign qty_array = qty_list | split: ',' %}\n      {% assign unit_array = unit_list | split: ',' %}\n      {% assign price_array = price_list | split: ',' %}\n      \n      {% for i in (0..qty_array.size) %}\n        {% if i < qty_array.size %}\n            <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n            <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n\n<td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n          </tr>\n        {% endif %}\n      {% endfor %}\n    </tbody>\n<td style=\"border: 1px solid #ddd; font-weight:bolder;\" colspan=\"4\">For Higher Quantity Pricing, Please <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> or Call <a href=\"call:+1(816)PACKTHC\" class=\"mob\">+1(816)PACKTHC</a></td>\n  </table>\n{% endif %}",
+            "padding_bottom": 0
+          }
+        },
+        "share_pbxQhp": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share",
+            "type": "social",
+            "padding_bottom": 0
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pairs well with",
+            "make_collapsible_row": true,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "show_add_to_cart": true,
+            "padding_bottom": 0
+          }
+        },
+        "description_tab_3p8AUA": {
+          "type": "description-tab",
+          "disabled": true,
+          "settings": {
+            "heading_tab": "More Information",
+            "content_tab": "{{ product.description }}"
+          }
+        },
+        "image_with_link_Efqt68": {
+          "type": "image-with-link",
+          "settings": {
+            "image": "shopify://shop_images/PRICE_MATCH_GUARANTEE_1.png",
+            "url": "shopify://pages/price-match-guarantee",
+            "image_width": 800,
+            "padding_bottom": 0
+          }
+        },
+        "ecomsend_restock_product_restore_email_7NQpKT": {
+          "type": "shopify://apps/sw-back-in-stock/blocks/product-restore-email/b190bced-3b7b-47da-a05f-6ea4821c3a77",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_EKQiFe",
+        "title",
+        "judge_me_reviews_preview_badge_gFX3GF",
+        "price",
+        "custom_liquid_cti3Ny",
+        "custom_liquid_PPFPBE",
+        "availability_KXzfjK",
+        "variant-picker",
+        "divider_QfLhA7",
+        "add-to-cart",
+        "custom_liquid_EjXDDK",
+        "share_pbxQhp",
+        "complementary",
+        "description_tab_3p8AUA",
+        "image_with_link_Efqt68",
+        "ecomsend_restock_product_restore_email_7NQpKT"
+      ],
+      "custom_css": [
+        ".product-details-tabs {border: 1px solid;}",
+        ".title {text-transform: uppercase;}",
+        ".tab-head {font-size: 4.6rem;}",
+        ".field-wrap {display: block;}",
+        ".field-title {border: 1px solid; border-radius: 5px; padding: 10px; display: none;}",
+        ".media-preview-wrap {border: hidden;}",
+        ".hulkapps-volumes {display: none;}",
+        ".product-vendor-link {font-weight: 600;}",
+        ".price {color: #004a26;}",
+        ".link-underline,.rte a {color: #202425;}",
+        ".product-text {font-size: 30px; color: #004a26; font-weight: 900;}",
+        ".price__sale {display: none;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "space": 50,
+        "sticky_add_to_cart": "hidden",
+        "width": 50,
+        "layout": "layout-2",
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "lightbox": true,
+        "video_looping": true,
+        "group_image": true,
+        "alignment": "left",
+        "padding_top": 8,
+        "padding_bottom": 0,
+        "padding_top_mobile": 8,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_details_tabs_j93WXm": {
+      "type": "product-details-tabs",
+      "blocks": {
+        "description_MKVtJr": {
+          "type": "description",
+          "settings": {
+            "heading": "Description"
+          }
+        },
+        "liquid_Te4f6K": {
+          "type": "liquid",
+          "settings": {
+            "heading": "Dimension",
+            "liquid": "{% if product.metafields.custom.image1 and product.metafields.custom.image2 %}\n  <style>\n    .image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"image-container\">\n    <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Image Left\" />\n    <img src=\"{{ product.metafields.custom.image2 | file_url }}\" alt=\"Image Right\" />\n  </div>\n{% else %}\n{% endif %}"
+          }
+        },
+        "liquid_cTf8EB": {
+          "type": "liquid",
+          "settings": {
+            "heading": "Features",
+            "liquid": "{% if product.metafields.custom.feature_image1 and product.metafields.custom.feature_image2 %}\n  <style>\n    .feature-image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .feature-image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .feature-image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .feature-image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"feature-image-container\">\n    <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image 1\" />\n    <img src=\"{{ product.metafields.custom.feature_image2 | file_url }}\" alt=\"Feature Image 2\" />\n  </div>\n{% endif %}"
+          }
+        },
+        "content_D4EVWU": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "heading": "Features",
+            "content": "",
+            "page": ""
+          }
+        },
+        "reviews_e4xnHd": {
+          "type": "reviews",
+          "settings": {
+            "heading": "Reviews",
+            "content": "<!-- Start of Judge.me code --> \n  <div style='clear:both'></div> \n  <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'> \n    {{ product.metafields.judgeme.widget }} \n  </div> \n<!-- End of Judge.me code -->"
+          }
+        }
+      },
+      "block_order": [
+        "description_MKVtJr",
+        "liquid_Te4f6K",
+        "liquid_cTf8EB",
+        "content_D4EVWU",
+        "reviews_e4xnHd"
+      ],
+      "custom_css": [
+        ".tabs-head {border-bottom: 2px solid #ddd;}"
+      ],
+      "name": "t:sections.product-details-tabs.presets.name",
+      "settings": {
+        "full": false,
+        "background": "#ffffff",
+        "width": 100,
+        "heading_size": "h4",
+        "animation": "down",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "174600052724911e49": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_RhUVUj": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_RhUVUj"
+      ],
+      "disabled": true,
+      "settings": {
+        "full": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        ".title {text-transform: uppercase;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "heading": "Related products",
+        "heading_size": "h2",
+        "view_all_text": "See All Products",
+        "view_all_url": "",
+        "layout": "grid",
+        "rows": 1,
+        "columns": 4,
+        "show_arrows": true,
+        "show_dots": true,
+        "loop": false,
+        "autoplay": true,
+        "delay": 5,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "product-recently-viewed": {
+      "type": "product-recently-viewed",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "layout": "grid",
+        "rows": 1,
+        "columns": 4,
+        "show_arrows": true,
+        "show_dots": true,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_rtzDdP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_m4P6Nr": {
+          "type": "heading",
+          "settings": {
+            "content": "Want to buy even more ?",
+            "heading_size": "h2"
+          }
+        },
+        "text_aTR3U4": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Thank you! for the love. Please directly connect with us for commercial quantities. and Guess what? we even customise</p>"
+          }
+        },
+        "button_zC3q7G": {
+          "type": "button",
+          "settings": {
+            "label": "Connect Now",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_m4P6Nr",
+        "text_aTR3U4",
+        "button_zC3q7G"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "align": "center",
+        "width": 100,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "1752776866f1e7c1b3": {
+      "type": "apps",
+      "settings": {
+        "full": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "pf-2eaca0a9": {
+      "type": "pf-2eaca0a9",
+      "settings": {}
+    }
+  },
+  "order": [
+    "breadcrumb_cyhcMz",
+    "main",
+    "product_details_tabs_j93WXm",
+    "174600052724911e49",
+    "product-recommendations",
+    "product-recently-viewed",
+    "rich_text_rtzDdP",
+    "1752776866f1e7c1b3",
+    "pf-2eaca0a9"
+  ]
+}

@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "land7_U6R687": {
+      "type": "land7",
+      "blocks": {
+        "collection_EFtKre": {
+          "type": "collection",
+          "settings": {
+            "collection": "6-dram-pop-top-vials",
+            "tab_dram": "6 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        },
+        "collection_zCffFf": {
+          "type": "collection",
+          "settings": {
+            "collection": "13-dram-pop-top-vials",
+            "tab_dram": "13 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        },
+        "collection_TBAxfe": {
+          "type": "collection",
+          "settings": {
+            "collection": "19-dram-pop-top-vials",
+            "tab_dram": "19 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        },
+        "collection_brGYm7": {
+          "type": "collection",
+          "settings": {
+            "collection": "30-dram-pop-top-vials",
+            "tab_dram": "30 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        },
+        "collection_zhifRm": {
+          "type": "collection",
+          "settings": {
+            "collection": "60-dram-pop-top-vials",
+            "tab_dram": "60 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        },
+        "collection_x7kyhJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "90-dram-pop-top-vials",
+            "tab_dram": "90 DRAM POP TOP VIAL",
+            "tab_count": "315 count",
+            "products_limit": 8
+          }
+        }
+      },
+      "block_order": [
+        "collection_EFtKre",
+        "collection_zCffFf",
+        "collection_TBAxfe",
+        "collection_brGYm7",
+        "collection_zhifRm",
+        "collection_x7kyhJ"
+      ],
+      "name": "land 7",
+      "settings": {
+        "main_title": "Product Collections",
+        "default_product": "6-dram-pop-top-vial-black",
+        "contact_form_url": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "land7_U6R687"
+  ]
+}

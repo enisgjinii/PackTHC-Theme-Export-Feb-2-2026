@@ -1,0 +1,87 @@
+<style>
+  /* Container that holds the pill button */
+  .custom-whatsapp {
+    position: fixed;
+    bottom: 20px;    /* adjust vertical position */
+    right: 20px;    /* adjust horizontal position */
+    z-index: 100;
+  }
+  .whatsapp-pill {
+    display: block;
+    width: 190px;
+    height: 70px;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+    background: #fff;
+  }
+
+
+
+  .whatsapp-pill img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+     .custom-whatsapp {
+        bottom: 10px; 
+        z-index: 98 !important; 
+      }
+    .whatsapp-pill {
+      width: 150px;
+      height: 56px;
+    }
+  }
+</style>
+
+{% if section.settings.show_whatsapp %}
+  {% comment %}
+    If the admin set a custom message, use it; otherwise fallback to product text.
+  {% endcomment %}
+ 
+
+  <div class="custom-whatsapp" role="navigation" aria-label="WhatsApp contact">
+    <a href="https://www.whatsapp.com/channel/0029Vb6x5sl7z4kgvuEDXo0j" target="_blank"  class="whatsapp-pill" target="_blank" rel="noopener noreferrer">
+      <!-- Use your CDN image. If you want the /mnt/data image instead, replace the src with that path. -->
+      <img
+        src="https://cdn.shopify.com/s/files/1/0618/1925/6945/files/Plugin_icon_-_1.webp?v=1762297584"
+        alt="Join our WhatsApp channel"
+        loading="lazy"
+      />
+    </a>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Whatsapp Button",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "label": "Show Whatsapp",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_number",
+      "label": "Please Enter Your Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_msg",
+      "label": "Please Enter Your Msg"
+    }
+  ],
+  "presets": [
+    {
+      "name": "WSP - Whatsapp Button"
+    }
+  ]
+}
+{% endschema %}

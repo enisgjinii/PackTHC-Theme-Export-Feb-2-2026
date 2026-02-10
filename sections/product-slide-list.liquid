@@ -1,0 +1,693 @@
+{%- liquid
+  assign section_id = '#shopify-section-' | append: section.id
+
+  assign full = section.settings.full
+  assign image = section.settings.image
+  assign layout = section.settings.layout
+  assign sub_heading = section.settings.sub_heading_text
+  assign heading = section.settings.heading
+  assign heading_size = section.settings.heading_size
+  assign show_arrows = section.settings.show_arrows
+  assign show_dots = section.settings.show_dots
+-%}
+
+<style>
+    /* --- Container & layout --- */
+    {{ section_id }} .lookbook-row {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Columns box-sizing */
+    {{ section_id }} .lookbook-row > .left,
+    {{ section_id }} .lookbook-row > .right {
+      box-sizing: border-box;
+    }
+
+    /* Left: products column (approx 60% on desktop) */
+    @media (min-width: 992px) {
+      {{ section_id }} .left {
+        width: calc(100% - {{ section.settings.width | default: 50 }}%);
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Right: promo banner (width controlled by settings.width) */
+      {{ section_id }} .right {
+        width: {{ section.settings.width | default: 50 }}%;
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+/* --- MOBILE LAYOUT: Single Product Container View --- */
+@media (max-width: 991px) {
+  /* 1. Stack columns and enforce full width */
+  {{ section_id }} .lookbook-row {
+    flex-direction: column;
+    gap: 40px; /* Space between the product and the promo tile */
+    position: relative;
+  }
+
+  {{ section_id }} .left,
+  {{ section_id }} .right {
+    width: 100% !important; /* Force both columns to full width */
+    padding: 0;
+  }
+
+  /* 2. Hide Swiper-specific elements for the single product view */
+  {{ section_id }} .carousel-swiper {
+    /* Hides navigation controls, wrapper, and any other carousel parts */
+    display: block; 
+  }
+  
+  /* The main Swiper container (which holds all slides) must be hidden */
+  /* We will only show a single, explicitly rendered product card. */
+  {{ section_id }} .swiper {
+      display: none !important; 
+  }
+
+  /* 3. Style for the manually rendered single product container */
+  {{ section_id }} .single-product-container {
+      /* Apply background, padding, and box-shadow for a contained look */
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      /* Ensure title and button alignment matches the product card style */
+      text-align: left;
+  }
+  
+  /* Ensure the single product's image container takes up full width of the new container */
+  {{ section_id }} .single-product-container .product-card__media {
+      min-height: 280px; /* Give the image a decent height */
+  }
+
+  /* 4. Ensure header text is aligned nicely in the container */
+  {{ section_id }} .left .content-inner {
+    padding: 0 15px; /* Add some horizontal padding to content wrapper */
+  }
+}
+
+/* Ensure product card is full width within the new container (if needed) */
+@media (max-width: 991px) {
+    {{ section_id }} .product-card { 
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Make sure to keep the desktop-only rules for media query (min-width: 992px) intact */
+
+
+    /* Left column content styles */
+    {{ section_id }} .left .content-inner {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    {{ section_id }} .sub-heading {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: none;
+    }
+
+    {{ section_id }} h2.heading {
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+
+    /* Carousel / product cards */
+    {{ section_id }} .carousel-swiper {
+      position: relative;
+    }
+
+    {{ section_id }} .swiper {
+      width: 100%;
+    }
+
+    {{ section_id }} .product-card-wrapper {
+      padding: 8px 0;
+    }
+
+    /* Let Swiper control slide widths — don't hardcode fixed width */
+    {{ section_id }} .product-card {
+      width: 100%;
+      max-width: none;
+      background: transparent;
+      border-radius: 8px;
+      overflow: visible;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    /* product image box responsive (made taller for larger image) */
+    {{ section_id }} .product-card .product-card__media {
+      width: 100%;
+      /* increase height area: bigger visible image */
+      padding-bottom: 82%; /* taller — tweak 70%..90% to taste */
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 16px rgba(15,15,15,.06);
+      position: relative;
+      min-height: 220px; /* ensure minimum height on small screens */
+    }
+
+    {{ section_id }} .product-card .product-card__media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Add button (blue pill) — positioned top-left */
+    {{ section_id }} .product-card .add-btn {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 20px;
+      background: #0b63ff;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(11,99,255,0.18);
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+    }
+
+    {{ section_id }} .product-card .add-btn[disabled] {
+      opacity: 0.7;
+      cursor: default;
+    }
+
+    /* Title, price and meta */
+    {{ section_id }} .product-card .product-title {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #111;
+      /* increased title height so it's less likely to push/crop image */
+      height: 48px;
+      overflow: hidden;
+    }
+
+    {{ section_id }} .product-card .product-price {
+      margin-top: 8px;
+      font-weight: 700;
+    }
+
+    {{ section_id }} .product-card .product-meta {
+      margin-top: 6px;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* Make the swiper-wrapper horizontal flex so slides align nicely */
+    {{ section_id }} .swiper-wrapper {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    /* Small screens: horizontal scrolling with one visible slide */
+    @media (max-width: 639px) {
+      {{ section_id }} .swiper-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+      }
+      {{ section_id }} .product-card { width: 88%; min-width: 220px; margin-right: 12px; }
+    }
+
+    /* Tablet: show 2 columns (Swiper will handle widths) */
+    @media (min-width: 640px) and (max-width: 991px) {
+      {{ section_id }} .product-card { width: calc((100% / 2) - 12px); }
+    }
+
+    /* Desktop: show 2 slides per view (larger images) */
+    @media (min-width: 992px) {
+      {{ section_id }} .product-card { width: calc((100% / 2) - 14px); }
+    }
+
+    /* Right column promo banner */
+    {{ section_id }} .promo-card {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      position: relative;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    {{ section_id }} .promo-card .promo-inner {
+      padding: 28px;
+      max-width: 420px;
+    }
+
+    {{ section_id }} .promo-card h3 {
+      font-size: 30px;
+      line-height: 1.05;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    {{ section_id }} .promo-card p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    {{ section_id }} .promo-card .promo-cta {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 22px;
+      background: #fff;
+      color: #111;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* promo background image */
+    {{ section_id }} .promo-card .promo-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 100;
+    }
+
+    {{ section_id }} .promo-card .promo-inner { z-index: 2; text-align: left; }
+
+    /* Swiper controls */
+    {{ section_id }} .swiper-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    {{ section_id }} .swiper-button-prev,
+    {{ section_id }} .swiper-button-next {
+      background: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    /* Hide default dots by default to match reference */
+    {{ section_id }} .swiper-pagination { display: none; }
+</style>
+
+<div class="{% if full %}stretch-section stretch-padding{% else %}container{% endif %}">
+  <div class="lookbook {{ layout }}-first color-{{ section.settings.color_scheme }}">
+    <div class="lookbook-row">
+      <!-- LEFT: products and heading -->
+      <div class="left">
+        <div class="content-inner">
+          {%- if sub_heading != blank -%}
+            <div class="sub-heading">{{- sub_heading -}}</div>
+          {%- endif -%}
+
+          {%- if heading != blank -%}
+            <h2 class="heading {{ heading_size }}">{{- heading -}}</h2>
+          {%- endif -%}
+
+          <div class="carousel-swiper">
+            <template data-options data-pagination-mobile data-css-mode="off">
+              {
+              {%- if section.settings.autoplay -%}
+                "autoplay": { "delay": {{ section.settings.delay | times: 1000 }}, "disableOnInteraction": false,
+                "pauseOnMouseEnter": true },
+              {%- endif -%}
+              {%- if show_arrows -%}
+                "navigation": { "nextEl": "{{ section_id }} .swiper-button-next", "prevEl": "
+                {{- section_id }}
+                .swiper-button-prev" },
+              {%- endif -%}
+              "loop": true, "spaceBetween": 20, "breakpoints": { "0": { "slidesPerView": 1 }, "640": { "slidesPerView":
+              3 }, "992": { "slidesPerView": 3 } } }
+            </template>
+
+            <div class="swiper" data-id="{{ section.settings.layout }}">
+              <div class="swiper-wrapper">
+                {%- for block in section.blocks -%}
+                  <div class="swiper-slide product-card-wrapper" data-index="{{ forloop.index }}">
+                    {%- liquid
+                      assign product = block.settings.product
+                    -%}
+
+                    {%- if product != blank -%}
+                      <div class="product-card" aria-labelledby="product-{{ product.id }}-title">
+                        <div class="product-card__media">
+                          {%- assign product_image = product.featured_media -%}
+                          {%- if product_image -%}
+                            {{
+                              product_image
+                              | image_url: width: 1800
+                              | image_tag: loading: 'lazy', alt: product.title
+                            }}
+                          {%- else -%}
+                            {%- render 'icon', code: 'placeholder' -%}
+                          {%- endif -%}
+
+                          <!-- Add button (visual only) -->
+                          <a
+                            href="{{ product.url }}"
+                            class="add-btn"
+                            aria-label="{{ 'products.product.add_to_cart' | t }}"
+                          >
+                            + Add
+                          </a>
+                        </div>
+
+                        <div class="product-card__meta">
+                          <div id="product-{{ product.id }}-title" class="product-title">
+                            <a href="{{ product.url }}">{{ product.title }}</a>
+                          </div>
+
+                          <div class="product-price">
+                            {%- render 'price', product: product -%}
+                          </div>
+
+                          <div class="product-meta">
+                            {%- if product.metafields.reviews and product.metafields.reviews.rating != blank -%}
+                              {{ product.metafields.reviews.rating }} ★ ({{ product.metafields.reviews.count }})
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </div>
+                    {%- else -%}
+                      {%- render 'product-card-placeholder', index: forloop.index -%}
+                    {%- endif -%}
+                  </div>
+                {%- endfor -%}
+              </div>
+            </div>
+
+            {%- if show_arrows -%}
+              {%- assign prev_id = 'swiper-prev-' | append: section.id -%}
+              {%- assign next_id = 'swiper-next-' | append: section.id -%}
+
+              <div class="swiper-controls" aria-hidden="false">
+                <button
+                  class="swiper-button-prev"
+                  id="{{ prev_id }}"
+                  type="button"
+                  title="{{ 'general.swipper.prev' | t }}"
+                  aria-label="{{ 'general.swipper.prev' | t }}"
+                >
+                  {%- render 'icon', code: 'arrow-left-slider' -%}
+                </button>
+
+                <button
+                  class="swiper-button-next"
+                  id="{{ next_id }}"
+                  type="button"
+                  title="{{ 'general.swipper.next' | t }}"
+                  aria-label="{{ 'general.swipper.next' | t }}"
+                >
+                  {%- render 'icon', code: 'arrow-right-slider' -%}
+                </button>
+              </div>
+            {%- endif -%}
+
+            {%- if show_dots -%}
+              <div class="swiper-pagination" tabindex="-1"></div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: big promo tile -->
+      <div class="right">
+        <div class="promo-card">
+          {%- if image != blank -%}
+            {%- assign img_width = 2200 -%}
+            {%- if image.width and image.height -%}
+              {%- assign img_height = image.height | times: img_width | divided_by: image.width -%}
+            {%- else -%}
+              {%- assign img_height = 1400 -%}
+            {%- endif -%}
+            <a href="/pages/collections-aviator-containers" title="aviator-containers" aria-label="aviator-containers">
+            <img
+              src="{{ image | image_url: width: img_width }}"
+              alt="{{ section.settings.image_alt }}"
+              class="promo-media"
+              width="{{ img_width }}"
+              height="{{ img_height }}"
+            >
+            </a>
+            
+          {%- endif -%}
+
+          <div class="promo-inner">
+            {%- if section.settings.promo_badge != blank -%}
+              <div class="promo-badge small">{{ section.settings.promo_badge }}</div>
+            {%- endif -%}
+
+            {% comment %} <h3>
+              {%- if section.settings.promo_heading != blank -%}
+                {{ section.settings.promo_heading }}
+              {%- else -%}
+                Top 100+ holiday gifts
+              {%- endif -%}
+            </h3>
+
+            {%- if section.settings.promo_text != blank -%}
+              <p>{{ section.settings.promo_text }}</p>
+            {%- else -%}
+              <p>Fave brands &amp; more — curated picks for the season.</p>
+            {%- endif -%} {% endcomment %}
+
+            {%- if section.settings.promo_link != blank -%}
+              <a href="{{ section.settings.promo_link }}" class="promo-cta">
+                {{- section.settings.promo_link_text | default: 'Shop now' -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var root = document.querySelector('{{ section_id }}');
+    if (!root) return;
+
+    var swiperEl = root.querySelector('.swiper');
+    if (typeof Swiper === 'undefined' || !swiperEl) return;
+
+    // read options from template
+    var tpl = root.querySelector('template[data-options]');
+    var opts = {};
+    if (tpl) {
+      try {
+        opts = JSON.parse(tpl.innerText.replace(/\n/g, ''));
+      } catch (e) {
+        opts = {};
+      }
+    }
+
+    // merge defaults but prefer breakpoint-driven slidesPerView
+    opts = Object.assign(
+      {
+        spaceBetween: 20,
+        loop: true,
+        breakpoints: {
+          0: { slidesPerView: 1 },
+          640: { slidesPerView: 3 },
+          992: { slidesPerView: 3 },
+        },
+      },
+      opts
+    );
+
+    var swiper = new Swiper(swiperEl, opts);
+
+    // hook up arrow buttons if present
+    var prev = root.querySelector('.swiper-button-prev');
+    var next = root.querySelector('.swiper-button-next');
+    if (prev)
+      prev.addEventListener('click', function () {
+        swiper.slidePrev();
+      });
+    if (next)
+      next.addEventListener('click', function () {
+        swiper.slideNext();
+      });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.lookbook.name",
+  "tag": "section",
+  "class": "lookbook-section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "checkbox", "id": "full", "default": false, "label": "t:general.layout.full.label" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:settings_schema.colors.label", "default": "scheme-1" },
+
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "product", "label": "Product" }
+      ],
+      "default": "image",
+      "label": "Layout"
+    },
+
+    { "type": "image_picker", "id": "image", "label": "Promo image (background)" },
+    { "type": "text", "id": "image_alt", "label": "Promo image alt text" },
+
+    {
+      "type": "range",
+      "id": "width",
+      "min": 30,
+      "max": 80,
+      "step": 1,
+      "default": 48,
+      "unit": "%",
+      "label": "Right column width (%)"
+    },
+
+    { "type": "text", "id": "sub_heading_text", "default": "Festive feels, full cart", "label": "Sub heading" },
+    { "type": "inline_richtext", "id": "heading", "default": "Top picks this season", "label": "Heading" },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h4", "label": "H4" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h3",
+      "label": "Heading size"
+    },
+
+    { "type": "color_scheme", "id": "content_color_scheme", "label": "Content color", "default": "scheme-1" },
+
+    { "type": "checkbox", "id": "show_arrows", "default": true, "label": "Show arrows" },
+    { "type": "checkbox", "id": "show_dots", "default": false, "label": "Show dots" },
+    { "type": "checkbox", "id": "autoplay", "default": false, "label": "Autoplay" },
+    { "type": "range", "id": "delay", "min": 3, "max": 20, "step": 1, "default": 5, "label": "Autoplay delay (s)" },
+
+    { "type": "header", "content": "Padding settings" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "px",
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "unit": "px",
+      "label": "Padding bottom"
+    },
+    { "type": "paragraph", "content": "Mobile padding" },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20,
+      "unit": "px",
+      "label": "Padding top (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 20,
+      "unit": "px",
+      "label": "Padding bottom (mobile)"
+    },
+
+    { "type": "text", "id": "promo_badge", "label": "Promo small badge text" },
+    { "type": "text", "id": "promo_heading", "label": "Promo heading" },
+    { "type": "text", "id": "promo_text", "label": "Promo short text" },
+    { "type": "url", "id": "promo_link", "label": "Promo link" },
+    { "type": "text", "id": "promo_link_text", "label": "Promo link text", "default": "Shop now" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "color_scheme", "id": "color_scheme_product", "default": "scheme-2", "label": "Color scheme" },
+        { "type": "product", "id": "product", "label": "Product" },
+        {
+          "type": "range",
+          "id": "horizontal",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "default": 30,
+          "unit": "%",
+          "label": "Horizontal pos"
+        },
+        {
+          "type": "range",
+          "id": "vertical",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "default": 30,
+          "unit": "%",
+          "label": "Vertical pos"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Slide List",
+      "blocks": [{ "type": "product" }, { "type": "product" }, { "type": "product" }]
+    }
+  ]
+}
+{% endschema %}

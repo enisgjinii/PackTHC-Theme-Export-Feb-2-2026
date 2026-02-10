@@ -1,0 +1,156 @@
+<!-- sections/marquee-banner.liquid -->
+
+<style>
+  .marquee-container-{{ section.id }} {
+    width: 100%;
+    height: 100px;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .marquee-content-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    animation: scroll-{{ section.id }} 160s linear infinite;
+    width: max-content;
+  }
+
+  .text-heading-{{ section.id }} {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 30px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .gif-placeholder-{{ section.id }} {
+    width: 120px;
+    height: 120px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+  }
+
+  .gif-placeholder-{{ section.id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  @keyframes scroll-{{ section.id }} {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .text-heading-{{ section.id }} {
+      font-size: 18px;
+      margin-right: 20px;
+    }
+    
+    .gif-placeholder-{{ section.id }} {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div class="marquee-container-{{ section.id }}">
+  <div class="marquee-content-{{ section.id }}">
+    {% comment %} Repeat content multiple times for smooth scrolling {% endcomment %}
+    {% for i in (1..8) %}
+      {% for block in section.blocks %}
+        {% if block.type == 'marquee_item' %}
+          <div class="text-heading-{{ section.id }}">{{ block.settings.text }}</div>
+          <div class="gif-placeholder-{{ section.id }}">
+            {% if block.settings.gif_image %}
+              <img src="{{ block.settings.gif_image | img_url: 'master' }}" alt="{{ block.settings.text }}">
+            {% elsif block.settings.emoji %}
+              {{ block.settings.emoji }}
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Banner personal",
+  "tag": "section",
+  "class": "marquee-section",
+  "blocks": [
+    {
+      "type": "marquee_item",
+      "name": "Marquee Item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Your Text Here"
+        },
+        {
+          "type": "image_picker",
+          "id": "gif_image",
+          "label": "Upload GIF/Image",
+          "info": "Upload your GIF or image file"
+        },
+        {
+          "type": "text",
+          "id": "emoji",
+          "label": "Emoji (if no image)",
+          "default": "🎉",
+          "info": "Use emoji if no image is uploaded"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Banner personal",
+      "blocks": [
+        {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Welcome",
+            "emoji": "🎉"
+          }
+        },
+        {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Amazing",
+            "emoji": "✨"
+          }
+        },
+        {
+          "type": "marquee_item",
+          "settings": {
+            "text": "Perfect",
+            "emoji": "🌈"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

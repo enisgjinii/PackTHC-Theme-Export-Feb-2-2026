@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_aNF9FK": {
+      "type": "breadcrumb",
+      "name": "t:sections.breadcrumb.presets.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "alignment": "flex-start",
+        "show_title": false,
+        "title_font": "--heading-font-family",
+        "title_size": 48,
+        "title_space": 20,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_YGnLLt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_fHpX94": {
+          "type": "heading",
+          "settings": {
+            "content": "6 DRAM, 13 DRAM, 19 DRAM, 30 DRAM, 60 DRAM & 90 DRAM",
+            "heading_size": "h2"
+          }
+        },
+        "text_kHXczi": {
+          "type": "text",
+          "settings": {
+            "content": "<p>PackTHC offers a Premium Product range of medical-grade Pop Tops and Vials, perfect for dispensaries seeking a Trusted Packaging Solution. Available in 6 DRAM, 13 DRAM, 19 DRAM, 30 DRAM, 60 DRAM, and 90 DRAM sizes, these containers ensure Durable Storage Bags alternatives with secure, child-resistant seals. Designed as an Eco-Friendly Choice, our packaging guarantees freshness, safety, and compliance. With Reliable Performance, High-Quality Design, and Stylish Packaging, PackTHC pop tops are the go-to option for businesses looking to combine functionality with professional presentation.<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fHpX94",
+        "text_kHXczi"
+      ],
+      "custom_css": [
+        "p {margin-left: 15%; margin-right: 15%;}"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "align": "center",
+        "width": 100,
+        "padding_top": 20,
+        "padding_bottom": 10,
+        "padding_top_mobile": 10,
+        "padding_bottom_mobile": 5
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "collection_grid_aV6MCb": {
+      "type": "collection-grid",
+      "blocks": {
+        "collection_block_wAKB4r": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "6-dram-pop-top-vials"
+          }
+        },
+        "collection_block_M8McEV": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "13-dram-pop-top-vials"
+          }
+        },
+        "collection_block_aCUVyH": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "19-dram-pop-top-vials"
+          }
+        },
+        "collection_block_bnpirX": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "30-dram-pop-top-vials"
+          }
+        },
+        "collection_block_Mzx6UX": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "60-dram-pop-top-vials"
+          }
+        },
+        "collection_block_bfBaif": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "90-dram-pop-top-vials"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_wAKB4r",
+        "collection_block_M8McEV",
+        "collection_block_aCUVyH",
+        "collection_block_bnpirX",
+        "collection_block_Mzx6UX",
+        "collection_block_bfBaif"
+      ],
+      "custom_css": [],
+      "name": "Collection Grid",
+      "settings": {
+        "columns": 5
+      }
+    }
+  },
+  "order": [
+    "breadcrumb_aNF9FK",
+    "rich_text_YGnLLt",
+    "main",
+    "collection_grid_aV6MCb"
+  ]
+}

@@ -1,0 +1,27 @@
+<div class="quick-search" tabindex="-1" role="listbox">
+	<div class="quick-search-container">
+		<div class="form-wrapper">
+			<predictive-search>
+				<form class="search-form-header quick-search-form" action="/search" method="get" role="search">
+					<input class="search-input" type="search" name="q" id="{{ section.id }}-search" label="search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" role="combobox" aria-expanded="false" aria-owns="predictive-search-results" aria-controls="predictive-search-results" aria-haspopup="listbox" aria-autocomplete="list" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" aria-activedescendant />
+					<label class="search-form-label hidden" for="{{ section.id }}-search">{{ 'general.search.label' | t }}</label>
+					<input type="hidden" name="options[prefix]" value="last">
+
+					<button class="button primary-button search-button" aria-label="{{ 'general.search.label' | t }}">
+						{{ 'general.search.label' | t }}
+
+						{% if settings.select_button == 'direction' %}
+							{%- render 'icon', code: 'direction-button' -%}
+						{% elsif settings.select_button == 'arrow' %}
+							{%- render 'icon', code: 'arrow-button' -%}
+						{% endif %}
+					</button>
+
+					<div id="predictive-search" tabindex="-1"></div>
+				</form>
+			</predictive-search>
+		</div>
+	</div>
+
+	<button type="button" class="close-button">{%- render 'icon', code: 'chevron-up' -%}</button>
+</div>

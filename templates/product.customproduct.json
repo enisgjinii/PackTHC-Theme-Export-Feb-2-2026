@@ -1,0 +1,400 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_cyhcMz": {
+      "type": "breadcrumb",
+      "custom_css": [
+        ".section-wrapper {background: #ffffff;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "alignment": "flex-start",
+        "show_title": false,
+        "title_font": "--heading-font-family",
+        "title_size": 10,
+        "title_space": 10,
+        "padding_top": 10,
+        "padding_bottom": 10,
+        "padding_top_mobile": 5,
+        "padding_bottom_mobile": 5
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor_EKQiFe": {
+          "type": "vendor",
+          "settings": {
+            "padding_bottom": 10
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "font_size": "h4",
+            "padding_bottom": 10
+          }
+        },
+        "custom_liquid_3qXQLD": {
+          "type": "custom-liquid",
+          "name": "Count",
+          "settings": {
+            "custom-liquid": "{% if product.metafields.custom.count %}\n  <div class=\"product-count\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0618/1925/6945/files/case-study.gif?v=1757532996\" alt=\"Pack Icon\" class=\"animated-gif\">\n    Pack of {{ product.metafields.custom.count }} Counts\n  </div>\n{% endif %}\n<style>\n.product-count {\n    border: 2px solid #004A26;\n    padding: 10px 10px;\n    font-weight: 600;\n    font-size: 16px;\n    display: inline-flex;\n    align-items: center;\n    gap: 10px;\n    color: #004A26;\n    border-radius: 8px;\n    background: #f8fff8;\n    animation: borderGlow 2s ease-in-out infinite;\n    transition: all 0.3s ease;\n}\n.animated-gif {\n    width: 32px;\n    height: 32px;\n    animation: gifBounce 3s ease-in-out infinite;\n}\n.product-count:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 6px 20px rgba(0, 74, 38, 0.3);\n}\n.product-wrapper:hover .animated-gif {\n    animation-duration: 1.5s;\n    transform: scale(1.15);\n}\n@keyframes borderGlow {\n    0%, 100% {\n        border-color: #004A26;\n        box-shadow: 0 0 5px rgba(0, 74, 38, 0.3);\n    }\n    50% {\n        border-color: #004A26;\n        box-shadow: 0 0 15px rgba(0, 74, 38, 0.5);\n    }\n}\n@keyframes gifBounce {\n    0%, 100% {\n        transform: translateY(0px);\n    }\n    50% {\n        transform: translateY(-3px);\n    }\n}\n\n/* Mobile Responsive */\n@media (max-width: 768px) {\n    .product-count {\n        font-size: 14px;\n        padding: 8px 8px;\n        gap: 8px;\n    }\n    .animated-gif {\n        width: 24px;\n        height: 24px;\n    }\n}\n</style>",
+            "padding_bottom": 0
+          }
+        },
+        "custom_liquid_ceLH6x": {
+          "type": "custom-liquid",
+          "name": "Customization Btn",
+          "settings": {
+            "custom-liquid": "{% render 'product-customize-button', product: product %}",
+            "padding_bottom": 20
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "font_size_price": "h4",
+            "padding_bottom": 10
+          }
+        },
+        "custom_liquid_PPFPBE": {
+          "type": "custom-liquid",
+          "name": "SKU",
+          "settings": {
+            "custom-liquid": "{% unless product.has_only_default_variant %}\n  {% comment %} Product has variants - hide SKU completely {% endcomment %}\n{% else %}\n<style>\n  .sku-label {\n    background-color: #004A26;\n    color: white;\n    display: inline-block;\n    padding: 6px;\n    border-radius: 5px;\n    font-size: 14px;\n    margin:0;\n  }\n</style>\n<p class=\"sku-label\">\n  SKU: {{ product.variants.first.sku }}\n</p>\n{% endunless %}",
+            "padding_bottom": 10
+          }
+        },
+        "availability_KXzfjK": {
+          "type": "availability",
+          "disabled": true,
+          "settings": {
+            "low_stock": 0,
+            "padding_bottom": 10
+          }
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "picker_type": "swatch",
+            "padding_bottom": 12
+          }
+        },
+        "file_uploads_by_uploadkit_app_block_a7b93V": {
+          "type": "shopify://apps/file-uploads-by-uploadkit/blocks/app-block/d7b05810-6170-4288-808a-df45248c4d28",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "image_with_link_pUxXb7": {
+          "type": "image-with-link",
+          "settings": {
+            "image": "shopify://shop_images/We_ll_ship_your_order_within_2_business_days_usually_even_sooner_2.webp",
+            "url": "",
+            "image_width": 800,
+            "padding_bottom": 0
+          }
+        },
+        "divider_QfLhA7": {
+          "type": "divider",
+          "settings": {
+            "color": "",
+            "height": 10
+          }
+        },
+        "add-to-cart": {
+          "type": "add-to-cart",
+          "settings": {
+            "text_transform": "uppercase",
+            "quantity_selector": true,
+            "dynamic_checkout": false,
+            "show_gift_card": false,
+            "padding_bottom": 0
+          }
+        },
+        "custom_liquid_6Enxwt": {
+          "type": "custom-liquid",
+          "name": "Varient Table",
+          "settings": {
+            "custom-liquid": "<style>\nth, td {\n  font-size:13px;\n  text-align:center;\n  padding:8px;\n}\n.email, .mob, th {\n  color:#004A26;\n  font-size:15px;\n}\n@media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n  .email, .mob {\n    font-size: 12px;\n  }\n}\n</style>\n\n{% assign current_variant = product.selected_or_first_available_variant %}\n\n<!-- Default Product Pricing Table -->\n<div id=\"default-pricing-table\">\n  {% assign qty_list = product.metafields.custom.quantity_table %}\n  {% assign unit_list = product.metafields.custom.unit_table %}\n  {% assign price_list = product.metafields.custom.price_table %}\n  \n  {% if qty_list and unit_list and price_list %}\n    <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n      <thead>\n        <tr>\n          <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n          <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n          <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n        </tr>\n      </thead>\n      <tbody>\n        {% assign qty_array = qty_list | split: ',' %}\n        {% assign unit_array = unit_list | split: ',' %}\n        {% assign price_array = price_list | split: ',' %}\n        \n        {% for i in (0..qty_array.size) %}\n          {% if i < qty_array.size %}\n            <tr>\n              <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n            </tr>\n          {% endif %}\n        {% endfor %}\n      </tbody>\n      <tfoot>\n        <tr>\n          <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n            For Higher Quantity Pricing, Please \n            <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n            or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n          </td>\n        </tr>\n      </tfoot>\n    </table>\n  {% endif %}\n</div>\n\n<!-- Variant Pricing Table -->\n<div id=\"variant-pricing-table\" style=\"display: none;\">\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody id=\"variant-table-body\">\n      <!-- Content will be populated by JavaScript -->\n    </tbody>\n    <tfoot>\n      <tr>\n        <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n          For Higher Quantity Pricing, Please \n          <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n          or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n        </td>\n      </tr>\n    </tfoot>\n  </table>\n</div>\n\n<!-- Hidden data for all variants -->\n{% assign has_variants_with_pricing = false %}\n{% assign first_variant_with_pricing_id = '' %}\n\n{% for variant in product.variants %}\n  {% if variant.metafields.custom.quantity_table and variant.metafields.custom.unit_table and variant.metafields.custom.price_table %}\n    {% assign has_variants_with_pricing = true %}\n    {% if first_variant_with_pricing_id == blank %}\n      {% assign first_variant_with_pricing_id = variant.id %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n{% if has_variants_with_pricing %}\n<script type=\"application/json\" id=\"variant-pricing-data\">\n{\n  {% for variant in product.variants %}\n    \"{{ variant.id }}\": {\n      \"title\": \"{{ variant.title }}\",\n      \"qty\": \"{{ variant.metafields.custom.quantity_table }}\",\n      \"unit\": \"{{ variant.metafields.custom.unit_table }}\",\n      \"price\": \"{{ variant.metafields.custom.price_table }}\"\n    }{% unless forloop.last %},{% endunless %}\n  {% endfor %}\n}\n</script>\n\n<script>\nlet currentSelectedVariant = '{{ current_variant.id }}';\nlet isVariantSelected = false;\n{% if qty_list and unit_list and price_list %}\nlet hasDefaultPricing = true;\n{% else %}\nlet hasDefaultPricing = false;\n{% endif %}\nconst hasVariantPricing = {{ has_variants_with_pricing | json }};\nconst firstVariantWithPricing = '{{ first_variant_with_pricing_id }}';\n\nfunction showDefaultTable() {\n  document.getElementById('default-pricing-table').style.display = 'block';\n  document.getElementById('variant-pricing-table').style.display = 'none';\n}\n\nfunction showVariantTable(variantId) {\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n  const variant = data[variantId];\n  \n  if (!variant || !variant.qty || !variant.unit || !variant.price) {\n    showDefaultTable();\n    return;\n  }\n  \n  // Hide default table and show variant table\n  document.getElementById('default-pricing-table').style.display = 'none';\n  document.getElementById('variant-pricing-table').style.display = 'block';\n  \n  // Update table body\n  const qtyArray = variant.qty.split(',');\n  const unitArray = variant.unit.split(',');\n  const priceArray = variant.price.split(',');\n  \n  let tableHTML = '';\n  for (let i = 0; i < qtyArray.length; i++) {\n    const qty = qtyArray[i] ? qtyArray[i].trim() : '';\n    const unit = unitArray[i] ? unitArray[i].trim() : '';\n    const price = priceArray[i] ? priceArray[i].trim() : '';\n    \n    if (qty && unit && price) {\n      tableHTML += `\n        <tr>\n          <td style=\"border: 1px solid #ddd;\" colspan=\"2\">${qty}</td>\n          <td style=\"border: 1px solid #ddd;\">${price}</td>\n          <td style=\"border: 1px solid #ddd;\">${unit}</td>\n        </tr>\n      `;\n    }\n  }\n  \n  document.getElementById('variant-table-body').innerHTML = tableHTML;\n}\n\nfunction checkVariantSelection() {\n  // If no variant pricing exists, always show default table\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  let newVariant = null;\n  let variantWasClicked = false;\n  \n  // Check for radio buttons (like Label Type)\n  const checkedRadio = document.querySelector('input[name=\"Label Type\"]:checked, input[name=\"id\"]:checked');\n  if (checkedRadio) {\n    // If it's a variant selector\n    if (checkedRadio.name === 'id') {\n      newVariant = checkedRadio.value;\n      variantWasClicked = true;\n    } else if (checkedRadio.name === 'Label Type') {\n      // For Label Type, we need to find the corresponding variant\n      const labelValue = checkedRadio.value;\n      const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n      \n      // Find variant that matches this label type\n      for (const [variantId, variantData] of Object.entries(data)) {\n        if (variantData.title.includes(labelValue)) {\n          newVariant = variantId;\n          variantWasClicked = true;\n          break;\n        }\n      }\n    }\n  }\n  \n  // Check select dropdown\n  if (!newVariant) {\n    const select = document.querySelector('select[name=\"id\"]');\n    if (select && select.value) {\n      newVariant = select.value;\n      if (select.value !== currentSelectedVariant) {\n        variantWasClicked = true;\n      }\n    }\n  }\n  \n  // Update if variant changed\n  if (newVariant && newVariant !== currentSelectedVariant) {\n    currentSelectedVariant = newVariant;\n    isVariantSelected = variantWasClicked;\n    \n    if (isVariantSelected) {\n      showVariantTable(newVariant);\n    }\n  }\n}\n\nfunction initializePricingTable() {\n  // If product has default pricing, show default table\n  if (hasDefaultPricing) {\n    showDefaultTable();\n  }\n  // If product has no default pricing but has variant pricing, show first variant's table\n  else if (hasVariantPricing && firstVariantWithPricing) {\n    showVariantTable(firstVariantWithPricing);\n  }\n  // If neither exists, hide both tables\n  else {\n    document.getElementById('default-pricing-table').style.display = 'none';\n    document.getElementById('variant-pricing-table').style.display = 'none';\n  }\n}\n\n// Only add event listeners if there are variants with pricing\nif (hasVariantPricing) {\n  // Event listeners\n  document.addEventListener('click', function(e) {\n    // Listen for clicks on variant options\n    if (e.target.matches('input[name=\"Label Type\"], input[name=\"id\"], label[for*=\"option-\"]')) {\n      setTimeout(() => {\n        isVariantSelected = true;\n        checkVariantSelection();\n      }, 100);\n    }\n  });\n\n  document.addEventListener('change', function(e) {\n    if (e.target.matches('select[name=\"id\"], input[name=\"Label Type\"], input[name=\"id\"]')) {\n      isVariantSelected = true;\n      setTimeout(checkVariantSelection, 50);\n    }\n  });\n\n  // Fallback check\n  setInterval(checkVariantSelection, 1000);\n}\n\n// Initialize - show appropriate table on page load\ndocument.addEventListener('DOMContentLoaded', function() {\n  initializePricingTable();\n});\n</script>\n{% endif %}",
+            "padding_bottom": 0
+          }
+        },
+        "custom_liquid_EjXDDK": {
+          "type": "custom-liquid",
+          "disabled": true,
+          "settings": {
+            "custom-liquid": "<style>\nth, td \n  {\n   font-size:13px;\n   text-align:center;\n   padding:8px;\n  } \n.email, .mob, th\n{\ncolor:#004A26;\nfont-size:15px;\n}\n  @media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n.email, .mob{\n    font-size: 12px;\n  }\n}\n</style>\n{% assign qty_list = product.metafields.custom.quantity_table %}\n{% assign unit_list = product.metafields.custom.unit_table %}\n{% assign price_list = product.metafields.custom.price_table %}\n{% if qty_list and unit_list and price_list %}\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody>\n      {% assign qty_array = qty_list | split: ',' %}\n      {% assign unit_array = unit_list | split: ',' %}\n      {% assign price_array = price_list | split: ',' %}\n      \n      {% for i in (0..qty_array.size) %}\n        {% if i < qty_array.size %}\n            <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n            <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n\n<td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n          </tr>\n        {% endif %}\n      {% endfor %}\n    </tbody>\n<td style=\"border: 1px solid #ddd; font-weight:bolder;\" colspan=\"4\">For Higher Quantity Pricing, Please <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> or Call <a href=\"call:+1(816)PACKTHC\" class=\"mob\">+1(816)PACKTHC</a></td>\n  </table>\n{% endif %}",
+            "padding_bottom": 0
+          }
+        },
+        "share_pbxQhp": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share",
+            "type": "social",
+            "padding_bottom": 0
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "heading": "Pairs well with",
+            "make_collapsible_row": true,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "show_add_to_cart": true,
+            "padding_bottom": 0
+          }
+        },
+        "description_tab_3p8AUA": {
+          "type": "description-tab",
+          "disabled": true,
+          "settings": {
+            "heading_tab": "More Information",
+            "content_tab": "{{ product.description }}"
+          }
+        },
+        "image_with_link_Efqt68": {
+          "type": "image-with-link",
+          "settings": {
+            "image": "shopify://shop_images/PRICE_MATCH_GUARANTEE_1.png",
+            "url": "shopify://pages/price-match-guarantee",
+            "image_width": 800,
+            "padding_bottom": 0
+          }
+        },
+        "ecomsend_restock_product_restore_email_7NQpKT": {
+          "type": "shopify://apps/sw-back-in-stock/blocks/product-restore-email/b190bced-3b7b-47da-a05f-6ea4821c3a77",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_EKQiFe",
+        "title",
+        "custom_liquid_3qXQLD",
+        "custom_liquid_ceLH6x",
+        "price",
+        "custom_liquid_PPFPBE",
+        "availability_KXzfjK",
+        "variant-picker",
+        "file_uploads_by_uploadkit_app_block_a7b93V",
+        "image_with_link_pUxXb7",
+        "divider_QfLhA7",
+        "add-to-cart",
+        "custom_liquid_6Enxwt",
+        "custom_liquid_EjXDDK",
+        "share_pbxQhp",
+        "complementary",
+        "description_tab_3p8AUA",
+        "image_with_link_Efqt68",
+        "ecomsend_restock_product_restore_email_7NQpKT"
+      ],
+      "custom_css": [
+        ".product-details-tabs {border: 1px solid;}",
+        ".title {text-transform: uppercase;}",
+        ".tab-head {font-size: 4.6rem;}",
+        ".field-wrap {display: block;}",
+        ".field-title {border: 1px solid; border-radius: 5px; padding: 10px; display: none;}",
+        ".media-preview-wrap {border: hidden;}",
+        ".hulkapps-volumes {display: none;}",
+        ".product-vendor-link {font-weight: 600;}",
+        ".price {color: #004a26;}",
+        ".link-underline,.rte a {color: #202425;}",
+        ".product-text {font-size: 30px; color: #004a26; font-weight: 900;}",
+        ".price__sale {display: none;}",
+        ".regular-price {display: none;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "space": 50,
+        "sticky_add_to_cart": "hidden",
+        "width": 50,
+        "layout": "layout-2",
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "lightbox": true,
+        "video_looping": true,
+        "group_image": true,
+        "alignment": "left",
+        "padding_top": 8,
+        "padding_bottom": 0,
+        "padding_top_mobile": 8,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product_details_tabs_j93WXm": {
+      "type": "product-details-tabs",
+      "blocks": {
+        "description_MKVtJr": {
+          "type": "description",
+          "settings": {
+            "heading": "Description"
+          }
+        },
+        "liquid_Te4f6K": {
+          "type": "liquid",
+          "settings": {
+            "heading": "Dimension",
+            "liquid": "{% if product.metafields.custom.image1 and product.metafields.custom.image2 %}\n  <style>\n    .image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"image-container\">\n    <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Image Left\" />\n    <img src=\"{{ product.metafields.custom.image2 | file_url }}\" alt=\"Image Right\" />\n  </div>\n{% else %}\n{% endif %}"
+          }
+        },
+        "liquid_cTf8EB": {
+          "type": "liquid",
+          "settings": {
+            "heading": "Features",
+            "liquid": "{% if product.metafields.custom.feature_image1 and product.metafields.custom.feature_image2 %}\n  <style>\n    .feature-image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .feature-image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .feature-image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .feature-image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"feature-image-container\">\n    <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image 1\" />\n    <img src=\"{{ product.metafields.custom.feature_image2 | file_url }}\" alt=\"Feature Image 2\" />\n  </div>\n{% endif %}"
+          }
+        },
+        "content_D4EVWU": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "heading": "Features",
+            "content": "",
+            "page": ""
+          }
+        },
+        "reviews_e4xnHd": {
+          "type": "reviews",
+          "settings": {
+            "heading": "Reviews",
+            "content": "<!-- Start of Judge.me code --> \n  <div style='clear:both'></div> \n  <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'> \n    {{ product.metafields.judgeme.widget }} \n  </div> \n<!-- End of Judge.me code -->"
+          }
+        }
+      },
+      "block_order": [
+        "description_MKVtJr",
+        "liquid_Te4f6K",
+        "liquid_cTf8EB",
+        "content_D4EVWU",
+        "reviews_e4xnHd"
+      ],
+      "custom_css": [
+        ".tabs-head {border-bottom: 2px solid #ddd;}"
+      ],
+      "name": "t:sections.product-details-tabs.presets.name",
+      "settings": {
+        "full": false,
+        "background": "#ffffff",
+        "width": 100,
+        "heading_size": "h4",
+        "animation": "down",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [
+        ".title {text-transform: uppercase;}",
+        ".custom-unit-price {color: #004a26; font-weight: 900; font-size: 20px; margin-top: 5px; text-transform: uppercase;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "heading": "Related products",
+        "heading_size": "h2",
+        "view_all_text": "See All Products",
+        "view_all_url": "",
+        "layout": "grid",
+        "rows": 1,
+        "columns": 4,
+        "show_arrows": true,
+        "show_dots": true,
+        "loop": false,
+        "autoplay": true,
+        "delay": 5,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "product-recently-viewed": {
+      "type": "product-recently-viewed",
+      "custom_css": [
+        ".custom-unit-price {color: #004a26; font-weight: 900; font-size: 20px; margin-top: 5px; text-transform: uppercase;}"
+      ],
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "layout": "grid",
+        "rows": 1,
+        "columns": 4,
+        "show_arrows": true,
+        "show_dots": true,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_rtzDdP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_m4P6Nr": {
+          "type": "heading",
+          "settings": {
+            "content": "Want to buy even more ?",
+            "heading_size": "h2"
+          }
+        },
+        "text_aTR3U4": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Thank you! for the love. Please directly connect with us for commercial quantities. and Guess what? we even customise</p>"
+          }
+        },
+        "button_zC3q7G": {
+          "type": "button",
+          "settings": {
+            "label": "Connect Now",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_m4P6Nr",
+        "text_aTR3U4",
+        "button_zC3q7G"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "full": false,
+        "color_scheme": "scheme-2",
+        "align": "center",
+        "width": 100,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    }
+  },
+  "order": [
+    "breadcrumb_cyhcMz",
+    "main",
+    "product_details_tabs_j93WXm",
+    "product-recommendations",
+    "product-recently-viewed",
+    "rich_text_rtzDdP"
+  ]
+}

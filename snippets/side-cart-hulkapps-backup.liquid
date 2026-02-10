@@ -1,0 +1,366 @@
+<div class="side-cart" tabindex="-1">
+	<div class="side-cart-inner">
+		<div class="side-cart-header">
+			<h2 class="side-cart-title h4">{{- 'cart.general.title' | t -}}
+				<span class="item-count cart-item-count">{%- if cart != empty -%}{{- cart.item_count -}}{% else %}0{%- endif -%}</span>
+				<span class="sr-only">{%- if cart.item_count == 0 or cart.item_count == 1 -%}{{ 'sections.header.cart_count.one' | t }}{% else %}{{ 'sections.header.cart_count.other' | t }}{% endif %}</span>
+			</h2>
+
+			<button type="button" class="side-cart-close close-button">
+				<span class="sr-only">{{- 'cart.general.close_cart' | t -}}</span>
+
+				{%- render 'icon', code: 'close' -%}
+			</button>
+		</div>
+
+		<div class="side-cart-content">
+			{%- if cart == empty -%}
+				<div class="cart-empty">
+					<span class="empty-icon">
+						{%- render 'icon', code: 'cart-empty' -%}
+					</span>
+
+					<h3 class="empty-title">{{- 'cart.general.empty' | t -}}</h3>
+
+					{%- if settings.cart_empty_text != blank -%}
+						<div class="empty-text">
+							{{- settings.cart_empty_text -}}
+						</div>
+					{%- endif -%}
+
+					<ul class="empty-collections">
+						{%- if settings.cart_collection_list != blank -%}
+							{%- for collection in settings.cart_collection_list -%}
+								<li>
+									<a href="{{ collection.url }}">
+										<span>{{- collection.title -}}</span>
+
+										{%- render 'icon', code: 'arrow-right' -%}
+									</a>
+								</li>
+							{%- endfor -%}
+						{%- else -%}
+							<li>
+								<a href="{{ routes.all_products_collection_url }}">
+									<span>{{- 'general.text.continue_shopping' | t -}}</span>
+
+									{%- render 'icon', code: 'arrow-right' -%}
+								</a>
+							</li>
+						{%- endif -%}
+					</ul>
+				</div>
+			{%- else -%}
+				{% render 'cart-progress-bar' %}
+
+				<div class="cart-items">
+					{%- for item in cart.items -%}
+						<div class="product-item" data-id="{{ item.id }}">
+							{%- if item.image -%}
+								<a href="{{ item.url | default: '#' }}" class="product-image{% unless item.image %} no-image{% endunless %}" tabindex="-1">
+									<img src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt | escape }}" loading="lazy" width="150" height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}" />
+								</a>
+							{%- endif -%}
+
+							<div class="product-info">
+								<div class="product-info-left">
+									{% comment %} Title {% endcomment %}
+									<h2 class="product-name">
+										<a href="{{ item.url | default: '#' }}" tabindex="-1">
+											{{- item.product.title | escape -}}
+										</a>
+									</h2>
+
+									{% comment %} Variant title {% endcomment %}
+									<div class="product-options">
+										{%- unless item.product.has_only_default_variant -%}
+											{%- for option in item.options_with_values -%}
+												<span class="product-option">{{ option.name }}: <span class="link">{{ option.value }}</span></span>
+											{%- endfor -%}
+										{%- endunless -%}
+
+										{%- for property in item.properties -%}
+											{%- assign property_first_char = property.first | slice: 0 -%}
+
+											{%- if property.last != blank and property_first_char != '_' -%}
+												<span class="product-option">
+													{{ property.first }}:
+
+													{% if property.last contains '/uploads/' -%}
+														<a href="{{ property.last }}" class="link" target="_blank">
+															{{ property.last | split: '/' | last }}
+														</a>
+													{%- else -%}
+														<span class="link">{{ property.last }}</span>
+													{%- endif -%}
+												</span>
+											{%- endif -%}
+										{%- endfor -%}
+									</div>
+
+									{% comment %} Selling plan {% endcomment %}
+									{%- if item.selling_plan_allocation != nil -%}
+										<p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+									{%- endif -%}
+
+									{%- comment -%} Discount {%- endcomment -%}
+									{%- if item.discounts.first -%}
+										<ul class="discounts" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+											{%- for discount in item.discounts -%}
+												<li class="discounts-discount">
+													{%- render 'icon', code: 'discount' -%}
+													{{- discount.title -}}
+												</li>
+											{%- endfor -%}
+										</ul>
+									{%- endif -%}
+
+									{% comment %} Price {% endcomment %}
+									<div class="product-price">
+										{%- if item.original_price > item.final_price -%}
+											<span class="price">
+												<span class="sr-only">{{ 'products.product.price.sale_price' | t }}: </span>
+
+												{%- if item.final_price == 0 -%}
+													<span class="price-free">{{- 'cart.general.free' | t -}}</span>
+												{%- else -%}
+													{%- render 'get-price', price: item.final_price -%}
+												{%- endif -%}
+											</span>
+
+											<s class="regular-price">
+												<span class="sr-only">{{ 'products.product.price.regular_price' | t }}: </span>
+												{%- render 'get-price', price: item.original_price -%}
+											</s>
+										{%- elsif item.variant.compare_at_price > item.variant.price -%}
+											<span class="price">
+												<span class="sr-only">{{ 'products.product.price.sale_price' | t }}: </span>
+
+												{%- if item.final_price == 0 -%}
+													<span class="price-free">{{- 'cart.general.free' | t -}}</span>
+												{%- else -%}
+													{%- render 'get-price', price: item.final_price -%}
+												{%- endif -%}
+											</span>
+
+											<s class="regular-price">
+												{%- render 'get-price', price: item.variant.compare_at_price -%}
+											</s>
+										{%- else -%}
+											{%- if item.final_price == 0 -%}
+												<span class="price-free">{{- 'cart.general.free' | t -}}</span>
+											{%- else -%}
+												{%- render 'get-price', price: item.final_price -%}
+											{%- endif -%}
+										{%- endif -%}
+
+										{% if item.unit_price_measurement %}
+											<span class="unit-price">
+												{%- render 'get-price', price: item.unit_price %}
+												/
+												{% if item.unit_price_measurement.reference_value != 1 -%}
+													{{- item.unit_price_measurement.reference_value -}}
+												{%- endif -%}
+												{{- item.unit_price_measurement.reference_unit -}}
+											</span>
+										{% endif %}
+									</div>
+
+									<div class="product-warning error-message message"></div>
+								</div>
+
+								<div class="product-info-right">
+									{% comment %} Quantity {% endcomment %}
+									<div class="quantity">
+										<input class="quantity-input"
+											type="number"
+											name="quantity-item-{{ item.index | plus: 1 }}"
+											id="quantity-item-{{ item.index | plus: 1 }}"
+											min="0"
+											step="1"
+											data-qty="{{ item.quantity }}"
+											value="{{ item.quantity }}"
+											aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+											data-noui>
+
+										<button class="quantity-button" name="plus" type="button">
+											<span class="sr-only">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+											{% render 'icon', code: 'chevron-up' %}
+										</button>
+										<button class="quantity-button" name="minus" type="button">
+											<span class="sr-only">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+											{% render 'icon', code: 'chevron-down' %}
+										</button>
+									</div>
+
+									{% comment %} Remove {% endcomment %}
+									<a href="{{ item.url_to_remove }}" class="product-remove link-underline" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+										{{- 'products.product.remove' | t -}}
+									</a>
+								</div>
+							</div>
+						</div>
+					{%- endfor -%}
+				</div>
+
+				{%- if settings.show_cart_recommendations and cart.item_count > 0 -%}
+					<div class="minicart-recommendations-wrapper">
+						<div class="minicart-recommendations"{% if settings.card_product_recommendations == blank %} data-url="/recommendations/products?section_id=side-cart&product_id={{ cart.items[0].product_id }}&limit=10&intent=complementary" data-source{% endif %}>
+							{%- if settings.card_product_recommendations != blank or recommendations.performed and recommendations.products_count > 0 -%}
+								<div class="heading-wrap">
+									{%- if settings.cart_recommendations_heading != blank -%}
+										<h6 class="heading minicart-recommendations-title">
+											{{- settings.cart_recommendations_heading | escape -}}
+										</h6>
+									{%- endif -%}
+
+									<div class="swiper-controls">
+										<button class="swiper-button-prev" title ="{{ 'general.swipper.prev' | t }}" aria-label="{{ 'general.swipper.prev' | t }}" id="{{ 'general.swipper.prev' | t }}" aria-labelledby="{{ 'general.swipper.prev' | t }}">{%- render 'icon', code: 'chevron-left' -%}</button>
+										<button class="swiper-button-next" title ="{{ 'general.swipper.next' | t }}" aria-label="{{ 'general.swipper.next' | t }}" id="{{ 'general.swipper.next' | t }}" aria-labelledby="{{ 'general.swipper.next' | t }}">{%- render 'icon', code: 'chevron-right' -%}</button>
+									</div>
+								</div>
+
+								<div class="product-carousel carousel-swiper">
+									<template data-options data-css-mode="off">
+										{
+											"loop": false,
+											"speed": 600,
+											"slidesPerView": 1,
+											"spaceBetween": 12,
+											"navigation": {
+												"nextEl": ".minicart-recommendations .swiper-button-next",
+												"prevEl": ".minicart-recommendations .swiper-button-prev"
+											}
+										}
+									</template>
+
+									<div class="swiper">
+										<div class="swiper-wrapper minicart-recommendations-items">
+											{%- if settings.card_product_recommendations != blank -%}
+												{%- for product in settings.card_product_recommendations limit: settings.cart_recommendations_limit -%}
+													<div class="swiper-slide" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+														{%- render 'product-card-recomendation', product: product-%}
+													</div>
+												{%- endfor -%}
+											{%- else -%}
+												{%- for product in recommendations.products limit: settings.cart_recommendations_limit -%}
+													<div class="swiper-slide" data-{{ forloop.index0 }} {% if request.design_mode %} data-index="{{ forloop.index0 }}"{% endif %}>
+														{%- render 'product-card-recomendation', product: product -%}
+													</div>
+												{%- endfor -%}
+											{%- endif -%}
+										</div>
+									</div>
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endif -%}
+			{%- endif -%}
+		</div>
+
+		{%- if cart != empty -%}
+			<div class="side-cart-footer">
+				{%- if settings.cart_note -%}
+					<div class="side-cart-footer-top">
+						<cart-item-tool class="mini-cart-header previewCartTool">
+							{%- if settings.cart_note -%}
+								<button class="mini-cart-button cartTool-item cart-tool-note" data-popup="popup-tool-note">
+									{%- render 'icon', code: 'note' -%}
+									<span class="mini-cart-text">{{ 'general.cart.note' | t }}</span>
+								</button>
+							{%- endif -%}
+						</cart-item-tool>
+
+						<div class="popup-toolDowns">
+							{%- if settings.cart_note -%}
+								<div class="popup-toolDown mini-cart-body" id="popup-tool-note">
+									<div class="mini-cart-title">
+										{%- render 'icon', code: 'edit' -%}
+										<span>{{ 'general.cart.note_title' | t }}</span>
+
+										<cart-cancel-popup>
+											<button type="button" class="close-button mini-cart-close" data-action="note">{%- render 'icon', code: 'close' -%}</button>
+										</cart-cancel-popup>
+									</div>
+
+									<div class="mini-cart-content">
+										<cart-note class="cart__note field">
+											<textarea class="text-area form-input" name="note" id="cart-note" placehoder="{{ 'general.cart.note' | t }}">
+												{{- cart.note -}}
+											</textarea>
+
+											<button type="button" title="Save" class="button primary-button apply-button" data-update-note="">
+												{{ 'general.cart.note_apply' | t }}
+											</button>
+										</cart-note>
+									</div>
+								</div>
+							{%- endif -%}
+						</div>
+					</div>
+				{%- endif -%}
+
+				<div class="side-cart-footer-bottom">
+					<div class="sub-total">
+						<p class="total-label h5">{{- 'cart.general.subtotal' | t }} <span class="total-price">{%- render 'get-price', price: cart.total_price -%}</span></p>
+
+
+						{% comment %} Discount {% endcomment %}
+						{%- render 'total-discount', items: cart.items -%}
+
+						{% comment %} Taxe note {% endcomment %}
+						<p class="tax-note">
+							{%- liquid
+								if cart.taxes_included and shop.shipping_policy.body != blank
+									echo 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url
+								elsif cart.taxes_included
+									echo 'sections.cart.taxes_included_but_shipping_at_checkout' | t
+								elsif shop.shipping_policy.body != blank
+									echo 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url
+								else
+									echo 'sections.cart.taxes_and_shipping_at_checkout' | t
+								endif
+							-%}
+						</p>
+					</div>
+
+					<form action="{{ routes.cart_url }}" method="post" class="go-to-checkout">
+						<button class="button primary-button" name="checkout">
+							{{- 'sections.cart.checkout' | t -}}
+
+							{% if settings.select_button == 'direction' %}
+								{%- render 'icon', code: 'direction-button' -%}
+							{% elsif settings.select_button == 'arrow' %}
+								{%- render 'icon', code: 'arrow-button' -%}
+							{% endif %}
+							</button>
+					</form>
+
+					<a href="{{ routes.cart_url }}" class="button secondary-button go-to-cart">
+						{{- 'cart.general.cart' | t -}}
+
+						{% if settings.select_button == 'direction' %}
+							{%- render 'icon', code: 'direction-button' -%}
+						{% elsif settings.select_button == 'arrow' %}
+							{%- render 'icon', code: 'arrow-button' -%}
+						{% endif %}
+					</a>
+				</div>
+			</div>
+		{%- endif -%}
+
+		<div class="mini-cart-overlay"></div>
+	</div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select all offer text <p> elements
+    const offerParagraphs = document.querySelectorAll(".offer-option p");
+
+    offerParagraphs.forEach(p => {
+      // Replace just the percentage number (like 10%) from the inner text
+      p.innerHTML = p.innerHTML.replace(/\d+%/, '');
+    });
+  });
+</script>
