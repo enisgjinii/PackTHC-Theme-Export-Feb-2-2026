@@ -1900,5 +1900,51 @@
         "default": true
       }
     ]
+  },
+  {
+    "name": "3D Product Configurator",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Configurator Settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "Configure the PackTHC 3D Product Configurator that allows customers to customize jars, bottles, and packaging in real-time 3D."
+      },
+      {
+        "type": "checkbox",
+        "id": "configurator_enabled",
+        "label": "Enable 3D Configurator",
+        "default": true,
+        "info": "Show the 'Customize in 3D' button on product pages."
+      },
+      {
+        "type": "text",
+        "id": "configurator_url",
+        "label": "Configurator App URL",
+        "default": "https://dram-product-customizer.vercel.app",
+        "info": "The deployed URL of your Next.js 3D configurator app."
+      },
+      {
+        "type": "text",
+        "id": "configurator_page_handle",
+        "label": "Configurator Page Handle",
+        "default": "configurator",
+        "info": "The URL handle of the Shopify page that hosts the configurator (e.g. 'configurator' for /pages/configurator)."
+      },
+      {
+        "type": "text",
+        "id": "configurator_button_text",
+        "label": "Button Text",
+        "default": "Customize in 3D"
+      },
+      {
+        "type": "checkbox",
+        "id": "configurator_show_badge",
+        "label": "Show 'Powered by PackTHC Studio' badge",
+        "default": true
+      }
+    ]
   }
 ]

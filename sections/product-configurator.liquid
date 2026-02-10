@@ -1,552 +1,327 @@
 {%- liquid
   assign section_id = '#shopify-section-' | append: section.id
-  assign configurator_url = section.settings.configurator_base_url
-  assign iframe_height = section.settings.iframe_height
+  assign configurator_url = section.settings.configurator_base_url | default: 'https://dram-product-customizer.vercel.app'
+  assign iframe_height = section.settings.iframe_height | default: 800
+  assign show_header = section.settings.show_header
+  assign show_product_bar = section.settings.show_product_bar
 -%}
 
-<style>
+{{ 'product-configurator.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  {{ section_id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
   {{ section_id }} .configurator-wrapper {
-    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding-top: var(--section-padding-top);
+    padding-bottom: var(--section-padding-bottom);
   }
-
-  {{ section_id }} .configurator-header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding: 0 20px;
-  }
-
-  {{ section_id }} .configurator-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #004A26;
-    margin-bottom: 10px;
-  }
-
-  {{ section_id }} .configurator-subtitle {
-    font-size: 1.1rem;
-    color: #666;
-  }
-
-  {{ section_id }} .product-info-bar {
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 0 20px 30px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  {{ section_id }} .product-info-bar img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #fff;
-    padding: 5px;
-    border: 1px solid #ddd;
-  }
-
-  {{ section_id }} .product-info-details {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  {{ section_id }} .product-info-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
-  }
-
-  {{ section_id }} .product-info-sku {
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  {{ section_id }} .product-info-price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #004A26;
-  }
-
-  {{ section_id }} .back-to-product {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #004A26;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 10px 20px;
-    background: #e8f5e9;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  {{ section_id }} .back-to-product:hover {
-    background: #004A26;
-    color: #fff;
-  }
-
-  {{ section_id }} .configurator-iframe-container {
-    margin: 0 20px;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  }
-
   {{ section_id }} .configurator-iframe {
-    width: 100%;
     height: {{ iframe_height }}px;
-    border: none;
-    display: block;
   }
-
-  {{ section_id }} .loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255,255,255,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  {{ section_id }} .loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 4px solid #e0e0e0;
-    border-top-color: #004A26;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  {{ section_id }} .no-product-message {
-    text-align: center;
-    padding: 60px 20px;
-    background: #fff3cd;
-    border-radius: 10px;
-    margin: 0 20px;
-  }
-
-  {{ section_id }} .no-product-message h3 {
-    color: #856404;
-    margin-bottom: 15px;
-  }
-
-  {{ section_id }} .no-product-message a {
-    color: #004A26;
-    font-weight: 600;
-  }
-
   @media (max-width: 768px) {
-    {{ section_id }} .configurator-title {
-      font-size: 1.5rem;
-    }
-
-    {{ section_id }} .product-info-bar {
-      flex-direction: column;
-      text-align: center;
-    }
-
     {{ section_id }} .configurator-iframe {
-      height: 500px;
+      height: {{ section.settings.iframe_height_mobile | default: 550 }}px;
     }
   }
-</style>
+{%- endstyle -%}
 
 <div class="configurator-wrapper">
-  <div class="configurator-header">
-    <h1 class="configurator-title">{{ section.settings.heading | default: 'Product Configurator' }}</h1>
-    <p class="configurator-subtitle">{{ section.settings.subheading | default: 'Customize your product with our easy-to-use configurator' }}</p>
-  </div>
-
-  <div id="product-info-container">
-    <!-- Product info will be populated by JavaScript -->
-  </div>
-
-  <div id="configurator-container" class="configurator-iframe-container" style="position: relative; display: none;">
-    <div id="loading-overlay" class="loading-overlay">
-      <div class="loading-spinner"></div>
+  {%- if show_header -%}
+    <div class="configurator-header">
+      <h1 class="configurator-title">{{ section.settings.heading | default: '3D Product Configurator' }}</h1>
+      <p class="configurator-subtitle">{{ section.settings.subheading | default: 'Design your custom packaging in real-time 3D' }}</p>
     </div>
-    <iframe 
-      id="configurator-iframe"
+  {%- endif -%}
+
+  {%- comment -%} Product Info Bar — populated via Liquid or JS {%- endcomment -%}
+  {%- if show_product_bar and product != blank -%}
+    <div class="product-info-bar" id="product-info-bar-{{ section.id }}">
+      {%- if product.featured_image -%}
+        <img
+          class="product-info-bar__image"
+          src="{{ product.featured_image | image_url: width: 128 }}"
+          alt="{{ product.title | escape }}"
+          width="64"
+          height="64"
+          loading="lazy"
+        >
+      {%- endif -%}
+      <div class="product-info-bar__details">
+        <h2 class="product-info-bar__title">{{ product.title }}</h2>
+        <p class="product-info-bar__meta">
+          {%- if product.selected_or_first_available_variant.sku != blank -%}
+            SKU: {{ product.selected_or_first_available_variant.sku }}
+          {%- endif -%}
+          {%- if product.vendor != blank -%}
+            &nbsp;&middot;&nbsp; {{ product.vendor }}
+          {%- endif -%}
+        </p>
+      </div>
+      <div class="product-info-bar__price">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </div>
+      <div class="product-info-bar__actions">
+        <a href="{{ product.url }}" class="btn-configurator btn-configurator--secondary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Back
+        </a>
+      </div>
+    </div>
+  {%- elsif show_product_bar -%}
+    <div class="product-info-bar" id="product-info-bar-{{ section.id }}" style="display:none;">
+      {%- comment -%} Will be populated by JS when product comes from URL params {%- endcomment -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Toolbar {%- endcomment -%}
+  <div class="configurator-toolbar">
+    <button
+      class="btn-configurator btn-configurator--icon btn-configurator--ghost"
+      data-action="refresh"
+      title="Reload Configurator"
+      aria-label="Reload Configurator"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    </button>
+    <button
+      class="btn-configurator btn-configurator--icon btn-configurator--ghost"
+      data-action="fullscreen"
+      title="Fullscreen"
+      aria-label="Toggle Fullscreen"
+    >
+      <svg class="fs-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+      <svg class="fs-collapse hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    </button>
+  </div>
+
+  {%- comment -%} Iframe Container {%- endcomment -%}
+  <div id="configurator-container-{{ section.id }}" class="configurator-iframe-container" style="display: none;">
+    <div class="configurator-loading" id="configurator-loading-{{ section.id }}">
+      <div class="configurator-loading__spinner"></div>
+      <p class="configurator-loading__text">Loading 3D Configurator&hellip;</p>
+    </div>
+    <iframe
+      id="configurator-iframe-{{ section.id }}"
       class="configurator-iframe"
-      title="Product Configurator"
+      title="PackTHC 3D Product Configurator"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; fullscreen"
       allowfullscreen
+      loading="lazy"
     ></iframe>
   </div>
 
-  <div id="no-product-message" class="no-product-message" style="display: none;">
-    <h3>No Product Selected</h3>
-    <p>Please select a product to customize from our <a href="/collections/all">product catalog</a>.</p>
+  {%- comment -%} Error / No Product State {%- endcomment -%}
+  <div class="configurator-error" id="configurator-error-{{ section.id }}" style="display: none;">
+    <svg class="configurator-error__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+    </svg>
+    <h3 class="configurator-error__title">No Product Selected</h3>
+    <p class="configurator-error__text">Please select a product to customize from our catalog.</p>
+    <a href="/collections/all" class="btn-configurator btn-configurator--primary">Browse Products</a>
   </div>
+
+  {%- comment -%} Configuration payload for JS {%- endcomment -%}
+  <script type="application/json" data-configurator-config>
+    {
+      "baseUrl": {{ configurator_url | json }},
+      "shop": {
+        "domain": {{ shop.permanent_domain | json }},
+        "name": {{ shop.name | json }}
+      },
+      "product": {
+        {%- if product != blank -%}
+          "handle": {{ product.handle | json }},
+          "productId": {{ product.id | json }},
+          "variantId": {{ product.selected_or_first_available_variant.id | json }},
+          "title": {{ product.title | json }},
+          "sku": {{ product.selected_or_first_available_variant.sku | default: '' | json }},
+          "vendor": {{ product.vendor | json }},
+          "image": {{ product.featured_image | image_url: width: 400 | json }},
+          "price": {{ product.selected_or_first_available_variant.price | money_without_currency | json }}
+        {%- else -%}
+          "handle": null,
+          "productId": null,
+          "variantId": null,
+          "title": null,
+          "sku": null,
+          "vendor": null,
+          "image": null,
+          "price": null
+        {%- endif -%}
+      }
+    }
+  </script>
 </div>
 
+{%- comment -%}
+  Inline fallback script for when product comes from URL params (standalone page usage).
+  The external JS file handles the main logic; this covers URL-param-based product loading.
+{%- endcomment -%}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Get product data from URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const productHandle = urlParams.get('product');
-  const productId = urlParams.get('product_id');
-  const variantId = urlParams.get('variant_id');
-  const productTitle = urlParams.get('title');
-  const productImage = urlParams.get('image');
-  const productPrice = urlParams.get('price');
-  const productSku = urlParams.get('sku');
-  const productVendor = urlParams.get('vendor');
+  (function() {
+    var sectionId = {{ section.id | json }};
+    var baseUrl   = {{ configurator_url | json }};
+    var shopDomain = {{ shop.permanent_domain | json }};
+    var shopName   = {{ shop.name | json }};
 
-  const configuratorBaseUrl = '{{ configurator_url }}';
-  const productInfoContainer = document.getElementById('product-info-container');
-  const configuratorContainer = document.getElementById('configurator-container');
-  const noProductMessage = document.getElementById('no-product-message');
-  const iframe = document.getElementById('configurator-iframe');
-  const loadingOverlay = document.getElementById('loading-overlay');
+    {% if product != blank %}
+      // Product set via Liquid — external JS handles it
+      return;
+    {% endif %}
 
-  if (productHandle || productId) {
-    // Show product info bar
-    let productInfoHTML = `
-      <div class="product-info-bar">
-        ${productImage ? `<img src="${decodeURIComponent(productImage)}" alt="${productTitle || 'Product'}" />` : ''}
-        <div class="product-info-details">
-          <div class="product-info-title">${decodeURIComponent(productTitle || 'Custom Product')}</div>
-          ${productSku ? `<div class="product-info-sku">SKU: ${productSku}</div>` : ''}
-          ${productVendor ? `<div class="product-info-sku">By: ${decodeURIComponent(productVendor)}</div>` : ''}
-        </div>
-        ${productPrice ? `<div class="product-info-price">$${productPrice}</div>` : ''}
-        <a href="/products/${productHandle || ''}" class="back-to-product">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Back to Product
-        </a>
-      </div>
-    `;
-    productInfoContainer.innerHTML = productInfoHTML;
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var handle = params.get('product');
+      var productId = params.get('product_id');
 
-    // Build iframe URL with product parameters
-    let iframeUrl = configuratorBaseUrl;
-    const params = new URLSearchParams();
-    
-    if (productHandle) params.append('product', productHandle);
-    if (productId) params.append('product_id', productId);
-    if (variantId) params.append('variant_id', variantId);
-    if (productTitle) params.append('title', productTitle);
-    if (productSku) params.append('sku', productSku);
-    if (productVendor) params.append('vendor', productVendor);
-    if (productImage) params.append('image', productImage);
-    if (productPrice) params.append('price', productPrice);
-    
-    // Add shop info
-    params.append('shop', '{{ shop.permanent_domain }}');
-    params.append('shop_name', '{{ shop.name | escape }}');
-    
-    const separator = configuratorBaseUrl.includes('?') ? '&' : '?';
-    iframeUrl = configuratorBaseUrl + separator + params.toString();
-
-    // Set iframe source
-    iframe.src = iframeUrl;
-    configuratorContainer.style.display = 'block';
-
-    // Hide loading when iframe loads
-    iframe.onload = function() {
-      loadingOverlay.style.display = 'none';
-    };
-
-    // Timeout for loading
-    setTimeout(function() {
-      loadingOverlay.style.display = 'none';
-    }, 10000);
-
-  } else {
-    // No product specified
-    noProductMessage.style.display = 'block';
-  }
-
-  // Debounce and rate limit protection for cart adds
-  let isAddingToCart = false;
-  let lastCartAddTime = 0;
-  const CART_ADD_COOLDOWN = 2000; // 2 seconds between cart adds
-  
-  // Helper function to add to cart with retry
-  async function addToCartWithRetry(cartData, retries = 3, delay = 1000) {
-    for (let i = 0; i < retries; i++) {
-      try {
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(cartData)
-        });
-        
-        console.log('Cart response status:', response.status);
-        
-        if (response.status === 429) {
-          // Rate limited - wait and retry
-          console.log(`Rate limited, waiting ${delay}ms before retry ${i + 1}/${retries}`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-          delay *= 2; // Exponential backoff
-          continue;
-        }
-        
-        if (!response.ok) {
-          const errorText = await response.text();
-          try {
-            const errorJson = JSON.parse(errorText);
-            throw new Error(errorJson.description || errorJson.message || 'Failed to add to cart');
-          } catch (parseError) {
-            throw new Error('Failed to add to cart - please try again');
-          }
-        }
-        
-        return await response.json();
-      } catch (error) {
-        if (i === retries - 1) throw error;
-        console.log(`Cart add attempt ${i + 1} failed, retrying...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-      }
-    }
-  }
-
-  // Listen for messages from iframe (for add to cart, etc.)
-  window.addEventListener('message', function(event) {
-    // Only log addToCart messages to reduce noise
-    if (event.data && event.data.type) {
-      console.log('Message received from iframe:', event.data.type);
-    }
-    
-    // Handle messages from the configurator iframe
-    if (event.data && event.data.type === 'addToCart') {
-      // Prevent duplicate/rapid cart adds
-      const now = Date.now();
-      if (isAddingToCart) {
-        console.log('Cart add already in progress, ignoring duplicate request');
+      if (!handle && !productId) {
+        var err = document.getElementById('configurator-error-' + sectionId);
+        if (err) err.style.display = 'block';
         return;
       }
-      if (now - lastCartAddTime < CART_ADD_COOLDOWN) {
-        console.log('Cart add cooldown active, please wait');
-        showCartNotification('Please wait a moment before adding again', null, true);
-        return;
-      }
-      
-      isAddingToCart = true;
-      lastCartAddTime = now;
-      
-      // Get the variant ID - use the one from the message, or fallback to URL param
-      let itemVariantId = event.data.variantId || variantId;
-      
-      // If variant ID is a Shopify GID, extract the numeric ID
-      // e.g. "gid://shopify/ProductVariant/12345" → "12345"
-      if (typeof itemVariantId === 'string' && itemVariantId.includes('gid://')) {
-        itemVariantId = itemVariantId.split('/').pop();
-      }
-      
-      // Ensure it's a number for /cart/add.js
-      itemVariantId = parseInt(itemVariantId, 10);
-      
-      if (!itemVariantId || isNaN(itemVariantId)) {
-        console.error('No variant ID available for cart add');
-        showCartNotification('Error: No product variant selected', null, true);
-        isAddingToCart = false;
-        return;
-      }
-      
-      // Clean properties - ensure no values are too long
-      const cleanProperties = {};
-      if (event.data.properties) {
-        Object.keys(event.data.properties).forEach(key => {
-          const value = String(event.data.properties[key] || '');
-          // Shopify has ~255 char limit per property value
-          cleanProperties[key] = value.substring(0, 250);
-        });
-      }
-      
-      // Add customized product to cart
-      const cartData = {
-        id: itemVariantId,
-        quantity: event.data.quantity || 1,
-        properties: cleanProperties
+
+      var productData = {
+        handle:    handle,
+        productId: productId,
+        variantId: params.get('variant_id'),
+        title:     params.get('title') ? decodeURIComponent(params.get('title')) : null,
+        sku:       params.get('sku'),
+        vendor:    params.get('vendor') ? decodeURIComponent(params.get('vendor')) : null,
+        image:     params.get('image') ? decodeURIComponent(params.get('image')) : null,
+        price:     params.get('price')
       };
-      
-      console.log('Adding to cart:', cartData);
 
-      addToCartWithRetry(cartData)
-      .then(data => {
-        console.log('Cart add success:', data);
-        isAddingToCart = false;
-        
-        // Notify iframe of success
-        iframe.contentWindow.postMessage({ type: 'cartAddSuccess', data: data }, '*');
-        
-        // Show success notification
-        showCartNotification('Product added to cart!', data);
-        
-        // Update cart count in header if possible
-        updateCartCount();
-        
-        // Optionally redirect to cart
-        if (event.data.redirectToCart) {
-          window.location.href = '/cart';
-        }
-      })
-      .catch(error => {
-        console.error('Cart add error:', error);
-        isAddingToCart = false;
-        iframe.contentWindow.postMessage({ type: 'cartAddError', error: error.message }, '*');
-        showCartNotification('Failed to add to cart. Please try again.', null, true);
-      });
-    }
-
-    if (event.data && event.data.type === 'goToCart') {
-      window.location.href = '/cart';
-    }
-
-    if (event.data && event.data.type === 'goBack') {
-      window.history.back();
-    }
-  });
-  
-  // Helper function to show cart notification
-  function showCartNotification(message, data, isError) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: ${isError ? '#ef4444' : '#004A26'};
-      color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      z-index: 99999;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      animation: slideIn 0.3s ease;
-    `;
-    
-    notification.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        ${isError 
-          ? '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'
-          : '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'
-        }
-      </svg>
-      <span>${message}</span>
-      ${!isError ? '<a href="/cart" style="background:white;color:#004A26;padding:6px 12px;border-radius:4px;text-decoration:none;margin-left:8px;">View Cart</a>' : ''}
-    `;
-    
-    // Add animation styles
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+      // Populate product info bar
+      var infoBar = document.getElementById('product-info-bar-' + sectionId);
+      if (infoBar && (productData.title || productData.handle)) {
+        infoBar.style.display = 'flex';
+        infoBar.innerHTML = ''
+          + (productData.image ? '<img class="product-info-bar__image" src="' + productData.image + '" alt="' + (productData.title || 'Product') + '" width="64" height="64">' : '')
+          + '<div class="product-info-bar__details">'
+          +   '<h2 class="product-info-bar__title">' + (productData.title || productData.handle || 'Custom Product') + '</h2>'
+          +   '<p class="product-info-bar__meta">'
+          +     (productData.sku ? 'SKU: ' + productData.sku : '')
+          +     (productData.vendor ? ' &middot; ' + productData.vendor : '')
+          +   '</p>'
+          + '</div>'
+          + (productData.price ? '<div class="product-info-bar__price">$' + productData.price + '</div>' : '')
+          + '<div class="product-info-bar__actions">'
+          +   '<a href="/products/' + (productData.handle || '') + '" class="btn-configurator btn-configurator--secondary">'
+          +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>'
+          +     ' Back'
+          +   '</a>'
+          + '</div>';
       }
-    `;
-    document.head.appendChild(style);
-    
-    document.body.appendChild(notification);
-    
-    // Remove after 5 seconds
-    setTimeout(() => {
-      notification.style.animation = 'slideIn 0.3s ease reverse';
-      setTimeout(() => notification.remove(), 300);
-    }, 5000);
-  }
-  
-  // Helper function to update cart count in header
-  function updateCartCount() {
-    fetch('/cart.js')
-      .then(response => response.json())
-      .then(cart => {
-        console.log('Updating cart count to:', cart.item_count);
-        
-        // Target all possible cart count elements in the theme
-        const selectors = [
-          '.item-count',
-          '.cart-item-count', 
-          '.cart-count',
-          '.cart-count-bubble',
-          '.header-cart-count',
-          '[data-cart-count]',
-          '.CartCount',
-          '.cart-items-count'
-        ];
-        
-        const cartCountElements = document.querySelectorAll(selectors.join(','));
-        console.log('Found cart count elements:', cartCountElements.length);
-        
-        cartCountElements.forEach(el => {
-          el.textContent = cart.item_count;
-          // Make sure element is visible if count > 0
-          if (cart.item_count > 0) {
-            el.style.display = '';
-            el.classList.remove('hide', 'hidden');
-          }
+
+      // Build iframe URL
+      var iframeParams = new URLSearchParams();
+      if (productData.handle)    iframeParams.set('product', productData.handle);
+      if (productData.productId) iframeParams.set('product_id', productData.productId);
+      if (productData.variantId) iframeParams.set('variant_id', productData.variantId);
+      if (productData.title)     iframeParams.set('title', productData.title);
+      if (productData.sku)       iframeParams.set('sku', productData.sku);
+      if (productData.vendor)    iframeParams.set('vendor', productData.vendor);
+      if (productData.image)     iframeParams.set('image', productData.image);
+      if (productData.price)     iframeParams.set('price', productData.price);
+      iframeParams.set('shop', shopDomain);
+      iframeParams.set('shop_name', shopName);
+
+      var sep = baseUrl.indexOf('?') > -1 ? '&' : '?';
+      var iframeUrl = baseUrl + sep + iframeParams.toString();
+
+      var container = document.getElementById('configurator-container-' + sectionId);
+      var iframe    = document.getElementById('configurator-iframe-' + sectionId);
+      var loading   = document.getElementById('configurator-loading-' + sectionId);
+
+      if (container && iframe) {
+        container.style.display = 'block';
+        iframe.src = iframeUrl;
+        iframe.addEventListener('load', function() {
+          if (loading) loading.style.display = 'none';
         });
-        
-        // Also trigger Shopify's native cart update event
-        document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
-        
-        // Try to trigger side cart update if it exists
-        if (window.Shopify && window.Shopify.theme && window.Shopify.theme.sections) {
-          document.dispatchEvent(new Event('cart:refresh'));
-        }
-      })
-      .catch(err => console.log('Could not update cart count:', err));
-  }
-});
+        setTimeout(function() { if (loading) loading.style.display = 'none'; }, 15000);
+      }
+    });
+  })();
 </script>
+
+<script src="{{ 'product-configurator.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
-  "name": "Product Configurator",
+  "name": "3D Configurator",
   "tag": "section",
   "class": "product-configurator-section",
   "settings": [
     {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show section header",
+      "default": true
+    },
+    {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Product Configurator"
+      "default": "3D Product Configurator"
     },
     {
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
-      "default": "Customize your product with our easy-to-use configurator"
+      "default": "Design your custom packaging in real-time 3D"
+    },
+    {
+      "type": "header",
+      "content": "Configurator"
     },
     {
       "type": "url",
       "id": "configurator_base_url",
-      "label": "Configurator Iframe URL",
-      "info": "The base URL of your external configurator. Product data will be passed as URL parameters."
+      "label": "Configurator URL",
+      "info": "The deployed URL of your Next.js 3D configurator app. Leave empty to use default."
     },
     {
       "type": "range",
       "id": "iframe_height",
-      "label": "Iframe Height (px)",
-      "min": 400,
+      "label": "Desktop Height (px)",
+      "min": 500,
       "max": 1200,
-      "step": 50,
-      "default": 700
+      "step": 25,
+      "default": 800,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "iframe_height_mobile",
+      "label": "Mobile Height (px)",
+      "min": 400,
+      "max": 900,
+      "step": 25,
+      "default": 550,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Product Info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_bar",
+      "label": "Show product info bar",
+      "default": true,
+      "info": "Displays product name, image, price, and back button above the configurator."
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
     },
     {
       "type": "range",
@@ -554,8 +329,9 @@ document.addEventListener('DOMContentLoaded', function() {
       "label": "Padding Top",
       "min": 0,
       "max": 100,
-      "step": 5,
-      "default": 40
+      "step": 4,
+      "default": 20,
+      "unit": "px"
     },
     {
       "type": "range",
@@ -563,14 +339,26 @@ document.addEventListener('DOMContentLoaded', function() {
       "label": "Padding Bottom",
       "min": 0,
       "max": 100,
-      "step": 5,
-      "default": 40
+      "step": 4,
+      "default": 40,
+      "unit": "px"
     }
   ],
   "presets": [
     {
-      "name": "Product Configurator"
+      "name": "3D Product Configurator",
+      "settings": {
+        "show_header": true,
+        "heading": "3D Product Configurator",
+        "subheading": "Design your custom packaging in real-time 3D",
+        "iframe_height": 800,
+        "iframe_height_mobile": 550,
+        "show_product_bar": true,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
     }
-  ]
+  ],
+  "templates": ["page", "product"]
 }
 {% endschema %}

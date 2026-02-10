@@ -1,0 +1,42 @@
+{% comment %}
+  Renders a "Customize in 3D" CTA button on product pages.
+
+  Accepts:
+  - product: {Object} product object.
+  - configurator_page: {String} URL handle of the configurator page (default: /pages/configurator)
+  - button_text: {String} button label
+  - show_badge: {Boolean} show "Powered by PackTHC Studio" badge
+
+  Usage:
+  {% render 'customize-3d-button', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign _product = product
+  assign _enabled = settings.configurator_enabled | default: true
+  assign _page_handle = settings.configurator_page_handle | default: 'configurator'
+  assign _page_url = configurator_page | default: '/pages/' | append: _page_handle
+  assign _btn_text = button_text | default: settings.configurator_button_text | default: 'Customize in 3D'
+  assign _show_badge = show_badge | default: settings.configurator_show_badge | default: true
+-%}
+
+{%- if _product != blank and _enabled -%}
+  {%- capture _configurator_link -%}
+    {{ _page_url }}?product={{ _product.handle }}&product_id={{ _product.id }}&variant_id={{ _product.selected_or_first_available_variant.id }}&title={{ _product.title | url_encode }}&sku={{ _product.selected_or_first_available_variant.sku | url_encode }}&vendor={{ _product.vendor | url_encode }}&image={{ _product.featured_image | image_url: width: 400 | url_encode }}&price={{ _product.selected_or_first_available_variant.price | money_without_currency | url_encode }}
+  {%- endcapture -%}
+
+  {{ 'product-configurator.css' | asset_url | stylesheet_tag }}
+
+  <div class="customize-3d-wrapper" style="margin-top: 10px;">
+    <a href="{{ _configurator_link | strip }}" class="btn btn--primary customize-3d-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <span class="btn__text" style="display: inline-flex; align-items: center; gap: 8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        {{ _btn_text }}
+      </span>
+    </a>
+  </div>
+{%- endif -%}

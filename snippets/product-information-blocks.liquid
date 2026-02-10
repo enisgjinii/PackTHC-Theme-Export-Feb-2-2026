@@ -390,6 +390,8 @@
               section_id: section.id,
               product_id: product.id
             -%}
+            {%- comment -%} 3D Configurator Button — appears below ATC on every product {%- endcomment -%}
+            {%- render 'customize-3d-button', product: product -%}
           </div>
         {%- when 'pickup_availability' -%}
           <div class="{{ block_classes }}" {{ block.shopify_attributes }}>
