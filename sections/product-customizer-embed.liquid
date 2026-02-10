@@ -1,0 +1,141 @@
+{% comment %}
+  ─────────────────────────────────────────────────
+  PackTHC 3D Product Customizer — Embed Section
+  ─────────────────────────────────────────────────
+  Add this section to any product template to show
+  a "Customize in 3D" button that opens the
+  jar-product-customizer in a fullscreen modal.
+{% endcomment %}
+
+{%- liquid
+  assign customizer_url = section.settings.customizer_url | default: 'https://jar-product-customizer.vercel.app'
+  assign btn_text = section.settings.button_text | default: 'Customize in 3D'
+  assign show_for_all = section.settings.show_for_all_products
+  assign allowed_tag = section.settings.required_tag
+
+  assign show_button = false
+  if show_for_all
+    assign show_button = true
+  elsif allowed_tag != blank
+    if product.tags contains allowed_tag
+      assign show_button = true
+    endif
+  else
+    assign show_button = true
+  endif
+
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+{%- if show_button and product != blank -%}
+  {{ 'product-customizer.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%} Product data for the bridge script {%- endcomment -%}
+  <script type="application/json" id="packthc-customizer-data">
+    {
+      "product_id": {{ product.id | json }},
+      "variant_id": {{ current_variant.id | json }},
+      "handle": {{ product.handle | json }},
+      "title": {{ product.title | json }},
+      "sku": {{ current_variant.sku | json }},
+      "vendor": {{ product.vendor | json }},
+      "price": {{ current_variant.price | money_without_trailing_zeros | json }},
+      "image": {{ product.featured_image | image_url: width: 800 | json }},
+      "product_type": {{ product.type | json }}
+    }
+  </script>
+
+  {%- comment -%} "Customize in 3D" button {%- endcomment -%}
+  <button
+    type="button"
+    class="packthc-customize-btn"
+    data-open-customizer
+    aria-label="{{ btn_text }}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>
+    {{ btn_text }}
+  </button>
+
+  {%- comment -%} Fullscreen modal with iframe {%- endcomment -%}
+  <div
+    id="packthc-customizer-modal"
+    class="packthc-modal"
+    data-customizer-url="{{ customizer_url }}"
+    aria-modal="true"
+    role="dialog"
+    aria-label="3D Product Customizer"
+  >
+    <div id="packthc-customizer-overlay" class="packthc-modal__overlay"></div>
+    <div class="packthc-modal__container">
+      <div class="packthc-modal__header">
+        <h2 class="packthc-modal__title">{{ product.title }} — 3D Customizer</h2>
+        <button
+          id="packthc-customizer-close"
+          class="packthc-modal__close"
+          aria-label="Close customizer"
+        >✕</button>
+      </div>
+      <div class="packthc-modal__loading">
+        <div class="packthc-modal__spinner"></div>
+      </div>
+      <iframe
+        id="packthc-customizer-iframe"
+        class="packthc-modal__iframe"
+        src="about:blank"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+        allowfullscreen
+        loading="lazy"
+        title="3D Product Customizer"
+      ></iframe>
+    </div>
+  </div>
+
+  <script src="{{ 'product-customizer.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "3D Product Customizer",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "customizer_url",
+      "label": "Customizer App URL",
+      "default": "https://jar-product-customizer.vercel.app",
+      "info": "The full URL of your deployed jar-product-customizer app."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Customize in 3D"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_for_all_products",
+      "label": "Show for all products",
+      "default": true,
+      "info": "If unchecked, only show for products with the tag below."
+    },
+    {
+      "type": "text",
+      "id": "required_tag",
+      "label": "Required product tag",
+      "default": "customizable",
+      "info": "Only show the button on products with this tag (when 'Show for all' is off)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "3D Product Customizer"
+    }
+  ]
+}
+{% endschema %}

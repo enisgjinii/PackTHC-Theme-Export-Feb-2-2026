@@ -1063,11 +1063,21 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "product_customizer": {
+      "type": "product-customizer-embed",
+      "settings": {
+        "customizer_url": "https://jar-product-customizer.vercel.app",
+        "button_text": "Customize in 3D",
+        "show_for_all_products": true,
+        "required_tag": "customizable"
+      }
     }
   },
   "order": [
     "breadcrumbs",
     "main",
+    "product_customizer",
     "custom_liquid_UDqbXR",
     "testimonials_8JHr3L",
     "tabs_content_8rnbnj",
