@@ -9,26 +9,699 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-list-collection",
+    "breadcrumbs_Eqt34R": {
+      "type": "breadcrumbs",
       "settings": {
-        "color_scheme": "scheme-2",
-        "title": "PackTHC All Collections",
-        "description": "<h6>Discover a curated selection of natural wines from small batch producers all around the world</h6>",
-        "color_scheme_card": "",
-        "rows": 2,
-        "columns": "4",
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "sort": "alphabetical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "title": "Collections",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_image_ratio": "1/1",
+        "card_image_width": "large",
+        "rounded_card_image": true,
+        "card_show_border": false,
+        "collections_per_page": 18,
+        "columns_desktop": 6,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "grid_bordered": true,
+        "columns_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "collection_list_Azm9te": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_KdFqFq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mylar-bags-pouches",
+            "title": "Mylar Bags & Pouches"
+          }
+        },
+        "featured_collection_d8XGnb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "preroll-tubes",
+            "title": "Pre-Roll Packaging"
+          }
+        },
+        "featured_collection_FzRWDn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "flower-jars-containers",
+            "title": "Flower Jars & Containers"
+          }
+        },
+        "featured_collection_at4gCr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "concentrate-packaging",
+            "title": "Concentrate Packaging"
+          }
+        },
+        "featured_collection_F69pQy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vape-cartridge-packaging",
+            "title": "Vape & Cartridge Packaging"
+          }
+        },
+        "featured_collection_JV9tDT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "edibles-packaging",
+            "title": "Edibles Packaging"
+          }
+        },
+        "featured_collection_WLrpbE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "smell-proof-solution",
+            "title": "Smell-Proof Solutions"
+          }
+        },
+        "featured_collection_qdrbEr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "display-merchandising",
+            "title": "Display & Merchandising"
+          }
+        },
+        "featured_collection_Pa8kFP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "point-of-sale-essentials",
+            "title": "Point-of-Sale Essentials"
+          }
+        },
+        "featured_collection_UTWiiY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bulk-wholesale-options",
+            "title": "Bulk/Wholesale Options"
+          }
+        },
+        "featured_collection_rkynNN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pop-top-bottles",
+            "title": "Pop Top Vials"
+          }
+        },
+        "featured_collection_8t9tJr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "glass-jars",
+            "title": "Glass Jars"
+          }
+        },
+        "featured_collection_cQ9zAr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "preroll-tubes",
+            "title": "Pre-Roll Tubes"
+          }
+        },
+        "featured_collection_tCirzw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dab-containers",
+            "title": "Dab Containers"
+          }
+        },
+        "featured_collection_faaU7a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "display-box",
+            "title": "Display Box"
+          }
+        },
+        "featured_collection_Hmp4Br": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "plastic-flower-jar",
+            "title": "Plastic Flower Jar"
+          }
+        },
+        "featured_collection_8YdgYJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chubby-gorilla",
+            "title": "Chubby Gorilla"
+          }
+        },
+        "featured_collection_Gx9Qyp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "raw",
+            "title": "Raw"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_KdFqFq",
+        "featured_collection_d8XGnb",
+        "featured_collection_FzRWDn",
+        "featured_collection_at4gCr",
+        "featured_collection_F69pQy",
+        "featured_collection_JV9tDT",
+        "featured_collection_WLrpbE",
+        "featured_collection_qdrbEr",
+        "featured_collection_Pa8kFP",
+        "featured_collection_UTWiiY",
+        "featured_collection_rkynNN",
+        "featured_collection_8t9tJr",
+        "featured_collection_cQ9zAr",
+        "featured_collection_tCirzw",
+        "featured_collection_faaU7a",
+        "featured_collection_Hmp4Br",
+        "featured_collection_8YdgYJ",
+        "featured_collection_Gx9Qyp"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Shop All Categories",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_text_line_limit": "none",
+        "card_image_ratio": "adapt",
+        "card_image_width": "large",
+        "card_image_padding": "none",
+        "rounded_card_image": true,
+        "card_show_border": false,
+        "mobile_layout": "vertical",
+        "columns_desktop": 6,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "grid_bordered": true,
+        "columns_mobile": "3",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "collection_list_XJNrbA": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_7kxTVB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "raw",
+            "title": "Raw"
+          }
+        },
+        "featured_collection_icDUnk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elements",
+            "title": "Element"
+          }
+        },
+        "featured_collection_gXRwbb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "futurola",
+            "title": "Futurola"
+          }
+        },
+        "featured_collection_8M9RmV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "futurola",
+            "title": "Futurola"
+          }
+        },
+        "featured_collection_MjK88X": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paper-cones",
+            "title": "Free-Standing Bathroom"
+          }
+        },
+        "featured_collection_KeXpyT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hempire",
+            "title": "Ray Table Lamp"
+          }
+        },
+        "featured_collection_zgWR6H": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mylar-bags-new",
+            "title": "Mylar Bags"
+          }
+        },
+        "featured_collection_TEecyW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cannabis-accessories",
+            "title": "Cannabis Accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7kxTVB",
+        "featured_collection_icDUnk",
+        "featured_collection_gXRwbb",
+        "featured_collection_8M9RmV",
+        "featured_collection_MjK88X",
+        "featured_collection_KeXpyT",
+        "featured_collection_zgWR6H",
+        "featured_collection_TEecyW"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Explore Curated Collections",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "card_color_scheme": "",
+        "card_style": "card",
+        "card_heading_size": "h5",
+        "card_text_line_limit": "none",
+        "card_image_ratio": "1/1",
+        "card_image_width": "full",
+        "card_image_padding": "none",
+        "rounded_card_image": false,
+        "card_show_border": false,
+        "mobile_layout": "vertical",
+        "columns_desktop": 4,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "grid_bordered": false,
         "columns_mobile": "2",
-        "sort": "products_high",
-        "image_ratio": "square",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "featured_collection_bdaamt": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_r8U9QF": {
+          "type": "collection",
+          "settings": {
+            "collection": "6-dram-pop-top-vials",
+            "title": "Best Sellers",
+            "show_banner": false,
+            "color_scheme": "",
+            "card_link": "",
+            "image_overlay_opacity": 0,
+            "content_position": "top-left",
+            "content_alignment": "left",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Collections",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_E83rKg": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Hot Items",
+            "show_banner": false,
+            "color_scheme": "",
+            "card_link": "",
+            "image_overlay_opacity": 0,
+            "content_position": "top-left",
+            "content_alignment": "left",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Collections",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "collection_7cUH3n": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Best Sellers",
+            "show_banner": false,
+            "color_scheme": "",
+            "card_link": "",
+            "image_overlay_opacity": 0,
+            "content_position": "top-left",
+            "content_alignment": "left",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Collections",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "collection_r8U9QF",
+        "collection_E83rKg",
+        "collection_7cUH3n"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Popular Picks",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "limit": 8,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "enable_slider": true,
+        "content_overflow": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_dgPtDV": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kVf6qj": {
+          "type": "heading",
+          "settings": {
+            "heading": "About PackTHC",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "text_xtLQE8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At PackTHC, we specialize in providing high-quality, compliant packaging solutions tailored for the wellness industry. Our product line includes pop-top vials, glass and plastic jars, concentrate containers, and protective gear.</p><p>We proudly serve businesses of all sizes—from emerging brands to large-scale enterprises—offering reliable, durable, and cost-effective packaging designed to meet both functional and regulatory needs.<br/><br/>Quality is at the core of everything we do. Every product in our inventory is handpicked to meet the highest standards of durability, safety, and performance.</p><p>We recognize the importance of packaging in preserving product integrity, enhancing brand reputation, and ensuring customer trust. That’s why we only partner with trusted manufacturers to bring you packaging you can rely on.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "5-lines",
+            "button_style": "btn--plain",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kVf6qj",
+        "text_xtLQE8"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "use_color_scheme_in_container": true,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "buttons_with_icon_DdLrHW": {
+      "type": "buttons-with-icon",
+      "blocks": {
+        "button_item_4tK94X": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Living Room",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_ArrAX4": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Planters",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_P3jd6i": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Gravel Rug",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_T4DCDz": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Table Mirror",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_NKKc7U": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Table Wears",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_zxiJMr": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Dining Decor",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_UUMcWU": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Ray Table Lamp",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_xbpBzk": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Chairs",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_T9zq6D": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Living Room",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_PW89cL": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Planters",
+            "button_link": "",
+            "icon": "check"
+          }
+        }
+      },
+      "block_order": [
+        "button_item_4tK94X",
+        "button_item_ArrAX4",
+        "button_item_P3jd6i",
+        "button_item_T4DCDz",
+        "button_item_NKKc7U",
+        "button_item_zxiJMr",
+        "button_item_UUMcWU",
+        "button_item_xbpBzk",
+        "button_item_T9zq6D",
+        "button_item_PW89cL"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Popular Search",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "item_alignment": "left",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_overlay_pzn8nK": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_temGXA": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "New Collection"
+          }
+        },
+        "heading_nhnGkW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cotton Made Spoke Sofa",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2"
+          }
+        },
+        "button_p8d9jr": {
+          "type": "button",
+          "settings": {
+            "button_label": "shop Collection",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_temGXA",
+        "heading_nhnGkW",
+        "button_p8d9jr"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "full",
+        "desktop_height": "small",
+        "overlay_opacity": 30,
+        "enable_parallax": true,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "mobile_height": "adapt",
+        "content_position_mobile": "middle-center-mobile",
+        "content_alignment_mobile": "left",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "enable_preload_image": false
       }
     }
   },
   "order": [
-    "main"
+    "breadcrumbs_Eqt34R",
+    "main",
+    "collection_list_Azm9te",
+    "collection_list_XJNrbA",
+    "featured_collection_bdaamt",
+    "rich_text_dgPtDV",
+    "buttons_with_icon_DdLrHW",
+    "image_with_text_overlay_pzn8nK"
   ]
 }

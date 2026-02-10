@@ -1,624 +1,266 @@
-{%- liquid
-  assign template = template.name
-  if template == 'account' or template == 'login' or template == 'register' or template == 'order' or template == 'addresses'
-    assign account_details = ' has-account-details'
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
   endif
--%}
+%}
 <!doctype html>
-<html class="no-js" lang="{{ request.locale.iso_code }}" data-v="1.0.1">
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
   <head>
-    {% if request.query_string != blank %}
-      <meta name="robots" content="noindex, follow">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    <!-- Meta Pixel Code -->
-    <!-- Replace your existing Meta Pixel Code with this optimized version -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.defer = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-
-      // Delay initialization
-      setTimeout(function () {
-        fbq('init', '849288641386135');
-        fbq('track', 'PageView');
-      }, 2000);
-    </script>
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=849288641386135&ev=PageView&noscript=1"
-    ></noscript>
-    <!-- End Meta Pixel Code -->
-    {{ content_for_header }}
-
-    <!-- Preload CSS -->
-    <link rel="preload" href="{{ 'style.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ 'style.css' | asset_url }}"></noscript>
-    <link rel="preload" href="{{ 'swiper.css' | asset_url }}" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ 'swiper.css' | asset_url }}"></noscript>
-
-    <link
-      rel="preload"
-      href="https://packthc.com/cdn/fonts/poppins/poppins_n5.ad5b4b72b59a00358afc706450c864c3c8323842.woff2?h1=aWV6dTZjLWpxLmFjY291bnQubXlzaG9waWZ5LmNvbQ&h2=cGFja3RoYy5jb20&h3=cGFja3RoYy5teXNob3BpZnkuY29t&h4=YWNjb3VudC5wYWNrdGhjLmNvbQ&hmac=2f6aed75a40dbef09caa62fe24c67ba12e20b9f0469f4d6ed5d977e412263c50"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    >
-    <link
-      rel="preload"
-      href="https://packthc.com/cdn/fonts/poppins/poppins_n7.56758dcf284489feb014a026f3727f2f20a54626.woff2?h1=aWV6dTZjLWpxLmFjY291bnQubXlzaG9waWZ5LmNvbQ&h2=cGFja3RoYy5jb20&h3=cGFja3RoYy5teXNob3BpZnkuY29t&h4=YWNjb3VudC5wYWNrdGhjLmNvbQ&hmac=5eca8216470015fe220761d27155c9b9ff39972a76310e0873eb4bb1dbc9ea6e"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    >
-    {% render 'stylesheet' %}
-    {% render 'meta' %}
-    {%- comment -%}
-      🔹 Ye code comment kiya gaya hai.
-      🔹 Agar upar wale CSS preload method me koi dikkat aaye
-          to is code ko wapas enable karna.
-      🔹 Author: Aman Mirza
-      {%- liquid
-        echo 'style.css' | asset_url | stylesheet_tag
-        render 'stylesheet'
-        render 'meta'
-      -%}
-    {%- endcomment -%}
-
-    {% include 'hulk_po_vd' %}
-    {% include 'pagefly-app-header' %}
-    {% render 'breadcrumbs-schema-advanced', menu_handle: 'main-menu' %}
-    {% if template.name == 'product' %}
-      {% render 'merchant-listing-schema-aggregate-advanced' %}
-    {% endif %}
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "@id": "https://packthc.com/#organization",
-        "name": "PackTHC",
-        "url": "https://packthc.com",
-        "logo": "https://packthc.com/cdn/shop/files/Untitled_512_x_512_px_512_x_350_px.png",
-        "description": "Shop secure packaging supplies including pop-top vials, jars, tubes, gloves & more. Ideal for storage, compliant shipping, and custom branding.",
-        "sameAs": [
-          "https://x.com/pack_thc",
-          "https://in.pinterest.com/packthcusa/",
-          "https://www.youtube.com/@PackTHC",
-          "https://www.instagram.com/packthc/"
-        ],
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "telephone": "+1-816-722-5842",
-            "contactType": "Customer Service",
-            "areaServed": "US"
-          }
-        ],
-        "department": [
-          {
-            "@type": "LocalBusiness",
-            "@id": "https://packthc.com/#hq",
-            "name": "PackTHC - Headquarters",
-            "image": ["https://packthc.com/cdn/shop/files/Untitled_512_x_512_px_512_x_350_px.png"],
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "15031 Woodham Dr., Ste #330",
-              "addressLocality": "Houston",
-              "addressRegion": "TX",
-              "postalCode": "77073",
-              "addressCountry": "US"
-            },
-            "telephone": "+1-816-722-5842",
-            "priceRange": "$0.01 - $500",
-            "url": "https://packthc.com",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 29.98723,
-              "longitude": -95.41626
-            }
-          },
-          {
-            "@type": "LocalBusiness",
-            "@id": "https://packthc.com/#corporate",
-            "name": "PackTHC - Corporate Office",
-            "image": ["https://packthc.com/cdn/shop/files/Untitled_512_x_512_px_512_x_350_px.png"],
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "17B E Old Country Rd Suite #123",
-              "addressLocality": "Hicksville",
-              "addressRegion": "NY",
-              "postalCode": "11801",
-              "addressCountry": "US"
-            },
-            "telephone": "+1-816-722-5842",
-            "priceRange": "$0.01 - $500",
-            "url": "https://packthc.com",
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 40.7636656,
-              "longitude": -73.5161412
-            }
-          }
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://packthc.com/#website",
-        "url": "https://packthc.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://packthc.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      }
-    </script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('img:not([loading])').forEach((img) => img.setAttribute('loading', 'lazy'));
-      });
-    </script>
-    <script>
-      (function () {
-        function norm(t) {
-          return (t || '').replace(/\s+/g, ' ').trim();
-        }
-
-        function already(typeStr) {
-          var f = false;
-          document.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
-            if ((s.text || '').indexOf('"@type":"' + typeStr + '"') > -1) {
-              f = true;
-            }
-          });
-          return f;
-        }
-
-        function inject(obj) {
-          try {
-            var s = document.createElement('script');
-            s.type = 'application/ld+json';
-            s.text = JSON.stringify(obj);
-            document.head.appendChild(s);
-          } catch (e) {}
-        }
-
-        var Q_LEAD = /^(what|how|why|when|where|which|can|do|does|did|is|are|should|could|would)\b/i;
-
-        function looksLikeQuestion(txt) {
-          var x = norm(txt || '');
-          return /\?$/.test(x) || Q_LEAD.test(x);
-        }
-
-        function isJunk(t) {
-          var x = norm(t);
-          if (!x) return true;
-          if (x.length < 10) return true;
-          if (/continue reading|read more|shop now|learn more|contact us/i.test(x)) return true;
-          if (/^\w{3}\s\d{1,2},\s\d{4}/i.test(x)) return true;
-          return false;
-        }
-
-        var STOP_SEL = [
-          '.post-navigation',
-          '.blog-comments',
-          '.comment-list',
-          '.comment-form',
-          '.post-content-footer',
-          '.related',
-          '[class*="related"]',
-          '.article-list',
-          '.blog-grid',
-          '.pagination',
-          '.nav',
-        ].join(',');
-
-        var FAQ_LABEL =
-          /^(faqs?|frequently asked questions|q\s*&\s*a|questions\s*&\s*answers|common questions|help|support)\s*:?\s*$/i;
-
-        // broad scope: blog, product, article or fallback to document
-        var scope =
-          document.querySelector('.post-content') ||
-          document.querySelector('.blog-content') ||
-          document.querySelector('.product-single__description') ||
-          document.querySelector('.product-description') ||
-          document.querySelector('#ProductInfo') ||
-          document.querySelector('article') ||
-          document;
-
-        function collectAnswerFromHeading(startEl) {
-          var parts = [],
-            cur = startEl.nextElementSibling;
-          while (cur) {
-            if (cur.matches && cur.matches(STOP_SEL)) break;
-            if (/^H[1-4]$/.test(cur.tagName)) break; // next heading
-            if (/(P|DIV|UL|OL|BLOCKQUOTE|TABLE)/.test(cur.tagName)) {
-              if (cur.tagName === 'UL' || cur.tagName === 'OL') {
-                var lis = Array.from(cur.querySelectorAll('li'))
-                  .map(function (li) {
-                    return norm(li.innerText);
-                  })
-                  .filter(Boolean);
-                var listTxt = lis.join('\n');
-                if (!isJunk(listTxt)) parts.push(listTxt);
-              } else {
-                var txt = norm(cur.innerText);
-                if (!isJunk(txt)) parts.push(txt);
-              }
-            }
-            cur = cur.nextElementSibling;
-          }
-          return norm(parts.join('\n\n'));
-        }
-
-        function collectFromFAQSection(head) {
-          var items = [],
-            el = head.nextElementSibling;
-          while (el) {
-            if (el.matches && el.matches(STOP_SEL)) break;
-            if (/^H[12]$/.test(el.tagName) && !FAQ_LABEL.test(norm(el.textContent))) break;
-            if (/^H[1-4]$/.test(el.tagName) && FAQ_LABEL.test(norm(el.textContent))) break;
-
-            if (/^H[2-4]$/.test(el.tagName) && looksLikeQuestion(el.textContent)) {
-              var q = norm(el.textContent),
-                a = collectAnswerFromHeading(el);
-              if (q && a) items.push({ q: q, a: a });
-            }
-
-            if (el.tagName === 'DETAILS') {
-              var sum = el.querySelector('summary');
-              var q2 = norm(sum ? sum.innerText : '');
-              var c = el.cloneNode(true);
-              var s = c.querySelector('summary');
-              if (s) s.remove();
-              var a2 = norm(c.innerText);
-              if (q2 && !isJunk(a2)) items.push({ q: q2, a: a2 });
-            }
-
-            el = el.nextElementSibling;
-          }
-          return items;
-        }
-
-        function collectFromHeadings() {
-          var out = [];
-          Array.from(scope.querySelectorAll('h2,h3,h4')).forEach(function (h) {
-            if (!looksLikeQuestion(h.textContent)) return;
-            if (h.closest && h.closest(STOP_SEL)) return;
-            var q = norm(h.textContent),
-              a = collectAnswerFromHeading(h);
-            if (q && a) out.push({ q: q, a: a });
-          });
-          return out;
-        }
-
-        function collectFromDLs() {
-          var out = [];
-          Array.from(scope.querySelectorAll('dl')).forEach(function (dl) {
-            var nodes = Array.from(dl.children);
-            for (var i = 0; i < nodes.length; i++) {
-              var n = nodes[i];
-              if (n.tagName === 'DT') {
-                var dt = n;
-                // find next dd sibling(s)
-                var dd = dt.nextElementSibling;
-                if (dd && dd.tagName === 'DD') {
-                  var q = norm(dt.innerText),
-                    a = norm(dd.innerText);
-                  if (q && a && !isJunk(a)) out.push({ q: q, a: a });
-                }
-              }
-            }
-          });
-          return out;
-        }
-
-        function collectFromDetails() {
-          var out = [];
-          Array.from(scope.querySelectorAll('details')).forEach(function (d) {
-            var sum = d.querySelector('summary');
-            if (sum) {
-              var q = norm(sum.innerText);
-              var c = d.cloneNode(true);
-              var s = c.querySelector('summary');
-              if (s) s.remove();
-              var a = norm(c.innerText);
-              if (q && a && !isJunk(a)) out.push({ q: q, a: a });
-            }
-          });
-          return out;
-        }
-
-        function collectFAQs() {
-          var all = [];
-
-          // 1. Explicit FAQ sections (headings like "FAQs")
-          var faqHeads = Array.from(scope.querySelectorAll('h1,h2,h3,h4')).filter(function (h) {
-            return FAQ_LABEL.test(norm(h.textContent));
-          });
-          faqHeads.forEach(function (h) {
-            all = all.concat(collectFromFAQSection(h));
-          });
-
-          // 2. dl/dt/dd pairs
-          all = all.concat(collectFromDLs());
-
-          // 3. details/summary
-          all = all.concat(collectFromDetails());
-
-          // 4. heading-based Q/A (fallback)
-          all = all.concat(collectFromHeadings());
-
-          // dedupe and filter
-          var seen = new Set(),
-            out = [];
-          all.forEach(function (it) {
-            var q = norm(it.q),
-              a = norm(it.a);
-            if (!q || !a) return;
-            var key = q + '|' + a.slice(0, 180);
-            if (!seen.has(key) && !isJunk(a)) {
-              seen.add(key);
-              out.push({ q: q, a: a });
-            }
-          });
-          return out;
-        }
-
-        function addFAQ() {
-          if (already('FAQPage')) return;
-          var items = collectFAQs();
-          if (!items.length) return;
-          inject({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: items.map(function (it) {
-              return {
-                '@type': 'Question',
-                name: it.q.replace(/\?*$/, '?'),
-                acceptedAnswer: { '@type': 'Answer', text: it.a },
-              };
-            }),
-          });
-        }
-
-        // run once + observe short-lived mutations (for dynamic content)
-        addFAQ();
-        var obs = new MutationObserver(function () {
-          addFAQ();
-        });
-        obs.observe(document.documentElement, { childList: true, subtree: true });
-        setTimeout(function () {
-          try {
-            obs.disconnect();
-          } catch (e) {}
-        }, 12000);
-      })();
-    </script>
-
-    <script>
-      (function () {
-        'use strict';
-
-        function initConditionalLogic() {
-          // Shopify Forms Shadow DOM के अंदर जाना है
-          const formsEmbed = document.querySelector('shopify-forms-embed');
-          if (!formsEmbed || !formsEmbed.shadowRoot) {
-            console.log('Form अभी load नहीं हुआ, retry...');
-            return false;
-          }
-
-          const shadowRoot = formsEmbed.shadowRoot;
-          const form = shadowRoot.querySelector('form');
-          if (!form) return false;
-
-          // "Are You Sales Tax Exempt" के checkboxes find करो
-          const yesCheckbox = form.querySelector('input[value="Yes"][name*="are_you_sales_tax_exempt"]');
-          const noCheckbox = form.querySelector('input[value="No"][name*="are_you_sales_tax_exempt"]');
-
-          // SALES TAX ID fields find करो
-          const allFields = form.querySelectorAll('._formFieldContainer_1mxsl_5, ._formFileInput_ehvsf_1');
-          let taxIdField = null;
-          let uploadField = null;
-
-          allFields.forEach((field) => {
-            const label = field.querySelector('label, p');
-            if (label) {
-              const text = label.textContent.trim();
-              if (text.includes('SALES TAX ID #')) {
-                taxIdField = field;
-              } else if (text.includes('Upload SALES TAX ID')) {
-                uploadField = field;
-              }
-            }
-          });
-
-          if (!yesCheckbox || !noCheckbox) {
-            console.log('Yes/No checkboxes नहीं मिले');
-            return false;
-          }
-
-          if (!taxIdField || !uploadField) {
-            console.log('⚠️ SALES TAX ID fields form में नहीं हैं - पहले उन्हें add करो!');
-            return false;
-          }
-
-          // Toggle function
-          function toggleFields() {
-            if (yesCheckbox.checked) {
-              // Yes है तो show करो
-              taxIdField.style.display = 'block';
-              uploadField.style.display = 'block';
-            } else {
-              // No है या कुछ select नहीं तो hide करो
-              taxIdField.style.display = 'none';
-              uploadField.style.display = 'none';
-            }
-          }
-
-          // Event listeners
-          yesCheckbox.addEventListener('change', toggleFields);
-          noCheckbox.addEventListener('change', toggleFields);
-
-          // Initial state
-          toggleFields();
-
-          console.log('✅ Conditional logic successfully initialized!');
-          return true;
-        }
-
-        // Form load होने तक retry करो
-        let attempts = 0;
-        const maxAttempts = 20;
-
-        const interval = setInterval(() => {
-          attempts++;
-          if (initConditionalLogic() || attempts >= maxAttempts) {
-            clearInterval(interval);
-            if (attempts >= maxAttempts) {
-              console.log('❌ Form load नहीं हुआ या fields missing हैं');
-            }
-          }
-        }, 500);
-      })();
-    </script>
-    <script>
-      // Replace small images with medium/large for better quality
-      document.addEventListener('DOMContentLoaded', function () {
-        const searchImages = document.querySelectorAll('#searchresults .result-image img');
-
-        searchImages.forEach((img) => {
-          if (img.src.includes('_small')) {
-            // Replace _small with _medium for better quality
-            img.src = img.src.replace('_small', '_medium');
-
-            // Optional: Use _large for even better quality
-            // img.src = img.src.replace('_small', '_large');
-          }
-
-          // Remove loading="lazy" for above-the-fold images
-          if (img.loading === 'lazy') {
-            const parent = img.closest('li');
-            const position = Array.from(parent.parentElement.children).indexOf(parent);
-            if (position < 5) {
-              // First 5 images load immediately
-              img.loading = 'eager';
-            }
-          }
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = 'https://www.clarity.ms/tag/' + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, 'clarity', 'script', 'v6ku6nqhfp');
-    </script>
-  </head>
-  <body class="template-{{ template }}{{ account_details }}">
-    <a class="skip-to-content-link sr-only primary-button" href="#main-content">
-      {{- 'accessibility.skip_to_text' | t -}}
-    </a>
-    <span class="loading-bar"></span>
     {%- liquid
-      sections 'header-group'
-      if settings.breadcrumb and template != '404' and template != 'index' and template != 'collection'
-        section 'breadcrumb'
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+
+      if settings.enable_product_compare
+        echo 'compare.css' | asset_url | stylesheet_tag: preload: true
+      endif
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
       endif
     -%}
-    <main id="main-content" class="content-for-layout" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
-    {% section 'whatsapp' %}
-    {%- sections 'footer-group' -%}
-    <div class="theme-component">
-      {%- liquid
-        echo '<div class="pickup-availability-panel"></div>'
-        if shop.customer_accounts_enabled and customer == blank
-          render 'popup-account'
-        endif
-        if settings.newsletter_popup
-          section 'newsletter-popup'
-        endif
-        if settings.sticky_toolbar_mobile
-          section 'sticky-toolbar-mobile'
-        endif
-        if template != 'cart'
-          render 'side-cart'
-        endif
-        render 'popup-quick-view'
-      -%}
-    </div>
-    <ul hidden>
-      <li id="a11y-refresh-page-message">{{- 'accessibility.refresh_page' | t -}}</li>
-    </ul>
+
+    {{ content_for_header }}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     <script>
-      window.btyGlobals = {
-      	money_format: '{%- if settings.currency_code_enabled -%}{{ shop.money_with_currency_format }}{%- else -%}{{ shop.money_format }}{%- endif -%}',
-      	search_url: '{{ routes.search_url }}',
-      	cart_url: '{{ routes.cart_url }}',
-      	cart_add_url: '{{ routes.cart_add_url }}',
-      	cart_change_url: '{{ routes.cart_change_url }}',
-      	cart_update_url: '{{ routes.cart_update_url }}',
-      	search_type: '{{ settings.search_type }}',
-      	search_unavailable: '{{ settings.search_unavailable_products }}',
-      	is_product: {% if request.page_type == 'product' %}{{ product.id }}{% else %}false{% endif %},
-      	last_product_id: {% if request.page_type == 'product' %}{{ product.id }}{% else %}false{% endif %},
-      	image_placeholder: '{%- render 'icon', code: 'placeholder' -%}',
-      	svg_close: '{%- render 'icon', code: 'close-thin' -%}',
-      	svg_clock_history: '{%- render 'icon', code: 'clock-history' -%}',
-      	svg_warning: '{%- render 'icon', code: 'warning' -%}',
-      	card_placeholder: '{%- render 'card-placeholder' -%}'
-      };
-      window.btyStrings = {
-      	general: {
-      		share_success: "{{ 'general.share.success_message' | t }}"
-      	},
-      	cart: {
-      		error: "{{ 'sections.cart.cart_error' | t }}",
-      		quantity_error: "{{ 'sections.cart.cart_quantity_error_html' | t }}"
-      	},
-      	product: {
-      		regular_price: "{{ 'products.product.price.regular_price' | t }}",
-      		sale_price: "{{ 'products.product.price.sale_price' | t }}",
-      		add_to_cart: "{{ 'products.product.add_to_cart' | t }}",
-      		in_stock: "{{ 'products.product.in_stock' | t }}",
-      		sold_out: "{{ 'products.product.sold_out' | t }}",
-      		out_of_stock: "{{ 'products.product.out_of_stock' | t }}",
-      		unavailable: "{{ 'products.product.unavailable' | t }}",
-      		email_valid: "{{ 'recipient.form.email_valid' | t }}",
-      		recipient_message: "{{ 'recipient.form.message' | t }}",
-      		recipient_mail: "{{ 'recipient.form.email_label' | t }}",
-      		recipient_send_on: "{{ 'recipient.form.send_on_label' | t }}"
-      	}
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+
+    <script>
+  (function () {
+    // Title Case Function
+    function toTitleCase(str) {
+      return str
+        .toLowerCase()
+        .split(' ')
+        .map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(' ');
+    }
+
+    // NEW: ML Formatter Function
+    function formatMLText(str) {
+      // Replace patterns like "5ml", "7ml", "9ml" with proper format "5 ML", "7 ML", "9 ML"
+      // This regex finds number followed by "ml" (case insensitive)
+      return str.replace(/(\d+)\s*ml\b/gi, function(match, number) {
+        return number + ' ML';
+      });
+    }
+
+    // Main Conversion Function
+    function convertAllTitles() {
+      // 1. PRODUCT PAGE TITLES
+      var productTitles = document.querySelectorAll('.product__title');
+      productTitles.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 2. PRODUCT CARD TITLES (Grid/Collection)
+      var cardTitles = document.querySelectorAll('.product-card__title .reversed-link__text');
+      cardTitles.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 3. COLLECTION CARD TITLES (All variants)
+      var collectionTitles = document.querySelectorAll('.collection-card__title span');
+      collectionTitles.forEach(function (el) {
+        var text = el.childNodes[0];
+        if (text && text.nodeType === 3) {
+          var converted = toTitleCase(text.textContent.trim());
+          text.textContent = formatMLText(converted);
+        }
+      });
+
+      // 4. BUTTON LIST ITEMS (Category buttons)
+      var buttonItems = document.querySelectorAll('.button-item__text');
+      buttonItems.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 5. BREADCRUMBS
+      var breadcrumbs = document.querySelectorAll('.breadcrumbs .reversed-link, .breadcrumbs--last');
+      breadcrumbs.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 6. COLLECTION HERO TITLE (Main heading)
+      var heroTitles = document.querySelectorAll('.collection-hero__title motion-element');
+      heroTitles.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 7. ANY H1, H2, H3 with product/collection titles
+      var headings = document.querySelectorAll('h1.h1, h2.h1, h3.text-pcard-title');
+      headings.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 8. SEARCH RESULTS
+      var searchTitles = document.querySelectorAll('[class*="search"] [class*="title"]');
+      searchTitles.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // 9. COLLECTION PILL BADGES
+      var collpillLabels = document.querySelectorAll('.collpill-label-text-3wh');
+      collpillLabels.forEach(function (el) {
+        var text = toTitleCase(el.textContent.trim());
+        el.textContent = formatMLText(text);
+      });
+
+      // Also convert alt text for collection pills
+      var collpillImages = document.querySelectorAll('.collpill-thumbnail-box-5jx img[alt]');
+      collpillImages.forEach(function (el) {
+        var altText = toTitleCase(el.getAttribute('alt').trim());
+        el.setAttribute('alt', formatMLText(altText));
+      });
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      convertAllTitles();
+    });
+
+    // Re-run for dynamic content (AJAX, filters, etc.)
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.addedNodes.length) {
+          convertAllTitles();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    console.log('✅ Title Case + ML Formatter Active');
+  })();
+</script>
+  {% include 'hulk_po_vd' %}</head>
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+    {%- if settings.enable_product_compare -%}
+      <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
   </body>
 </html>

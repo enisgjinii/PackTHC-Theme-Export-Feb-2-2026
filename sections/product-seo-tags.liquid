@@ -1,0 +1,100 @@
+{% comment %}
+  Product Tags Section with Metafields
+  File: sections/product-tags.liquid
+{% endcomment %}
+
+{% if product.metafields.custom.product_seo_tags != blank %}
+<section class="product-tags-section">
+  <div class="tags-container">
+    {% assign tags_string = product.metafields.custom.product_seo_tags %}
+    {% assign tags_array = tags_string | split: ',' %}
+    
+    <div class="tags-wrapper">
+      {% for tag in tags_array %}
+        {% assign clean_tag = tag | strip %}
+        {% if clean_tag != blank %}
+          <span class="product-tag" style="background-color: {{ section.settings.tag_bg_color }}; color: {{ section.settings.tag_text_color }};">
+            {{ clean_tag }}
+          </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-tags-section {
+    padding: 30px 0;
+  }
+
+  .tags-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .product-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+  }
+
+  .product-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .product-tags-section {
+      padding: 20px 0;
+    }
+
+    .product-tag {
+      font-size: 13px;
+      padding: 6px 16px;
+    }
+
+    .tags-wrapper {
+      gap: 8px;
+    }
+  }
+</style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Seo Tags",
+  "settings": [
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background Color",
+      "default": "#FF5733"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Seo Tags"
+    }
+  ]
+}
+{% endschema %}

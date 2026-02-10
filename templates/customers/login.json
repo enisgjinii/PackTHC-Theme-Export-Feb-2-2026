@@ -12,11 +12,9 @@
     "main": {
       "type": "main-login",
       "settings": {
-        "color_scheme": "scheme-2",
-        "padding_top": 10,
-        "padding_bottom": 10,
-        "padding_top_mobile": 10,
-        "padding_bottom_mobile": 10
+        "enable_shop_login_button": false,
+        "padding_top": 30,
+        "padding_bottom": 40
       }
     }
   },

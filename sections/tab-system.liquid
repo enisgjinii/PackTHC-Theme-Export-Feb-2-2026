@@ -1,0 +1,420 @@
+{% stylesheet %}
+  .triple-guarantee-section {
+    background-color: #ffffff;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .triple-guarantee-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .triple-guarantee-title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1f2937;
+    margin-bottom: 32px;
+  }
+
+  .triple-guarantee-title__highlight {
+    color: #7c3aed;
+  }
+
+  .triple-guarantee-tabs {
+    display: flex;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid #1f2937;
+    border-radius: 50px;
+    padding: 4px;
+  }
+
+  .triple-guarantee-tab {
+    flex: 1;
+    padding: 16px 24px;
+    background: transparent;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .triple-guarantee-tab.active {
+    background: #1f2937;
+    color: white;
+  }
+
+  .triple-guarantee-tab:hover:not(.active) {
+    background: #f3f4f6;
+  }
+
+  .triple-guarantee-content {
+    margin-top: 60px;
+  }
+
+  .triple-guarantee-tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .triple-guarantee-tab-content.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .triple-guarantee-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .triple-guarantee-badge img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .triple-guarantee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .triple-guarantee-info__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1f2937;
+  }
+
+  .triple-guarantee-info__title-highlight {
+    color: #7c3aed;
+  }
+
+  .triple-guarantee-info__description {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #1f2937;
+  }
+
+  .triple-guarantee-info__description strong {
+    font-weight: 700;
+  }
+
+  /* Tablet Responsive (1024px and below) */
+  @media (max-width: 1024px) {
+    .triple-guarantee-section {
+      padding: 40px 32px;
+    }
+
+    .triple-guarantee-title {
+      font-size: 36px;
+    }
+
+    .triple-guarantee-tab-content.active {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .triple-guarantee-badge {
+      order: 1;
+    }
+
+    .triple-guarantee-info {
+      order: 2;
+    }
+
+    .triple-guarantee-info__title {
+      font-size: 36px;
+      text-align: center;
+    }
+
+    .triple-guarantee-info__description {
+      text-align: center;
+    }
+  }
+
+  /* Mobile Large (768px and below) */
+  @media (max-width: 768px) {
+    .triple-guarantee-section {
+      padding: 32px 20px;
+    }
+
+    .triple-guarantee-title {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .triple-guarantee-tabs {
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px;
+      border-radius: 16px;
+    }
+
+    .triple-guarantee-tab {
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 12px;
+    }
+
+    .triple-guarantee-content {
+      margin-top: 40px;
+    }
+
+    .triple-guarantee-tab-content.active {
+      gap: 32px;
+    }
+
+    .triple-guarantee-badge img {
+      max-width: 280px;
+    }
+
+    .triple-guarantee-info__title {
+      font-size: 28px;
+    }
+
+    .triple-guarantee-info__description {
+      font-size: 16px;
+    }
+  }
+
+  /* Mobile Small (480px and below) */
+  @media (max-width: 480px) {
+    .triple-guarantee-section {
+      padding: 24px 16px;
+    }
+
+    .triple-guarantee-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .triple-guarantee-tabs {
+      gap: 6px;
+      padding: 6px;
+    }
+
+    .triple-guarantee-tab {
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+
+    .triple-guarantee-content {
+      margin-top: 32px;
+    }
+
+    .triple-guarantee-tab-content.active {
+      gap: 24px;
+    }
+
+    .triple-guarantee-badge img {
+      max-width: 240px;
+    }
+
+    .triple-guarantee-info__title {
+      font-size: 24px;
+    }
+
+    .triple-guarantee-info__description {
+      font-size: 14px;
+    }
+  }
+{% endstylesheet %}
+
+<div class="triple-guarantee-section">
+  <div class="triple-guarantee-header">
+    <h2 class="triple-guarantee-title">
+      <span class="triple-guarantee-title__highlight">{{ section.settings.title_highlight }}</span>
+      {{ section.settings.title_rest }}
+    </h2>
+
+    <div class="triple-guarantee-tabs" role="tablist">
+      {% for block in section.blocks %}
+        <button 
+          class="triple-guarantee-tab {% if forloop.first %}active{% endif %}"
+          data-tab="{{ block.id }}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        >
+          {{ block.settings.tab_name }}
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="triple-guarantee-content">
+    {% for block in section.blocks %}
+      <div 
+        class="triple-guarantee-tab-content {% if forloop.first %}active{% endif %}"
+        id="tab-{{ block.id }}"
+        role="tabpanel"
+      >
+        <div class="triple-guarantee-badge">
+          {% if block.settings.badge_image %}
+            <img 
+              src="{{ block.settings.badge_image | image_url: width: 600 }}" 
+              alt="{{ block.settings.tab_name }}"
+            >
+          {% endif %}
+        </div>
+
+        <div class="triple-guarantee-info">
+          <h3 class="triple-guarantee-info__title">
+            <span class="triple-guarantee-info__title-highlight">{{ block.settings.content_highlight }}</span>
+            {{ block.settings.content_rest }}
+          </h3>
+          <p class="triple-guarantee-info__description">
+            {{ block.settings.description }}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.triple-guarantee-tab');
+    const tabContents = document.querySelectorAll('.triple-guarantee-tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-tab');
+
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+        });
+
+        // Add active class to clicked tab and corresponding content
+        this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
+        document.getElementById('tab-' + targetId).classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Triple Guarantee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Title Highlight (Purple)",
+      "default": "Right-First-Time"
+    },
+    {
+      "type": "text",
+      "id": "title_rest",
+      "label": "Title Rest (Black)",
+      "default": "Triple Guarantee"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "guarantee_tab",
+      "name": "Guarantee Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "default": "Price Beat"
+        },
+        {
+          "type": "image_picker",
+          "id": "badge_image",
+          "label": "Badge Image"
+        },
+        {
+          "type": "text",
+          "id": "content_highlight",
+          "label": "Content Highlight (Purple)",
+          "default": "Price beat"
+        },
+        {
+          "type": "text",
+          "id": "content_rest",
+          "label": "Content Rest (Black)",
+          "default": "or 1,000 units on us"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "If we don't beat your price instantly, share your invoice and give us 7 days"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Triple Guarantee",
+      "settings": {
+        "title_highlight": "Right-First-Time",
+        "title_rest": "Triple Guarantee"
+      },
+      "blocks": [
+        {
+          "type": "guarantee_tab",
+          "settings": {
+            "tab_name": "Price Beat",
+            "content_highlight": "Price beat",
+            "content_rest": "or 1,000 units on us",
+            "description": "If we don't beat your price instantly, share your invoice and give us 7 days"
+          }
+        },
+        {
+          "type": "guarantee_tab",
+          "settings": {
+            "tab_name": "Order Protection",
+            "content_highlight": "Specs & color match",
+            "content_rest": "or a free reprint",
+            "description": "Only pay 50% downpayment, the rest when you approve final production visuals."
+          }
+        },
+        {
+          "type": "guarantee_tab",
+          "settings": {
+            "tab_name": "Timeline Security",
+            "content_highlight": "On-Time Arrival",
+            "content_rest": "or 20% refund credit",
+            "description": "If we exceed delivery timelines by 2 weeks. 20% refund credit, <strong>no questions asked</strong>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

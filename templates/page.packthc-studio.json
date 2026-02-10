@@ -1,0 +1,595 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "packthc_studio_DcMfHB": {
+      "type": "packthc-studio",
+      "blocks": {
+        "hero_slide_arGNc4": {
+          "type": "hero_slide",
+          "settings": {
+            "badge": "PACKTHC DIGITAL AGENCY",
+            "title": "ELEVATE YOUR DISPENSARY",
+            "text": "",
+            "button_text": "LEARN MORE",
+            "button_link": ""
+          }
+        },
+        "hero_slide_E6pJnA": {
+          "type": "hero_slide",
+          "settings": {
+            "badge": "PACKTHC DIGITAL AGENCY",
+            "title": "ELEVATE YOUR DISPENSARY",
+            "text": "",
+            "button_text": "LEARN MORE",
+            "button_link": ""
+          }
+        },
+        "service_category_rm3nNR": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "digital-marketing",
+            "category_name": "Digital Marketing"
+          }
+        },
+        "service_category_YpCaWB": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "register-your-business",
+            "category_name": "Register Your Business"
+          }
+        },
+        "service_category_LjWEFP": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "protect-your-brand",
+            "category_name": "Protect Your Brand"
+          }
+        },
+        "service_category_L3pdMr": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "business-to-go",
+            "category_name": "Business To-Go"
+          }
+        },
+        "service_dBJTfw": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Identity_3.webp",
+            "title": "Brand Identity",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_nkzRa8": {
+          "type": "service",
+          "settings": {
+            "title": "Web Design & Development",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_V6Ea4E": {
+          "type": "service",
+          "settings": {
+            "title": "Digital Advertising",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_DTDpTB": {
+          "type": "service",
+          "settings": {
+            "title": "Social Media",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_eR6Vhj": {
+          "type": "service",
+          "settings": {
+            "title": "Dispensary Launch",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_WYTYWx": {
+          "type": "service",
+          "settings": {
+            "title": "Search Engine Optimization",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_Gh8f3V": {
+          "type": "service",
+          "settings": {
+            "title": "Print & Packaging Design",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_T8NW8t": {
+          "type": "service",
+          "settings": {
+            "title": "Brand Launch",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_TNPaGf": {
+          "type": "service",
+          "settings": {
+            "title": "Photography & Videography",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_yTx7Vc": {
+          "type": "service",
+          "settings": {
+            "title": "Email Marketing",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_3YMphR": {
+          "type": "service",
+          "settings": {
+            "title": "Sms Marketing",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_eDnMEK": {
+          "type": "service",
+          "settings": {
+            "title": "Public Relation",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_zX4xPV": {
+          "type": "service",
+          "settings": {
+            "title": "Limited Liability Company (LLC)",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_EUnqbf": {
+          "type": "service",
+          "settings": {
+            "title": "Corporation (C Corp & S Corp)",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_ERMHbC": {
+          "type": "service",
+          "settings": {
+            "title": "Doing Business As (DBA)",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_zVb3ff": {
+          "type": "service",
+          "settings": {
+            "title": "Non-Profit",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_bN3WBF": {
+          "type": "service",
+          "settings": {
+            "title": "Sole Proprietorship",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_aYjJ8q": {
+          "type": "service",
+          "settings": {
+            "title": "Trademark Registration",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_krhMnR": {
+          "type": "service",
+          "settings": {
+            "title": "Comprehensive Trademark Search",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_wHMb8k": {
+          "type": "service",
+          "settings": {
+            "title": "Free Trademark Search",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_xpEikA": {
+          "type": "service",
+          "settings": {
+            "title": "Trademark Monitoring",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_JpDcHE": {
+          "type": "service",
+          "settings": {
+            "title": "Provisional Patent",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_GpkBUG": {
+          "type": "service",
+          "settings": {
+            "title": "Copyright",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_LXAc4M": {
+          "type": "service",
+          "settings": {
+            "title": "Business Compliance Coverage",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_GWMdDp": {
+          "type": "service",
+          "settings": {
+            "title": "Annual Report",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_Xi6BQT": {
+          "type": "service",
+          "settings": {
+            "title": "Business License",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_FTBVFa": {
+          "type": "service",
+          "settings": {
+            "title": "Operating Agreement",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_WWbj3C": {
+          "type": "service",
+          "settings": {
+            "title": "Registered Agent",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_KPANGy": {
+          "type": "service",
+          "settings": {
+            "title": "Studio Virtual Mail",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_Dzd6w7": {
+          "type": "service",
+          "settings": {
+            "title": "Dissolution",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "service_XjbUr4": {
+          "type": "service",
+          "settings": {
+            "title": "Business Credit",
+            "category": "",
+            "short_description": "",
+            "full_description": "",
+            "features": "",
+            "faqs": "",
+            "tabs": "",
+            "link": ""
+          }
+        },
+        "process_card_eC7rxj": {
+          "type": "process_card",
+          "settings": {
+            "title": "Discovery & Research",
+            "description": "We start by understanding your brand, audience, market, and goals. This foundation guides every decision we make."
+          }
+        },
+        "process_card_xbC4Yy": {
+          "type": "process_card",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "process_card_Ec7ddm": {
+          "type": "process_card",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "process_card_rwyWrJ": {
+          "type": "process_card",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "process_card_d7cfFr": {
+          "type": "process_card",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        },
+        "process_card_hd6MXc": {
+          "type": "process_card",
+          "settings": {
+            "title": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "hero_slide_arGNc4",
+        "hero_slide_E6pJnA",
+        "service_category_rm3nNR",
+        "service_category_YpCaWB",
+        "service_category_LjWEFP",
+        "service_category_L3pdMr",
+        "service_dBJTfw",
+        "service_nkzRa8",
+        "service_V6Ea4E",
+        "service_DTDpTB",
+        "service_eR6Vhj",
+        "service_WYTYWx",
+        "service_Gh8f3V",
+        "service_T8NW8t",
+        "service_TNPaGf",
+        "service_yTx7Vc",
+        "service_3YMphR",
+        "service_eDnMEK",
+        "service_zX4xPV",
+        "service_EUnqbf",
+        "service_ERMHbC",
+        "service_zVb3ff",
+        "service_bN3WBF",
+        "service_aYjJ8q",
+        "service_krhMnR",
+        "service_wHMb8k",
+        "service_xpEikA",
+        "service_JpDcHE",
+        "service_GpkBUG",
+        "service_LXAc4M",
+        "service_GWMdDp",
+        "service_Xi6BQT",
+        "service_FTBVFa",
+        "service_WWbj3C",
+        "service_KPANGy",
+        "service_Dzd6w7",
+        "service_XjbUr4",
+        "process_card_eC7rxj",
+        "process_card_xbC4Yy",
+        "process_card_Ec7ddm",
+        "process_card_rwyWrJ",
+        "process_card_d7cfFr",
+        "process_card_hd6MXc"
+      ],
+      "name": "PackTHC Studio",
+      "settings": {
+        "services_badge": "OUR SERVICES",
+        "services_title": "WHAT WE DO FOR CANNABIS BRANDS",
+        "about_badge": "ABOUT US",
+        "about_title": "Driving Innovation In Cannabis Packaging",
+        "about_text": "",
+        "features_title": "PackTHC Identity",
+        "feature_1": "Brand Strategy",
+        "feature_2": "Visual Branding",
+        "feature_3": "Identity Build",
+        "feature_4": "Marketing Strategy",
+        "years": "15",
+        "process_badge": "OUR PROCESS",
+        "process_title": "How PackTHC Studio Brings Brands To Life",
+        "process_text": "",
+        "cards_badge": "OUR PROCESS",
+        "cards_title": "How PackTHC Studio Brings Your Brand To Life",
+        "testimonial_badge": "TESTIMONIALS",
+        "testimonial_title": "What Our Cannabis Clients Say",
+        "cta_text": "Trusted By 17k+ Worldwide Brand & Customers",
+        "cta_button": "LEARN MORE",
+        "cta_link": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "packthc_studio_DcMfHB"
+  ]
+}

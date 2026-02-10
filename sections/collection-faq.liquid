@@ -1,0 +1,195 @@
+{% comment %}
+  Collection FAQ Section with Metafields
+  File: sections/collection-faq.liquid
+{% endcomment %}
+
+{% if collection.metafields.custom.faq_questions != blank %}
+<section class="collection-faq-section">
+  <div class="faq-container">
+    <h2 class="faq-main-heading">FAQs</h2>
+
+    <div class="faq-accordion">
+      {% for question in collection.metafields.custom.faq_questions.value %}
+        {% assign index = forloop.index0 %}
+        {% assign answer = collection.metafields.custom.faq_answers.value[index] %}
+        
+        <div class="faq-item {% if forloop.first %}active{% endif %}">
+          <button class="faq-question" type="button">
+            {{ question }}
+            <span class="faq-icon">
+              <svg class="icon-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg class="icon-minus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-answer" {% if forloop.first %}style="display: block;"{% endif %}>
+            <div class="faq-answer-content">
+              {{ answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .collection-faq-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+  }
+
+  .faq-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .faq-main-heading {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+  }
+
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+
+  .faq-item.active {
+    background-color: #000000;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+  }
+
+  .faq-item.active .faq-question {
+    color: #ffffff;
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .icon-plus,
+  .icon-minus {
+    transition: opacity 0.3s ease;
+  }
+
+  .faq-item .icon-minus {
+    display: none;
+  }
+
+  .faq-item.active .icon-plus {
+    display: none;
+  }
+
+  .faq-item.active .icon-minus {
+    display: block;
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 0 28px 24px 28px;
+    color: #666666;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .faq-item.active .faq-answer {
+    color: #e0e0e0;
+  }
+
+  .faq-answer-content {
+    padding-top: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .faq-main-heading {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .faq-question {
+      font-size: 16px;
+      padding: 20px;
+    }
+
+    .faq-answer {
+      padding: 0 20px 20px 20px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      
+      question.addEventListener('click', function() {
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        faqItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.faq-answer').style.display = 'none';
+        });
+        
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+          answer.style.display = 'block';
+        }
+      });
+    });
+  });
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection FAQ",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection FAQ"
+    }
+  ]
+}
+{% endschema %}
