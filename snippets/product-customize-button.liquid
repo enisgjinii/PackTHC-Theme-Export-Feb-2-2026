@@ -81,7 +81,7 @@
 }
 </style>
 
-{% capture configurator_url %}/pages/product-configurator?product={{ product.handle }}&product_id={{ product.id }}&variant_id={{ current_variant.id }}&title={{ product.title | url_encode }}&sku={{ current_variant.sku | url_encode }}&vendor={{ product.vendor | url_encode }}&image={{ product_image | url_encode }}&price={{ current_variant.price | money_without_currency | url_encode }}{% endcapture %}
+{% capture configurator_url %}/pages/product-configurator?product={{ product.handle }}&product_id={{ product.id }}&variant_id={{ current_variant.id }}&title={{ product.title | url_encode }}&sku={{ current_variant.sku | url_encode }}&vendor={{ product.vendor | url_encode }}&image={{ product_image | url_encode }}&price={{ current_variant.price | money_without_currency | url_encode }}&variant_title={{ current_variant.title | url_encode }}&product_type={{ product.type | url_encode }}&tags={{ product.tags | join: ',' | url_encode }}{% endcapture %}
 
 <a href="{{ configurator_url }}" class="customize-product-btn" data-product-handle="{{ product.handle }}">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

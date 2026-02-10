@@ -55,7 +55,6 @@
         "custom_liquid_cti3Ny": {
           "type": "custom-liquid",
           "name": "Customization Btn",
-          "disabled": true,
           "settings": {
             "custom-liquid": "{% render 'product-customize-button', product: product %}",
             "padding_bottom": 20
