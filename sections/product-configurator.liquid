@@ -346,9 +346,18 @@ document.addEventListener('DOMContentLoaded', function() {
       lastCartAddTime = now;
       
       // Get the variant ID - use the one from the message, or fallback to URL param
-      const itemVariantId = event.data.variantId || variantId;
+      let itemVariantId = event.data.variantId || variantId;
       
-      if (!itemVariantId) {
+      // If variant ID is a Shopify GID, extract the numeric ID
+      // e.g. "gid://shopify/ProductVariant/12345" → "12345"
+      if (typeof itemVariantId === 'string' && itemVariantId.includes('gid://')) {
+        itemVariantId = itemVariantId.split('/').pop();
+      }
+      
+      // Ensure it's a number for /cart/add.js
+      itemVariantId = parseInt(itemVariantId, 10);
+      
+      if (!itemVariantId || isNaN(itemVariantId)) {
         console.error('No variant ID available for cart add');
         showCartNotification('Error: No product variant selected', null, true);
         isAddingToCart = false;
