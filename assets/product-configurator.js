@@ -214,6 +214,19 @@
     }
 
     // ── Build iframe URL ──
+    // Also check URL params (standalone /pages/configurator usage)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!productData.handle && urlParams.get('product')) {
+      productData.handle    = urlParams.get('product');
+      productData.productId = urlParams.get('product_id');
+      productData.variantId = urlParams.get('variant_id');
+      productData.title     = urlParams.get('title') ? decodeURIComponent(urlParams.get('title')) : null;
+      productData.sku       = urlParams.get('sku');
+      productData.vendor    = urlParams.get('vendor') ? decodeURIComponent(urlParams.get('vendor')) : null;
+      productData.image     = urlParams.get('image') ? decodeURIComponent(urlParams.get('image')) : null;
+      productData.price     = urlParams.get('price');
+    }
+
     if (productData.handle || productData.productId) {
       const iframeUrl = buildIframeUrl(baseUrl, productData, shopData);
 
