@@ -1,0 +1,293 @@
+{% stylesheet %}
+  .problems-solution-section {
+    background-color: #ffffff;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .problems-solution-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .problems-solution-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .problems-solution-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    
+  }
+
+  .problems-solution-icon {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    background-color: #033770;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .problems-solution-text {
+    flex: 1;
+  }
+
+  .problems-solution-text__title {
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .problems-solution-left .problems-solution-text__title {
+  font-size: 25px;
+}
+
+  .problems-solution-right {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .problems-solution-right__title {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1f2937;
+  }
+
+  .problems-solution-right__highlight {
+    color: #033770;
+  }
+
+  .problems-solution-right__cta {
+    background-color: #033770;
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .problems-solution-right__cta:hover {
+    background-color: #000000;
+  }
+
+  /* Tablet Responsive (1024px and below) */
+  @media (max-width: 1024px) {
+    .problems-solution-section {
+      padding: 40px 32px;
+    }
+
+    .problems-solution-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .problems-solution-right__title {
+      font-size: 36px;
+    }
+    .problems-solution-left .problems-solution-text__title {
+    font-size: 18px;
+  }
+  }
+
+  /* Mobile Large (768px and below) */
+  @media (max-width: 768px) {
+    .problems-solution-section {
+      padding: 32px 20px;
+    }
+
+    .problems-solution-container {
+      gap: 32px;
+    }
+
+    .problems-solution-left {
+      gap: 20px;
+    }
+
+    .problems-solution-item {
+      gap: 12px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+
+    .problems-solution-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+    }
+
+   .problems-solution-left .problems-solution-text__title {
+    font-size: 17px;
+  }
+
+    .problems-solution-right__title {
+      font-size: 28px;
+    }
+
+    .problems-solution-right__cta {
+      padding: 14px 28px;
+      font-size: 13px;
+    }
+  }
+
+  /* Mobile Small (480px and below) */
+  @media (max-width: 480px) {
+    .problems-solution-section {
+      padding: 24px 16px;
+    }
+
+    .problems-solution-container {
+      gap: 28px;
+    }
+
+    .problems-solution-left {
+      gap: 18px;
+    }
+
+    .problems-solution-item {
+      gap: 12px;
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+    }
+
+    .problems-solution-icon {
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+    }
+
+    .problems-solution-left .problems-solution-text__title {
+    font-size: 14px;
+  }
+
+    .problems-solution-right__title {
+      font-size: 24px;
+    }
+
+    .problems-solution-right__cta {
+      padding: 12px 24px;
+      font-size: 12px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+{% endstylesheet %}
+
+<div class="problems-solution-section">
+  <div class="problems-solution-container">
+    <div class="problems-solution-left">
+      {% for block in section.blocks %}
+        <div class="problems-solution-item">
+          <div class="problems-solution-icon">✕</div>
+          <div class="problems-solution-text">
+            <div class="problems-solution-text__title">{{ block.settings.problem_title }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="problems-solution-right">
+      <h2 class="problems-solution-right__title">
+        {{ section.settings.main_heading }}
+        <span class="problems-solution-right__highlight">{{ section.settings.highlight_text }}</span>
+        {{ section.settings.after_highlight }}
+      </h2>
+
+      <a href="{{ section.settings.cta_link }}" class="problems-solution-right__cta">
+        {{ section.settings.cta_text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Problems & Solution",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading (before highlight)",
+      "default": "Are You Losing"
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlighted Text (purple)",
+      "default": "Margin, Time & Brand Control to"
+    },
+    {
+      "type": "text",
+      "id": "after_highlight",
+      "label": "After Highlight Text",
+      "default": "Your Packaging Supplier?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "SHOW ME MY SAVINGS →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "problem_item",
+      "name": "Problem Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "problem_title",
+          "label": "Problem Title",
+          "default": "Problem text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problems & Solution",
+      "settings": {
+        "main_heading": "Are You Losing",
+        "highlight_text": "Margin, Time & Brand Control to",
+        "after_highlight": "Your Packaging Supplier?",
+        "cta_text": "SHOW ME MY SAVINGS →"
+      },
+      "blocks": [
+        {"type": "problem_item", "settings": {"problem_title": "Hidden freight fees and unpredictable costs"}},
+        {"type": "problem_item", "settings": {"problem_title": "Months-long lead times causing launch delays"}},
+        {"type": "problem_item", "settings": {"problem_title": "Poor color matches that damage brand perception"}},
+        {"type": "problem_item", "settings": {"problem_title": "Rigid MOQs that lock up your cash flow"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

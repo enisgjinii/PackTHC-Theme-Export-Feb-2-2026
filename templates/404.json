@@ -1,1 +1,20 @@
-{"sections":{"main":{"type":"main-404","blocks":{"content-0":{"type":"content","settings":{"content":"<h2>Oops!<\/h2>"}},"content-1":{"type":"content","settings":{"content":"<h4>Seems like something went wrong.<\/h4>"}},"space-0":{"type":"space","settings":{"height":20,"height_mobile":20}},"content-2":{"type":"content","settings":{"content":"<p>It looks like nothing was found at this location.<br\/>Maybe try to go <a href=\"\/\" title=\"\/\">back to the home page<\/a> or a search?<\/p>"}},"space-1":{"type":"space","settings":{"height":50,"height_mobile":50}},"form":{"type":"form","settings":{"input_text":"Enter keyword...","submit_text":"Search"}}},"block_order":["content-0","content-1","space-0","content-2","space-1","form"],"settings":{"color_scheme":"scheme-2"}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

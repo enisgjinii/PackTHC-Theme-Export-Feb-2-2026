@@ -9,417 +9,1076 @@
  */
 {
   "sections": {
-    "breadcrumb_cyhcMz": {
-      "type": "breadcrumb",
+    "breadcrumbs": {
+      "type": "breadcrumbs",
       "custom_css": [
-        ".section-wrapper {background: #ffffff;}"
+        "@media (min-width: 1280px) {.breadcrumbs {padding-inline: 5rem; }}"
       ],
       "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "alignment": "flex-start",
-        "show_title": false,
-        "title_font": "--heading-font-family",
-        "title_size": 10,
-        "title_space": 10,
-        "padding_top": 10,
-        "padding_bottom": 10,
-        "padding_top_mobile": 5,
-        "padding_bottom_mobile": 5
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
       }
     },
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor_EKQiFe": {
-          "type": "vendor",
+        "meta": {
+          "type": "meta",
           "settings": {
-            "padding_bottom": 10
+            "link_color": "#1d349a",
+            "show_vendor": true,
+            "show_product_type": false,
+            "show_sku": true,
+            "show_barcode": false
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "uppercase",
+            "inventory_threshold": 100,
+            "show_inventory_quantity": false
           }
         },
         "title": {
           "type": "title",
           "settings": {
-            "font_size": "h4",
-            "padding_bottom": 10
-          }
-        },
-        "custom_liquid_3qXQLD": {
-          "type": "custom-liquid",
-          "name": "Count",
-          "settings": {
-            "custom-liquid": "{% if product.metafields.custom.count %}\n  <div class=\"product-count\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0618/1925/6945/files/case-study.gif?v=1757532996\" alt=\"Pack Icon\" class=\"animated-gif\">\n    Pack of {{ product.metafields.custom.count }} Counts\n  </div>\n{% endif %}\n<style>\n.product-count {\n    border: 2px solid #004A26;\n    padding: 10px 10px;\n    font-weight: 600;\n    font-size: 16px;\n    display: inline-flex;\n    align-items: center;\n    gap: 10px;\n    color: #004A26;\n    border-radius: 8px;\n    background: #f8fff8;\n    animation: borderGlow 2s ease-in-out infinite;\n    transition: all 0.3s ease;\n}\n.animated-gif {\n    width: 32px;\n    height: 32px;\n    animation: gifBounce 3s ease-in-out infinite;\n}\n.product-count:hover {\n    transform: translateY(-2px);\n    box-shadow: 0 6px 20px rgba(0, 74, 38, 0.3);\n}\n.product-wrapper:hover .animated-gif {\n    animation-duration: 1.5s;\n    transform: scale(1.15);\n}\n@keyframes borderGlow {\n    0%, 100% {\n        border-color: #004A26;\n        box-shadow: 0 0 5px rgba(0, 74, 38, 0.3);\n    }\n    50% {\n        border-color: #004A26;\n        box-shadow: 0 0 15px rgba(0, 74, 38, 0.5);\n    }\n}\n@keyframes gifBounce {\n    0%, 100% {\n        transform: translateY(0px);\n    }\n    50% {\n        transform: translateY(-3px);\n    }\n}\n\n/* Mobile Responsive */\n@media (max-width: 768px) {\n    .product-count {\n        font-size: 14px;\n        padding: 8px 8px;\n        gap: 8px;\n    }\n    .animated-gif {\n        width: 24px;\n        height: 24px;\n    }\n}\n</style>",
-            "padding_bottom": 0
-          }
-        },
-        "custom_liquid_cti3Ny": {
-          "type": "custom-liquid",
-          "name": "Customization Btn",
-          "settings": {
-            "custom-liquid": "{% render 'product-customize-button', product: product %}",
-            "padding_bottom": 20
+            "heading_size": "h4"
           }
         },
         "price": {
           "type": "price",
-          "settings": {
-            "font_size_price": "h4",
-            "padding_bottom": 10
-          }
+          "settings": {}
         },
-        "custom_liquid_PPFPBE": {
-          "type": "custom-liquid",
-          "name": "SKU",
-          "settings": {
-            "custom-liquid": "{% unless product.has_only_default_variant %}\n  {% comment %} Product has variants - hide SKU completely {% endcomment %}\n{% else %}\n<style>\n  .sku-label {\n    background-color: #004A26;\n    color: white;\n    display: inline-block;\n    padding: 6px;\n    border-radius: 5px;\n    font-size: 14px;\n    margin:0;\n  }\n</style>\n<p class=\"sku-label\">\n  SKU: {{ product.variants.first.sku }}\n</p>\n{% endunless %}",
-            "padding_bottom": 10
-          }
-        },
-        "availability_KXzfjK": {
-          "type": "availability",
+        "icon_with_text": {
+          "type": "icon-with-text",
           "disabled": true,
           "settings": {
-            "low_stock": 0,
-            "padding_bottom": 10
+            "layout": "horizontal",
+            "title_font": "body-bolder",
+            "title_size": "text-base",
+            "icon_1": "check",
+            "heading_1": "Modern",
+            "icon_2": "check",
+            "heading_2": "Eco-certified",
+            "icon_3": "check",
+            "heading_3": "Warranty"
           }
         },
-        "variant-picker": {
-          "type": "variant-picker",
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
           "settings": {
-            "picker_type": "swatch",
-            "padding_bottom": 11
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "swatch_style": "square",
+            "swatch_size": 32,
+            "button_style": "normal",
+            "size_title": "Size",
+            "size_chart_from_page": ""
           }
         },
-        "file_uploads_by_uploadkit_app_block_a7b93V": {
-          "type": "shopify://apps/file-uploads-by-uploadkit/blocks/app-block/d7b05810-6170-4288-808a-df45248c4d28",
+        "custom_liquid_NKVjTT": {
+          "type": "custom_liquid",
+          "name": "Shipping Image",
           "settings": {
-            "product": "{{product}}"
+            "custom_liquid": "<style>\n\n.shipping-img {\n    width: 100%;\n    height: auto;\n}\n</style>\n\n<div class=\"container\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0618/1925/6945/files/test_2_2.png?v=1769888810\" class=\"shipping-img\" alt=\"Shipping\">\n</div>"
           }
         },
-        "image_with_link_pUxXb7": {
-          "type": "image-with-link",
+        "buy_buttons": {
+          "type": "buy_buttons",
           "settings": {
-            "image": "shopify://shop_images/We_ll_ship_your_order_within_2_business_days_usually_even_sooner_2.webp",
-            "url": "",
-            "image_width": 800,
-            "padding_bottom": 0
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
           }
         },
-        "divider_QfLhA7": {
-          "type": "divider",
+        "custom_liquid_3b9466": {
+          "type": "custom_liquid",
+          "name": "PRICING TABLE",
           "settings": {
-            "color": "",
-            "height": 10
+            "custom_liquid": "<style>\nth, td {\n  font-size:13px;\n  text-align:center;\n  padding:8px;\n}\n.email, .mob, th {\n  color:#0F172A;\n  font-size:15px;\n}\n@media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n  .email, .mob {\n    font-size: 12px;\n  }\n}\n</style>\n\n{% assign current_variant = product.selected_or_first_available_variant %}\n\n<!-- Default Product Pricing Table -->\n<div id=\"default-pricing-table\">\n  {% assign qty_list = product.metafields.custom.quantity_table %}\n  {% assign unit_list = product.metafields.custom.unit_table %}\n  {% assign price_list = product.metafields.custom.price_table %}\n  \n  {% if qty_list and unit_list and price_list %}\n    <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n      <thead>\n        <tr>\n          <th style=\"border: 1px solid #ddd;color: #033770;\" colspan=\"2\">Quantity</th>\n          <th style=\"border: 1px solid #ddd; color: #033770;\">Price Per Case</th>\n          <th style=\"border: 1px solid #ddd; color: #033770;\">Price Per Piece</th>\n        </tr>\n      </thead>\n      <tbody>\n        {% assign qty_array = qty_list | split: ',' %}\n        {% assign unit_array = unit_list | split: ',' %}\n        {% assign price_array = price_list | split: ',' %}\n        \n        {% for i in (0..qty_array.size) %}\n          {% if i < qty_array.size %}\n            <tr>\n              <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n            </tr>\n          {% endif %}\n        {% endfor %}\n      </tbody>\n      <tfoot>\n        <tr>\n          <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n            For Higher Quantity Pricing, Please \n            <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n            or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n          </td>\n        </tr>\n      </tfoot>\n    </table>\n  {% endif %}\n</div>\n\n<!-- Variant Pricing Table -->\n<div id=\"variant-pricing-table\" style=\"display: none;\">\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody id=\"variant-table-body\">\n      <!-- Content will be populated by JavaScript -->\n    </tbody>\n    <tfoot>\n      <tr>\n        <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n          For Higher Quantity Pricing, Please \n          <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n          or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n        </td>\n      </tr>\n    </tfoot>\n  </table>\n</div>\n\n<!-- Hidden data for all variants -->\n{% assign has_variants_with_pricing = false %}\n{% assign first_variant_with_pricing_id = '' %}\n\n{% for variant in product.variants %}\n  {% if variant.metafields.custom.quantity_table and variant.metafields.custom.unit_table and variant.metafields.custom.price_table %}\n    {% assign has_variants_with_pricing = true %}\n    {% if first_variant_with_pricing_id == blank %}\n      {% assign first_variant_with_pricing_id = variant.id %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n{% if has_variants_with_pricing %}\n<script type=\"application/json\" id=\"variant-pricing-data\">\n{\n  {% for variant in product.variants %}\n    \"{{ variant.id }}\": {\n      \"title\": \"{{ variant.title }}\",\n      \"qty\": \"{{ variant.metafields.custom.quantity_table }}\",\n      \"unit\": \"{{ variant.metafields.custom.unit_table }}\",\n      \"price\": \"{{ variant.metafields.custom.price_table }}\"\n    }{% unless forloop.last %},{% endunless %}\n  {% endfor %}\n}\n</script>\n\n<script>\nlet currentSelectedVariant = '{{ current_variant.id }}';\nlet isVariantSelected = false;\n{% if qty_list and unit_list and price_list %}\nlet hasDefaultPricing = true;\n{% else %}\nlet hasDefaultPricing = false;\n{% endif %}\nconst hasVariantPricing = {{ has_variants_with_pricing | json }};\nconst firstVariantWithPricing = '{{ first_variant_with_pricing_id }}';\n\nfunction showDefaultTable() {\n  document.getElementById('default-pricing-table').style.display = 'block';\n  document.getElementById('variant-pricing-table').style.display = 'none';\n}\n\nfunction showVariantTable(variantId) {\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n  const variant = data[variantId];\n  \n  if (!variant || !variant.qty || !variant.unit || !variant.price) {\n    showDefaultTable();\n    return;\n  }\n  \n  // Hide default table and show variant table\n  document.getElementById('default-pricing-table').style.display = 'none';\n  document.getElementById('variant-pricing-table').style.display = 'block';\n  \n  // Update table body\n  const qtyArray = variant.qty.split(',');\n  const unitArray = variant.unit.split(',');\n  const priceArray = variant.price.split(',');\n  \n  let tableHTML = '';\n  for (let i = 0; i < qtyArray.length; i++) {\n    const qty = qtyArray[i] ? qtyArray[i].trim() : '';\n    const unit = unitArray[i] ? unitArray[i].trim() : '';\n    const price = priceArray[i] ? priceArray[i].trim() : '';\n    \n    if (qty && unit && price) {\n      tableHTML += `\n        <tr>\n          <td style=\"border: 1px solid #ddd;\" colspan=\"2\">${qty}</td>\n          <td style=\"border: 1px solid #ddd;\">${price}</td>\n          <td style=\"border: 1px solid #ddd;\">${unit}</td>\n        </tr>\n      `;\n    }\n  }\n  \n  document.getElementById('variant-table-body').innerHTML = tableHTML;\n}\n\nfunction checkVariantSelection() {\n  // If no variant pricing exists, always show default table\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  let newVariant = null;\n  let variantWasClicked = false;\n  \n  // Check for radio buttons (like Label Type)\n  const checkedRadio = document.querySelector('input[name=\"Label Type\"]:checked, input[name=\"id\"]:checked');\n  if (checkedRadio) {\n    // If it's a variant selector\n    if (checkedRadio.name === 'id') {\n      newVariant = checkedRadio.value;\n      variantWasClicked = true;\n    } else if (checkedRadio.name === 'Label Type') {\n      // For Label Type, we need to find the corresponding variant\n      const labelValue = checkedRadio.value;\n      const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n      \n      // Find variant that matches this label type\n      for (const [variantId, variantData] of Object.entries(data)) {\n        if (variantData.title.includes(labelValue)) {\n          newVariant = variantId;\n          variantWasClicked = true;\n          break;\n        }\n      }\n    }\n  }\n  \n  // Check select dropdown\n  if (!newVariant) {\n    const select = document.querySelector('select[name=\"id\"]');\n    if (select && select.value) {\n      newVariant = select.value;\n      if (select.value !== currentSelectedVariant) {\n        variantWasClicked = true;\n      }\n    }\n  }\n  \n  // Update if variant changed\n  if (newVariant && newVariant !== currentSelectedVariant) {\n    currentSelectedVariant = newVariant;\n    isVariantSelected = variantWasClicked;\n    \n    if (isVariantSelected) {\n      showVariantTable(newVariant);\n    }\n  }\n}\n\nfunction initializePricingTable() {\n  // If product has default pricing, show default table\n  if (hasDefaultPricing) {\n    showDefaultTable();\n  }\n  // If product has no default pricing but has variant pricing, show first variant's table\n  else if (hasVariantPricing && firstVariantWithPricing) {\n    showVariantTable(firstVariantWithPricing);\n  }\n  // If neither exists, hide both tables\n  else {\n    document.getElementById('default-pricing-table').style.display = 'none';\n    document.getElementById('variant-pricing-table').style.display = 'none';\n  }\n}\n\n// Only add event listeners if there are variants with pricing\nif (hasVariantPricing) {\n  // Event listeners\n  document.addEventListener('click', function(e) {\n    // Listen for clicks on variant options\n    if (e.target.matches('input[name=\"Label Type\"], input[name=\"id\"], label[for*=\"option-\"]')) {\n      setTimeout(() => {\n        isVariantSelected = true;\n        checkVariantSelection();\n      }, 100);\n    }\n  });\n\n  document.addEventListener('change', function(e) {\n    if (e.target.matches('select[name=\"id\"], input[name=\"Label Type\"], input[name=\"id\"]')) {\n      isVariantSelected = true;\n      setTimeout(checkVariantSelection, 50);\n    }\n  });\n\n  // Fallback check\n  setInterval(checkVariantSelection, 1000);\n}\n\n// Initialize - show appropriate table on page load\ndocument.addEventListener('DOMContentLoaded', function() {\n  initializePricingTable();\n});\n</script>\n{% endif %}"
           }
         },
-        "add-to-cart": {
-          "type": "add-to-cart",
+        "icon_with_text_UAYgQU": {
+          "type": "icon-with-text",
           "settings": {
-            "text_transform": "uppercase",
-            "quantity_selector": true,
-            "dynamic_checkout": false,
-            "show_gift_card": false,
-            "padding_bottom": 0
+            "layout": "vertical",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "car-simple",
+            "heading_1": "Free Shipping over $4999",
+            "icon_2": "arrow-up-left",
+            "heading_2": "",
+            "icon_3": "star-four",
+            "heading_3": ""
           }
         },
-        "custom_liquid_6Enxwt": {
-          "type": "custom-liquid",
-          "name": "Varient Table",
-          "settings": {
-            "custom-liquid": "<style>\nth, td {\n  font-size:13px;\n  text-align:center;\n  padding:8px;\n}\n.email, .mob, th {\n  color:#004A26;\n  font-size:15px;\n}\n@media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n  .email, .mob {\n    font-size: 12px;\n  }\n}\n</style>\n\n{% assign current_variant = product.selected_or_first_available_variant %}\n\n<!-- Default Product Pricing Table -->\n<div id=\"default-pricing-table\">\n  {% assign qty_list = product.metafields.custom.quantity_table %}\n  {% assign unit_list = product.metafields.custom.unit_table %}\n  {% assign price_list = product.metafields.custom.price_table %}\n  \n  {% if qty_list and unit_list and price_list %}\n    <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n      <thead>\n        <tr>\n          <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n          <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n          <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n        </tr>\n      </thead>\n      <tbody>\n        {% assign qty_array = qty_list | split: ',' %}\n        {% assign unit_array = unit_list | split: ',' %}\n        {% assign price_array = price_list | split: ',' %}\n        \n        {% for i in (0..qty_array.size) %}\n          {% if i < qty_array.size %}\n            <tr>\n              <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n              <td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n            </tr>\n          {% endif %}\n        {% endfor %}\n      </tbody>\n      <tfoot>\n        <tr>\n          <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n            For Higher Quantity Pricing, Please \n            <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n            or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n          </td>\n        </tr>\n      </tfoot>\n    </table>\n  {% endif %}\n</div>\n\n<!-- Variant Pricing Table -->\n<div id=\"variant-pricing-table\" style=\"display: none;\">\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody id=\"variant-table-body\">\n      <!-- Content will be populated by JavaScript -->\n    </tbody>\n    <tfoot>\n      <tr>\n        <td style=\"border: 1px solid #ddd; font-weight:bold;\" colspan=\"4\">\n          For Higher Quantity Pricing, Please \n          <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> \n          or Call <a href=\"tel:+1816PACKTHC\" class=\"mob\">+1(816)PACKTHC</a>\n        </td>\n      </tr>\n    </tfoot>\n  </table>\n</div>\n\n<!-- Hidden data for all variants -->\n{% assign has_variants_with_pricing = false %}\n{% assign first_variant_with_pricing_id = '' %}\n\n{% for variant in product.variants %}\n  {% if variant.metafields.custom.quantity_table and variant.metafields.custom.unit_table and variant.metafields.custom.price_table %}\n    {% assign has_variants_with_pricing = true %}\n    {% if first_variant_with_pricing_id == blank %}\n      {% assign first_variant_with_pricing_id = variant.id %}\n    {% endif %}\n  {% endif %}\n{% endfor %}\n\n{% if has_variants_with_pricing %}\n<script type=\"application/json\" id=\"variant-pricing-data\">\n{\n  {% for variant in product.variants %}\n    \"{{ variant.id }}\": {\n      \"title\": \"{{ variant.title }}\",\n      \"qty\": \"{{ variant.metafields.custom.quantity_table }}\",\n      \"unit\": \"{{ variant.metafields.custom.unit_table }}\",\n      \"price\": \"{{ variant.metafields.custom.price_table }}\"\n    }{% unless forloop.last %},{% endunless %}\n  {% endfor %}\n}\n</script>\n\n<script>\nlet currentSelectedVariant = '{{ current_variant.id }}';\nlet isVariantSelected = false;\n{% if qty_list and unit_list and price_list %}\nlet hasDefaultPricing = true;\n{% else %}\nlet hasDefaultPricing = false;\n{% endif %}\nconst hasVariantPricing = {{ has_variants_with_pricing | json }};\nconst firstVariantWithPricing = '{{ first_variant_with_pricing_id }}';\n\nfunction showDefaultTable() {\n  document.getElementById('default-pricing-table').style.display = 'block';\n  document.getElementById('variant-pricing-table').style.display = 'none';\n}\n\nfunction showVariantTable(variantId) {\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n  const variant = data[variantId];\n  \n  if (!variant || !variant.qty || !variant.unit || !variant.price) {\n    showDefaultTable();\n    return;\n  }\n  \n  // Hide default table and show variant table\n  document.getElementById('default-pricing-table').style.display = 'none';\n  document.getElementById('variant-pricing-table').style.display = 'block';\n  \n  // Update table body\n  const qtyArray = variant.qty.split(',');\n  const unitArray = variant.unit.split(',');\n  const priceArray = variant.price.split(',');\n  \n  let tableHTML = '';\n  for (let i = 0; i < qtyArray.length; i++) {\n    const qty = qtyArray[i] ? qtyArray[i].trim() : '';\n    const unit = unitArray[i] ? unitArray[i].trim() : '';\n    const price = priceArray[i] ? priceArray[i].trim() : '';\n    \n    if (qty && unit && price) {\n      tableHTML += `\n        <tr>\n          <td style=\"border: 1px solid #ddd;\" colspan=\"2\">${qty}</td>\n          <td style=\"border: 1px solid #ddd;\">${price}</td>\n          <td style=\"border: 1px solid #ddd;\">${unit}</td>\n        </tr>\n      `;\n    }\n  }\n  \n  document.getElementById('variant-table-body').innerHTML = tableHTML;\n}\n\nfunction checkVariantSelection() {\n  // If no variant pricing exists, always show default table\n  if (!hasVariantPricing) {\n    showDefaultTable();\n    return;\n  }\n\n  let newVariant = null;\n  let variantWasClicked = false;\n  \n  // Check for radio buttons (like Label Type)\n  const checkedRadio = document.querySelector('input[name=\"Label Type\"]:checked, input[name=\"id\"]:checked');\n  if (checkedRadio) {\n    // If it's a variant selector\n    if (checkedRadio.name === 'id') {\n      newVariant = checkedRadio.value;\n      variantWasClicked = true;\n    } else if (checkedRadio.name === 'Label Type') {\n      // For Label Type, we need to find the corresponding variant\n      const labelValue = checkedRadio.value;\n      const data = JSON.parse(document.getElementById('variant-pricing-data').textContent);\n      \n      // Find variant that matches this label type\n      for (const [variantId, variantData] of Object.entries(data)) {\n        if (variantData.title.includes(labelValue)) {\n          newVariant = variantId;\n          variantWasClicked = true;\n          break;\n        }\n      }\n    }\n  }\n  \n  // Check select dropdown\n  if (!newVariant) {\n    const select = document.querySelector('select[name=\"id\"]');\n    if (select && select.value) {\n      newVariant = select.value;\n      if (select.value !== currentSelectedVariant) {\n        variantWasClicked = true;\n      }\n    }\n  }\n  \n  // Update if variant changed\n  if (newVariant && newVariant !== currentSelectedVariant) {\n    currentSelectedVariant = newVariant;\n    isVariantSelected = variantWasClicked;\n    \n    if (isVariantSelected) {\n      showVariantTable(newVariant);\n    }\n  }\n}\n\nfunction initializePricingTable() {\n  // If product has default pricing, show default table\n  if (hasDefaultPricing) {\n    showDefaultTable();\n  }\n  // If product has no default pricing but has variant pricing, show first variant's table\n  else if (hasVariantPricing && firstVariantWithPricing) {\n    showVariantTable(firstVariantWithPricing);\n  }\n  // If neither exists, hide both tables\n  else {\n    document.getElementById('default-pricing-table').style.display = 'none';\n    document.getElementById('variant-pricing-table').style.display = 'none';\n  }\n}\n\n// Only add event listeners if there are variants with pricing\nif (hasVariantPricing) {\n  // Event listeners\n  document.addEventListener('click', function(e) {\n    // Listen for clicks on variant options\n    if (e.target.matches('input[name=\"Label Type\"], input[name=\"id\"], label[for*=\"option-\"]')) {\n      setTimeout(() => {\n        isVariantSelected = true;\n        checkVariantSelection();\n      }, 100);\n    }\n  });\n\n  document.addEventListener('change', function(e) {\n    if (e.target.matches('select[name=\"id\"], input[name=\"Label Type\"], input[name=\"id\"]')) {\n      isVariantSelected = true;\n      setTimeout(checkVariantSelection, 50);\n    }\n  });\n\n  // Fallback check\n  setInterval(checkVariantSelection, 1000);\n}\n\n// Initialize - show appropriate table on page load\ndocument.addEventListener('DOMContentLoaded', function() {\n  initializePricingTable();\n});\n</script>\n{% endif %}",
-            "padding_bottom": 0
-          }
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
         },
-        "custom_liquid_EjXDDK": {
-          "type": "custom-liquid",
+        "promotion_alert_L7ipQp": {
+          "type": "promotion_alert",
           "disabled": true,
           "settings": {
-            "custom-liquid": "<style>\nth, td \n  {\n   font-size:13px;\n   text-align:center;\n   padding:8px;\n  } \n.email, .mob, th\n{\ncolor:#004A26;\nfont-size:15px;\n}\n  @media (max-width: 767px) {\n  th, td {\n    font-size: 10px;\n    padding: 6px;\n  }\n.email, .mob{\n    font-size: 12px;\n  }\n}\n</style>\n{% assign qty_list = product.metafields.custom.quantity_table %}\n{% assign unit_list = product.metafields.custom.unit_table %}\n{% assign price_list = product.metafields.custom.price_table %}\n{% if qty_list and unit_list and price_list %}\n  <table style=\"width: 100%; border-collapse: collapse; margin-top: 20px;\">\n    <thead>\n      <tr>\n        <th style=\"border: 1px solid #ddd;\" colspan=\"2\">Quantity</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Case</th>\n        <th style=\"border: 1px solid #ddd;\">Price Per Piece</th>\n      </tr>\n    </thead>\n    <tbody>\n      {% assign qty_array = qty_list | split: ',' %}\n      {% assign unit_array = unit_list | split: ',' %}\n      {% assign price_array = price_list | split: ',' %}\n      \n      {% for i in (0..qty_array.size) %}\n        {% if i < qty_array.size %}\n            <td style=\"border: 1px solid #ddd;\" colspan=\"2\">{{ qty_array[i] }}</td>\n            <td style=\"border: 1px solid #ddd;\">{{ price_array[i] }}</td>\n\n<td style=\"border: 1px solid #ddd;\">{{ unit_array[i] }}</td>\n          </tr>\n        {% endif %}\n      {% endfor %}\n    </tbody>\n<td style=\"border: 1px solid #ddd; font-weight:bolder;\" colspan=\"4\">For Higher Quantity Pricing, Please <a class=\"email\" href=\"mailto:hello@packthc.com\"> Email Us</a> or Call <a href=\"call:+1(816)PACKTHC\" class=\"mob\">+1(816)PACKTHC</a></td>\n  </table>\n{% endif %}",
-            "padding_bottom": 0
-          }
-        },
-        "share_pbxQhp": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share",
-            "type": "social",
-            "padding_bottom": 0
+            "text_color": "#004a26",
+            "icon": "lightning",
+            "heading": "Limited time offer",
+            "description": "<p>Get $20 off when you spend $1,000 or more! <a href=\"/collections/all\" title=\"All products\">Learn more</a></p>"
           }
         },
         "complementary": {
           "type": "complementary",
           "settings": {
-            "heading": "Pairs well with",
-            "make_collapsible_row": true,
-            "icon": "price_tag",
-            "product_list_limit": 10,
-            "products_per_page": 3,
-            "show_add_to_cart": true,
-            "padding_bottom": 0
+            "block_heading": "Perfect Match With",
+            "heading_size": "h4",
+            "show_below_product_media": false,
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 6,
+            "layout": "grid",
+            "columns": 3,
+            "image_ratio": "1/1",
+            "enable_quick_add": true
           }
         },
-        "description_tab_3p8AUA": {
-          "type": "description-tab",
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Product Description",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "{{ product.description }}",
+            "page": "",
+            "default_open": true,
+            "show_below_product_media": true
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_tab",
           "disabled": true,
           "settings": {
-            "heading_tab": "More Information",
-            "content_tab": "{{ product.description }}"
+            "heading": "Features",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": true
           }
         },
-        "image_with_link_Efqt68": {
-          "type": "image-with-link",
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/PRICE_MATCH_GUARANTEE_1.png",
-            "url": "shopify://pages/price-match-guarantee",
-            "image_width": 800,
-            "padding_bottom": 0
+            "heading": "FAQs",
+            "heading_size": "h5",
+            "icon": "none",
+            "content": "<p>Why choose clear vials?Clear vials showcase product quality directly, making them ideal for retail display and customer confidence.Are these child-resistant?Yes, the pop top closure is designed to comply with child-resistant packaging standards.Do they support branding?Yes, they are label-friendly and allow custom branding while showcasing the product inside.</p>",
+            "page": "",
+            "default_open": false,
+            "show_below_product_media": true
           }
         },
-        "ecomsend_restock_product_restore_email_7NQpKT": {
-          "type": "shopify://apps/sw-back-in-stock/blocks/product-restore-email/b190bced-3b7b-47da-a05f-6ea4821c3a77",
+        "payment_info": {
+          "type": "payment_info",
+          "settings": {
+            "color_scheme": "scheme-info",
+            "heading": "Payment & Security",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "description": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.</p>",
+            "show_payment_icons": true,
+            "show_below_product_media": true
+          }
+        },
+        "divider_pPz3Kw": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "show_below_product_media": false
+          }
+        },
+        "social_sharing": {
+          "type": "social_sharing",
+          "settings": {}
+        },
+        "sticky_atc_bar_7HgNgP": {
+          "type": "sticky-atc-bar",
+          "settings": {
+            "visibility": "all",
+            "style": "minimalist",
+            "container": "full",
+            "show_atc_button": true,
+            "show_dynamic_checkout_buttons": false,
+            "show_quantity": true
+          }
+        }
+      },
+      "block_order": [
+        "meta",
+        "badges",
+        "inventory",
+        "title",
+        "price",
+        "icon_with_text",
+        "description",
+        "variant_picker",
+        "custom_liquid_NKVjTT",
+        "buy_buttons",
+        "custom_liquid_3b9466",
+        "icon_with_text_UAYgQU",
+        "pickup_availability",
+        "promotion_alert_L7ipQp",
+        "complementary",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "collapsible-row-3",
+        "payment_info",
+        "divider_pPz3Kw",
+        "social_sharing",
+        "sticky_atc_bar_7HgNgP"
+      ],
+      "custom_css": [
+        "@media (min-width: 1280px) {.product {padding-inline: 5rem; }}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "use_color_scheme_in_container": false,
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "vertical-carousel",
+        "mobile_thumbnails": "show",
+        "show_image_border": true,
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "custom_liquid_UDqbXR": {
+      "type": "custom-liquid",
+      "name": "Dumentions",
+      "settings": {
+        "custom_liquid": "<style>\n  .product-tabs {\n    max-width: 1200px;\n    margin: 40px auto;\n    padding: 0 20px;\n  }\n  \n  /* Desktop Tabs */\n  .tab-navigation {\n    display: flex;\n    gap: 20px;\n    border-bottom: 2px solid #e5e5e5;\n  }\n  \n  .tab-button {\n    padding: 12px 24px;\n    background: none;\n    border: none;\n    font-size: 16px;\n    font-weight: 600;\n    cursor: pointer;\n    color: #666;\n    transition: all 0.3s ease;\n    border-bottom: 3px solid transparent;\n    margin-bottom: -2px;\n  }\n  \n  .tab-button.active {\n    color: #000;\n    border-bottom-color: #000;\n  }\n  \n  .tab-content {\n    display: none;\n  }\n  \n  .tab-content.active {\n    display: block;\n    animation: fadeIn 0.3s ease;\n  }\n  \n  @keyframes fadeIn {\n    from { opacity: 0; transform: translateY(10px); }\n    to { opacity: 1; transform: translateY(0); }\n  }\n  \n  /* Mobile Accordion */\n  .accordion-section {\n    display: none;\n  }\n  \n  .accordion-header {\n    background: #f8f8f8;\n    padding: 15px 20px;\n    border: 1px solid #e5e5e5;\n    border-radius: 8px;\n    margin-bottom: 10px;\n    cursor: pointer;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    font-size: 16px;\n    font-weight: 600;\n    color: #333;\n    transition: all 0.3s ease;\n  }\n  \n  .accordion-header:hover {\n    background: #f0f0f0;\n  }\n  \n  .accordion-header.active {\n    background: #000;\n    color: #fff;\n    border-color: #000;\n  }\n  \n  .accordion-icon {\n    transition: transform 0.3s ease;\n    font-size: 20px;\n  }\n  \n  .accordion-header.active .accordion-icon {\n    transform: rotate(180deg);\n  }\n  \n  .accordion-content {\n    max-height: 0;\n    overflow: hidden;\n    transition: max-height 0.3s ease;\n    margin-bottom: 10px;\n  }\n  \n  .accordion-content.active {\n    max-height: 2000px;\n  }\n  \n  /* Two images side by side */\n  .tab-image-container {\n    display: flex;\n    justify-content: space-between;\n    gap: 10px;\n  }\n  \n  .tab-image-container img {\n    width: 50%;\n    max-width: 100%;\n    height: auto;\n    object-fit: contain;\n    border-radius: 8px;\n  }\n  \n  /* Single image full width */\n  .tab-single-image-wrapper {\n    width: 100%;\n    display: flex;\n    justify-content: center;\n    margin: 20px 0;\n  }\n  \n  .tab-single-image-wrapper img {\n    width: 90%;\n    max-width: 1200px;\n    object-fit: contain;\n    border-radius: 8px;\n  }\n  \n  @media (max-width: 767px) {\n    /* Hide desktop tabs */\n    .tab-navigation {\n      display: none;\n    }\n    \n    .tab-content {\n      display: none !important;\n    }\n    \n    /* Show mobile accordion */\n    .accordion-section {\n      display: block;\n    }\n    \n    .tab-image-container {\n      flex-direction: column;\n      margin-left: 0;\n      margin-right: 0;\n    }\n    \n    .tab-image-container img {\n      width: 100% !important;\n      margin-bottom: 15px;\n    }\n    \n    .tab-single-image-wrapper img {\n      width: 100%;\n    }\n  }\n</style>\n\n<div class=\"product-tabs\">\n  <!-- Desktop Tabs -->\n  <div class=\"tab-navigation\">\n    <button class=\"tab-button active\" onclick=\"openTab(event, 'dimension')\">DIMENSION</button>\n    <button class=\"tab-button\" onclick=\"openTab(event, 'features')\">FEATURES</button>\n  </div>\n  \n  <!-- Desktop Tab Content -->\n  <div id=\"dimension\" class=\"tab-content active\">\n    {% if product.metafields.custom.image1 and product.metafields.custom.image2 %}\n      <div class=\"tab-image-container\">\n        <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Dimension Image 1\" />\n        <img src=\"{{ product.metafields.custom.image2 | file_url }}\" alt=\"Dimension Image 2\" />\n      </div>\n    {% elsif product.metafields.custom.image1 %}\n      <div class=\"tab-single-image-wrapper\">\n        <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Dimension Image\" />\n      </div>\n    {% endif %}\n  </div>\n  \n  <div id=\"features\" class=\"tab-content\">\n    {% if product.metafields.custom.feature_image1 and product.metafields.custom.feature_image2 %}\n      <div class=\"tab-image-container\">\n        <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image 1\" />\n        <img src=\"{{ product.metafields.custom.feature_image2 | file_url }}\" alt=\"Feature Image 2\" />\n      </div>\n    {% elsif product.metafields.custom.feature_image1 %}\n      <div class=\"tab-single-image-wrapper\">\n        <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image\" />\n      </div>\n    {% endif %}\n  </div>\n  \n  <!-- Mobile Accordion -->\n  <div class=\"accordion-section\">\n    <!-- Dimension Accordion -->\n    <div class=\"accordion-item\">\n      <div class=\"accordion-header active\" onclick=\"toggleAccordion(this)\">\n        <span>DIMENSION</span>\n        <span class=\"accordion-icon\">▼</span>\n      </div>\n      <div class=\"accordion-content active\">\n        {% if product.metafields.custom.image1 and product.metafields.custom.image2 %}\n          <div class=\"tab-image-container\">\n            <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Dimension Image 1\" />\n            <img src=\"{{ product.metafields.custom.image2 | file_url }}\" alt=\"Dimension Image 2\" />\n          </div>\n        {% elsif product.metafields.custom.image1 %}\n          <div class=\"tab-single-image-wrapper\">\n            <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Dimension Image\" />\n          </div>\n        {% endif %}\n      </div>\n    </div>\n    \n    <!-- Features Accordion -->\n    <div class=\"accordion-item\">\n      <div class=\"accordion-header\" onclick=\"toggleAccordion(this)\">\n        <span>FEATURES</span>\n        <span class=\"accordion-icon\">▼</span>\n      </div>\n      <div class=\"accordion-content\">\n        {% if product.metafields.custom.feature_image1 and product.metafields.custom.feature_image2 %}\n          <div class=\"tab-image-container\">\n            <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image 1\" />\n            <img src=\"{{ product.metafields.custom.feature_image2 | file_url }}\" alt=\"Feature Image 2\" />\n          </div>\n        {% elsif product.metafields.custom.feature_image1 %}\n          <div class=\"tab-single-image-wrapper\">\n            <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image\" />\n          </div>\n        {% endif %}\n      </div>\n    </div>\n  </div>\n</div>\n\n<script>\n  // Desktop Tab Function\n  function openTab(evt, tabName) {\n    var i, tabContent, tabButtons;\n    \n    tabContent = document.getElementsByClassName(\"tab-content\");\n    for (i = 0; i < tabContent.length; i++) {\n      tabContent[i].classList.remove(\"active\");\n    }\n    \n    tabButtons = document.getElementsByClassName(\"tab-button\");\n    for (i = 0; i < tabButtons.length; i++) {\n      tabButtons[i].classList.remove(\"active\");\n    }\n    \n    document.getElementById(tabName).classList.add(\"active\");\n    evt.currentTarget.classList.add(\"active\");\n  }\n  \n  // Mobile Accordion Function\n  function toggleAccordion(header) {\n    var content = header.nextElementSibling;\n    var allHeaders = document.querySelectorAll('.accordion-header');\n    var allContents = document.querySelectorAll('.accordion-content');\n    \n    // Close all other accordions\n    allHeaders.forEach(function(h) {\n      if (h !== header) {\n        h.classList.remove('active');\n      }\n    });\n    \n    allContents.forEach(function(c) {\n      if (c !== content) {\n        c.classList.remove('active');\n      }\n    });\n    \n    // Toggle current accordion\n    header.classList.toggle('active');\n    content.classList.toggle('active');\n  }\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "testimonials_8JHr3L": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_dhi3Xf": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Clean design, durable material, and fast fulfillment. A trusted partner for our business.”</p>",
+            "author": "Stephanie L.",
+            "bio": "Verified Buyer",
+            "product": "1-grams-haze-mylar-bag"
+          }
+        },
+        "testimonial_D7Mq7i": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Excellent build quality and clean finishing. Works perfectly for retail and storage needs.”</p>",
+            "author": "Rachel M.",
+            "bio": "Verified Buyer",
+            "product": "2oz-clear-glass-jar-with-matte-black-smooth-lid"
+          }
+        },
+        "testimonial_33tAjm": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Strong, durable packaging with no issues during shipping. Very reliable supplier.”</p>",
+            "author": "Emily J.",
+            "bio": "Verified Buyer",
+            "product": "6-dram-pop-top-vial-white"
+          }
+        },
+        "testimonial_dDRMwy": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Excellent build quality and clean finishing. Works perfectly for retail and storage needs.”</p>",
+            "author": "Sarah T.",
+            "bio": "Verified Buyer",
+            "product": "13-dram-pop-top-vial-aqua-blue"
+          }
+        },
+        "testimonial_wzEzgV": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Strong, durable packaging with no issues during shipping. Very reliable supplier.”</p>",
+            "author": "Brian T.",
+            "bio": "Verified Buyer",
+            "product": "100ml-spiral-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-400-count"
+          }
+        },
+        "testimonial_RUabwA": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "heading": "Testimonials",
+            "text": "<p>“Premium material with a secure closure. Customers are happy with the overall presentation.”</p>",
+            "author": "Daniel P.",
+            "bio": "Verified Buyer",
+            "product": "100ml-aviator-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-opaque-black-bottle-with-opaque-black-closure-400-count"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_dhi3Xf",
+        "testimonial_D7Mq7i",
+        "testimonial_33tAjm",
+        "testimonial_dDRMwy",
+        "testimonial_wzEzgV",
+        "testimonial_RUabwA"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-3",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Clients Love Us",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "layout": "standard",
+        "card_color_scheme": "",
+        "card_content_color_scheme": "",
+        "card_image_ratio": "adapt",
+        "card_heading_size": "h4",
+        "card_text_size": "text-base",
+        "author_info_layout": "vertical",
+        "card_trigger_behavior": "click",
+        "show_image": false,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "tabs_content_8rnbnj": {
+      "type": "tabs-content",
+      "blocks": {
+        "image_with_text_iLTdLe": {
+          "type": "image_with_text",
+          "settings": {
+            "navigation_title": "Specifications",
+            "desktop_image_position": "left",
+            "image_aspect_ratio": "adapt",
+            "heading": "Inspired to create a chair where the back and arms are moulded from a single piece of plywood",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "subheading": "",
+            "description": "<p>Inspired to create a chair where the back and arms are moulded from a single piece of plywood, Hecht and Colin describe employing a process similar to that a tailor might use to cut a pattern in fabric. This approach resulted in the beautiful structure wherein the moulded back and arms component is supported by a simple A-frame wood dowel construction. One of the benefits of this design is an increase in comfort due to natural movement in the plywood back.</p>",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "icon_1": "check",
+            "heading_1": "Heading",
+            "icon_2": "check",
+            "heading_2": "Heading",
+            "icon_3": "check",
+            "heading_3": "Heading"
+          }
+        },
+        "image_with_text_LQUEir": {
+          "type": "image_with_text",
+          "settings": {
+            "navigation_title": "About Brand",
+            "desktop_image_position": "left",
+            "image_aspect_ratio": "adapt",
+            "heading": "Danish Design With Global Outlook",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "subheading": "",
+            "description": "<p>The good design concepts at the heart of Danish design are functionality, beauty and the needs of the many. This is a strong tradition. And when a tradition is strong enough, it leaves room for innovation that allows us to always move forward.</p>",
+            "description_size": "text-base",
+            "button_label": "Shop More Products",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "icon_1": "check",
+            "heading_1": "Heading",
+            "icon_2": "check",
+            "heading_2": "Heading",
+            "icon_3": "check",
+            "heading_3": "Heading"
+          }
+        },
+        "tab_xGBJeM": {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Shipping & Return",
+            "content": "",
+            "custom_liquid": "",
+            "page": "shipping-return"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_iLTdLe",
+        "image_with_text_LQUEir",
+        "tab_xGBJeM"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 1024px) {.tabs__panel {padding-inline: 5rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "navigation_style": "buttons",
+        "navigation_alignment": "start",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "quick_comparison_table_p9rdxW": {
+      "type": "quick-comparison-table",
+      "blocks": {
+        "info_pEKVwb": {
+          "type": "info",
+          "settings": {
+            "show_view_details_button": true
+          }
+        },
+        "description_ym9hXF": {
+          "type": "description",
+          "settings": {
+            "text_line_limit": "3-lines",
+            "show_view_more_button": false
+          }
+        },
+        "price_adCEcV": {
+          "type": "price",
+          "settings": {}
+        },
+        "variants_Q6kD7j": {
+          "type": "variants",
+          "disabled": true,
+          "settings": {}
+        },
+        "vendor_kN7AnX": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "type_ttCzqK": {
+          "type": "type",
+          "disabled": true,
           "settings": {}
         }
       },
       "block_order": [
-        "vendor_EKQiFe",
-        "title",
-        "custom_liquid_3qXQLD",
-        "custom_liquid_cti3Ny",
-        "price",
-        "custom_liquid_PPFPBE",
-        "availability_KXzfjK",
-        "variant-picker",
-        "file_uploads_by_uploadkit_app_block_a7b93V",
-        "image_with_link_pUxXb7",
-        "divider_QfLhA7",
-        "add-to-cart",
-        "custom_liquid_6Enxwt",
-        "custom_liquid_EjXDDK",
-        "share_pbxQhp",
-        "complementary",
-        "description_tab_3p8AUA",
-        "image_with_link_Efqt68",
-        "ecomsend_restock_product_restore_email_7NQpKT"
-      ],
-      "custom_css": [
-        ".product-details-tabs {border: 1px solid;}",
-        ".title {text-transform: uppercase;}",
-        ".tab-head {font-size: 4.6rem;}",
-        ".field-wrap {display: block;}",
-        ".field-title {border: 1px solid; border-radius: 5px; padding: 10px; display: none;}",
-        ".media-preview-wrap {border: hidden;}",
-        ".hulkapps-volumes {display: none;}",
-        ".product-vendor-link {font-weight: 600;}",
-        ".price {color: #004a26;}",
-        ".link-underline,.rte a {color: #202425;}",
-        ".product-text {font-size: 30px; color: #004a26; font-weight: 900;}",
-        ".price__sale {display: none;}",
-        ".regular-price {display: none;}"
+        "info_pEKVwb",
+        "description_ym9hXF",
+        "price_adCEcV",
+        "variants_Q6kD7j",
+        "vendor_kN7AnX",
+        "type_ttCzqK"
       ],
       "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "space": 50,
-        "sticky_add_to_cart": "hidden",
-        "width": 50,
-        "layout": "layout-2",
-        "media_ratio": "square",
-        "media_fit": "contain",
-        "lightbox": true,
-        "video_looping": true,
-        "group_image": true,
-        "alignment": "left",
-        "padding_top": 8,
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "heading": "Compare With Similar Items",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "description_size": "text-base",
+        "limit": 4,
+        "padding_top": 20,
         "padding_bottom": 0,
-        "padding_top_mobile": 8,
-        "padding_bottom_mobile": 0
+        "show_section_divider": false,
+        "divider_width": "fixed"
       }
     },
-    "product_details_tabs_j93WXm": {
-      "type": "product-details-tabs",
+    "closer_look_new_KKJxaG": {
+      "type": "closer-look-new",
+      "custom_css": [],
+      "name": "Closer Look",
+      "settings": {}
+    },
+    "custom_content_aJPNXb": {
+      "type": "custom-content",
       "blocks": {
-        "description_MKVtJr": {
-          "type": "description",
+        "lookbook_card_hotspot_rJaXPd": {
+          "type": "lookbook_card_hotspot",
           "settings": {
-            "heading": "Description"
+            "icon_style": "dot",
+            "icon_color": "light",
+            "image_ratio": "adapt",
+            "product_1": "pasant-candle-copy",
+            "top_1": 60,
+            "left_1": 43,
+            "product_2": "pillar-table",
+            "top_2": 64,
+            "left_2": 88,
+            "product_3": "",
+            "top_3": 0,
+            "left_3": 0,
+            "product_4": "",
+            "top_4": 0,
+            "left_4": 0,
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
           }
         },
-        "liquid_Te4f6K": {
-          "type": "liquid",
+        "lookbook_card_hotspot_p44hjW": {
+          "type": "lookbook_card_hotspot",
           "settings": {
-            "heading": "Dimension",
-            "liquid": "{% if product.metafields.custom.image1 and product.metafields.custom.image2 %}\n  <style>\n    .image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"image-container\">\n    <img src=\"{{ product.metafields.custom.image1 | file_url }}\" alt=\"Image Left\" />\n    <img src=\"{{ product.metafields.custom.image2 | file_url }}\" alt=\"Image Right\" />\n  </div>\n\n{% else %}\n\n  {% if product.metafields.custom.paper_cones %}\n    <style>\n      .single-image-wrapper {\n        width: 100%;\n        display: flex;\n        justify-content: center;   /* center align */\n        margin: 20px 0;\n      }\n      .single-image-wrapper img {\n        width: 90%;                /* bigger width */\n        max-width: 1200px;          /* optional max */\n        object-fit: contain;\n        border-radius: 8px;\n      }\n    </style>\n\n    <div class=\"single-image-wrapper\">\n      <img src=\"{{ product.metafields.custom.paper_cones | file_url }}\" alt=\"Single Product Image\" />\n    </div>\n  {% endif %}\n\n{% endif %}"
+            "icon_style": "dot",
+            "icon_color": "light",
+            "image_ratio": "adapt",
+            "product_1": "ray-table-lamp-1",
+            "top_1": 17,
+            "left_1": 66,
+            "product_2": "ray-sofa-basic",
+            "top_2": 35,
+            "left_2": 2,
+            "product_3": "etruscan-jug-copy",
+            "top_3": 70,
+            "left_3": 50,
+            "product_4": "",
+            "top_4": 9,
+            "left_4": 63,
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
           }
         },
-        "liquid_cTf8EB": {
-          "type": "liquid",
+        "lookbook_card_hotspot_3GJzqy": {
+          "type": "lookbook_card_hotspot",
           "settings": {
-            "heading": "Features",
-            "liquid": "{% if product.metafields.custom.feature_image1 and product.metafields.custom.feature_image2 %}\n  <style>\n    .feature-image-container {\n      display: flex;\n      justify-content: space-between;\n      margin-left: 10%;\n      margin-right: 10%;\n      gap: 10px;\n    }\n    .feature-image-container img {\n      width: 50%;\n      max-width: 100%;\n      height: auto;\n      object-fit: contain;\n      border-radius: 8px;\n    }\n    @media (max-width: 767px) {\n      .feature-image-container {\n        flex-direction: column;\n        margin-left: 0;\n        margin-right: 0;\n      }\n      .feature-image-container img {\n        width: 100% !important;\n        margin-bottom: 15px;\n      }\n    }\n  </style>\n\n  <div class=\"feature-image-container\">\n    <img src=\"{{ product.metafields.custom.feature_image1 | file_url }}\" alt=\"Feature Image 1\" />\n    <img src=\"{{ product.metafields.custom.feature_image2 | file_url }}\" alt=\"Feature Image 2\" />\n  </div>\n{% endif %}"
-          }
-        },
-        "content_D4EVWU": {
-          "type": "content",
-          "disabled": true,
-          "settings": {
-            "heading": "Features",
-            "content": "",
-            "page": ""
-          }
-        },
-        "reviews_e4xnHd": {
-          "type": "reviews",
-          "settings": {
-            "heading": "Reviews",
-            "content": "<!-- Start of Judge.me code --> \n  <div style='clear:both'></div> \n  <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'> \n    {{ product.metafields.judgeme.widget }} \n  </div> \n<!-- End of Judge.me code -->"
+            "icon_style": "dot",
+            "icon_color": "light",
+            "image_ratio": "adapt",
+            "product_1": "arc-chair",
+            "top_1": 91,
+            "left_1": 20,
+            "product_2": "beam-table",
+            "top_2": 53,
+            "left_2": 61,
+            "product_3": "",
+            "top_3": 62,
+            "left_3": 43,
+            "product_4": "",
+            "top_4": 9,
+            "left_4": 63,
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
           }
         }
       },
       "block_order": [
-        "description_MKVtJr",
-        "liquid_Te4f6K",
-        "liquid_cTf8EB",
-        "content_D4EVWU",
-        "reviews_e4xnHd"
+        "lookbook_card_hotspot_rJaXPd",
+        "lookbook_card_hotspot_p44hjW",
+        "lookbook_card_hotspot_3GJzqy"
       ],
+      "disabled": true,
       "custom_css": [
-        ".tabs-head {border-bottom: 2px solid #ddd;}"
+        ".swipe-mobile {--column-width-mobile: 82vw;}"
       ],
-      "name": "t:sections.product-details-tabs.presets.name",
       "settings": {
-        "full": false,
-        "background": "#ffffff",
-        "width": 100,
-        "heading_size": "h4",
-        "animation": "down",
-        "padding_top": 0,
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Get Inspired by Spaces",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": true,
+        "columns_mobile": "1",
+        "padding_top": 60,
         "padding_bottom": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "show_section_divider": false,
+        "divider_width": "fixed"
       }
     },
-    "1768687976959189fc": {
-      "type": "apps",
+    "lookbook_banner_UAnED3": {
+      "type": "lookbook-banner",
       "blocks": {
-        "judge_me_reviews_review_widget_HhUaF9": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "hotspot_t4Nc8t": {
+          "type": "hotspot",
           "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
+            "heading": "Timeless Design",
+            "description": "<p>Blending comfort and style, perfect for elevating any living space.</p>",
+            "top": 39,
+            "left": 26,
+            "top_mobile": 45,
+            "left_mobile": 30
+          }
+        },
+        "hotspot_UXwwVW": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Organic Cotton",
+            "description": "<p>Sustainably sourced for a soft, breathable, and eco-friendly lounging experience.</p>",
+            "top": 65,
+            "left": 63,
+            "top_mobile": 50,
+            "left_mobile": 70
+          }
+        },
+        "hotspot_fHtLKP": {
+          "type": "hotspot",
+          "settings": {
+            "heading": "Built to Last",
+            "description": "<p>Premium materials and expert craftsmanship ensure durability and long-lasting support.</p>",
+            "top": 82,
+            "left": 47,
+            "top_mobile": 62,
+            "left_mobile": 48
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_HhUaF9"
+        "hotspot_t4Nc8t",
+        "hotspot_UXwwVW",
+        "hotspot_fHtLKP"
       ],
+      "disabled": true,
       "settings": {
-        "full": false,
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "custom_css": [
-        ".title {text-transform: uppercase;}",
-        ".custom-unit-price {color: #004a26; font-weight: 900; font-size: 20px; margin-top: 5px; text-transform: uppercase;}"
-      ],
-      "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "heading": "Related products",
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Unique Tailored Construction",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
         "heading_size": "h2",
-        "view_all_text": "See All Products",
-        "view_all_url": "",
-        "layout": "grid",
-        "rows": 1,
-        "columns": 4,
-        "show_arrows": true,
-        "show_dots": true,
-        "loop": false,
-        "autoplay": true,
-        "delay": 5,
-        "padding_top": 0,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "icon_style": "plus",
+        "icon_color": "light",
+        "card_color_scheme": "",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 0
       }
     },
-    "product-recently-viewed": {
-      "type": "product-recently-viewed",
-      "custom_css": [
-        ".custom-unit-price {color: #004a26; font-weight: 900; font-size: 20px; margin-top: 5px; text-transform: uppercase;}"
-      ],
-      "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "heading": "You may also like",
-        "heading_size": "h2",
-        "layout": "grid",
-        "rows": 1,
-        "columns": 4,
-        "show_arrows": true,
-        "show_dots": true,
-        "padding_top": 0,
-        "padding_bottom": 50,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
-    "rich_text_rtzDdP": {
-      "type": "rich-text",
+    "image_with_text_kqXfRQ": {
+      "type": "image-with-text",
       "blocks": {
-        "heading_m4P6Nr": {
+        "subheading_taVjEY": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "All eco-certified"
+          }
+        },
+        "heading_ngPQi3": {
           "type": "heading",
           "settings": {
-            "content": "Want to buy even more ?",
-            "heading_size": "h2"
+            "heading": "Inspired to create a chair where the back",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
           }
         },
-        "text_aTR3U4": {
+        "text_nF69XB": {
           "type": "text",
           "settings": {
-            "content": "<p>Thank you! for the love. Please directly connect with us for commercial quantities. and Guess what? we even customise</p>"
+            "text": "<p>Made entirely of oak, the Bow Chair is comfortable, visually pleasing and brimming with character.  The moulded plywood seat is unusually wide in proportion to its depth and a waterfall edge at the front softens contact with the hamstrings. </p>",
+            "subtext_color": true
           }
         },
-        "button_zC3q7G": {
+        "button_fQzFTq": {
           "type": "button",
           "settings": {
-            "label": "Connect Now",
-            "link": "shopify://pages/contact",
-            "style": "primary"
+            "button_label": "Explore More Details",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
           }
         }
       },
       "block_order": [
-        "heading_m4P6Nr",
-        "text_aTR3U4",
-        "button_zC3q7G"
+        "subheading_taVjEY",
+        "heading_ngPQi3",
+        "text_nF69XB",
+        "button_fQzFTq"
       ],
-      "name": "t:sections.rich-text.name",
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 1024px) {.image-with-text__wrapper {padding-inline: 5rem; } .image-with-text__content {--text-margin-top: 2rem; }}",
+        ".image-with-text__content {max-width: 52rem;}"
+      ],
       "settings": {
-        "full": false,
-        "color_scheme": "scheme-2",
-        "align": "center",
-        "width": 100,
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
+        "container": "fixed",
+        "color_scheme": "",
+        "image_position": "right",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "You May Also Like",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "limit": 6,
+        "columns": 5,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "navigation_position": "bottom",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "product_seo_tags_TJJcdB": {
+      "type": "product-seo-tags",
+      "name": "Product Seo Tags",
+      "settings": {
+        "tag_bg_color": "#0f172a",
+        "tag_text_color": "#ffffff"
+      }
+    },
+    "multicolumn_icon_3qbxHn": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_9Xh69D": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "FREE SHIPPING ON ORDERS $4999+",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "Shipping Details",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_EapCmy": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "FAST SHIPPING",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "Return Policy",
+            "button_link": "shopify://pages/return-policy",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        },
+        "column_y3rE9Y": {
+          "type": "column",
+          "settings": {
+            "icon": "chat",
+            "max_width": 60,
+            "max_width_mb": 60,
+            "title": "Secure Payment",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "More About Payment",
+            "button_link": "",
+            "button_style": "btn--plain",
+            "button_icon": "caret-right"
+          }
+        }
+      },
+      "block_order": [
+        "column_9Xh69D",
+        "column_EapCmy",
+        "column_y3rE9Y"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card__text p {max-width: 33rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Free shipping on almost everything",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#1d349a",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "scrolling_gallery_image_eqULib": {
+      "type": "scrolling-gallery-image",
+      "blocks": {
+        "gallery_RzbQhE": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/Explore_a_wide_variety_of_dispensary_packaging_at_www.packthc.com_from_6_dram_pop_top_vials_to.png",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_WMR7mX": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/No_ideaHalf_ideaWild_ideaPerfect.That_s_where_great_design_starts.packthc_custom_newyear.png",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_FwhcHj": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/You_re_one_swipe_away_from_your_brand_s_next_upgradefypage_fyp_viral_trending_trendypackag.jpg",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_EM4VKr": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image": "shopify://shop_images/6dram.webp",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_gxWzJR": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Built_for_flavor_lovers._Designed_for_the_shelf.packthc_mylarbags_wholesale_custom.png",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_3CDe4q": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/Two_kings._One_light._One_tube._The_only_partner_you_ll_ever_need_for_your_next_session.Be_h.jpg",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        },
+        "gallery_AtjdbC": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image": "shopify://shop_images/590417631_17873816937463123_6370026910597364353_n.png",
+            "image_avatar": "shopify://shop_images/1_69eb5be1-6997-4f4a-a669-3579a5468e41.png",
+            "image_link": "https://www.instagram.com/packthc/",
+            "social_media": "instagram",
+            "heading": "packthc"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_RzbQhE",
+        "gallery_WMR7mX",
+        "gallery_FwhcHj",
+        "gallery_EM4VKr",
+        "gallery_gxWzJR",
+        "gallery_3CDe4q",
+        "gallery_AtjdbC"
+      ],
+      "settings": {
+        "color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "We’re on Instagram",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "show_button_on_top": true,
+        "button_label": "@packthc",
+        "button_link": "https://www.instagram.com/packthc/",
+        "button_style": "btn--plain",
+        "button_icon": "none",
+        "direction": "left",
+        "speed": 0.1,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
-    "breadcrumb_cyhcMz",
+    "breadcrumbs",
     "main",
-    "product_details_tabs_j93WXm",
-    "1768687976959189fc",
-    "product-recommendations",
-    "product-recently-viewed",
-    "rich_text_rtzDdP"
+    "custom_liquid_UDqbXR",
+    "testimonials_8JHr3L",
+    "tabs_content_8rnbnj",
+    "quick_comparison_table_p9rdxW",
+    "closer_look_new_KKJxaG",
+    "custom_content_aJPNXb",
+    "lookbook_banner_UAnED3",
+    "image_with_text_kqXfRQ",
+    "related-products",
+    "product_seo_tags_TJJcdB",
+    "multicolumn_icon_3qbxHn",
+    "scrolling_gallery_image_eqULib"
   ]
 }

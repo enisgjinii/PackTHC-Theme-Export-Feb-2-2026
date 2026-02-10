@@ -1,0 +1,468 @@
+{% comment %} 
+  FREE Store Locator with Mapbox - FINAL FIX
+  Page scroll issue FIXED completely
+{% endcomment %}
+
+<style>
+  .storelocator-wrapper {
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: "Instrument Sans", sans-serif;
+  }
+  .storelocator-wrapper .storelocator-heading {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: {{ section.settings.primary_color }};
+  }
+  .storelocator-container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 30px;
+    min-height: 700px;
+  }
+  .storelocator-list {
+    overflow-y: auto;
+    max-height: {{ section.settings.map_height }}px;
+    scroll-behavior: smooth;
+    position: relative;
+  }
+  .storelocator-search {
+    margin-bottom: 20px;
+  }
+  .storelocator-search input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  .storelocator-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 2px solid #eee;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .storelocator-card:hover, .storelocator-card.storelocator-active {
+    border-color: {{ section.settings.primary_color }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .storelocator-card h3 {
+    margin: 0 0 10px 0;
+    color: {{ section.settings.primary_color }};
+    font-size: 1.2em;
+  }
+  .storelocator-card p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.95em;
+  }
+  .storelocator-card .storelocator-phone {
+    color: {{ section.settings.primary_color }};
+    font-weight: bold;
+  }
+  .storelocator-map {
+    height: {{ section.settings.map_height }}px;
+    border-radius: 8px;
+    {% if section.settings.sticky_map %}
+    position: sticky;
+    top: 20px;
+    {% endif %}
+  }
+  .storelocator-location-btn {
+    width: 100%;
+    padding: 12px;
+    background: {{ section.settings.primary_color }};
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+  }
+  .storelocator-location-btn:hover {
+    opacity: 0.9;
+  }
+  .storelocator-no-stores {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+  }
+  @media (max-width: 768px) {
+    .storelocator-container {
+      grid-template-columns: 1fr;
+    }
+    .storelocator-map {
+      height: 400px;
+      position: relative !important;
+      top: 0 !important;
+    }
+  }
+</style>
+
+<div class="storelocator-wrapper">
+  <h2 class="storelocator-heading">{{ section.settings.heading }}</h2>
+  
+  <div class="storelocator-container">
+    <div class="storelocator-list" id="storelocatorList">
+      {% if section.settings.enable_current_location %}
+      <button class="storelocator-location-btn" id="storelocatorLocationBtn">
+        {{ section.settings.location_button_text }}
+      </button>
+      {% endif %}
+      
+      <div class="storelocator-search">
+        <input type="text" id="storelocatorSearch" placeholder="{{ section.settings.search_placeholder }}">
+      </div>
+      
+      <div id="storelocatorCards">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          <div class="storelocator-card" data-index="{{ forloop.index0 }}" data-name="{{ block.settings.store_name }}" data-city="{{ block.settings.city }}" data-state="{{ block.settings.state }}">
+            <h3>{{ block.settings.store_name }}</h3>
+            <p>{{ block.settings.address }}</p>
+            <p>{{ block.settings.city }}, {{ block.settings.state }} {{ block.settings.country }}</p>
+            {% if block.settings.phone %}
+            <p class="storelocator-phone">{{ block.settings.phone }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+        {% else %}
+          <p class="storelocator-no-stores">No stores available. Please add stores in the theme editor.</p>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="storelocator-map" id="storelocatorMap"></div>
+  </div>
+</div>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+
+<script>
+  (function() {
+    mapboxgl.accessToken = '{{ section.settings.mapbox_token }}';
+    
+    const storelocatorStores = [
+      {% for block in section.blocks %}
+      {
+        name: "{{ block.settings.store_name }}",
+        address: "{{ block.settings.address }}",
+        city: "{{ block.settings.city }}",
+        state: "{{ block.settings.state }}",
+        country: "{{ block.settings.country }}",
+        phone: "{{ block.settings.phone }}",
+        lat: {{ block.settings.latitude }},
+        lng: {{ block.settings.longitude }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    
+    if (storelocatorStores.length === 0) return;
+    
+    const storelocatorMap = new mapboxgl.Map({
+      container: 'storelocatorMap',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [storelocatorStores[0].lng, storelocatorStores[0].lat],
+      zoom: {{ section.settings.default_zoom }}
+    });
+    
+    const storelocatorMarkers = [];
+    storelocatorStores.forEach((store, index) => {
+      const el = document.createElement('div');
+      el.className = 'storelocator-marker';
+      el.style.cssText = `
+        background-color: {{ section.settings.primary_color }};
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 3px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      `;
+      
+      const marker = new mapboxgl.Marker(el)
+        .setLngLat([store.lng, store.lat])
+        .setPopup(new mapboxgl.Popup().setHTML(`
+          <strong>${store.name}</strong><br>
+          ${store.address}<br>
+          ${store.city}, ${store.state}<br>
+          ${store.phone ? '📞 ' + store.phone : ''}
+        `))
+        .addTo(storelocatorMap);
+      
+      storelocatorMarkers.push(marker);
+      
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        storelocatorFocusStore(index);
+      });
+    });
+    
+    // MAIN FUNCTION - Fixed to prevent page scroll
+    function storelocatorFocusStore(index) {
+      // Save current page scroll position
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Zoom map
+      storelocatorMap.flyTo({
+        center: [storelocatorStores[index].lng, storelocatorStores[index].lat],
+        zoom: 10,
+        duration: 1500
+      });
+      
+      // Show popup
+      storelocatorMarkers[index].togglePopup();
+      
+      // Highlight card
+      const allCards = document.querySelectorAll('.storelocator-card');
+      allCards.forEach(card => card.classList.remove('storelocator-active'));
+      allCards[index].classList.add('storelocator-active');
+      
+      // Scroll ONLY the list container
+      const listContainer = document.getElementById('storelocatorList');
+      const activeCard = allCards[index];
+      
+      if (activeCard && listContainer) {
+        const cardTop = activeCard.offsetTop;
+        const cardHeight = activeCard.offsetHeight;
+        const containerHeight = listContainer.clientHeight;
+        const scrollPosition = cardTop - (containerHeight / 2) + (cardHeight / 2);
+        
+        listContainer.scrollTop = scrollPosition;
+      }
+      
+      // Force page to stay at original position
+      setTimeout(function() {
+        window.scrollTo(0, currentScrollY);
+      }, 0);
+    }
+    
+    // Add click listeners to cards
+    document.querySelectorAll('.storelocator-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const index = parseInt(this.getAttribute('data-index'));
+        storelocatorFocusStore(index);
+      });
+    });
+    
+    // Search functionality
+    const searchInput = document.getElementById('storelocatorSearch');
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function() {
+        const searchText = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.storelocator-card');
+        
+        cards.forEach(function(card) {
+          const name = card.getAttribute('data-name').toLowerCase();
+          const city = card.getAttribute('data-city').toLowerCase();
+          const state = card.getAttribute('data-state').toLowerCase();
+          
+          if (name.includes(searchText) || city.includes(searchText) || state.includes(searchText)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+    
+    // Current location button
+    const locationBtn = document.getElementById('storelocatorLocationBtn');
+    if (locationBtn) {
+      locationBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            const userLat = position.coords.latitude;
+            const userLng = position.coords.longitude;
+            
+            let nearest = 0;
+            let minDist = Infinity;
+            
+            storelocatorStores.forEach(function(store, index) {
+              const dist = Math.sqrt(
+                Math.pow(store.lat - userLat, 2) + 
+                Math.pow(store.lng - userLng, 2)
+              );
+              if (dist < minDist) {
+                minDist = dist;
+                nearest = index;
+              }
+            });
+            
+            storelocatorFocusStore(nearest);
+          });
+        }
+      });
+    }
+    
+    // Fit bounds to show all stores
+    if (storelocatorStores.length > 1) {
+      const bounds = new mapboxgl.LngLatBounds();
+      storelocatorStores.forEach(store => bounds.extend([store.lng, store.lat]));
+      storelocatorMap.fitBounds(bounds, { padding: 100 });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Store Locator",
+  "tag": "section",
+  "class": "storelocator-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "🎉 Completely FREE - No credit card required! Get your free Mapbox token from mapbox.com"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find a Store"
+    },
+    {
+      "type": "text",
+      "id": "mapbox_token",
+      "label": "Mapbox Access Token",
+      "info": "Get FREE token: 1) Go to mapbox.com 2) Sign up (no card) 3) Copy your token from Account page"
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Map Height",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "default_zoom",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "label": "Default Zoom",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_map",
+      "label": "Sticky Map (Desktop)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder",
+      "default": "Search by city or state..."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_current_location",
+      "label": "Enable Current Location",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "location_button_text",
+      "label": "Location Button Text",
+      "default": "Use My Current Location"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "store",
+      "name": "Store",
+      "settings": [
+        {
+          "type": "text",
+          "id": "store_name",
+          "label": "Store Name",
+          "default": "Store Name"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "label": "Address",
+          "default": "123 Main Street"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City",
+          "default": "Mumbai"
+        },
+        {
+          "type": "text",
+          "id": "state",
+          "label": "State",
+          "default": "Maharashtra"
+        },
+        {
+          "type": "text",
+          "id": "country",
+          "label": "Country",
+          "default": "India"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone"
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": "Latitude",
+          "default": "19.0760"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": "Longitude",
+          "default": "72.8777"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locator",
+      "blocks": [
+        {
+          "type": "store",
+          "settings": {
+            "store_name": "Mumbai Store",
+            "address": "Phoenix Marketcity",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "country": "India",
+            "latitude": "19.0760",
+            "longitude": "72.8777"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

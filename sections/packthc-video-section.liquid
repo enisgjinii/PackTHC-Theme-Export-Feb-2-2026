@@ -1,0 +1,477 @@
+{% comment %}
+  Video Grid Section
+  Displays a 2x2 grid of autoplay videos with heading and button overlay
+{% endcomment %}
+
+<style>
+  .video-grid-section {
+    width: 100%;
+    padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .video-grid-container {
+    max-width: {{ section.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 {{ section.settings.horizontal_padding }}px;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+  }
+
+  .video-grid-item {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+    background-color: #000;
+    border-radius: {{ section.settings.border_radius }}px;
+  }
+
+  .video-grid-item video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Video overlay content */
+  .video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 30px;
+    z-index: 10;
+   /* width: 100%; */
+   background: #0337704a;
+   border-radius: 0 20px 0 0;
+  }
+
+  .video-overlay h3 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+  }
+
+  .video-overlay-btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .video-overlay-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  /* Remove all video controls */
+  .video-grid-item video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-panel {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-play-button {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-timeline {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-current-time-display {
+    display: none !important;
+  }
+
+  .video-grid-item video::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.mobile_grid_gap }}px;
+    }
+
+    .video-grid-section {
+      padding: {{ section.settings.mobile_padding_top }}px 0 {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .video-overlay {
+      padding: 20px;
+    }
+
+    .video-overlay h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .video-overlay-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="video-grid-section">
+  <div class="video-grid-container">
+    {% if section.settings.section_heading != blank %}
+      <h2 style="text-align: {{ section.settings.heading_alignment }}; margin-bottom: {{ section.settings.heading_margin }}px; color: {{ section.settings.heading_color }}; font-size: {{ section.settings.heading_size }}px;">
+        {{ section.settings.section_heading }}
+      </h2>
+    {% endif %}
+
+    <div class="video-grid">
+      {% for block in section.blocks %}
+        <div class="video-grid-item" {{ block.shopify_attributes }}>
+          {% if block.settings.video_file != blank %}
+            {{ block.settings.video_file | video_tag: 
+              autoplay: true, 
+              loop: true, 
+              muted: true, 
+              playsinline: true, 
+              controls: false,
+              class: 'video-element'
+            }}
+          {% elsif block.settings.video_url != blank %}
+            <video
+              playsinline
+              autoplay
+              muted
+              loop
+              preload="auto"
+              disablepictureinpicture
+              controlslist="nodownload nofullscreen noremoteplayback"
+              class="video-element"
+            >
+              <source src="{{ block.settings.video_url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% else %}
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-align: center;">
+              <p>Add video in block settings</p>
+            </div>
+          {% endif %}
+
+          {% if block.settings.block_heading != blank or block.settings.button_text != blank %}
+            <div class="video-overlay">
+              {% if block.settings.block_heading != blank %}
+                <h3>{{ block.settings.block_heading }}</h3>
+              {% endif %}
+              
+              {% if block.settings.button_text != blank %}
+                {% if block.settings.button_link != blank %}
+                  <a href="{{ block.settings.button_link }}" class="video-overlay-btn">
+                    {{ block.settings.button_text }}
+                  </a>
+                {% else %}
+                  <span class="video-overlay-btn">{{ block.settings.button_text }}</span>
+                {% endif %}
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ensure all videos autoplay immediately
+    const videos = document.querySelectorAll('.video-grid-item video');
+    
+    videos.forEach(function(video) {
+      // Remove all controls
+      video.controls = false;
+      video.removeAttribute('controls');
+      
+      // Force autoplay
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(function() {
+          // Autoplay started successfully
+        }).catch(function(error) {
+          // Autoplay was prevented, try again on user interaction
+          console.log('Autoplay prevented:', error);
+          
+          // Attempt to play on any user interaction
+          document.addEventListener('click', function() {
+            video.play();
+          }, { once: true });
+        });
+      }
+
+      // Prevent context menu (right-click)
+      video.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      // Prevent pause
+      video.addEventListener('pause', function(e) {
+        video.play();
+      });
+
+      // Disable click to pause
+      video.addEventListener('click', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    });
+  });
+
+  // Additional script to handle intersection observer for better performance
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    document.querySelectorAll('.video-grid-item video').forEach(function(video) {
+      videoObserver.observe(video);
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Video Grid 2x2",
+  "tag": "section",
+  "class": "section-video-grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Our Manufacturing"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading Bottom Margin",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid Gap (Desktop)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mobile_grid_gap",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Grid Gap (Mobile)",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "Upload Video"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Or Video URL",
+          "info": "Leave blank if using uploaded video above"
+        },
+        {
+          "type": "text",
+          "id": "block_heading",
+          "label": "Video Heading",
+          "default": "Manufacturing Excellence"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Grid 2x2",
+      "blocks": [
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

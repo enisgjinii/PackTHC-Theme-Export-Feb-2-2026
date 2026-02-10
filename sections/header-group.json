@@ -1,1 +1,211 @@
-{"name":"t:sections.header.name","type":"header","sections":{"custom_liquid_qpkcj4":{"type":"custom-liquid","name":"t:sections.custom-liquid.presets.name","settings":{"custom-liquid":"<div class=\"top-announcement-bar\">\n  The future of packaging awaits — PackTHC.com’s new look is almost here. Stay tuned\n<\/div>\n<style>\n.top-announcement-bar {\n  background-color: #ffffff;\n  color: #000000;\n  text-align: center;\n  font-size: 18px;\n  padding: 12px 10px;\n  font-weight: 600;\n}\n<\/style>"}},"utility_sec_hCjEEr":{"type":"utility-sec","name":"Utility Section","settings":{}},"header":{"type":"header","blocks":{"mega_menu_LEP8tT":{"type":"mega_menu","settings":{"mega_item":"CUSTOM PACKAGING","image_ratio":"square","data":"menu","data_menu":"custom-packaging","data_collection":"","link":""}},"mega_menu_LJidqC":{"type":"mega_menu","settings":{"mega_item":"CHUBBY GORILLA","image_ratio":"square","data":"menu","data_menu":"chubby-gorilla","data_collection":"","image":"shopify:\/\/shop_images\/Chubby_Gorilla_Wholesale_USA.webp","link":""}},"mega_menu_NQBgNy":{"type":"mega_menu","settings":{"mega_item":"PACKAGING","image_ratio":"square","data":"menu","data_menu":"main2","data_collection":"","link":""}},"mega_menu_UhWWiw":{"type":"mega_menu","settings":{"mega_item":"PEPER CONES","image_ratio":"square","data":"collection","data_menu":"paper-cones","data_collection":"","link":""}},"mega_menu_XHtbpt":{"type":"mega_menu","settings":{"mega_item":"MYLAR BAGS","image_ratio":"square","data":"collection","data_menu":"mylar-bags","data_collection":"","link":""}}},"block_order":["mega_menu_LEP8tT","mega_menu_LJidqC","mega_menu_NQBgNy","mega_menu_UhWWiw","mega_menu_XHtbpt"],"custom_css":["@media (min-width: 992px) {.header-section .header .logo-left {gap: 0.6rem; }}","@media (min-width: 992px) {.header-inner {font-size: 15px; }}",".header-icons {gap: 1rem;}","@media (min-width: 992px) {.header-navigation > .menu-item > .menu-link {padding: 29px 1rem; }}",".menu-text {text-transform: uppercase;}"],"settings":{"full":false,"color_scheme":"scheme-2","layout":"layout-1","enable_sticky_header":true,"logo_position":"logo-left","logo_image":"shopify:\/\/shop_images\/PackTHC_Logo_1f36a82f-0b8b-4565-a0c4-b70ed0efe08e.webp","logo_mobile_image":"shopify:\/\/shop_images\/PackTHC_Logo_1f36a82f-0b8b-4565-a0c4-b70ed0efe08e.webp","logo_width":100,"enable_overlay_header":false,"overlay_bg_color":"#ffffff","overlay_text_color":"","menu_color_scheme":"scheme-2665e699-6948-4518-b3c6-b8eb34c10ed3","menu":"main-menu-1","mobile_menu":"","menu_space":29,"drawer_color_scheme":"scheme-2","desktop_drawer_menu":"","text_transform":"uppercase","font_size":16,"font_size_mobile":12,"language_selector":true,"country_selector":true}},"custom_liquid_gLEfcP":{"type":"custom-liquid","name":"t:sections.custom-liquid.presets.name","settings":{"custom-liquid":"<!-- Meta Pixel Code -->\n<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};\nif(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\nn.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];\ns.parentNode.insertBefore(t,s)}(window, document,'script',\n'https:\/\/connect.facebook.net\/en_US\/fbevents.js');\nfbq('init', '849288641386135');\nfbq('track', 'PageView');\n<\/script>\n<noscript><img height=\"1\" width=\"1\" style=\"display:none\"\nsrc=\"https:\/\/www.facebook.com\/tr?id=849288641386135&ev=PageView&noscript=1\"\n\/><\/noscript>\n<!-- End Meta Pixel Code -->"}}},"order":["custom_liquid_qpkcj4","utility_sec_hCjEEr","header","custom_liquid_gLEfcP"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "new_top_bar_8cgLEX": {
+      "type": "new-top-bar",
+      "name": "Utility Top Bar",
+      "settings": {}
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "hightlight_link_kYeX7k": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "BestSelling Products",
+            "hl_link_style": "wave_underline",
+            "hl_link_color": "#ffffff"
+          }
+        },
+        "custom_link_tMCRrV": {
+          "type": "custom_link",
+          "settings": {
+            "label": "Find Our Store",
+            "link": "shopify://pages/find-a-packthc-store",
+            "icon": "location",
+            "icon_size": "large"
+          }
+        },
+        "hightlight_link_rqzVWk": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "Best Selling Products",
+            "hl_link_style": "wave_underline",
+            "hl_link_color": ""
+          }
+        },
+        "hightlight_link_c7YiG6": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "On Sale",
+            "hl_link_style": "star_twinkle",
+            "hl_link_color": "#ffffff"
+          }
+        },
+        "product_list_86CtkM": {
+          "type": "product_list",
+          "disabled": true,
+          "settings": {
+            "menu_title": "SHOP BY CATEGORIES",
+            "menu_columns": 5,
+            "show_menu_column_divider": true,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "heading": "",
+            "promotions_width": 38,
+            "number_of_columns": 2,
+            "product_list": [],
+            "show_product_vendor": false,
+            "show_product_type": false,
+            "show_progress_bar": true
+          }
+        },
+        "sidebar_zYpTyL": {
+          "type": "sidebar",
+          "settings": {
+            "menu_title": "SHOP BY CUSTOMER TYPE",
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "menu_columns": 4,
+            "show_collection_image": true,
+            "show_image_of_first_product": false,
+            "image_ratio": "adapt"
+          }
+        },
+        "promotion_banner_CrDaT4": {
+          "type": "promotion_banner",
+          "settings": {
+            "menu_title": "SHOP BY CATEGORIES",
+            "menu_columns": 4,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "promotions_width": 20,
+            "promotion_columns": 1,
+            "promotion_position": "right",
+            "color_scheme_1": "scheme-inverse",
+            "promo_image_1": "shopify://shop_images/graphic_1.webp",
+            "content_position_1": "top-left",
+            "content_alignment_1": "left",
+            "content_gap_1": "fitted",
+            "image_overlay_opacity_1": 28,
+            "promotion_link_1": "shopify://collections/concentrate-packaging",
+            "subheading_1": "WholeSale",
+            "subheading_style_1": "",
+            "heading_1": "Concentrate Packaging",
+            "heading_size_1": "h3",
+            "description_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "btn--primary",
+            "button_icon_1": "none",
+            "color_scheme_2": "scheme-inverse",
+            "content_position_2": "top-left",
+            "content_alignment_2": "left",
+            "content_gap_2": "fitted",
+            "image_overlay_opacity_2": 0,
+            "promotion_link_2": "",
+            "subheading_2": "",
+            "subheading_style_2": "",
+            "heading_2": "",
+            "heading_size_2": "h4",
+            "description_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "btn--primary",
+            "button_icon_2": "none",
+            "color_scheme_3": "scheme-inverse",
+            "content_position_3": "top-left",
+            "content_alignment_3": "left",
+            "content_gap_3": "fitted",
+            "image_overlay_opacity_3": 0,
+            "promotion_link_3": "",
+            "subheading_3": "",
+            "subheading_style_3": "",
+            "heading_3": "",
+            "heading_size_3": "h4",
+            "description_3": "",
+            "button_label_3": "",
+            "button_style_3": "btn--primary",
+            "button_icon_3": "none",
+            "color_scheme_4": "",
+            "content_position_4": "top-left",
+            "content_alignment_4": "left",
+            "content_gap_4": "fitted",
+            "image_overlay_opacity_4": 0,
+            "promotion_link_4": "",
+            "subheading_4": "",
+            "subheading_style_4": "",
+            "heading_4": "",
+            "heading_size_4": "h5",
+            "description_4": "",
+            "button_label_4": "",
+            "button_style_4": "btn--primary",
+            "button_icon_4": "none",
+            "color_scheme_5": "",
+            "content_position_5": "top-left",
+            "content_alignment_5": "left",
+            "content_gap_5": "fitted",
+            "image_overlay_opacity_5": 0,
+            "promotion_link_5": "",
+            "subheading_5": "",
+            "subheading_style_5": "",
+            "heading_5": "",
+            "heading_size_5": "h5",
+            "description_5": "",
+            "button_label_5": "",
+            "button_style_5": "btn--primary",
+            "button_icon_5": "none"
+          }
+        }
+      },
+      "block_order": [
+        "hightlight_link_kYeX7k",
+        "custom_link_tMCRrV",
+        "hightlight_link_rqzVWk",
+        "hightlight_link_c7YiG6",
+        "product_list_86CtkM",
+        "sidebar_zYpTyL",
+        "promotion_banner_CrDaT4"
+      ],
+      "custom_css": [
+        "@media (max-width: 1023px) {.menu-drawer__item-grandchild .media-wrapper {aspect-ratio: 2.133 !important; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "menu": "hyper-new",
+        "menu_mobile": "",
+        "header_layout": "logo-left",
+        "menu_trigger": "hover",
+        "sticky_header": "always",
+        "enable_collapse_on_scroll": true,
+        "show_sperator_line": true,
+        "customer_account_style": "icon-with-text",
+        "show_social_media_icons": false,
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "header_top_padding_top": 20,
+        "header_top_padding_bottom": 20,
+        "navigation_color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "navigation_content_alignment": "start",
+        "navigation_padding_top": 0,
+        "navigation_padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "new_top_bar_8cgLEX",
+    "header"
+  ]
+}

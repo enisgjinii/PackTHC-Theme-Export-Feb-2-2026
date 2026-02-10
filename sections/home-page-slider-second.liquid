@@ -1,0 +1,312 @@
+{% stylesheet %}
+  .fmcg-features-section {
+    background: #033770;
+    padding: 60px 40px;
+    margin: 0 auto;
+  }
+
+  .fmcg-features-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .fmcg-features-subheading {
+    font-size: 14px;
+    color: #9ca3af;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .fmcg-features-title {
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .fmcg-features-description {
+    font-size: 16px;
+    color: #d1d5db;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .fmcg-features-description__bold {
+    font-weight: 700;
+    color: white;
+  }
+
+  .fmcg-features-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .fmcg-features-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+  }
+
+  .fmcg-features-carousel::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .fmcg-features-carousel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  .fmcg-features-carousel::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 10px;
+  }
+
+  .fmcg-features-card {
+    background: #f3f4f6;
+    border-radius: 20px;
+    padding: 32px 24px;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 340px;
+  }
+
+  .fmcg-features-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.15);
+  }
+
+  .fmcg-features-icon {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fmcg-features-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .fmcg-features-card-text {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  /* Tablet Responsive (1024px and below) */
+  @media (max-width: 1024px) {
+    .fmcg-features-section {
+      padding: 40px 32px;
+    }
+
+    .fmcg-features-title {
+      font-size: 36px;
+    }
+
+    .fmcg-features-card {
+      max-width: 240px;
+      min-height: 300px;
+    }
+  }
+
+  /* Mobile Large (768px and below) */
+  @media (max-width: 768px) {
+    .fmcg-features-section {
+      padding: 32px 20px;
+    }
+
+    .fmcg-features-header {
+      margin-bottom: 40px;
+    }
+
+    .fmcg-features-title {
+      font-size: 28px;
+    }
+
+    .fmcg-features-subheading {
+      font-size: 12px;
+    }
+
+    .fmcg-features-description {
+      font-size: 14px;
+    }
+
+    .fmcg-features-carousel {
+      gap: 16px;
+    }
+
+    .fmcg-features-card {
+      max-width: 200px;
+      min-height: 260px;
+      padding: 24px 16px;
+      gap: 16px;
+    }
+
+    .fmcg-features-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    .fmcg-features-card-text {
+      font-size: 14px;
+    }
+  }
+
+  /* Mobile Small (480px and below) */
+  @media (max-width: 480px) {
+    .fmcg-features-section {
+      padding: 24px 16px;
+    }
+
+    .fmcg-features-header {
+      margin-bottom: 32px;
+    }
+
+    .fmcg-features-title {
+      font-size: 24px;
+    }
+
+    .fmcg-features-subheading {
+      font-size: 11px;
+    }
+
+    .fmcg-features-description {
+      font-size: 13px;
+    }
+
+    .fmcg-features-carousel {
+      gap: 12px;
+    }
+
+    .fmcg-features-card {
+      max-width: 160px;
+      min-height: 220px;
+      padding: 16px 12px;
+      gap: 12px;
+    }
+
+    .fmcg-features-icon {
+      width: 70px;
+      height: 70px;
+    }
+
+    .fmcg-features-card-text {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+  }
+{% endstylesheet %}
+
+<div class="fmcg-features-section">
+  <div class="fmcg-features-header">
+    <div class="fmcg-features-subheading">{{ section.settings.subheading }}</div>
+    <h2 class="fmcg-features-title">{{ section.settings.main_title }}</h2>
+    <p class="fmcg-features-description">
+      <span class="fmcg-features-description__bold"></span> {{ section.settings.description }}
+    </p>
+  </div>
+
+  <div class="fmcg-features-carousel-wrapper">
+    <div class="fmcg-features-carousel" id="fmcgCarousel">
+      {% for block in section.blocks %}
+        <div class="fmcg-features-card">
+          {% if block.settings.feature_image %}
+            <div class="fmcg-features-icon">
+              <img 
+                src="{{ block.settings.feature_image | image_url: width: 200 }}" 
+                alt="{{ block.settings.feature_title }}"
+              >
+            </div>
+          {% endif %}
+          <div class="fmcg-features-card-text">{{ block.settings.feature_title }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FMCG Features Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Total Packaging Management. From Quote to Delivery."
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "Meet FMCG Packaging"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Premium packaging at 15% less cost, with ZERO quality compromises and the industry's only true money-back guarantee."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Feature Icon/Image"
+        },
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title",
+          "default": "Feature text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FMCG Features Carousel",
+      "settings": {
+        "subheading": "Total Packaging Management. From Quote to Delivery.",
+        "main_title": "Meet FMCG Packaging",
+        "description": "Premium packaging at 15% less cost, with ZERO quality compromises and the industry's only true money-back guarantee."
+      },
+      "blocks": [
+        {"type": "feature_card", "settings": {"feature_title": "15%+ cost reduction compared to traditional suppliers"}},
+        {"type": "feature_card", "settings": {"feature_title": "Fast turnaround, that keep launches on track"}},
+        {"type": "feature_card", "settings": {"feature_title": "Sustainability & compliance certified"}},
+        {"type": "feature_card", "settings": {"feature_title": "Dedicated project manager assigned to every brand"}},
+        {"type": "feature_card", "settings": {"feature_title": "Custom solutions for your brand"}},
+        {"type": "feature_card", "settings": {"feature_title": "Real-time order tracking"}},
+        {"type": "feature_card", "settings": {"feature_title": "24/7 customer support team"}},
+        {"type": "feature_card", "settings": {"feature_title": "Industry leading quality standards"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
