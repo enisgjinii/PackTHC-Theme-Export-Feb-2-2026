@@ -14,6 +14,7 @@
     "logo_width": 100,
     "logo_mobile": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
     "logo_width_mobile": 80,
+    "favicon": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
     "color_badge_hot": "#1d349a",
     "color_badge_new": "#0d8756",
     "type_body_font": "instrument_sans_n5",
@@ -65,8 +66,9 @@
     "pcard_enable_color_swatches": true,
     "pcard_maximum_swatches_to_show": 4,
     "product_new_tags": "New\nLatest\nJust launched\nBest choice\nFeatured",
-    "product_hot_tags": "Hot\nTrending\nPopular\nBest seller\nSelling fast\nFast selling",
+    "product_hot_tags": "Hot\nTrending\nPopular\nBest seller🔥\nSelling fast\nFast selling",
     "product_coming_tags": "Coming soon\nLaunching soon\nPre order\nPre-order\nOut of stock",
+    "blog_cards_image_ratio": "adapt",
     "color_swatch_trigger": "Color,Colors,Colour,Search Color",
     "swatch_list": "Black:#000000\nBlue:#0000ff\nWhite:#ffffff\nGold:#d4af37\nSilver:#c0c0c0\nBeige:#f5f5dc\nBrown:#8b4513\nGray:#808080\nGreen:#008000\nOrange:#ffa500\nPink:#ffc0cb\nPurple:#800080\nRed:#ff0000\nYellow:#ffff00\nNavy:#000080\nRose gold:#b76e79\nClear:#ffffff\nBronze:#cd7f32\nMulticolor:#cccccc",
     "quick_view_type": "modal",
@@ -91,7 +93,7 @@
     "collection_image_ratio": "4/3",
     "social_facebook_link": "https://www.facebook.com/packthc",
     "social_instagram_link": "https://www.instagram.com/packthc",
-    "social_tiktok_link": "https://www.tiktok.com/packthc",
+    "social_tiktok_link": "https://www.tiktok.com/@packthc",
     "social_snapchat_link": "",
     "social_pinterest_link": "",
     "social_tumblr_link": "",
@@ -144,6 +146,11 @@
       },
       "558381514691908246": {
         "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
+        "disabled": false,
+        "settings": {}
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
         "settings": {}
       }
@@ -2350,6 +2357,8 @@
     }
   },
   "platform_customizations": {
-    "custom_css": []
+    "custom_css": [
+      ".hulkapps-reminder-msg {padding: 0;}"
+    ]
   }
 }

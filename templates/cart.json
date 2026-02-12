@@ -84,65 +84,11 @@
         "show_section_divider": true,
         "divider_width": "full"
       }
-    },
-    "scrolling_promotion_JJjp7A": {
-      "type": "scrolling-promotion",
-      "blocks": {
-        "text_3QHC6f": {
-          "type": "text",
-          "settings": {
-            "text_link": "",
-            "text": "Welcome to our store",
-            "text_size": "h4",
-            "text_opacity": 100,
-            "use_custom_color": false,
-            "custom_color": "#000000"
-          }
-        },
-        "text_xxFXUW": {
-          "type": "text",
-          "settings": {
-            "text_link": "",
-            "text": "Welcome to our store",
-            "text_size": "h4",
-            "text_opacity": 100,
-            "use_custom_color": false,
-            "custom_color": "#000000"
-          }
-        },
-        "text_7JdzKQ": {
-          "type": "text",
-          "settings": {
-            "text_link": "",
-            "text": "Welcome to our store",
-            "text_size": "h4",
-            "text_opacity": 100,
-            "use_custom_color": false,
-            "custom_color": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "text_3QHC6f",
-        "text_xxFXUW",
-        "text_7JdzKQ"
-      ],
-      "settings": {
-        "color_scheme": "scheme-3",
-        "direction": "left",
-        "pause_on_hover": true,
-        "speed": 0.3,
-        "h_spacing": 80,
-        "show_section_divider": false,
-        "padding_top": 22,
-        "padding_bottom": 22
-      }
     }
   },
   "order": [
     "breadcrumbs_96z8tE",
     "main-cart",
-    "recently_viewed_products_w4PGc3",
-    "scrolling_promotion_JJjp7A"
+    "recently_viewed_products_w4PGc3"
   ]
 }

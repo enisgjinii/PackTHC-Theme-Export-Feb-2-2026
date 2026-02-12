@@ -75,6 +75,16 @@
             {% endfor %}
           </select>
         </div>
+        <!-- Product Search Bar -->
+<div class="volume-calculator__field volume-calculator__field--full">
+  <label for="product-search-{{ section.id }}">Search Products</label>
+  <input
+    type="text"
+    id="product-search-{{ section.id }}"
+    class="volume-calculator__input volume-calculator__search-input"
+    placeholder="Search by product name..."
+  >
+</div>
 
         <!-- Product Selector - Grid Layout -->
         <div class="volume-calculator__field volume-calculator__field--full">
@@ -200,8 +210,8 @@
 
   <style>
                 .volume-calculator {
-                  padding: 40px 20px;
-                  background: #f9f9f9;
+                  background: #ffffff;
+                  padding-bottom: 50px;
                 }
 
                 .volume-calculator__container {
@@ -287,34 +297,34 @@
                 }
 
                 .volume-calculator__button--calculate {
-                  background: #333;
+                  background: #033770;
                   color: #fff;
                   margin-top: 28px;
                 }
 
                 .volume-calculator__button--calculate:hover:not(:disabled) {
-                  background: #000;
+                  background: #042e5c;
                 }
 
                 .volume-calculator__button--primary {
-                  background: #333;
+                  background: #033770;
                   color: #fff;
                   flex: 1;
                 }
 
                 .volume-calculator__button--primary:hover:not(:disabled) {
-                  background: #000;
+                  background:#0431619, 97);
                 }
 
                 .volume-calculator__button--secondary {
                   background: #fff;
                   color: #333;
-                  border: 2px solid #333;
+                  border: 2px solid #033770;
                   flex: 1;
                 }
 
                 .volume-calculator__button--secondary:hover:not(:disabled) {
-                  background: #333;
+                  background: #033770;
                   color: #fff;
                 }
 
@@ -365,7 +375,7 @@
                 }
 
                 .volume-calculator__table thead {
-                  background: #004A26;
+                  background: #033770;
                 }
 
                 .volume-calculator__table th {
@@ -570,13 +580,13 @@
         }
 
         .volume-calculator__product-card:hover {
-          border-color: #004A26;
+          border-color: #033770;
           box-shadow: 0 4px 12px rgba(0, 74, 38, 0.15);
           transform: translateY(-2px);
         }
 
         .volume-calculator__product-card.selected {
-          border-color: #004A26;
+          border-color: #033770;
           background: #f0f8f4;
           box-shadow: 0 4px 16px rgba(0, 74, 38, 0.2);
         }
@@ -693,7 +703,7 @@
           right: 12px;
           width: 28px;
           height: 28px;
-          background: #004A26;
+          background: #033770;
           border-radius: 50%;
           display: none;
           align-items: center;
@@ -806,6 +816,23 @@
         grid-template-columns: 1fr; /* 1 column on small mobile */
       }
     }
+
+    .volume-calculator__search-input {
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.volume-calculator__search-input:focus {
+  border-color: #033770;
+  box-shadow: 0 0 0 3px rgba(3, 55, 112, 0.1);
+}
+
+.volume-calculator__product-card.hidden {
+  display: none;
+}
   </style>
 
   <script>
@@ -847,6 +874,7 @@
       const productSelectOptions = document.getElementById(`product-select-options-${sectionId}`);
       const productGrid = document.getElementById(`product-grid-${sectionId}`);
       let selectedProductCard = null;
+      const productSearchInput = document.getElementById(`product-search-${sectionId}`);
 
       // State
       let currentProduct = null;
@@ -854,22 +882,43 @@
 
       // Initialize on page load
       document.addEventListener('DOMContentLoaded', function () {
-  console.log('🚀 Volume Calculator: Initializing...');
+        console.log('🚀 Volume Calculator: Initializing...');
 
-  // Load saved state
-  const saved = localStorage.getItem(`vc_${sectionId}`);
-  if (saved) {
-    const s = JSON.parse(saved);
-    if (s.col) collectionSelect.value = s.col;
-    if (s.col) loadProductsForCollection(s.col);
-    setTimeout(() => {
-      if (s.prod) document.querySelector(`[data-handle="${s.prod}"]`)?.click();
-      setTimeout(() => { if (s.qty) quantityInput.value = s.qty; calculatePrice(); }, 300);
-    }, 500);
-  } else if (collectionSelect?.value) {
-    loadProductsForCollection(collectionSelect.value);
-  }
-});
+        // Load saved state
+        const saved = localStorage.getItem(`vc_${sectionId}`);
+        if (saved) {
+          const s = JSON.parse(saved);
+          if (s.col) collectionSelect.value = s.col;
+          if (s.col) loadProductsForCollection(s.col);
+          setTimeout(() => {
+            if (s.prod) document.querySelector(`[data-handle="${s.prod}"]`)?.click();
+            setTimeout(() => {
+              if (s.qty) quantityInput.value = s.qty;
+              calculatePrice();
+            }, 300);
+          }, 500);
+        } else if (collectionSelect?.value) {
+          loadProductsForCollection(collectionSelect.value);
+        }
+      });
+
+      // Search products
+if (productSearchInput) {
+  productSearchInput.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const productCards = productGrid.querySelectorAll('.volume-calculator__product-card');
+    
+    productCards.forEach(card => {
+      const title = card.querySelector('.volume-calculator__product-card-title').textContent.toLowerCase();
+      
+      if (title.includes(searchTerm)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+}
 
       // Collection change handler
       if (collectionSelect) {
@@ -905,11 +954,14 @@
         });
       }
       collectionSelect.addEventListener('change', function (e) {
-  const collectionHandle = e.target.value;
-  if (!collectionHandle) { resetForm(); return; }
-  loadProductsForCollection(collectionHandle);
-  localStorage.setItem(`vc_${sectionId}`, JSON.stringify({col: collectionHandle})); // ADD
-});
+        const collectionHandle = e.target.value;
+        if (!collectionHandle) {
+          resetForm();
+          return;
+        }
+        loadProductsForCollection(collectionHandle);
+        localStorage.setItem(`vc_${sectionId}`, JSON.stringify({ col: collectionHandle })); // ADD
+      });
 
       // Quantity change handler
       if (quantityInput) {
@@ -937,6 +989,11 @@
 
       // Load products from collection
       function loadProductsForCollection(collectionHandle) {
+
+        // Clear search
+if (productSearchInput) {
+  productSearchInput.value = '';
+}
         console.log('📥 Loading products for collection:', collectionHandle);
 
         const collectionData = allProductsData[collectionHandle];
@@ -1188,11 +1245,13 @@
         }, 300);
 
         loadProductData(handle);
-  
-  const s = JSON.parse(localStorage.getItem(`vc_${sectionId}`) || '{}');
-  localStorage.setItem(`vc_${sectionId}`, JSON.stringify({...s, prod: handle})); // ADD
-  
-  setTimeout(() => { /* scroll code */ }, 300);
+
+        const s = JSON.parse(localStorage.getItem(`vc_${sectionId}`) || '{}');
+        localStorage.setItem(`vc_${sectionId}`, JSON.stringify({ ...s, prod: handle })); // ADD
+
+        setTimeout(() => {
+          /* scroll code */
+        }, 300);
       }
 
       // Reset form function में image reset add करें
@@ -1205,6 +1264,11 @@
       Please select a collection first
     </div>
   `;
+
+  // Reset search
+if (productSearchInput) {
+  productSearchInput.value = '';
+}
 
         selectedProductCard = null;
 
@@ -1613,10 +1677,10 @@
         }
       }
       quantityInput.addEventListener('input', function () {
-  const s = JSON.parse(localStorage.getItem(`vc_${sectionId}`) || '{}');
-  localStorage.setItem(`vc_${sectionId}`, JSON.stringify({...s, qty: this.value})); // ADD
-  if (currentProduct && resultsContainer.style.display === 'block') calculatePrice();
-});
+        const s = JSON.parse(localStorage.getItem(`vc_${sectionId}`) || '{}');
+        localStorage.setItem(`vc_${sectionId}`, JSON.stringify({ ...s, qty: this.value })); // ADD
+        if (currentProduct && resultsContainer.style.display === 'block') calculatePrice();
+      });
 
       // Reset form
       function resetForm() {

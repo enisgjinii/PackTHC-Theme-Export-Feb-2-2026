@@ -183,7 +183,7 @@
           "type": "form",
           "settings": {
             "button_label": "Get 10% OFF",
-            "button_icon": "none"
+            "button_icon": "caret-right"
           }
         },
         "socials": {
@@ -221,72 +221,34 @@
             "color_scheme": "scheme-10",
             "icon": "tag",
             "icon_size": "large",
-            "heading": "Save an extra 10%",
+            "heading": "WELCOME10",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h5",
-            "description": "<p>Use promo code GARA10</p>",
-            "discount_code": "GARA10",
+            "description": "<p>Get 10% OFF on your first order!<br/>Use promo code <strong>WELCOME10</strong> at checkout and save instantly.</p>",
+            "discount_code": "WELCOME10",
             "button_label": "Copy",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
         },
-        "item_Nn9kW6": {
-          "type": "item",
+        "discount_HVDjnj": {
+          "type": "discount",
           "settings": {
-            "color_scheme": "scheme-10",
+            "color_scheme": "scheme-1",
             "icon": "tag",
             "icon_size": "large",
-            "heading": "Select lamp from $170",
+            "heading": "GORILLA10",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "h5",
-            "description": "<p>Valid for filter </p>",
-            "button_label": "Shop",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "item_dQn9tr": {
-          "type": "item",
-          "settings": {
-            "color_scheme": "scheme-10",
-            "icon": "tag",
-            "icon_size": "large",
-            "heading": "This week’s hot deals",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "description": "<p>Online exclusive</p>",
-            "button_label": "Shop",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "item_xfLhK8": {
-          "type": "item",
-          "settings": {
-            "color_scheme": "scheme-10",
-            "icon": "tag",
-            "icon_size": "large",
-            "heading": "Free Delivery",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "description": "<p>on all major appliances $500+</p>",
-            "button_label": "Shop",
-            "button_link": "",
+            "description": "<p>Get 10% OFF on Chubby Gorilla products.<br/>Use code <strong>GORILLA10</strong> at checkout.</p>",
+            "discount_code": "GORILLA10",
+            "button_label": "Copy",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -294,17 +256,14 @@
       },
       "block_order": [
         "discount_1",
-        "item_Nn9kW6",
-        "item_dQn9tr",
-        "item_xfLhK8"
+        "discount_HVDjnj"
       ],
-      "disabled": true,
       "custom_css": [
         ".spotlight__item-content {max-width: 22rem;}"
       ],
       "settings": {
-        "header_color_scheme": "scheme-2",
-        "header_message": "✌🏼 Free Express Shipping on orders $500!",
+        "header_color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "header_message": "✌🏼 Free Express Shipping on orders $4999!",
         "header_message_alignment": "center",
         "heading": "Special Offers",
         "highlight_style": "none",

@@ -286,6 +286,7 @@
                                       {%- endfor -%}
                                     </ul>
                                   {%- endif -%}
+                                  {% comment %}
                                   <div class="cart-item__prices">
                                     <div class="price text-right flex flex-wrap items-center gap-x-2 font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
                                       {%- liquid
@@ -332,6 +333,55 @@
                                       {%- endif -%}
                                     </div>
                                   </div>
+                                  {% endcomment %}
+                                   <div class="cart-item__prices">
+  <span data-hulkapps-ci-price="" data-key="{{ item.key }}">
+    <div class="price text-right flex flex-wrap items-center gap-x-2 font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
+      {%- liquid
+        assign money_price = item.original_price | money
+        if settings.currency_code_enabled
+          assign money_price = item.original_price | money_with_currency
+        endif
+      -%}
+      {%- if item.original_price != item.final_price -%}
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+        <span class="price__regular">
+          {%- liquid 
+            if settings.currency_code_enabled
+              echo item.final_price | money_with_currency
+            else
+              echo item.final_price | money
+            endif  
+          -%}
+        </span>
+        <s class="price__sale font-body text-subtext">{{ money_price }}</s>
+      {%- else -%}
+        {{- money_price -}}
+      {%- endif -%}
+    </div>
+  </span>
+
+  {%- if item.variant.available and item.unit_price_measurement -%}
+    <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+    <span class="unit-price flex items-center font-body text-sm text-subtext">
+      {%- liquid
+        capture unit_price_base_unit
+          if item.variant.unit_price_measurement
+            if item.variant.unit_price_measurement.reference_value != 1
+              echo item.variant.unit_price_measurement.reference_value
+            endif
+            echo item.variant.unit_price_measurement.reference_unit
+          endif
+        endcapture
+      -%}
+      ({{ item.variant.unit_price | money }}
+      <span aria-hidden="true">/</span>
+      <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+      {{ unit_price_base_unit }})
+    </span>
+  {%- endif -%}
+</div>
                                 </div>
                                 <a id="Loader-{{ section.id }}-{{ item.index | plus: 1 }}"{% unless is_gift_wrap_item %} is="cart-remove-item"{% else %} is="gift-wrap-remove-item"{% endunless %} class="items-start justify-center relative flex md:hidden btn-remove" href="{{ item.url_to_remove }}" data-index="{{ item.index | plus: 1 }}">
                                   <span class="visually-hidden">{{ 'general.cart.remove' | t }}</span>
@@ -466,6 +516,7 @@
                                         {%- endfor -%}
                                       </ul>
                                     {%- endif -%}
+                                    {% comment %}
                                     <div class="cart-item__prices">
                                       <div class="price text-right flex flex-wrap items-center gap-x-2 font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
                                         {%- liquid
@@ -512,6 +563,55 @@
                                         {%- endif -%}
                                       </div>
                                     </div>
+                                    {% endcomment %}
+                                     <div class="cart-item__prices">
+  <span data-hulkapps-ci-price="" data-key="{{ item.key }}">
+    <div class="price text-right flex flex-wrap items-center gap-x-2 font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
+      {%- liquid
+        assign money_price = item.original_price | money
+        if settings.currency_code_enabled
+          assign money_price = item.original_price | money_with_currency
+        endif
+      -%}
+      {%- if item.original_price != item.final_price -%}
+        <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+        <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+        <span class="price__regular">
+          {%- liquid 
+            if settings.currency_code_enabled
+              echo item.final_price | money_with_currency
+            else
+              echo item.final_price | money
+            endif  
+          -%}
+        </span>
+        <s class="price__sale font-body text-subtext">{{ money_price }}</s>
+      {%- else -%}
+        {{- money_price -}}
+      {%- endif -%}
+    </div>
+  </span>
+
+  {%- if item.variant.available and item.unit_price_measurement -%}
+    <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+    <span class="unit-price flex items-center font-body text-sm text-subtext">
+      {%- liquid
+        capture unit_price_base_unit
+          if item.variant.unit_price_measurement
+            if item.variant.unit_price_measurement.reference_value != 1
+              echo item.variant.unit_price_measurement.reference_value
+            endif
+            echo item.variant.unit_price_measurement.reference_unit
+          endif
+        endcapture
+      -%}
+      ({{ item.variant.unit_price | money }}
+      <span aria-hidden="true">/</span>
+      <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+      {{ unit_price_base_unit }})
+    </span>
+  {%- endif -%}
+</div>
                                   </div>
                                 </div>
                               </template>
@@ -779,7 +879,7 @@
                         <span class="totals__subtotal">
                           {{- 'sections.cart.estimated_total' | t -}}
                         </span>
-                        <span  data-hulkapps-cart-total class="totals__subtotal-value">
+                        <span data-hulkapps-cart-total class="totals__subtotal-value">
                           {{- cart.total_price | money_with_currency -}}
                         </span>
                       </div>

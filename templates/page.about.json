@@ -18,6 +18,95 @@
         "padding_bottom": 20
       }
     },
+    "packthc_about_7EidN7": {
+      "type": "packthc-about",
+      "blocks": {
+        "feature_hjMp6e": {
+          "type": "feature",
+          "settings": {
+            "icon": "📦",
+            "title": "Comprehensive Range",
+            "description": "From 6 DRAM vials to 90 DRAM containers, glass jars to plastic solutions - we have everything you need for secure packaging."
+          }
+        },
+        "feature_VpfC3w": {
+          "type": "feature",
+          "settings": {
+            "icon": "⚡",
+            "title": "Fast Delivery",
+            "description": "Quick turnaround times and reliable shipping ensure your packaging supplies arrive exactly when you need them."
+          }
+        },
+        "feature_UqXpCg": {
+          "type": "feature",
+          "settings": {
+            "icon": "🎯",
+            "title": "Quality Assured",
+            "description": "Every product meets strict quality standards. We test durability, seal integrity, and material safety for your peace of mind."
+          }
+        },
+        "feature_JUxyNW": {
+          "type": "feature",
+          "settings": {
+            "icon": "💼",
+            "title": "Business Focus",
+            "description": "We understand business needs - competitive pricing, bulk discounts, and flexible ordering options for growing companies."
+          }
+        },
+        "feature_ALnNnX": {
+          "type": "feature",
+          "settings": {
+            "icon": "🛡️",
+            "title": "Safety Equipment",
+            "description": "Complete range of protective gloves including vinyl, latex, and nitrile options plus disposable apparel for workplace safety."
+          }
+        },
+        "feature_xk7VyG": {
+          "type": "feature",
+          "settings": {
+            "icon": "🔬",
+            "title": "Specialized Solutions",
+            "description": "Concentrate containers, tubes, and rigid boxes designed for specific applications and industry requirements."
+          }
+        }
+      },
+      "block_order": [
+        "feature_hjMp6e",
+        "feature_VpfC3w",
+        "feature_UqXpCg",
+        "feature_JUxyNW",
+        "feature_ALnNnX",
+        "feature_xk7VyG"
+      ],
+      "name": "About Page",
+      "settings": {
+        "hero_title": "Premium Packaging Solutions",
+        "hero_subtitle": "Your Trusted Partner for Quality Containers & Supplies",
+        "hero_tagline": "Delivering Excellence in Every Package",
+        "about_title": "About Our Company",
+        "about_subtitle": "Leading supplier of premium packaging solutions for diverse industries",
+        "expertise_title": "Industry Expertise",
+        "expertise_description": "We specialize in providing high-quality packaging solutions including pop-top vials, glass and plastic containers, concentrate jars, and protective equipment. Our extensive product range serves various industries with reliable, durable packaging options.",
+        "expertise_additional": "From small-scale operations to large enterprises, we deliver consistent quality and competitive pricing that helps businesses succeed.",
+        "commitment_title": "Our Commitment",
+        "commitment_description": "Quality is at the heart of everything we do. Each product in our inventory is carefully selected to meet the highest standards of durability, functionality, and safety.",
+        "commitment_additional": "We understand that proper packaging is crucial for product integrity, brand reputation, and customer satisfaction. That's why we only source from trusted manufacturers.",
+        "vision_title": "Our Vision",
+        "vision_description": "To become the most trusted global partner for innovative, compliant, and sustainable cannabis packaging—empowering brands to grow with confidence and credibility.",
+        "mission_title": "Our Mission",
+        "mission_description": "At PackTHC, our mission is to deliver premium-quality packaging solutions that combine durability, compliance, and design excellence. We aim to:",
+        "mission_point_1": "Support businesses of all sizes with cost-effective, scalable packaging.",
+        "mission_point_2": "Promote safe and sustainable packaging practices.",
+        "mission_point_3": "Enable brand differentiation through custom branding options.",
+        "mission_point_4": "Ensure fast, reliable fulfillment with exceptional customer service.",
+        "stats_title": "",
+        "stats_subtitle": "",
+        "cta_title": "Ready to Get Started?",
+        "cta_description": "Contact us today for competitive pricing on bulk orders and discover why leading businesses trust us for their packaging needs.",
+        "cta_button_text": "Get Quote Now",
+        "cta_link": "shopify://pages/contact"
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -53,6 +142,7 @@
         "subheading_MEEHjQ",
         "heading_W8mPfG"
       ],
+      "disabled": true,
       "custom_css": [
         ".rich-text {max-width: 52rem;}"
       ],
@@ -91,6 +181,7 @@
       "block_order": [
         "heading_Y9MMVQ"
       ],
+      "disabled": true,
       "custom_css": [
         ".rich-text {max-width: 78rem; margin: 0 auto;}",
         "@media (max-width: 1023px) {.rich-text__heading {max-width: 50rem; margin: 0 auto; }}"
@@ -225,6 +316,7 @@
         "image_with_text_PfDQ6d",
         "image_with_text_47xM38"
       ],
+      "disabled": true,
       "name": "t:sections.tabs-content.name",
       "settings": {
         "container": "fixed",
@@ -254,6 +346,7 @@
       "block_order": [
         "text_yLtziH"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.name",
       "settings": {
         "container": "fixed",
@@ -327,6 +420,7 @@
         "column_WRPAwc",
         "column_ikYHeg"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "",
@@ -437,6 +531,7 @@
         "column_eKRLxn",
         "column_pqLDtA"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "",
@@ -511,6 +606,7 @@
         "button_item_dgkFBa",
         "button_item_7wMiwV"
       ],
+      "disabled": true,
       "custom_css": [
         ".section__header {--header-padding-bottom: 2.4rem;}",
         ".section__heading {max-width: 45rem;}"
@@ -577,6 +673,7 @@
         "text_iGQwKM",
         "button_6V7tTJ"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.name",
       "settings": {
         "container": "fixed",
@@ -593,6 +690,7 @@
   },
   "order": [
     "breadcrumbs_DgnWDV",
+    "packthc_about_7EidN7",
     "main",
     "image_with_text_overlay_3FrkpM",
     "rich_text_kyFd96",

@@ -94,6 +94,7 @@
       {% endif %}
     </motion-element>
   </div>
+  {% comment %}
   <button
     class="lbcard__popup-btn-trigger z-1 btn btn--white"
     aria-label="{{ 'products.product.view_product_list' | t }}"
@@ -106,6 +107,21 @@
       {{- product_count -}}
     </span>
   </button>
+  {% endcomment %}
+   {% if product_list != blank %}
+  <button
+    class="lbcard__popup-btn-trigger z-1 btn btn--white"
+    aria-label="{{ 'products.product.view_product_list' | t }}"
+    aria-controls="{{ modal_id }}"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <span class="btn__text flex items-center gap-x-2">
+      {%- render 'icon-tag', name: settings.cart_icon -%}
+      {{- product_count -}}
+    </span>
+  </button>
+{% endif %}
   <lookbook-card id="{{ modal_id }}" class="lbcard__popup drawer modal">
     <div class="fixed-overlay" aria-controls="{{ modal_id }}"></div>
     <div class="drawer__inner flex flex-col color-{{ popup_color_scheme }}">

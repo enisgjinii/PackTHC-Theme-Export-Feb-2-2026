@@ -1,561 +1,857 @@
 <style>
-      .packthc-page { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-      .packthc-hero-slider { position: relative; overflow: hidden; }
-      .packthc-hero-track { display: flex; transition: transform 0.5s ease; }
-      .packthc-hero-slide { min-width: 100%; position: relative; min-height: 500px; }
-      .packthc-hero-content { position: absolute; top: 50%; left: 5%; transform: translateY(-50%); z-index: 2; max-width: 600px; }
-      .packthc-hero-slide h1 { font-size: 4rem; font-weight: 900; color: white; margin: 0; line-height: 1.1; text-transform: uppercase; }
-      .packthc-hero-slide p { color: white; font-size: 1.1rem; margin: 20px 0; }
-      .packthc-hero-badge { color: #ff8c42; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px }
-      .packthc-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #ff8c42; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; }
-      .packthc-btn:hover { transform: translateX(5px); }
-      .packthc-slider-dots { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
-      .packthc-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
-      .packthc-dot.active { background: #ff8c42; width: 30px; border-radius: 6px; }
+        .packthc-hero-slider { position: relative; overflow: hidden; }
+        .packthc-hero-track { display: flex; transition: transform 0.5s ease; }
+        .packthc-hero-slide { min-width: 100%; position: relative; min-height: 600px; }
+        .packthc-hero-content { position: absolute; top: 50%; left: 5%; transform: translateY(-50%); z-index: 2; max-width: 600px; }
+        .packthc-hero-slide h1 { font-size: 4rem; font-weight: 900; color: white; margin: 0; line-height: 1.1; text-transform: uppercase; }
+        .packthc-hero-slide p { color: white; font-size: 1.5rem; margin: 20px 0; }
+        .packthc-hero-badge { color: #ffffff; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px }
+        .packthc-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #033770; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .packthc-btn:hover { transform: translateX(5px); }
+        .packthc-slider-dots { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+        .packthc-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
+        .packthc-dot.active { background: #033770; width: 30px; border-radius: 6px; }
 
-      .packthc-services { padding: 80px 5%; background: white; }
-      .packthc-section-title { text-align: center; margin-bottom: 60px; }
-      .packthc-section-badge { color: #ff8c42; font-size: 1.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-      .packthc-section-title h2 { font-size: 2.5rem; font-weight: 900; margin: 0px 0; }
-      .packthc-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-      .packthc-service-card { border: 2px solid black; border-radius: 20px; padding: 20px; text-align: center; text-decoration: none; color: inherit; display: block; transition: 0.3s; }
-      .packthc-service-card:hover { transform: translateY(-5px); }
-      .packthc-service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
-      .packthc-service-card h3 { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
+        .packthc-services { padding: 80px 5%; background: white; }
+        .packthc-section-title { text-align: center; margin-bottom: 40px; }
+        .packthc-section-badge { color: #D63A2F; font-size: 1.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .packthc-section-title h2 { font-size: 2.5rem; font-weight: 900; margin: 0px 0; }
+        .packthc-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .packthc-service-card { border: 2px solid black; border-radius: 20px; padding: 20px; text-align: center; text-decoration: none; color: inherit; display: block; transition: 0.3s; }
+        .packthc-service-card:hover { transform: translateY(-5px); }
+        .packthc-service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+        .packthc-service-card h3 { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
 
 
-      .packthc-about { padding: 80px 5%; background: #fff9f5; }
-      .packthc-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-      .packthc-about h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
-      .packthc-about p { color: #666; line-height: 1.8; margin-bottom: 30px; }
-      .packthc-features { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; margin-bottom: 30px; }
-      .packthc-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-      .packthc-feature-item { display: flex; align-items: center; gap: 10px; }
-      .packthc-feature-item::before { content: '✓'; color: #ff8c42; font-weight: bold; font-size: 1.2rem; }
-      .packthc-experience-badge { background: white; border: 2px solid black; border-radius: 50px; padding: 15px 30px; display: inline-block; font-weight: 700; }
-      .packthc-experience-badge span { color: #ff8c42; font-size: 2rem; }
+        .packthc-about { padding: 80px 5%; background: #fff9f5; }
+        .packthc-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .packthc-about h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
+        .packthc-about p { color: #666; line-height: 1.8; margin-bottom: 30px; }
+        .packthc-features { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; margin-bottom: 30px; }
+        .packthc-features h3{ font-size: 2rem; padding-bottom: 20px;}
+        .packthc-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .packthc-feature-item { display: flex; align-items: center; gap: 10px; }
+        .packthc-feature-item::before { content: '✓'; color: #033770; font-weight: bold; font-size: 1.2rem; }
+        .packthc-experience-badge { background: white; border: 2px solid black; border-radius: 50px; padding: 15px 30px; display: inline-block; font-weight: 700; }
+        .packthc-experience-badge span { color: #033770; font-size: 2rem; }
 
-      .packthc-process { padding: 80px 5%; background: white; }
-      .packthc-process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
-      .packthc-process h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
-      .packthc-process-steps { display: flex; flex-direction: column; gap: 20px; }
-      .packthc-process-step { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
-      .packthc-process-step:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-      .packthc-process-step h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-      .packthc-process-step h3::before { content: attr(data-number) ' '; color: #ff8c42; }
-      .packthc-step-toggle { margin-left: auto; font-size: 1.2rem; transition: 0.3s; }
-      .packthc-process-step.active .packthc-step-toggle { transform: rotate(180deg); }
-      .packthc-step-preview { color: #666; line-height: 1.6; }
-      .packthc-step-image { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-radius: 15px; margin-top: 0; }
-      .packthc-step-image img { width: 100%; border-radius: 15px; display: block; }
-      .packthc-process-step.active .packthc-step-image { max-height: 400px; margin-top: 20px; }
+        .packthc-process { padding: 80px 5%; background: white; }
+        .packthc-process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .packthc-process h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
+        .packthc-process-steps { display: flex; flex-direction: column; gap: 20px; }
+        .packthc-process-step { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .packthc-process-step:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .packthc-process-step h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .packthc-process-step h3::before { content: attr(data-number) ' '; color: #033770; }
+        .packthc-step-toggle { margin-left: auto; font-size: 1.2rem; transition: 0.3s; }
+        .packthc-process-step.active .packthc-step-toggle { transform: rotate(180deg); }
+        .packthc-step-preview { color: #666; line-height: 1.6; }
+        .packthc-step-image { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-radius: 15px; margin-top: 0; }
+        .packthc-step-image img { width: 100%; border-radius: 15px; display: block; }
+        .packthc-process-step.active .packthc-step-image { max-height: 400px; margin-top: 20px; }
 
-      .packthc-process-cards { padding: 80px 5%; background: #1a1a1a; }
-    .packthc-process-cards h2 { text-align: center; color: white; font-size: 2.5rem; font-weight: 900; margin-bottom: 60px; }
-    .packthc-process-cards .packthc-section-badge { text-align: center; margin-bottom: 20px; }
-    .packthc-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
-    .packthc-process-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; transition: 0.3s; }
-    .packthc-process-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); }
-    .packthc-card-number { width: 50px; height: 50px; border: 2px solid #ff8c42; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff8c42; font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; }
-    .packthc-process-card h3 { color: #ff8c42; font-size: 1.3rem; font-weight: 800; margin-bottom: 15px; }
-    .packthc-process-card p { color: #ccc; line-height: 1.7; }
-
-    @media (max-width: 768px) {
-      .packthc-cards-grid { grid-template-columns: 1fr; }
-    }
-
-      .packthc-testimonials { padding: 80px 5%; background: #fff9f5; }
-      .packthc-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
-      .packthc-testimonial-image-container { position: relative; min-height: 600px; }
-      .packthc-testimonial-image { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; border-radius: 20px; overflow: hidden; }
-      .packthc-testimonial-image.active { opacity: 1; }
-      .packthc-testimonial-image img { width: 100%; height: 100%; object-fit: cover; }
-      .packthc-testimonial-placeholder { width: 100%; height: 100%; background: #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #999; }
-      .packthc-testimonial-content { background: white; border: 2px solid black; border-radius: 20px; padding: 40px; position: relative; }
-      .packthc-testimonial-header { margin-bottom: 0px; }
-      .packthc-stars { color: #ff8c42; font-size: 1.5rem; margin-bottom: 20px; }
-      .packthc-testimonial-text { font-size: 2rem; line-height: 1.8; margin-bottom: 30px; min-height: 120px; }
-      .packthc-author { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
-      .packthc-author-info h4 { margin: 0; font-weight: 700; }
-      .packthc-author-info p { margin: 5px 0 0; color: #666; }
-      .packthc-testimonial-nav { display: flex; gap: 15px; justify-content: flex-end; }
-      .packthc-testimonial-btn { background: white; border: 2px solid black; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-      .packthc-testimonial-btn:hover { background: #ff8c42; color: white; border-color: #ff8c42; }
-
-      .packthc-cta { padding: 80px 5%; background: url('{{ section.settings.cta_bg_image | img_url: 'master' }}') center/cover; text-align: center; position: relative; }
-      .packthc-cta::before { content: ''; position: absolute; inset: 0; background: rgba(51,51,51,0.85); }
-      .packthc-cta h2 { color: white; font-size: 3rem; font-weight: 900; margin-bottom: 30px; position: relative; z-index: 1; }
-      .packthc-cta .packthc-btn { position: relative; z-index: 1; }
+        .packthc-process-cards { padding: 80px 5%; background: #1a1a1a; }
+      .packthc-process-cards h2 { text-align: center; color: white; font-size: 2.5rem; font-weight: 900; margin-bottom: 60px; }
+      .packthc-process-cards .packthc-section-badge { text-align: center; margin-bottom: 20px; }
+      .packthc-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+      .packthc-process-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; transition: 0.3s; }
+      .packthc-process-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); }
+      .packthc-card-number { width: 50px; height: 50px; border: 2px solid #ffffff; border-radius: 50%; display: flex !important; align-items: center; justify-content: center; color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; }
+      .packthc-process-card h3 { color: #ffffff; font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
+      .packthc-process-card p { color: #ccc; line-height: 1.7; }
 
       @media (max-width: 768px) {
-        .packthc-hero-slide h1 { font-size: 2.5rem; }
-        .packthc-about-grid, .packthc-process-grid, .packthc-testimonial-grid { grid-template-columns: 1fr; }
-        .packthc-services-grid { grid-template-columns: 1fr; }
-        .packthc-cta h2 { font-size: 2rem; }
+        .packthc-cards-grid { grid-template-columns: 1fr; }
       }
 
-      /* ========== SERVICES TABS SYSTEM ========== */
-      .packthc-services-tabs-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 50px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+        .packthc-testimonials { padding: 80px 5%; background: #fff9f5; }
+        .packthc-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .packthc-testimonial-image-container { position: relative; min-height: 600px; }
+        .packthc-testimonial-image { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; border-radius: 20px; overflow: hidden; }
+        .packthc-testimonial-image.active { opacity: 1; }
+        .packthc-testimonial-image img { width: 100%; height: 100%; object-fit: cover; }
+        .packthc-testimonial-placeholder { width: 100%; height: 100%; background: #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #999; }
+        .packthc-testimonial-content { background: white; border: 2px solid black; border-radius: 20px; padding: 40px; position: relative; }
+        .packthc-testimonial-header { margin-bottom: 0px; }
+        .packthc-stars { color: #033770; font-size: 1.5rem; margin-bottom: 20px; }
+        .packthc-testimonial-text { font-size: 2rem; line-height: 1.8; margin-bottom: 30px; min-height: 120px; }
+        .packthc-author { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .packthc-author-info h4 { margin: 0; font-weight: 700; }
+        .packthc-author-info p { margin: 5px 0 0; color: #666; }
+        .packthc-testimonial-nav { display: flex; gap: 15px; justify-content: flex-end; }
+        .packthc-testimonial-btn { background: white; border: 2px solid black; width: 20px; height: 60px; border-radius: 40%; cursor: pointer; font-size: 3rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .packthc-testimonial-btn:hover { background: #033770; color: white; border-color: #033770; }
 
-      /* Desktop Tabs */
-      .packthc-services-tabs-desktop {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-      }
+        .packthc-cta { padding: 80px 5%; background: url('{{ section.settings.cta_bg_image | img_url: 'master' }}') center/cover; text-align: center; position: relative; }
+        .packthc-cta::before { content: ''; position: absolute; inset: 0; background: rgba(51,51,51,0.85); }
+        .packthc-cta h2 { color: white; font-size: 3rem; font-weight: 900; margin-bottom: 30px; position: relative; z-index: 1; }
+        .packthc-cta .packthc-btn { position: relative; z-index: 1; }
 
-      .packthc-tab-btn {
-        background: white;
-        border: 2px solid black;
-        padding: 15px 30px;
-        border-radius: 50px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-      }
+        @media (max-width: 768px) {
+          .packthc-hero-slide h1 { font-size: 2.5rem; }
+          .packthc-about-grid, .packthc-process-grid, .packthc-testimonial-grid { grid-template-columns: 1fr; }
+          .packthc-services-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
+          .packthc-service-card{ padding: 10px;}
+          .packthc-service-card img{ height: 130px;}
+          .packthc-services {padding: 60px 5px; }
+          .packthc-cta h2 { font-size: 2rem; }
+        }
 
-      .packthc-tab-btn:hover {
-        background: #ff8c42;
-        color: white;
-        border-color: #ff8c42;
-      }
+        /* ========== SERVICES TABS SYSTEM ========== */
+        .packthc-services-tabs-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 50px;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
-      .packthc-tab-btn.active {
-        background: #ff8c42;
-        color: white;
-        border-color: #ff8c42;
-      }
+        /* Desktop Tabs */
+        .packthc-services-tabs-desktop {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
 
-      /* Mobile Dropdown */
-      .packthc-services-tabs-mobile {
-        display: none;
-        width: 100%;
-        max-width: 300px;
-      }
+        .packthc-tab-btn {
+          background: white;
+          border: 2px solid black;
+          padding: 15px 30px;
+          border-radius: 50px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+        }
 
-      .packthc-mobile-dropdown {
-        position: relative;
-        width: 100%;
-      }
+        .packthc-tab-btn:hover {
+          background: #033770;
+          color: white;
+          border-color: #033770;
+        }
 
-      .packthc-mobile-dropdown-btn {
-        width: 100%;
-        background: white;
-        border: 2px solid black;
-        padding: 15px 30px;
-        border-radius: 50px;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        .packthc-tab-btn.active {
+          background: #033770;
+          color: white;
+          border-color: #033770;
+        }
 
-      .packthc-mobile-dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        border: 2px solid black;
-        border-radius: 20px;
-        margin-top: 10px;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px);
-        transition: all 0.3s ease;
-        z-index: 100;
-        max-height: 300px;
-        overflow-y: auto;
-      }
+        /* Mobile Dropdown */
+        .packthc-services-tabs-mobile {
+          display: none;
+          width: 100%;
+          max-width: 300px;
+        }
 
-      .packthc-mobile-dropdown.open .packthc-mobile-dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
+        .packthc-mobile-dropdown {
+          position: relative;
+          width: 100%;
+        }
 
-      .packthc-mobile-tab-item {
-        padding: 15px 20px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border-bottom: 1px solid #eee;
-      }
+        .packthc-mobile-dropdown-btn {
+          width: 100%;
+          background: white;
+          border: 2px solid black;
+          padding: 15px 30px;
+          border-radius: 50px;
+          font-weight: 600;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-      .packthc-mobile-tab-item:last-child {
-        border-bottom: none;
-      }
+        .packthc-mobile-dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: white;
+          border: 2px solid black;
+          border-radius: 20px;
+          margin-top: 10px;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s ease;
+          z-index: 100;
+          max-height: 300px;
+          overflow-y: auto;
+        }
 
-      .packthc-mobile-tab-item:hover {
-        background: #fff9f5;
-      }
+        .packthc-mobile-dropdown.open .packthc-mobile-dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
 
-      .packthc-mobile-tab-item.active {
-        background: #ff8c42;
-        color: white;
-      }
+        .packthc-mobile-tab-item {
+          padding: 15px 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-bottom: 1px solid #eee;
+        }
 
-      /* Service Popup */
-  /* ========== UPDATED SERVICE POPUP ========== */
-  .packthc-service-popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-    padding: 20px;
-  }
-  .packthc-service-popup.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  .packthc-popup-content {
-    background: white;
-    border-radius: 30px;
-    max-width: 1000px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    transform: translateY(50px);
-    transition: 0.4s;
-  }
-  .packthc-service-popup.active .packthc-popup-content {
-    transform: translateY(0);
-  }
-  .packthc-popup-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ff8c42;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 10;
-    transition: 0.3s;
-  }
-  .packthc-popup-close:hover {
-    transform: rotate(90deg);
-    background: #e67a2e;
-  }
+        .packthc-mobile-tab-item:last-child {
+          border-bottom: none;
+        }
 
-  /* Popup Image (850x400px) */
-  .packthc-popup-image-container {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 30px 30px 0 0;
-  }
-  .packthc-popup-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+        .packthc-mobile-tab-item:hover {
+          background: #fff9f5;
+        }
 
-  /* Popup Body */
-  .packthc-popup-body {
-    padding: 40px;
-  }
-  .packthc-popup-header {
-    margin-bottom: 30px;
-  }
-  .packthc-popup-category {
-    color: #ff8c42;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-  }
-  .packthc-popup-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-  .packthc-popup-description {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 40px;
-  }
+        .packthc-mobile-tab-item.active {
+          background: #033770;
+          color: white;
+        }
 
-  /* FAQs Section */
-  .packthc-popup-faqs {
-    margin: 40px 0;
-  }
-  .packthc-faqs-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  .packthc-faq-item {
-    border-bottom: 1px solid #eee;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-  }
-  .packthc-faq-question {
-    font-weight: 600;
-    color: #333;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-  }
-  .packthc-faq-question::after {
-    content: '+';
-    font-size: 1.5rem;
-    color: #ff8c42;
-    transition: transform 0.3s;
-  }
-  .packthc-faq-item.active .packthc-faq-question::after {
-    content: '−';
-    transform: rotate(180deg);
-  }
-  .packthc-faq-answer {
-    color: #666;
-    line-height: 1.6;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-  .packthc-faq-item.active .packthc-faq-answer {
-    max-height: 300px;
-    padding-top: 10px;
-  }
-
-  /* Numbered Tabs Section */
-  .packthc-popup-tabs-section {
-    margin: 40px 0;
-  }
-  .packthc-tabs-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 25px;
-    color: #333;
-  }
-  .packthc-popup-tabs-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  .packthc-popup-tab-btn {
-    background: white;
-    border: 2px solid black;
-    padding: 12px 25px;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-left: 45px;
-  }
-  .packthc-popup-tab-btn::before {
-    content: attr(data-number);
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
-    background: #ff8c42;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 700;
-  }
-  .packthc-popup-tab-btn:hover {
-    background: #fff9f5;
-  }
-  .packthc-popup-tab-btn.active {
-    background: #ff8c42;
-    color: white;
-    border-color: #ff8c42;
-  }
-  .packthc-popup-tab-btn.active::before {
-    background: white;
-    color: #ff8c42;
-  }
-  .packthc-tab-content {
-    display: none;
-    padding: 25px;
-    background: #fff9f5;
-    border-radius: 20px;
-    border: 2px solid #eee;
-  }
-  .packthc-tab-content.active {
-    display: block;
-  }
-  .packthc-tab-content h4 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  .packthc-tab-content p {
-    color: #666;
-    line-height: 1.7;
-  }
-
-  /* Popup CTA Button */
-  .packthc-popup-cta-container {
-    text-align: center;
-    margin-top: 40px;
-    padding-top: 40px;
-    border-top: 2px solid #eee;
-  }
-  .packthc-popup-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 45px;
-    background: #ff8c42;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s;
-    border: none;
-    cursor: pointer;
-  }
-  .packthc-popup-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 140, 66, 0.3);
-    background: #e67a2e;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
+        /* Service Popup */
+    /* ========== UPDATED SERVICE POPUP ========== */
+    .packthc-service-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      padding: 20px;
+    }
+    .packthc-service-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
     .packthc-popup-content {
-      max-width: 95%;
+      background: white;
+      border-radius: 30px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(50px);
+      transition: 0.4s;
     }
+    .packthc-service-popup.active .packthc-popup-content {
+      transform: translateY(0);
+    }
+    .packthc-popup-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #033770;
+      border: none;
+  width: 20px;
+      border-radius: 100px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+    }
+
+    /* Popup Image (850x400px) */
     .packthc-popup-image-container {
-      height: 300px;
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px 30px 0 0;
     }
+    .packthc-popup-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Popup Body */
     .packthc-popup-body {
-      padding: 25px;
+      padding: 40px;
+    }
+    .packthc-popup-header {
+      margin-bottom: 30px;
+    }
+    .packthc-popup-category {
+      color: #033770;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
     .packthc-popup-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .packthc-popup-description {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    /* FAQs Section */
+    .packthc-popup-faqs {
+      margin: 40px 0;
+    }
+    .packthc-faqs-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .packthc-faq-item {
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+    }
+    .packthc-faq-question {
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .packthc-faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: #033770;
+      transition: transform 0.3s;
+    }
+    .packthc-faq-item.active .packthc-faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .packthc-faq-answer {
+      color: #666;
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .packthc-faq-item.active .packthc-faq-answer {
+      max-height: 300px;
+      padding-top: 10px;
+    }
+
+    /* Numbered Tabs Section */
+    .packthc-popup-tabs-section {
+      margin: 40px 0;
+    }
+    .packthc-tabs-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      color: #333;
     }
     .packthc-popup-tabs-container {
-      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
     }
     .packthc-popup-tab-btn {
-      padding: 10px 20px;
-      padding-left: 40px;
+      background: white;
+      border: 2px solid black;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 45px;
+    }
+    .packthc-popup-tab-btn::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      background: #033770;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .packthc-popup-tab-btn:hover {
+      background: #fff9f5;
+    }
+    .packthc-popup-tab-btn.active {
+      background: #033770;
+      color: white;
+      border-color: #033770;
+    }
+    .packthc-popup-tab-btn.active::before {
+      background: white;
+      color: #033770;
+    }
+    .packthc-tab-content {
+      display: none;
+      padding: 25px;
+      background: #fff9f5;
+      border-radius: 20px;
+      border: 2px solid #eee;
+    }
+    .packthc-tab-content.active {
+      display: block;
+    }
+    .packthc-tab-content h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .packthc-tab-content p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Popup CTA Button */
+    .packthc-popup-cta-container {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid #eee;
+    }
+    .packthc-popup-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 45px;
+      background: #033770;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .packthc-popup-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 140, 66, 0.3);
+      background: #033770;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .packthc-popup-content {
+        max-width: 95%;
+      }
+      .packthc-popup-image-container {
+        height: 300px;
+      }
+      .packthc-popup-body {
+        padding: 15px;
+      }
+      .packthc-popup-title {
+        font-size: 3rem;
+      }
+      .packthc-popup-tabs-container {
+        justify-content: center;
+      }
+    }
+
+        /* Service Item */
+        .packthc-service-item { cursor: pointer; }
+        .packthc-service-item.hidden { display: none; }
+
+        /* ========== H2 FIXES ========== */
+        .packthc-page h2,
+        .packthc-page .packthc-section-title h2,
+        .packthc-page .packthc-about h2,
+        .packthc-page .packthc-process h2,
+        .packthc-page .packthc-process-cards h2,
+        .packthc-page .packthc-testimonials .packthc-testimonial-header h2,
+        .packthc-page .packthc-cta h2 {
+          font-weight: 700 !important;
+          margin: 10px 0 20px !important;
+          line-height: 1.2 !important;
+        }
+
+        /* Specific section fixes to prevent theme interference */
+        .packthc-page .packthc-section-title h2 {
+          font-size: 2.5rem !important;
+          text-align: center !important;
+        }
+
+        .packthc-page .packthc-about h2 {
+          font-size: 3.5rem !important;
+        }
+
+        .packthc-page .packthc-process h2 {
+          font-size: 2.5rem !important;
+        }
+
+        .packthc-page .packthc-process-cards h2 {
+          font-size: 2.5rem !important;
+          color: white !important;
+          text-align: center !important;
+        }
+
+        .packthc-page .packthc-testimonials .packthc-testimonial-header h2 {
+          font-size: 2.5rem !important;
+        }
+
+        .packthc-page .packthc-cta h2 {
+          font-size: 3rem !important;
+          color: white !important;
+          text-align: center !important;
+        }
+
+        /* Process Steps Number Fix */
+        .packthc-page .packthc-process-step h3::before {
+          content: attr(data-number) ' ' !important;
+          color: #033770 !important;
+        }
+
+        .packthc-page .packthc-process-card .packthc-card-number {
+          counter-increment: process-card !important;
+        }
+
+        /* Reset counter for process cards */
+        .packthc-page .packthc-process-cards .packthc-cards-grid {
+          counter-reset: process-card 0 !important;
+        }
+
+        .packthc-page .packthc-process-cards .packthc-card-number::before {
+          content: counter(process-card) !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+          .packthc-services-tabs-desktop {
+            display: none;
+          }
+
+          .packthc-services-tabs-mobile {
+            display: block;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .packthc-services-tabs-container {
+            padding: 0 20px;
+          }
+        }
+
+        /* ========== PRICING SECTION ========== */
+  .packthc-popup-pricing-section {
+    margin: 50px auto 0;
+    padding: 0 55px;
+    max-width: 1300px;
+  }
+
+  .packthc-pricing-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .packthc-pricing-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .packthc-pricing-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .packthc-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .packthc-pricing-card {
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #e5e5e5;
+  }
+
+  /* Basic Plan - White */
+  .packthc-pricing-card {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .packthc-pricing-card .packthc-pricing-btn {
+    background: #5b4ec9;
+    color: white;
+    border-color: #5b4ec9;
+  }
+
+  .packthc-pricing-card .packthc-feature-dot {
+    background: #5b4ec9;
+  }
+
+  /* Professional Plan - Dark (style-dark) */
+  .packthc-pricing-card.style-dark {
+    background: #2a2a2a;
+    color: white;
+    border-color: #3a3a3a;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-name,
+  .packthc-pricing-card.style-dark .packthc-pricing-description,
+  .packthc-pricing-card.style-dark .packthc-pricing-features-label {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-price {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-features {
+    color: #ccc;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-btn {
+    background: white;
+    color: #2a2a2a;
+    border-color: white;
+    font-size: 1.5rem;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-btn:hover {
+    background: #f0f0f0;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-feature-dot {
+    background: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-divider {
+    background: #444;
+  }
+
+  /* Enterprise Plan - Gradient (style-gradient) */
+  .packthc-pricing-card.style-gradient {
+    background: linear-gradient(135deg, #0a5ac2 0%, #033770 45%, #01203a 100%);
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-name,
+  .packthc-pricing-card.style-gradient .packthc-pricing-description,
+  .packthc-pricing-card.style-gradient .packthc-pricing-features-label {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-price {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-features {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-btn {
+    background: white;
+    color: #000000;
+    border-color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-feature-dot {
+    background: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-divider {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Featured Plan - Highlight */
+  .packthc-pricing-card.featured {
+    transform: scale(1.05);
+    box-shadow: 
+  0 25px 60px rgba(3, 55, 112, 0.45),
+  0 10px 25px rgba(3, 55, 112, 0.35),
+  0 5px 10px rgba(0, 0, 0, 0.25);
+
+  }
+
+  /* Pricing Name */
+  .packthc-pricing-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+
+  /* Price */
+  .packthc-pricing-price {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .packthc-price-amount {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .packthc-price-period {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* Description */
+  .packthc-pricing-description {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* CTA Button */
+  .packthc-pricing-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .packthc-pricing-btn:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Divider */
+  .packthc-pricing-divider {
+    height: 1px;
+    margin-bottom: 25px;
+    background: #e5e5e5;
+  }
+
+  /* Features Label */
+  .packthc-pricing-features-label {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    opacity: 0.7;
+  }
+
+  /* Features List */
+  .packthc-pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .packthc-pricing-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .packthc-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .packthc-pricing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .packthc-pricing-card.featured {
+      transform: scale(1);
+    }
+
+    .packthc-pricing-card.featured:hover {
+      transform: translateY(-8px);
     }
   }
 
-      /* Service Item */
-      .packthc-service-item { cursor: pointer; }
-      .packthc-service-item.hidden { display: none; }
+  @media (max-width: 768px) {
+    .packthc-pricing-title {
+      font-size: 3.5rem;
+    }
 
-      /* ========== H2 FIXES ========== */
-      .packthc-page h2,
-      .packthc-page .packthc-section-title h2,
-      .packthc-page .packthc-about h2,
-      .packthc-page .packthc-process h2,
-      .packthc-page .packthc-process-cards h2,
-      .packthc-page .packthc-testimonials .packthc-testimonial-header h2,
-      .packthc-page .packthc-cta h2 {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-        font-weight: 900 !important;
-        margin: 10px 0 20px !important;
-        line-height: 1.2 !important;
-      }
+    .packthc-pricing-subtitle {
+      font-size: 1.1rem;
+    }
 
-      /* Specific section fixes to prevent theme interference */
-      .packthc-page .packthc-section-title h2 {
-        font-size: 2.5rem !important;
-        text-align: center !important;
-      }
+    .packthc-pricing-card {
+      padding: 25px;
+    }
 
-      .packthc-page .packthc-about h2 {
-        font-size: 2.5rem !important;
-      }
+    .packthc-price-amount {
+      font-size: 2.2rem;
+    }
+    .packthc-popup-pricing-section{
+      padding: 0 10px;
+    }
+    .packthc-pricing-subtitle{
+      margin-bottom: 10px;
+    }
+    .packthc-pricing-grid{
+      margin-top: 0px;
+    }
+    .packthc-pricing-header{
+      margin-bottom: 20px;
+    }
+  }
 
-      .packthc-page .packthc-process h2 {
-        font-size: 2.5rem !important;
-      }
+        /* Popup Scrollbar - Thin */
+  .packthc-popup-content::-webkit-scrollbar {
+    width: 6px;
+  }
 
-      .packthc-page .packthc-process-cards h2 {
-        font-size: 2.5rem !important;
-        color: white !important;
-        text-align: center !important;
-      }
+  .packthc-popup-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-      .packthc-page .packthc-testimonials .packthc-testimonial-header h2 {
-        font-size: 2.5rem !important;
-      }
+  .packthc-popup-content::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 3px;
+  }
 
-      .packthc-page .packthc-cta h2 {
-        font-size: 3rem !important;
-        color: white !important;
-        text-align: center !important;
-      }
+  .packthc-popup-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
 
-      /* Process Steps Number Fix */
-      .packthc-page .packthc-process-step h3::before {
-        content: attr(data-number) ' ' !important;
-        color: #ff8c42 !important;
-      }
-
-      .packthc-page .packthc-process-card .packthc-card-number {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-        counter-increment: process-card !important;
-      }
-
-      /* Reset counter for process cards */
-      .packthc-page .packthc-process-cards .packthc-cards-grid {
-        counter-reset: process-card 0 !important;
-      }
-
-      .packthc-page .packthc-process-cards .packthc-card-number::before {
-        content: counter(process-card) !important;
-      }
-
-      /* Responsive */
-      @media (max-width: 992px) {
-        .packthc-services-tabs-desktop {
-          display: none;
-        }
-
-        .packthc-services-tabs-mobile {
-          display: block;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .packthc-services-tabs-container {
-          padding: 0 20px;
-        }
-      }
+  /* Firefox */
+  .packthc-popup-content {
+    scrollbar-width: thin;
+    scrollbar-color: #d0d0d0 transparent;
+  }
 </style>
 
 <div class="packthc-page">
@@ -598,7 +894,10 @@
         <button class="packthc-tab-btn active" onclick="filterServices('all', this, 'desktop')">All Services</button>
         {% for block in section.blocks %}
           {% if block.type == 'service_category' %}
-            <button class="packthc-tab-btn" onclick="filterServices('{{ block.settings.category_id }}', this, 'desktop')">
+            <button
+              class="packthc-tab-btn"
+              onclick="filterServices('{{ block.settings.category_id }}', this, 'desktop')"
+            >
               {{ block.settings.category_name }}
             </button>
           {% endif %}
@@ -613,7 +912,9 @@
             <span class="filter-arrow">▼</span>
           </button>
           <div class="packthc-mobile-dropdown-menu">
-            <div class="packthc-mobile-tab-item active" onclick="selectMobileTab('all', 'All Services')">All Services</div>
+            <div class="packthc-mobile-tab-item active" onclick="selectMobileTab('all', 'All Services')">
+              All Services
+            </div>
             {% for block in section.blocks %}
               {% if block.type == 'service_category' %}
                 <div
@@ -706,10 +1007,12 @@
 
         <!-- CTA Button -->
         <div class="packthc-popup-cta-container">
-          <button class="packthc-popup-cta" id="popupCtaBtn">
-            Get Started Now
-            <span>→</span>
-          </button>
+          <a href="{{ block.settings.link | default: '/pages/contact' }}">
+            <button class="packthc-popup-cta" id="popupCtaBtn">
+              Get Started Now
+              <span>→</span>
+            </button>
+          </a>
         </div>
       </div>
     </div>
@@ -762,6 +1065,57 @@
     </div>
   </section>
 
+  <!-- Pricing Section -->
+  <div class="packthc-popup-pricing-section">
+    <div class="packthc-pricing-header">
+      <h3 class="packthc-pricing-title">{{ section.settings.pricing_title }}</h3>
+      <p class="packthc-pricing-subtitle">{{ section.settings.pricing_subtitle }}</p>
+    </div>
+
+    <div class="packthc-pricing-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'pricing' %}
+          <div class="packthc-pricing-card{% if block.settings.plan_featured %} featured{% endif %}{% if block.settings.plan_style %} {{ block.settings.plan_style }}{% endif %}">
+            <div class="packthc-pricing-name">{{ block.settings.plan_name }}</div>
+
+            <div class="packthc-pricing-price">
+              <span class="packthc-price-amount">{{ block.settings.plan_price }}</span>
+              <span class="packthc-price-period" id="period-{{ forloop.index }}">
+                {{- section.settings.monthly_label -}}
+              </span>
+            </div>
+
+            <p class="packthc-pricing-description">{{ block.settings.plan_description }}</p>
+
+            <button
+              class="packthc-pricing-btn"
+              onclick="window.location.href='{{ section.settings.cta_link | default: '/pages/contact' }}'"
+            >
+              {{ block.settings.plan_cta_text }}
+            </button>
+
+            <div class="packthc-pricing-divider"></div>
+
+            <div class="packthc-pricing-features-label">{{ section.settings.features_label }}</div>
+
+            <div class="packthc-pricing-features">
+              {% assign features = block.settings.plan_features | split: ';' %}
+              {% for feature in features %}
+                {% assign trimmed = feature | strip %}
+                {% if trimmed != blank %}
+                  <div class="packthc-pricing-feature">
+                    <span class="packthc-feature-dot"></span>
+                    {{ trimmed }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
   <!-- Process Section -->
   <section class="packthc-process">
     <div class="packthc-process-grid">
@@ -776,7 +1130,7 @@
 
         {% for block in section.blocks %}
           {% if block.type == 'process_step' %}
-            <div class="packthc-process-step" onclick="toggleStep(this)">
+            <div class="packthc-process-step{{ forloop.first | prepend: ' active' }}" onclick="toggleStep(this)">
               <h3 data-number="{{ step_counter }}">
                 {{ block.settings.title }}
                 <span class="packthc-step-toggle">▼</span>
@@ -919,6 +1273,13 @@
       img.classList.toggle('active', i === currentTestimonial);
     });
   }
+  // ========== INITIALIZE FIRST PROCESS STEP ==========
+document.addEventListener('DOMContentLoaded', function() {
+  const firstStep = document.querySelector('.packthc-process-step');
+  if (firstStep) {
+    firstStep.classList.add('active');
+  }
+});
   
   function nextTestimonial() {
     currentTestimonial = (currentTestimonial + 1) % testimonials.length;
@@ -1217,6 +1578,24 @@ function closeServicePopup() {
       "label": "Process Title",
       "default": "How PackTHC Studio Brings Brands To Life"
     },
+    {
+      "type": "text",
+      "id": "pricing_title",
+      "label": "Pricing Title",
+      "default": "Plans That Fit Your Business"
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_subtitle",
+      "label": "Pricing Subtitle",
+      "default": "From startups to enterprises, find the right solution to streamline your HR processes"
+    },
+    {
+      "type": "text",
+      "id": "features_label",
+      "label": "Features Section Label",
+      "default": "WHAT YOU WILL GET"
+    },
     { "type": "textarea", "id": "process_text", "label": "Process Text" },
     { "type": "text", "id": "cards_badge", "label": "Process Cards Badge", "default": "OUR PROCESS" },
     {
@@ -1285,6 +1664,66 @@ function closeServicePopup() {
       "settings": [
         { "type": "text", "id": "title", "label": "Card Title" },
         { "type": "textarea", "id": "description", "label": "Card Description" }
+      ]
+    },
+    {
+      "type": "pricing",
+      "name": "Pricing Plan",
+      "settings": [
+        {
+          "type": "text",
+          "id": "plan_name",
+          "label": "Plan Name",
+          "placeholder": "e.g., Basic Plan"
+        },
+        {
+          "type": "text",
+          "id": "plan_price",
+          "label": "Price",
+          "placeholder": "e.g., $29"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_description",
+          "label": "Plan Description",
+          "placeholder": "e.g., Perfect for small businesses just starting out"
+        },
+        {
+          "type": "select",
+          "id": "plan_style",
+          "label": "Card Style",
+          "options": [
+            {
+              "value": "",
+              "label": "White (Basic)"
+            },
+            {
+              "value": "style-dark",
+              "label": "Dark (Professional)"
+            },
+            {
+              "value": "style-gradient",
+              "label": "Gradient (Enterprise)"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "plan_featured",
+          "label": "Highlight as Featured Plan (scales up)"
+        },
+        {
+          "type": "text",
+          "id": "plan_cta_text",
+          "label": "CTA Button Text",
+          "default": "Get Started"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_features",
+          "label": "Features (one per line)",
+          "placeholder": "Feature 1\nFeature 2\nFeature 3\nFeature 4"
+        }
       ]
     },
     {

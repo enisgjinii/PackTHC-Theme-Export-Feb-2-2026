@@ -1791,7 +1791,7 @@ summary::-webkit-details-marker {
 }
 
 .rte :where(ul, ol) {
-  list-style-position: inside;
+ /* list-style-position: inside; */
   padding-inline-start: 2rem;
   margin-block: 2rem;
 }

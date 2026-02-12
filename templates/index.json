@@ -737,84 +737,6 @@
         "divider_width": "fixed"
       }
     },
-    "home_page_slider_second_DWbrcW": {
-      "type": "home-page-slider-second",
-      "blocks": {
-        "feature_card_8EKrBQ": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/25_Cost_Reduction.webp",
-            "feature_title": "25%+ Cost Reduction"
-          }
-        },
-        "feature_card_fXgdKy": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Fast_Turnaround_Times.webp",
-            "feature_title": "Fast Turnaround Times"
-          }
-        },
-        "feature_card_RWe8Aj": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Custom_THC_Packaging_Solutions.webp",
-            "feature_title": "Custom PackTHC Solutions"
-          }
-        },
-        "feature_card_pTw4aE": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Sustainability_Compliance.webp",
-            "feature_title": "Sustainability & Compliance"
-          }
-        },
-        "feature_card_aCEbMc": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Dedicated_Project_Manager.webp",
-            "feature_title": "Dedicated Project Manager"
-          }
-        },
-        "feature_card_cDanYW": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Scalable_Supply_Chain.webp",
-            "feature_title": "Scalable Supply Chain"
-          }
-        },
-        "feature_card_qg88FV": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Quality_Assurance_Guaranteed.webp",
-            "feature_title": "Quality Assurance Guaranteed"
-          }
-        },
-        "feature_card_mXahEG": {
-          "type": "feature_card",
-          "settings": {
-            "feature_image": "shopify://shop_images/Risk-Free_Money-Back_Guarantee.webp",
-            "feature_title": "Risk-Free Money-Back Guarantee"
-          }
-        }
-      },
-      "block_order": [
-        "feature_card_8EKrBQ",
-        "feature_card_fXgdKy",
-        "feature_card_RWe8Aj",
-        "feature_card_pTw4aE",
-        "feature_card_aCEbMc",
-        "feature_card_cDanYW",
-        "feature_card_qg88FV",
-        "feature_card_mXahEG"
-      ],
-      "disabled": true,
-      "name": "PackTHC Features Carousel",
-      "settings": {
-        "subheading": "Manufactured by PackTHC. Trusted to Perform.",
-        "main_title": "Meet PackTHC Packaging",
-        "description": "In-house manufacturing for compliant, scalable, high-performance packaging."
-      }
-    },
     "favorite_products_6Tg9Pn": {
       "type": "favorite-products",
       "blocks": {
@@ -1025,7 +947,7 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 0
       }
     },
     "value_order_aFJBd9": {
@@ -1120,6 +1042,7 @@
         },
         "video_xrcpim": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/injection mold vdo (1).mp4",
             "video_url": "",
@@ -1134,6 +1057,7 @@
         },
         "video_dUMDWh": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/injection mold vdo (2).mp4",
             "video_url": "",
@@ -1148,6 +1072,7 @@
         },
         "video_GTFEbR": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/injection mold vdo (3).mp4",
             "video_url": "",
@@ -1162,7 +1087,6 @@
         },
         "image_card_mL7WWJ": {
           "type": "image_card",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/Plastic_Preroll_Tubes.webp",
@@ -1204,7 +1128,6 @@
         },
         "image_card_YPN9KK": {
           "type": "image_card",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/Chuuby_Gorilla.webp",
@@ -1246,7 +1169,6 @@
         },
         "image_card_aDYeRf": {
           "type": "image_card",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-inverse",
             "image": "shopify://shop_images/Avaitor.webp",
@@ -1572,52 +1494,6 @@
         "divider_width": "fixed",
         "padding_top": 30,
         "padding_bottom": 30
-      }
-    },
-    "tab_system_ahxiDR": {
-      "type": "tab-system",
-      "blocks": {
-        "guarantee_tab_YJbcqC": {
-          "type": "guarantee_tab",
-          "settings": {
-            "tab_name": "Price Beat",
-            "badge_image": "shopify://shop_images/ChatGPT_Image_Aug_15_2025_12_05_13_AM.webp",
-            "content_highlight": "Price beat",
-            "content_rest": "or 1,000 units on us",
-            "description": "If we don't beat your price instantly, share your invoice and give us 7 days"
-          }
-        },
-        "guarantee_tab_8mQijA": {
-          "type": "guarantee_tab",
-          "settings": {
-            "tab_name": "Order Protection",
-            "badge_image": "shopify://shop_images/ChatGPT_Image_Aug_15_2025_12_05_13_AM_041f913d-0f92-4c3f-928b-05ba11be8835.webp",
-            "content_highlight": "Specs & color match",
-            "content_rest": "or a free reprint",
-            "description": "Only pay 50% downpayment, the rest when you approve final production visuals."
-          }
-        },
-        "guarantee_tab_Xg4efH": {
-          "type": "guarantee_tab",
-          "settings": {
-            "tab_name": "Timeline Security",
-            "badge_image": "shopify://shop_images/ChatGPT_Image_Aug_15_2025_12_05_13_AM_70c827e4-70a4-4402-9d68-67feabd5c070.webp",
-            "content_highlight": "On-Time Arrival",
-            "content_rest": "or Fast Delivery",
-            "description": "If we exceed delivery timelines by 2 weeks. 20% refund credit, <strong>no questions asked</strong>"
-          }
-        }
-      },
-      "block_order": [
-        "guarantee_tab_YJbcqC",
-        "guarantee_tab_8mQijA",
-        "guarantee_tab_Xg4efH"
-      ],
-      "disabled": true,
-      "name": "Triple Guarantee",
-      "settings": {
-        "title_highlight": "Right-First-Time",
-        "title_rest": "Triple Guarantee"
       }
     },
     "packaging_wins_jPp9if": {
@@ -2025,64 +1901,120 @@
         "padding_bottom": 36
       }
     },
-    "proven_record_mjLGBP": {
-      "type": "proven-record",
+    "lookbook_slider_TqGPbr": {
+      "type": "lookbook-slider",
       "blocks": {
-        "stat_item_jkij4E": {
-          "type": "stat_item",
+        "lookbook_card_kXfLzV": {
+          "type": "lookbook_card",
           "settings": {
-            "stat_number": "1M",
-            "stat_description": "units manufactured since inception with consistent, brand-true quality control"
+            "product_list": [],
+            "width": 59,
+            "width_mobile": 90,
+            "video": "shopify://files/videos/0212(2)-----.mp4",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6"
           }
         },
-        "stat_item_ykPe9m": {
-          "type": "stat_item",
+        "lookbook_card_jRNNbt": {
+          "type": "lookbook_card",
           "settings": {
-            "stat_number": "1+",
-            "stat_description": "strategically located factories ensuring faster lead times and lower freight costs."
+            "product_list": [],
+            "width": 29,
+            "width_mobile": 65,
+            "image": "shopify://shop_images/7_2f777e32-07d8-40d5-8132-11f018a158a7.png",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
           }
         },
-        "stat_item_mWMiGp": {
-          "type": "stat_item",
+        "lookbook_card_JDMTgm": {
+          "type": "lookbook_card",
           "settings": {
-            "stat_number": "1+",
-            "stat_description": "global compliance certifications covering food safety, CR, and sustainability"
+            "product_list": [],
+            "width": 29,
+            "width_mobile": 65,
+            "image": "shopify://shop_images/8_6b5822fd-ae9a-49a8-919b-cdde8681b0f8.png",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6"
           }
         },
-        "stat_item_anHiG9": {
-          "type": "stat_item",
+        "lookbook_card_nHzV3T": {
+          "type": "lookbook_card",
           "settings": {
-            "stat_number": "1+",
-            "stat_description": "FMCG brands trust us to deliver on-time, every order"
+            "product_list": [],
+            "width": 29,
+            "width_mobile": 65,
+            "image": "shopify://shop_images/9_f93806d0-6728-481d-85db-99e3f445ca31.png",
+            "heading": "",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6"
           }
         },
-        "stat_item_4WwXeJ": {
-          "type": "stat_item",
+        "lookbook_card_BPqUW3": {
+          "type": "lookbook_card",
           "settings": {
-            "stat_number": "1%",
-            "stat_description": "average client cost savings without compromising materials or finishes"
-          }
-        },
-        "stat_item_8Ecxnn": {
-          "type": "stat_item",
-          "settings": {
-            "stat_number": "1%",
-            "stat_description": "on-time delivery rate, even during peak seasonal demand periods"
+            "product_list": [],
+            "width": 29,
+            "width_mobile": 65,
+            "image": "shopify://shop_images/10_a6301d83-7031-4226-a276-00ae6a8201ab.png",
+            "heading": "fgdfhg",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4"
           }
         }
       },
       "block_order": [
-        "stat_item_jkij4E",
-        "stat_item_ykPe9m",
-        "stat_item_mWMiGp",
-        "stat_item_anHiG9",
-        "stat_item_4WwXeJ",
-        "stat_item_8Ecxnn"
+        "lookbook_card_kXfLzV",
+        "lookbook_card_jRNNbt",
+        "lookbook_card_JDMTgm",
+        "lookbook_card_nHzV3T",
+        "lookbook_card_BPqUW3"
       ],
-      "disabled": true,
-      "name": "Track Record Stats",
+      "name": "Video Slider Manufacture",
       "settings": {
-        "section_title": "Proven Track Record, Measurable Results"
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Your Direct Manufacturing Partner - No Middlemen, No Delays",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h3",
+        "description": "",
+        "description_size": "text-base",
+        "button_label": "Learn More",
+        "button_link": "shopify://pages/packthc-in-house-manufacturing-hub",
+        "button_style": "btn--primary",
+        "button_icon": "caret-right",
+        "column_gap": "2xs",
+        "enable_slider": true,
+        "slide_height": "medium",
+        "enable_swiper_mobile": true,
+        "show_progress_bar": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "scrolling_gallery_image_nqJeBK": {
@@ -2550,7 +2482,6 @@
     "collection_list_Azm9te",
     "pronlems_solutions_C88rTB",
     "collection_tabs_VexkkR",
-    "home_page_slider_second_DWbrcW",
     "favorite_products_6Tg9Pn",
     "trusted_section_XVhqYM",
     "lookbook_slider_9zCdQJ",
@@ -2558,11 +2489,10 @@
     "custom_content_JxRy7x",
     "packthc_video_section_XyjTMi",
     "buttons_with_icon_7zH9F3",
-    "tab_system_ahxiDR",
     "packaging_wins_jPp9if",
     "custom_content_hUwAKV",
     "slider_with_multicolumn_aJwbrc",
-    "proven_record_mjLGBP",
+    "lookbook_slider_TqGPbr",
     "scrolling_gallery_image_nqJeBK",
     "testimonials_mLThk7",
     "scrolling_promotion_9Hng8m",

@@ -11,6 +11,21 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "age_verification_VaWbDf": {
+      "type": "age-verification",
+      "name": "Age Verification Popup",
+      "settings": {
+        "delay_time": 0,
+        "heading": "Are you 21 or older?",
+        "description": "You must be 21 years of age or older to enter this site. Please confirm your age.",
+        "approve_button": "YES",
+        "decline_button": "NO",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
+    },
     "multicolumn_icon_rTKNUF": {
       "type": "multicolumn-icon",
       "blocks": {
@@ -266,6 +281,7 @@
     }
   },
   "order": [
+    "age_verification_VaWbDf",
     "multicolumn_icon_rTKNUF",
     "footer",
     "mobile_sticky_bar_aYhgJK"

@@ -413,6 +413,7 @@
                               </ul>
                             {%- endif -%}
                             <div>
+                              {% comment %}
                               <div class="price font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
                                 {%- liquid
                                   assign money_price = item.original_price | money
@@ -437,6 +438,33 @@
                                   {{- money_price -}}
                                 {%- endif -%}
                               </div>
+                              {% endcomment %}
+                               <span data-hulkapps-ci-price="" data-key="{{ item.key }}">
+                                 <div class="price font-body-bolder{% if item.original_price != item.final_price %} price--on-sale{% endif %}">
+                                {%- liquid
+                                  assign money_price = item.original_price | money
+                                  if settings.currency_code_enabled
+                                    assign money_price = item.original_price | money_with_currency
+                                  endif
+                                -%}
+                                {%- if item.original_price != item.final_price -%}
+                                  <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                                  <s class="font-body text-sm text-subtext">{{ money_price }}</s>
+                                  <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                                  <span class="price__regular">
+                                    {%- liquid 
+                                      if settings.currency_code_enabled
+                                        echo item.final_price | money_with_currency
+                                      else
+                                        echo item.final_price | money
+                                      endif  
+                                    -%}
+                                  </span>
+                                {%- else -%}
+                                  {{- money_price -}}
+                                {%- endif -%}
+                              </div>
+                              </span>
                               {%- if item.variant.available and item.unit_price_measurement -%}
                                 <div>
                                 <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
