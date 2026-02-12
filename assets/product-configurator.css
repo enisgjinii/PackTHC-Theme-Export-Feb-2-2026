@@ -3,7 +3,8 @@
    ============================================================ */
 
 /* ---------- Layout / Wrapper ---------- */
-.configurator-section {
+.configurator-section,
+.product-configurator-section {
   --configurator-accent: var(--color-accent, #004A26);
   --configurator-accent-hover: #003A1E;
   --configurator-bg: #f8fafb;
@@ -147,22 +148,22 @@
 }
 
 .btn-configurator--primary {
-  background: var(--configurator-accent);
+  background: var(--configurator-accent, #004A26);
   color: #fff;
-  border-color: var(--configurator-accent);
+  border-color: var(--configurator-accent, #004A26);
 }
 
 .btn-configurator--primary:hover {
-  background: var(--configurator-accent-hover);
-  border-color: var(--configurator-accent-hover);
+  background: var(--configurator-accent-hover, #003A1E);
+  border-color: var(--configurator-accent-hover, #003A1E);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 74, 38, 0.25);
 }
 
 .btn-configurator--secondary {
   background: #fff;
-  color: var(--configurator-accent);
-  border-color: var(--configurator-accent);
+  color: var(--configurator-accent, #004A26);
+  border-color: var(--configurator-accent, #004A26);
 }
 
 .btn-configurator--secondary:hover {
@@ -189,6 +190,35 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+
+/* ---------- Add to Cart button ---------- */
+.btn-add-to-cart {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.btn-add-to-cart:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-add-to-cart__spinner {
+  animation: configurator-spin 0.8s linear infinite;
+}
+
+.btn-add-to-cart__spinner.hidden {
+  display: none;
+}
+
+.btn-add-to-cart--success {
+  background: #059669 !important;
+  border-color: #059669 !important;
+}
+
+@keyframes configurator-spin {
+  to { transform: rotate(360deg); }
 }
 
 /* ---------- Toolbar ---------- */

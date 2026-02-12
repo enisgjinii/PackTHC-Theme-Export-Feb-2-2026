@@ -275,6 +275,68 @@
       });
     }
 
+    // ── Direct Add to Cart button (in product-info-bar) ──
+    const addToCartBtn = sectionEl.querySelector('.btn-add-to-cart');
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener('click', async function () {
+        var variantId = parseVariantId(addToCartBtn.getAttribute('data-variant-id') || productData.variantId);
+        if (!variantId) {
+          showToast('Error: No product variant selected.', { type: 'error' });
+          return;
+        }
+
+        if (isAddingToCart) {
+          showToast('Already adding to cart…', { type: 'info', duration: 2000 });
+          return;
+        }
+
+        var now = Date.now();
+        if (now - lastCartAddTs < CART_ADD_COOLDOWN) {
+          showToast('Please wait a moment before adding again.', { type: 'info', duration: 2000 });
+          return;
+        }
+
+        isAddingToCart = true;
+        lastCartAddTs = now;
+
+        // UI: show spinner on button
+        var btnText = addToCartBtn.querySelector('.btn-add-to-cart__text');
+        var btnSpinner = addToCartBtn.querySelector('.btn-add-to-cart__spinner');
+        if (btnText) btnText.textContent = 'Adding…';
+        if (btnSpinner) btnSpinner.classList.remove('hidden');
+        addToCartBtn.disabled = true;
+
+        var payload = {
+          id: variantId,
+          quantity: 1,
+          properties: {},
+        };
+
+        try {
+          await addToCartWithRetry(payload);
+          isAddingToCart = false;
+          showToast('Product added to cart!', { type: 'success' });
+          refreshCartCount();
+
+          // Briefly show success state
+          if (btnText) btnText.textContent = 'Added ✓';
+          addToCartBtn.classList.add('btn-add-to-cart--success');
+          setTimeout(function () {
+            if (btnText) btnText.textContent = 'Add to Cart';
+            if (btnSpinner) btnSpinner.classList.add('hidden');
+            addToCartBtn.disabled = false;
+            addToCartBtn.classList.remove('btn-add-to-cart--success');
+          }, 2000);
+        } catch (err) {
+          isAddingToCart = false;
+          if (btnText) btnText.textContent = 'Add to Cart';
+          if (btnSpinner) btnSpinner.classList.add('hidden');
+          addToCartBtn.disabled = false;
+          showToast('Failed to add to cart: ' + err.message, { type: 'error' });
+        }
+      });
+    }
+
     // ── Listen for postMessage from iframe ──
     window.addEventListener('message', async function handler(event) {
       if (!event.data || !event.data.type) return;
