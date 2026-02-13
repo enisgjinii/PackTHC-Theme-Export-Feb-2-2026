@@ -4,7 +4,31 @@
   assign iframe_height = section.settings.iframe_height | default: 800
   assign show_header = section.settings.show_header
   assign show_product_bar = section.settings.show_product_bar
+
+  assign _require_tag = settings.configurator_require_tag
+  assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
+  assign _product_has_model = false
+
+  if product == blank
+    assign _product_has_model = true
+  elsif _require_tag
+    for tag in product.tags
+      assign _tag_lower = tag | downcase
+      assign _model_tag_lower = _model_tag | downcase
+      if _tag_lower == _model_tag_lower
+        assign _product_has_model = true
+        break
+      endif
+    endfor
+  else
+    assign _product_has_model = true
+  endif
 -%}
+
+{%- unless _product_has_model -%}
+  {%- comment -%} Product doesn't have a 3D model — hide configurator section entirely {%- endcomment -%}
+  <style>{{ section_id }} { display: none !important; }</style>
+{%- endunless -%}
 
 {{ 'product-configurator.css' | asset_url | stylesheet_tag }}
 

@@ -1944,6 +1944,20 @@
         "id": "configurator_show_badge",
         "label": "Show 'Powered by PackTHC Studio' badge",
         "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "configurator_require_tag",
+        "label": "Only show button on tagged products",
+        "default": true,
+        "info": "When enabled, the 'Customize in 3D' button only appears on products that have the tag specified below."
+      },
+      {
+        "type": "text",
+        "id": "configurator_product_tag",
+        "label": "3D Model Tag",
+        "default": "3d-customizable",
+        "info": "Products with this tag will show the 'Customize in 3D' button. Add this tag to any product that has a 3D model."
       }
     ]
   }

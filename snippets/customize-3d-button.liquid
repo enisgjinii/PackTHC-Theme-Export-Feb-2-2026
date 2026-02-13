@@ -18,9 +18,26 @@
   assign _page_url = configurator_page | default: '/pages/' | append: _page_handle
   assign _btn_text = button_text | default: settings.configurator_button_text | default: 'Customize in 3D'
   assign _show_badge = show_badge | default: settings.configurator_show_badge | default: true
+
+  assign _require_tag = settings.configurator_require_tag
+  assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
+  assign _has_3d_tag = false
+
+  if _require_tag
+    for tag in _product.tags
+      assign _tag_lower = tag | downcase
+      assign _model_tag_lower = _model_tag | downcase
+      if _tag_lower == _model_tag_lower
+        assign _has_3d_tag = true
+        break
+      endif
+    endfor
+  else
+    assign _has_3d_tag = true
+  endif
 -%}
 
-{%- if _product != blank and _enabled -%}
+{%- if _product != blank and _enabled and _has_3d_tag -%}
   {%- capture _configurator_link -%}
     {{ _page_url }}?product={{ _product.handle }}&product_id={{ _product.id }}&variant_id={{ _product.selected_or_first_available_variant.id }}&title={{ _product.title | url_encode }}&sku={{ _product.selected_or_first_available_variant.sku | url_encode }}&vendor={{ _product.vendor | url_encode }}&image={{ _product.featured_image | image_url: width: 400 | url_encode }}&price={{ _product.selected_or_first_available_variant.price | money_without_currency | url_encode }}
   {%- endcapture -%}
