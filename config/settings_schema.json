@@ -1949,8 +1949,8 @@
         "type": "checkbox",
         "id": "configurator_require_tag",
         "label": "Only show button on tagged products",
-        "default": true,
-        "info": "When enabled, the 'Customize in 3D' button only appears on products that have the tag specified below."
+        "default": false,
+        "info": "When enabled, the 'Customize in 3D' button only appears on products that have the tag specified below. When disabled, the button appears on ALL products."
       },
       {
         "type": "text",
