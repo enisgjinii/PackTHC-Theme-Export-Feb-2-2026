@@ -5,23 +5,28 @@
   assign show_header = section.settings.show_header
   assign show_product_bar = section.settings.show_product_bar
 
-  assign _require_tag = settings.configurator_require_tag
+  assign _detect_mode = settings.configurator_detect_mode | default: 'auto'
   assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
   assign _product_has_model = false
 
   if product == blank
     assign _product_has_model = true
-  elsif _require_tag
-    for tag in product.tags
-      assign _tag_lower = tag | downcase
-      assign _model_tag_lower = _model_tag | downcase
-      if _tag_lower == _model_tag_lower
-        assign _product_has_model = true
-        break
-      endif
-    endfor
   else
-    assign _product_has_model = true
+    case _detect_mode
+      when 'all'
+        assign _product_has_model = true
+      when 'auto'
+        assign _product_has_model = true
+      when 'tag'
+        for tag in product.tags
+          assign _tag_lower = tag | downcase
+          assign _model_tag_lower = _model_tag | downcase
+          if _tag_lower == _model_tag_lower
+            assign _product_has_model = true
+            break
+          endif
+        endfor
+    endcase
   endif
 -%}
 

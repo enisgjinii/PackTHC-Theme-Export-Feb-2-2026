@@ -1946,18 +1946,23 @@
         "default": true
       },
       {
-        "type": "checkbox",
-        "id": "configurator_require_tag",
-        "label": "Only show button on tagged products",
-        "default": false,
-        "info": "When enabled, the 'Customize in 3D' button only appears on products that have the tag specified below. When disabled, the button appears on ALL products."
+        "type": "select",
+        "id": "configurator_detect_mode",
+        "label": "3D Button Detection Mode",
+        "default": "auto",
+        "options": [
+          { "value": "auto", "label": "Auto-detect (recommended)" },
+          { "value": "tag", "label": "Only tagged products" },
+          { "value": "all", "label": "Show on all products" }
+        ],
+        "info": "Auto-detect: automatically checks if a product matches any 3D model category. Tag: only shows on products with a specific tag. All: shows on every product."
       },
       {
         "type": "text",
         "id": "configurator_product_tag",
-        "label": "3D Model Tag",
+        "label": "3D Model Tag (for 'tag' mode)",
         "default": "3d-customizable",
-        "info": "Products with this tag will show the 'Customize in 3D' button. Add this tag to any product that has a 3D model."
+        "info": "Only used when detection mode is 'tag'. Products with this tag will show the 'Customize in 3D' button."
       }
     ]
   }

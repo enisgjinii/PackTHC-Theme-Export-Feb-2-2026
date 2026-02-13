@@ -10,7 +10,7 @@
 {
   "current": {
     "configurator_enabled": true,
-    "configurator_require_tag": false,
+    "configurator_detect_mode": "auto",
     "enable_back_to_top": false,
     "logo": "shopify://shop_images/PACKTHC_WHITE_LOGO.webp",
     "logo_width": 100,
