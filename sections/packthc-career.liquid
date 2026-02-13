@@ -1,0 +1,1058 @@
+{% comment %}
+  PackTHC Careers Page
+  Template: page.careers.liquid
+  Schema-driven with editable blocks
+{% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --color-bg: {{ section.settings.bg_color }};
+    --color-text: {{ section.settings.text_color }};
+    --color-accent: {{ section.settings.accent_color }};
+    --color-card: {{ section.settings.card_color }};
+    --color-muted: {{ section.settings.muted_color }};
+    --color-border: {{ section.settings.border_color }};
+    --font-heading: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .careers-page {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─────────────────────────────────────── */
+  .hero {
+    position: relative;
+    padding: 100px 5% 80px;
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--color-accent);
+  }
+
+  .hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(52px, 9vw, 120px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+    margin-bottom: 28px;
+  }
+
+  .hero-title span {
+    color: var(--color-accent);
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--color-muted);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-accent);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--color-text);
+    transform: translateY(-2px);
+  }
+
+  /* ─── SECTION WRAPPER ─────────────────────────── */
+  .section-wrap {
+    padding: 80px 5%;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 58px);
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    margin-bottom: 48px;
+    line-height: 1;
+  }
+
+  /* ─── CULTURE PILLS ───────────────────────────── */
+  .culture-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .culture-pill {
+    border: 1px solid var(--color-border);
+    padding: 20px 28px;
+    flex: 1 1 calc(50% - 8px);
+    min-width: 220px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .culture-pill::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+
+  .culture-pill:hover::before { transform: scaleY(1); }
+  .culture-pill:hover { background: var(--color-card); }
+
+  .culture-pill strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 6px;
+  }
+
+  .culture-pill p {
+    font-size: 15px;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── WHO SHOULD APPLY ────────────────────────── */
+  .traits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+  }
+
+  .trait-item {
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    margin: -1px 0 0 -1px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: background 0.2s ease;
+  }
+
+  .trait-item:hover { background: var(--color-card); }
+
+  .trait-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+    opacity: 0.6;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .trait-text {
+    font-size: 15px;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── JOBS GRID ───────────────────────────────── */
+  .jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+  }
+
+  .job-card {
+    background: var(--color-bg);
+    padding: 36px 32px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .job-card:hover { background: var(--color-card); }
+
+  .job-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .job-title {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    letter-spacing: 0.03em;
+    color: var(--color-text);
+    line-height: 1.1;
+    max-width: 80%;
+  }
+
+  .job-desc {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .job-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+  }
+
+  .job-tag.accent {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* ─── WHY JOIN ────────────────────────────────── */
+  .perks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .perk-card {
+    background: var(--color-card);
+    padding: 28px 24px;
+    border-left: 3px solid var(--color-accent);
+    transition: transform 0.2s;
+  }
+
+  .perk-card:hover { transform: translateX(4px); }
+
+  .perk-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .perk-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
+
+  .perk-text {
+    font-size: 14px;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── APPLY CTA ───────────────────────────────── */
+  .apply-section {
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .apply-section::before {
+    content: 'APPLY';
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: 280px;
+    color: var(--color-accent);
+    opacity: 0.03;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .apply-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(40px, 7vw, 90px);
+    color: var(--color-text);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+
+  .apply-sub {
+    font-size: 16px;
+    color: var(--color-muted);
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .apply-email-display {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .apply-steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 44px;
+    position: relative;
+  }
+
+  .apply-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    padding: 10px 18px;
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  .apply-step span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-accent);
+  }
+
+  .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-accent);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .apply-btn:hover {
+    background: var(--color-text);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+    .culture-pill { flex: 1 1 100%; }
+    .hero { padding: 70px 5% 60px; }
+    .section-wrap { padding: 60px 5%; }
+    .apply-section { padding: 70px 5%; }
+    .apply-section::before { font-size: 120px; }
+  }
+</style>
+
+<div class="careers-page" id="packthc-careers">
+
+  {%- comment %} ── HERO ── {% endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'hero' -%}
+      <section class="hero" {{ block.shopify_attributes }}>
+        <p class="hero-tag">{{ block.settings.tag_text }}</p>
+        <h1 class="hero-title">
+          {{ block.settings.headline_line1 }}<br>
+          <span>{{ block.settings.headline_accent }}</span>
+        </h1>
+        <p class="hero-subtitle">{{ block.settings.subtitle }}</p>
+        <a href="#open-roles" class="hero-cta">
+          {{ block.settings.cta_label }} →
+        </a>
+      </section>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment %} ── CULTURE ── {% endcomment -%}
+  {%- assign culture_blocks = section.blocks | where: 'type', 'culture_item' -%}
+  {%- if culture_blocks.size > 0 -%}
+    <section class="section-wrap">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'culture_heading' -%}
+          <p class="section-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</p>
+          <h2 class="section-heading">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="culture-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'culture_item' -%}
+            <div class="culture-pill" {{ block.shopify_attributes }}>
+              <strong>{{ block.settings.title }}</strong>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment %} ── WHO SHOULD APPLY ── {% endcomment -%}
+  {%- assign trait_blocks = section.blocks | where: 'type', 'trait_item' -%}
+  {%- if trait_blocks.size > 0 -%}
+    <section class="section-wrap">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'traits_heading' -%}
+          <p class="section-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</p>
+          <h2 class="section-heading">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="traits-list">
+        {%- assign t_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trait_item' -%}
+            {%- assign t_index = t_index | plus: 1 -%}
+            <div class="trait-item" {{ block.shopify_attributes }}>
+              <span class="trait-num">0{{ t_index }}</span>
+              <p class="trait-text">{{ block.settings.text }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment %} ── OPEN ROLES ── {% endcomment -%}
+  {%- assign job_blocks = section.blocks | where: 'type', 'job_card' -%}
+  {%- if job_blocks.size > 0 -%}
+    <section class="section-wrap" id="open-roles">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'jobs_heading' -%}
+          <p class="section-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</p>
+          <h2 class="section-heading">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="jobs-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'job_card' -%}
+            <div class="job-card" {{ block.shopify_attributes }}>
+              <div class="job-card-top">
+                <h3 class="job-title">{{ block.settings.title }}</h3>
+              </div>
+              <p class="job-desc">{{ block.settings.description }}</p>
+              <div class="job-tags">
+                {%- if block.settings.tag1 != blank -%}
+                  <span class="job-tag accent">{{ block.settings.tag1 }}</span>
+                {%- endif -%}
+                {%- if block.settings.tag2 != blank -%}
+                  <span class="job-tag">{{ block.settings.tag2 }}</span>
+                {%- endif -%}
+                {%- if block.settings.tag3 != blank -%}
+                  <span class="job-tag">{{ block.settings.tag3 }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment %} ── WHY JOIN ── {% endcomment -%}
+  {%- assign perk_blocks = section.blocks | where: 'type', 'perk_card' -%}
+  {%- if perk_blocks.size > 0 -%}
+    <section class="section-wrap">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'perks_heading' -%}
+          <p class="section-label" {{ block.shopify_attributes }}>{{ block.settings.label }}</p>
+          <h2 class="section-heading">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+      {%- endfor -%}
+      <div class="perks-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'perk_card' -%}
+            <div class="perk-card" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <div class="perk-icon">{{ block.settings.icon }}</div>
+              {%- endif -%}
+              <p class="perk-title">{{ block.settings.title }}</p>
+              <p class="perk-text">{{ block.settings.text }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment %} ── APPLY CTA ── {% endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'apply_cta' -%}
+      <section class="apply-section" {{ block.shopify_attributes }}>
+        <h2 class="apply-heading">{{ block.settings.heading }}</h2>
+        <p class="apply-sub">{{ block.settings.subtext }}</p>
+        <p class="apply-email-display">📩 {{ block.settings.email }}</p>
+        <div class="apply-steps">
+          {%- if block.settings.step1 != blank -%}
+            <div class="apply-step"><span>01</span>{{ block.settings.step1 }}</div>
+          {%- endif -%}
+          {%- if block.settings.step2 != blank -%}
+            <div class="apply-step"><span>02</span>{{ block.settings.step2 }}</div>
+          {%- endif -%}
+          {%- if block.settings.step3 != blank -%}
+            <div class="apply-step"><span>03</span>{{ block.settings.step3 }}</div>
+          {%- endif -%}
+          {%- if block.settings.step4 != blank -%}
+            <div class="apply-step"><span>04</span>{{ block.settings.step4 }}</div>
+          {%- endif -%}
+        </div>
+        <a href="mailto:{{ block.settings.email }}?subject=Application – [Role Name]" class="apply-btn">
+          {{ block.settings.cta_label }} →
+        </a>
+      </section>
+    {%- endif -%}
+  {%- endfor -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Careers Page",
+  "tag": "section",
+  "class": "packthc-careers-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "🎨 Color Palette"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#f0ede8"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#c8f560"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card / Hover Color",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted Text Color",
+      "default": "#9e9e9e"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#222222"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "🏠 Hero Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Tag Line (top)",
+          "default": "We're Hiring"
+        },
+        {
+          "type": "text",
+          "id": "headline_line1",
+          "label": "Headline Line 1",
+          "default": "Build Systems."
+        },
+        {
+          "type": "text",
+          "id": "headline_accent",
+          "label": "Headline Accent (colored)",
+          "default": "Scale With Us."
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtitle Text",
+          "default": "PackTHC is a U.S.-based e-commerce packaging brand built for modern, fast-moving markets. We are not a traditional packaging company — we are a performance infrastructure brand."
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "CTA Button Text",
+          "default": "View Open Roles"
+        }
+      ]
+    },
+    {
+      "type": "culture_heading",
+      "name": "📌 Culture Section Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Section Label",
+          "default": "Our Culture"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading",
+          "default": "How We Operate"
+        }
+      ]
+    },
+    {
+      "type": "culture_item",
+      "name": "🧭 Culture Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Value Title",
+          "default": "Clarity over Confusion"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Value Description",
+          "default": "We operate with purpose. Every decision, system, and communication is built to eliminate ambiguity."
+        }
+      ]
+    },
+    {
+      "type": "traits_heading",
+      "name": "Who Should Apply",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Section Label",
+          "default": "Who Should Apply"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading",
+          "default": "Strong Fit Criteria"
+        }
+      ]
+    },
+    {
+      "type": "trait_item",
+      "name": "✅ Trait / Criteria Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Trait Text",
+          "default": "Take responsibility without being asked."
+        }
+      ]
+    },
+    {
+      "type": "jobs_heading",
+      "name": "📌 Open Roles Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Section Label",
+          "default": "Current Open Positions"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading",
+          "default": "Open Roles"
+        }
+      ]
+    },
+    {
+      "type": "job_card",
+      "name": "💼 Job Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Job Title",
+          "default": "Graphic Designer"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Short Job Description",
+          "default": "AI-first designer for e-commerce — mockups, ad creatives, social content. Build fast, test faster."
+        },
+        {
+          "type": "text",
+          "id": "tag1",
+          "label": "Tag 1 (Accent — e.g. Role Type)",
+          "default": "Remote"
+        },
+        {
+          "type": "text",
+          "id": "tag2",
+          "label": "Tag 2",
+          "default": "Full-Time"
+        },
+        {
+          "type": "text",
+          "id": "tag3",
+          "label": "Tag 3",
+          "default": "AI-Assisted"
+        }
+      ]
+    },
+    {
+      "type": "perks_heading",
+      "name": "📌 Why Join Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Section Label",
+          "default": "Why Join PackTHC"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section Heading",
+          "default": "What You Get"
+        }
+      ]
+    },
+    {
+      "type": "perk_card",
+      "name": "⭐ Perk / Benefit Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or text)",
+          "default": "🌐"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Perk Title",
+          "default": "Fully Remote"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Perk Description",
+          "default": "Work from anywhere, aligned with U.S. time zones."
+        }
+      ]
+    },
+    {
+      "type": "apply_cta",
+      "name": "📩 Apply CTA Section",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "CTA Heading",
+          "default": "Ready to Build?"
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Send your CV, portfolio or GitHub, and a short note about how you approach your work."
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Application Email",
+          "default": "digital@packthc.com"
+        },
+        {
+          "type": "text",
+          "id": "step1",
+          "label": "Step 1 Label",
+          "default": "Updated CV"
+        },
+        {
+          "type": "text",
+          "id": "step2",
+          "label": "Step 2 Label",
+          "default": "Portfolio / GitHub"
+        },
+        {
+          "type": "text",
+          "id": "step3",
+          "label": "Step 3 Label",
+          "default": "Short Work Note"
+        },
+        {
+          "type": "text",
+          "id": "step4",
+          "label": "Step 4 Label",
+          "default": "Subject: Application – [Role]"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button Text",
+          "default": "Apply Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Careers Page",
+      "blocks": [
+        {
+          "type": "hero"
+        },
+        {
+          "type": "culture_heading"
+        },
+        {
+          "type": "culture_item",
+          "settings": {
+            "title": "Clarity over Confusion",
+            "description": "Every decision and communication is built to eliminate ambiguity and drive clear outcomes."
+          }
+        },
+        {
+          "type": "culture_item",
+          "settings": {
+            "title": "Execution over Discussion",
+            "description": "We ship, test, and iterate. Talking about work comes second to doing the work."
+          }
+        },
+        {
+          "type": "culture_item",
+          "settings": {
+            "title": "Systems over Chaos",
+            "description": "We build repeatable, scalable processes — not one-time fixes or workarounds."
+          }
+        },
+        {
+          "type": "culture_item",
+          "settings": {
+            "title": "Performance over Comfort",
+            "description": "Growth requires discomfort. We optimize for results, not reassurance."
+          }
+        },
+        {
+          "type": "culture_item",
+          "settings": {
+            "title": "Ownership over Dependency",
+            "description": "We don't micromanage — we measure results. Own your work end-to-end."
+          }
+        },
+        {
+          "type": "traits_heading"
+        },
+        {
+          "type": "trait_item",
+          "settings": { "text": "Take responsibility without being asked." }
+        },
+        {
+          "type": "trait_item",
+          "settings": { "text": "Think in systems and long-term scalability." }
+        },
+        {
+          "type": "trait_item",
+          "settings": { "text": "Understand that your work impacts revenue." }
+        },
+        {
+          "type": "trait_item",
+          "settings": { "text": "Can work independently in a remote environment." }
+        },
+        {
+          "type": "trait_item",
+          "settings": { "text": "Are comfortable adapting to performance metrics and iteration cycles." }
+        },
+        {
+          "type": "jobs_heading"
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Graphic Designer",
+            "description": "AI-first designer for e-commerce visuals — packaging mockups, Meta/Google ad creatives, and social content. Build fast, iterate faster.",
+            "tag1": "Remote",
+            "tag2": "Full-Time",
+            "tag3": "AI-Assisted"
+          }
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Web Developer",
+            "description": "Build and maintain production e-commerce systems using React, Node.js, and modern backend frameworks. Deep understanding required.",
+            "tag1": "Remote",
+            "tag2": "Full-Time",
+            "tag3": "E-commerce"
+          }
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Customer Service Rep",
+            "description": "Voice of PackTHC. Handle inbound/outbound calls, maintain CRM records, and deliver professional, calm customer interactions.",
+            "tag1": "Voice Process",
+            "tag2": "Remote",
+            "tag3": "CRM"
+          }
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Field Sales Executive",
+            "description": "Drive B2B growth through lead generation, client visits, product presentations, and deal closures across key regions.",
+            "tag1": "B2B Sales",
+            "tag2": "Field",
+            "tag3": "Growth"
+          }
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Office Operations",
+            "description": "Support internal systems, coordinate across departments, assist leadership, and ensure structured daily execution.",
+            "tag1": "Operations",
+            "tag2": "Remote",
+            "tag3": "Process"
+          }
+        },
+        {
+          "type": "job_card",
+          "settings": {
+            "title": "Customer Care Executive",
+            "description": "Handle multi-channel customer queries — call, email, chat — with empathy, speed, and consistent CRM updates.",
+            "tag1": "Multi-channel",
+            "tag2": "Remote",
+            "tag3": "Support"
+          }
+        },
+        {
+          "type": "perks_heading"
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "🌐", "title": "Fully Remote", "text": "Work from anywhere with a U.S.-aligned structured workflow." }
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "📈", "title": "Performance-Based Growth", "text": "Initiative is rewarded. Results drive your growth path, not tenure." }
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "🤖", "title": "AI-Assisted Systems", "text": "Work with cutting-edge AI tools embedded into real production workflows." }
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "🎯", "title": "High Ownership", "text": "Direct exposure to real e-commerce infrastructure with clear expectations." }
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "🔧", "title": "Skill Growth", "text": "Long-term roles built around building capability, not just filling seats." }
+        },
+        {
+          "type": "perk_card",
+          "settings": { "icon": "🏗️", "title": "Scale Mindset", "text": "Join a brand actively building scalable systems for modern packaging markets." }
+        },
+        {
+          "type": "apply_cta"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
