@@ -9,14 +9,12 @@
  */
 {
   "current": {
-    "configurator_enabled": true,
-    "configurator_detect_mode": "auto",
     "enable_back_to_top": false,
     "logo": "shopify://shop_images/PACKTHC_WHITE_LOGO.webp",
     "logo_width": 100,
     "logo_mobile": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
     "logo_width_mobile": 80,
-    "favicon": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
+    "favicon": "shopify://shop_images/logo1.png",
     "color_badge_hot": "#1d349a",
     "color_badge_new": "#0d8756",
     "type_body_font": "instrument_sans_n5",
@@ -117,6 +115,8 @@
       "rectangle-acrylic-storage-box-small"
     ],
     "currency_code_enabled": false,
+    "configurator_enabled": true,
+    "configurator_detect_mode": "auto",
     "section_header_alignment": "left",
     "collection_card_style": "style-1",
     "buttons_uppercase": false,

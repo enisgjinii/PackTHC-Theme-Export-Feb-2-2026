@@ -1181,10 +1181,10 @@ h5:empty,
 h6:empty {
   display: none;
 }
-
+/*
 div:empty:not(.fixed-overlay, .bg-overlay, .empty-space, .drawer__body, .no-empty) {
   display: none;
-}
+}*/
 
 img {
   max-width: 100%;

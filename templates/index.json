@@ -655,7 +655,7 @@
         "highlight_text": "Packaging Partner",
         "after_highlight": "Drain Your Profits, Slow Your Launches, And Dilute Your Brand.",
         "cta_text": "SHOW ME MY SAVINGS →",
-        "cta_link": "shopify://collections/pop-top-bottles"
+        "cta_link": "shopify://pages/packthc-size-calculator"
       }
     },
     "collection_tabs_VexkkR": {
@@ -2008,7 +2008,7 @@
         "button_icon": "caret-right",
         "column_gap": "2xs",
         "enable_slider": true,
-        "slide_height": "medium",
+        "slide_height": "small",
         "enable_swiper_mobile": true,
         "show_progress_bar": true,
         "show_section_divider": false,

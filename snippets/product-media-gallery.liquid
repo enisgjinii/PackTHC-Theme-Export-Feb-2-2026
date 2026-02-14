@@ -64,6 +64,15 @@
       id="GalleryViewer-{{ section.id }}"
       class="product__media-gallery-viewer blocks-radius swiper"
     >
+      {%- if product.tags contains 'ga-fl-compliant' -%}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0618/1925/6945/files/GA_FL_laws_compliant.png?v=1757004390"
+          alt="GA FL Laws Compliant"
+          width="80"
+          height="80"
+          style="position: absolute; top: 12px; left: 12px; z-index: 9999; pointer-events: none;"
+        >
+      {%- endif -%}
       <div
         id="Slider-Gallery-{{ section.id }}"
         class="product__media-list flex swiper-wrapper"
