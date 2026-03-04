@@ -79,7 +79,10 @@
     {%- endif -%}
 
     {%- if request.page_type == 'index' -%}
-      <h1 class="header__logo flex justify-center items-center z-1">
+      <!-- This was an H1 tag earlier. 
+Changed to div for better SEO structure.
+Updated by Amaan Mirza -->
+      <div class="header__logo flex justify-center items-center z-1">
     {%- else -%}
       <div class="header__logo flex justify-center items-center z-1">
     {%- endif -%}
@@ -134,7 +137,7 @@
       {%- endif -%}
     </a>
     {%- if request.page_type == 'index' -%}
-      </h1>
+    </div>
     {%- else -%}
       </div>
     {%- endif -%}

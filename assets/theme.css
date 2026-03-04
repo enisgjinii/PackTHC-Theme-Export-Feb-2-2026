@@ -8277,3 +8277,18 @@ body.search-template #MainContent,
   font-size: 20px;
   font-weight: 600;
 }
+
+#smile-ui-lite-container,
+#smile-ui-lite-launcher-frame-container {
+  z-index: 0 !important;
+}
+
+
+
+
+
+
+
+
+
+

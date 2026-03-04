@@ -18,9 +18,172 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "strain_details_jzf88e": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_8KtBFJ": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Green_Crack_3.webp",
+            "image_description": "Green Crack is a Sativa-dominant hybrid originating from Skunk #1 genetics and is widelyreferenced for its sharp, energetic cerebral effects. The strain is often associated withcreativity, focus, and an upbeat mental state, making it a well-known daytime referenceamong high-energy sativas",
+            "emoji_main": "",
+            "product_name": "Green Crack",
+            "genetics": "Sativa Dominant • Hybrid",
+            "strain-badge_1": "THC 17–25%",
+            "strain-badge_2": "CBD >2%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "Creative",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene (Blue)",
+            "terpene_2": "Alpha-Pinene (Green)",
+            "terpene_3": "Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 80,
+            "thc_level": 70
+          }
+        },
+        "description_LdBe3b": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "📖",
+            "title": "Description",
+            "description_1": "Green Crack is a Sativa-dominant hybrid originating from Skunk #1 genetics and is widely\nreferenced for its sharp, energetic cerebral effects. The strain is often associated with\ncreativity, focus, and an upbeat mental state, making it a well-known daytime reference\namong high-energy sativas",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\ndemonstrating how bright, citrus-forward terpene profiles benefit from proper storage.\nTropical and earthy aromas are particularly sensitive to air exposure, making airtight, odorresistant packaging important for preserving freshness and aromatic intensity.",
+            "bud_image": "shopify://shop_images/Green_Crack_4.webp",
+            "bud_image_2": "shopify://shop_images/Green_Crack_2.webp",
+            "bud_image_3": "shopify://shop_images/Green_Crack.webp",
+            "bud_image_4": "shopify://shop_images/Green_Crack_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_d9jkqz": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "65mm-aviator-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-500-count",
+            "product_2": "65mm-aviator-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-500-count",
+            "product_3": "65mm-aviator-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-500-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "65mm-aviator-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-500-count",
+            "product_5": "100ml-spiral-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-white-closure-400-count",
+            "product_6": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-400-count",
+            "product_7": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-400-count",
+            "product_8": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-500-count"
+          }
+        },
+        "categories_info_tGwE4i": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Skunk #1",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "49–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Medium–High / 17–25%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_QPHrcK": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Giggly",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Uplifting",
+            "effect_tag_emoji_5": "🏋️",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Tropical",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Terpinolene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Beta-Caryophyllene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Linalool",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Alpha Humulene",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "600 gr/m² Indoor / 800–1200 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_8KtBFJ",
+        "description_LdBe3b",
+        "product_selection_d9jkqz",
+        "categories_info_tGwE4i",
+        "effects_yield_QPHrcK"
+      ],
+      "name": "Strains Details",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "strain_details_jzf88e"
   ]
 }

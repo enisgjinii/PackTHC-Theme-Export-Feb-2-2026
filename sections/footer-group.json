@@ -165,7 +165,7 @@
         "newsletter_3qCrWc": {
           "type": "newsletter",
           "settings": {
-            "block_width": 55,
+            "block_width": 40,
             "heading": "Join Our Newsletter",
             "heading_size": "h3",
             "newsletter_description": "<p>Sign up to our newsletter & receive 10% off your first order.</p>",
@@ -180,7 +180,7 @@
         "menu_DEKGYP": {
           "type": "menu",
           "settings": {
-            "block_width": 15,
+            "block_width": 12,
             "heading": "Acount",
             "heading_size": "h6",
             "menu": "customer-account-main-menu",
@@ -191,7 +191,7 @@
         "menu_4eCrBB": {
           "type": "menu",
           "settings": {
-            "block_width": 15,
+            "block_width": 12,
             "heading": "About Us",
             "heading_size": "h6",
             "menu": "about-us",
@@ -202,10 +202,21 @@
         "menu_6cjHfA": {
           "type": "menu",
           "settings": {
-            "block_width": 15,
-            "heading": "Shop",
+            "block_width": 12,
+            "heading": "Policies",
             "heading_size": "h6",
             "menu": "legal-policies",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_fhHHyy": {
+          "type": "menu",
+          "settings": {
+            "block_width": 20,
+            "heading": "Populer Collection",
+            "heading_size": "h6",
+            "menu": "important-collection",
             "open_default": false,
             "show_divider": false
           }
@@ -215,7 +226,8 @@
         "newsletter_3qCrWc",
         "menu_DEKGYP",
         "menu_4eCrBB",
-        "menu_6cjHfA"
+        "menu_6cjHfA",
+        "menu_fhHHyy"
       ],
       "custom_css": [],
       "settings": {

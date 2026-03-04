@@ -9,22 +9,37 @@
     {% assign tags_string = product.metafields.custom.product_seo_tags %}
     {% assign tags_array = tags_string | split: ',' %}
     
-    <div class="tags-wrapper">
+    <div class="tags-wrapper" id="tagsWrapper">
       {% for tag in tags_array %}
         {% assign clean_tag = tag | strip %}
         {% if clean_tag != blank %}
-          <span class="product-tag" style="background-color: {{ section.settings.tag_bg_color }}; color: {{ section.settings.tag_text_color }};">
+          {% assign encoded_tag = clean_tag | url_encode %}
+          <a 
+            href="/search?options%5Bprefix%5D=last&q={{ encoded_tag }}" 
+            class="product-tag"
+            style="background-color: {{ section.settings.tag_bg_color }}; color: {{ section.settings.tag_text_color }};"
+          >
             {{ clean_tag }}
-          </span>
+          </a>
         {% endif %}
       {% endfor %}
+    </div>
+
+    <div class="tags-toggle-wrapper" id="tagsToggleWrapper">
+      <button 
+        class="tags-toggle-btn" 
+        id="tagsToggleBtn"
+        style="color: {{ section.settings.tag_bg_color }}; border-color: {{ section.settings.tag_bg_color }};"
+        onclick="toggleTags()"
+      >
+      </button>
     </div>
   </div>
 </section>
 
 <style>
   .product-tags-section {
-    padding: 30px 0;
+    padding: 20px 0;
   }
 
   .tags-container {
@@ -36,42 +51,124 @@
   .tags-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
   .product-tag {
     display: inline-block;
-    padding: 8px 20px;
+    padding: 6px 14px;
     border-radius: 25px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     text-transform: capitalize;
     white-space: nowrap;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: default;
+    cursor: pointer;
+    text-decoration: none;
   }
 
   .product-tag:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    opacity: 0.9;
   }
 
-  /* Responsive */
+  .tags-toggle-wrapper {
+    margin-top: 12px;
+    display: none;
+  }
+
+  .tags-toggle-btn {
+    background: transparent;
+    border: 1.5px solid;
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tags-toggle-btn:hover {
+    opacity: 0.8;
+  }
+
   @media (max-width: 768px) {
     .product-tags-section {
-      padding: 20px 0;
+      padding: 12px 0;
     }
 
-    .product-tag {
-      font-size: 13px;
-      padding: 6px 16px;
+    .tags-container {
+      padding: 0 12px;
     }
 
     .tags-wrapper {
-      gap: 8px;
+      gap: 3px;
+    }
+
+    .product-tag {
+      font-size: 10px;
+      border-radius: 20px;
+    }
+
+    .tags-toggle-btn {
+      font-size: 11px;
+      padding: 4px 12px;
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const MOBILE_LIMIT = 25;
+    const isMobile = window.innerWidth <= 768;
+    const allTags = document.querySelectorAll('#tagsWrapper .product-tag');
+    const toggleWrapper = document.getElementById('tagsToggleWrapper');
+    const btn = document.getElementById('tagsToggleBtn');
+    const total = allTags.length;
+
+    if (isMobile && total > MOBILE_LIMIT) {
+      // 25 se zyada tags hide karo
+      allTags.forEach(function (tag, index) {
+        if (index >= MOBILE_LIMIT) {
+          tag.style.display = 'none';
+        }
+      });
+
+      btn.textContent = '+ ' + (total - MOBILE_LIMIT) + ' Show More';
+      btn.setAttribute('data-expanded', 'false');
+      toggleWrapper.style.display = 'block';
+    }
+  });
+
+  function toggleTags() {
+    const MOBILE_LIMIT = 25;
+    const allTags = document.querySelectorAll('#tagsWrapper .product-tag');
+    const btn = document.getElementById('tagsToggleBtn');
+    const total = allTags.length;
+    const isExpanded = btn.getAttribute('data-expanded') === 'true';
+
+    if (!isExpanded) {
+      // Sab dikhao
+      allTags.forEach(function (tag) {
+        tag.style.display = 'inline-block';
+      });
+      btn.setAttribute('data-expanded', 'true');
+      btn.textContent = '− Show Less';
+    } else {
+      // Wapas 20 par collapse
+      allTags.forEach(function (tag, index) {
+        if (index >= MOBILE_LIMIT) {
+          tag.style.display = 'none';
+        }
+      });
+      btn.setAttribute('data-expanded', 'false');
+      btn.textContent = '+ ' + (total - MOBILE_LIMIT) + ' Show More';
+    }
+  }
+</script>
+
 {% endif %}
 
 {% schema %}

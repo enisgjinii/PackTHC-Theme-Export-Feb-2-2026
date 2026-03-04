@@ -20,7 +20,7 @@
     margin-bottom: 60px;
   }
   
-  .manufacturing-hero h2 {
+  .manufacturing-hero h1 {
     color: {{ section.settings.main_color }};
     font-size: 30px;
     font-weight: 700;
@@ -186,7 +186,7 @@
       grid-template-columns: 1fr;
     }
     
-    .manufacturing-hero h2 {
+    .manufacturing-hero h1 {
       font-size: 32px;
     }
     
@@ -204,7 +204,7 @@
         
         {% when 'block_one' %}
           <div class="manufacturing-hero" {{ block.shopify_attributes }}>
-            <h2>{{ block.settings.heading }}</h2>
+            <h1>{{ block.settings.heading }}</h1>
             <div class="manufacturing-grid">
               <div class="manufacturing-card">
                 <h3>{{ block.settings.problem_title }}</h3>

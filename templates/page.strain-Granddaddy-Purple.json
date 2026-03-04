@@ -18,9 +18,172 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "strain_details_MtrD4r": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_aBGCn9": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Granddaddy_Purple_3.webp",
+            "image_description": "Granddaddy Purple is an Indica-dominant hybrid created by crossing Granddaddy Purpswith Ruderalis genetics, commonly referenced for its deeply relaxing body effects pairedwith a mild cerebral lift. It is often associated with calm, evening-oriented experiences anda soothing overall profile.",
+            "emoji_main": "",
+            "product_name": "Granddaddy Purple",
+            "genetics": "GDP • Hybrid",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 19–22%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Alpha-Pinene (Green)",
+            "terpene_2": "Linalool (Purple)",
+            "terpene_3": "Valencene (Orange)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 70
+          }
+        },
+        "description_qgrjBG": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "📖",
+            "title": "Description",
+            "description_1": "Granddaddy Purple is an Indica-dominant hybrid created by crossing Granddaddy Purps\nwith Ruderalis genetics, commonly referenced for its deeply relaxing body effects paired\nwith a mild cerebral lift. It is often associated with calm, evening-oriented experiences and\na soothing overall profile.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\ndemonstrating how aromatic, fruit-forward strains benefit from proper storage. Grape and\nberry notes—supported by piney and peppery undertones—are best preserved through\nairtight, odor-resistant packaging designed to maintain freshness and terpene integrity.",
+            "bud_image": "shopify://shop_images/Granddaddy_Purple_2.webp",
+            "bud_image_2": "shopify://shop_images/Granddaddy_Purple.webp",
+            "bud_image_3": "shopify://shop_images/Granddaddy_Purple_3.webp",
+            "bud_image_4": "shopify://shop_images/Granddaddy_Purple_4.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_QgzUVq": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "6-dram-pop-top-vial-clear",
+            "product_2": "6-dram-pop-top-vial-green",
+            "product_3": "6-dram-pop-top-vial-black",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "6-dram-pop-top-vial-silver",
+            "product_5": "19-dram-pop-top-vial-1-8oz-aqua-blue",
+            "product_6": "19-dram-pop-top-vial-1-8oz-golden",
+            "product_7": "19-dram-pop-top-vial-1-8oz-green",
+            "product_8": "19-dram-pop-top-vial-1-8oz-white"
+          }
+        },
+        "categories_info_dJBK7E": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Granddaddy Purps × Ruderalis",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "56–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Medium–High / 19–22%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_pEfVC3": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Sleepy",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Grape",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Berry",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Pepper",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Alpha-Pinene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Valencene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Camphene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Linalool",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "200–300 gr/m² Indoor / 60–80 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_aBGCn9",
+        "description_qgrjBG",
+        "product_selection_QgzUVq",
+        "categories_info_dJBK7E",
+        "effects_yield_pEfVC3"
+      ],
+      "name": "Strains Details",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "strain_details_MtrD4r"
   ]
 }

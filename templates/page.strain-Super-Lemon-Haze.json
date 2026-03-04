@@ -18,9 +18,172 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "strain_details_nttmVr": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_xQg68P": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Super_Lemon_Haze_3.webp",
+            "image_description": "Super Lemon Haze is a Sativa-dominant hybrid created by crossing Super Lemon Hazegenetics with Ruderalis, often referenced for its bright cerebral effects paired with asmooth, functional relaxation. It is widely associated with mental clarity, uplifted mood,and a strong yet manageable experience.",
+            "emoji_main": "",
+            "product_name": "Super Lemon Haze",
+            "genetics": "Super Lemon Haze • Hybrid",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 15–19%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Cerebral",
+            "effect_emoji_1": "😌",
+            "effect_2": "Strong",
+            "effect_emoji_2": "😄",
+            "effect_3": "Relaxing",
+            "effect_emoji_3": "😊",
+            "effect_4": "",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene (Yellow)",
+            "terpene_2": "Terpinolene (Teal)",
+            "terpene_3": "Myrcene (Blue)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 70,
+            "thc_level": 50
+          }
+        },
+        "description_dJRG8K": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Super Lemon Haze is a Sativa-dominant hybrid created by crossing Super Lemon Haze\ngenetics with Ruderalis, often referenced for its bright cerebral effects paired with a\nsmooth, functional relaxation. It is widely associated with mental clarity, uplifted mood,\nand a strong yet manageable experience.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\nillustrating how citrus-heavy terpene profiles benefit from proper storage. Sweet and\ncitrus-forward aromas are particularly sensitive to air exposure, making airtight, odorresistant packaging essential for maintaining freshness and consistency.",
+            "bud_image": "shopify://shop_images/Super_Lemon_Haze_2.webp",
+            "bud_image_2": "shopify://shop_images/Super_Lemon_Haze_4.webp",
+            "bud_image_3": "shopify://shop_images/Super_Lemon_Haze_3.webp",
+            "bud_image_4": "shopify://shop_images/Super_Lemon_Haze.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_BX8teP": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "rectangle-acrylic-storage-box-small",
+            "product_2": "rectangle-acrylic-storage-box-medium",
+            "product_3": "rectangle-acrylic-storage-box-large",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "rectangle-acrylic-storage-box-extra-large",
+            "product_5": "square-acrylic-storage-box",
+            "product_6": "9-ml-cr-glass-round-concentrate-container-black-lid",
+            "product_7": "9-ml-cr-glass-round-concentrate-container-white-lid",
+            "product_8": "7-ml-cr-glass-round-concentrate-container-black-lid"
+          }
+        },
+        "categories_info_WVBiE4": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Super Lemon Haze × Ruderalis",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "56–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Medium / 15–19%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_4XHKrT": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Cerebral",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Uplifting",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Strong",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Focused",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Energizing",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Beta-Caryophyllene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Terpinolene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Myrcene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Limonene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Linalool",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "p-Cymene",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "500 gr/m² Indoor / 70–100 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_xQg68P",
+        "description_dJRG8K",
+        "product_selection_BX8teP",
+        "categories_info_WVBiE4",
+        "effects_yield_4XHKrT"
+      ],
+      "name": "Strains Details",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "strain_details_nttmVr"
   ]
 }

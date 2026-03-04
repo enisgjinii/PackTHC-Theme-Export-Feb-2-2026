@@ -106,89 +106,94 @@
         .join(' ');
     }
 
-    // NEW: ML Formatter Function
+    // ML Formatter Function
     function formatMLText(str) {
-      // Replace patterns like "5ml", "7ml", "9ml" with proper format "5 ML", "7 ML", "9 ML"
-      // This regex finds number followed by "ml" (case insensitive)
-      return str.replace(/(\d+)\s*ml\b/gi, function(match, number) {
+      return str.replace(/(\d+)\s*ml\b/gi, function (match, number) {
         return number + ' ML';
+      });
+    }
+
+    // ✅ SAFE text converter - sirf direct text nodes update karta hai, links safe rehte hain
+    function convertTextNodes(el) {
+      el.childNodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          // Text node
+          var trimmed = node.textContent.trim();
+          if (trimmed.length > 0) {
+            var converted = toTitleCase(trimmed);
+            node.textContent = node.textContent.replace(
+              trimmed,
+              formatMLText(converted)
+            );
+          }
+        } else if (
+          node.nodeType === 1 &&
+          node.tagName !== 'SCRIPT' &&
+          node.tagName !== 'STYLE'
+        ) {
+          // Recursively handle child elements (like <a> tags ke andar ka text)
+          convertTextNodes(node);
+        }
       });
     }
 
     // Main Conversion Function
     function convertAllTitles() {
       // 1. PRODUCT PAGE TITLES
-      var productTitles = document.querySelectorAll('.product__title');
-      productTitles.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      document.querySelectorAll('.product__title').forEach(convertTextNodes);
 
-      // 2. PRODUCT CARD TITLES (Grid/Collection)
-      var cardTitles = document.querySelectorAll('.product-card__title .reversed-link__text');
-      cardTitles.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      // 2. PRODUCT CARD TITLES
+      document
+        .querySelectorAll('.product-card__title .reversed-link__text')
+        .forEach(convertTextNodes);
 
-      // 3. COLLECTION CARD TITLES (All variants)
-      var collectionTitles = document.querySelectorAll('.collection-card__title span');
-      collectionTitles.forEach(function (el) {
-        var text = el.childNodes[0];
-        if (text && text.nodeType === 3) {
-          var converted = toTitleCase(text.textContent.trim());
-          text.textContent = formatMLText(converted);
-        }
-      });
+      // 3. COLLECTION CARD TITLES
+      document
+        .querySelectorAll('.collection-card__title span')
+        .forEach(function (el) {
+          el.childNodes.forEach(function (node) {
+            if (node.nodeType === 3 && node.textContent.trim().length > 0) {
+              var converted = toTitleCase(node.textContent.trim());
+              node.textContent = formatMLText(converted);
+            }
+          });
+        });
 
-      // 4. BUTTON LIST ITEMS (Category buttons)
-      var buttonItems = document.querySelectorAll('.button-item__text');
-      buttonItems.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      // 4. BUTTON LIST ITEMS
+      document.querySelectorAll('.button-item__text').forEach(convertTextNodes);
 
       // 5. BREADCRUMBS
-      var breadcrumbs = document.querySelectorAll('.breadcrumbs .reversed-link, .breadcrumbs--last');
-      breadcrumbs.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      document
+        .querySelectorAll('.breadcrumbs .reversed-link, .breadcrumbs--last')
+        .forEach(convertTextNodes);
 
-      // 6. COLLECTION HERO TITLE (Main heading)
-      var heroTitles = document.querySelectorAll('.collection-hero__title motion-element');
-      heroTitles.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      // 6. COLLECTION HERO TITLE
+      document
+        .querySelectorAll('.collection-hero__title motion-element')
+        .forEach(convertTextNodes);
 
-      // 7. ANY H1, H2, H3 with product/collection titles
-      var headings = document.querySelectorAll('h1.h1, h2.h1, h3.text-pcard-title');
-      headings.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      // 7. HEADINGS
+      document
+        .querySelectorAll('h1.h1, h2.h1, h3.text-pcard-title')
+        .forEach(convertTextNodes);
 
       // 8. SEARCH RESULTS
-      var searchTitles = document.querySelectorAll('[class*="search"] [class*="title"]');
-      searchTitles.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      document
+        .querySelectorAll('[class*="search"] [class*="title"]')
+        .forEach(convertTextNodes);
 
       // 9. COLLECTION PILL BADGES
-      var collpillLabels = document.querySelectorAll('.collpill-label-text-3wh');
-      collpillLabels.forEach(function (el) {
-        var text = toTitleCase(el.textContent.trim());
-        el.textContent = formatMLText(text);
-      });
+      document
+        .querySelectorAll('.collpill-label-text-3wh')
+        .forEach(convertTextNodes);
 
-      // Also convert alt text for collection pills
-      var collpillImages = document.querySelectorAll('.collpill-thumbnail-box-5jx img[alt]');
-      collpillImages.forEach(function (el) {
-        var altText = toTitleCase(el.getAttribute('alt').trim());
-        el.setAttribute('alt', formatMLText(altText));
-      });
+      // Alt text for collection pills (links pe effect nahi)
+      document
+        .querySelectorAll('.collpill-thumbnail-box-5jx img[alt]')
+        .forEach(function (el) {
+          var altText = toTitleCase(el.getAttribute('alt').trim());
+          el.setAttribute('alt', formatMLText(altText));
+        });
     }
 
     // Run on page load
@@ -196,7 +201,7 @@
       convertAllTitles();
     });
 
-    // Re-run for dynamic content (AJAX, filters, etc.)
+    // Re-run for dynamic content
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         if (mutation.addedNodes.length) {
@@ -209,11 +214,10 @@
       childList: true,
       subtree: true,
     });
-
-    console.log('✅ Title Case + ML Formatter Active');
   })();
 </script>
-  {% include 'hulk_po_vd' %}</head>
+    {% include 'hulk_po_vd' %}
+  </head>
 
   <body
     class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"

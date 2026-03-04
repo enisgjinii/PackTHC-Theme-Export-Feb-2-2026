@@ -20,13 +20,12 @@
     },
     "main": {
       "type": "main-list-collections",
-      "disabled": true,
       "settings": {
         "container": "fixed",
         "sort": "alphabetical",
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
-        "title": "Collections",
+        "title": "PackTHC Marijuana Packaging",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -45,7 +44,7 @@
         "row_gap": "inherit",
         "grid_bordered": true,
         "columns_mobile": "1",
-        "padding_top": 100,
+        "padding_top": 30,
         "padding_bottom": 100
       }
     },
@@ -205,7 +204,7 @@
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
         "subheading": "",
-        "heading": "Shop All Categories",
+        "heading": "Our Best Sellers",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -380,68 +379,10 @@
             "button_style": "btn--primary",
             "button_icon": "none"
           }
-        },
-        "collection_E83rKg": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title": "Hot Items",
-            "show_banner": false,
-            "color_scheme": "",
-            "card_link": "",
-            "image_overlay_opacity": 0,
-            "content_position": "top-left",
-            "content_alignment": "left",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Collections",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "description": "",
-            "text_size": "text-base",
-            "button_label": "Button label",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "collection_7cUH3n": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title": "Best Sellers",
-            "show_banner": false,
-            "color_scheme": "",
-            "card_link": "",
-            "image_overlay_opacity": 0,
-            "content_position": "top-left",
-            "content_alignment": "left",
-            "subheading": "",
-            "subheading_style": "",
-            "heading": "Collections",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h2",
-            "heading_size_mobile": "inherit",
-            "heading_size_custom": 18,
-            "description": "",
-            "text_size": "text-base",
-            "button_label": "Button label",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
         }
       },
       "block_order": [
-        "collection_r8U9QF",
-        "collection_E83rKg",
-        "collection_7cUH3n"
+        "collection_r8U9QF"
       ],
       "custom_css": [],
       "settings": {
