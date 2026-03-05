@@ -28,15 +28,16 @@
     if (productData.handle)    params.set('product',    productData.handle);
     if (productData.productId) params.set('product_id', productData.productId);
     if (productData.variantId) params.set('variant_id', productData.variantId);
-    if (productData.title)     params.set('title',      encodeURIComponent(productData.title));
+    // URLSearchParams handles encoding; avoid double-encoding values.
+    if (productData.title)     params.set('title',      productData.title);
     if (productData.sku)       params.set('sku',        productData.sku);
-    if (productData.vendor)    params.set('vendor',     encodeURIComponent(productData.vendor));
-    if (productData.image)     params.set('image',      encodeURIComponent(productData.image));
+    if (productData.vendor)    params.set('vendor',     productData.vendor);
+    if (productData.image)     params.set('image',      productData.image);
     if (productData.price)     params.set('price',      productData.price);
 
     // Shop params
     if (shopData.domain)  params.set('shop',      shopData.domain);
-    if (shopData.name)    params.set('shop_name', encodeURIComponent(shopData.name));
+    if (shopData.name)    params.set('shop_name', shopData.name);
 
     const sep = baseUrl.includes('?') ? '&' : '?';
     return baseUrl + sep + params.toString();
@@ -197,6 +198,16 @@
 
     if (!iframe || !wrapper) return;
 
+    function showFatalError(message) {
+      if (iframeContainer) iframeContainer.style.display = 'none';
+      if (loadingOverlay) loadingOverlay.style.display = 'none';
+      if (errorContainer) {
+        const textNode = errorContainer.querySelector('.configurator-error__text');
+        if (textNode && message) textNode.textContent = message;
+        errorContainer.style.display = 'block';
+      }
+    }
+
     // ── Read product data (embedded as JSON in a <script> tag) ──
     let productData = {};
     let shopData    = {};
@@ -234,12 +245,13 @@
         iframe.src = iframeUrl;
         if (iframeContainer) iframeContainer.style.display = 'block';
         if (errorContainer)  errorContainer.style.display  = 'none';
+      } else {
+        showFatalError('Configurator URL is missing. Please check theme settings.');
+        return;
       }
     } else {
       // No product — show error
-      if (iframeContainer) iframeContainer.style.display = 'none';
-      if (errorContainer)  errorContainer.style.display  = 'block';
-      if (loadingOverlay)  loadingOverlay.style.display  = 'none';
+      showFatalError('Please select a product to customize from our catalog.');
       return;
     }
 
@@ -251,6 +263,11 @@
     iframe.addEventListener('load', () => {
       clearTimeout(loadingTimer);
       if (loadingOverlay) loadingOverlay.style.display = 'none';
+    });
+
+    iframe.addEventListener('error', () => {
+      clearTimeout(loadingTimer);
+      showFatalError('Failed to load configurator. Please refresh and try again.');
     });
 
     // ── Fullscreen button ──
@@ -339,6 +356,7 @@
 
     // ── Listen for postMessage from iframe ──
     window.addEventListener('message', async function handler(event) {
+      if (event.source !== iframe.contentWindow) return;
       if (!event.data || !event.data.type) return;
 
       const type = event.data.type;
