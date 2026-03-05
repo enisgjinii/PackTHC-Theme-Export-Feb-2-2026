@@ -1453,3 +1453,57 @@
   ]
 }
 {% endschema %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('{{ form_id }}');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault(); 
+      
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const buttonText = submitButton ? submitButton.querySelector('.btn__text') : null;
+      const originalText = buttonText ? buttonText.innerText : 'Submit Now';
+      
+      // Loading State
+      if (buttonText) buttonText.innerText = 'Sending Request...';
+      submitButton.disabled = true;
+
+      // Capture all fields from your form screenshot
+      const formData = {
+        name: contactForm.querySelector('input[name*="name"]')?.value || 'N/A',
+        email: contactForm.querySelector('input[name*="email"]')?.value || 'N/A',
+        phone: contactForm.querySelector('input[type="tel"]')?.value || 'N/A',
+        company: contactForm.querySelector('input[name*="Company"]')?.value || 'N/A',
+        products: contactForm.querySelector('input[name*="Products"]')?.value || 'N/A',
+        branding: contactForm.querySelector('select')?.value || 'N/A',
+        message: contactForm.querySelector('textarea')?.value || 'No message provided'
+      };
+
+      try {
+        const response = await fetch('https://shopify-email-backend.onrender.com/api/request-sample', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert('Success! Your sample request has been sent to our team.');
+          contactForm.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (error) {
+        console.error('Submission Error:', error);
+        alert('We encountered an error. Please try again in a moment.');
+      } finally {
+        if (buttonText) buttonText.innerText = originalText;
+        submitButton.disabled = false;
+      }
+    });
+  }
+});
+</script>
