@@ -206,6 +206,28 @@
         "padding_bottom": 60
       }
     },
+    "177257719750f1978e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_LjwUza": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_LjwUza"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "custom_liquid_UDqbXR": {
       "type": "custom-liquid",
       "name": "Dumentions",
@@ -562,6 +584,7 @@
   "order": [
     "breadcrumbs",
     "main",
+    "177257719750f1978e",
     "custom_liquid_UDqbXR",
     "testimonials_8JHr3L",
     "quick_comparison_table_p9rdxW",

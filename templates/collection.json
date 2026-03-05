@@ -333,6 +333,108 @@
         "divider_width": "fixed"
       }
     },
+    "image_with_feature_i3nNRQ": {
+      "type": "image-with-feature",
+      "blocks": {
+        "column_mXdhRL": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "max_width": 28,
+            "max_width_mb": 32,
+            "title": "150M+ Dispensaries Served",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>We proudly support over <br/>150M+ dispensaries with high-quality packaging and dependable service across the country.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_mm8LAM": {
+          "type": "column",
+          "settings": {
+            "icon": "truck",
+            "max_width": 28,
+            "max_width_mb": 32,
+            "title": "98% On-Time Delivery",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>Our streamlined fulfillment process ensures your orders arrive exactly when you need them.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_3baBKr": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "max_width": 28,
+            "max_width_mb": 32,
+            "title": "Top-Rated Customer Satisfaction",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>Our customers consistently rate us highly for product quality, packaging standards, and responsive support.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "column_G6LEQ9": {
+          "type": "column",
+          "settings": {
+            "icon": "check",
+            "max_width": 28,
+            "max_width_mb": 32,
+            "title": "Bulk Order Specialists",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "<p>From small batches to large-scale wholesale orders, we handle every volume with precision and care.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "column_mXdhRL",
+        "column_mm8LAM",
+        "column_3baBKr",
+        "column_G6LEQ9"
+      ],
+      "name": "t:sections.image-with-feature.presets",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/Spiral_Cartridge_Containers.webp",
+        "image_ratio": "1/1",
+        "enable_sticky": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Trusted by Thousands of Businesses",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-sm",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "packaging_wins_mRw8Rc": {
       "type": "packaging-wins",
       "blocks": {
@@ -611,7 +713,9 @@
     "collection_faq_NHcnmx": {
       "type": "collection-faq",
       "name": "Collection FAQ",
-      "settings": {}
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
     },
     "collapsible_tabs_f8nEgz": {
       "type": "collapsible-tabs",
@@ -966,6 +1070,7 @@
     "collection_list_slider_JiW9t4",
     "new_collection_tabs_MmW8Gi",
     "product-grid",
+    "image_with_feature_i3nNRQ",
     "packaging_wins_mRw8Rc",
     "why_choose_packthc_x84K8z",
     "testimonials_6p3GBK",
