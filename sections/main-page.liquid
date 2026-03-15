@@ -1,3 +1,9 @@
+
+{% if request.path == '/pages/request-sample-kit' and customer == null %}
+<script>
+window.location.href = "/account/login?return_url=/pages/request-sample-kit";
+</script>
+{% endif %}
 <style>
   #shopify-section-{{ section.id }} {
     --section-padding-top: {{ section.settings.padding_top }}px;

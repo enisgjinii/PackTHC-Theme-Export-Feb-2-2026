@@ -220,7 +220,7 @@
         "card_style": "standard",
         "card_heading_size": "text-base",
         "card_text_line_limit": "none",
-        "card_image_ratio": "adapt",
+        "card_image_ratio": "1/1",
         "card_image_width": "large",
         "card_image_padding": "none",
         "rounded_card_image": true,
@@ -272,7 +272,7 @@
         "featured_collection_MjK88X": {
           "type": "featured_collection",
           "settings": {
-            "collection": "paper-cones",
+            "collection": "hara-supply",
             "title": "Free-Standing Bathroom"
           }
         },

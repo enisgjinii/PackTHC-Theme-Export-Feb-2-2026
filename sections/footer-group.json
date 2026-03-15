@@ -191,7 +191,7 @@
         "menu_4eCrBB": {
           "type": "menu",
           "settings": {
-            "block_width": 12,
+            "block_width": 15,
             "heading": "About Us",
             "heading_size": "h6",
             "menu": "about-us",

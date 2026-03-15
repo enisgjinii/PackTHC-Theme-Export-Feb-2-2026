@@ -1,0 +1,54 @@
+{% capture wk_seller_content %}
+	{% include 'wk-seller-listing-variable' %}
+{% endcapture %}
+{% unless wk_seller_content contains "Liquid error" %}
+	{{ wk_seller_content }}
+{% endunless %}
+{% if wk_store_ids %}
+	{{ 'wk-bootstrap-grid.min.css' | asset_url | stylesheet_tag }}
+	{{ '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css' | stylesheet_tag }}
+	{{ '//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js' | script_tag }}
+	{{ 'wk-seller-listing.css' | asset_url | stylesheet_tag }}
+	<div class="wk-main-conent__seller_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 heroSlider-fixed">
+					<div class="overlay"></div>
+					<!-- Slider -->
+					<div class="slider wk-seller-listing-responsive">
+						{% for seller_id in wk_store_ids %}
+							{% if wk_store_logos[forloop.index0] %}
+								<div>
+									<a href="/pages/seller-profile{{ url_type }}{{ wk_store_handles[forloop.index0] }}" target="_blank">
+										<img src="{{ wk_store_logos[forloop.index0] }}" alt="{{ wk_store_names[forloop.index0] }}" class="wk-slider-img"/>
+									</a>
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js' | script_tag }}
+	{{ 'wk-seller-listing.js' | asset_url | script_tag }}
+{% endif %}
+
+{% schema %}
+	{
+		"name": {
+			"en": "Seller Listing"
+		},
+		"settings": [],
+		"presets": [
+			{
+				"name": {
+					"en": "Seller Listing"
+				},
+				"category": {
+					"en": "Sellers"
+				}
+			}
+		]
+	}
+{% endschema %}

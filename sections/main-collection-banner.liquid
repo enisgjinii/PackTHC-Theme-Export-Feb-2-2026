@@ -31,22 +31,6 @@
   assign image_ratio = banner.aspect_ratio
   assign image_ratio_mobile = banner_mobile.aspect_ratio | default: image_ratio
 
-  assign image_position = section.settings.image_position
-
-  assign inner_class = 'collection-hero__inner relative f-grid f-grid--gap-none color-' | append: section.settings.color_scheme
-  assign text_class = ''
-
-  if show_collection_image
-    case image_position
-      when 'right'
-        assign text_class = text_class | append: ' order-first'
-      when 'bottom'
-        assign text_class = text_class | append: ' order-first'
-      when 'as-bg'
-        assign text_class = text_class | append: ' content-overlay content-overlay--center'
-    endcase
-  endif
-
   assign color_scheme_first = settings.color_schemes | first
   assign color_inherit = false
   assign parent_background = color_scheme_first.settings.background | downcase
@@ -62,24 +46,23 @@
     assign fetchpriority = 'high'
   endif
 -%}
+
 <div
-  class="collection-hero{% if show_collection_image %} collection-hero--image-{{ section.settings.image_position }}{% else %} collection-hero--no-image{% endif %} hero hero--{{ section.settings.image_height }} hero--mobile-{{ section.settings.image_height_mobile }}{% if color_inherit %} color-inherit{% endif %} section section--padding page-width page-width--{{ section.settings.container }}"
+  class="collection-hero collection-hero--overlay{% if color_inherit %} color-inherit{% endif %} section section--padding page-width page-width--{{ section.settings.container }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
-  <div class="{{ inner_class }}{% unless color_inherit %} blocks-radius{% endunless %}">
+  <div class="collection-hero__inner relative f-grid f-grid--gap-none collection-hero__inner--overlay{% unless color_inherit %} blocks-radius{% endunless %}">
+
     {%- if show_collection_image -%}
-      {%- capture sizes -%}(max-width: 767px) calc(100vw - 3rem), {% if image_position == 'left' or image_position == 'right' %}calc(min({{ settings.page_width }}px, 100vw) / 2){% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+      {%- capture sizes -%}(max-width: 767px) calc(100vw - 3rem), min({{ settings.page_width }}px, 100vw){%- endcapture -%}
       <parallax-element
-        class="flex overflow-hidden{% if color_inherit %} blocks-radius{% endif %}{% if banner == blank %} md:hidden{% endif %}"
+        class="collection-hero__image-wrap flex overflow-hidden{% if color_inherit %} blocks-radius{% endif %}{% if banner == blank %} md:hidden{% endif %}"
         {% if section.settings.enable_parallax %}
           data-parallax="0.3" data-parallax-direction="{{ section.settings.parallax_direction }}"
         {% endif %}
       >
         <motion-element class="block flex-1" data-motion="zoom-out">
-          <picture
-            class="hero__media media-wrapper"
-            style="{% if section.settings.image_height == 'adapt' %}--aspect-ratio: {{ image_ratio }};--aspect-ratio-mobile: {{ image_ratio_mobile }};{% endif %}{% if section.settings.image_height_mobile == 'adapt' %}--aspect-ratio-mobile: {{ image_ratio_mobile }};{% endif %}"
-          >
+          <picture class="hero__media media-wrapper">
             {%- if banner != blank and banner_mobile != blank -%}
               <source
                 media="(max-width: 767px)"
@@ -92,7 +75,6 @@
               if banner == blank
                 assign banner = banner_mobile
               endif
-
               assign alt_image = banner.alt | default: collection.title | escape
             -%}
             {{-
@@ -119,7 +101,7 @@
       </parallax-element>
     {%- endif -%}
 
-    <div class="collection-hero__text flex flex-col justify-center text-{{ section.settings.text_alignment }}{{ text_class }}">
+    <div class="collection-hero__text collection-hero__text--overlay flex flex-col justify-center text-{{ section.settings.text_alignment }}">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'collection_info' -%}
@@ -138,15 +120,15 @@
                 </div>
               {%- endif -%}
 
-              <{{ block.settings.heading_tag }} class="collection-hero__title overflow-hidden {{ block.settings.heading_size }}">
+              <{{ block.settings.heading_tag }} class="collection-hero__title overflow-hidden {{ block.settings.heading_size }}" style="color: #ffffff;">
                 <span class="visually-hidden">{{ 'sections.collection_template.title' | t }} </span>
                 <motion-element data-motion="fade-up" class="inline-block">
                   {{- collection.title | escape -}}
                 </motion-element>
               </{{ block.settings.heading_tag }}>
-              
+
               {%- if block.settings.show_description and collection.description != blank -%}
-                <div class="collection-hero__description rte text-subtext">
+                <div class="collection-hero__description rte text-subtext" style="color: #ffffff;">
                   <motion-element
                     data-motion="fade-up"
                     data-motion-delay="50"
@@ -156,7 +138,7 @@
                   </motion-element>
                 </div>
               {%- endif -%}
-              
+
               {%- if block.settings.show_button and block.settings.button_label != blank -%}
                 <div class="collection-hero__button" style="margin-top: 15px;">
                   <motion-element
@@ -164,7 +146,7 @@
                     data-motion-delay="100"
                     class="inline-block"
                   >
-                    <a href="{{ block.settings.button_link | default: collection.url }}" style="display: inline-block; padding: 10px 30px; border: 2px solid #ffffff; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 600;">
+                    <a href="{{ block.settings.button_link | default: collection.url }}" style="display: inline-block; padding: 10px 30px; border: 2px solid #ffffff; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: 600;">
                       {{ block.settings.button_label }}
                     </a>
                   </motion-element>
@@ -174,8 +156,66 @@
         {%- endcase -%}
       {% endfor %}
     </div>
+
   </div>
 </div>
+
+<style>
+  /* ---- Manager Changes: Image 400px height, Text overlay upar ---- */
+
+  .collection-hero--overlay .collection-hero__inner--overlay {
+    position: relative;
+    display: block;
+    overflow: hidden;
+  }
+
+  /* Image wrapper full width */
+  .collection-hero--overlay .collection-hero__image-wrap {
+    display: block;
+    width: 100%;
+  }
+
+  /* Image fixed 400px height */
+  .collection-hero--overlay .collection-hero__image-wrap .hero__media {
+    display: block;
+    width: 100%;
+    height: 400px;
+    min-height: 400px;
+    max-height: 400px;
+  }
+
+  .collection-hero--overlay .collection-hero__image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Text - image ke upar absolute overlay */
+  .collection-hero--overlay .collection-hero__text--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    z-index: 2;
+    background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0) 100%);
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    .collection-hero--overlay .collection-hero__image-wrap .hero__media,
+    .collection-hero--overlay .collection-hero__image {
+      height: 400px;
+      min-height: 400px;
+      max-height: 400px;
+    }
+    .collection-hero--overlay .collection-hero__text--overlay {
+      height: 400px;
+    }
+  }
+</style>
 
 {% schema %}
 {
@@ -526,3 +566,4 @@
   ]
 }
 {% endschema %}
+

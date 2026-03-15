@@ -160,8 +160,8 @@
         "image": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/420x434_1.webp",
-            "image_mobile": "shopify://shop_images/1_0182399e-6382-447a-b64b-7e2d67c57dc2.webp",
+            "image": "shopify://shop_images/St-03.webp",
+            "image_mobile": "shopify://shop_images/St-04.webp",
             "image_position": "left"
           }
         },

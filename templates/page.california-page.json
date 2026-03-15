@@ -484,7 +484,7 @@
         "featured_collection_F69pQy": {
           "type": "featured_collection",
           "settings": {
-            "collection": "paper-cones-new",
+            "collection": "paper-cones",
             "image": "shopify://shop_images/Raw_5a5f5d71-8df1-4603-b86b-91b8f62d381c.webp",
             "title": "Paper Cones"
           }
@@ -511,7 +511,7 @@
           "type": "featured_collection",
           "disabled": true,
           "settings": {
-            "collection": "paper-cones",
+            "collection": "hara-supply",
             "image": "shopify://shop_images/Hara_Supply_2c23e31e-ad36-4766-b224-a801bae81efd.webp",
             "title": "Hara Supply"
           }
@@ -605,10 +605,10 @@
         "card_style": "standard",
         "card_heading_size": "h6",
         "card_text_line_limit": "2",
-        "card_image_ratio": "adapt",
+        "card_image_ratio": "4/3",
         "card_image_width": "full",
         "card_image_padding": "none",
-        "rounded_card_image": true,
+        "rounded_card_image": false,
         "card_show_border": false,
         "mobile_layout": "vertical",
         "columns_desktop": 5,

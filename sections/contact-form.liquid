@@ -40,6 +40,7 @@
         <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
       {%- endif -%}
       {%- form 'contact', id: form_id, class: 'w-full' -%}
+        <input type="hidden" name="contact[Form Type]" value="{{ section.settings.heading }}">
         {%- if form.posted_successfully? -%}
           <div class="form-status-list" role="status">
             <h3 class="form-message alert alert--success h6 blocks-radius" tabindex="-1" autofocus>

@@ -29,11 +29,10 @@
         },
         "custom_link_tMCRrV": {
           "type": "custom_link",
-          "disabled": true,
           "settings": {
-            "label": "Find Our Store",
-            "link": "shopify://pages/find-a-packthc-store",
-            "icon": "location",
+            "label": "Sample Kit",
+            "link": "shopify://pages/request-sample-kit",
+            "icon": "package",
             "icon_size": "large"
           }
         },

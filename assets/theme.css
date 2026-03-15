@@ -152,6 +152,9 @@
     stroke-dashoffset: 0;
   }
 }
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 .site-wrapper {
   overflow: clip;
 }
