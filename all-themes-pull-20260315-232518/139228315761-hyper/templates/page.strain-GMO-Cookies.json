@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_6WbCye": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_qK4j9w": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/GMO_Cookies_3.webp",
+            "image_description": "GMO Cookies is an Indica-dominant hybrid created by crossing Chemdawg with Girl ScoutCookies. It is widely referenced for its heavy physical relaxation paired with strongeuphoric effects, often leaning toward a deeply sedating, couch-lock experience at higherintensities.",
+            "emoji_main": "",
+            "product_name": "GMO Cookies",
+            "genetics": "Garlic Cookies • Hybrid",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 21–25%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Body-Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Couch Lock",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Beta-Caryophyllene (Pink)",
+            "terpene_2": "Myrcene (Blue)",
+            "terpene_3": "Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 80
+          }
+        },
+        "description_t3HNHE": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "GMO Cookies is an Indica-dominant hybrid created by crossing Chemdawg with Girl Scout\nCookies. It is widely referenced for its heavy physical relaxation paired with strong\neuphoric effects, often leaning toward a deeply sedating, couch-lock experience at higher\nintensities.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\nhighlighting how pungent, diesel-forward terpene profiles benefit from proper storage.\nAromas associated with garlic, fuel, and earth are especially potent, making airtight and\nodor-resistant packaging essential for maintaining freshness and controlling scent during\nhandling and storage",
+            "bud_image": "shopify://shop_images/GMO_Cookies_4.webp",
+            "bud_image_2": "shopify://shop_images/GMO_Cookies_2.webp",
+            "bud_image_3": "shopify://shop_images/GMO_Cookies.webp",
+            "bud_image_4": "shopify://shop_images/GMO_Cookies_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_pN33iJ": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "100mm-aviator-cr-tube-with-integrated-liner-tamper-evident-break-off-band-translucent-amber-tube-with-opaque-black-closure-500-count",
+            "product_2": "100ml-aviator-bottle-closure-cr-clear-white-natural-opaque",
+            "product_3": "100ml-aviator-bottle-closure-cr-clear-black-natural-opaque",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "100mm-aviator-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-white-closure-500-count",
+            "product_5": "100mm-aviator-cr-tube-flat-bottom-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-white-closure-500-count",
+            "product_6": "100mm-aviator-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-black-closure-500-count",
+            "product_7": "10oz-300cc-aviator-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-80-count",
+            "product_8": "10oz-300cc-aviator-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-80-count"
+          }
+        },
+        "categories_info_UqFnPb": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Chemdawg × Girl Scout Cookies",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "63–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 21–25%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_79Wb3y": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Body-Relaxing",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Uplifting",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Couch Lock",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Evening-Friendly",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Pungent",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Diesel",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Garlic",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Beta-Caryophyllene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Alpha-Humulene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Myrcene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Nerolidol",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "400–550 gr/m² Indoor / 300–600 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_qK4j9w",
+        "description_t3HNHE",
+        "product_selection_pN33iJ",
+        "categories_info_UqFnPb",
+        "effects_yield_79Wb3y"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_6WbCye"
+  ]
+}

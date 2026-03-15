@@ -1,0 +1,1752 @@
+<style>
+        .packthc-hero-slider { position: relative; overflow: hidden; }
+        .packthc-hero-track { display: flex; transition: transform 0.5s ease; }
+        .packthc-hero-slide { min-width: 100%; position: relative; min-height: 600px; }
+        .packthc-hero-content { position: absolute; top: 50%; left: 5%; transform: translateY(-50%); z-index: 2; max-width: 600px; }
+        .packthc-hero-slide h1 { font-size: 4rem; font-weight: 900; color: white; margin: 0; line-height: 1.1; text-transform: uppercase; }
+        .packthc-hero-slide p { color: white; font-size: 1.5rem; margin: 20px 0; }
+        .packthc-hero-badge { color: #ffffff; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px }
+        .packthc-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; background: #033770; color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .packthc-btn:hover { transform: translateX(5px); }
+        .packthc-slider-dots { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+        .packthc-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
+        .packthc-dot.active { background: #033770; width: 30px; border-radius: 6px; }
+
+        .packthc-services { padding: 80px 5%; background: white; }
+        .packthc-section-title { text-align: center; margin-bottom: 40px; }
+        .packthc-section-badge { color: #D63A2F; font-size: 1.3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .packthc-section-title h2 { font-size: 2.5rem; font-weight: 900; margin: 0px 0; }
+        .packthc-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .packthc-service-card { border: 2px solid black; border-radius: 20px; padding: 20px; text-align: center; text-decoration: none; color: inherit; display: block; transition: 0.3s; }
+        .packthc-service-card:hover { transform: translateY(-5px); }
+        .packthc-service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 20px; }
+        .packthc-service-card h3 { font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
+
+
+        .packthc-about { padding: 80px 5%; background: #fff9f5; }
+        .packthc-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .packthc-about h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
+        .packthc-about p { color: #666; line-height: 1.8; margin-bottom: 30px; }
+        .packthc-features { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; margin-bottom: 30px; }
+        .packthc-features h3{ font-size: 2rem; padding-bottom: 20px;}
+        .packthc-features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .packthc-feature-item { display: flex; align-items: center; gap: 10px; }
+        .packthc-feature-item::before { content: '✓'; color: #033770; font-weight: bold; font-size: 1.2rem; }
+        .packthc-experience-badge { background: white; border: 2px solid black; border-radius: 50px; padding: 15px 30px; display: inline-block; font-weight: 700; }
+        .packthc-experience-badge span { color: #033770; font-size: 2rem; }
+
+        .packthc-process { padding: 80px 5%; background: white; }
+        .packthc-process-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .packthc-process h2 { font-size: 2.5rem; font-weight: 900; margin: 10px 0 20px; }
+        .packthc-process-steps { display: flex; flex-direction: column; gap: 20px; }
+        .packthc-process-step { background: white; border: 2px solid black; border-radius: 20px; padding: 30px; cursor: pointer; transition: 0.3s; position: relative; overflow: hidden; }
+        .packthc-process-step:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .packthc-process-step h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .packthc-process-step h3::before { content: attr(data-number) ' '; color: #033770; }
+        .packthc-step-toggle { margin-left: auto; font-size: 1.2rem; transition: 0.3s; }
+        .packthc-process-step.active .packthc-step-toggle { transform: rotate(180deg); }
+        .packthc-step-preview { color: #666; line-height: 1.6; }
+        .packthc-step-image { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; border-radius: 15px; margin-top: 0; }
+        .packthc-step-image img { width: 100%; border-radius: 15px; display: block; }
+        .packthc-process-step.active .packthc-step-image { max-height: 400px; margin-top: 20px; }
+
+        .packthc-process-cards { padding: 80px 5%; background: #1a1a1a; }
+      .packthc-process-cards h2 { text-align: center; color: white; font-size: 2.5rem; font-weight: 900; margin-bottom: 60px; }
+      .packthc-process-cards .packthc-section-badge { text-align: center; margin-bottom: 20px; }
+      .packthc-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+      .packthc-process-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px 30px; transition: 0.3s; }
+      .packthc-process-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); }
+      .packthc-card-number { width: 50px; height: 50px; border: 2px solid #ffffff; border-radius: 50%; display: flex !important; align-items: center; justify-content: center; color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; }
+      .packthc-process-card h3 { color: #ffffff; font-size: 2rem; font-weight: 800; margin-bottom: 15px; }
+      .packthc-process-card p { color: #ccc; line-height: 1.7; }
+
+      @media (max-width: 768px) {
+        .packthc-cards-grid { grid-template-columns: 1fr; }
+      }
+
+        .packthc-testimonials { padding: 80px 5%; background: #fff9f5; }
+        .packthc-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1200px; margin: 0 auto; align-items: center; }
+        .packthc-testimonial-image-container { position: relative; min-height: 600px; }
+        .packthc-testimonial-image { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s ease; border-radius: 20px; overflow: hidden; }
+        .packthc-testimonial-image.active { opacity: 1; }
+        .packthc-testimonial-image img { width: 100%; height: 100%; object-fit: cover; }
+        .packthc-testimonial-placeholder { width: 100%; height: 100%; background: #ddd; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: #999; }
+        .packthc-testimonial-content { background: white; border: 2px solid black; border-radius: 20px; padding: 40px; position: relative; }
+        .packthc-testimonial-header { margin-bottom: 0px; }
+        .packthc-stars { color: #033770; font-size: 1.5rem; margin-bottom: 20px; }
+        .packthc-testimonial-text { font-size: 2rem; line-height: 1.8; margin-bottom: 30px; min-height: 120px; }
+        .packthc-author { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; }
+        .packthc-author-info h4 { margin: 0; font-weight: 700; }
+        .packthc-author-info p { margin: 5px 0 0; color: #666; }
+        .packthc-testimonial-nav { display: flex; gap: 15px; justify-content: flex-end; }
+        .packthc-testimonial-btn { background: white; border: 2px solid black; width: 20px; height: 60px; border-radius: 40%; cursor: pointer; font-size: 3rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .packthc-testimonial-btn:hover { background: #033770; color: white; border-color: #033770; }
+
+        .packthc-cta { padding: 80px 5%; background: url('{{ section.settings.cta_bg_image | img_url: 'master' }}') center/cover; text-align: center; position: relative; }
+        .packthc-cta::before { content: ''; position: absolute; inset: 0; background: rgba(51,51,51,0.85); }
+        .packthc-cta h2 { color: white; font-size: 3rem; font-weight: 900; margin-bottom: 30px; position: relative; z-index: 1; }
+        .packthc-cta .packthc-btn { position: relative; z-index: 1; }
+
+        @media (max-width: 768px) {
+          .packthc-hero-slide h1 { font-size: 2.5rem; }
+          .packthc-about-grid, .packthc-process-grid, .packthc-testimonial-grid { grid-template-columns: 1fr; }
+          .packthc-services-grid { grid-template-columns: 1fr 1fr; gap: 5px; }
+          .packthc-service-card{ padding: 10px;}
+          .packthc-service-card img{ height: 130px;}
+          .packthc-services {padding: 60px 5px; }
+          .packthc-cta h2 { font-size: 2rem; }
+        }
+
+        /* ========== SERVICES TABS SYSTEM ========== */
+        .packthc-services-tabs-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 50px;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Desktop Tabs */
+        .packthc-services-tabs-desktop {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+        }
+
+        .packthc-tab-btn {
+          background: white;
+          border: 2px solid black;
+          padding: 15px 30px;
+          border-radius: 50px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+        }
+
+        .packthc-tab-btn:hover {
+          background: #033770;
+          color: white;
+          border-color: #033770;
+        }
+
+        .packthc-tab-btn.active {
+          background: #033770;
+          color: white;
+          border-color: #033770;
+        }
+
+        /* Mobile Dropdown */
+        .packthc-services-tabs-mobile {
+          display: none;
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .packthc-mobile-dropdown {
+          position: relative;
+          width: 100%;
+        }
+
+        .packthc-mobile-dropdown-btn {
+          width: 100%;
+          background: white;
+          border: 2px solid black;
+          padding: 15px 30px;
+          border-radius: 50px;
+          font-weight: 600;
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .packthc-mobile-dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: white;
+          border: 2px solid black;
+          border-radius: 20px;
+          margin-top: 10px;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s ease;
+          z-index: 100;
+          max-height: 300px;
+          overflow-y: auto;
+        }
+
+        .packthc-mobile-dropdown.open .packthc-mobile-dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+
+        .packthc-mobile-tab-item {
+          padding: 15px 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-bottom: 1px solid #eee;
+        }
+
+        .packthc-mobile-tab-item:last-child {
+          border-bottom: none;
+        }
+
+        .packthc-mobile-tab-item:hover {
+          background: #fff9f5;
+        }
+
+        .packthc-mobile-tab-item.active {
+          background: #033770;
+          color: white;
+        }
+
+        /* Service Popup */
+    /* ========== UPDATED SERVICE POPUP ========== */
+    .packthc-service-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      padding: 20px;
+    }
+    .packthc-service-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .packthc-popup-content {
+      background: white;
+      border-radius: 30px;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(50px);
+      transition: 0.4s;
+    }
+    .packthc-service-popup.active .packthc-popup-content {
+      transform: translateY(0);
+    }
+    .packthc-popup-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #033770;
+      border: none;
+  width: 20px;
+      border-radius: 100px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+    }
+
+    /* Popup Image (850x400px) */
+    .packthc-popup-image-container {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px 30px 0 0;
+    }
+    .packthc-popup-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Popup Body */
+    .packthc-popup-body {
+      padding: 40px;
+    }
+    .packthc-popup-header {
+      margin-bottom: 30px;
+    }
+    .packthc-popup-category {
+      color: #033770;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    .packthc-popup-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .packthc-popup-description {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    /* FAQs Section */
+    .packthc-popup-faqs {
+      margin: 40px 0;
+    }
+    .packthc-faqs-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .packthc-faq-item {
+      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+    }
+    .packthc-faq-question {
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .packthc-faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: #033770;
+      transition: transform 0.3s;
+    }
+    .packthc-faq-item.active .packthc-faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .packthc-faq-answer {
+      color: #666;
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .packthc-faq-item.active .packthc-faq-answer {
+      max-height: 300px;
+      padding-top: 10px;
+    }
+
+    /* Numbered Tabs Section */
+    .packthc-popup-tabs-section {
+      margin: 40px 0;
+    }
+    .packthc-tabs-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    .packthc-popup-tabs-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .packthc-popup-tab-btn {
+      background: white;
+      border: 2px solid black;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 45px;
+    }
+    .packthc-popup-tab-btn::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      background: #033770;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .packthc-popup-tab-btn:hover {
+      background: #fff9f5;
+    }
+    .packthc-popup-tab-btn.active {
+      background: #033770;
+      color: white;
+      border-color: #033770;
+    }
+    .packthc-popup-tab-btn.active::before {
+      background: white;
+      color: #033770;
+    }
+    .packthc-tab-content {
+      display: none;
+      padding: 25px;
+      background: #fff9f5;
+      border-radius: 20px;
+      border: 2px solid #eee;
+    }
+    .packthc-tab-content.active {
+      display: block;
+    }
+    .packthc-tab-content h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .packthc-tab-content p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    /* Popup CTA Button */
+    .packthc-popup-cta-container {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid #eee;
+    }
+    .packthc-popup-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 45px;
+      background: #033770;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    .packthc-popup-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 140, 66, 0.3);
+      background: #033770;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .packthc-popup-content {
+        max-width: 95%;
+      }
+      .packthc-popup-image-container {
+        height: 300px;
+      }
+      .packthc-popup-body {
+        padding: 15px;
+      }
+      .packthc-popup-title {
+        font-size: 3rem;
+      }
+      .packthc-popup-tabs-container {
+        justify-content: center;
+      }
+    }
+
+        /* Service Item */
+        .packthc-service-item { cursor: pointer; }
+        .packthc-service-item.hidden { display: none; }
+
+        /* ========== H2 FIXES ========== */
+        .packthc-page h2,
+        .packthc-page .packthc-section-title h2,
+        .packthc-page .packthc-about h2,
+        .packthc-page .packthc-process h2,
+        .packthc-page .packthc-process-cards h2,
+        .packthc-page .packthc-testimonials .packthc-testimonial-header h2,
+        .packthc-page .packthc-cta h2 {
+          font-weight: 700 !important;
+          margin: 10px 0 20px !important;
+          line-height: 1.2 !important;
+        }
+
+        /* Specific section fixes to prevent theme interference */
+        .packthc-page .packthc-section-title h2 {
+          font-size: 2.5rem !important;
+          text-align: center !important;
+        }
+
+        .packthc-page .packthc-about h2 {
+          font-size: 3.5rem !important;
+        }
+
+        .packthc-page .packthc-process h2 {
+          font-size: 2.5rem !important;
+        }
+
+        .packthc-page .packthc-process-cards h2 {
+          font-size: 2.5rem !important;
+          color: white !important;
+          text-align: center !important;
+        }
+
+        .packthc-page .packthc-testimonials .packthc-testimonial-header h2 {
+          font-size: 2.5rem !important;
+        }
+
+        .packthc-page .packthc-cta h2 {
+          font-size: 3rem !important;
+          color: white !important;
+          text-align: center !important;
+        }
+
+        /* Process Steps Number Fix */
+        .packthc-page .packthc-process-step h3::before {
+          content: attr(data-number) ' ' !important;
+          color: #033770 !important;
+        }
+
+        .packthc-page .packthc-process-card .packthc-card-number {
+          counter-increment: process-card !important;
+        }
+
+        /* Reset counter for process cards */
+        .packthc-page .packthc-process-cards .packthc-cards-grid {
+          counter-reset: process-card 0 !important;
+        }
+
+        .packthc-page .packthc-process-cards .packthc-card-number::before {
+          content: counter(process-card) !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+          .packthc-services-tabs-desktop {
+            display: none;
+          }
+
+          .packthc-services-tabs-mobile {
+            display: block;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .packthc-services-tabs-container {
+            padding: 0 20px;
+          }
+        }
+
+        /* ========== PRICING SECTION ========== */
+  .packthc-popup-pricing-section {
+    margin: 50px auto 0;
+    padding: 0 55px;
+    max-width: 1300px;
+  }
+
+  .packthc-pricing-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .packthc-pricing-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .packthc-pricing-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  /* Pricing Grid */
+  .packthc-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .packthc-pricing-card {
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: #ffffff;
+    border: 2px solid #e5e5e5;
+  }
+
+  /* Basic Plan - White */
+  .packthc-pricing-card {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+
+  .packthc-pricing-card .packthc-pricing-btn {
+    background: #5b4ec9;
+    color: white;
+    border-color: #5b4ec9;
+  }
+
+  .packthc-pricing-card .packthc-feature-dot {
+    background: #5b4ec9;
+  }
+
+  /* Professional Plan - Dark (style-dark) */
+  .packthc-pricing-card.style-dark {
+    background: #2a2a2a;
+    color: white;
+    border-color: #3a3a3a;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-name,
+  .packthc-pricing-card.style-dark .packthc-pricing-description,
+  .packthc-pricing-card.style-dark .packthc-pricing-features-label {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-price {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-features {
+    color: #ccc;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-btn {
+    background: white;
+    color: #2a2a2a;
+    border-color: white;
+    font-size: 1.5rem;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-btn:hover {
+    background: #f0f0f0;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-feature-dot {
+    background: white;
+  }
+
+  .packthc-pricing-card.style-dark .packthc-pricing-divider {
+    background: #444;
+  }
+
+  /* Enterprise Plan - Gradient (style-gradient) */
+  .packthc-pricing-card.style-gradient {
+    background: linear-gradient(135deg, #0a5ac2 0%, #033770 45%, #01203a 100%);
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-name,
+  .packthc-pricing-card.style-gradient .packthc-pricing-description,
+  .packthc-pricing-card.style-gradient .packthc-pricing-features-label {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-price {
+    color: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-features {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-btn {
+    background: white;
+    color: #000000;
+    border-color: white;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-feature-dot {
+    background: white;
+  }
+
+  .packthc-pricing-card.style-gradient .packthc-pricing-divider {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Featured Plan - Highlight */
+  .packthc-pricing-card.featured {
+    transform: scale(1.05);
+    box-shadow: 
+  0 25px 60px rgba(3, 55, 112, 0.45),
+  0 10px 25px rgba(3, 55, 112, 0.35),
+  0 5px 10px rgba(0, 0, 0, 0.25);
+
+  }
+
+  /* Pricing Name */
+  .packthc-pricing-name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+
+  /* Price */
+  .packthc-pricing-price {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .packthc-price-amount {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .packthc-price-period {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+
+  /* Description */
+  .packthc-pricing-description {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* CTA Button */
+  .packthc-pricing-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .packthc-pricing-btn:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Divider */
+  .packthc-pricing-divider {
+    height: 1px;
+    margin-bottom: 25px;
+    background: #e5e5e5;
+  }
+
+  /* Features Label */
+  .packthc-pricing-features-label {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    opacity: 0.7;
+  }
+
+  /* Features List */
+  .packthc-pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .packthc-pricing-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .packthc-feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .packthc-pricing-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .packthc-pricing-card.featured {
+      transform: scale(1);
+    }
+
+    .packthc-pricing-card.featured:hover {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .packthc-pricing-title {
+      font-size: 3.5rem;
+    }
+
+    .packthc-pricing-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .packthc-pricing-card {
+      padding: 25px;
+    }
+
+    .packthc-price-amount {
+      font-size: 2.2rem;
+    }
+    .packthc-popup-pricing-section{
+      padding: 0 10px;
+    }
+    .packthc-pricing-subtitle{
+      margin-bottom: 10px;
+    }
+    .packthc-pricing-grid{
+      margin-top: 0px;
+    }
+    .packthc-pricing-header{
+      margin-bottom: 20px;
+    }
+  }
+
+        /* Popup Scrollbar - Thin */
+  .packthc-popup-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .packthc-popup-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .packthc-popup-content::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 3px;
+  }
+
+  .packthc-popup-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+
+  /* Firefox */
+  .packthc-popup-content {
+    scrollbar-width: thin;
+    scrollbar-color: #d0d0d0 transparent;
+  }
+</style>
+
+<div class="packthc-page">
+  <!-- Hero Slider -->
+  <section class="packthc-hero-slider">
+    <div class="packthc-hero-track" id="heroTrack">
+      {% for block in section.blocks %}
+        {% if block.type == 'hero_slide' %}
+          <div
+            class="packthc-hero-slide"
+            style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('{{ block.settings.image | img_url: 'master' }}') center/cover;"
+          >
+            <div class="packthc-hero-content">
+              <div class="packthc-hero-badge">{{ block.settings.badge }}</div>
+              <h1>{{ block.settings.title }}</h1>
+              <p>{{ block.settings.text }}</p>
+              <a href="{{ block.settings.button_link }}" class="packthc-btn">
+                {{ block.settings.button_text }}
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="packthc-slider-dots" id="sliderDots"></div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="packthc-services">
+    <div class="packthc-section-title">
+      <div class="packthc-section-badge">{{ section.settings.services_badge }}</div>
+      <h2>{{ section.settings.services_title }}</h2>
+    </div>
+
+    <!-- Tabs for Desktop, Dropdown for Mobile -->
+    <div class="packthc-services-tabs-container">
+      <!-- Desktop Tabs -->
+      <div class="packthc-services-tabs-desktop" id="desktopTabs">
+        <button class="packthc-tab-btn active" onclick="filterServices('all', this, 'desktop')">All Services</button>
+        {% for block in section.blocks %}
+          {% if block.type == 'service_category' %}
+            <button
+              class="packthc-tab-btn"
+              onclick="filterServices('{{ block.settings.category_id }}', this, 'desktop')"
+            >
+              {{ block.settings.category_name }}
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <div class="packthc-services-tabs-mobile">
+        <div class="packthc-mobile-dropdown" id="mobileDropdown">
+          <button class="packthc-mobile-dropdown-btn" onclick="toggleMobileDropdown()">
+            <span id="mobileTabText">All Services</span>
+            <span class="filter-arrow">▼</span>
+          </button>
+          <div class="packthc-mobile-dropdown-menu">
+            <div class="packthc-mobile-tab-item active" onclick="selectMobileTab('all', 'All Services')">
+              All Services
+            </div>
+            {% for block in section.blocks %}
+              {% if block.type == 'service_category' %}
+                <div
+                  class="packthc-mobile-tab-item"
+                  onclick="selectMobileTab('{{ block.settings.category_id }}', '{{ block.settings.category_name }}')"
+                >
+                  {{ block.settings.category_name }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="packthc-services-grid packthc-services-dynamic-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'service' %}
+          <a
+            href="javascript:void(0)"
+            class="packthc-service-card packthc-service-item"
+            data-category="{{ block.settings.category }}"
+            onclick="openServicePopup(this)"
+            data-title="{{ block.settings.title }}"
+            data-description="{{ block.settings.full_description }}"
+            data-features="{{ block.settings.features }}"
+            data-faqs="{{ block.settings.faqs }}"
+            data-tabs="{{ block.settings.tabs }}"
+            data-link="{{ block.settings.link }}"
+            data-grid-image="{{ block.settings.image | img_url: '400x' }}"
+            data-popup-image="{% if block.settings.popup_image %}{{ block.settings.popup_image | img_url: '850x400', crop: 'center' }}{% else %}{{ block.settings.image | img_url: '850x400', crop: 'center' }}{% endif %}"
+          >
+            <img
+              src="{{ block.settings.image | img_url: '400x' }}"
+              alt="{{ block.settings.title }}"
+              class="service-image"
+            >
+            <div class="service-content">
+              <h3 class="service-title">{{ block.settings.title }}</h3>
+              <p class="service-preview">{{ block.settings.short_description }}</p>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Service Popup -->
+  <!-- Service Popup -->
+  <div class="packthc-service-popup" id="servicePopup" onclick="closePopupOnOutside(event)">
+    <div class="packthc-popup-content" onclick="event.stopPropagation()">
+      <button class="packthc-popup-close" onclick="closeServicePopup()">×</button>
+
+      <!-- 850x400px Image -->
+      <div class="packthc-popup-image-container">
+        <img id="popupImage" class="packthc-popup-image" src="" alt="">
+      </div>
+
+      <div class="packthc-popup-body">
+        <!-- Category and Title -->
+        <div class="packthc-popup-header">
+          <div class="packthc-popup-category" id="popupCategory"></div>
+          <h2 class="packthc-popup-title" id="popupTitle"></h2>
+          <p class="packthc-popup-description" id="popupDescription"></p>
+        </div>
+
+        <!-- Features/Highlights -->
+        <div class="packthc-popup-features-section">
+          <h3 class="packthc-faqs-title">Key Highlights</h3>
+          <ul class="packthc-popup-features" id="popupFeatures"></ul>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="packthc-popup-faqs" id="popupFaqs">
+          <h3 class="packthc-faqs-title">Frequently Asked Questions</h3>
+          <!-- FAQs will be populated by JavaScript -->
+        </div>
+
+        <!-- Numbered Tabs Section -->
+        <div class="packthc-popup-tabs-section">
+          <h3 class="packthc-tabs-title">Our Process</h3>
+          <div class="packthc-popup-tabs-container" id="popupTabs">
+            <!-- Tabs will be populated by JavaScript -->
+          </div>
+          <div class="packthc-tabs-content-container" id="tabsContent">
+            <!-- Tab content will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="packthc-popup-cta-container">
+          <a href="{{ block.settings.link | default: '/pages/contact' }}">
+            <button class="packthc-popup-cta" id="popupCtaBtn">
+              Get Started Now
+              <span>→</span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="packthc-about">
+    <div class="packthc-about-grid">
+      <div>
+        <div class="packthc-section-badge">{{ section.settings.about_badge }}</div>
+        <h2>{{ section.settings.about_title }}</h2>
+        <p>{{ section.settings.about_text }}</p>
+        <div class="packthc-features">
+          <h3>{{ section.settings.features_title }}</h3>
+          <div class="packthc-features-grid">
+            <div class="packthc-feature-item">{{ section.settings.feature_1 }}</div>
+            <div class="packthc-feature-item">{{ section.settings.feature_2 }}</div>
+            <div class="packthc-feature-item">{{ section.settings.feature_3 }}</div>
+            <div class="packthc-feature-item">{{ section.settings.feature_4 }}</div>
+          </div>
+        </div>
+        <div class="packthc-experience-badge">
+          <span>{{ section.settings.years }}+</span> Years Of Experience
+        </div>
+      </div>
+      <div>
+        <img
+          src="{{ section.settings.about_image | img_url: 'master' }}"
+          alt="Packaging"
+          style="width: 100%; border-radius: 20px;"
+        >
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Cards Section -->
+  <section class="packthc-process-cards">
+    <div class="packthc-section-badge">{{ section.settings.cards_badge }}</div>
+    <h2>{{ section.settings.cards_title }}</h2>
+    <div class="packthc-cards-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'process_card' %}
+          <div class="packthc-process-card">
+            <div class="packthc-card-number"></div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <div class="packthc-popup-pricing-section">
+    <div class="packthc-pricing-header">
+      <h3 class="packthc-pricing-title">{{ section.settings.pricing_title }}</h3>
+      <p class="packthc-pricing-subtitle">{{ section.settings.pricing_subtitle }}</p>
+    </div>
+
+    <div class="packthc-pricing-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'pricing' %}
+          <div class="packthc-pricing-card{% if block.settings.plan_featured %} featured{% endif %}{% if block.settings.plan_style %} {{ block.settings.plan_style }}{% endif %}">
+            <div class="packthc-pricing-name">{{ block.settings.plan_name }}</div>
+
+            <div class="packthc-pricing-price">
+              <span class="packthc-price-amount">{{ block.settings.plan_price }}</span>
+              <span class="packthc-price-period" id="period-{{ forloop.index }}">
+                {{- section.settings.monthly_label -}}
+              </span>
+            </div>
+
+            <p class="packthc-pricing-description">{{ block.settings.plan_description }}</p>
+
+            <button
+              class="packthc-pricing-btn"
+              onclick="window.location.href='{{ section.settings.cta_link | default: '/pages/contact' }}'"
+            >
+              {{ block.settings.plan_cta_text }}
+            </button>
+
+            <div class="packthc-pricing-divider"></div>
+
+            <div class="packthc-pricing-features-label">{{ section.settings.features_label }}</div>
+
+            <div class="packthc-pricing-features">
+              {% assign features = block.settings.plan_features | split: ';' %}
+              {% for feature in features %}
+                {% assign trimmed = feature | strip %}
+                {% if trimmed != blank %}
+                  <div class="packthc-pricing-feature">
+                    <span class="packthc-feature-dot"></span>
+                    {{ trimmed }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Process Section -->
+  <section class="packthc-process">
+    <div class="packthc-process-grid">
+      <div>
+        <div class="packthc-section-badge">{{ section.settings.process_badge }}</div>
+        <h2>{{ section.settings.process_title }}</h2>
+        <p>{{ section.settings.process_text }}</p>
+      </div>
+      <div class="packthc-process-steps">
+        {% comment %} Process steps counter reset {% endcomment %}
+        {% assign step_counter = 1 %}
+
+        {% for block in section.blocks %}
+          {% if block.type == 'process_step' %}
+            <div class="packthc-process-step{{ forloop.first | prepend: ' active' }}" onclick="toggleStep(this)">
+              <h3 data-number="{{ step_counter }}">
+                {{ block.settings.title }}
+                <span class="packthc-step-toggle">▼</span>
+              </h3>
+              <p class="packthc-step-preview">{{ block.settings.description }}</p>
+              <div class="packthc-step-image">
+                <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.title }}">
+              </div>
+            </div>
+            {% assign step_counter = step_counter | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="packthc-testimonials">
+    <div class="packthc-testimonial-grid">
+      <div class="packthc-testimonial-image-container">
+        {% for block in section.blocks %}
+          {% if block.type == 'testimonial' %}
+            <div
+              class="packthc-testimonial-image {% if forloop.first %}active{% endif %}"
+              data-testimonial="{{ forloop.index0 }}"
+            >
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.name }}">
+              {% else %}
+                <div class="packthc-testimonial-placeholder">590x590</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div>
+        <div class="packthc-testimonial-header">
+          <div class="packthc-section-badge">{{ section.settings.testimonial_badge }}</div>
+          <h2>{{ section.settings.testimonial_title }}</h2>
+        </div>
+        <div class="packthc-testimonial-content">
+          <div class="packthc-stars" id="testimonialStars">★★★★★</div>
+          <p class="packthc-testimonial-text" id="testimonialText"></p>
+          <div class="packthc-author">
+            <div class="packthc-author-info">
+              <h4 id="testimonialName"></h4>
+              <p id="testimonialRole"></p>
+            </div>
+          </div>
+          <div class="packthc-testimonial-nav">
+            <button class="packthc-testimonial-btn" onclick="prevTestimonial()">←</button>
+            <button class="packthc-testimonial-btn" onclick="nextTestimonial()">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="packthc-cta">
+    <h2>{{ section.settings.cta_text }}</h2>
+    <a href="{{ section.settings.cta_link }}" class="packthc-btn">
+      {{- section.settings.cta_button }}
+      <span>→</span></a
+    >
+  </section>
+</div>
+
+<script>
+  // ========== HERO SLIDER ==========
+  let currentSlide = 0;
+  const track = document.getElementById('heroTrack');
+  const slides = track.children.length;
+  const dotsContainer = document.getElementById('sliderDots');
+
+  for (let i = 0; i < slides; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'packthc-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateSlider() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    document.querySelectorAll('.packthc-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentSlide);
+    });
+  }
+
+  function goToSlide(n) {
+    currentSlide = n;
+    updateSlider();
+  }
+
+  function autoSlide() {
+    currentSlide = (currentSlide + 1) % slides;
+    updateSlider();
+  }
+
+  setInterval(autoSlide, 4000);
+
+  // ========== PROCESS STEPS TOGGLE ==========
+  function toggleStep(element) {
+    const allSteps = document.querySelectorAll('.packthc-process-step');
+    const isActive = element.classList.contains('active');
+
+    allSteps.forEach((step) => step.classList.remove('active'));
+
+    if (!isActive) {
+      element.classList.add('active');
+    }
+  }
+
+  // ========== TESTIMONIALS ==========
+  const testimonials = [
+    {% for block in section.blocks %}
+      {% if block.type == 'testimonial' %}
+        {
+          text: {{ block.settings.text | json }},
+          name: {{ block.settings.name | json }},
+          role: {{ block.settings.role | json }},
+          rating: {{ block.settings.rating | default: 5 }}
+        }{% unless forloop.last %},{% endunless %}
+      {% endif %}
+    {% endfor %}
+  ];
+  
+  let currentTestimonial = 0;
+  
+  function updateTestimonial() {
+    if (testimonials.length === 0) return;
+    
+    const t = testimonials[currentTestimonial];
+    document.getElementById('testimonialText').textContent = `"${t.text}"`;
+    document.getElementById('testimonialName').textContent = t.name;
+    document.getElementById('testimonialRole').textContent = t.role;
+    document.getElementById('testimonialStars').textContent = '★'.repeat(t.rating);
+    
+    document.querySelectorAll('.packthc-testimonial-image').forEach((img, i) => {
+      img.classList.toggle('active', i === currentTestimonial);
+    });
+  }
+  // ========== INITIALIZE FIRST PROCESS STEP ==========
+document.addEventListener('DOMContentLoaded', function() {
+  const firstStep = document.querySelector('.packthc-process-step');
+  if (firstStep) {
+    firstStep.classList.add('active');
+  }
+});
+  
+  function nextTestimonial() {
+    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+    updateTestimonial();
+  }
+  
+  function prevTestimonial() {
+    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    updateTestimonial();
+  }
+  
+  if(testimonials.length > 0) updateTestimonial();
+
+  // ========== SERVICES TABS & FILTERING ==========
+  function toggleMobileDropdown() {
+    const dropdown = document.getElementById('mobileDropdown');
+    dropdown.classList.toggle('open');
+  }
+
+  function selectMobileTab(category, text) {
+    document.getElementById('mobileTabText').textContent = text;
+    
+    // Update mobile dropdown items
+    document.querySelectorAll('.packthc-mobile-tab-item').forEach(item => {
+      item.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Filter services
+    filterServices(category, event.target, 'mobile');
+    
+    // Close dropdown
+    document.getElementById('mobileDropdown').classList.remove('open');
+  }
+
+  function filterServices(category, element, type) {
+    // Update active state
+    if (type === 'desktop') {
+      document.querySelectorAll('.packthc-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      element.classList.add('active');
+    }
+    
+    // Filter services
+    const items = document.querySelectorAll('.packthc-service-item');
+    items.forEach(item => {
+      if(category === 'all' || item.dataset.category === category) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
+  // Close mobile dropdown on outside click
+  document.addEventListener('click', (e) => {
+    const mobileDropdown = document.getElementById('mobileDropdown');
+    if (mobileDropdown && !mobileDropdown.contains(e.target)) {
+      mobileDropdown.classList.remove('open');
+    }
+  });
+
+  // ========== SERVICE POPUP ==========
+function openServicePopup(element) {
+  const popup = document.getElementById('servicePopup');
+  
+  // Get data from element
+  const popupImage = element.dataset.popupImage || element.dataset.gridImage;
+  const gridImage = element.dataset.gridImage;
+  const category = element.dataset.category;
+  const title = element.dataset.title;
+  const description = element.dataset.description;
+  const features = element.dataset.features;
+  const faqsData = element.dataset.faqs;
+  const tabsData = element.dataset.tabs;
+  const link = element.dataset.link;
+  
+  // Set popup image (priority: popup_image > grid_image)
+  document.getElementById('popupImage').src = popupImage;
+  
+  // Set basic info
+  document.getElementById('popupCategory').textContent = category;
+  document.getElementById('popupTitle').textContent = title;
+  document.getElementById('popupDescription').textContent = description;
+  
+  // Set features
+  const featuresList = document.getElementById('popupFeatures');
+  featuresList.innerHTML = '';
+  if(features) {
+    features.split('|').forEach(feature => {
+      if (feature.trim()) {
+        const li = document.createElement('li');
+        li.textContent = feature.trim();
+        li.style.listStyle = 'none';
+        li.style.padding = '10px 0';
+        li.style.paddingLeft = '30px';
+        li.style.position = 'relative';
+        li.style.color = '#333';
+        li.innerHTML = '<span style="position:absolute; left:0; color:#ff8c42; font-weight:bold;">✓</span> ' + feature.trim();
+        featuresList.appendChild(li);
+      }
+    });
+  }
+  
+  // Set FAQs from data or use default
+  const faqsContainer = document.getElementById('popupFaqs');
+  faqsContainer.innerHTML = '<h3 class="packthc-faqs-title">Frequently Asked Questions</h3>';
+  
+  if (faqsData) {
+    // Parse custom FAQs from data
+    const faqPairs = faqsData.split('||');
+    faqPairs.forEach(pair => {
+      const [question, answer] = pair.split('|');
+      if (question && answer) {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'packthc-faq-item';
+        faqItem.innerHTML = `
+          <div class="packthc-faq-question" onclick="toggleFaq(this)">
+            ${question.trim()}
+          </div>
+          <div class="packthc-faq-answer">
+            ${answer.trim()}
+          </div>
+        `;
+        faqsContainer.appendChild(faqItem);
+      }
+    });
+  } else {
+    // Default FAQs
+    const defaultFaqs = [
+      { q: "What is included in this service?", a: "Complete package including design, development, and deployment." },
+      { q: "How long does it take to complete?", a: "Typically 2-4 weeks depending on complexity." },
+      { q: "What are the pricing options?", a: "We offer flexible pricing packages to suit your needs." },
+      { q: "Do you provide ongoing support?", a: "Yes, we provide 6 months of free support and maintenance." }
+    ];
+    
+    defaultFaqs.forEach(faq => {
+      const faqItem = document.createElement('div');
+      faqItem.className = 'packthc-faq-item';
+      faqItem.innerHTML = `
+        <div class="packthc-faq-question" onclick="toggleFaq(this)">
+          ${faq.q}
+        </div>
+        <div class="packthc-faq-answer">
+          ${faq.a}
+        </div>
+      `;
+      faqsContainer.appendChild(faqItem);
+    });
+  }
+  
+  // Set Numbered Tabs from data or use default
+  const tabsContainer = document.getElementById('popupTabs');
+  const tabsContentContainer = document.getElementById('tabsContent');
+  
+  tabsContainer.innerHTML = '';
+  tabsContentContainer.innerHTML = '';
+  
+  let tabData = [];
+  
+  if (tabsData) {
+    // Parse custom tabs from data
+    const tabPairs = tabsData.split('||');
+    tabPairs.forEach((pair, index) => {
+      const [title, content] = pair.split('|');
+      if (title && content) {
+        tabData.push({
+          number: index + 1,
+          title: title.trim(),
+          content: content.trim()
+        });
+      }
+    });
+  }
+  
+  // If no custom tabs, use defaults
+  if (tabData.length === 0) {
+    tabData = [
+      { number: 1, title: "Consultation", content: "We start with a detailed consultation to understand your needs and goals." },
+      { number: 2, title: "Planning", content: "Our team creates a comprehensive plan and strategy for your project." },
+      { number: 3, title: "Execution", content: "We implement the plan with precision and attention to detail." },
+      { number: 4, title: "Delivery", content: "Final delivery and launch with thorough testing and optimization." }
+    ];
+  }
+  
+  // Create tabs and content
+  tabData.forEach((tab, index) => {
+    // Create tab button
+    const tabBtn = document.createElement('button');
+    tabBtn.className = 'packthc-popup-tab-btn' + (index === 0 ? ' active' : '');
+    tabBtn.setAttribute('data-number', tab.number);
+    tabBtn.textContent = tab.title;
+    tabBtn.onclick = () => switchPopupTab(index);
+    tabsContainer.appendChild(tabBtn);
+    
+    // Create tab content
+    const tabContent = document.createElement('div');
+    tabContent.className = 'packthc-tab-content' + (index === 0 ? ' active' : '');
+    tabContent.innerHTML = `
+      <h4>Step ${tab.number}: ${tab.title}</h4>
+      <p>${tab.content}</p>
+    `;
+    tabsContentContainer.appendChild(tabContent);
+  });
+  
+  // Set CTA button
+  const ctaBtn = document.getElementById('popupCtaBtn');
+  if (link) {
+    ctaBtn.onclick = function() {
+      window.location.href = link;
+    };
+    ctaBtn.style.cursor = 'pointer';
+  } else {
+    ctaBtn.onclick = function() {
+      window.location.href = '/contact';
+    };
+  }
+  
+  // Open popup
+  popup.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// FAQ toggle function
+function toggleFaq(element) {
+  const faqItem = element.parentElement;
+  const isActive = faqItem.classList.contains('active');
+  
+  // Close all FAQs
+  document.querySelectorAll('.packthc-faq-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // Open clicked FAQ if it wasn't active
+  if (!isActive) {
+    faqItem.classList.add('active');
+  }
+}
+
+// Switch between tabs
+function switchPopupTab(index) {
+  // Update tab buttons
+  document.querySelectorAll('.packthc-popup-tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  
+  // Update tab content
+  document.querySelectorAll('.packthc-tab-content').forEach((content, i) => {
+    content.classList.toggle('active', i === index);
+  });
+}
+
+function closeServicePopup() {
+  document.getElementById('servicePopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+  function closePopupOnOutside(event) {
+    if(event.target.id === 'servicePopup') {
+      closeServicePopup();
+    }
+  }
+
+  // ESC key to close popup
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeServicePopup();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "PackTHC Studio",
+  "settings": [
+    { "type": "text", "id": "services_badge", "label": "Services Badge", "default": "OUR SERVICES" },
+    { "type": "text", "id": "services_title", "label": "Services Title", "default": "WHAT WE DO FOR CANNABIS BRANDS" },
+    { "type": "text", "id": "about_badge", "label": "About Badge", "default": "ABOUT US" },
+    {
+      "type": "text",
+      "id": "about_title",
+      "label": "About Title",
+      "default": "Driving Innovation In Cannabis Packaging"
+    },
+    { "type": "textarea", "id": "about_text", "label": "About Text" },
+    { "type": "image_picker", "id": "about_image", "label": "About Image" },
+    { "type": "text", "id": "features_title", "label": "Features Title", "default": "PackTHC Identity" },
+    { "type": "text", "id": "feature_1", "label": "Feature 1", "default": "Brand Strategy" },
+    { "type": "text", "id": "feature_2", "label": "Feature 2", "default": "Visual Branding" },
+    { "type": "text", "id": "feature_3", "label": "Feature 3", "default": "Identity Build" },
+    { "type": "text", "id": "feature_4", "label": "Feature 4", "default": "Marketing Strategy" },
+    { "type": "text", "id": "years", "label": "Years", "default": "15" },
+    { "type": "text", "id": "process_badge", "label": "Process Badge", "default": "OUR PROCESS" },
+    {
+      "type": "text",
+      "id": "process_title",
+      "label": "Process Title",
+      "default": "How PackTHC Studio Brings Brands To Life"
+    },
+    {
+      "type": "text",
+      "id": "pricing_title",
+      "label": "Pricing Title",
+      "default": "Plans That Fit Your Business"
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_subtitle",
+      "label": "Pricing Subtitle",
+      "default": "From startups to enterprises, find the right solution to streamline your HR processes"
+    },
+    {
+      "type": "text",
+      "id": "features_label",
+      "label": "Features Section Label",
+      "default": "WHAT YOU WILL GET"
+    },
+    { "type": "textarea", "id": "process_text", "label": "Process Text" },
+    { "type": "text", "id": "cards_badge", "label": "Process Cards Badge", "default": "OUR PROCESS" },
+    {
+      "type": "text",
+      "id": "cards_title",
+      "label": "Process Cards Title",
+      "default": "How PackTHC Studio Brings Your Brand To Life"
+    },
+    { "type": "text", "id": "testimonial_badge", "label": "Testimonial Badge", "default": "TESTIMONIALS" },
+    {
+      "type": "text",
+      "id": "testimonial_title",
+      "label": "Testimonial Title",
+      "default": "What Our Cannabis Clients Say"
+    },
+    { "type": "text", "id": "cta_text", "label": "CTA Text", "default": "Trusted By 17k+ Worldwide Brand & Customers" },
+    { "type": "text", "id": "cta_button", "label": "CTA Button", "default": "LEARN MORE" },
+    { "type": "url", "id": "cta_link", "label": "CTA Link" },
+    { "type": "image_picker", "id": "cta_bg_image", "label": "CTA Background Image" }
+  ],
+  "blocks": [
+    {
+      "type": "hero_slide",
+      "name": "Hero Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background Image" },
+        { "type": "text", "id": "badge", "label": "Badge", "default": "PACKTHC DIGITAL AGENCY" },
+        { "type": "text", "id": "title", "label": "Title", "default": "ELEVATE YOUR DISPENSARY" },
+        { "type": "textarea", "id": "text", "label": "Description" },
+        { "type": "text", "id": "button_text", "label": "Button Text", "default": "LEARN MORE" },
+        { "type": "url", "id": "button_link", "label": "Button Link" }
+      ]
+    },
+    {
+      "type": "service_category",
+      "name": "Service Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_id",
+          "label": "Category ID (lowercase, no spaces)",
+          "info": "Example: branding, webdesign, marketing"
+        },
+        { "type": "text", "id": "category_name", "label": "Category Display Name" }
+      ]
+    },
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Grid Image" },
+        { "type": "image_picker", "id": "popup_image", "label": "Popup Image (850x400px)" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "category", "label": "Category", "info": "Must match Category ID exactly" },
+        { "type": "textarea", "id": "short_description", "label": "Short Description" },
+        { "type": "textarea", "id": "full_description", "label": "Full Description (for popup)" },
+        { "type": "textarea", "id": "features", "label": "Features", "info": "Separate with | symbol" },
+        { "type": "textarea", "id": "faqs", "label": "FAQs", "info": "Format: Question|Answer separated by ||" },
+        { "type": "textarea", "id": "tabs", "label": "Tabs Data", "info": "Format: Title|Content separated by ||" },
+        { "type": "url", "id": "link", "label": "Service Link" }
+      ]
+    },
+    {
+      "type": "process_card",
+      "name": "Process Card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Card Title" },
+        { "type": "textarea", "id": "description", "label": "Card Description" }
+      ]
+    },
+    {
+      "type": "pricing",
+      "name": "Pricing Plan",
+      "settings": [
+        {
+          "type": "text",
+          "id": "plan_name",
+          "label": "Plan Name",
+          "placeholder": "e.g., Basic Plan"
+        },
+        {
+          "type": "text",
+          "id": "plan_price",
+          "label": "Price",
+          "placeholder": "e.g., $29"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_description",
+          "label": "Plan Description",
+          "placeholder": "e.g., Perfect for small businesses just starting out"
+        },
+        {
+          "type": "select",
+          "id": "plan_style",
+          "label": "Card Style",
+          "options": [
+            {
+              "value": "",
+              "label": "White (Basic)"
+            },
+            {
+              "value": "style-dark",
+              "label": "Dark (Professional)"
+            },
+            {
+              "value": "style-gradient",
+              "label": "Gradient (Enterprise)"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "plan_featured",
+          "label": "Highlight as Featured Plan (scales up)"
+        },
+        {
+          "type": "text",
+          "id": "plan_cta_text",
+          "label": "CTA Button Text",
+          "default": "Get Started"
+        },
+        {
+          "type": "textarea",
+          "id": "plan_features",
+          "label": "Features (one per line)",
+          "placeholder": "Feature 1\nFeature 2\nFeature 3\nFeature 4"
+        }
+      ]
+    },
+    {
+      "type": "process_step",
+      "name": "Process Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "image_picker", "id": "image", "label": "Step Image" }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Client Image" },
+        { "type": "textarea", "id": "text", "label": "Testimonial Text" },
+        { "type": "text", "id": "name", "label": "Client Name" },
+        { "type": "text", "id": "role", "label": "Client Role" },
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "PackTHC Studio" }]
+}
+{% endschema %}

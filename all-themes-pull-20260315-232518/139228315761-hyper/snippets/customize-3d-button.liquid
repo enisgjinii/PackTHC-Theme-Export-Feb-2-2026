@@ -1,0 +1,84 @@
+{% comment %}
+  Renders a "Customize in 3D" CTA button on product pages.
+
+  Detection modes (configurator_detect_mode setting):
+    "auto"  — JS calls the configurator API to decide if product has a matching 3D model (default)
+    "tag"   — only show on products with the configurator_product_tag (e.g. "3d-customizable")
+    "all"   — show on every product unconditionally
+
+  Accepts:
+  - product: {Object} product object.
+  - configurator_page: {String} URL handle of the configurator page (default: /pages/configurator)
+  - button_text: {String} button label
+  - show_badge: {Boolean} show "Powered by PackTHC Studio" badge
+
+  Usage:
+  {% render 'customize-3d-button', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign _product = product
+  assign _enabled = settings.configurator_enabled | default: true
+  assign _page_handle = settings.configurator_page_handle | default: 'configurator'
+  assign _page_url = configurator_page | default: '/pages/' | append: _page_handle
+  assign _btn_text = button_text | default: settings.configurator_button_text | default: 'Customize in 3D'
+  assign _show_badge = show_badge | default: settings.configurator_show_badge | default: true
+  assign _detect_mode = settings.configurator_detect_mode | default: 'auto'
+
+  assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
+  assign _show_button = false
+  assign _use_autodetect = false
+
+  case _detect_mode
+    when 'all'
+      assign _show_button = true
+    when 'tag'
+      for tag in _product.tags
+        assign _tag_lower = tag | downcase
+        assign _model_tag_lower = _model_tag | downcase
+        if _tag_lower == _model_tag_lower
+          assign _show_button = true
+          break
+        endif
+      endfor
+    when 'auto'
+      assign _show_button = true
+      assign _use_autodetect = true
+  endcase
+-%}
+
+{%- if _product != blank and _enabled and _show_button -%}
+  {%- capture _configurator_link -%}
+    {{ _page_url }}?product={{ _product.handle }}&product_id={{ _product.id }}&variant_id={{ _product.selected_or_first_available_variant.id }}&title={{ _product.title | url_encode }}&sku={{ _product.selected_or_first_available_variant.sku | url_encode }}&vendor={{ _product.vendor | url_encode }}&image={{ _product.featured_image | image_url: width: 400 | url_encode }}&price={{ _product.selected_or_first_available_variant.price | money_without_currency | url_encode }}
+  {%- endcapture -%}
+
+  {{ 'product-configurator.css' | asset_url | stylesheet_tag }}
+
+  {%- comment -%}
+    When autodetect is on, start hidden → JS reveals if model found.
+    When tag/all mode, show immediately.
+  {%- endcomment -%}
+  <div
+    class="customize-3d-wrapper"
+    {% if _use_autodetect %}data-3d-autodetect{% endif %}
+    style="margin-top: 10px;{% if _use_autodetect %} display: none;{% endif %}"
+  >
+    <a href="{{ _configurator_link | strip }}" class="btn btn--primary customize-3d-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <span class="btn__text" style="display: inline-flex; align-items: center; gap: 8px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        {{ _btn_text }}
+      </span>
+    </a>
+  </div>
+
+  {%- if _use_autodetect -%}
+    <script>
+      window.__PACKTHC_CONFIGURATOR_URL__ = {{ settings.configurator_base_url | default: 'https://dram-product-customizer.vercel.app' | json }};
+    </script>
+    <script src="{{ 'model-auto-detect.js' | asset_url }}" defer></script>
+  {%- endif -%}
+{%- endif -%}

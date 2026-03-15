@@ -1,0 +1,295 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "packthc_career_aAhcUA": {
+      "type": "packthc-career",
+      "blocks": {
+        "hero_TTxHM6": {
+          "type": "hero",
+          "settings": {
+            "tag_text": "We're Hiring",
+            "headline_line1": "Build Systems.",
+            "headline_accent": "Scale With Us.",
+            "subtitle": "PackTHC is a U.S.-based e-commerce packaging brand built for modern, fast-moving markets. We are not a traditional packaging company — we are a performance infrastructure brand.",
+            "cta_label": "View Open Roles"
+          }
+        },
+        "culture_heading_bce4eb": {
+          "type": "culture_heading",
+          "settings": {
+            "label": "Our Culture",
+            "heading": "How We Operate"
+          }
+        },
+        "culture_item_hgiVmt": {
+          "type": "culture_item",
+          "settings": {
+            "title": "Clarity over Confusion",
+            "description": "Every decision and communication is built to eliminate ambiguity and drive clear outcomes."
+          }
+        },
+        "culture_item_cWrLVK": {
+          "type": "culture_item",
+          "settings": {
+            "title": "Execution over Discussion",
+            "description": "We ship, test, and iterate. Talking about work comes second to doing the work."
+          }
+        },
+        "culture_item_QD7VU7": {
+          "type": "culture_item",
+          "settings": {
+            "title": "Systems over Chaos",
+            "description": "We build repeatable, scalable processes — not one-time fixes or workarounds."
+          }
+        },
+        "culture_item_mJicEN": {
+          "type": "culture_item",
+          "settings": {
+            "title": "Performance over Comfort",
+            "description": "Growth requires discomfort. We optimize for results, not reassurance."
+          }
+        },
+        "culture_item_tgJTN4": {
+          "type": "culture_item",
+          "settings": {
+            "title": "Ownership over Dependency",
+            "description": "We don't micromanage — we measure results. Own your work end-to-end."
+          }
+        },
+        "traits_heading_aQTVBt": {
+          "type": "traits_heading",
+          "settings": {
+            "label": "Who Should Apply",
+            "heading": "Strong Fit Criteria"
+          }
+        },
+        "trait_item_DRkcCj": {
+          "type": "trait_item",
+          "settings": {
+            "text": "Take responsibility without being asked."
+          }
+        },
+        "trait_item_8tJit4": {
+          "type": "trait_item",
+          "settings": {
+            "text": "Think in systems and long-term scalability."
+          }
+        },
+        "trait_item_3MbC6n": {
+          "type": "trait_item",
+          "settings": {
+            "text": "Understand that your work impacts revenue."
+          }
+        },
+        "trait_item_ETgQEP": {
+          "type": "trait_item",
+          "settings": {
+            "text": "Can work independently in a remote environment."
+          }
+        },
+        "trait_item_6xJync": {
+          "type": "trait_item",
+          "settings": {
+            "text": "Are comfortable adapting to performance metrics and iteration cycles."
+          }
+        },
+        "jobs_heading_RAemdy": {
+          "type": "jobs_heading",
+          "settings": {
+            "label": "Current Open Positions",
+            "heading": "Open Roles"
+          }
+        },
+        "job_card_94yagR": {
+          "type": "job_card",
+          "settings": {
+            "title": "Graphic Designer",
+            "description": "AI-first designer for e-commerce visuals — packaging mockups, Meta/Google ad creatives, and social content. Build fast, iterate faster.",
+            "tag1": "Remote",
+            "tag2": "Full-Time",
+            "tag3": "AI-Assisted"
+          }
+        },
+        "job_card_GgNzXc": {
+          "type": "job_card",
+          "settings": {
+            "title": "Web Developer",
+            "description": "Build and maintain production e-commerce systems using React, Node.js, and modern backend frameworks. Deep understanding required.",
+            "tag1": "Remote",
+            "tag2": "Full-Time",
+            "tag3": "E-commerce"
+          }
+        },
+        "job_card_WU9r7p": {
+          "type": "job_card",
+          "settings": {
+            "title": "Customer Service Rep",
+            "description": "Voice of PackTHC. Handle inbound/outbound calls, maintain CRM records, and deliver professional, calm customer interactions.",
+            "tag1": "Voice Process",
+            "tag2": "Remote",
+            "tag3": "CRM"
+          }
+        },
+        "job_card_tqgaN8": {
+          "type": "job_card",
+          "settings": {
+            "title": "Field Sales Executive",
+            "description": "Drive B2B growth through lead generation, client visits, product presentations, and deal closures across key regions.",
+            "tag1": "B2B Sales",
+            "tag2": "Field",
+            "tag3": "Growth"
+          }
+        },
+        "job_card_KTFMAe": {
+          "type": "job_card",
+          "settings": {
+            "title": "Office Operations",
+            "description": "Support internal systems, coordinate across departments, assist leadership, and ensure structured daily execution.",
+            "tag1": "Operations",
+            "tag2": "Remote",
+            "tag3": "Process"
+          }
+        },
+        "job_card_69w4XJ": {
+          "type": "job_card",
+          "settings": {
+            "title": "Customer Care Executive",
+            "description": "Handle multi-channel customer queries — call, email, chat — with empathy, speed, and consistent CRM updates.",
+            "tag1": "Multi-channel",
+            "tag2": "Remote",
+            "tag3": "Support"
+          }
+        },
+        "perks_heading_wjb8iW": {
+          "type": "perks_heading",
+          "settings": {
+            "label": "Why Join PackTHC",
+            "heading": "What You Get"
+          }
+        },
+        "perk_card_g6UtNb": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "🌐",
+            "title": "Fully Remote",
+            "text": "Work from anywhere with a U.S.-aligned structured workflow."
+          }
+        },
+        "perk_card_Hp4WPD": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "📈",
+            "title": "Performance-Based Growth",
+            "text": "Initiative is rewarded. Results drive your growth path, not tenure."
+          }
+        },
+        "perk_card_xLBt7N": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "🤖",
+            "title": "AI-Assisted Systems",
+            "text": "Work with cutting-edge AI tools embedded into real production workflows."
+          }
+        },
+        "perk_card_FfRVyW": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "🎯",
+            "title": "High Ownership",
+            "text": "Direct exposure to real e-commerce infrastructure with clear expectations."
+          }
+        },
+        "perk_card_rkwCDB": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "🔧",
+            "title": "Skill Growth",
+            "text": "Long-term roles built around building capability, not just filling seats."
+          }
+        },
+        "perk_card_Hc3ibF": {
+          "type": "perk_card",
+          "settings": {
+            "icon": "🏗️",
+            "title": "Scale Mindset",
+            "text": "Join a brand actively building scalable systems for modern packaging markets."
+          }
+        },
+        "apply_cta_PVqTcR": {
+          "type": "apply_cta",
+          "settings": {
+            "heading": "Ready to Build?",
+            "subtext": "Send your CV, portfolio or GitHub, and a short note about how you approach your work.",
+            "email": "digital@packthc.com",
+            "step1": "Updated CV",
+            "step2": "Portfolio / GitHub",
+            "step3": "Short Work Note",
+            "step4": "Subject: Application – [Role]",
+            "cta_label": "Apply Now"
+          }
+        }
+      },
+      "block_order": [
+        "hero_TTxHM6",
+        "culture_heading_bce4eb",
+        "culture_item_hgiVmt",
+        "culture_item_cWrLVK",
+        "culture_item_QD7VU7",
+        "culture_item_mJicEN",
+        "culture_item_tgJTN4",
+        "traits_heading_aQTVBt",
+        "trait_item_DRkcCj",
+        "trait_item_8tJit4",
+        "trait_item_3MbC6n",
+        "trait_item_ETgQEP",
+        "trait_item_6xJync",
+        "jobs_heading_RAemdy",
+        "job_card_94yagR",
+        "job_card_GgNzXc",
+        "job_card_WU9r7p",
+        "job_card_tqgaN8",
+        "job_card_KTFMAe",
+        "job_card_69w4XJ",
+        "perks_heading_wjb8iW",
+        "perk_card_g6UtNb",
+        "perk_card_Hp4WPD",
+        "perk_card_xLBt7N",
+        "perk_card_FfRVyW",
+        "perk_card_rkwCDB",
+        "perk_card_Hc3ibF",
+        "apply_cta_PVqTcR"
+      ],
+      "name": "Careers Page",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "accent_color": "#000000",
+        "card_color": "#ffffff",
+        "muted_color": "#033770",
+        "border_color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "packthc_career_aAhcUA"
+  ]
+}

@@ -1,0 +1,746 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "packthc_studio_DcMfHB": {
+      "type": "packthc-studio",
+      "blocks": {
+        "hero_slide_arGNc4": {
+          "type": "hero_slide",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165_4124aa89-e4a1-4ad4-8f8d-2fbb802f76e6.webp",
+            "badge": "PACKTHC STUDIO",
+            "title": "ELEVATE YOUR DISPENSARY",
+            "text": "Stand out in a crowded cannabis market with branding, packaging, web, and digital strategies built specifically for dispensaries. We help you attract attention, earn trust, and turn walk-ins into loyal customers.",
+            "button_text": "Contact Us",
+            "button_link": "shopify://pages/contact"
+          }
+        },
+        "hero_slide_E6pJnA": {
+          "type": "hero_slide",
+          "settings": {
+            "image": "shopify://shop_images/home-one_6aa243e8-b06c-46b7-948e-196ac1bd2a08.webp",
+            "badge": "PACKTHC STUDIO",
+            "title": "BUILD A BRAND THAT SELLS",
+            "text": "From shelf-ready packaging to high-performing websites and marketing, PackTHC Studio helps dispensaries grow with compliant, customer-driven design and strategy that actually moves product.",
+            "button_text": "Contact Us",
+            "button_link": "shopify://pages/contact"
+          }
+        },
+        "service_category_rm3nNR": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "digital-marketing",
+            "category_name": "Digital Marketing"
+          }
+        },
+        "service_category_YpCaWB": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "register-your-business",
+            "category_name": "Register Your Business"
+          }
+        },
+        "service_category_LjWEFP": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "Protect-your-brand",
+            "category_name": "Protect Your Brand"
+          }
+        },
+        "service_category_L3pdMr": {
+          "type": "service_category",
+          "settings": {
+            "category_id": "business-to-go",
+            "category_name": "Business To-Go"
+          }
+        },
+        "service_dBJTfw": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Identity_3.webp",
+            "popup_image": "shopify://shop_images/Brand_Identity_31ad1fce-b0b7-4d9b-82be-39e209c512aa.webp",
+            "title": "Brand Identity",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Brand identity is the reason customers come back—even after the first experience. At PackTHC Studio, we help cannabis brands stand out through thoughtful logos, typography, messaging, and packaging systems. Our goal isn’t just visibility—it’s memorability. From first glance to repeat purchase, we build brand systems that feel aligned, intentional, and unmistakably yours.\n\nWe work collaboratively to define your mission, voice, and visual language so everything—from shelves to screens—tells one consistent story. The result is a brand that connects emotionally, earns loyalty, and holds its ground in a crowded cannabis market.",
+            "features": "Stand Out in a Saturated Market | Customer-Driven Brand Strategy | Personality-Led Visual Identity | Naming & Taglines | Custom Brand Guidelines | Brand Positioning | Launch & Rollout Strategy",
+            "faqs": "Why should I hire professionals instead of building my brand myself?|Cannabis branding requires strategy, design, copy, and deep industry knowledge. PackTHC Studio brings a full team that understands cannabis regulations, culture, and what actually sells—saving you time, mistakes, and missed opportunities.||\nWhen is the right time to create a brand identity?|The best time is right after you have a serious idea and are ready to invest. Starting early lets your brand identity guide packaging, website, marketing, and launch decisions.||\nWhat does brand identity include?|It includes your logo, visual system, messaging, positioning, naming, guidelines, and how your brand shows up across packaging, digital, and physical touchpoints.||\nDo you understand cannabis regulations?|Yes. We work daily in cannabis branding and design everything with state-level rules, labeling laws, and marketing restrictions in mind.",
+            "tabs": "Discovery & Strategy|We start by understanding your vision, audience, competitors, and market position to define a clear brand direction.||\nVisual & Verbal Identity|Our team designs logos, typography, colors, and messaging that reflect your brand’s personality and resonate with your customers.||\nBrand System & Guidelines|We build clear brand guidelines covering visuals, voice, packaging, and digital use to keep everything consistent.||\nLaunch & Growth Support|We help roll out your new identity across packaging, website, and marketing so your brand launches strong and stays aligned.",
+            "link": ""
+          }
+        },
+        "service_nkzRa8": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Web_Design_Developnment_3_4722c04b-4a2d-4dcd-8dcb-286de2f0281d.webp",
+            "popup_image": "shopify://shop_images/Web_Design_Developnment_1_e0f37502-14b9-4890-98c3-029d48dd8274.webp",
+            "title": "Web Design & Development",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Your website is your brand’s digital storefront—and in cannabis, first impressions matter even more. At PackTHC Studio, we design and develop custom websites that feel just as intentional as your packaging. Every layout, interaction, and line of copy is built around real users and real business goals.\n\nFrom strategy and design to development and launch, we handle the full process. Our sites are mobile-friendly, SEO-ready, and designed to guide visitors toward action—whether that’s making a purchase, submitting an inquiry, or becoming a wholesale lead. No templates, no fluff—just clean, high-performing cannabis websites that grow with your brand.",
+            "features": "Custom Website Design | Mobile-First Development | Conversion-Focused UX | Shopify & Custom Builds | SEO-Ready Structure | Fast & Secure Performance | Ongoing Support",
+            "faqs": "Why should I choose a custom website instead of a template?|Custom websites let your cannabis brand stand out, scale easily, and deliver better SEO and user experience compared to off-the-shelf themes.||\nCan I update my website myself after launch?|Yes. We build user-friendly systems so your team can update content, images, and pages without touching code.||\nHow long does a website project take?|Most projects take between 8–14 weeks, depending on features, content readiness, and integrations.||\nDo you provide ongoing support after launch?|Absolutely. We offer ongoing maintenance, updates, security, and feature support as your brand grows.",
+            "tabs": "Strategy & Planning|We start by understanding your audience, goals, and competitors to plan a website that supports real business outcomes.||\nDesign & UX|Designers craft a clean, on-brand visual experience focused on clarity, usability, and conversion.||\nDevelopment & QA|Developers build a fast, secure, mobile-ready site and run thorough testing before launch.||\nLaunch & Support|After launch, we monitor performance, handle updates, and support new features or campaigns.",
+            "link": ""
+          }
+        },
+        "service_V6Ea4E": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Digital_Advertising_3.webp",
+            "popup_image": "shopify://shop_images/Digital_Advertising_1.webp",
+            "title": "Digital Advertising",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Digital advertising for cannabis brands isn’t simple. Rules change fast, platforms are strict, and one wrong move can shut everything down. That’s where PackTHC Studio steps in. We plan, launch, and manage paid campaigns that stay compliant while still delivering results.\n\nFrom search and PPC to platform-approved paid placements, we focus on high-intent traffic—people already looking for what you sell. Every campaign is tracked, tested, and optimized so your budget goes where it actually performs. No guesswork, no wasted spend—just smart, cannabis-savvy advertising built to scale.",
+            "features": "Cannabis-Compliant Ad Strategy | PPC & Search Campaigns | Platform-Smart Setup | Conversion Tracking | A/B Testing & Optimization | Custom Reporting | Budget-Flexible Scaling",
+            "faqs": "Is digital advertising allowed for cannabis brands?|Yes—but with strict limitations. We design campaigns that follow platform rules and avoid account bans while still driving traffic.||\nWhat platforms do you advertise on?|We focus on allowed search, PPC, and approved paid placements based on your product type, market, and goals.||\nCan I control my ad spend?|Absolutely. Budgets are flexible and can be scaled up or down at any time.||\nHow do you measure ad performance?|We track clicks, conversions, cost per action, and ROI through custom reporting dashboards.",
+            "tabs": "Campaign Strategy|We research your audience, keywords, and competitors to build a compliant, high-intent ad plan.||\nSetup & Launch|Campaigns are carefully set up with proper tracking, approvals, and user experience in mind.||\nOptimization & Testing|We continuously test ads, keywords, and landing pages to improve performance.||\nReporting & Scaling|Clear reports show what’s working, where to invest more, and how to scale safely.",
+            "link": ""
+          }
+        },
+        "service_DTDpTB": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Social_Media_3.webp",
+            "popup_image": "shopify://shop_images/Social_Media_1.webp",
+            "title": "Social Media",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Social media for cannabis brands is all about balance—visibility without violations, personality without risk. At PackTHC Studio, we manage and grow social media accounts with a compliance-first mindset while still keeping your brand active, engaging, and relevant.\n\nWe focus on content that educates, builds credibility, and strengthens community rather than chasing empty metrics. From planning and posting to engagement and analytics, everything is structured to support your brand’s voice and long-term growth. No shadow bans, no random posting—just consistent, intentional social media that actually works.",
+            "features": "Platform-Safe Content Strategy | Content Planning & Scheduling | Brand Voice Development | Community Engagement | Analytics & Insights | Compliance-Aware Posting | Scalable Monthly Management",
+            "faqs": "Can cannabis brands use social media safely?|Yes, when done correctly. We follow platform guidelines and avoid content that risks bans or restrictions.||\nWhich platforms do you manage?|We manage Instagram, LinkedIn, X, and other suitable platforms based on your brand and audience.||\nDo you create the content or just post?|We handle both—content planning, captions, visuals, and posting.||\nHow do you measure success on social media?|We track engagement, reach, audience growth, and content performance through monthly reports.",
+            "tabs": "Content Strategy|We plan content themes and posting schedules aligned with your brand goals and platform rules.||\nCreation & Posting|Visuals, captions, and posts are created and published consistently.||\nEngagement & Growth|We monitor comments, messages, and engagement to build real community.||\nInsights & Reporting|Performance data helps refine strategy and improve results over time.",
+            "link": ""
+          }
+        },
+        "service_eR6Vhj": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Dispensary_Launch_3_ab602511-a05b-40c8-8974-a07ec3298b39.webp",
+            "popup_image": "shopify://shop_images/Dispensary_Launch_1.webp",
+            "title": "Dispensary Launch",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Launching a dispensary is more than opening doors—it’s about making an impact from day one. PackTHC Studio helps dispensary brands plan and execute a strategic launch that attracts attention, builds trust, and drives foot traffic without cutting compliance corners.\n\nFrom pre-launch buzz to opening-day promotion and post-launch momentum, we coordinate every digital touchpoint. Our team ensures your brand messaging, online presence, and advertising are aligned so customers know who you are, where to find you, and why to choose you. No chaos, no missed steps—just a smooth, well-planned dispensary launch.",
+            "features": "Pre-Launch Strategy | Local Visibility Setup | Launch Campaign Planning | Compliance-Aware Promotion | Foot Traffic Focus | Digital Asset Readiness | Post-Launch Support",
+            "faqs": "When should dispensary launch planning start?|Ideally 60–90 days before opening to build awareness and prepare all digital assets.||\nDo you handle local listings and maps?|Yes. We set up and optimize Google Maps, local directories, and visibility essentials.||\nCan you support both medical and recreational dispensaries?|Absolutely. Strategies are customized based on license type and local regulations.||\nWhat happens after the launch?|We continue optimizing campaigns, tracking performance, and supporting ongoing growth.",
+            "tabs": "Pre-Launch Planning|We prepare branding, messaging, and digital assets before doors open.||\nLocal Setup|Maps, directories, and local visibility are configured for discovery.||\nLaunch Campaigns|Targeted campaigns drive awareness and opening-day traffic.||\nPost-Launch Growth|We refine strategy and scale visibility after launch.",
+            "link": ""
+          }
+        },
+        "service_WYTYWx": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SEO_3.webp",
+            "popup_image": "shopify://shop_images/SEO_1.webp",
+            "title": "Search Engine Optimization",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Search engine optimization is one of the most powerful growth channels for cannabis brands—when done correctly. At PackTHC Studio, we focus on sustainable, white-hat SEO strategies that improve visibility without risking penalties or sudden ranking drops.\n\nOur approach covers technical SEO, on-page optimization, content strategy, and authority building. We target keywords with real intent and build site structures that search engines actually understand. No shortcuts, no spam tactics—just steady, measurable organic growth that compounds over time.",
+            "features": "Technical SEO Optimization | Keyword Research & Strategy | On-Page SEO | Content Optimization | Local SEO | Performance Tracking | Long-Term Growth Focus",
+            "faqs": "How long does SEO take to show results?|Most clients see noticeable improvements within 3–6 months, with stronger growth over time.||\nIs SEO safe for cannabis businesses?|Yes. SEO is fully allowed and one of the safest digital channels when done ethically.||\nDo you handle local SEO?|Absolutely. We optimize for local searches, maps, and location-based discovery.||\nHow do you measure SEO success?|We track rankings, organic traffic, conversions, and visibility trends.",
+            "tabs": "SEO Strategy|We analyze your site, competitors, and keywords to build a custom SEO roadmap.||\nOn-Page & Technical|Site structure, speed, and on-page elements are optimized for search engines.||\nContent & Authority|We improve content quality and build topical authority.||\nTracking & Optimization|Ongoing monitoring and adjustments ensure steady performance gains.",
+            "link": ""
+          }
+        },
+        "service_Gh8f3V": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Print_Packaging_design_3.webp",
+            "popup_image": "shopify://shop_images/Print_Packaging_design_1.webp",
+            "title": "Print & Packaging Design",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "In cannabis, packaging is often the first physical interaction a customer has with your brand. At PackTHC Studio, we design print and packaging that doesn’t just look good—it communicates trust, quality, and compliance at a glance.\n\nFrom labels and boxes to inserts and marketing print, every design is built with real-world production in mind. We balance creativity with regulations, ensuring your packaging is shelf-ready, brand-consistent, and visually memorable. No generic layouts—just thoughtful design that elevates your product and reinforces your brand identity.",
+            "features": "Custom Packaging Design | Label & Print Design | Compliance-Aware Layouts | Brand Consistency | Print-Ready Files | Production-Friendly Formats | Visual Shelf Impact",
+            "faqs": "Do you design packaging for all cannabis products?|Yes. We design for flower, pre-rolls, edibles, vapes, and accessories while following regulations.||\nWill the designs be print-ready?|Absolutely. Files are delivered in print-ready formats with proper bleeds, colors, and specs.||\nCan you match existing brand guidelines?|Yes. We align all designs with your current brand identity or help refine it.||\nDo you help with compliance requirements?|Yes. We structure layouts to accommodate warnings, symbols, and required information.",
+            "tabs": "Concept & Direction|We explore visual direction and packaging concepts aligned with your brand.||\nDesign & Layout|Clean, compliant layouts are designed for labels, boxes, and print materials.||\nProduction Prep|Files are finalized with correct specs for manufacturers and printers.||\nRefinement & Support|We assist with revisions and production questions as needed.",
+            "link": ""
+          }
+        },
+        "service_T8NW8t": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Brand_Launch_3.webp",
+            "popup_image": "shopify://shop_images/Brand_Launch_1.webp",
+            "title": "Brand Launch",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "A brand launch isn’t just about going live—it’s about entering the market with purpose. At PackTHC Studio, we help cannabis brands launch with a clear identity, consistent messaging, and a rollout strategy that actually connects with the right audience.\n\nFrom positioning and visual assets to digital presence and launch campaigns, we align every touchpoint so your brand feels intentional and professional from the start. Whether you’re launching a new cannabis brand or reintroducing an existing one, we make sure your first impression builds trust and sets the stage for growth.",
+            "features": "Brand Positioning | Visual Identity Rollout | Launch Messaging | Digital Asset Setup | Compliance-Aware Branding | Go-To-Market Strategy | Post-Launch Support",
+            "faqs": "What’s included in a brand launch?|Positioning, visual rollout, messaging, digital presence, and launch coordination.||\nIs this only for new brands?|No. It also works for rebrands or market re-entries.||\nHow long does a brand launch take?|Typically 6–10 weeks, depending on scope and readiness.||\nDo you support after the launch?|Yes. We help refine strategy and support growth post-launch.",
+            "tabs": "Discovery & Positioning|We define your brand’s purpose, audience, and market position.||\nVisual & Messaging|Logos, visuals, and messaging are aligned for launch.||\nLaunch Execution|Digital assets and campaigns go live together.||\nPost-Launch Momentum|We monitor performance and support ongoing growth.",
+            "link": ""
+          }
+        },
+        "service_TNPaGf": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Photography_Videography_3.webp",
+            "popup_image": "shopify://shop_images/Photography_Videography_1.webp",
+            "title": "Photography & Videography",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Strong visuals are essential in a crowded cannabis market. At PackTHC Studio, we create high-quality photography and videography that captures your products, spaces, and brand story in a way that feels authentic and polished.\n\nFrom product shoots and lifestyle visuals to brand videos and short-form content, everything is planned with real use cases in mind—websites, social media, ads, and launch campaigns. Our process focuses on clean visuals, consistent style, and content that supports your brand across every platform.",
+            "features": "Product Photography | Lifestyle & Brand Shoots | Promotional Videos | Short-Form Content | Platform-Ready Formats | Brand-Consistent Visuals | Commercial-Use Rights",
+            "faqs": "Do you offer both photography and videography?|Yes. Projects can include photos, videos, or a complete visual content package.||\nCan the content be used across platforms?|Absolutely. We deliver assets optimized for web, social, ads, and print.||\nDo you handle creative direction?|Yes. We plan concepts, shot lists, and visual style before production.||\nAre shoots cannabis-compliant?|Yes. We follow platform and industry guidelines during production and usage.",
+            "tabs": "Creative Planning|We define concepts, shot lists, and visual direction.||\nProduction|On-location or studio shoots capture high-quality visuals.||\nEditing & Delivery|Photos and videos are edited and delivered in ready-to-use formats.||\nContent Support|We help adapt visuals for campaigns and platforms.",
+            "link": ""
+          }
+        },
+        "service_yTx7Vc": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Email_Marketing_3.webp",
+            "popup_image": "shopify://shop_images/Email_Marketing_1.webp",
+            "title": "Email Marketing",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Email marketing remains one of the highest-ROI channels for cannabis brands—when done right. At PackTHC Studio, we build and manage email campaigns that respect compliance rules while delivering real value to your audience.\n\nFrom welcome flows and product updates to promotions and lifecycle campaigns, every email is designed with purpose. We focus on clean design, clear messaging, and smart segmentation so your emails land in inboxes, get opened, and drive action—without feeling spammy.",
+            "features": "Email Strategy & Planning | Automated Flows | Campaign Design | List Segmentation | Compliance-Aware Messaging | Performance Tracking | Platform Integration",
+            "faqs": "Is email marketing allowed for cannabis brands?|Yes. Email is a compliant and effective channel when messaging follows regulations.||\nDo you set up automation?|Yes. We build welcome series, re-engagement flows, and promotional automations.||\nWhich platforms do you support?|We work with major email platforms and integrate with your existing systems.||\nHow do you measure email success?|We track open rates, click-throughs, conversions, and engagement trends.",
+            "tabs": "Strategy & Setup|We plan email goals, audience segments, and campaign structure.||\nDesign & Content|Emails are designed with clean visuals and clear messaging.||\nAutomation & Sends|Flows and campaigns are scheduled and managed.||\nReporting & Optimization|Performance data guides continuous improvement.",
+            "link": ""
+          }
+        },
+        "service_3YMphR": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SMS_Marketing_3.webp",
+            "popup_image": "shopify://shop_images/SMS_Marketing_1.webp",
+            "title": "Sms Marketing",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "SMS marketing is a powerful way to reach customers instantly—but only when done responsibly. At PackTHC Studio, we create opt-in, compliance-aware SMS campaigns that respect customer trust while delivering high-impact messages.\n\nFrom promotions and announcements to reminders and updates, every text is short, intentional, and timed for action. We focus on relevance and frequency control so your brand stays helpful—not intrusive—while driving real engagement and conversions.",
+            "features": "Opt-In SMS Strategy | Campaign & Flow Setup | Short-Form Copywriting | Timing & Frequency Control | Compliance Management | Performance Tracking | Platform Integration",
+            "faqs": "Is SMS marketing legal for cannabis brands?|Yes, when customers explicitly opt in and messaging follows regulations.||\nHow often should SMS messages be sent?|We optimize frequency to avoid fatigue while maintaining engagement.||\nCan SMS be automated?|Yes. We set up automated flows for promotions, reminders, and updates.||\nHow do you track SMS performance?|We monitor delivery, clicks, conversions, and opt-out rates.",
+            "tabs": "Strategy & Compliance|We plan opt-in flows and messaging rules.||\nCopy & Campaigns|Concise, action-focused messages are created.||\nAutomation & Timing|Messages are automated and scheduled strategically.||\nTracking & Optimization|Results are reviewed and campaigns refined.",
+            "link": ""
+          }
+        },
+        "service_eDnMEK": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/Public_Relation_3.webp",
+            "popup_image": "shopify://shop_images/Public_Relation_1.webp",
+            "title": "Public Relation",
+            "category": "digital-marketing",
+            "short_description": "",
+            "full_description": "Public relations plays a key role in shaping how your cannabis brand is perceived. At PackTHC Studio, we focus on earned media, brand storytelling, and reputation-building strategies that position your brand as credible and trustworthy.\n\nFrom press outreach and media placements to announcements and brand narratives, every PR effort is intentional and compliant. We help your brand gain attention for the right reasons—building long-term authority rather than short-term noise.",
+            "features": "PR Strategy & Planning | Media Outreach | Press Releases | Brand Storytelling | Reputation Management | Thought Leadership | Ongoing PR Support",
+            "faqs": "Is PR effective for cannabis brands?|Yes. PR is one of the safest ways to gain visibility and credibility in the cannabis industry.||\nDo you write press releases?|Yes. We handle writing, positioning, and distribution.||\nCan PR help with brand trust?|Absolutely. Earned media and consistent messaging strengthen credibility.||\nHow do you measure PR success?|We track media coverage, brand mentions, reach, and authority growth.",
+            "tabs": "PR Strategy|We define goals, narratives, and target publications.||\nContent & Messaging|Press releases and stories are crafted.||\nMedia Outreach|We pitch to relevant media and industry outlets.||\nCoverage & Growth|Results are tracked and strategies refined.",
+            "link": ""
+          }
+        },
+        "service_zX4xPV": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/LIMITED_LIABILITY_COMPANY_LLC_52ec69c4-2544-488c-b473-675650503ab0.webp",
+            "title": "Limited Liability Company (LLC)",
+            "category": "register-your-business",
+            "short_description": "",
+            "full_description": "Choosing the right business structure is a critical first step in the cannabis industry. A Limited Liability Company (LLC) offers flexibility, legal protection, and credibility—making it one of the most common structures for cannabis brands and operators.\n\nAt PackTHC Studio, we assist with the LLC setup process so you can focus on building your business. From documentation guidance to compliance-ready structuring, we help ensure your company is formed correctly and positioned for future growth. No confusion, no missed steps—just a smooth and informed start.",
+            "features": "LLC Formation Guidance | Legal Structure Support | Documentation Assistance | Compliance Awareness | Business Readiness Setup | Multi-Member Support | Growth-Friendly Structure",
+            "faqs": "Why is an LLC suitable for cannabis businesses?|An LLC provides liability protection, flexible management, and is widely accepted in the cannabis industry.||\nDo you provide legal advice?|We guide the process and requirements but recommend licensed professionals for legal counsel.||\nCan an existing business convert to an LLC?|Yes. We can help guide restructuring or new entity setup.||\nWhat happens after LLC formation?|We assist with next steps like branding, digital setup, and launch readiness.",
+            "tabs": "Business Structure Planning|We help determine if an LLC fits your business goals.||\nFormation Guidance|Support through registration and documentation steps.||\nCompliance Preparation|We ensure structure aligns with industry requirements.||\nNext-Step Support|Guidance for branding, launch, and growth after formation.",
+            "link": ""
+          }
+        },
+        "service_EUnqbf": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/CORPORATION_C_CORP_S_CORP_f7c04716-cbc6-4baa-9488-66ed10ec9e51.webp",
+            "title": "Corporation (C Corp & S Corp)",
+            "category": "register-your-business",
+            "short_description": "",
+            "full_description": "For cannabis businesses planning to scale or raise investment, a corporate structure can offer clear advantages. C Corporations and S Corporations each provide distinct tax and ownership benefits depending on your growth strategy and shareholder plans.\n\nAt PackTHC Studio, we help you understand and set up the right corporate structure for your goals. From formation guidance to compliance-ready structuring, we ensure your business is built on a solid foundation—positioned for long-term growth and operational clarity.",
+            "features": "C Corp & S Corp Guidance | Business Structure Planning | Documentation Support | Compliance Awareness | Shareholder Structure Setup | Growth-Oriented Structuring | Expansion Readiness",
+            "faqs": "What’s the difference between a C Corp and S Corp?|C Corps are taxed separately and ideal for scaling and investors, while S Corps offer pass-through taxation with ownership limits.||\nWhich structure is better for cannabis businesses?|It depends on growth plans, ownership, and tax strategy. We help evaluate the best fit.||\nDo you provide legal or tax advice?|We guide the process but recommend licensed professionals for legal and tax counsel.||\nCan an LLC convert into a corporation?|Yes. We assist with planning and transition guidance.",
+            "tabs": "Structure Evaluation|We assess goals to determine the right corporate setup.||\nFormation Support|Guidance through registration and documentation.||\nCompliance Planning|Ensuring structure meets regulatory expectations.||\nGrowth & Transition|Support for scaling or restructuring as needed.",
+            "link": ""
+          }
+        },
+        "service_ERMHbC": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/DOING_BUSINESS_AS_DBA_294f4dd0-3079-499f-983c-ad861b1b67a5.webp",
+            "title": "Doing Business As (DBA)",
+            "category": "register-your-business",
+            "short_description": "",
+            "full_description": "A Doing Business As (DBA) allows your business to operate under a name different from its legal entity name. This is especially useful for cannabis businesses running multiple brands, storefront names, or product lines under one company.\n\nAt PackTHC Studio, we help guide the DBA registration process so your brand name is properly filed and ready for public use. From naming clarity to compliance awareness, we make sure your business operates transparently and professionally—without legal confusion.",
+            "features": "DBA Name Registration Guidance | Brand Name Usage Support | Documentation Assistance | Compliance Awareness | Multi-Brand Readiness | Business Clarity | Expansion-Friendly Setup",
+            "faqs": "Do I need a DBA if I already have an LLC or Corp?|Yes, if you operate under a different public-facing name.||\nDoes a DBA provide legal protection?|No. A DBA does not offer liability protection—it only registers a business name.||\nCan one company have multiple DBAs?|Yes. Businesses can register multiple DBAs for different brands or locations.||\nWhat comes after DBA registration?|We help align branding, digital assets, and launch readiness.",
+            "tabs": "Name Evaluation|We confirm if a DBA is required for your setup.||\nRegistration Guidance|Support through DBA filing steps.||\nCompliance Alignment|Ensuring name usage follows regulations.||\nBrand Integration|Helping integrate the DBA into branding and marketing.",
+            "link": ""
+          }
+        },
+        "service_zVb3ff": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/NON-PROFIT_f8dff11a-5585-493e-a238-c9a303322c71.webp",
+            "title": "Non-Profit",
+            "category": "register-your-business",
+            "short_description": "",
+            "full_description": "Non-profit organizations play an important role in cannabis education, advocacy, research, and community support. Forming a non-profit requires careful structuring, clear purpose, and strict compliance from the start.\n\nAt PackTHC Studio, we provide guidance through the non-profit setup process—helping define structure, documentation flow, and readiness for compliance. Whether your focus is education, policy, or community initiatives, we help you start on a clear and organized foundation.",
+            "features": "Non-Profit Structure Guidance | Mission & Purpose Alignment | Documentation Assistance | Compliance Awareness | Organizational Readiness | Board Structure Support | Growth & Sustainability Planning",
+            "faqs": "Can cannabis-related organizations be non-profits?|Yes. Advocacy, education, and research organizations commonly operate as non-profits.||\nDo you help with 501(c)(3) setup?|We guide the process and requirements, but recommend licensed professionals for filings.||\nIs a non-profit allowed to sell cannabis products?|Typically no. Non-profits focus on education, advocacy, or community programs.||\nWhat support comes after formation?|We assist with branding, digital presence, and outreach readiness.",
+            "tabs": "Mission & Structure|We help define purpose and organizational structure.||\nFormation Guidance|Support through non-profit registration steps.||\nCompliance Preparation|Ensuring readiness for regulatory requirements.||\nPost-Formation Support|Guidance for visibility, branding, and growth.",
+            "link": ""
+          }
+        },
+        "service_bN3WBF": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/SOLE_PROPRIETORSHIP_2b1415e6-5623-4d58-993d-e7e43a4b7ebc.webp",
+            "title": "Sole Proprietorship",
+            "category": "register-your-business",
+            "short_description": "",
+            "full_description": "A sole proprietorship is the simplest way to start a business, especially for individual founders testing an idea or offering cannabis-related services. It requires minimal setup and gives full control to the owner—but also comes with personal liability considerations.\n\nAt PackTHC Studio, we help you understand whether a sole proprietorship fits your goals and guide you through the basic setup steps. From name usage to compliance awareness, we make sure you start clearly and avoid common mistakes as your business grows.",
+            "features": "Sole Proprietorship Setup Guidance | Business Name Support | Basic Compliance Awareness | Individual Ownership | Quick Start Structure | Transition Planning | Business Readiness",
+            "faqs": "Is a sole proprietorship allowed in the cannabis industry?|Yes, for certain services and roles, depending on local regulations.||\nDoes a sole proprietorship offer liability protection?|No. The owner is personally responsible for business obligations.||\nCan I switch to an LLC or Corp later?|Yes. Many businesses start as sole proprietorships and restructure later.||\nWhat comes after setup?|We help with branding, digital presence, and growth planning.",
+            "tabs": "Business Fit Review|We assess whether a sole proprietorship suits your goals.||\nSetup Guidance|Support through basic registration steps.||\nCompliance Awareness|Ensuring understanding of regulatory responsibilities.||\nNext-Step Planning|Guidance for scaling or restructuring.",
+            "link": ""
+          }
+        },
+        "service_4rpFdp": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/TRADEMARK_REGISTRATION_de9c5ac2-5bc3-4a92-9e8d-f39e70a5ea60.webp",
+            "title": "Trademark Registration",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "Your brand is one of your most valuable assets—and trademark registration helps protect it from misuse and confusion. In the cannabis industry, trademarks require extra care due to federal and state-level restrictions.\n\nAt PackTHC Studio, we guide you through the trademark registration process with clarity and realistic expectations. From name checks to application readiness, we help position your brand for protection while avoiding common filing mistakes. No guesswork—just informed, strategic support.",
+            "features": "Trademark Search Guidance | Brand Name & Logo Protection | Application Preparation Support | Cannabis-Aware Strategy | Compliance Awareness | Risk Reduction | Long-Term Brand Security",
+            "faqs": "Can cannabis brands register trademarks?|Yes, but it depends on product type and classification. We help assess eligibility.||\nDo you file trademarks directly?|We guide preparation and strategy and recommend licensed trademark attorneys for filing.||\nWhat can be trademarked?|Brand names, logos, slogans, and certain product identifiers.||\nWhy is trademark important early on?|It helps prevent brand conflicts and protects long-term brand value.",
+            "tabs": "Eligibility Review|We assess trademark eligibility and risks.||\nSearch & Strategy|Name and logo searches help avoid conflicts.||\nApplication Prep|Guidance for a strong application setup.||\nOngoing Brand Protection|Support for future expansion and enforcement awareness.",
+            "link": ""
+          }
+        },
+        "service_krhMnR": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/COMPREHENSIVE_TRADEMARK_SEARCH_c9083088-e667-4422-9794-a8b27cde197a.webp",
+            "title": "Comprehensive Trademark Search",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "Before filing a trademark, knowing what already exists is critical—especially in the cannabis industry where conflicts are common and costly. A comprehensive trademark search goes beyond basic name checks to uncover potential legal risks early.\n\nAt PackTHC Studio, we guide a detailed search process that reviews existing trademarks, similar names, and potential conflicts across relevant classes. This helps you make informed decisions before filing, rebranding, or launching—saving time, money, and future legal trouble.",
+            "features": "In-Depth Trademark Search Guidance | Conflict Risk Identification | Name & Logo Review | Cannabis-Aware Classification | Pre-Filing Clarity | Cost-Risk Reduction | Strategic Brand Validation",
+            "faqs": "How is a comprehensive search different from a basic search?|It checks similar names, related classes, and potential conflicts—not just exact matches.||\nIs a trademark search required before filing?|Not legally required, but strongly recommended to avoid rejection or disputes.||\nDoes this guarantee trademark approval?|No, but it significantly reduces risk and improves filing decisions.||\nWho performs the legal search?|We guide the process and work alongside licensed professionals when needed.",
+            "tabs": "Initial Review|We evaluate your brand name and usage context.||\nSearch & Analysis|Relevant trademark databases and similarities are reviewed.||\nRisk Assessment|Potential conflicts and risks are identified.||\nNext-Step Strategy|Guidance on filing, adjustments, or alternatives.",
+            "link": ""
+          }
+        },
+        "service_wHMb8k": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/FREE_TRADEMARK_SEARCH_5eca13bb-c287-4852-8b68-fb750a814613.webp",
+            "title": "Free Trademark Search",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "Before investing time and money into branding, a quick trademark check can help you avoid obvious conflicts. Our Free Trademark Search offers a basic review to see if your brand name appears to be available or potentially risky.\n\nAt PackTHC Studio, this free search is designed as an early screening step—not a legal opinion. It helps founders get initial clarity and decide whether to move forward with a comprehensive search or trademark registration. Simple, fast, and risk-aware.",
+            "features": "Basic Name Availability Check | Initial Risk Flagging | Quick Turnaround | No-Cost Screening | Cannabis-Aware Review | Next-Step Recommendations | Founder-Friendly Entry",
+            "faqs": "Is the free trademark search legally binding?|No. It’s an initial screening, not a legal opinion.||\nWhat does the free search include?|A basic review of obvious conflicts in relevant databases.||\nHow long does it take?|Typically 1–2 business days.||\nWhat should I do after the free search?|Depending on results, we recommend a comprehensive search or registration.",
+            "tabs": "Name Submission|You submit the brand name for review.||\nBasic Search|We perform an initial availability check.||\nRisk Overview|Potential concerns are highlighted.||\nNext Steps|Guidance on deeper search or filing.",
+            "link": ""
+          }
+        },
+        "service_xpEikA": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/TRADEMARK_MONITORING_92841ef5-c64c-47fe-ac2c-e56f999c6df9.webp",
+            "title": "Trademark Monitoring",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "Registering a trademark is only the first step—protecting it over time is just as important. Trademark monitoring helps identify potentially confusing or infringing trademarks before they become costly problems.\n\nAt PackTHC Studio, we guide ongoing trademark monitoring so your brand stays protected as new applications and similar marks appear. This proactive approach helps you take early action, protect brand value, and maintain long-term market clarity—especially important in the fast-growing cannabis industry.",
+            "features": "Ongoing Trademark Watch | Conflict Alerts | Brand Protection Strategy | Cannabis-Aware Monitoring | Early Risk Detection | Long-Term Brand Security | Expansion Readiness",
+            "faqs": "What does trademark monitoring do?|It tracks new trademark filings that may conflict with your brand.||\nIs monitoring required after registration?|Not legally required, but strongly recommended to protect your rights.||\nHow often are checks performed?|Monitoring runs continuously with periodic alerts.||\nWhat happens if a conflict is found?|We guide next steps and recommend licensed professionals if action is needed.",
+            "tabs": "Monitoring Setup|We define what marks and classes to monitor.||\nOngoing Watch|New filings and conflicts are tracked.||\nAlerts & Review|You’re notified of potential issues.||\nProtection Strategy|Guidance on response and enforcement options.",
+            "link": ""
+          }
+        },
+        "service_JpDcHE": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/PROVISION_PATENT_7325cc5e-35ae-4abc-9e03-aa7e90bbd36e.webp",
+            "title": "Provisional Patent",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "A provisional patent is a smart first step for innovators who want to protect an idea while continuing development. It allows you to establish an official filing date without submitting a full patent application right away.\n\nAt PackTHC Studio, we guide you through the provisional patent process—helping document your invention clearly and prepare it for future protection. This approach is especially useful for cannabis products, packaging innovations, and technology concepts that are still evolving. Simple, strategic, and future-focused.",
+            "features": "Provisional Patent Guidance | Early Filing Date Protection | Invention Documentation Support | Cost-Effective First Step | Cannabis-Aware Strategy | One-Year Protection Window | Innovation Readiness",
+            "faqs": "What is a provisional patent?|It’s a temporary filing that secures a filing date for your invention for 12 months.||\nDoes a provisional patent become a full patent?|No. A non-provisional patent must be filed within 12 months.||\nCan cannabis-related inventions be patented?|Yes, depending on the invention type and claims.||\nDo you file patents directly?|We guide preparation and recommend licensed patent professionals for filing.",
+            "tabs": "Invention Review|We review your idea and usage context.||\nDocumentation Prep|Guidance on describing and documenting the invention.||\nFiling Strategy|Support for provisional filing readiness.||\nNext-Step Planning|Guidance toward non-provisional patent filing.",
+            "link": ""
+          }
+        },
+        "service_GpkBUG": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/COPYRIGHT_636ea780-4b4f-40b2-ba77-11b39ee539aa.webp",
+            "title": "Copyright",
+            "category": "Protect-your-brand",
+            "short_description": "",
+            "full_description": "Copyright protects original works like designs, written content, videos, photographs, and digital assets. For cannabis brands, copyright plays an important role in safeguarding creative materials used across marketing, packaging, and online platforms.\n\nAt PackTHC Studio, we guide the copyright registration process to help you protect your creative work from unauthorized use. From identifying eligible assets to registration readiness, we ensure your content is properly positioned for protection and long-term brand value.",
+            "features": "Copyright Eligibility Guidance | Creative Work Protection | Registration Preparation Support | Digital & Print Coverage | Cannabis-Aware Strategy | Ownership Clarity | Long-Term Asset Security",
+            "faqs": "What types of work can be copyrighted?|Designs, text, videos, images, artwork, and other original creative works.||\nIs copyright automatic?|Copyright exists upon creation, but registration provides stronger legal protection.||\nDo you register copyrights directly?|We guide preparation and recommend licensed professionals for filing.||\nWhy is copyright important for brands?|It protects creative assets and prevents unauthorized copying.",
+            "tabs": "Asset Review|We identify which works qualify for copyright.||\nProtection Strategy|Guidance on what and when to register.||\nRegistration Prep|Support for documentation and filing readiness.||\nOngoing Support|Guidance for enforcement and future assets.",
+            "link": ""
+          }
+        },
+        "service_LXAc4M": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_COMPLIANCE_COVERAGE_45207e94-dc58-44a9-9160-091fe7f44cb0.webp",
+            "title": "Business Compliance Coverage",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "Compliance in the cannabis industry isn’t a one-time task—it’s an ongoing responsibility. Regulations evolve, reporting requirements change, and small oversights can lead to major penalties. Business Compliance Coverage is designed to help you stay ahead without constant stress.\n\nAt PackTHC Studio, we provide structured compliance support to help businesses maintain good standing. From monitoring requirements to guidance on filings and operational obligations, we help reduce risk and keep your business aligned with industry expectations—so you can focus on growth with confidence.",
+            "features": "Ongoing Compliance Support | Regulatory Awareness | Filing & Deadline Guidance | Risk Reduction Strategy | Cannabis-Aware Coverage | Operational Readiness | Peace-of-Mind Support",
+            "faqs": "What does business compliance coverage include?|Ongoing guidance, monitoring, and support for key compliance requirements.||\nIs this required for cannabis businesses?|Yes. Cannabis businesses face stricter and evolving compliance rules.||\nDo you handle filings directly?|We guide and coordinate but recommend licensed professionals where required.||\nWho should use this service?|Any cannabis business that wants to avoid compliance gaps and penalties.",
+            "tabs": "Compliance Review|We assess your current compliance status.||\nCoverage Setup|Define ongoing compliance scope and monitoring.||\nOngoing Support|Regular guidance and updates on requirements.||\nRisk Management|Help identify and reduce compliance risks.",
+            "link": ""
+          }
+        },
+        "service_GWMdDp": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/ANNUAL_REPORT_4d2c0421-240c-4b6e-bb02-edd0b1b66874.webp",
+            "title": "Annual Report",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "Most business entities are required to file an annual report to remain active and compliant. Missing this filing can result in penalties, late fees, or even administrative dissolution—especially risky in regulated industries like cannabis.\n\nAt PackTHC Studio, we guide the annual report process so deadlines aren’t missed and information is filed correctly. From reminders to filing readiness, we help ensure your business stays in good standing year after year without last-minute stress.",
+            "features": "Annual Report Filing Guidance | Deadline Tracking | Information Review Support | Compliance Awareness | Entity Good Standing | Risk Prevention | Ongoing Reminder Support",
+            "faqs": "Who needs to file an annual report?|Most LLCs, corporations, and non-profits are required to file annually.||\nWhat happens if I miss the deadline?|Late fees, penalties, or loss of good standing may occur.||\nDo you file the report for me?|We guide preparation and coordination; filing may require licensed professionals.||\nIs this a one-time service?|It’s an annual requirement, and we offer ongoing reminder support.",
+            "tabs": "Entity Review|We confirm filing requirements and deadlines.||\nInformation Prep|Guidance on required business details.||\nFiling Coordination|Support through submission readiness.||\nGood Standing Maintenance|Ensuring continued compliance year over year.",
+            "link": ""
+          }
+        },
+        "service_Xi6BQT": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_LICENSE_3b555d19-1d9a-4aae-934e-8249abfe051b.webp",
+            "title": "Business License",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "A business license is a foundational requirement for operating legally. For cannabis-related businesses, licensing can involve multiple layers, including local, state, and industry-specific approvals.\n\nAt PackTHC Studio, we guide you through the business license process so requirements are clearly understood and properly addressed. From identifying the right licenses to preparing documentation, we help reduce delays and ensure your business is positioned to operate legally and confidently.",
+            "features": "Business License Guidance | Local & State Requirement Review | Documentation Support | Cannabis-Aware Licensing | Compliance Alignment | Risk Reduction | Operational Readiness",
+            "faqs": "Do all cannabis businesses need a license?|Yes. Licensing requirements vary by location and business type.||\nCan one business need multiple licenses?|Yes. Some operations require local, state, and specialty licenses.||\nDo you submit license applications?|We guide preparation and coordination and recommend licensed professionals where required.||\nWhat happens after licensing?|We assist with compliance, renewals, and operational setup.",
+            "tabs": "License Assessment|We identify required licenses based on your business.||\nApplication Prep|Guidance on documents and requirements.||\nSubmission Coordination|Support through filing readiness.||\nPost-License Support|Guidance on compliance and renewals.",
+            "link": ""
+          }
+        },
+        "service_FTBVFa": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/OPERATING_AGREEMENT_db650783-4890-4db9-a903-10f915de5ade.webp",
+            "title": "Operating Agreement",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "An operating agreement is a critical internal document for LLCs that outlines how the business is owned, managed, and operated. It helps prevent disputes, clarifies responsibilities, and provides structure—especially important in regulated industries like cannabis.\n\nAt PackTHC Studio, we guide the creation of operating agreements that reflect your business reality. From ownership structure to management rules, we help ensure expectations are clearly documented and aligned with your long-term goals. This document becomes the backbone of how your company functions internally.",
+            "features": "Operating Agreement Guidance | Ownership & Role Definition | Management Structure Support | Decision-Making Rules | Cannabis-Aware Structuring | Internal Clarity | Future-Ready Documentation",
+            "faqs": "Is an operating agreement required for LLCs?|Some states require it, but it’s strongly recommended everywhere.||\nDoes this document replace legal advice?|No. We guide structure and content and recommend licensed professionals for legal drafting.||\nCan a single-member LLC have an operating agreement?|Yes. It helps establish separation between owner and business.||\nCan the agreement be updated later?|Yes. Operating agreements can be amended as the business evolves.",
+            "tabs": "Structure Review|We assess ownership and management needs.||\nAgreement Planning|Key terms and sections are outlined.||\nDocumentation Guidance|Support for drafting and review readiness.||\nOngoing Updates|Guidance for future amendments.",
+            "link": ""
+          }
+        },
+        "service_WWbj3C": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/REGISTERED_AGENT_46f4f769-41ca-48be-b0d6-b2c6803e6fd5.webp",
+            "title": "Registered Agent",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "A registered agent is required for most business entities and acts as the official point of contact for legal documents, government notices, and compliance communications. Missing these notices can lead to penalties or loss of good standing.\n\nAt PackTHC Studio, we guide registered agent services so your business remains reachable, organized, and compliant. Whether you’re forming a new entity or maintaining an existing one, we help ensure this requirement is handled properly and without risk.",
+            "features": "Registered Agent Service Guidance | Legal Notice Handling | Compliance Communication Support | Privacy Protection | Reliable Contact Setup | Good Standing Maintenance | Ongoing Coverage",
+            "faqs": "Is a registered agent required?|Yes. Most states require LLCs and corporations to have one.||\nCan I be my own registered agent?|In some states yes, but it may affect privacy and reliability.||\nDo you act as the registered agent?|We guide the service setup and coordinate with approved providers.||\nWhat happens if I miss a notice?|It can lead to fines, penalties, or administrative dissolution.",
+            "tabs": "Requirement Review|We confirm registered agent needs by state.||\nService Setup|Guidance on selecting and setting up a provider.||\nNotice Handling|Ensuring legal documents are received and tracked.||\nOngoing Compliance|Support to maintain good standing.",
+            "link": ""
+          }
+        },
+        "service_KPANGy": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/STUDIO_VIRTUAL_7b95bf51-1ab6-4f08-9fa4-16d176d13e21.webp",
+            "title": "Studio Virtual Mail",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "Studio Virtual Mail helps businesses manage physical mail without needing a full-time office presence. It provides a secure mailing address where your business mail is received, scanned, and made accessible digitally—ideal for modern, remote, or growing cannabis businesses.\n\nAt PackTHC Studio, we guide virtual mail setup so your important documents, notices, and correspondence stay organized and accessible. This service improves privacy, efficiency, and compliance while keeping your operations streamlined and professional.",
+            "features": "Virtual Business Address | Mail Receiving & Scanning | Digital Access & Notifications | Privacy Protection | Document Organization | Compliance-Friendly Setup | Remote Business Support",
+            "faqs": "What is virtual mail?|It’s a service that receives physical mail and provides digital access through scanning.||\nCan this replace a physical office address?|For mail handling, yes—depending on licensing and state requirements.||\nIs virtual mail secure?|Yes. Mail is handled securely and shared digitally with controlled access.||\nWho should use virtual mail?|Remote teams, startups, and businesses wanting privacy and flexibility.",
+            "tabs": "Service Setup|We help configure your virtual mail address.||\nMail Handling|Incoming mail is received and processed.||\nDigital Access|Scanned mail is delivered securely online.||\nOngoing Support|Guidance for continued usage and organization.",
+            "link": ""
+          }
+        },
+        "service_Dzd6w7": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/DISSOLUTION_86b0ada7-5f30-4344-844f-a94673b4ba2a.webp",
+            "title": "Dissolution",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "When a business needs to close, dissolving it properly is just as important as setting it up correctly. Improper dissolution can leave owners exposed to ongoing fees, taxes, and legal obligations—especially in regulated industries like cannabis.\n\nAt PackTHC Studio, we guide the dissolution process to ensure your business is formally and responsibly closed. From filings and notices to compliance wrap-up, we help you exit cleanly and avoid future complications. Clear steps, no loose ends.",
+            "features": "Dissolution Filing Guidance | Entity Closure Support | Compliance Wrap-Up | Liability Risk Reduction | Documentation Assistance | Good Standing Closure | Stress-Free Exit Process",
+            "faqs": "When should a business be dissolved?|When operations permanently stop or ownership decides to formally close the entity.||\nWhat happens if I don’t dissolve properly?|You may continue accruing fees, taxes, or penalties.||\nDo you handle final filings?|We guide preparation and coordination and recommend licensed professionals when required.||\nCan a dissolved business be reopened?|In some cases yes, depending on state rules and timing.",
+            "tabs": "Closure Review|We confirm dissolution requirements and readiness.||\nFiling Guidance|Support through dissolution documentation.||\nCompliance Wrap-Up|Ensuring all obligations are addressed.||\nFinal Confirmation|Help confirm official closure status.",
+            "link": ""
+          }
+        },
+        "service_XjbUr4": {
+          "type": "service",
+          "settings": {
+            "image": "shopify://shop_images/BUSINESS_CREDIT_1872d6b3-ac2e-4650-ae33-b54376945a55.webp",
+            "title": "Business Credit",
+            "category": "business-to-go",
+            "short_description": "",
+            "full_description": "Business credit allows companies to access financing, vendors, and growth opportunities without relying solely on personal credit. For cannabis and regulated businesses, strong business credit can be a major advantage when traditional financing options are limited.\n\nAt PackTHC Studio, we guide the process of establishing and building business credit correctly. From structuring your entity to reporting readiness, we help position your business for credibility, flexibility, and long-term financial growth—step by step and compliance-aware.",
+            "features": "Business Credit Setup Guidance | Credit Profile Building | Entity & Structure Alignment | Reporting Readiness | Vendor Credit Strategy | Risk Reduction | Growth-Focused Planning",
+            "faqs": "Is business credit separate from personal credit?|Yes. When set up correctly, business credit is independent of personal credit.||\nWho should build business credit?|Any business planning to scale, work with vendors, or seek financing.||\nHow long does it take to build business credit?|Initial profiles can be established within weeks, with strength building over time.||\nDo you guarantee credit approvals?|No. We guide setup and strategy but approvals depend on lenders and vendors.",
+            "tabs": "Credit Readiness Review|We assess if your business is ready to build credit.||\nStructure & Setup|Guidance on entity alignment and credit foundations.||\nProfile Building|Support for establishing business credit profiles.||\nGrowth Strategy|Guidance for long-term credit strength.",
+            "link": ""
+          }
+        },
+        "process_card_eC7rxj": {
+          "type": "process_card",
+          "settings": {
+            "title": "Discovery & Research",
+            "description": "We start by understanding your brand, audience, market, and goals. This foundation guides every decision we make."
+          }
+        },
+        "process_card_xbC4Yy": {
+          "type": "process_card",
+          "settings": {
+            "title": "Strategy Planning",
+            "description": "We map out a clear, actionable plan—branding, messaging, platforms, and timelines—built to scale with your growth."
+          }
+        },
+        "process_card_Ec7ddm": {
+          "type": "process_card",
+          "settings": {
+            "title": "Brand & Experience Design",
+            "description": "Our designers shape your visual identity and digital experience—making sure everything feels cohesive and on-brand."
+          }
+        },
+        "process_card_rwyWrJ": {
+          "type": "process_card",
+          "settings": {
+            "title": "Build & Development",
+            "description": "We bring designs to life through clean development, content integration, and platform setup—built for performance."
+          }
+        },
+        "process_card_d7cfFr": {
+          "type": "process_card",
+          "settings": {
+            "title": "Integrate & Test",
+            "description": "Before launch, we test everything—design, performance, responsiveness, and compliance—to ensure a smooth rollout."
+          }
+        },
+        "process_card_hd6MXc": {
+          "type": "process_card",
+          "settings": {
+            "title": "Launch & Optimize",
+            "description": "We launch your brand with confidence, then track performance and optimize continuously for long-term success."
+          }
+        },
+        "pricing_3zQqKH": {
+          "type": "pricing",
+          "disabled": true,
+          "settings": {
+            "plan_name": "Basic Plan",
+            "plan_price": "$599/month",
+            "plan_description": "Perfect for small businesses just getting started and looking to streamline their daily HR operations.",
+            "plan_style": "style-gradient",
+            "plan_featured": false,
+            "plan_cta_text": "Get Started",
+            "plan_features": "Employee Onboarding;\nTime and Attendance Tracking;;\nBasic Payroll Processing;\nEmployee Self-Service Portal;\nStandard Reporting;\nEmail Support;\n50 Employee Profiles;\nMobile App Access;"
+          }
+        },
+        "pricing_WTEhUX": {
+          "type": "pricing",
+          "disabled": true,
+          "settings": {
+            "plan_name": "Professional Plan",
+            "plan_price": "$899/month",
+            "plan_description": "Ideal for growing businesses that need advanced HR tools, automation, and deeper workforce insights.",
+            "plan_style": "style-dark",
+            "plan_featured": true,
+            "plan_cta_text": "Get Started",
+            "plan_features": "Performance Management; Advanced Payroll Processing with Tax Filing; Customizable Reports and Analytics; PTO and Leave Management; Integration with Third-Party Apps; Priority Email Support; Role-Based Access Control"
+          }
+        },
+        "pricing_86VPCz": {
+          "type": "pricing",
+          "disabled": true,
+          "settings": {
+            "plan_name": "Enterprise Plan",
+            "plan_price": "$1599/month",
+            "plan_description": "Designed for large organizations requiring complete HR management, automation, and dedicated support.",
+            "plan_style": "style-gradient",
+            "plan_featured": false,
+            "plan_cta_text": "Get Started",
+            "plan_features": "Unlimited Employee Profiles; Dedicated Account Manager; Onboarding and Training Support; Custom Workflows and Approvals; API Access for Custom Integrations; Multi-Language and Multi-Currency Support; Advanced Compliance Management"
+          }
+        },
+        "process_step_ijHm9r": {
+          "type": "process_step",
+          "settings": {
+            "title": "Discovery & Strategy",
+            "description": "We start by understanding your brand, your market, and your goals. Through research, audits, and competitor analysis, we build a clear strategy that guides every decision moving forward.",
+            "image": "shopify://shop_images/Discovery.webp"
+          }
+        },
+        "process_step_4CAVeL": {
+          "type": "process_step",
+          "settings": {
+            "title": "Creative Planning & Direction",
+            "description": "Once the strategy is locked in, we define the creative direction. This includes messaging, visuals, content structure, and platform planning—making sure everything feels cohesive and on-brand.",
+            "image": "shopify://shop_images/Creative_planning.webp"
+          }
+        },
+        "process_step_C6YxNq": {
+          "type": "process_step",
+          "settings": {
+            "title": "Design, Build & Launch",
+            "description": "Our team brings everything to life—designing, developing, testing, and refining until it’s ready to launch. The result is polished, compliant, and built to perform across digital, print, and real-world touchpoints.",
+            "image": "shopify://shop_images/Design_and_Launch.webp"
+          }
+        },
+        "testimonial_REqLCz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_1.webp",
+            "text": "\"As a small grow, we needed packaging that looked national but still fit our local rules. The studio mapped every label to PackTHC formats and saved us so much time.\"",
+            "name": "Craft Grow",
+            "role": "Founder",
+            "rating": 5
+          }
+        },
+        "testimonial_xHa6Mm": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_2_45ce7ead-3a45-4aad-8289-4f2e30ea2a90.webp",
+            "text": "\"PackTHC Studio rebuilt our dispensary brand from the ground up. The new site is easier for customers to navigate and easier for our legal team to approve.\"",
+            "name": "Adult-Use Dispensary",
+            "role": "Retail Director",
+            "rating": 5
+          }
+        },
+        "testimonial_FwrPdw": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Client_3.webp",
+            "text": "\"Their team understands both the creative and the compliance side. We got a brand guide, web components, and label templates that plug directly into our workflow.\"",
+            "name": "Multi-State Brand",
+            "role": "Marketing Lead",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "hero_slide_arGNc4",
+        "hero_slide_E6pJnA",
+        "service_category_rm3nNR",
+        "service_category_YpCaWB",
+        "service_category_LjWEFP",
+        "service_category_L3pdMr",
+        "service_dBJTfw",
+        "service_nkzRa8",
+        "service_V6Ea4E",
+        "service_DTDpTB",
+        "service_eR6Vhj",
+        "service_WYTYWx",
+        "service_Gh8f3V",
+        "service_T8NW8t",
+        "service_TNPaGf",
+        "service_yTx7Vc",
+        "service_3YMphR",
+        "service_eDnMEK",
+        "service_zX4xPV",
+        "service_EUnqbf",
+        "service_ERMHbC",
+        "service_zVb3ff",
+        "service_bN3WBF",
+        "service_4rpFdp",
+        "service_krhMnR",
+        "service_wHMb8k",
+        "service_xpEikA",
+        "service_JpDcHE",
+        "service_GpkBUG",
+        "service_LXAc4M",
+        "service_GWMdDp",
+        "service_Xi6BQT",
+        "service_FTBVFa",
+        "service_WWbj3C",
+        "service_KPANGy",
+        "service_Dzd6w7",
+        "service_XjbUr4",
+        "process_card_eC7rxj",
+        "process_card_xbC4Yy",
+        "process_card_Ec7ddm",
+        "process_card_rwyWrJ",
+        "process_card_d7cfFr",
+        "process_card_hd6MXc",
+        "pricing_3zQqKH",
+        "pricing_WTEhUX",
+        "pricing_86VPCz",
+        "process_step_ijHm9r",
+        "process_step_4CAVeL",
+        "process_step_C6YxNq",
+        "testimonial_REqLCz",
+        "testimonial_xHa6Mm",
+        "testimonial_FwrPdw"
+      ],
+      "name": "PackTHC Studio",
+      "settings": {
+        "services_badge": "OUR SERVICES",
+        "services_title": "WHAT WE DO FOR CANNABIS BRANDS",
+        "about_badge": "ABOUT US",
+        "about_title": "Driving Innovation In Cannabis Packaging",
+        "about_text": "The team behind PackTHC Studio has worked across branding, compliance, and packaging manufacturing, giving clients a single partner from concept to finished product. From first sketch to final shipment, every project is built to be retail‑ready, compliant, and scalable as your brand grows",
+        "about_image": "shopify://shop_images/420x470.webp",
+        "features_title": "PackTHC Identity",
+        "feature_1": "Brand Strategy",
+        "feature_2": "Visual Branding",
+        "feature_3": "Identity Build",
+        "feature_4": "Marketing Strategy",
+        "years": "15",
+        "process_badge": "OUR PROCESS",
+        "process_title": "How PackTHC Studio Brings Brands To Life",
+        "pricing_title": "",
+        "pricing_subtitle": "",
+        "features_label": "",
+        "process_text": "",
+        "cards_badge": "OUR PROCESS",
+        "cards_title": "How PackTHC Studio Brings Your Brand To Life",
+        "testimonial_badge": "TESTIMONIALS",
+        "testimonial_title": "What Our Cannabis Clients Say",
+        "cta_text": "Trusted By 17k+ Worldwide Brand & Customers",
+        "cta_button": "Contact Us",
+        "cta_link": "shopify://pages/contact",
+        "cta_bg_image": "shopify://shop_images/Frame_165_4124aa89-e4a1-4ad4-8f8d-2fbb802f76e6.webp"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "packthc_studio_DcMfHB"
+  ]
+}

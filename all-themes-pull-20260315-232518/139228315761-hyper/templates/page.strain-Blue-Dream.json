@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_MDpGcV": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_QJpHMT": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Blue_Dream_3.webp",
+            "image_description": "Blue Dream is a widely recognized Sativa-dominant hybrid derived from Blueberry and Haze genetics, enhanced with Ruderalis for stability and consistency. Known for its balanced effects, this strain is often referenced for delivering gentle cerebral uplift alongside smooth physical relaxation.",
+            "emoji_main": "",
+            "product_name": "Blue Dream",
+            "genetics": "Blue Dream / Sativa Dominant Hybrid",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 16–20%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene (Blue)",
+            "terpene_2": "Terpinolene (Teal)",
+            "terpene_3": "Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 60
+          }
+        },
+        "description_bmcUat": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Blue Dream is a widely recognized Sativa-dominant hybrid derived from Blueberry and Haze genetics, enhanced with Ruderalis for stability and consistency. Known for its balanced effects, this strain is often referenced for delivering gentle cerebral uplift alongside smooth physical relaxation.",
+            "description_2": "This profile is provided strictly for educational and informational purposes, illustrating how terpene-rich strains benefit from proper storage. Effective packaging helps maintain aroma, flavor, and freshness—especially important for berry-forward profiles like Blue Dream, where terpene preservation directly impacts experience.",
+            "bud_image": "shopify://shop_images/Blue_Dream_2.webp",
+            "bud_image_2": "shopify://shop_images/Blue_Dream_4.webp",
+            "bud_image_3": "shopify://shop_images/Blue_Dream_3.webp",
+            "bud_image_4": "shopify://shop_images/Blue_Dream.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_UpfjAH": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1-grams-astro-high-mylar-bag",
+            "product_2": "1-grams-candy-gas-mylar-bag",
+            "product_3": "1-grams-glitch-high-mylar-bag",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "1-grams-gelato-ice-cream-mylar-bag",
+            "product_5": "3-5-grams-blue-zushi-mylar-bags",
+            "product_6": "3-5-grams-candy-gas-dream-state-mylar-bags",
+            "product_7": "3-5-grams-candy-gas-lip-smack-mylar-bags",
+            "product_8": "3-5-grams-candy-gelato-mylar-bags"
+          }
+        },
+        "categories_info_GhdKhU": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Chocolopez Clone × F2 (Regular)",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "100% Sativa",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "42–56 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 21–25%",
+            "info_6_emoji": "",
+            "info_6_label": "",
+            "info_6_value": ""
+          }
+        },
+        "effects_yield_QfjJWQ": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Powerful",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Cerebral",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Body-Relaxing",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Stress Relief",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Uplifting",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Lemon",
+            "taste_tag_emoji_1": "🍋",
+            "taste_tag_2": "",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Tropical",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Linalool",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Tropical Terpenes",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "700 g/m² Indoor / 700–850 g per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_QJpHMT",
+        "description_bmcUat",
+        "product_selection_UpfjAH",
+        "categories_info_GhdKhU",
+        "effects_yield_QfjJWQ"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_MDpGcV"
+  ]
+}

@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_tatXKD": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_6dWFHt": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Chocolate_Thai_3.webp",
+            "image_description": "Chocolate Thai is a classic 100% Sativa hybrid derived from Chocolopez clone and F2regular genetics, known for its strong cerebral presence paired with subtle body relaxation.The strain is often referenced for delivering a powerful yet functional experience, making itnotable among high-THC sativa profiles.",
+            "emoji_main": "",
+            "product_name": "Chocolate Thai",
+            "genetics": "100% Sativa • Hybrid",
+            "strain-badge_1": "100% Sativa Hybrid",
+            "strain-badge_2": "THC 21–25%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Body-Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Powerful",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Stress Relief",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Linalool (Purple)",
+            "terpene_2": "Limonene (Yellow)",
+            "terpene_3": "Tropical Terpenes (Green)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 70,
+            "thc_level": 80
+          }
+        },
+        "description_eitgde": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Chocolate Thai is a classic 100% Sativa hybrid derived from Chocolopez clone and F2\nregular genetics, known for its strong cerebral presence paired with subtle body relaxation.\nThe strain is often referenced for delivering a powerful yet functional experience, making it\nnotable among high-THC sativa profiles.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\nhighlighting how proper packaging supports terpene-rich flowers. Sweet, tropical, and\ncitrus-forward aromas like those found in Chocolate Thai benefit greatly from airtight,\nodor-resistant storage to maintain freshness and flavor integrity over time.",
+            "bud_image": "shopify://shop_images/Chocolate_Thai_4.webp",
+            "bud_image_2": "shopify://shop_images/Chocolate_Thai_2.webp",
+            "bud_image_3": "shopify://shop_images/Chocolate_Thai_3.webp",
+            "bud_image_4": "shopify://shop_images/Chocolate_Thai.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_3YtpNK": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "10oz-300cc-spiral-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-80-count",
+            "product_2": "10oz-300cc-spiral-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-80-count",
+            "product_3": "10oz-300cc-spiral-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-80-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "10oz-300cc-spiral-cr-xl-container-with-integrated-liner-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-80-count",
+            "product_5": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-black-tube-with-opaque-black-closure-200-count",
+            "product_6": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-black-closure-200-count",
+            "product_7": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-white-closure-200-count",
+            "product_8": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-white-tube-with-opaque-white-closure-200-count"
+          }
+        },
+        "categories_info_4eQDKM": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Chocolopez Clone × F2 (Regular)",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "100% Sativa",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "42–56 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 21–25%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_aCDan4": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Cerebral",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Body-Relaxing",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Stress Relief",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Uplifting",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_emoji_1": "🍑",
+            "taste_tag_2": "",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Tropical",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Linalool",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Tropical Terpenes",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "700 g/m² Indoor / 700–850 g per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_6dWFHt",
+        "description_eitgde",
+        "product_selection_3YtpNK",
+        "categories_info_4eQDKM",
+        "effects_yield_aCDan4"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_tatXKD"
+  ]
+}

@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_wznfwY": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_KFCYww": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Trainwreck_3.webp",
+            "image_description": "Trainwreck is a Sativa-dominant hybrid developed from Trainwreck genetics crossed withFB fem auto #14, often referenced for its intense cerebral impact paired with balancedphysical relaxation. Known for its high THC range, this strain is associated with strongeuphoric effects that arrive quickly and maintain a steady, uplifting presence.",
+            "emoji_main": "",
+            "product_name": "Trainwreck",
+            "genetics": "Trainwreck • Hybrid",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 22–24%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "Powerful",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "Balanced",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene (Blue)",
+            "terpene_2": "Alpha-Pinene (Green)",
+            "terpene_3": "Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 80
+          }
+        },
+        "description_YyNtef": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Trainwreck is a Sativa-dominant hybrid developed from Trainwreck genetics crossed with\nFB fem auto #14, often referenced for its intense cerebral impact paired with balanced\nphysical relaxation. Known for its high THC range, this strain is associated with strong\neuphoric effects that arrive quickly and maintain a steady, uplifting presence.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\ndemonstrating how sharp, terpene-forward profiles benefit from proper storage. Lemon,\npine, and spicy-sweet aromas are particularly volatile, making airtight and odor-resistant\npackaging essential for preserving freshness, flavor, and consistency.",
+            "bud_image": "shopify://shop_images/Trainwreck_2.webp",
+            "bud_image_2": "shopify://shop_images/Trainwreck_4.webp",
+            "bud_image_3": "shopify://shop_images/Trainwreck.webp",
+            "bud_image_4": "shopify://shop_images/Trainwreck_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_zhrhyT": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1-1-4-white-futurola-paper-cones-branded-pre-rolled-bulk-case-900-count",
+            "product_2": "1-grams-bull-dog-mylar-bag",
+            "product_3": "4oz-clear-screw-top-glass-jar-with-matte-black-smooth-lid",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "30-dram-pop-top-vial-1-4oz-aqua-blue",
+            "product_5": "15ml-pet-reducer-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-1000-count",
+            "product_6": "15ml-pet-reducer-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-white-closure-1000-count",
+            "product_7": "1-grams-cherry-wine-mylar-bag",
+            "product_8": "1-grams-galaxy-green-mylar-bag"
+          }
+        },
+        "categories_info_ANYc7w": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Trainwreck × FB fem auto #14",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "56–63 Days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 22–24%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_GK7GBW": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Giggly",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Sleepy",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Lemon",
+            "taste_tag_emoji_1": "🍑",
+            "taste_tag_2": "Pine",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Spicy",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Alpha-Pinene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Beta-Pinene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Beta-Caryophyllene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Limonene",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Alpha-Phellandrene",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "350–550 gr/m² Indoor / 60–150 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_KFCYww",
+        "description_YyNtef",
+        "product_selection_zhrhyT",
+        "categories_info_ANYc7w",
+        "effects_yield_GK7GBW"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_wznfwY"
+  ]
+}

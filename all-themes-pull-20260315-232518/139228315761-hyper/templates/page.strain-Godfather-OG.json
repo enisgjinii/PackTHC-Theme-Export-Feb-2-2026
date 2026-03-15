@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_PJniEj": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_NHeFeM": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Godfather_OG_3.webp",
+            "image_description": "Godfather OG is an Indica-dominant hybrid created by crossing Alpha OG with OG Kush,often referenced for its exceptionally high THC range and deeply calming effects. It iscommonly associated with strong euphoria followed by full-body relaxation, making it anotable reference strain for evening and night-time profiles.",
+            "emoji_main": "",
+            "product_name": "Godfather OG",
+            "genetics": "Godfather OG • Hybrid",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 26–30%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene (Blue)",
+            "terpene_2": "Beta-Caryophyllene (Pink)",
+            "terpene_3": "Limonene (Yellow)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 90
+          }
+        },
+        "description_ByKDL3": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Godfather OG is an Indica-dominant hybrid created by crossing Alpha OG with OG Kush,\noften referenced for its exceptionally high THC range and deeply calming effects. It is\ncommonly associated with strong euphoria followed by full-body relaxation, making it a\nnotable reference strain for evening and night-time profiles.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes,\nillustrating how high-potency, terpene-dense flower benefits from proper storage. Fruity,\nsweet, and woody aroma compounds are best preserved through airtight, odor-resistant\npackaging designed to maintain freshness and control scent over time.",
+            "bud_image": "shopify://shop_images/Godfather_OG_4.webp",
+            "bud_image_2": "shopify://shop_images/Godfather_OG_2.webp",
+            "bud_image_3": "shopify://shop_images/Godfather_OG.webp",
+            "bud_image_4": "shopify://shop_images/Godfather_OG_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_ybini6": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "100ml-pet-reducer-unicorn-bottle-with-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-400-count",
+            "product_2": "100ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-amber-bottle-with-opaque-black-closure-400-count",
+            "product_3": "100ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-400-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "100ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-opaque-black-bottle-with-opaque-black-closure-400-count",
+            "product_5": "100ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-opaque-white-bottle-with-opaque-white-closure-400-count",
+            "product_6": "120ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-amber-bottle-with-opaque-black-closure-400-count",
+            "product_7": "120ml-pet-reducer-unicorn-bottle-with-tamper-evident-break-off-band-opaque-white-bottle-with-opaque-white-closure-400-count",
+            "product_8": "15ml-pet-reducer-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-1000-count"
+          }
+        },
+        "categories_info_Ga7jUX": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Alpha OG × OG Kush",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "49–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "16%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_WK8JCp": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Sedating",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Night-Time",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Woody",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Fruity",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Alpha-Cedrene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Alpha-Terpineol",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Borneol",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Borneol",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Camphene",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Eugenol",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "350–450 gr/m² Indoor / 550–650 gr/m² Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_NHeFeM",
+        "description_ByKDL3",
+        "product_selection_ybini6",
+        "categories_info_Ga7jUX",
+        "effects_yield_WK8JCp"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_PJniEj"
+  ]
+}

@@ -1,0 +1,2205 @@
+{% comment %}
+  Product Details Section - Simplified with Emojis and Professional Shadows
+{% endcomment %}
+
+<style>
+    :root {
+      --primary-color: #033770;
+      --secondary-color: #4caf50;
+      --accent-color: #e8f5e9;
+      --light-bg: #fafafa;
+      --white: #ffffff;
+      --text-dark: #222222;
+      --text-light: #666666;
+      --border-color: #e0e0e0;
+    }
+
+    .product-details-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* ===== MAIN HERO SECTION ===== */
+    .block-main-info{
+     margin-bottom: 20px;
+    }
+
+    .hero-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .hero-image-side {
+      text-align: center;
+    }
+
+    .trichome-image {
+      width: 100%;
+      max-width: 550px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin-bottom: 20px;
+    }
+
+    .image-caption {
+      color: var(--text-light);
+      text-align: start;
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .hero-content-side {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-title-section {
+      padding-bottom: 20px;
+    }
+
+    .product-title-section h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      color: var(--text-dark);
+    }
+
+    .genetics-info {
+      color: var(--text-light);
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .info-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .strain-badge {
+      padding: 6px 16px;
+      background: var(--accent-color);
+      color: var(--primary-color);
+      border: 1px solid #c8e6c9;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: capitalize;
+      transition: all 0.3s ease;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    /* ===== EFFECTS SECTION ===== */
+    .effects-section {
+      margin: 10px 0;
+      padding: 15px;
+      background: var(--accent-color);
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .section-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .effect-item {
+      padding: 12px 15px;
+      background: var(--white);
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    /* ===== TERPENES SECTION ===== */
+
+    .terpenes-section h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      margin-top: 10px;
+      color: var(--text-dark);
+    }
+
+    .terpene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .terpene-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 15px;
+      background: var(--light-bg);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .terpene-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      flex-shrink: 0;
+    }
+
+    /* ===== SCALES SECTION ===== */
+    .scales-section {
+      margin-top: 30px;
+      padding: 25px;
+      background: var(--light-bg);
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .scale-item {
+      margin-bottom: 25px;
+    }
+
+    .scale-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .scale-header h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      color: var(--text-dark);
+    }
+
+    .scale-track {
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 10px;
+      position: relative;
+      margin: 10px 0;
+    }
+
+    .strain-scale-fill {
+      height: 100%;
+      background: #000000;
+      border-radius: 8px;
+      position: relative;
+      overflow: visible;
+      display:block;
+    }
+
+    .strain-scale-fill::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: var(--white);
+      border: 3px solid var(--primary-color);
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      display:block;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ===== DESCRIPTION BLOCK ===== */
+    .block-description {
+      margin-bottom: 40px;
+    }
+  /*
+    .description-container {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--primary-color);
+    } */
+
+    .description-container h2 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--text-dark);
+    }
+
+    .description-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .images-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 35px 0;
+    }
+
+    .showcase-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1;
+    }
+
+    .showcase-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .showcase-image:hover img {
+      transform: scale(1.08);
+    }
+
+    .showcase-image {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .features-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature-box {
+      background: var(--light-bg);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .feature-box h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: capitalize;
+      color: var(--text-dark);
+    }
+
+    .feature-box p {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ===== PRODUCT SELECTION ===== */
+    .block-product-selection {
+      margin-bottom: 40px;
+    }
+
+    .selection-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .selection-header small {
+      display: block;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .selection-header h2 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+      margin-top: 5px;
+    }
+
+    .selection-header p {
+      color: var(--text-light);
+      font-size: 14px;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .products-masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      transition: all 0.4s ease;
+    }
+
+
+    .product-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+      background: var(--accent-color);
+    }
+
+    .product-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 5px 15px 5px;
+      color: var(--text-dark);
+    }
+
+    .view-product-btn {
+      display: inline-block;
+      padding: 10px 25px;
+      background: var(--primary-color);
+      color: var(--white) !important;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .promo-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .promo-box {
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+
+    .promo-box h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .promo-box p {
+      color: var(--text-light);
+      line-height: 1.7;
+      font-size: 13px;
+    }
+
+    /* ===== CATEGORIES INFO ===== */
+    .block-categories {
+      margin-bottom: 40px;
+    }
+
+    .strain-categories-wrapper h2 {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-card {
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .info-card small {
+      color: var(--text-light);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .info-card strong {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: block;
+    }
+
+    /* ===== EFFECTS & YIELD ===== */
+    .block-effects-yield {
+      margin-bottom: 40px;
+    }
+
+
+    .split-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .content-column{
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .content-column h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: capitalize;
+    }
+
+    .tag-dark {
+      background: var(--accent-color);
+      color: var(--primary-color);
+    }
+
+    .tag-light {
+      background: var(--accent-color);
+      color: var(--primary-color);
+      border: 1px solid #c8e6c9;
+    }
+
+    .tag-accent {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeaa7;
+    }
+
+    .yield-highlight {
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .yield-highlight h3 {
+      font-size: 25px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+
+    .yield-highlight small {
+      color: var(--text-light);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .yield-highlight strong {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+    }
+    /* ===== MORE SIMILAR STRAINS SECTION ===== */
+.block-similar-strains {
+  margin-bottom: 40px;
+}
+
+.similar-strains-wrapper h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.similar-strains-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.strain-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.strain-image-wrapper {
+  height: 250px;
+  overflow: hidden;
+  background: var(--accent-color);
+}
+
+.strain-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.strain-card:hover .strain-card-image {
+  transform: scale(1.05);
+}
+
+.strain-card-footer {
+  padding: 5px 0px 20px 0px;
+  text-align: center;
+}
+
+.strain-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-dark);
+}
+
+.view-strain-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: var(--primary-color);
+  color: var(--white) !important;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.view-strain-btn:hover {
+  background: var(--text-dark);
+}
+
+@media (max-width: 1024px) {
+  .similar-strains-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .similar-strains-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .split-content,
+      .promo-boxes {
+        grid-template-columns: 1fr;
+      }
+
+      .products-masonry {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .product-title-section h1 {
+        font-size: 32px;
+      }
+
+      .products-masonry,
+      .features-row,
+      .images-showcase,
+      .terpene-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .selection-header h2 {
+        font-size: 28px;
+      }
+
+      .hero-wrapper,
+      .split-content {
+        gap: 20px;
+      }
+    }
+</style>
+
+<div class="product-details-section">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'main_info' %}
+        <div class="block-main-info" {{ block.shopify_attributes }}>
+          <div class="hero-wrapper">
+            <div class="hero-image-side">
+              <div class="hero-image-container">
+                {% if block.settings.trichome_image %}
+                  <img
+                    src="{{ block.settings.trichome_image | img_url: '1024x1024' }}"
+                    alt="{{ block.settings.product_name }}"
+                    class="trichome-image"
+                  >
+                {% endif %}
+                <div class="image-caption">
+                  {{ block.settings.image_description }}
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-content-side">
+              <div class="product-title-section">
+                <h1>
+                  {{ block.settings.emoji_main }}
+                  {{ block.settings.product_name }}
+                </h1>
+                <p class="genetics-info">{{ block.settings.genetics }}</p>
+                <div class="info-badges">
+                  {% if block.settings.strain-badge_1 != blank %}
+                    <span class="strain-badge">{{ block.settings.strain-badge_1 }}</span>
+                  {% endif %}
+                  {% if block.settings.strain-badge_2 != blank %}
+                    <span class="strain-badge">{{ block.settings.strain-badge_2 }}</span>
+                  {% endif %}
+                  {% if block.settings.strain-badge_3 != blank %}
+                    <span class="strain-badge">{{ block.settings.strain-badge_3 }}</span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="effects-section">
+                <div class="section-label">{{ block.settings.emoji_effects }} Top Effects</div>
+                <div class="effects-grid">
+                  {% if block.settings.effect_1 != blank %}
+                    <div class="effect-item">
+                      {{ block.settings.effect_emoji_1 }}
+                      {{ block.settings.effect_1 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.effect_2 != blank %}
+                    <div class="effect-item">
+                      {{ block.settings.effect_emoji_2 }}
+                      {{ block.settings.effect_2 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.effect_3 != blank %}
+                    <div class="effect-item">
+                      {{ block.settings.effect_emoji_3 }}
+                      {{ block.settings.effect_3 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.effect_4 != blank %}
+                    <div class="effect-item">
+                      {{ block.settings.effect_emoji_4 }}
+                      {{ block.settings.effect_4 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.effect_5 != blank %}
+                    <div class="effect-item">
+                      {{ block.settings.effect_emoji_5 }}
+                      {{ block.settings.effect_5 }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="terpenes-section">
+                <h3>{{ block.settings.emoji_terpenes }} Terpenes</h3>
+                <div class="terpene-grid">
+                  {% if block.settings.terpene_1 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_1 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.terpene_2 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_2 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.terpene_3 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_3 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.terpene_4 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_4 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.terpene_5 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_5 }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.terpene_6 != blank %}
+                    <div class="terpene-badge">
+                      <span class="terpene-dot"></span>
+                      {{ block.settings.terpene_6 }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="scales-section">
+                <div class="scale-item">
+                  <div class="scale-header">
+                    <h4>{{ block.settings.emoji_energy }} Energy Level</h4>
+                  </div>
+                  <div class="scale-labels">
+                    <span>Calming</span>
+                    <span>Energizing</span>
+                  </div>
+                  <div class="scale-track">
+                    <div class="strain-scale-fill" style="width: {{ block.settings.energy_level | default: 35 }}%;"></div>
+                  </div>
+                </div>
+
+                <div class="scale-item">
+                  <div class="scale-header">
+                    <h4>{{ block.settings.emoji_thc }} THC Potency</h4>
+                  </div>
+                  <div class="scale-labels">
+                    <span>Low THC</span>
+                    <span>High THC</span>
+                  </div>
+                  <div class="scale-track">
+                    <div class="strain-scale-fill" style="width: {{ block.settings.thc_level | default: 60 }}%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% when 'description' %}
+        <div class="block-description" {{ block.shopify_attributes }}>
+          <div class="description-container">
+            <h2>
+              {{ block.settings.emoji_about }}
+              {{ block.settings.title }}
+            </h2>
+            {% if block.settings.description_1 != blank %}
+              <p class="description-text">{{ block.settings.description_1 }}</p>
+            {% endif %}
+            {% if block.settings.description_2 != blank %}
+              <p class="description-text">{{ block.settings.description_2 }}</p>
+            {% endif %}
+
+            <div class="images-showcase">
+              {% if block.settings.bud_image %}
+                <div class="showcase-image">
+                  <img src="{{ block.settings.bud_image | img_url: '1024x1024' }}" alt="Bud showcase 1">
+                </div>
+              {% endif %}
+              {% if block.settings.bud_image_2 %}
+                <div class="showcase-image">
+                  <img src="{{ block.settings.bud_image_2 | img_url: '1024x1024' }}" alt="Bud showcase 2">
+                </div>
+              {% endif %}
+              {% if block.settings.bud_image_3 %}
+                <div class="showcase-image">
+                  <img src="{{ block.settings.bud_image_3 | img_url: '1024x1024' }}" alt="Bud showcase 3">
+                </div>
+              {% endif %}
+              {% if block.settings.bud_image_4 %}
+                <div class="showcase-image">
+                  <img src="{{ block.settings.bud_image_4 | img_url: '1024x1024' }}" alt="Bud showcase 4">
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="features-row">
+              {% if block.settings.feature_1_title != blank %}
+                <div class="feature-box">
+                  <h4>
+                    {{ block.settings.feature_1_emoji }}
+                    {{ block.settings.feature_1_title }}
+                  </h4>
+                  <p>{{ block.settings.feature_1_desc }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_2_title != blank %}
+                <div class="feature-box">
+                  <h4>
+                    {{ block.settings.feature_2_emoji }}
+                    {{ block.settings.feature_2_title }}
+                  </h4>
+                  <p>{{ block.settings.feature_2_desc }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_3_title != blank %}
+                <div class="feature-box">
+                  <h4>
+                    {{ block.settings.feature_3_emoji }}
+                    {{ block.settings.feature_3_title }}
+                  </h4>
+                  <p>{{ block.settings.feature_3_desc }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.feature_4_title != blank %}
+                <div class="feature-box">
+                  <h4>
+                    {{ block.settings.feature_4_emoji }}
+                    {{ block.settings.feature_4_title }}
+                  </h4>
+                  <p>{{ block.settings.feature_4_desc }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% when 'product_selection' %}
+        <div class="block-product-selection" {{ block.shopify_attributes }}>
+          <div class="selection-header">
+            <small>{{ block.settings.header_small }}</small>
+            <h2>{{ block.settings.header_title }}</h2>
+            <p>{{ block.settings.header_description }}</p>
+          </div>
+
+          <div class="products-masonry">
+            {% if block.settings.product_1 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_1.featured_image %}
+                    <img
+                      src="{{ block.settings.product_1.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_1.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_1.title }}</h3>
+                  <a href="{{ block.settings.product_1.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_2 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_2.featured_image %}
+                    <img
+                      src="{{ block.settings.product_2.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_2.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_2.title }}</h3>
+                  <a href="{{ block.settings.product_2.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_3 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_3.featured_image %}
+                    <img
+                      src="{{ block.settings.product_3.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_3.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_3.title }}</h3>
+                  <a href="{{ block.settings.product_3.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_4 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_4.featured_image %}
+                    <img
+                      src="{{ block.settings.product_4.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_4.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_4.title }}</h3>
+                  <a href="{{ block.settings.product_4.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_5 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_5.featured_image %}
+                    <img
+                      src="{{ block.settings.product_5.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_5.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_5.title }}</h3>
+                  <a href="{{ block.settings.product_5.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_6 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_6.featured_image %}
+                    <img
+                      src="{{ block.settings.product_6.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_6.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_6.title }}</h3>
+                  <a href="{{ block.settings.product_6.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+            {% if block.settings.product_7 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_7.featured_image %}
+                    <img
+                      src="{{ block.settings.product_7.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_7.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_7.title }}</h3>
+                  <a href="{{ block.settings.product_7.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+
+            {% if block.settings.product_8 != blank %}
+              <div class="product-card">
+                <div class="product-image-wrapper">
+                  {% if block.settings.product_8.featured_image %}
+                    <img
+                      src="{{ block.settings.product_8.featured_image | img_url: '600x600' }}"
+                      alt="{{ block.settings.product_8.title }}"
+                      class="product-card-image"
+                    >
+                  {% endif %}
+                </div>
+                <div class="product-card-content">
+                  <h3 class="product-card-title">{{ block.settings.product_8.title }}</h3>
+                  <a href="{{ block.settings.product_8.url }}" class="view-product-btn">View Product</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="promo-boxes">
+            <div class="promo-box">
+              <h3>{{ block.settings.left_content_title }}</h3>
+              <p>{{ block.settings.left_content_description }}</p>
+            </div>
+            <div class="promo-box">
+              <h3>{{ block.settings.right_content_title }}</h3>
+              <p>{{ block.settings.right_content_description }}</p>
+            </div>
+          </div>
+        </div>
+
+      {% when 'categories_info' %}
+        <div class="block-categories" {{ block.shopify_attributes }}>
+          <div class="strain-categories-wrapper">
+            <h2>
+              {{ block.settings.emoji_info }}
+              {{ block.settings.info_title }}
+            </h2>
+            <div class="info-grid">
+              {% if block.settings.info_1_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_1_emoji }}
+                    {{ block.settings.info_1_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_1_value }}</strong>
+                </div>
+              {% endif %}
+              {% if block.settings.info_2_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_2_emoji }}
+                    {{ block.settings.info_2_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_2_value }}</strong>
+                </div>
+              {% endif %}
+              {% if block.settings.info_3_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_3_emoji }}
+                    {{ block.settings.info_3_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_3_value }}</strong>
+                </div>
+              {% endif %}
+              {% if block.settings.info_4_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_4_emoji }}
+                    {{ block.settings.info_4_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_4_value }}</strong>
+                </div>
+              {% endif %}
+              {% if block.settings.info_5_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_5_emoji }}
+                    {{ block.settings.info_5_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_5_value }}</strong>
+                </div>
+              {% endif %}
+              {% if block.settings.info_6_label != blank %}
+                <div class="info-card">
+                  <small>
+                    {{- block.settings.info_6_emoji }}
+                    {{ block.settings.info_6_label -}}
+                  </small>
+                  <strong>{{ block.settings.info_6_value }}</strong>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% when 'effects_yield' %}
+        <div class="block-effects-yield" {{ block.shopify_attributes }}>
+          <div class="effects-yield-container">
+            <div class="split-content">
+              <div class="content-column">
+                <h3>
+                  {{ block.settings.emoji_effects }}
+                  {{ block.settings.effects_title }}
+                </h3>
+                <div class="tags-container">
+                  {% if block.settings.effect_tag_1 != blank %}
+                    <span class="tag tag-dark">
+                      {{- block.settings.effect_tag_emoji_1 }}
+                      {{ block.settings.effect_tag_1 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.effect_tag_2 != blank %}
+                    <span class="tag tag-dark">
+                      {{- block.settings.effect_tag_emoji_2 }}
+                      {{ block.settings.effect_tag_2 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.effect_tag_3 != blank %}
+                    <span class="tag tag-dark">
+                      {{- block.settings.effect_tag_emoji_3 }}
+                      {{ block.settings.effect_tag_3 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.effect_tag_4 != blank %}
+                    <span class="tag tag-dark">
+                      {{- block.settings.effect_tag_emoji_4 }}
+                      {{ block.settings.effect_tag_4 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.effect_tag_5 != blank %}
+                    <span class="tag tag-dark">
+                      {{- block.settings.effect_tag_emoji_5 }}
+                      {{ block.settings.effect_tag_5 -}}
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="content-column">
+                <h3>
+                  {{ block.settings.emoji_taste }}
+                  {{ block.settings.taste_title }}
+                </h3>
+                <div class="tags-container">
+                  {% if block.settings.taste_tag_1 != blank %}
+                    <span class="tag tag-light">
+                      {{- block.settings.taste_tag_emoji_1 }}
+                      {{ block.settings.taste_tag_1 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.taste_tag_2 != blank %}
+                    <span class="tag tag-light">
+                      {{- block.settings.taste_tag_emoji_2 }}
+                      {{ block.settings.taste_tag_2 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.taste_tag_3 != blank %}
+                    <span class="tag tag-light">
+                      {{- block.settings.taste_tag_emoji_3 }}
+                      {{ block.settings.taste_tag_3 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.taste_tag_4 != blank %}
+                    <span class="tag tag-light">
+                      {{- block.settings.taste_tag_emoji_4 }}
+                      {{ block.settings.taste_tag_4 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_1 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_1 }}
+                      {{ block.settings.terp_tag_1 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_2 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_2 }}
+                      {{ block.settings.terp_tag_2 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_3 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_3 }}
+                      {{ block.settings.terp_tag_3 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_4 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_4 }}
+                      {{ block.settings.terp_tag_4 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_5 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_5 }}
+                      {{ block.settings.terp_tag_5 -}}
+                    </span>
+                  {% endif %}
+                  {% if block.settings.terp_tag_6 != blank %}
+                    <span class="tag tag-accent">
+                      {{- block.settings.terp_tag_emoji_6 }}
+                      {{ block.settings.terp_tag_6 -}}
+                    </span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <div class="yield-highlight">
+              <h3>
+                {{ block.settings.emoji_yield }}
+                {{ block.settings.yield_section_title }}
+              </h3>
+              <small>{{ block.settings.yield_label }}</small>
+              <strong>{{ block.settings.yield_value }}</strong>
+            </div>
+          </div>
+        </div>
+
+        {% when 'similar_strains' %}
+  <div class="block-similar-strains" {{ block.shopify_attributes }}>
+    <div class="similar-strains-wrapper">
+      <h2>{{ block.settings.section_title }}</h2>
+      <div class="similar-strains-grid">
+        {% if block.settings.strain_1_image %}
+          <div class="strain-card">
+            <div class="strain-image-wrapper">
+              <img src="{{ block.settings.strain_1_image | img_url: 'medium' }}" alt="{{ block.settings.strain_1_title }}" class="strain-card-image">
+            </div>
+            <div class="strain-card-footer">
+              <h3 class="strain-card-title">{{ block.settings.strain_1_title }}</h3>
+              <a href="{{ block.settings.strain_1_link }}" class="view-strain-btn">View Strain</a>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.strain_2_image %}
+          <div class="strain-card">
+            <div class="strain-image-wrapper">
+              <img src="{{ block.settings.strain_2_image | img_url: 'medium' }}" alt="{{ block.settings.strain_2_title }}" class="strain-card-image">
+            </div>
+            <div class="strain-card-footer">
+              <h3 class="strain-card-title">{{ block.settings.strain_2_title }}</h3>
+              <a href="{{ block.settings.strain_2_link }}" class="view-strain-btn">View Strain</a>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.strain_3_image %}
+          <div class="strain-card">
+            <div class="strain-image-wrapper">
+              <img src="{{ block.settings.strain_3_image | img_url: 'medium' }}" alt="{{ block.settings.strain_3_title }}" class="strain-card-image">
+            </div>
+            <div class="strain-card-footer">
+              <h3 class="strain-card-title">{{ block.settings.strain_3_title }}</h3>
+              <a href="{{ block.settings.strain_3_link }}" class="view-strain-btn">View Strain</a>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if block.settings.strain_4_image %}
+          <div class="strain-card">
+            <div class="strain-image-wrapper">
+              <img src="{{ block.settings.strain_4_image | img_url: 'medium' }}" alt="{{ block.settings.strain_4_title }}" class="strain-card-image">
+            </div>
+            <div class="strain-card-footer">
+              <h3 class="strain-card-title">{{ block.settings.strain_4_title }}</h3>
+              <a href="{{ block.settings.strain_4_link }}" class="view-strain-btn">View Strain</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Strains Details",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "main_info",
+      "name": "Main Product Info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "trichome_image",
+          "label": "Trichome Image"
+        },
+        {
+          "type": "text",
+          "id": "image_description",
+          "label": "Image Description",
+          "default": "Carefully selected cannabis strain developed from stable genetics to deliver consistent growth and premium-quality results."
+        },
+        {
+          "type": "text",
+          "id": "emoji_main",
+          "label": "Main Emoji",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Cherry Pie"
+        },
+        {
+          "type": "text",
+          "id": "genetics",
+          "label": "Genetics Info",
+          "default": "Granddaddy Purple x F1 Durb • Hybrid"
+        },
+        {
+          "type": "text",
+          "id": "strain-badge_1",
+          "label": "strain-badge 1",
+          "default": "Hybrid Strain"
+        },
+        {
+          "type": "text",
+          "id": "strain-badge_2",
+          "label": "strain-badge 2",
+          "default": "THC 16–20%"
+        },
+        {
+          "type": "text",
+          "id": "strain-badge_3",
+          "label": "strain-badge 3",
+          "default": "CBD > 2%"
+        },
+        {
+          "type": "text",
+          "id": "emoji_effects",
+          "label": "Effects Section Emoji",
+          "default": "🎯"
+        },
+        {
+          "type": "text",
+          "id": "effect_1",
+          "label": "Effect 1",
+          "default": "Relaxed"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_1",
+          "label": "Effect 1 Emoji",
+          "default": "😌"
+        },
+        {
+          "type": "text",
+          "id": "effect_2",
+          "label": "Effect 2",
+          "default": "Giggly"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_2",
+          "label": "Effect 2 Emoji",
+          "default": "😄"
+        },
+        {
+          "type": "text",
+          "id": "effect_3",
+          "label": "Effect 3",
+          "default": "Happy"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_3",
+          "label": "Effect 3 Emoji",
+          "default": "😊"
+        },
+        {
+          "type": "text",
+          "id": "effect_4",
+          "label": "Effect 4",
+          "default": "Euphoric"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_4",
+          "label": "Effect 4 Emoji",
+          "default": "🌬️"
+        },
+        {
+          "type": "text",
+          "id": "effect_5",
+          "label": "Effect 5",
+          "default": "Sleepy"
+        },
+        {
+          "type": "text",
+          "id": "effect_emoji_5",
+          "label": "Effect 5 Emoji",
+          "default": "😴"
+        },
+        {
+          "type": "text",
+          "id": "emoji_terpenes",
+          "label": "Terpenes Emoji",
+          "default": "🌸"
+        },
+        {
+          "type": "text",
+          "id": "terpene_1",
+          "label": "Terpene 1",
+          "default": "Myrcene"
+        },
+        {
+          "type": "text",
+          "id": "terpene_2",
+          "label": "Terpene 2",
+          "default": "Caryophyllene"
+        },
+        {
+          "type": "text",
+          "id": "terpene_3",
+          "label": "Terpene 3",
+          "default": "Pinene"
+        },
+        {
+          "type": "text",
+          "id": "terpene_4",
+          "label": "Terpene 4",
+          "default": "Limonene"
+        },
+        {
+          "type": "text",
+          "id": "terpene_5",
+          "label": "Terpene 5",
+          "default": "Linalool"
+        },
+        {
+          "type": "text",
+          "id": "terpene_6",
+          "label": "Terpene 6",
+          "default": "Alpha Humulene"
+        },
+        {
+          "type": "text",
+          "id": "emoji_energy",
+          "label": "Energy Emoji",
+          "default": "🧘"
+        },
+        {
+          "type": "text",
+          "id": "emoji_thc",
+          "label": "THC Emoji",
+          "default": "⚡"
+        },
+        {
+          "type": "range",
+          "id": "energy_level",
+          "label": "Energy Level (%)",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 35
+        },
+        {
+          "type": "range",
+          "id": "thc_level",
+          "label": "THC Level (%)",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 60
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji_about",
+          "label": "About Section Emoji",
+          "default": "📖"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Description"
+        },
+        {
+          "type": "textarea",
+          "id": "description_1",
+          "label": "Description Paragraph 1",
+          "default": "Cherry Pie's parents are Granddaddy Purple and F1 Durb. With buds that are dense and full of orange hairs and a touch of purple, this hybrid strain smells of sweet and sour cherry pie."
+        },
+        {
+          "type": "textarea",
+          "id": "description_2",
+          "label": "Description Paragraph 2",
+          "default": "This strain is known for its distinctive flavor profile and reliable growth characteristics, making it a favorite among both recreational and medicinal users."
+        },
+        {
+          "type": "image_picker",
+          "id": "bud_image",
+          "label": "Bud Image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "bud_image_2",
+          "label": "Bud Image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "bud_image_3",
+          "label": "Bud Image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "bud_image_4",
+          "label": "Bud Image 4"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_emoji",
+          "label": "Feature 1 Emoji",
+          "default": "🌾"
+        },
+        {
+          "type": "text",
+          "id": "feature_1_title",
+          "label": "Feature 1 Title",
+          "default": "Airtight protection"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_1_desc",
+          "label": "Feature 1 Description",
+          "default": "Designed to help preserve aroma, potency, and terpene integrity."
+        },
+        {
+          "type": "text",
+          "id": "feature_2_emoji",
+          "label": "Feature 2 Emoji",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "feature_2_title",
+          "label": "Feature 2 Title",
+          "default": "Odor control"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_2_desc",
+          "label": "Feature 2 Description",
+          "default": "Helps minimize scent transfer during storage and transport."
+        },
+        {
+          "type": "text",
+          "id": "feature_3_emoji",
+          "label": "Feature 3 Emoji",
+          "default": "👑"
+        },
+        {
+          "type": "text",
+          "id": "feature_3_title",
+          "label": "Feature 3 Title",
+          "default": "Child-resistant ready"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_3_desc",
+          "label": "Feature 3 Description",
+          "default": "Compatible with child-resistant closures for compliant packaging."
+        },
+        {
+          "type": "text",
+          "id": "feature_4_emoji",
+          "label": "Feature 4 Emoji",
+          "default": "✨"
+        },
+        {
+          "type": "text",
+          "id": "feature_4_title",
+          "label": "Feature 4 Title",
+          "default": "Dispensary-grade packaging"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_4_desc",
+          "label": "Feature 4 Description",
+          "default": "Trusted by brands for professional presentation and storage."
+        }
+      ]
+    },
+    {
+      "type": "product_selection",
+      "name": "Product Grid Selection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header_small",
+          "label": "Header Small Text",
+          "default": "PackTHC"
+        },
+        {
+          "type": "text",
+          "id": "header_title",
+          "label": "Header Title",
+          "default": "Packaging Solutions & Storage Options"
+        },
+        {
+          "type": "textarea",
+          "id": "header_description",
+          "label": "Header Description",
+          "default": "Explore our curated collection of premium cannabis strains, each selected for exceptional quality and performance."
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Product 3"
+        },
+        {
+          "type": "text",
+          "id": "left_content_title",
+          "label": "Left Box Title",
+          "default": "220+ packaging solutions & storage options"
+        },
+        {
+          "type": "textarea",
+          "id": "left_content_description",
+          "label": "Left Box Description",
+          "default": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products."
+        },
+        {
+          "type": "text",
+          "id": "right_content_title",
+          "label": "Right Box Title",
+          "default": "115+ compliant packaging formats"
+        },
+        {
+          "type": "textarea",
+          "id": "right_content_description",
+          "label": "Right Box Description",
+          "default": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands."
+        },
+        {
+          "type": "product",
+          "id": "product_4",
+          "label": "Product 4"
+        },
+        {
+          "type": "product",
+          "id": "product_5",
+          "label": "Product 5"
+        },
+        {
+          "type": "product",
+          "id": "product_6",
+          "label": "Product 6"
+        },
+        {
+          "type": "product",
+          "id": "product_7",
+          "label": "Product 7"
+        },
+        {
+          "type": "product",
+          "id": "product_8",
+          "label": "Product 8"
+        }
+      ]
+    },
+    {
+      "type": "categories_info",
+      "name": "Categories & Basic Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji_info",
+          "label": "Info Section Emoji",
+          "default": "ℹ️"
+        },
+        {
+          "type": "text",
+          "id": "info_title",
+          "label": "Basic Information Title",
+          "default": "Basic Information"
+        },
+        {
+          "type": "text",
+          "id": "info_1_emoji",
+          "label": "Info 1 Emoji",
+          "default": "📁"
+        },
+        {
+          "type": "text",
+          "id": "info_1_label",
+          "label": "Info 1 Label",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "info_1_value",
+          "label": "Info 1 Value",
+          "default": "Feminized Seeds"
+        },
+        {
+          "type": "text",
+          "id": "info_2_emoji",
+          "label": "Info 2 Emoji",
+          "default": "🧬"
+        },
+        {
+          "type": "text",
+          "id": "info_2_label",
+          "label": "Info 2 Label",
+          "default": "Genotype"
+        },
+        {
+          "type": "text",
+          "id": "info_2_value",
+          "label": "Info 2 Value",
+          "default": "Granddaddy Purple x F1 Durb"
+        },
+        {
+          "type": "text",
+          "id": "info_3_emoji",
+          "label": "Info 3 Emoji",
+          "default": "🌿"
+        },
+        {
+          "type": "text",
+          "id": "info_3_label",
+          "label": "Info 3 Label",
+          "default": "Phenotype"
+        },
+        {
+          "type": "text",
+          "id": "info_3_value",
+          "label": "Info 3 Value",
+          "default": "Hybrid"
+        },
+        {
+          "type": "text",
+          "id": "info_4_emoji",
+          "label": "Info 4 Emoji",
+          "default": "⏱️"
+        },
+        {
+          "type": "text",
+          "id": "info_4_label",
+          "label": "Info 4 Label",
+          "default": "Flowering Time"
+        },
+        {
+          "type": "text",
+          "id": "info_4_value",
+          "label": "Info 4 Value",
+          "default": "60-70 Days"
+        },
+        {
+          "type": "text",
+          "id": "info_5_emoji",
+          "label": "Info 5 Emoji",
+          "default": "🔥"
+        },
+        {
+          "type": "text",
+          "id": "info_5_label",
+          "label": "Info 5 Label",
+          "default": "THC Level"
+        },
+        {
+          "type": "text",
+          "id": "info_5_value",
+          "label": "Info 5 Value",
+          "default": "16%"
+        },
+        {
+          "type": "text",
+          "id": "info_6_emoji",
+          "label": "Info 6 Emoji",
+          "default": "💚"
+        },
+        {
+          "type": "text",
+          "id": "info_6_label",
+          "label": "Info 6 Label",
+          "default": "CBD Level"
+        },
+        {
+          "type": "text",
+          "id": "info_6_value",
+          "label": "Info 6 Value",
+          "default": "2%"
+        }
+      ]
+    },
+    {
+      "type": "effects_yield",
+      "name": "Effects & Yield Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "emoji_effects",
+          "label": "Effects Emoji",
+          "default": "✨"
+        },
+        {
+          "type": "text",
+          "id": "effects_title",
+          "label": "Effects Title",
+          "default": "Effects & Experience"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_1",
+          "label": "Effect Tag 1",
+          "default": "Relaxed"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_emoji_1",
+          "label": "Effect Tag 1 Emoji",
+          "default": "😌"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_2",
+          "label": "Effect Tag 2",
+          "default": "Giggly"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_emoji_2",
+          "label": "Effect Tag 2 Emoji",
+          "default": "😄"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_3",
+          "label": "Effect Tag 3",
+          "default": "Happy"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_emoji_3",
+          "label": "Effect Tag 3 Emoji",
+          "default": "😊"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_4",
+          "label": "Effect Tag 4",
+          "default": "Euphoric"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_emoji_4",
+          "label": "Effect Tag 4 Emoji",
+          "default": "🌬️"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_5",
+          "label": "Effect Tag 5",
+          "default": "Sleepy"
+        },
+        {
+          "type": "text",
+          "id": "effect_tag_emoji_5",
+          "label": "Effect Tag 5 Emoji",
+          "default": "😴"
+        },
+        {
+          "type": "text",
+          "id": "emoji_taste",
+          "label": "Taste Emoji",
+          "default": "🍒"
+        },
+        {
+          "type": "text",
+          "id": "taste_title",
+          "label": "Taste & Aroma Title",
+          "default": "Taste & Aroma"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_1",
+          "label": "Taste Tag 1",
+          "default": "Tree Fruit"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_emoji_1",
+          "label": "Taste Tag 1 Emoji",
+          "default": "🌳"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_2",
+          "label": "Taste Tag 2",
+          "default": "Berry"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_emoji_2",
+          "label": "Taste Tag 2 Emoji",
+          "default": "🫐"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_3",
+          "label": "Taste Tag 3",
+          "default": "Sweet"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_emoji_3",
+          "label": "Taste Tag 3 Emoji",
+          "default": "🍬"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_4",
+          "label": "Taste Tag 4",
+          "default": "Tropical"
+        },
+        {
+          "type": "text",
+          "id": "taste_tag_emoji_4",
+          "label": "Taste Tag 4 Emoji",
+          "default": "🍑"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_1",
+          "label": "Terpene Tag 1",
+          "default": "Myrcene"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_1",
+          "label": "Terpene Tag 1 Emoji",
+          "default": "🌸"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_2",
+          "label": "Terpene Tag 2",
+          "default": "Limonene"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_2",
+          "label": "Terpene Tag 2 Emoji",
+          "default": "🍋"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_3",
+          "label": "Terpene Tag 3",
+          "default": "Caryophyllene"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_3",
+          "label": "Terpene Tag 3 Emoji",
+          "default": "🌶️"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_4",
+          "label": "Terpene Tag 4",
+          "default": "Pinene"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_4",
+          "label": "Terpene Tag 4 Emoji",
+          "default": "🌲"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_5",
+          "label": "Terpene Tag 5",
+          "default": "Linalool"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_5",
+          "label": "Terpene Tag 5 Emoji",
+          "default": "🌺"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_6",
+          "label": "Terpene Tag 6",
+          "default": "Alpha Humulene"
+        },
+        {
+          "type": "text",
+          "id": "terp_tag_emoji_6",
+          "label": "Terpene Tag 6 Emoji",
+          "default": "🌾"
+        },
+        {
+          "type": "text",
+          "id": "emoji_yield",
+          "label": "Yield Emoji",
+          "default": "🌾"
+        },
+        {
+          "type": "text",
+          "id": "yield_section_title",
+          "label": "Yield Section Title",
+          "default": "Yield & Growing Information"
+        },
+        {
+          "type": "text",
+          "id": "yield_label",
+          "label": "Yield Label",
+          "default": "Expected Yield"
+        },
+        {
+          "type": "text",
+          "id": "yield_value",
+          "label": "Yield Value",
+          "default": "300-450g per plant"
+        }
+      ]
+    },
+    {
+  "type": "similar_strains",
+  "name": "More Similar Strains",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "More Similar Strains"
+    },
+    {
+      "type": "image_picker",
+      "id": "strain_1_image",
+      "label": "Strain 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "strain_1_title",
+      "label": "Strain 1 Title",
+      "default": "Strain Name"
+    },
+    {
+      "type": "url",
+      "id": "strain_1_link",
+      "label": "Strain 1 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "strain_2_image",
+      "label": "Strain 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "strain_2_title",
+      "label": "Strain 2 Title",
+      "default": "Strain Name"
+    },
+    {
+      "type": "url",
+      "id": "strain_2_link",
+      "label": "Strain 2 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "strain_3_image",
+      "label": "Strain 3 Image"
+    },
+    {
+      "type": "text",
+      "id": "strain_3_title",
+      "label": "Strain 3 Title",
+      "default": "Strain Name"
+    },
+    {
+      "type": "url",
+      "id": "strain_3_link",
+      "label": "Strain 3 Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "strain_4_image",
+      "label": "Strain 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "strain_4_title",
+      "label": "Strain 4 Title",
+      "default": "Strain Name"
+    },
+    {
+      "type": "url",
+      "id": "strain_4_link",
+      "label": "Strain 4 Link"
+    }
+  ]
+}
+  ],
+  "presets": [
+    {
+      "name": "Strains Details",
+      "blocks": [
+        {
+          "type": "main_info"
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "product_selection"
+        },
+        {
+          "type": "categories_info"
+        },
+        {
+          "type": "effects_yield"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

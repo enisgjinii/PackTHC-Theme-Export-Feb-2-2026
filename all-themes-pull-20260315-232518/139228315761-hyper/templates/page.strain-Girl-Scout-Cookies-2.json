@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_7h43jN": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_VUbxPy": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Girl_Scout_Cookies_3_6696ffa7-d0eb-4d30-9a39-c9c6586aa15a.webp",
+            "image_description": "Girl Scout Cookies is an Indica-dominant hybrid created by crossing Durban Poison withOG Kush. It is widely referenced for its uplifting euphoria followed by a deep, comfortablerelaxation, making it a benchmark strain for balanced mind-and-body effects.",
+            "emoji_main": "",
+            "product_name": "Girl Scout Cookies",
+            "genetics": "GSC • Hybrid",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 16–21%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Beta-Caryophyllene (Pink)",
+            "terpene_2": "Limonene (Yellow)",
+            "terpene_3": "Myrcene (Blue)",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 40,
+            "thc_level": 60
+          }
+        },
+        "description_HwGxh4": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Girl Scout Cookies is an Indica-dominant hybrid created by crossing Durban Poison with\nOG Kush. It is widely referenced for its uplifting euphoria followed by a deep, comfortable\nrelaxation, making it a benchmark strain for balanced mind-and-body effects.",
+            "description_2": "This strain profile is provided strictly for educational and informational purposes, showing\nhow terpene-dense flowers benefit from proper storage. Sweet, earthy, caramel-forward\naromas are best preserved with airtight, odor-resistant packaging that helps maintain\nfreshness and consistency over time.",
+            "bud_image": "shopify://shop_images/Girl_Scout_Cookies_2_eb93d7d7-04ef-4eff-9041-a627e10265e6.webp",
+            "bud_image_2": "shopify://shop_images/Girl_Scout_Cookies_4a6d236d-071b-40f2-88bc-02f9758bbf6b.webp",
+            "bud_image_3": "shopify://shop_images/Girl_Scout_Cookies_4_b86c674a-fcb2-4062-8f20-5528dca3153e.webp",
+            "bud_image_4": "shopify://shop_images/Girl_Scout_Cookies_3_6696ffa7-d0eb-4d30-9a39-c9c6586aa15a.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_kFkwd7": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "closure-cr-natural-count-chubby-gorilla-40g-c2-ae-dual",
+            "product_2": "closure-cr-black-natural-opaque-count-chubby-gorilla-40g-c2",
+            "product_3": "closure-cr-white-natural-opaque-count-chubby-gorilla-40g-c2",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "closure-cr-black-opaque-count-chubby-gorilla-40g-c2-ae-dual",
+            "product_5": "116mm-cr-clear-glass-blunt-tube-with-plastic-black-cap",
+            "product_6": "116mm-cr-clear-glass-blunt-tube-with-plastic-white-cap",
+            "product_7": "116mm-cr-clear-glass-blunt-tube-with-wooden-cork",
+            "product_8": "2oz-clear-glass-jar-with-matte-white-smooth-lid"
+          }
+        },
+        "categories_info_tgeFqi": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Durban Poison × OG Kush",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "63–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Medium / 16–21%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_tYzan7": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Earthy",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Caramel",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Humulene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Alpha-Cedrene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Alpha-Terpineol",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Borneol",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Camphene",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Citral",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "450–500 gr/m² Indoor / 500–550 gr per plant Outdoor<br>(Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_VUbxPy",
+        "description_HwGxh4",
+        "product_selection_kFkwd7",
+        "categories_info_tgeFqi",
+        "effects_yield_tYzan7"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_7h43jN"
+  ]
+}

@@ -1,0 +1,211 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "new_top_bar_8cgLEX": {
+      "type": "new-top-bar",
+      "name": "Utility Top Bar",
+      "settings": {}
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "hightlight_link_kYeX7k": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "BestSelling Products",
+            "hl_link_style": "wave_underline",
+            "hl_link_color": "#ffffff"
+          }
+        },
+        "custom_link_tMCRrV": {
+          "type": "custom_link",
+          "settings": {
+            "label": "Sample Kit",
+            "link": "shopify://pages/request-sample-kit",
+            "icon": "package",
+            "icon_size": "large"
+          }
+        },
+        "hightlight_link_rqzVWk": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "Best Selling Products",
+            "hl_link_style": "wave_underline",
+            "hl_link_color": ""
+          }
+        },
+        "hightlight_link_c7YiG6": {
+          "type": "hightlight_link",
+          "settings": {
+            "hl_link_title": "On Sale",
+            "hl_link_style": "star_twinkle",
+            "hl_link_color": "#ffffff"
+          }
+        },
+        "product_list_86CtkM": {
+          "type": "product_list",
+          "disabled": true,
+          "settings": {
+            "menu_title": "SHOP BY CATEGORIES",
+            "menu_columns": 5,
+            "show_menu_column_divider": true,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "heading": "",
+            "promotions_width": 38,
+            "number_of_columns": 2,
+            "product_list": [],
+            "show_product_vendor": false,
+            "show_product_type": false,
+            "show_progress_bar": true
+          }
+        },
+        "sidebar_zYpTyL": {
+          "type": "sidebar",
+          "settings": {
+            "menu_title": "SHOP BY CUSTOMER TYPE",
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "menu_columns": 4,
+            "show_collection_image": true,
+            "show_image_of_first_product": false,
+            "image_ratio": "adapt"
+          }
+        },
+        "promotion_banner_CrDaT4": {
+          "type": "promotion_banner",
+          "settings": {
+            "menu_title": "SHOP BY CATEGORIES",
+            "menu_columns": 4,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "promotions_width": 20,
+            "promotion_columns": 1,
+            "promotion_position": "right",
+            "color_scheme_1": "scheme-inverse",
+            "promo_image_1": "shopify://shop_images/graphic_1.webp",
+            "content_position_1": "top-left",
+            "content_alignment_1": "left",
+            "content_gap_1": "fitted",
+            "image_overlay_opacity_1": 28,
+            "promotion_link_1": "shopify://collections/concentrate-packaging",
+            "subheading_1": "WholeSale",
+            "subheading_style_1": "",
+            "heading_1": "Concentrate Packaging",
+            "heading_size_1": "h3",
+            "description_1": "",
+            "button_label_1": "Shop Now",
+            "button_style_1": "btn--primary",
+            "button_icon_1": "none",
+            "color_scheme_2": "scheme-inverse",
+            "content_position_2": "top-left",
+            "content_alignment_2": "left",
+            "content_gap_2": "fitted",
+            "image_overlay_opacity_2": 0,
+            "promotion_link_2": "",
+            "subheading_2": "",
+            "subheading_style_2": "",
+            "heading_2": "",
+            "heading_size_2": "h4",
+            "description_2": "",
+            "button_label_2": "Shop Now",
+            "button_style_2": "btn--primary",
+            "button_icon_2": "none",
+            "color_scheme_3": "scheme-inverse",
+            "content_position_3": "top-left",
+            "content_alignment_3": "left",
+            "content_gap_3": "fitted",
+            "image_overlay_opacity_3": 0,
+            "promotion_link_3": "",
+            "subheading_3": "",
+            "subheading_style_3": "",
+            "heading_3": "",
+            "heading_size_3": "h4",
+            "description_3": "",
+            "button_label_3": "",
+            "button_style_3": "btn--primary",
+            "button_icon_3": "none",
+            "color_scheme_4": "",
+            "content_position_4": "top-left",
+            "content_alignment_4": "left",
+            "content_gap_4": "fitted",
+            "image_overlay_opacity_4": 0,
+            "promotion_link_4": "",
+            "subheading_4": "",
+            "subheading_style_4": "",
+            "heading_4": "",
+            "heading_size_4": "h5",
+            "description_4": "",
+            "button_label_4": "",
+            "button_style_4": "btn--primary",
+            "button_icon_4": "none",
+            "color_scheme_5": "",
+            "content_position_5": "top-left",
+            "content_alignment_5": "left",
+            "content_gap_5": "fitted",
+            "image_overlay_opacity_5": 0,
+            "promotion_link_5": "",
+            "subheading_5": "",
+            "subheading_style_5": "",
+            "heading_5": "",
+            "heading_size_5": "h5",
+            "description_5": "",
+            "button_label_5": "",
+            "button_style_5": "btn--primary",
+            "button_icon_5": "none"
+          }
+        }
+      },
+      "block_order": [
+        "hightlight_link_kYeX7k",
+        "custom_link_tMCRrV",
+        "hightlight_link_rqzVWk",
+        "hightlight_link_c7YiG6",
+        "product_list_86CtkM",
+        "sidebar_zYpTyL",
+        "promotion_banner_CrDaT4"
+      ],
+      "custom_css": [
+        "@media (max-width: 1023px) {.menu-drawer__item-grandchild .media-wrapper {aspect-ratio: 2.133 !important; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "menu": "hyper-new",
+        "menu_mobile": "",
+        "header_layout": "logo-left",
+        "menu_trigger": "hover",
+        "sticky_header": "always",
+        "enable_collapse_on_scroll": true,
+        "show_sperator_line": true,
+        "customer_account_style": "icon-with-text",
+        "show_social_media_icons": false,
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "header_top_padding_top": 20,
+        "header_top_padding_bottom": 20,
+        "navigation_color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "navigation_content_alignment": "start",
+        "navigation_padding_top": 0,
+        "navigation_padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "new_top_bar_8cgLEX",
+    "header"
+  ]
+}

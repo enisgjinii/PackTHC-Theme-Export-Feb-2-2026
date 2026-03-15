@@ -1,0 +1,1136 @@
+<!-- About Page - Hyper Theme -->
+<div class="about-wrapper">
+  
+  {% if section.settings.hero_title %}
+  <section class="about-hero">
+    <div class="about-container">
+      <div class="about-hero-content">
+        <h1>{{ section.settings.hero_title }}</h1>
+        {% if section.settings.hero_subtitle %}
+          <p>{{ section.settings.hero_subtitle }}</p>
+        {% endif %}
+        {% if section.settings.hero_tagline %}
+          <div class="about-tagline">{{ section.settings.hero_tagline }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- About Section -->
+  {% if section.settings.about_title %}
+  <section class="about-main">
+    <div class="about-container">
+      <h2 class="about-main-title">{{ section.settings.about_title }}</h2>
+      {% if section.settings.about_subtitle %}
+        <p class="about-main-subtitle">{{ section.settings.about_subtitle }}</p>
+      {% endif %}
+
+      <!-- Content Grid -->
+      {% if section.settings.expertise_title or section.settings.commitment_title %}
+      <div class="about-content">
+        {% if section.settings.expertise_title %}
+        <div class="about-text">
+          <h3>{{ section.settings.expertise_title }}</h3>
+          {% if section.settings.expertise_description %}
+            <p>{{ section.settings.expertise_description }}</p>
+          {% endif %}
+          {% if section.settings.expertise_additional %}
+            <p>{{ section.settings.expertise_additional }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if section.settings.commitment_title %}
+        <div class="about-text">
+          <h3>{{ section.settings.commitment_title }}</h3>
+          {% if section.settings.commitment_description %}
+            <p>{{ section.settings.commitment_description }}</p>
+          {% endif %}
+          {% if section.settings.commitment_additional %}
+            <p>{{ section.settings.commitment_additional }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Vision & Mission Section -->
+      {% if section.settings.vision_title or section.settings.mission_title %}
+      <div class="about-vision-mission">
+        {% if section.settings.vision_title %}
+        <div class="about-vision-mission-item">
+          <h3>{{ section.settings.vision_title }}</h3>
+          {% if section.settings.vision_description %}
+            <p>{{ section.settings.vision_description }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if section.settings.mission_title %}
+        <div class="about-vision-mission-item">
+          <h3>{{ section.settings.mission_title }}</h3>
+          {% if section.settings.mission_description %}
+            <p>{{ section.settings.mission_description }}</p>
+          {% endif %}
+          {% if section.settings.mission_point_1 or section.settings.mission_point_2 or section.settings.mission_point_3 or section.settings.mission_point_4 %}
+          <ul class="about-mission-list">
+            {% if section.settings.mission_point_1 %}<li>{{ section.settings.mission_point_1 }}</li>{% endif %}
+            {% if section.settings.mission_point_2 %}<li>{{ section.settings.mission_point_2 }}</li>{% endif %}
+            {% if section.settings.mission_point_3 %}<li>{{ section.settings.mission_point_3 }}</li>{% endif %}
+            {% if section.settings.mission_point_4 %}<li>{{ section.settings.mission_point_4 }}</li>{% endif %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- Age Policy Section -->
+      <div class="about-age-policy">
+        <div class="about-age-policy-notice">
+          <p class="about-age-policy-main">
+            PackTHC does not sell any products to individuals under the age of 21, and every order is subject to strict age verification and compliance checks.
+          </p>
+        </div>
+
+        {% assign has_age_policy = false %}
+        {% if section.blocks.size > 0 %}
+          {% assign has_age_policy = true %}
+        {% endif %}
+
+        {% if has_age_policy %}
+        <div class="about-age-policy-details">
+          <div class="about-age-policy-item">
+            <h4>About our age policy</h4>
+            <p>PackTHC is a 21+ brand. By using our site, customers confirm they are at least 21 years old and legally allowed to purchase these products in their jurisdiction.</p>
+          </div>
+
+          <div class="about-age-policy-item">
+            <h4>How we verify and monitor</h4>
+            <p>We use an age-gate on our website and require visitors to confirm they are of legal age before viewing age-restricted products.</p>
+          </div>
+
+          <div class="about-age-policy-item">
+            <h4>Our commitment to compliance</h4>
+            <p>We follow strict industry standards for age-restricted goods and continuously update protocols to stay aligned with evolving regulations and packaging laws.</p>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- Features Grid -->
+      {% assign features = section.blocks | where: 'type', 'feature' %}
+      {% if features.size > 0 %}
+      <div class="about-features">
+        {% for block in features %}
+          <div class="about-feature-card">
+            {% if block.settings.icon %}
+              <div class="about-feature-icon">{{ block.settings.icon }}</div>
+            {% endif %}
+            {% if block.settings.title %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.description %}
+              <p>{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- Stats Section -->
+  {% assign stats = section.blocks | where: 'type', 'stat' %}
+  {% if stats.size > 0 %}
+  <section class="about-stats">
+    <div class="about-container">
+      {% if section.settings.stats_title %}
+        <h2 class="about-stats-title">{{ section.settings.stats_title }}</h2>
+      {% endif %}
+      {% if section.settings.stats_subtitle %}
+        <p class="about-stats-subtitle">{{ section.settings.stats_subtitle }}</p>
+      {% endif %}
+
+      <div class="about-stats-grid">
+        {% for block in stats %}
+          <div class="about-stat-item">
+            <span class="about-stat-number" data-target="{{ block.settings.number }}">0</span>
+            <span class="about-stat-label">{{ block.settings.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- CTA Section -->
+  {% if section.settings.cta_title %}
+  <section class="about-cta">
+    <div class="about-container">
+      <h2 class="about-cta-title">{{ section.settings.cta_title }}</h2>
+      {% if section.settings.cta_description %}
+        <p class="about-cta-text">{{ section.settings.cta_description }}</p>
+      {% endif %}
+      {% if section.settings.cta_link and section.settings.cta_button_text %}
+        <a href="{{ section.settings.cta_link }}" class="about-cta-button">
+          {{- section.settings.cta_button_text -}}
+        </a>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+<style>
+  .about-wrapper * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .about-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #f8f9fa;
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hero Section */
+  .about-hero {
+    background: linear-gradient(135deg, #033770 0%, #024b5f 100%);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    opacity: 0.5;
+  }
+
+  .about-hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-hero-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+    animation: slideInDown 1s ease-out;
+  }
+
+  .about-hero-content p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    opacity: 0.95;
+    animation: slideInUp 1s ease-out 0.2s both;
+  }
+
+  .about-tagline {
+    font-size: 16px;
+    color: #e0f2ff;
+    font-style: italic;
+    animation: fadeIn 1s ease-out 0.4s both;
+  }
+
+  /* Main About Section */
+  .about-main {
+    padding: 80px 0;
+    background: white;
+  }
+
+  .about-main-title {
+    text-align: center;
+    font-size: 44px;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .about-main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #033770;
+    border-radius: 2px;
+  }
+
+  .about-main-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Content Grid */
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  .about-text {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .about-text h3 {
+    color: #033770;
+    font-size: 26px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .about-text p {
+    margin-bottom: 16px;
+  }
+
+  /* Vision & Mission */
+  .about-vision-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 60px 0;
+    padding: 60px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .about-vision-mission-item {
+    background: #f5f9fc;
+    padding: 40px;
+    border-radius: 8px;
+    border-left: 4px solid #033770;
+    transition: all 0.3s ease;
+  }
+
+  .about-vision-mission-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(3, 55, 112, 0.1);
+    border-left-color: #022952;
+  }
+
+  .about-vision-mission-item h3 {
+    color: #033770;
+    font-size: 28px;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .about-vision-mission-item p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .about-mission-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .about-mission-list li {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    padding-left: 28px;
+    position: relative;
+  }
+
+  .about-mission-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #033770;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  /* Age Policy */
+  .about-age-policy {
+    margin: 60px 0;
+    padding: 60px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .about-age-policy-notice {
+    background: linear-gradient(135deg, #033770 0%, #022952 100%);
+    padding: 35px 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 24px rgba(3, 55, 112, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-age-policy-notice::before {
+    content: '21+';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 70px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.12);
+  }
+
+  .about-age-policy-main {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-age-policy-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .about-age-policy-item {
+    background: #f5f9fc;
+    padding: 30px;
+    border-radius: 8px;
+    border-top: 3px solid #033770;
+    transition: all 0.3s ease;
+  }
+
+  .about-age-policy-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(3, 55, 112, 0.1);
+  }
+
+  .about-age-policy-item h4 {
+    color: #033770;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .about-age-policy-item p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Features */
+  .about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 60px 0;
+  }
+
+  .about-feature-card {
+    background: #f5f9fc;
+    padding: 35px 25px;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 3px solid #033770;
+    transition: all 0.3s ease;
+  }
+
+  .about-feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(3, 55, 112, 0.12);
+    border-top-color: #022952;
+  }
+
+  .about-feature-icon {
+    width: 70px;
+    height: 70px;
+    background: #033770;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .about-feature-card:hover .about-feature-icon {
+    background: #022952;
+    transform: scale(1.1);
+  }
+
+  .about-feature-card h3 {
+    font-size: 20px;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .about-feature-card p {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Stats Section */
+  .about-stats {
+    background: linear-gradient(135deg, #033770 0%, #024b5f 100%);
+    padding: 80px 0;
+    color: white;
+    text-align: center;
+  }
+
+  .about-stats-title {
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .about-stats-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 50px;
+  }
+
+  .about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+  }
+
+  .about-stat-item {
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease;
+  }
+
+  .about-stat-item:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .about-stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .about-stat-label {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+
+  /* CTA Section */
+  .about-cta {
+    padding: 80px 0;
+    text-align: center;
+    background: white;
+  }
+
+  .about-cta-title {
+    font-size: 40px;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+
+  .about-cta-text {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-cta-button {
+    display: inline-block;
+    padding: 16px 42px;
+    background: #033770;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(3, 55, 112, 0.2);
+  }
+
+  .about-cta-button:hover {
+    background: #022952;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(3, 55, 112, 0.3);
+  }
+
+  /* Animations */
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-hero-content h1 {
+      font-size: 40px;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .about-vision-mission {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-hero {
+      padding: 60px 0;
+    }
+
+    .about-hero-content h1 {
+      font-size: 32px;
+    }
+
+    .about-hero-content p {
+      font-size: 16px;
+    }
+
+    .about-main {
+      padding: 50px 0;
+    }
+
+    .about-main-title {
+      font-size: 32px;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .about-text h3 {
+      font-size: 22px;
+    }
+
+    .about-vision-mission {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 40px 0;
+      margin: 40px 0;
+    }
+
+    .about-vision-mission-item {
+      padding: 30px;
+    }
+
+    .about-features {
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 40px 0;
+    }
+
+    .about-feature-card {
+      padding: 25px 20px;
+    }
+
+    .about-stats {
+      padding: 60px 0;
+    }
+
+    .about-stats-title {
+      font-size: 32px;
+    }
+
+    .about-stats-grid {
+      gap: 20px;
+    }
+
+    .about-cta {
+      padding: 60px 0;
+    }
+
+    .about-cta-title {
+      font-size: 32px;
+    }
+
+    .about-cta-text {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-hero {
+      padding: 40px 0;
+    }
+
+    .about-hero-content h1 {
+      font-size: 26px;
+    }
+
+    .about-hero-content p {
+      font-size: 14px;
+    }
+
+    .about-main-title {
+      font-size: 26px;
+    }
+
+    .about-main-subtitle {
+      font-size: 15px;
+    }
+
+    .about-text h3 {
+      font-size: 20px;
+    }
+
+    .about-features {
+      grid-template-columns: 1fr;
+      margin: 30px 0;
+    }
+
+    .about-stats-title {
+      font-size: 26px;
+    }
+
+    .about-stat-number {
+      font-size: 36px;
+    }
+
+    .about-cta-button {
+      padding: 14px 35px;
+      font-size: 14px;
+    }
+
+    .about-age-policy-notice::before {
+      font-size: 50px;
+      right: 20px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Animated counter for stats
+    function animateStats() {
+      const statNumbers = document.querySelectorAll('.about-stat-number');
+
+      statNumbers.forEach((stat) => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 60;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+
+          if (target === 99) {
+            stat.textContent = Math.floor(current) + '%';
+          } else {
+            stat.textContent = Math.floor(current) + '+';
+          }
+        }, 30);
+      });
+    }
+
+    // Intersection Observer for stats
+    const statsSection = document.querySelector('.about-stats');
+    if (statsSection) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStats();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      statsObserver.observe(statsSection);
+    }
+
+    // Feature cards animation
+    const featureCards = document.querySelectorAll('.about-feature-card');
+    if (featureCards.length > 0) {
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      featureCards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        cardObserver.observe(card);
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "About Page",
+  "tag": "section",
+  "class": "about-page-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Premium Packaging Solutions"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Your Trusted Partner for Quality Containers & Supplies"
+    },
+    {
+      "type": "text",
+      "id": "hero_tagline",
+      "label": "Hero Tagline",
+      "default": "Delivering Excellence in Every Package"
+    },
+    {
+      "type": "header",
+      "content": "About Section"
+    },
+    {
+      "type": "text",
+      "id": "about_title",
+      "label": "About Title",
+      "default": "About Our Company"
+    },
+    {
+      "type": "text",
+      "id": "about_subtitle",
+      "label": "About Subtitle",
+      "default": "Leading supplier of premium packaging solutions"
+    },
+    {
+      "type": "text",
+      "id": "expertise_title",
+      "label": "Expertise Title",
+      "default": "Industry Expertise"
+    },
+    {
+      "type": "textarea",
+      "id": "expertise_description",
+      "label": "Expertise Description",
+      "default": "We specialize in providing high-quality packaging solutions including pop-top vials, glass and plastic containers, concentrate jars, and protective equipment."
+    },
+    {
+      "type": "textarea",
+      "id": "expertise_additional",
+      "label": "Expertise Additional Text",
+      "default": "From small-scale operations to large enterprises, we deliver consistent quality and competitive pricing."
+    },
+    {
+      "type": "text",
+      "id": "commitment_title",
+      "label": "Commitment Title",
+      "default": "Our Commitment"
+    },
+    {
+      "type": "textarea",
+      "id": "commitment_description",
+      "label": "Commitment Description",
+      "default": "Quality is at the heart of everything we do. Each product is carefully selected to meet the highest standards."
+    },
+    {
+      "type": "textarea",
+      "id": "commitment_additional",
+      "label": "Commitment Additional Text",
+      "default": "We only source from trusted manufacturers to ensure product integrity and customer satisfaction."
+    },
+    {
+      "type": "header",
+      "content": "Vision & Mission"
+    },
+    {
+      "type": "text",
+      "id": "vision_title",
+      "label": "Vision Title",
+      "default": "Our Vision"
+    },
+    {
+      "type": "textarea",
+      "id": "vision_description",
+      "label": "Vision Description",
+      "default": "To become the most trusted partner for innovative and compliant packaging solutions."
+    },
+    {
+      "type": "text",
+      "id": "mission_title",
+      "label": "Mission Title",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_description",
+      "label": "Mission Description",
+      "default": "Deliver premium-quality packaging solutions that combine durability, compliance, and design excellence."
+    },
+    {
+      "type": "text",
+      "id": "mission_point_1",
+      "label": "Mission Point 1",
+      "default": "Support businesses with cost-effective, scalable packaging."
+    },
+    {
+      "type": "text",
+      "id": "mission_point_2",
+      "label": "Mission Point 2",
+      "default": "Promote safe and sustainable packaging practices."
+    },
+    {
+      "type": "text",
+      "id": "mission_point_3",
+      "label": "Mission Point 3",
+      "default": "Enable brand differentiation through custom options."
+    },
+    {
+      "type": "text",
+      "id": "mission_point_4",
+      "label": "Mission Point 4",
+      "default": "Ensure fast fulfillment with exceptional service."
+    },
+    {
+      "type": "header",
+      "content": "Stats Section"
+    },
+    {
+      "type": "text",
+      "id": "stats_title",
+      "label": "Stats Title",
+      "default": "Our Track Record"
+    },
+    {
+      "type": "text",
+      "id": "stats_subtitle",
+      "label": "Stats Subtitle",
+      "default": "Numbers that speak for our commitment"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready to Get Started?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "CTA Description",
+      "default": "Contact us today for competitive pricing and discover why leading businesses trust us."
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text",
+      "default": "Get Quote Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "📦"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Feature description"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "number",
+          "id": "number",
+          "label": "Stat Number",
+          "default": 100
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Stat Label",
+          "default": "Stat Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "📦",
+            "title": "Comprehensive Range",
+            "description": "Complete selection of packaging solutions and containers for all your needs."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "⚡",
+            "title": "Fast Delivery",
+            "description": "Quick turnaround times and reliable shipping to get your supplies on time."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🎯",
+            "title": "Quality Assured",
+            "description": "Every product meets strict quality standards and durability requirements."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "💼",
+            "title": "Business Focused",
+            "description": "Competitive pricing and bulk discounts for growing companies."
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 500,
+            "label": "Happy Clients"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 50,
+            "label": "Product Varieties"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 8,
+            "label": "Years Experience"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": 99,
+            "label": "Quality Rating %"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
