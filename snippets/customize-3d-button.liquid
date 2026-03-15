@@ -60,8 +60,14 @@
   {%- endcomment -%}
   <div
     class="customize-3d-wrapper"
-    {% if _use_autodetect %}data-3d-autodetect{% endif %}
-    style="margin-top: 10px;{% if _use_autodetect %} display: none;{% endif %}"
+    {% if _use_autodetect %}
+      data-3d-autodetect
+      data-product-title="{{ _product.title | escape }}"
+      data-product-handle="{{ _product.handle | escape }}"
+      data-product-type="{{ _product.type | escape }}"
+      data-product-sku="{{ _product.selected_or_first_available_variant.sku | escape }}"
+    {% endif %}
+    style="margin-top: 10px;"
   >
     <a href="{{ _configurator_link | strip }}" class="btn btn--primary customize-3d-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
       <span class="btn__text" style="display: inline-flex; align-items: center; gap: 8px;">
@@ -77,7 +83,7 @@
 
   {%- if _use_autodetect -%}
     <script>
-      window.__PACKTHC_CONFIGURATOR_URL__ = {{ settings.configurator_base_url | default: 'https://dram-product-customizer.vercel.app' | json }};
+      window.__PACKTHC_CONFIGURATOR_URL__ = {{ settings.configurator_url | default: 'https://dram-product-customizer.vercel.app' | json }};
     </script>
     <script src="{{ 'model-auto-detect.js' | asset_url }}" defer></script>
   {%- endif -%}

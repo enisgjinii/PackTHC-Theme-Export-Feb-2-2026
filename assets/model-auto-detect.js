@@ -17,31 +17,65 @@
   var CACHE_TTL = 1000 * 60 * 60; // 1 hour
 
   /* ─── Helpers ─── */
-  function getProductTitle() {
-    // Try Shopify's global product object first
+  function getWrapper() {
+    return document.querySelector('[data-3d-autodetect]');
+  }
+
+  function getProductMetaProduct() {
     if (window.ShopifyAnalytics && window.ShopifyAnalytics.meta && window.ShopifyAnalytics.meta.product) {
-      return window.ShopifyAnalytics.meta.product.type || window.ShopifyAnalytics.meta.product.name || '';
+      return window.ShopifyAnalytics.meta.product;
     }
-    // Fallback: read from meta or h1
+    return null;
+  }
+
+  function getProductTitle(wrapper) {
+    if (wrapper && wrapper.dataset.productTitle) {
+      return wrapper.dataset.productTitle;
+    }
+
+    var metaProduct = getProductMetaProduct();
+    if (metaProduct) {
+      return metaProduct.name || metaProduct.title || metaProduct.type || '';
+    }
+
     var metaTitle = document.querySelector('meta[property="og:title"]');
     if (metaTitle) return metaTitle.getAttribute('content') || '';
+
     var h1 = document.querySelector('.product__title h1, h1.product__title, [data-product-title]');
     if (h1) return h1.textContent.trim();
+
     return '';
   }
 
-  function getProductHandle() {
-    // From URL path
+  function getProductHandle(wrapper) {
+    if (wrapper && wrapper.dataset.productHandle) {
+      return wrapper.dataset.productHandle;
+    }
+
     var path = window.location.pathname;
     var match = path.match(/\/products\/([^/?#]+)/);
     if (match) return decodeURIComponent(match[1]);
     return '';
   }
 
-  function getProductType() {
-    if (window.ShopifyAnalytics && window.ShopifyAnalytics.meta && window.ShopifyAnalytics.meta.product) {
-      return window.ShopifyAnalytics.meta.product.type || '';
+  function getProductType(wrapper) {
+    if (wrapper && wrapper.dataset.productType) {
+      return wrapper.dataset.productType;
     }
+
+    var metaProduct = getProductMetaProduct();
+    if (metaProduct) {
+      return metaProduct.type || '';
+    }
+
+    return '';
+  }
+
+  function getProductSku(wrapper) {
+    if (wrapper && wrapper.dataset.productSku) {
+      return wrapper.dataset.productSku;
+    }
+
     return '';
   }
 
@@ -73,21 +107,22 @@
 
   /* ─── Main logic ─── */
   function checkAndReveal() {
-    var wrapper = document.querySelector('[data-3d-autodetect]');
+    var wrapper = getWrapper();
     if (!wrapper) return;
 
-    var handle = getProductHandle();
-    var title = getProductTitle();
-    var productType = getProductType();
+    var handle = getProductHandle(wrapper);
+    var title = getProductTitle(wrapper);
+    var productType = getProductType(wrapper);
+    var sku = getProductSku(wrapper);
 
-    // Build search query: combine title, handle, product type
-    var searchQuery = [title, handle.replace(/-/g, ' '), productType]
+    // Build search query: combine title, handle, product type, and SKU.
+    var searchQuery = [title, handle.replace(/-/g, ' '), productType, sku]
       .filter(Boolean)
       .join(' ');
 
     if (!searchQuery.trim()) {
-      // No product info → hide button
-      wrapper.style.display = 'none';
+      // No product info → fail open so the configurator CTA never disappears entirely.
+      wrapper.style.display = '';
       return;
     }
 
@@ -98,7 +133,8 @@
         wrapper.style.display = '';
         wrapper.setAttribute('data-model-category', cached.category || '');
       } else {
-        wrapper.style.display = 'none';
+        wrapper.style.display = '';
+        wrapper.removeAttribute('data-model-category');
       }
       return;
     }
@@ -123,7 +159,10 @@
             }
           }
         } else {
-          wrapper.style.display = 'none';
+          // Keep the CTA visible even when auto-detect cannot confidently classify the product.
+          // The configurator app has its own smarter fallback matcher and default model handling.
+          wrapper.style.display = '';
+          wrapper.removeAttribute('data-model-category');
         }
       })
       .catch(function () {
