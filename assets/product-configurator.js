@@ -88,9 +88,6 @@
     }
 
     const title = productData.title || productData.handle || 'Custom Product';
-    const metaParts = [];
-    if (productData.sku) metaParts.push('SKU: ' + productData.sku);
-    if (productData.vendor) metaParts.push(productData.vendor);
     const productLink = productData.handle ? '/products/' + productData.handle : '/collections/all';
 
     infoBar.style.display = 'flex';
@@ -106,9 +103,6 @@
       '<h2 class="product-info-bar__title">' +
       title +
       '</h2>' +
-      '<p class="product-info-bar__meta">' +
-      metaParts.join(' &middot; ') +
-      '</p>' +
       '</div>' +
       (productData.price ? '<div class="product-info-bar__price">$' + productData.price + '</div>' : '') +
       '<div class="product-info-bar__actions">' +

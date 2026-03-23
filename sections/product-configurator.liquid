@@ -171,10 +171,6 @@
           + (productData.image ? '<img class="product-info-bar__image" src="' + productData.image + '" alt="' + (productData.title || 'Product') + '" width="64" height="64">' : '')
           + '<div class="product-info-bar__details">'
           +   '<h2 class="product-info-bar__title">' + (productData.title || productData.handle || 'Custom Product') + '</h2>'
-          +   '<p class="product-info-bar__meta">'
-          +     (productData.sku ? 'SKU: ' + productData.sku : '')
-          +     (productData.vendor ? ' &middot; ' + productData.vendor : '')
-          +   '</p>'
           + '</div>'
           + (productData.price ? '<div class="product-info-bar__price">$' + productData.price + '</div>' : '')
           + '<div class="product-info-bar__actions">'
