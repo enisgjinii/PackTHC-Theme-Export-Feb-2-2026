@@ -2,7 +2,6 @@
   assign section_id = '#shopify-section-' | append: section.id
   assign configurator_url = section.settings.configurator_base_url | default: 'https://dram-product-customizer.vercel.app'
   assign iframe_height = section.settings.iframe_height | default: 800
-  assign show_header = section.settings.show_header
   assign show_product_bar = section.settings.show_product_bar
 
   assign _detect_mode = settings.configurator_detect_mode | default: 'auto'
@@ -58,6 +57,10 @@
 
 <div class="configurator-wrapper">
 
+  {%- if show_product_bar -%}
+    <div class="product-info-bar" id="product-info-bar-{{ section.id }}" style="display: none;"></div>
+  {%- endif -%}
+
 
   
 
@@ -86,7 +89,7 @@
     </svg>
     <h3 class="configurator-error__title">No Product Selected</h3>
     <p class="configurator-error__text">Please select a product to customize from our catalog.</p>
-    <a href="/collections/all" class="btn-configurator btn-configurator--primary">Browse Products</a>
+    <a href="{{ routes.all_products_collection_url }}" class="btn-configurator btn-configurator--primary">Browse Products</a>
   </div>
 
   {%- comment -%} Configuration payload for JS {%- endcomment -%}

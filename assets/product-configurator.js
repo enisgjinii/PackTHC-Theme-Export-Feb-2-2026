@@ -43,6 +43,90 @@
     return baseUrl + sep + params.toString();
   }
 
+  /** Fetch product details from Shopify AJAX API using product handle */
+  async function fetchProductByHandle(handle) {
+    if (!handle) return null;
+
+    try {
+      const res = await fetch('/products/' + encodeURIComponent(handle) + '.js', {
+        method: 'GET',
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!res.ok) return null;
+      const product = await res.json();
+      const variant =
+        (Array.isArray(product.variants) && product.variants.find(function (v) { return v && v.available; })) ||
+        (Array.isArray(product.variants) ? product.variants[0] : null);
+
+      return {
+        handle: product.handle || handle,
+        productId: product.id || null,
+        variantId: variant ? variant.id : null,
+        title: product.title || null,
+        sku: variant ? variant.sku || null : null,
+        vendor: product.vendor || null,
+        image: product.featured_image || null,
+        price:
+          variant && typeof variant.price !== 'undefined'
+            ? String((Number(variant.price) / 100).toFixed(2)).replace(/\.00$/, '')
+            : null,
+      };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /** Populate product info bar if present in section */
+  function populateProductInfoBar(sectionEl, productData) {
+    const infoBar = sectionEl.querySelector('.product-info-bar');
+    if (!infoBar) return;
+
+    if (!(productData && (productData.title || productData.handle))) {
+      infoBar.style.display = 'none';
+      return;
+    }
+
+    const title = productData.title || productData.handle || 'Custom Product';
+    const metaParts = [];
+    if (productData.sku) metaParts.push('SKU: ' + productData.sku);
+    if (productData.vendor) metaParts.push(productData.vendor);
+    const productLink = productData.handle ? '/products/' + productData.handle : '/collections/all';
+
+    infoBar.style.display = 'flex';
+    infoBar.innerHTML =
+      (productData.image
+        ? '<img class="product-info-bar__image" src="' +
+          productData.image +
+          '" alt="' +
+          title.replace(/"/g, '&quot;') +
+          '" width="64" height="64">'
+        : '') +
+      '<div class="product-info-bar__details">' +
+      '<h2 class="product-info-bar__title">' +
+      title +
+      '</h2>' +
+      '<p class="product-info-bar__meta">' +
+      metaParts.join(' &middot; ') +
+      '</p>' +
+      '</div>' +
+      (productData.price ? '<div class="product-info-bar__price">$' + productData.price + '</div>' : '') +
+      '<div class="product-info-bar__actions">' +
+      '<button type="button" class="btn-configurator btn-configurator--primary btn-add-to-cart" data-variant-id="' +
+      (productData.variantId || '') +
+      '">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
+      '<span class="btn-add-to-cart__text">Add to Cart</span>' +
+      '<svg class="btn-add-to-cart__spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>' +
+      '</button>' +
+      '<a href="' +
+      productLink +
+      '" class="btn-configurator btn-configurator--secondary">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
+      ' Back</a>' +
+      '</div>';
+  }
+
   /** Parse a Shopify variant GID to numeric id */
   function parseVariantId(raw) {
     if (!raw) return null;
@@ -189,7 +273,7 @@
   /* ════════════════════════════════════════
      Main initializer
      ════════════════════════════════════════ */
-  function initConfigurator(sectionEl) {
+  async function initConfigurator(sectionEl) {
     const wrapper         = sectionEl.querySelector('.configurator-wrapper');
     const iframe          = sectionEl.querySelector('.configurator-iframe');
     const iframeContainer = sectionEl.querySelector('.configurator-iframe-container');
@@ -231,12 +315,32 @@
       productData.handle    = urlParams.get('product');
       productData.productId = urlParams.get('product_id');
       productData.variantId = urlParams.get('variant_id');
-      productData.title     = urlParams.get('title') ? decodeURIComponent(urlParams.get('title')) : null;
+      productData.title     = urlParams.get('title');
       productData.sku       = urlParams.get('sku');
-      productData.vendor    = urlParams.get('vendor') ? decodeURIComponent(urlParams.get('vendor')) : null;
-      productData.image     = urlParams.get('image') ? decodeURIComponent(urlParams.get('image')) : null;
+      productData.vendor    = urlParams.get('vendor');
+      productData.image     = urlParams.get('image');
       productData.price     = urlParams.get('price');
     }
+
+    // If only partial product data is available, hydrate from Shopify by handle.
+    if (
+      productData.handle &&
+      (!productData.title || !productData.productId || !productData.variantId || !productData.image)
+    ) {
+      const hydratedProduct = await fetchProductByHandle(productData.handle);
+      if (hydratedProduct) {
+        productData = Object.assign({}, hydratedProduct, productData);
+        productData.title = productData.title || hydratedProduct.title;
+        productData.productId = productData.productId || hydratedProduct.productId;
+        productData.variantId = productData.variantId || hydratedProduct.variantId;
+        productData.sku = productData.sku || hydratedProduct.sku;
+        productData.vendor = productData.vendor || hydratedProduct.vendor;
+        productData.image = productData.image || hydratedProduct.image;
+        productData.price = productData.price || hydratedProduct.price;
+      }
+    }
+
+    populateProductInfoBar(sectionEl, productData);
 
     if (productData.handle || productData.productId) {
       const iframeUrl = buildIframeUrl(baseUrl, productData, shopData);
