@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_qPjBmW": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_TFzcXR": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Banizzle is a hybrid strain known for its fruity terpene profile and balanced effects. The strain is commonly associated with uplifting mental sensations accompanied by gentle body relaxation.",
+            "emoji_main": "",
+            "product_name": "Banizzle",
+            "genetics": "Banana lineage hybrid • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 20–25%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Happy",
+            "effect_emoji_1": "😊",
+            "effect_2": "Euphoric",
+            "effect_emoji_2": "🌬️",
+            "effect_3": "Relaxing",
+            "effect_emoji_3": "😌",
+            "effect_4": "Balanced",
+            "effect_emoji_4": "⚖️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene",
+            "terpene_2": "Limonene",
+            "terpene_3": "Caryophyllene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 80
+          }
+        },
+        "description_eBnYwW": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Banizzle is a hybrid strain known for its fruity terpene profile and balanced effects. The strain is commonly associated with uplifting mental sensations accompanied by gentle body relaxation.",
+            "description_2": "This strain profile is provided for educational reference, illustrating how terpene-rich cannabis flowers benefit from airtight packaging designed to preserve aroma and freshness.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_63pgM6": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "95mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-white-closure-300-count",
+            "product_2": "95mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-black-tube-with-opaque-black-closure-300-count",
+            "product_3": "95mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-white-tube-with-opaque-white-closure-300-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore jars, tubes, and containers designed for cannabis flower and concentrates.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-black-closure-200-count",
+            "product_5": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-clear-natural-tube-with-opaque-white-closure-200-count",
+            "product_6": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-black-tube-with-opaque-black-closure-200-count",
+            "product_7": "115mm-spiral-cr-tube-with-integrated-liner-tamper-evident-break-off-band-opaque-white-tube-with-opaque-white-closure-200-count",
+            "product_8": "10ml-spiral-cr-bottle-with-friction-fit-closure-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-1000-count"
+          }
+        },
+        "categories_info_we7ngY": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Banana lineage hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "20–25%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": ">2%"
+          }
+        },
+        "effects_yield_WYFpJ4": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Happy",
+            "effect_tag_emoji_1": "😊",
+            "effect_tag_2": "Euphoric",
+            "effect_tag_emoji_2": "🌬️",
+            "effect_tag_3": "Relaxing",
+            "effect_tag_emoji_3": "😌",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "⚖️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Banana",
+            "taste_tag_emoji_1": "🍌",
+            "taste_tag_2": "Sweet",
+            "taste_tag_emoji_2": "🍬",
+            "taste_tag_3": "Fruity",
+            "taste_tag_emoji_3": "🍓",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor (Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_TFzcXR",
+        "description_eBnYwW",
+        "product_selection_63pgM6",
+        "categories_info_we7ngY",
+        "effects_yield_WYFpJ4"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_qPjBmW"
+  ]
+}

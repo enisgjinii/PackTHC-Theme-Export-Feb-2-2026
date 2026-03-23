@@ -23,8 +23,7 @@
       "name": "Storage Calculator",
       "settings": {
         "enable_storage_calculator": true,
-        "heading": "",
-        "contact_message": "<p>Need help? <a href=\"mailto:hello@packthc.com\">Email Us</a> or Call <a href=\"tel:+18162725842\">+1(816)PACKTHC</a></p>"
+        "heading": ""
       }
     }
   },

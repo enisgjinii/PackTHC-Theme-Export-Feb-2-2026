@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_R6Hd8n": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_DpgATP": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Agent_Orange_fem_3.webp",
+            "image_description": "Agent Orange is a Sativa-dominant hybrid known for its bright citrus terpene profile and uplifting cerebral effects. The strain is widely associated with mood elevation and energetic daytime experiences.",
+            "emoji_main": "",
+            "product_name": "Agent Orange",
+            "genetics": "Orange Velvet × Jack the Ripper • Sativa Dominant",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 17–22%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Happy",
+            "effect_emoji_1": "😊",
+            "effect_2": "Euphoric",
+            "effect_emoji_2": "🌬️",
+            "effect_3": "Uplifting",
+            "effect_emoji_3": "⬆️",
+            "effect_4": "Energizing",
+            "effect_emoji_4": "⚡",
+            "effect_5": "Creative",
+            "effect_emoji_5": "🎨",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Beta-Caryophyllene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 70,
+            "thc_level": 60
+          }
+        },
+        "description_fhjBQ3": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Agent Orange is a Sativa-dominant hybrid known for its bright citrus terpene profile and uplifting cerebral effects. The strain is widely associated with mood elevation and energetic daytime experiences.",
+            "description_2": "This strain profile is presented for educational purposes, highlighting how citrus-heavy terpene profiles benefit from airtight storage solutions that help maintain aroma and product freshness.",
+            "bud_image": "shopify://shop_images/Agent_Orange_fem.webp",
+            "bud_image_2": "shopify://shop_images/Agent_Orange_fem_2.webp",
+            "bud_image_3": "shopify://shop_images/Agent_Orange_fem__Orange_Velvet_x_Jack_The_Ripper_F2_Hybrid_55_-_65_days_21-22_THC_Low__2__Energizing___Happy___Relaxing_Fr.webp",
+            "bud_image_4": "shopify://shop_images/Agent_Orange_fem_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Helps maintain terpene profile and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_TTmyf8": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "19-dram-pop-top-vial-1-8oz-smoke",
+            "product_2": "19-dram-pop-top-vial-1-8oz-black",
+            "product_3": "19-dram-pop-top-vial-1-8oz-white",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for cannabis flower and extracts.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "19-dram-pop-top-vial-1-8oz-green",
+            "product_5": "19-dram-pop-top-vial-1-8oz-royal-blue",
+            "product_6": "19-dram-pop-top-vial-1-8oz-aqua-blue",
+            "product_7": "19-dram-pop-top-vial-1-8oz-purple",
+            "product_8": "19-dram-pop-top-vial-1-8oz-golden"
+          }
+        },
+        "categories_info_zttKR3": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Orange Velvet × Jack the Ripper",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "17–22%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "> 2%"
+          }
+        },
+        "effects_yield_39YyRR": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Happy",
+            "effect_tag_emoji_1": "😊",
+            "effect_tag_2": "Euphoric",
+            "effect_tag_emoji_2": "🌬️",
+            "effect_tag_3": "Uplifting",
+            "effect_tag_emoji_3": "⬆️",
+            "effect_tag_4": "Energizing",
+            "effect_tag_emoji_4": "⚡",
+            "effect_tag_5": "Creative",
+            "effect_tag_emoji_5": "🎨",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Orange",
+            "taste_tag_emoji_1": "🍊",
+            "taste_tag_2": "Citrus",
+            "taste_tag_emoji_2": "🍋",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🌸",
+            "terp_tag_3": "Beta-Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "450–600 gr/m² Indoor / 500–650 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_DpgATP",
+        "description_fhjBQ3",
+        "product_selection_TTmyf8",
+        "categories_info_zttKR3",
+        "effects_yield_39YyRR"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_R6Hd8n"
+  ]
+}

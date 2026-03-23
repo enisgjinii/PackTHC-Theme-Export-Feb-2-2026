@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_Qi9GPN": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_fxmQ67": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Blueberry Badazz OG is an Indica-dominant hybrid combining Blueberry genetics with potent OG lineage. The strain is commonly associated with calming body effects and uplifting mood sensations.",
+            "emoji_main": "",
+            "product_name": "Blueberry Badazz OG",
+            "genetics": "Blueberry × OG lineage • Indica Dominant",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 20–26%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Euphoric",
+            "effect_emoji_2": "🌬️",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Calm",
+            "effect_emoji_4": "😴",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Caryophyllene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 80
+          }
+        },
+        "description_gzTx6d": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "About Blueberry Badazz OG",
+            "description_1": "Blueberry Badazz OG is an Indica-dominant hybrid combining Blueberry genetics with potent OG lineage. The strain is commonly associated with calming body effects and uplifting mood sensations.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich cannabis flowers benefit from airtight packaging designed to preserve freshness and aroma.",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "💨",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👶",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_pFYRww": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "75ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-500-count",
+            "product_2": "75ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-black-bottle-with-opaque-black-closure-500-count",
+            "product_3": "75ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-500-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Containers designed for cannabis flower and extracts.",
+            "product_4": "60ml-mini-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-500-count",
+            "product_5": "60ml-mini-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-black-bottle-with-opaque-black-closure-500-count",
+            "product_6": "60ml-mini-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-500-count",
+            "product_7": "75ml-mini-pet-unicorn-bottle-with-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-400-count",
+            "product_8": "75ml-mini-pet-unicorn-bottle-with-tamper-evident-break-off-band-translucent-black-bottle-with-opaque-black-closure-400-count"
+          }
+        },
+        "categories_info_rVtiye": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Blueberry × OG lineage",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 20–26%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": ">2%"
+          }
+        },
+        "effects_yield_q8UN7p": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxing",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Euphoric",
+            "effect_tag_emoji_2": "🌬️",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Calm",
+            "effect_tag_emoji_4": "😴",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Berry",
+            "taste_tag_emoji_1": "🫐",
+            "taste_tag_2": "Sweet",
+            "taste_tag_emoji_2": "🍬",
+            "taste_tag_3": "Earthy",
+            "taste_tag_emoji_3": "🌍",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Caryophyllene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "🌲",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "500–650 gr/m² Indoor / 550–700 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_fxmQ67",
+        "description_gzTx6d",
+        "product_selection_pFYRww",
+        "categories_info_rVtiye",
+        "effects_yield_q8UN7p"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_Qi9GPN"
+  ]
+}

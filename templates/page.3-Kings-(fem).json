@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_tWtxRk": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_DLyKCc": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/3_Kings_fem_3.webp",
+            "image_description": "3 Kings is a hybrid strain created from the powerful combination of Headband, Sour Diesel, and OG Kush genetics. It is commonly associated with a balanced experience that combines uplifting cerebral stimulation with smooth body relaxation",
+            "emoji_main": "",
+            "product_name": "3 Kings",
+            "genetics": "Three Kings",
+            "strain-badge_1": "Hybrid",
+            "strain-badge_2": "THC 18–22%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "Creative",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene (Blue)",
+            "terpene_2": "Beta-Caryophyllene (Pink)",
+            "terpene_3": "",
+            "terpene_4": "Limonene (Yellow)",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 60
+          }
+        },
+        "description_hzFkEM": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "3 Kings is a hybrid strain created from the powerful combination of Headband, Sour Diesel, and OG Kush genetics. It is commonly associated with a balanced experience that combines uplifting cerebral stimulation with smooth body relaxation.",
+            "description_2": "This strain profile is provided for educational and informational purposes, illustrating how terpene-rich cannabis flowers benefit from proper storage. Maintaining airtight and odor-resistant packaging helps protect the aroma compounds responsible for the strain’s complex scent profile.",
+            "bud_image": "shopify://shop_images/3_Kings_fem.webp",
+            "bud_image_2": "shopify://shop_images/3_Kings_fem_4.webp",
+            "bud_image_3": "shopify://shop_images/3_Kings_fem_2.webp",
+            "bud_image_4": "shopify://shop_images/3_Kings_fem_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_e6qUBD": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "65mm-spiral-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-400-count",
+            "product_2": "65mm-spiral-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-400-count",
+            "product_3": "65mm-spiral-cr-cartridge-container-round-top-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-400-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "1-grams-cherry-wine-mylar-bag",
+            "product_5": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-400-count",
+            "product_6": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-400-count",
+            "product_7": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-400-count",
+            "product_8": "65mm-spiral-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-400-count"
+          }
+        },
+        "categories_info_JtxYKx": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Headband × Sour Diesel × OG Kush",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "56–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 18–22%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_n8kJgJ": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Giggly",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Tree Fruit",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Berry",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Tropical",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Beta-Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "450–550 gr/m² Indoor / 500–600 gr per plant Outdoor (Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_DLyKCc",
+        "description_hzFkEM",
+        "product_selection_e6qUBD",
+        "categories_info_JtxYKx",
+        "effects_yield_n8kJgJ"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_tWtxRk"
+  ]
+}

@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_UhX93a": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_9KVDfq": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Bruce Banner x Chocolope combines the powerful cerebral stimulation of Bruce Banner with the energetic Sativa traits of Chocolope. The strain is commonly associated with uplifting mental clarity and creative focus.",
+            "emoji_main": "",
+            "product_name": "Bruce Banner x Chocolope",
+            "genetics": "Bruce Banner × Chocolope • Sativa Dominant",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 22–27%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Energizing",
+            "effect_emoji_1": "⚡",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Euphoric",
+            "effect_emoji_3": "😊",
+            "effect_4": "Focused",
+            "effect_emoji_4": "🎯",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Terpinolene",
+            "terpene_2": "Caryophyllene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 90,
+            "thc_level": 90
+          }
+        },
+        "description_iXVMRh": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Bruce Banner x Chocolope combines the powerful cerebral stimulation of Bruce Banner with the energetic Sativa traits of Chocolope. The strain is commonly associated with uplifting mental clarity and creative focus.",
+            "description_2": "This strain profile is provided for educational reference, illustrating how terpene-rich cannabis flowers benefit from airtight packaging designed to preserve aroma and freshness.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_mrikqM": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "90-mm-multi-pack-pre-roll-pet-jar-clear-with-black-lid",
+            "product_2": "90-mm-multi-pack-pre-roll-pet-jar-black-with-black-lid",
+            "product_3": "120-mm-multi-pack-pre-roll-pet-jar-clear-with-white-lid",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore jars, tubes, and containers designed for cannabis flower and concentrates.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "120-mm-multi-pack-pre-roll-pet-jar-clear-with-black-lid",
+            "product_5": "120-mm-multi-pack-pre-roll-pet-jar-black-with-black-lid",
+            "product_6": "6-dram-pop-top-vial-pink",
+            "product_7": "116-mm-cr-pre-roll-pop-top-tube-clear-1000",
+            "product_8": "116-mm-cr-pre-roll-pop-top-tube-black-1000"
+          }
+        },
+        "categories_info_njgJVb": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Bruce Banner × Chocolope",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Very High / 22–27%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_9B74gg": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Energizing",
+            "effect_tag_emoji_1": "⚡",
+            "effect_tag_2": "Creative",
+            "effect_tag_emoji_2": "🎨",
+            "effect_tag_3": "Euphoric",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Focused",
+            "effect_tag_emoji_4": "🎯",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Chocolate",
+            "taste_tag_emoji_1": "🍫",
+            "taste_tag_2": "Sweet",
+            "taste_tag_emoji_2": "🍬",
+            "taste_tag_3": "Citrus",
+            "taste_tag_emoji_3": "🍋",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Terpinolene",
+            "terp_tag_emoji_1": "🌬️",
+            "terp_tag_2": "Caryophyllene",
+            "terp_tag_emoji_2": "🌶️",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "🍋",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_9KVDfq",
+        "description_iXVMRh",
+        "product_selection_mrikqM",
+        "categories_info_njgJVb",
+        "effects_yield_9B74gg"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_UhX93a"
+  ]
+}

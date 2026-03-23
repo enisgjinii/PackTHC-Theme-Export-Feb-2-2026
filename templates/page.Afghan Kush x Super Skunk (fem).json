@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_RdVAjz": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_caKDUG": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Afghan_Kush_x_Super_Skunk_fem_3.webp",
+            "image_description": "Afghan Kush x Super Skunk is an Indica-dominant hybrid that combines the deep relaxation of Afghan Kush with the pungent terpene profile of Super Skunk. The result is a strain commonly associated with full-body calm and smooth mental uplift.",
+            "emoji_main": "",
+            "product_name": "Afghan Kush x Super Skunk",
+            "genetics": "Afghan Kush × Super Skunk • Indica Dominant",
+            "strain-badge_1": "Indica Dominant Hybrid",
+            "strain-badge_2": "THC 18–22%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Euphoric",
+            "effect_emoji_2": "🌬️",
+            "effect_3": "Calm",
+            "effect_emoji_3": "😴",
+            "effect_4": "Body Comfort",
+            "effect_emoji_4": "💪",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene",
+            "terpene_2": "Beta-Caryophyllene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 60
+          }
+        },
+        "description_wXqQaH": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Afghan Kush x Super Skunk is an Indica-dominant hybrid that combines the deep relaxation of Afghan Kush with the pungent terpene profile of Super Skunk. The result is a strain commonly associated with full-body calm and smooth mental uplift.",
+            "description_2": "This strain profile is provided for educational reference, demonstrating how terpene-rich cannabis flowers benefit from airtight and odor-resistant packaging that helps maintain freshness and aromatic intensity.",
+            "bud_image": "shopify://shop_images/Afghan_Kush_x_Super_Skunk_fem.webp",
+            "bud_image_2": "shopify://shop_images/Afghan_Kush_x_Super_Skunk_fem_4.webp",
+            "bud_image_3": "shopify://shop_images/Afghan_Kush_x_Super_Skunk_fem_2.webp",
+            "bud_image_4": "shopify://shop_images/Afghan_Kush_x_Super_Skunk_fem_3.webp",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Preserves terpene integrity and aroma.",
+            "feature_2_emoji": "💨",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent exposure during storage and transportation.",
+            "feature_3_emoji": "👶",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional storage trusted by cannabis brands."
+          }
+        },
+        "product_selection_CkJXrN": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1-grams-astro-high-mylar-bag",
+            "product_2": "1-grams-black-runtz-mylar-bag",
+            "product_3": "1-grams-bubble-gum-mylar-bag",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore jars, tubes, and containers designed for cannabis flower and concentrates.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging built for modern dispensary standards.",
+            "product_4": "1-grams-candy-gas-mylar-bag",
+            "product_5": "1-grams-cherry-wine-mylar-bag",
+            "product_6": "1-grams-galaxy-green-mylar-bag",
+            "product_7": "1-grams-gelato-45-mylar-bag",
+            "product_8": "1-grams-gelato-ice-cream-mylar-bag"
+          }
+        },
+        "categories_info_46XCVw": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Afghan Kush × Super Skunk",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Indica Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "55–65 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Medium–High / 18–22%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "THC >2%"
+          }
+        },
+        "effects_yield_RVkkrc": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxing",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Euphoric",
+            "effect_tag_emoji_2": "🌬️",
+            "effect_tag_3": "Calm",
+            "effect_tag_emoji_3": "😴",
+            "effect_tag_4": "Body Comfort",
+            "effect_tag_emoji_4": "💪",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Earthy",
+            "taste_tag_emoji_1": "🌍",
+            "taste_tag_2": "Skunky",
+            "taste_tag_emoji_2": "👃",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Beta-Caryophyllene",
+            "terp_tag_emoji_2": "🌶️",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "🍋",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "500–600 gr/m² Indoor / 550–650 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_caKDUG",
+        "description_wXqQaH",
+        "product_selection_CkJXrN",
+        "categories_info_46XCVw",
+        "effects_yield_RVkkrc"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_RdVAjz"
+  ]
+}

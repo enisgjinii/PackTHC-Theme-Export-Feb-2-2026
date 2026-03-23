@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_CxBXPF": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_kK4NDe": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Blue Dream is a well-known Sativa-dominant hybrid created by crossing Blueberry with Haze genetics. The strain is commonly associated with uplifting cerebral effects balanced with smooth physical relaxation.",
+            "emoji_main": "",
+            "product_name": "Blue Dream",
+            "genetics": "Blueberry x Haze • Sativa Dominant",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 16–20%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Euphoric",
+            "effect_emoji_1": "😌",
+            "effect_2": "Relaxing",
+            "effect_emoji_2": "😄",
+            "effect_3": "Calming",
+            "effect_emoji_3": "😊",
+            "effect_4": "",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Beta Caryophyllene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 30,
+            "thc_level": 60
+          }
+        },
+        "description_zdWJDJ": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "About Blue Dream",
+            "description_1": "Blue Dream is a well-known Sativa-dominant hybrid created by crossing Blueberry with Haze genetics. The strain is commonly associated with uplifting cerebral effects balanced with smooth physical relaxation.",
+            "description_2": "This strain profile is presented for educational reference, illustrating how terpene-rich cannabis flowers benefit from airtight packaging that helps maintain aroma, freshness, and terpene stability.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Helps preserve aroma and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_nN6bbt": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-500-count",
+            "product_2": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-500-count",
+            "product_3": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-500-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore jars, tubes, and containers designed for cannabis flower and concentrates.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging solutions designed for dispensary brands.",
+            "product_4": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-500-count",
+            "product_5": "16-5ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-white-closure-1000-count",
+            "product_6": "16-5ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-opaque-white-bottle-with-opaque-white-closure-1000-count",
+            "product_7": "20ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-amber-bottle-with-opaque-black-closure-1000-count",
+            "product_8": "20ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-1000-count"
+          }
+        },
+        "categories_info_CyyWEj": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Blueberry × Haze",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "56–63 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "16–20%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "Medium"
+          }
+        },
+        "effects_yield_UTeC4V": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Euphoria",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Relaxation",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Calming",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Blueberry",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Berry",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Beta Caryophyllene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "100 g/m² Indoor / 100 g per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_kK4NDe",
+        "description_zdWJDJ",
+        "product_selection_nN6bbt",
+        "categories_info_CyyWEj",
+        "effects_yield_UTeC4V"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_CxBXPF"
+  ]
+}

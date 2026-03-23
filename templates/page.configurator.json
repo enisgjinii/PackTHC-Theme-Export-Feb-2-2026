@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -16,6 +25,7 @@
         "show_header": true,
         "heading": "3D Product Configurator",
         "subheading": "Design your custom packaging in real-time 3D — choose colors, materials, and add your labels",
+        "configurator_base_url": "https://v0-product-design-tool.vercel.app/",
         "iframe_height": 850,
         "iframe_height_mobile": 600,
         "show_product_bar": true,

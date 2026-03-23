@@ -1,481 +1,582 @@
 {% comment %}
-  Section: Product Carousel with Navigation
-  Usage: Add this file to sections folder as 'product-carousel.liquid'
+  Section: Product Grid — Infinite Scroll Edition
+  File: sections/product-grid.liquid
 {% endcomment %}
 
 <style>
-        #shopify-section-{{ section.id }} {
-          padding: 40px 0;
-          background-color: {{ section.settings.background_color }};
-        }
 
-        #shopify-section-{{ section.id }} .container {
-          max-width: 1500px;
-          margin: 0 auto;
-          padding: 0 20px;
-        }
+  #shopify-section-{{ section.id }} {
+    padding: 48px 0 80px;
+    background-color: {{ section.settings.background_color }};
+  }
 
-        #shopify-section-{{ section.id }} .header {
-          margin-bottom: 40px;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-              margin-bottom: 20px;
-        }
+  #shopify-section-{{ section.id }} .pg-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
 
-        #shopify-section-{{ section.id }} .header-content {
-          flex: 1;
-        }
+  /* ── Header ── */
+  #shopify-section-{{ section.id }} .pg-header {
+    margin-bottom: 32px;
+  }
+  #shopify-section-{{ section.id }} .pg-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: {{ section.settings.button_color }};
+    margin-bottom: 8px;
+  }
+  #shopify-section-{{ section.id }} .pg-title {
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 8px;
+    line-height: 1.15;
+  }
+  #shopify-section-{{ section.id }} .pg-total-label {
+    font-size: 13px;
+    color: #999;
+  }
+  #shopify-section-{{ section.id }} .pg-total-label strong {
+    color: {{ section.settings.button_color }};
+    font-weight: 600;
+  }
 
-        #shopify-section-{{ section.id }} .subtitle {
-          font-size: 14px;
-          color: {{ section.settings.subtitle_color }};
-          margin-bottom: 10px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-weight: 400;
-        }
+  /* ── Search ── */
+  #shopify-section-{{ section.id }} .pg-search-wrap {
+    position: relative;
+    max-width: 520px;
+    margin-bottom: 8px;
+  }
+  #shopify-section-{{ section.id }} .pg-search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    pointer-events: none;
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .pg-search {
+    width: 100%;
+    padding: 13px 44px 13px 46px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 50px;
+    font-size: 15px;
+    color: #1a1a1a;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  #shopify-section-{{ section.id }} .pg-search:focus {
+    border-color: {{ section.settings.button_color }};
+    box-shadow: 0 0 0 4px {{ section.settings.button_color }}1a;
+  }
+  #shopify-section-{{ section.id }} .pg-clear-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    display: none;
+    color: #aaa;
+    transition: color 0.15s;
+    flex-shrink: 0;
+  }
+  #shopify-section-{{ section.id }} .pg-clear-icon:hover {
+    color: #444;
+  }
+  #shopify-section-{{ section.id }} .pg-search-meta {
+    font-size: 13px;
+    color: #999;
+    margin: 6px 4px 20px;
+    min-height: 18px;
+  }
+  #shopify-section-{{ section.id }} .pg-search-meta strong {
+    color: #222;
+    font-weight: 600;
+  }
 
-        #shopify-section-{{ section.id }} .title {
-          font-size: 48px;
-          font-weight: 700;
-          color: {{ section.settings.title_color }};
-          margin-bottom: 0;
-          line-height: 1.2;
-          margin-top: 0;
-        }
+  /* ── Alphabet Bar ── */
+  #shopify-section-{{ section.id }} .pg-alpha-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+    padding: 14px 16px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #ebebeb;
+  }
+  #shopify-section-{{ section.id }} .pg-alpha-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .pg-alpha-btn:hover:not(:disabled) {
+    background: #f5f5f5;
+    border-color: #bbb;
+    color: #111;
+  }
+  #shopify-section-{{ section.id }} .pg-alpha-btn.active {
+    background: {{ section.settings.button_color }};
+    border-color: {{ section.settings.button_color }};
+    color: #fff;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id }} .pg-alpha-btn:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+  #shopify-section-{{ section.id }} .pg-alpha-btn.wide {
+    width: auto;
+    padding: 0 14px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
 
-        #shopify-section-{{ section.id }} .header-nav {
-          display: flex;
-          gap: 12px;
-        }
+  /* ── Grid ── */
+  #shopify-section-{{ section.id }} .pg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
 
-        #shopify-section-{{ section.id }} .header-nav-btn {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: {{ section.settings.button_color }};
-          border: none;
-          color: white;
-          font-size: 24px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-          padding: 0;
-        }
+  /* ── Card ── */
+  #shopify-section-{{ section.id }} .pg-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: {{ section.settings.card_background }};
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #efefef;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    will-change: transform;
+  }
+  #shopify-section-{{ section.id }} .pg-card.pg-hidden {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .pg-card.pg-fade-in {
+    animation: pgFadeUp 0.38s ease both;
+  }
+  @keyframes pgFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  #shopify-section-{{ section.id }} .pg-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f2f2f2;
+  }
+  #shopify-section-{{ section.id }} .pg-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .pg-card:hover .pg-card-img img {
+    transform: scale(1.06);
+  }
+  #shopify-section-{{ section.id }} .pg-card-body {
+    padding: 12px 14px 16px;
+  }
+  #shopify-section-{{ section.id }} .pg-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ section.settings.card_text_color }};
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-        #shopify-section-{{ section.id }} .header-nav-btn:hover {
-          background: {{ section.settings.button_hover_color }};
-          transform: scale(1.1);
-        }
+  /* ── Sentinel ── */
+  #shopify-section-{{ section.id }} .pg-sentinel {
+    height: 1px;
+    margin-top: 40px;
+  }
 
-        #shopify-section-{{ section.id }} .header-nav-btn:active {
-          transform: scale(0.95);
-        }
+  /* ── Loading spinner ── */
+  #shopify-section-{{ section.id }} .pg-loading {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 0 8px;
+    font-size: 14px;
+    color: #999;
+  }
+  #shopify-section-{{ section.id }} .pg-loading.visible {
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .pg-spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e0e0e0;
+    border-top-color: {{ section.settings.button_color }};
+    border-radius: 50%;
+    animation: pgSpin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pgSpin { to { transform: rotate(360deg); } }
 
-        #shopify-section-{{ section.id }} .header-nav-btn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
+ 
 
-        #shopify-section-{{ section.id }} .carousel-wrapper {
-          position: relative;
-          padding: 0px 0;
-        }
-
-        #shopify-section-{{ section.id }} .carousel-container {
-          display: flex;
-          gap: 20px;
-          overflow-x: auto;
-          scroll-behavior: smooth;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
-        }
-
-        #shopify-section-{{ section.id }} .carousel-container::-webkit-scrollbar {
-          display: none;
-        }
-
-        #shopify-section-{{ section.id }} .card {
-          flex: 0 0 280px;
-          background: {{ section.settings.card_background }};
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          cursor: pointer;
-          text-decoration: none;
-          color: inherit;
-          display: block;
-          scroll-snap-align: start;
-        }
-
-        #shopify-section-{{ section.id }} .card:hover {
-          box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-        }
-
-        #shopify-section-{{ section.id }} .card-image {
-          width: 100%;
-          height: 280px;
-          background: #000;
-          position: relative;
-          overflow: hidden;
-        }
-
-        #shopify-section-{{ section.id }} .card-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-
-        #shopify-section-{{ section.id }} .card:hover .card-image img {
-          transform: scale(1.05);
-        }
-
-        #shopify-section-{{ section.id }} .card-content {
-          padding: 20px 20px 0 20px;
-        }
-
-        #shopify-section-{{ section.id }} .card-title {
-          font-size: 20px;
-          font-weight: 600;
-          color: {{ section.settings.card_text_color }};
-          line-height: 1.4;
-          margin-bottom: 8px;
-        }
-
-        @media (max-width: 768px) {
-          #shopify-section-{{ section.id }} .title {
-            font-size: 32px;
-          }
-
-          #shopify-section-{{ section.id }} .container {
-            padding: 0 15px;
-          }
-
-          #shopify-section-{{ section.id }} .carousel-container {
-            gap: 15px;
-            padding: 0 5px;
-          }
-
-          #shopify-section-{{ section.id }} .card {
-            flex: 0 0 calc(100vw - 50px);
-            max-width: 320px;
-          }
-
-          #shopify-section-{{ section.id }} .header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 20px;
-          }
-
-          #shopify-section-{{ section.id }} .header-nav-btn {
-            width: 40px;
-            height: 40px;
-            font-size: 20px;
-          }
-        }
-
-    #shopify-section-{{ section.id }} .search-bar-wrapper {
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: center;
-    }
-
-    #shopify-section-{{ section.id }} .search-input-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      align-items: center;
-    }
-
-    #shopify-section-{{ section.id }} .search-icon {
-      position: absolute;
-      left: 14px;
-      color: #999;
-      pointer-events: none;
-      flex-shrink: 0;
-    }
-
-    #shopify-section-{{ section.id }} .carousel-search-{{ section.id }} {
-      width: 100%;
-      padding: 12px 44px 12px 44px;
-      border: 1.5px solid #e0e0e0;
-      border-radius: 50px;
-      font-size: 15px;
-      outline: none;
-      box-sizing: border-box;
-      background: #fff;
-      color: #1a1a1a;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    #shopify-section-{{ section.id }} .carousel-search-{{ section.id }}:focus {
-      border-color: {{ section.settings.button_color }};
-      box-shadow: 0 0 0 3px {{ section.settings.button_color }}22;
-    }
-
-    #shopify-section-{{ section.id }} .search-clear-btn {
-      position: absolute;
-      right: 12px;
-      background: #e0e0e0;
-      border: none;
-      border-radius: 50%;
-      width: 22px;
-      height: 22px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: #555;
-      padding: 0;
-      transition: background 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    #shopify-section-{{ section.id }} .search-clear-btn:hover {
-      background: #ccc;
-    }
-    #shopify-section-{{ section.id }} .no-results-box {
+  /* ── No Results ── */
+  #shopify-section-{{ section.id }} .pg-no-results {
+    display: none;
     text-align: center;
-    padding: 40px 20px;
+    padding: 64px 20px;
   }
-
-  #shopify-section-{{ section.id }} .no-results-text {
+  #shopify-section-{{ section.id }} .pg-no-results-icon {
+    font-size: 44px;
+    margin-bottom: 14px;
+  }
+  #shopify-section-{{ section.id }} .pg-no-results-text {
     font-size: 16px;
-    color: #888;
-    margin-bottom: 16px;
+    color: #999;
+    margin: 0 0 22px;
   }
-
-  #shopify-section-{{ section.id }} .see-all-btn {
+  #shopify-section-{{ section.id }} .pg-see-all-btn {
     display: inline-block;
-    padding: 12px 28px;
+    padding: 11px 28px;
     background: {{ section.settings.button_color }};
     color: #fff;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    transition: background 0.2s ease;
+    transition: background 0.2s;
+  }
+  #shopify-section-{{ section.id }} .pg-see-all-btn:hover {
+    background: {{ section.settings.button_hover_color }};
   }
 
-  #shopify-section-{{ section.id }} .see-all-btn:hover {
-    background: {{ section.settings.button_hover_color }};
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .pg-container { padding: 0 16px; }
+    #shopify-section-{{ section.id }} .pg-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    #shopify-section-{{ section.id }} .pg-alpha-btn { width: 30px; height: 30px; font-size: 11px; }
+    #shopify-section-{{ section.id }} .pg-search { font-size: 14px; }
+  }
+  @media (max-width: 420px) {
+    #shopify-section-{{ section.id }} .pg-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 
-<div class="container">
-  <div class="header">
-    <div class="header-content">
-      {% if section.settings.subtitle != blank %}
-        <div class="subtitle">{{ section.settings.subtitle }}</div>
-      {% endif %}
-      {% if section.settings.title != blank %}
-        <h2 class="title">{{ section.settings.title }}</h2>
-      {% endif %}
-    </div>
-    <div class="header-nav">
-      <button class="header-nav-btn carousel-prev-{{ section.id }}" aria-label="Previous">‹</button>
-      <button class="header-nav-btn carousel-next-{{ section.id }}" aria-label="Next">›</button>
-    </div>
+<div class="pg-container">
+
+  <!-- Header -->
+  <div class="pg-header">
+    {% if section.settings.subtitle != blank %}
+      <div class="pg-subtitle">{{ section.settings.subtitle }}</div>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="pg-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <p class="pg-total-label">
+      <strong>{{ section.blocks.size }}</strong> strains available
+    </p>
   </div>
-  <div class="search-bar-wrapper">
-    <div class="search-input-wrapper">
-      <svg
-        class="search-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
+
+  <!-- Search -->
+  <div class="pg-search-wrap">
+    <span class="pg-search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
-      <input
-        type="text"
-        class="carousel-search-{{ section.id }}"
-        placeholder="{{ section.settings.search_placeholder }}"
-      >
-      <button class="search-clear-{{ section.id }} search-clear-btn" aria-label="Clear search">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
+    </span>
+    <input
+      type="text"
+      class="pg-search pg-search-{{ section.id }}"
+      placeholder="{{ section.settings.search_placeholder }}"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <svg
+      class="pg-clear-icon pg-clear-{{ section.id }}"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      role="button"
+      aria-label="Clear search"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </div>
+  <div class="pg-search-meta pg-search-meta-{{ section.id }}"></div>
+
+  <!-- Alphabet Filter -->
+  <div class="pg-alpha-bar">
+    <button class="pg-alpha-btn wide active" data-letter="ALL">All</button>
+    {% assign letters = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" | split: "," %}
+    {% for letter in letters %}
+      <button class="pg-alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
+    {% endfor %}
+    <button class="pg-alpha-btn wide" data-letter="#">#</button>
   </div>
 
-  <div class="carousel-wrapper">
-    <div class="carousel-container carousel-{{ section.id }}">
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          {% case block.type %}
-            {% when 'product' %}
-              {% if block.settings.product != blank %}
-                {% assign product = block.settings.product %}
-                <a href="{{ product.url }}" class="card" {{ block.shopify_attributes }}>
-                  <div class="card-image">
-                    {% if product.featured_image %}
-                      {{
-                        product.featured_image
-                        | image_url: width: 600
-                        | image_tag: alt: product.title, loading: 'lazy'
-                      }}
-                    {% else %}
-                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                    {% endif %}
-                  </div>
-                  <div class="card-content">
-                    {% if block.settings.show_title %}
-                      <div class="card-title">{{ product.title }}</div>
-                    {% endif %}
-                  </div>
-                </a>
-              {% endif %}
-
-            {% when 'custom' %}
-              <a href="{{ block.settings.link }}" class="card" {{ block.shopify_attributes }}>
-                <div class="card-image">
-                  {% if block.settings.image != blank %}
-                    {{
-                      block.settings.image
-                      | image_url: width: 600
-                      | image_tag: alt: block.settings.title, loading: 'lazy'
-                    }}
+  <!-- Grid -->
+  <div class="pg-grid pg-grid-{{ section.id }}">
+    {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'product' %}
+            {% if block.settings.product != blank %}
+              {% assign product = block.settings.product %}
+              {% assign _pt = product.title | remove_first: 'Strain ' | remove_first: 'strain ' %}
+              <a
+                href="{{ product.url }}"
+                class="pg-card pg-hidden"
+                data-title="{{ _pt | downcase }}"
+                data-letter="{{ _pt | slice: 0 | upcase }}"
+                {{ block.shopify_attributes }}
+              >
+                <div class="pg-card-img">
+                  {% if product.featured_image %}
+                    {{ product.featured_image | image_url: width: 400 | image_tag: alt: product.title, loading: 'lazy' }}
                   {% else %}
                     {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
                   {% endif %}
                 </div>
-                <div class="card-content">
-                  {% if block.settings.show_title %}
-                    <div class="card-title">{{ block.settings.title }}</div>
-                  {% endif %}
-                </div>
+                {% if block.settings.show_title %}
+                  <div class="pg-card-body">
+                    <p class="pg-card-title">{{ product.title }}</p>
+                  </div>
+                {% endif %}
               </a>
-          {% endcase %}
-        {% endfor %}
-      {% else %}
-        {% comment %} Default placeholder cards {% endcomment %}
-        {% for i in (1..6) %}
-          <div class="card">
-            <div class="card-image">
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-            </div>
-            <div class="card-content">
-              <div class="card-title">Product {{ i }}</div>
-            </div>
-          </div>
-        {% endfor %}
-      {% endif %}
-    </div>
+            {% endif %}
+
+          {% when 'custom' %}
+            {% assign _ct = block.settings.title | remove_first: 'Strain ' | remove_first: 'strain ' %}
+            <a
+              href="{{ block.settings.link }}"
+              class="pg-card pg-hidden"
+              data-title="{{ _ct | downcase }}"
+              data-letter="{{ _ct | slice: 0 | upcase }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="pg-card-img">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 400 | image_tag: alt: block.settings.title, loading: 'lazy' }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              {% if block.settings.show_title %}
+                <div class="pg-card-body">
+                  <p class="pg-card-title">{{ block.settings.title }}</p>
+                </div>
+              {% endif %}
+            </a>
+        {% endcase %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..12) %}
+        <a href="#" class="pg-card pg-hidden" data-title="product {{ i }}" data-letter="P">
+          <div class="pg-card-img">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          <div class="pg-card-body"><p class="pg-card-title">Product {{ i }}</p></div>
+        </a>
+      {% endfor %}
+    {% endif %}
   </div>
-</div>
-<div class="no-results-{{ section.id }} no-results-box" style="display:none;">
-  <p class="no-results-text">{{ section.settings.no_results_text }}</p>
-  {% if section.settings.all_strains_url != blank %}
-    <a href="{{ section.settings.all_strains_url }}" class="see-all-btn">
-      {{ section.settings.see_all_btn_text }}
-    </a>
-  {% endif %}
+
+  <!-- No Results -->
+  <div class="pg-no-results pg-no-results-{{ section.id }}">
+    <div class="pg-no-results-icon">🌿</div>
+    <p class="pg-no-results-text">{{ section.settings.no_results_text }}</p>
+    {% if section.settings.all_strains_url != blank %}
+      <a href="{{ section.settings.all_strains_url }}" class="pg-see-all-btn">{{ section.settings.see_all_btn_text }}</a>
+    {% endif %}
+  </div>
+
+  <!-- Infinite scroll sentinel -->
+  <div class="pg-sentinel pg-sentinel-{{ section.id }}"></div>
+
+  <!-- Loading indicator -->
+  <div class="pg-loading pg-loading-{{ section.id }}">
+    <div class="pg-spinner"></div>
+    <span>Loading more strains…</span>
+  </div>
+
 </div>
 
 <script>
-  (function () {
-    const carousel = document.querySelector('.carousel-{{ section.id }}');
-    const prevBtn = document.querySelector('.carousel-prev-{{ section.id }}');
-    const nextBtn = document.querySelector('.carousel-next-{{ section.id }}');
-    const searchInput = document.querySelector('.carousel-search-{{ section.id }}');
-    const clearBtn = document.querySelector('.search-clear-{{ section.id }}');
+(function () {
+  var BATCH = {{ section.settings.initial_load | default: 48 }};
 
-    // Calculate scroll amount based on card width + gap
-    function getScrollAmount() {
-      const card = carousel.querySelector('.card');
-      if (!card) return 300;
-      const cardWidth = card.offsetWidth;
-      const gap = 20; // matches CSS gap
-      return cardWidth + gap;
-    }
+  var sectionEl = document.getElementById('shopify-section-{{ section.id }}');
+  var grid      = sectionEl.querySelector('.pg-grid-{{ section.id }}');
+  var searchEl  = sectionEl.querySelector('.pg-search-{{ section.id }}');
+  var clearIcon = sectionEl.querySelector('.pg-clear-{{ section.id }}');
+  var metaEl    = sectionEl.querySelector('.pg-search-meta-{{ section.id }}');
+  var noRes     = sectionEl.querySelector('.pg-no-results-{{ section.id }}');
+  var sentinel  = sectionEl.querySelector('.pg-sentinel-{{ section.id }}');
+  var loadingEl = sectionEl.querySelector('.pg-loading-{{ section.id }}');
+  var pillFill  = document.querySelector('.pg-pill-fill-{{ section.id }}');
+  var pillText  = document.querySelector('.pg-pill-text-{{ section.id }}');
+  var alphaBtns = sectionEl.querySelectorAll('.pg-alpha-btn');
 
-    prevBtn.addEventListener('click', () => {
-      carousel.scrollBy({
-        left: -getScrollAmount(),
-        behavior: 'smooth',
-      });
+  var allCards     = Array.from(grid.querySelectorAll('.pg-card'));
+  var filtered     = [];
+  var revealed     = 0;
+  var activeLetter = 'ALL';
+  var activeQuery  = '';
+  var loading      = false;
+  var pillTimer    = null;
+
+  function applyFilters() {
+    filtered = allCards.filter(function(card) {
+      var title  = card.dataset.title || '';
+      var letter = card.dataset.letter || '';
+      var matchQ = !activeQuery || title.indexOf(activeQuery) !== -1;
+      var matchA =
+        activeLetter === 'ALL' ||
+        (activeLetter === '#' && !/^[A-Z]/i.test(letter)) ||
+        letter.toUpperCase() === activeLetter;
+      return matchQ && matchA;
     });
 
-    nextBtn.addEventListener('click', () => {
-      carousel.scrollBy({
-        left: getScrollAmount(),
-        behavior: 'smooth',
-      });
+    allCards.forEach(function(c) {
+      c.classList.add('pg-hidden');
+      c.classList.remove('pg-fade-in');
+      c.style.animationDelay = '';
     });
 
-    // Disable buttons when at start/end
-    function updateButtons() {
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      prevBtn.disabled = carousel.scrollLeft <= 0;
-      nextBtn.disabled = carousel.scrollLeft >= maxScroll - 1;
+    revealed = 0;
+    revealBatch(true);
+    updateMeta();
+  }
+
+  function revealBatch(instant) {
+    var start = revealed;
+    var end   = Math.min(revealed + BATCH, filtered.length);
+    for (var i = start; i < end; i++) {
+      var card = filtered[i];
+      card.classList.remove('pg-hidden');
+      if (!instant) {
+        card.classList.remove('pg-fade-in');
+        void card.offsetWidth;
+        card.style.animationDelay = ((i - start) * 16) + 'ms';
+        card.classList.add('pg-fade-in');
+      }
     }
+    revealed = end;
+    updateProgress();
+  }
 
-    if (searchInput && clearBtn) {
-      searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase().trim();
-        clearBtn.style.display = query ? 'flex' : 'none';
-
-        const cards = carousel.querySelectorAll('.card');
-        let visibleCount = 0;
-
-        cards.forEach((card) => {
-          const title = card.querySelector('.card-title');
-          const text = title ? title.textContent.toLowerCase() : '';
-          const isVisible = !query || text.includes(query);
-          card.style.display = isVisible ? 'block' : 'none';
-          if (isVisible) visibleCount++;
-        });
-
-        const noResults = document.querySelector('.no-results-{{ section.id }}');
-        noResults.style.display = query && visibleCount === 0 ? 'block' : 'none';
-      });
-
-      clearBtn.addEventListener('click', function () {
-        searchInput.value = '';
-        clearBtn.style.display = 'none';
-        carousel.querySelectorAll('.card').forEach((card) => (card.style.display = 'block'));
-        searchInput.focus();
-      });
+  function updateProgress() {
+    var total = filtered.length;
+    if (total === 0) { pill.classList.remove('visible'); return; }
+    var pct = Math.round((revealed / total) * 100);
+    pillFill.style.width = pct + '%';
+    pillText.textContent = revealed + ' / ' + total;
+    pill.classList.add('visible');
+    clearTimeout(pillTimer);
+    if (revealed >= total) {
+      pillTimer = setTimeout(function() { pill.classList.remove('visible'); }, 2800);
     }
+  }
 
-    carousel.addEventListener('scroll', updateButtons);
-    window.addEventListener('resize', updateButtons);
-    updateButtons();
-  })();
+  function updateMeta() {
+    var total = filtered.length;
+    noRes.style.display  = total === 0 ? 'block' : 'none';
+    grid.style.display   = total === 0 ? 'none'  : 'grid';
+    if (activeQuery || activeLetter !== 'ALL') {
+      metaEl.innerHTML = '<strong>' + total + '</strong> strain' + (total !== 1 ? 's' : '') + ' found';
+    } else {
+      metaEl.innerHTML = '';
+    }
+  }
+
+  /* Infinite scroll */
+  var observer = new IntersectionObserver(function(entries) {
+    if (!entries[0].isIntersecting || loading || revealed >= filtered.length) return;
+    loading = true;
+    loadingEl.classList.add('visible');
+    setTimeout(function() {
+      revealBatch(false);
+      loadingEl.classList.remove('visible');
+      loading = false;
+    }, 300);
+  }, { rootMargin: '200px' });
+
+  observer.observe(sentinel);
+
+  /* Search */
+  searchEl.addEventListener('input', function() {
+    var raw = this.value.toLowerCase().trim();
+    activeQuery = raw.replace(/^strain\s+/, '');
+    clearIcon.style.display = raw ? 'block' : 'none';
+    applyFilters();
+  });
+
+  clearIcon.addEventListener('click', function() {
+    searchEl.value = '';
+    activeQuery = '';
+    clearIcon.style.display = 'none';
+    searchEl.focus();
+    applyFilters();
+  });
+
+  /* Alphabet */
+  alphaBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      alphaBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeLetter = btn.dataset.letter;
+      applyFilters();
+    });
+  });
+
+  /* Disable empty letters */
+  alphaBtns.forEach(function(btn) {
+    var l = btn.dataset.letter;
+    if (l === 'ALL') return;
+    var has = allCards.some(function(card) {
+      if (l === '#') return !/^[A-Z]/i.test(card.dataset.letter || '');
+      return (card.dataset.letter || '').toUpperCase() === l;
+    });
+    if (!has) btn.disabled = true;
+  });
+
+  /* Show pill when scrolling mid-load */
+  window.addEventListener('scroll', function() {
+    if (revealed > 0 && revealed < filtered.length) pill.classList.add('visible');
+  }, { passive: true });
+
+  applyFilters();
+})();
 </script>
 
 {% schema %}
 {
   "name": "Education Strains",
   "tag": "section",
-  "class": "product-carousel-section",
+  "class": "product-grid-section",
   "settings": [
     {
       "type": "header",
@@ -490,7 +591,7 @@
     {
       "type": "color",
       "id": "button_color",
-      "label": "Button Color",
+      "label": "Accent / Button Color",
       "default": "#2d7a5e"
     },
     {
@@ -516,12 +617,6 @@
       "default": "Fresh from the Field"
     },
     {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle Color",
-      "default": "#666666"
-    },
-    {
       "type": "text",
       "id": "title",
       "label": "Title",
@@ -534,20 +629,27 @@
       "default": "#1a1a1a"
     },
     {
-      "type": "header",
-      "content": "Card Text Colors"
-    },
-    {
       "type": "color",
       "id": "card_text_color",
       "label": "Card Title Color",
       "default": "#1a1a1a"
     },
     {
+      "type": "header",
+      "content": "Search & Scroll"
+    },
+    {
       "type": "text",
       "id": "search_placeholder",
       "label": "Search Placeholder Text",
       "default": "Search strains..."
+    },
+    {
+      "type": "number",
+      "id": "initial_load",
+      "label": "Cards per batch (infinite scroll)",
+      "default": 48,
+      "info": "How many cards load at a time as user scrolls. 48 is a good default."
     },
     {
       "type": "url",
@@ -558,7 +660,7 @@
       "type": "text",
       "id": "no_results_text",
       "label": "No Results Text",
-      "default": "No strains found"
+      "default": "No strains found matching your search."
     },
     {
       "type": "text",
@@ -618,26 +720,15 @@
     {
       "name": "Education Strains",
       "blocks": [
-        {
-          "type": "custom"
-        },
-        {
-          "type": "custom"
-        },
-        {
-          "type": "custom"
-        },
-        {
-          "type": "custom"
-        },
-        {
-          "type": "custom"
-        },
-        {
-          "type": "custom"
-        }
+        { "type": "custom" },
+        { "type": "custom" },
+        { "type": "custom" },
+        { "type": "custom" },
+        { "type": "custom" },
+        { "type": "custom" }
       ]
     }
   ]
 }
 {% endschema %}
+

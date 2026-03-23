@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_U6VE8E": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_VeUtyq": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/AK-59_3.webp",
+            "image_description": "AK-59 is a hybrid strain developed from AK family genetics and is commonly associated with uplifting cerebral effects paired with gentle body relaxation.",
+            "emoji_main": "",
+            "product_name": "AK-59",
+            "genetics": "AK lineage hybrid • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 18–22%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Happy",
+            "effect_emoji_1": "😊",
+            "effect_2": "Uplifting",
+            "effect_emoji_2": "⬆️",
+            "effect_3": "Relaxing",
+            "effect_emoji_3": "😌",
+            "effect_4": "Balanced",
+            "effect_emoji_4": "⚖️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Alpha-Pinene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 60
+          }
+        },
+        "description_HQigcH": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "AK-59 is a hybrid strain developed from AK family genetics and is commonly associated with uplifting cerebral effects paired with gentle body relaxation.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich flowers benefit from airtight and odor-resistant packaging that helps maintain aroma and product quality.",
+            "bud_image": "shopify://shop_images/AK-59_2.webp",
+            "bud_image_2": "shopify://shop_images/AK-59.webp",
+            "bud_image_3": "shopify://shop_images/AK-59_4.webp",
+            "bud_image_4": "shopify://shop_images/AK-59_3.webp",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Helps maintain terpene integrity.",
+            "feature_2_emoji": "👃",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent exposure during storage.",
+            "feature_3_emoji": "👶",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "🏪",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Reliable containers used by cannabis brands."
+          }
+        },
+        "product_selection_hKqcwa": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "30-dram-pop-top-vial-1-4oz-golden",
+            "product_2": "30-dram-pop-top-vial-1-4oz-silver",
+            "product_3": "60-dram-pop-top-vial-1-2oz-clear",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging solutions designed for cannabis brands.",
+            "product_4": "60-dram-pop-top-vial-1-2oz-black",
+            "product_5": "60-dram-pop-top-vial-1-2oz-white",
+            "product_6": "60-dram-pop-top-vial-1-2oz-green",
+            "product_7": "60-dram-pop-top-vial-1-2oz-royal-blue",
+            "product_8": "60-dram-pop-top-vial-1-2oz-aqua-blue"
+          }
+        },
+        "categories_info_FgVYcP": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "AK lineage hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "55–65 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–22%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": ">2%"
+          }
+        },
+        "effects_yield_NhtTQj": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Happy",
+            "effect_tag_emoji_1": "😊",
+            "effect_tag_2": "Relaxing",
+            "effect_tag_emoji_2": "😌",
+            "effect_tag_3": "Uplifting",
+            "effect_tag_emoji_3": "⬆️",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "⚖️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_emoji_1": "🍬",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🌍",
+            "taste_tag_3": "Citrus",
+            "taste_tag_emoji_3": "🍋",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🫐",
+            "terp_tag_3": "Alpha-Pinene",
+            "terp_tag_emoji_3": "🌲",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "450–600 gr/m² Indoor / 500–650 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_VeUtyq",
+        "description_HQigcH",
+        "product_selection_hKqcwa",
+        "categories_info_FgVYcP",
+        "effects_yield_NhtTQj"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_U6VE8E"
+  ]
+}

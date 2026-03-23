@@ -32,6 +32,78 @@
     "education_scroller_7hdcpt": {
       "type": "education-scroller",
       "blocks": {
+        "custom_Timczi": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/3_Kings_fem_3_156c49aa-92b5-428b-829a-9f5acaa2a60d.webp",
+            "title": "Strain 3 Kings (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-3-kings-fem"
+          }
+        },
+        "custom_RkPcjp": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/5_Alive_fem_3_6528c335-a8a6-4d38-9c20-3bdac67d29aa.webp",
+            "title": "Strain 5 Alive (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-5-alive-fem"
+          }
+        },
+        "custom_tQGaGH": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/9_Pound_Hammer_3_78a0759f-9219-4f92-abef-ba82f311df69.webp",
+            "title": "Strain 60 Day Wonder (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-60-day-wonder-fem"
+          }
+        },
+        "custom_FwQq9R": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Acapulco_Gold_fem_3_53338ecc-e667-4079-a7fa-04d5a0fc7d66.webp",
+            "title": "Strain Acapulco Gold (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-acapulco-gold-fem"
+          }
+        },
+        "custom_PxLQkA": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Acid_Diesel_3_7862265e-6d66-4dbd-891b-780c16f56004.webp",
+            "title": "Strain Acid Diesel",
+            "show_title": true,
+            "link": "shopify://pages/strain-acid-diesel"
+          }
+        },
+        "custom_UUGNHa": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Afghan_fem_3_5b52bb9e-d8c0-4e94-80cc-4d6cabbd4994.webp",
+            "title": "Strain Afghan (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-afghan-fem"
+          }
+        },
+        "custom_Pm7BXr": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Afghan_Kush_fem_3_fbf540ce-8f80-4a00-84df-8f5075a89315.webp",
+            "title": "Strain Afghan Kush (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-afghan-kush-fem"
+          }
+        },
+        "custom_ezEkmM": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/Afghan_Kush_x_Blueberry_3_036ccc63-1349-4f98-9df6-df9b2f9c8371.webp",
+            "title": "Strain Afghan Kush x Blueberry",
+            "show_title": true,
+            "link": "shopify://pages/strain-afghan-kush-x-blueberry"
+          }
+        },
         "custom_gAfnQ3": {
           "type": "custom",
           "settings": {
@@ -48,6 +120,15 @@
             "title": "Strain Blue Dream",
             "show_title": true,
             "link": "shopify://pages/strain-blue-dream"
+          }
+        },
+        "custom_9ctB7p": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/9_Pound_Hammer_3_d2535a37-c2a1-4c16-a5c7-613f9ac36f47.webp",
+            "title": "Strain 9 Pound Hammer",
+            "show_title": true,
+            "link": "shopify://pages/strain-9-pound-hammer"
           }
         },
         "custom_JHdW4D": {
@@ -157,11 +238,29 @@
             "show_title": true,
             "link": "shopify://pages/strain-miracle-alien-cookies"
           }
+        },
+        "custom_LjT7e6": {
+          "type": "custom",
+          "settings": {
+            "image": "shopify://shop_images/24k_Gold_fem_3_20d59dba-a28f-4fb3-af91-c9d2e1299d3b.webp",
+            "title": "Strain 24K Gold (fem)",
+            "show_title": true,
+            "link": "shopify://pages/strain-24k-gold-fem"
+          }
         }
       },
       "block_order": [
+        "custom_Timczi",
+        "custom_RkPcjp",
+        "custom_tQGaGH",
+        "custom_FwQq9R",
+        "custom_PxLQkA",
+        "custom_UUGNHa",
+        "custom_Pm7BXr",
+        "custom_ezEkmM",
         "custom_gAfnQ3",
         "custom_y9JfeK",
+        "custom_9ctB7p",
         "custom_JHdW4D",
         "custom_dFAABE",
         "custom_cWwKqd",
@@ -173,7 +272,8 @@
         "custom_kctcFk",
         "custom_4hMzV4",
         "custom_aHYGqr",
-        "custom_FtQ7TQ"
+        "custom_FtQ7TQ",
+        "custom_LjT7e6"
       ],
       "name": "Education Strains",
       "settings": {
@@ -182,11 +282,11 @@
         "button_hover_color": "#0f172a",
         "card_background": "#033770",
         "subtitle": "Fresh from the Field",
-        "subtitle_color": "#666666",
         "title": "Discover Our Latest Strains",
         "title_color": "#000000",
         "card_text_color": "#ffffff",
         "search_placeholder": "Search strains...",
+        "initial_load": 20,
         "all_strains_url": "shopify://pages/packthc-all-strains",
         "no_results_text": "If strain Not found. Please see the all strains list.",
         "see_all_btn_text": "See More"

@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_LnKET9": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_c6nDUn": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Amnesia x Cafe Racer is a hybrid strain that combines the energetic Amnesia lineage with the terpene-rich Cafe Racer genetics. The strain is commonly associated with uplifting cerebral effects accompanied by mild body relaxation.",
+            "emoji_main": "",
+            "product_name": "Amnesia x Cafe Racer",
+            "genetics": "Amnesia × Cafe Racer • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 20–26%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Euphoric",
+            "effect_emoji_1": "🌬️",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Uplifting",
+            "effect_emoji_4": "⬆️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Terpinolene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 70,
+            "thc_level": 80
+          }
+        },
+        "description_HVpLxk": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Amnesia x Cafe Racer is a hybrid strain that combines the energetic Amnesia lineage with the terpene-rich Cafe Racer genetics. The strain is commonly associated with uplifting cerebral effects accompanied by mild body relaxation.",
+            "description_2": "This strain profile is provided for educational purposes, demonstrating how terpene-rich cannabis flowers benefit from airtight packaging that preserves aroma and freshness.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene profile and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_PLFBdJ": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "Explore our curated collection of premium cannabis strains, each selected for exceptional quality and performance.",
+            "product_1": "40-dram-push-turn-cr-bottles-black",
+            "product_2": "40-dram-push-turn-cr-bottles-white",
+            "product_3": "60-dram-push-turn-cr-bottles-green",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for cannabis brands.",
+            "product_4": "60-dram-push-turn-cr-bottles-blue",
+            "product_5": "60-dram-push-turn-cr-bottles-amber",
+            "product_6": "60-dram-push-turn-cr-bottles-black",
+            "product_7": "60-dram-push-turn-cr-bottles-white",
+            "product_8": "8-dram-push-turn-reverse-cap-bottles-green"
+          }
+        },
+        "categories_info_dg6GHU": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Amnesia × Cafe Racer",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "20–26%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "> 2%"
+          }
+        },
+        "effects_yield_a88aYw": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Euphoric",
+            "effect_tag_emoji_1": "🌬️",
+            "effect_tag_2": "Creative",
+            "effect_tag_emoji_2": "🎨",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Uplifting",
+            "effect_tag_emoji_4": "⬆️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_emoji_1": "🍬",
+            "taste_tag_2": "Citrus",
+            "taste_tag_emoji_2": "🍋",
+            "taste_tag_3": "Earthy",
+            "taste_tag_emoji_3": "🌿",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🌸",
+            "terp_tag_3": "Terpinolene",
+            "terp_tag_emoji_3": "🌲",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_c6nDUn",
+        "description_HVpLxk",
+        "product_selection_PLFBdJ",
+        "categories_info_dg6GHU",
+        "effects_yield_a88aYw"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_LnKET9"
+  ]
+}

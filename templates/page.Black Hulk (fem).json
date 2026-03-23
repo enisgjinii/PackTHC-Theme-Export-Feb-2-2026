@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_QKUXcL": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_TLrbT3": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Black Hulk is a potent hybrid strain known for its strong euphoric effects and balanced relaxation. The strain is commonly associated with uplifting mental sensations accompanied by gentle body calm.",
+            "emoji_main": "",
+            "product_name": "Black Hulk",
+            "genetics": "Modern hybrid lineage • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 21–27%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Euphoric",
+            "effect_emoji_1": "🌬️",
+            "effect_2": "Happy",
+            "effect_emoji_2": "😊",
+            "effect_3": "Relaxing",
+            "effect_emoji_3": "😌",
+            "effect_4": "Balanced",
+            "effect_emoji_4": "⚖️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Caryophyllene",
+            "terpene_3": "Myrcene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 90
+          }
+        },
+        "description_kBbyAn": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Black Hulk is a potent hybrid strain known for its strong euphoric effects and balanced relaxation. The strain is commonly associated with uplifting mental sensations accompanied by gentle body calm.",
+            "description_2": "This strain profile is presented for educational reference, illustrating how terpene-rich cannabis flowers benefit from airtight packaging that preserves aromatic complexity and freshness.",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and aroma.",
+            "feature_2_emoji": "👃",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage.",
+            "feature_3_emoji": "🔐",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "⭐",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_aYe9nf": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "5oz-150cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-300-count",
+            "product_2": "5oz-150cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-300-count",
+            "product_3": "5oz-150cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-translucent-amber-container-with-opaque-black-closure-300-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "5oz-150cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-translucent-black-container-with-opaque-black-closure-300-count",
+            "product_5": "6oz-180cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-clear-natural-container-with-opaque-black-closure-300-count",
+            "product_6": "6oz-180cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-300-count",
+            "product_7": "6oz-180cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-300-count",
+            "product_8": "6oz-180cc-aviator-cr-container-with-integrated-liner-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-300-count"
+          }
+        },
+        "categories_info_8Az7bk": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Modern hybrid lineage",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Very High / 21–27%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "> 2%"
+          }
+        },
+        "effects_yield_TYCWXy": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Euphoric",
+            "effect_tag_emoji_1": "🌬️",
+            "effect_tag_2": "Happy",
+            "effect_tag_emoji_2": "😊",
+            "effect_tag_3": "Relaxing",
+            "effect_tag_emoji_3": "😌",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "⚖️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_emoji_1": "🍬",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🌍",
+            "taste_tag_3": "Citrus",
+            "taste_tag_emoji_3": "🍋",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Caryophyllene",
+            "terp_tag_emoji_2": "🌶️",
+            "terp_tag_3": "Myrcene",
+            "terp_tag_emoji_3": "🌸",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_TLrbT3",
+        "description_kBbyAn",
+        "product_selection_aYe9nf",
+        "categories_info_8Az7bk",
+        "effects_yield_TYCWXy"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_QKUXcL"
+  ]
+}

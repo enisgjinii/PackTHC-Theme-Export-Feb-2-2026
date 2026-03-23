@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_grYdwL": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_EKVTJK": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Bruce Banner x Kali Mist combines two highly stimulating Sativa-leaning strains known for energetic cerebral effects. The strain is commonly associated with creativity, focus, and uplifting mood sensations.",
+            "emoji_main": "",
+            "product_name": "Bruce Banner x Kali Mist",
+            "genetics": "Bruce Banner × Kali Mist • Sativa Dominant",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 22–27%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Energizing",
+            "effect_emoji_1": "⚡",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Euphoric",
+            "effect_emoji_3": "🌟",
+            "effect_4": "Focused",
+            "effect_emoji_4": "🎯",
+            "effect_5": "Sleepy",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Terpinolene",
+            "terpene_2": "Caryophyllene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 90,
+            "thc_level": 90
+          }
+        },
+        "description_pVNceX": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Bruce Banner x Kali Mist combines two highly stimulating Sativa-leaning strains known for energetic cerebral effects. The strain is commonly associated with creativity, focus, and uplifting mood sensations.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich cannabis flowers benefit from airtight packaging designed to preserve aroma and freshness.",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene stability and freshness.",
+            "feature_2_emoji": "👃",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👶",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_zyUjF6": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "chubby-gorilla-2oz-aviator-cr-plastic-jar-containers-w-inner-seal-translucent-black-with-black-cap",
+            "product_2": "chubby-gorilla-120mm-aviator-cr-plastic-blunt-tubes-clear-with-black-cap",
+            "product_3": "chubby-gorilla-120mm-aviator-cr-plastic-blunt-tubes-clear-with-white-cap",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Containers designed for cannabis flower and extracts.",
+            "product_4": "chubby-gorilla-120mm-aviator-cr-plastic-blunt-tubes-opaque-black-with-black-cap",
+            "product_5": "chubby-gorilla-6oz-aviator-cr-plastic-jar-container-w-inner-seal-clear-with-black-cap",
+            "product_6": "chubby-gorilla-6oz-aviator-cr-plastic-jar-container-w-inner-seal-clear-with-white-cap",
+            "product_7": "chubby-gorilla-6oz-aviator-cr-plastic-jar-container-w-inner-seal-opaque-black-with-black-cap",
+            "product_8": "chubby-gorilla-6oz-aviator-cr-plastic-jar-container-w-inner-seal-opaque-white-with-white-cap"
+          }
+        },
+        "categories_info_6j8BD8": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Bruce Banner × Kali Mist",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "65–75 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "Very High / 22–27%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_UPwnHF": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Energizing",
+            "effect_tag_emoji_1": "⚡",
+            "effect_tag_2": "Creative",
+            "effect_tag_emoji_2": "🎨",
+            "effect_tag_3": "Euphoric",
+            "effect_tag_emoji_3": "🌟",
+            "effect_tag_4": "Focused",
+            "effect_tag_emoji_4": "🎯",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Sweet",
+            "taste_tag_emoji_1": "🍬",
+            "taste_tag_2": "Citrus",
+            "taste_tag_emoji_2": "🍋",
+            "taste_tag_3": "Herbal",
+            "taste_tag_emoji_3": "🌿",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Terpinolene",
+            "terp_tag_emoji_1": "🔵",
+            "terp_tag_2": "Caryophyllene",
+            "terp_tag_emoji_2": "🩷",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "💛",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_EKVTJK",
+        "description_pVNceX",
+        "product_selection_zyUjF6",
+        "categories_info_6j8BD8",
+        "effects_yield_UPwnHF"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_grYdwL"
+  ]
+}

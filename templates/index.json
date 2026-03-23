@@ -187,8 +187,8 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/saint_patrick_s_day_web_banner-01.webp",
-            "background_mobile": "shopify://shop_images/saint_patrick_s_day_web_banner-04.webp",
+            "background": "shopify://shop_images/25_off_b7e50417-507f-4264-8c64-334c9e1a2d9c.webp",
+            "background_mobile": "shopify://shop_images/3_a9c87ca6-5d02-4b50-9288-7f99343edceb.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
@@ -212,8 +212,8 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/saint_patrick_s_day_web_banner-03.webp",
-            "background_mobile": "shopify://shop_images/saint_patrick_s_day_web_banner-06.webp",
+            "background": "shopify://shop_images/CUSTOM_1_2_a4494c2a-3a20-490a-9a37-a23de20e81cd.webp",
+            "background_mobile": "shopify://shop_images/1_d9e1b160-0fe3-4ea4-9b86-c5f0e51e2b3c.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
@@ -237,8 +237,8 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/saint_patrick_s_day_web_banner-02_09-03-2026_20_47_53_816.webp",
-            "background_mobile": "shopify://shop_images/saint_patrick_s_day_web_banner-05.webp",
+            "background": "shopify://shop_images/CUSTOM_6_f46ec8e7-8255-4644-b0a9-71801f558673.webp",
+            "background_mobile": "shopify://shop_images/2_166e9551-aafa-4862-b31d-887ceb6b857a.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
@@ -363,7 +363,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "",
-        "image": "shopify://shop_images/hf_20260312_162515_95eec120-6c2f-4ebf-b464-b958d4344d66.webp",
+        "image": "shopify://shop_images/Spiral_Cartridge_Containers.webp",
         "image_ratio": "1/1",
         "enable_sticky": false,
         "section_header_alignment": "left",
@@ -437,7 +437,7 @@
       ],
       "settings": {
         "container": "fixed",
-        "color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "color_scheme": "scheme-3",
         "layout": "horizontal",
         "content_alignment": "center",
         "content_alignment_mobile": "center",
@@ -452,7 +452,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "dual-compartment-pouch-containers",
-            "image": "shopify://shop_images/Dual_Pouch_Container_a6f0b38e-a23e-4f90-bb68-995d830a7d9f.webp",
+            "image": "shopify://shop_images/Dual_Pouch_Container.webp",
             "title": "DUAL POUCH CONTAINERS"
           }
         },
@@ -460,7 +460,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "preroll-tubes",
-            "image": "shopify://shop_images/Pre-Roll_Tubes_0c0a37e9-b62a-42d3-ad2d-04c3d47f7a69.webp",
+            "image": "shopify://shop_images/Pre-Roll_Tubes_fab5a047-7134-49ea-b66f-e1542277e5e5.webp",
             "title": "Pre-Roll Tubes"
           }
         },
@@ -468,7 +468,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "dab-containers",
-            "image": "shopify://shop_images/Dab_Containers_6ce537a6-b96e-4262-b766-607fb1298e07.webp",
+            "image": "shopify://shop_images/Dab_Containers.webp",
             "title": "Dab Containers"
           }
         },
@@ -476,7 +476,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "pop-top-bottles",
-            "image": "shopify://shop_images/Pop_Top_Vials_e37ba0b1-439d-4de1-819d-1f07a9409c49.webp",
+            "image": "shopify://shop_images/Pop_Top_Vials_e00ea3b0-628c-4ec0-9643-5ea4cd375b21.webp",
             "title": "Pop Top Vials"
           }
         },
@@ -484,51 +484,15 @@
           "type": "featured_collection",
           "settings": {
             "collection": "paper-cones",
-            "image": "shopify://shop_images/Raw_778f33be-7810-48f4-bf9a-9de32ab4c9a9.webp",
+            "image": "shopify://shop_images/Raw_5a5f5d71-8df1-4603-b86b-91b8f62d381c.webp",
             "title": "Paper Cones"
-          }
-        },
-        "featured_collection_JV9tDT": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "spiral-bottles",
-            "image": "shopify://shop_images/Element_e8e3f4d8-9483-45c3-938d-5234014869ea.webp",
-            "title": "Element"
-          }
-        },
-        "featured_collection_WLrpbE": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "futurola",
-            "image": "shopify://shop_images/Futurola_38b1255e-a313-4c34-9647-0f77e1ed3377.webp",
-            "title": "Futurola"
-          }
-        },
-        "featured_collection_qdrbEr": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "hara-supply",
-            "image": "shopify://shop_images/Hara_Supply_2c23e31e-ad36-4766-b224-a801bae81efd.webp",
-            "title": "Hara Supply"
-          }
-        },
-        "featured_collection_Pa8kFP": {
-          "type": "featured_collection",
-          "disabled": true,
-          "settings": {
-            "collection": "hempire",
-            "image": "shopify://shop_images/Hempire_6bd3c777-ad8b-42c5-b6a0-6030c3973a1c.webp",
-            "title": "Hempire"
           }
         },
         "featured_collection_UTWiiY": {
           "type": "featured_collection",
           "settings": {
             "collection": "smell-proof-solution",
-            "image": "shopify://shop_images/premium_Packaging_f0a21c02-b3e4-48d9-b2fd-13bc3f79d509.webp",
+            "image": "shopify://shop_images/Smell_Proof_Solution.webp",
             "title": "Smell-Proof Solutions"
           }
         },
@@ -536,7 +500,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "cannabis-accessories",
-            "image": "shopify://shop_images/Cannabis_Accessories_ffa76007-befa-4b2d-b2a5-e7a6d6670688.webp",
+            "image": "shopify://shop_images/Cannabis_Accessories_153f23e2-17b5-42a7-8675-c8e7f5e1e981.webp",
             "title": "Cannabis Accessories"
           }
         },
@@ -552,7 +516,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "premium-jars-containers",
-            "image": "shopify://shop_images/Smell_Proof_Solution_87fbfd39-d1cb-4de8-860b-2666afd15a22.webp",
+            "image": "shopify://shop_images/premium_Packaging.webp",
             "title": "Premium Jars"
           }
         },
@@ -560,7 +524,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "edibles-packaging",
-            "image": "shopify://shop_images/Edibles_Packaging_a4b534d6-c444-46fc-9646-2bcb3135757c.webp",
+            "image": "shopify://shop_images/Edibles_Packaging_40c0e410-a41d-40c8-bdea-28bffe3752ff.webp",
             "title": "Edibles Packaging"
           }
         }
@@ -571,10 +535,6 @@
         "featured_collection_FzRWDn",
         "featured_collection_at4gCr",
         "featured_collection_F69pQy",
-        "featured_collection_JV9tDT",
-        "featured_collection_WLrpbE",
-        "featured_collection_qdrbEr",
-        "featured_collection_Pa8kFP",
         "featured_collection_UTWiiY",
         "featured_collection_rkynNN",
         "featured_collection_8t9tJr",
@@ -676,7 +636,7 @@
           "settings": {
             "color_scheme": "scheme-inverse",
             "card_link": "shopify://pages/packthc-volume-calculator",
-            "banner_image": "shopify://shop_images/volume_calculator_c27c8b12-0649-4606-8a5b-e4095d26c5a3.webp",
+            "banner_image": "shopify://shop_images/Volume_calculator.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -830,7 +790,7 @@
           "type": "collection",
           "settings": {
             "collection": "glass-jars",
-            "image": "shopify://shop_images/hf_20260312_172703_7dec4d06-c40d-4425-97ab-290cf66088e2.webp",
+            "image": "shopify://shop_images/Premium_Glass_Jars.webp",
             "title": "Premium Glass Jars",
             "text": "",
             "button_label": "Shop Glass Jars",
@@ -842,7 +802,7 @@
           "type": "collection",
           "settings": {
             "collection": "mylar-bags-new",
-            "image": "shopify://shop_images/7_a6df4d44-b4a3-47fb-86e6-9983c069aa64.webp",
+            "image": "shopify://shop_images/Mylar_bags_62c082a4-482d-499a-a7f0-65beccd33c25.webp",
             "title": "Mylar Bags",
             "text": "",
             "button_label": "Shop Mylar Bags",
@@ -854,7 +814,7 @@
           "type": "collection",
           "settings": {
             "collection": "preroll-tubes",
-            "image": "shopify://shop_images/9_756f9e80-1a28-41e1-8d13-7181b265b82e.webp",
+            "image": "shopify://shop_images/Pre-Roll_Tubes.webp",
             "title": "Preroll Tubes",
             "text": "",
             "button_label": "Shop Preroll Tubes",
@@ -866,7 +826,7 @@
           "type": "collection",
           "settings": {
             "collection": "thermal-papers",
-            "image": "shopify://shop_images/6_9fce1812-2654-420e-9356-0e3af062d0d5.webp",
+            "image": "shopify://shop_images/Thermal_Papers_a51d4372-35b6-4183-a155-845a874ba0a5.webp",
             "title": "Thermal Papers",
             "text": "",
             "button_label": "Shop Thermal Papers",
@@ -917,7 +877,7 @@
             ],
             "width": 59,
             "width_mobile": 90,
-            "image": "shopify://shop_images/hf_20260312_174225_fb5403d8-35bd-43b7-97c5-5afd9ae0029e.webp",
+            "image": "shopify://shop_images/1_lookbook-card-wrapper.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -938,7 +898,7 @@
             ],
             "width": 29,
             "width_mobile": 65,
-            "image": "shopify://shop_images/hf_20260312_190311_59ef6e32-1af2-4860-9759-8a2dd72843cc.webp",
+            "image": "shopify://shop_images/2_lookbook-card-wrapper.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -959,7 +919,7 @@
             ],
             "width": 29,
             "width_mobile": 65,
-            "image": "shopify://shop_images/hf_20260312_190421_01421acd-c7b4-4e4b-a96b-15b668be6dba.webp",
+            "image": "shopify://shop_images/3_lookbook-card-wrapper.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -1116,7 +1076,7 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/hf_20260312_203358_2c17c266-11d0-4974-abee-b7cb60a76222.webp",
+            "image": "shopify://shop_images/last_graphic.webp",
             "image_ratio": "adapt",
             "product_1": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-500-count",
             "top_1": 32,
@@ -1140,7 +1100,7 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/hf_20260312_203834_532d8352-41ef-4cac-920a-1b805cfb03ef.webp",
+            "image": "shopify://shop_images/3_e9ce5061-6ce1-4a21-a94d-5990874f2130.webp",
             "image_ratio": "adapt",
             "product_1": "116mm-cr-pop-top-tube-black",
             "top_1": 60,
@@ -1164,7 +1124,7 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/hf_20260312_203643_552cc77e-48ba-42f9-987d-2bb5e6116368.webp",
+            "image": "shopify://shop_images/Changed_size_1.png",
             "image_ratio": "3/4",
             "product_1": "6-dram-pop-top-vial-black",
             "top_1": 57,
@@ -1222,7 +1182,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/hf_20260312_192207_0d49cc04-0cb8-4dc0-8204-f1a48571d654.webp",
+            "image": "shopify://shop_images/2_8e862581-ef69-4fe7-84f0-362dca47c17e.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1244,7 +1204,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/3_ebb9de76-d431-47ca-ac68-4141b38ac029.webp",
+            "image": "shopify://shop_images/3_cf2c5656-5ddf-4b95-bacd-fcc2744a2a21.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1266,7 +1226,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/1_350dc7a1-9f23-4e3e-91f9-4f3765c4955c.webp",
+            "image": "shopify://shop_images/1_74be7b48-207f-461c-81eb-9ec75127fe70.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1288,7 +1248,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/4_ecf66918-b30e-4cc9-ad5a-69d4a31c26e1.webp",
+            "image": "shopify://shop_images/4_8a9335bc-bd5f-402e-a1a5-6ac7e4407ca1.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1310,7 +1270,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/hf_20260312_191435_336743ba-8678-4500-9841-4f9d84d10733.webp",
+            "image": "shopify://shop_images/Rectangle_4.webp",
             "content_alignment": "right",
             "heading": "",
             "highlight_style": "hand_drawn_circle",
@@ -1328,7 +1288,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/hf_20260312_191906_42515c9c-a179-4bd1-acbe-04cb4cc4a6d0.webp",
+            "image": "shopify://shop_images/Rectangle_1000002446.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",
@@ -1346,7 +1306,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/hf_20260312_192118_fbf7bc33-d4ac-409f-8fa2-02740faa5ee8_1.webp",
+            "image": "shopify://shop_images/Group_205.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",
@@ -1364,7 +1324,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/hf_20260312_192207_0d49cc04-0cb8-4dc0-8204-f1a48571d654.webp",
+            "image": "shopify://shop_images/Group_206.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",

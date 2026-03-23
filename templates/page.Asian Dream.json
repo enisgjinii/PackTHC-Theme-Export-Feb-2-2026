@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_Ww7zfq": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_JdGcbD": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Asian_Dream_3.webp",
+            "image_description": "Asian Dream is a Sativa-dominant hybrid inspired by Asian landrace genetics. The strain is commonly associated with uplifting cerebral effects and energetic daytime experiences.",
+            "emoji_main": "",
+            "product_name": "Asian Dream",
+            "genetics": "Asian landrace lineage • Sativa Dominant",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 18–23%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Energizing",
+            "effect_emoji_1": "⚡",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Uplifting",
+            "effect_emoji_4": "🌟",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Terpinolene",
+            "terpene_2": "Limonene",
+            "terpene_3": "Myrcene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 80,
+            "thc_level": 60
+          }
+        },
+        "description_CxU9XG": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Asian Dream is a Sativa-dominant hybrid inspired by Asian landrace genetics. The strain is commonly associated with uplifting cerebral effects and energetic daytime experiences.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich flowers benefit from airtight packaging that helps maintain aroma and freshness.",
+            "bud_image": "shopify://shop_images/Asian_Dream_4.webp",
+            "bud_image_2": "shopify://shop_images/Asian_Dream_3.webp",
+            "bud_image_3": "shopify://shop_images/Asian_Dream_2.webp",
+            "bud_image_4": "shopify://shop_images/Asian_Dream.webp",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Helps maintain terpene stability and aroma.",
+            "feature_2_emoji": "💨",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "🔐",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted containers used by cannabis brands."
+          }
+        },
+        "product_selection_BWhkN6": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "Explore our curated collection of premium cannabis packaging solutions, each selected for exceptional quality and performance.",
+            "product_1": "4-mil-nitrile-gloves-black-100-pieces-case-medium-1",
+            "product_2": "4-mil-nitrile-gloves-black-100-pieces-case-large-1",
+            "product_3": "4-mil-nitrile-gloves-black-100-pieces-case-extra-large-1",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Containers designed for cannabis flower and extracts.",
+            "product_4": "21-white-bouffant-cap",
+            "product_5": "24-brown-hair-net",
+            "product_6": "28x46-disposable-aprons",
+            "product_7": "shoe-cover",
+            "product_8": "closure-cr-black-natural-opaque-count-chubby-gorilla-40g-c2"
+          }
+        },
+        "categories_info_NgJ7CF": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Asian landrace lineage",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "65–75 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–23%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "> 2%"
+          }
+        },
+        "effects_yield_rhDkW3": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Creative",
+            "effect_tag_emoji_1": "🎨",
+            "effect_tag_2": "Energizing",
+            "effect_tag_emoji_2": "⚡",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Uplifting",
+            "effect_tag_emoji_4": "🌟",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Herbal",
+            "taste_tag_emoji_1": "🌿",
+            "taste_tag_2": "Citrus",
+            "taste_tag_emoji_2": "🍋",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Terpinolene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Myrcene",
+            "terp_tag_emoji_3": "🌿",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "500–650 gr/m² Indoor / 550–700 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_JdGcbD",
+        "description_CxU9XG",
+        "product_selection_BWhkN6",
+        "categories_info_NgJ7CF",
+        "effects_yield_rhDkW3"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_Ww7zfq"
+  ]
+}

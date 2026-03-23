@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_qraEKA": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_CKBbka": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Blue Widow is a hybrid strain created by crossing Blueberry with White Widow genetics. The strain is commonly associated with uplifting mental stimulation combined with mild physical relaxation.",
+            "emoji_main": "",
+            "product_name": "Blue Widow",
+            "genetics": "Blueberry × White Widow • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 18–23%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Happy",
+            "effect_emoji_1": "😊",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Relaxing",
+            "effect_emoji_3": "😌",
+            "effect_4": "Balanced",
+            "effect_emoji_4": "⚖️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene",
+            "terpene_2": "Terpinolene",
+            "terpene_3": "Limonene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 60,
+            "thc_level": 70
+          }
+        },
+        "description_qUUTLk": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Blue Widow is a hybrid strain created by crossing Blueberry with White Widow genetics. The strain is commonly associated with uplifting mental stimulation combined with mild physical relaxation.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich cannabis flowers benefit from airtight packaging designed to maintain freshness and aromatic complexity.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene profile and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_YVpLyW": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "120ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-400-count",
+            "product_2": "120ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-white-closure-400-count",
+            "product_3": "120ml-v3-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-opaque-white-bottle-with-opaque-white-closure-400-count",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Containers designed for cannabis flower and extracts.",
+            "product_4": "20ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-1000-count",
+            "product_5": "20ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-black-bottle-with-opaque-black-closure-1000-count",
+            "product_6": "20ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-clear-natural-closure-1000-count",
+            "product_7": "30ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-translucent-amber-bottle-with-opaque-black-closure-1000-count",
+            "product_8": "30ml-stubby-pet-unicorn-bottle-with-cr-tamper-evident-break-off-band-clear-natural-bottle-with-opaque-black-closure-1000-count"
+          }
+        },
+        "categories_info_ddr7bC": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Blueberry × White Widow",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60–70 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–23%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": ">2%"
+          }
+        },
+        "effects_yield_fXrrif": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Happy",
+            "effect_tag_emoji_1": "😊",
+            "effect_tag_2": "Creative",
+            "effect_tag_emoji_2": "🎨",
+            "effect_tag_3": "Relaxing",
+            "effect_tag_emoji_3": "😌",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "⚖️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Berry",
+            "taste_tag_emoji_1": "🫐",
+            "taste_tag_2": "Sweet",
+            "taste_tag_emoji_2": "🍬",
+            "taste_tag_3": "Herbal",
+            "taste_tag_emoji_3": "🌿",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Terpinolene",
+            "terp_tag_emoji_2": "🌊",
+            "terp_tag_3": "Limonene",
+            "terp_tag_emoji_3": "🍋",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "500–650 gr/m² Indoor / 550–700 gr per plant Outdoor"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_CKBbka",
+        "description_qUUTLk",
+        "product_selection_YVpLyW",
+        "categories_info_ddr7bC",
+        "effects_yield_fXrrif"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_qraEKA"
+  ]
+}

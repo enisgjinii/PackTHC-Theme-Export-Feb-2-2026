@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_38tTrM": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_ReexD3": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Amnesia_Haze_fem_3.webp",
+            "image_description": "Amnesia Haze is a well-known Sativa-dominant hybrid famous for its energetic cerebral effects and uplifting mood profile. The strain is widely associated with creative thinking and stimulating daytime experiences.",
+            "emoji_main": "",
+            "product_name": "Amnesia Haze",
+            "genetics": "Original Amnesia Haze • Sativa Dominant Hybrid",
+            "strain-badge_1": "Sativa Dominant Hybrid",
+            "strain-badge_2": "THC 20–25%",
+            "strain-badge_3": "CBD >2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Euphoric",
+            "effect_emoji_1": "🌬️",
+            "effect_2": "Creative",
+            "effect_emoji_2": "🎨",
+            "effect_3": "Energizing",
+            "effect_emoji_3": "⚡",
+            "effect_4": "Uplifting",
+            "effect_emoji_4": "☀️",
+            "effect_5": "",
+            "effect_emoji_5": "",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Terpinolene",
+            "terpene_2": "Limonene",
+            "terpene_3": "Myrcene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 90,
+            "thc_level": 80
+          }
+        },
+        "description_PRJqgb": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Amnesia Haze is a well-known Sativa-dominant hybrid famous for its energetic cerebral effects and uplifting mood profile. The strain is widely associated with creative thinking and stimulating daytime experiences.",
+            "description_2": "This strain profile is presented for educational reference, highlighting how terpene-rich cannabis flowers benefit from airtight packaging that helps preserve aromatic intensity and freshness.",
+            "bud_image": "shopify://shop_images/Amnesia_Haze_fem_4.webp",
+            "bud_image_2": "shopify://shop_images/Amnesia_Haze_fem_2.webp",
+            "bud_image_3": "shopify://shop_images/Amnesia_Haze_fem.webp",
+            "bud_image_4": "shopify://shop_images/Amnesia_Haze_fem_3.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene profile and aroma.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Reduces scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_xNaQ4E": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "Explore jars, tubes, and containers designed for cannabis flower and extracts.",
+            "product_1": "8oz-clear-pet-round-wide-mouth-plastic-jar-clear-with-white-lid",
+            "product_2": "16oz-clear-pet-round-wide-mouth-plastic-jar-clear-with-white-lid",
+            "product_3": "32oz-clear-pet-round-wide-mouth-plastic-jar-clear-with-white-lid",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore jars, tubes, and containers designed for cannabis flower and extracts.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "1-2-gallon-clear-pet-round-wide-mouth-plastic-jar-clear-with-white-lid",
+            "product_5": "1-gallon-clear-pet-round-wide-mouth-plastic-jar-clear-with-white-lid",
+            "product_6": "6-dram-push-turn-cr-bottles-green",
+            "product_7": "6-dram-push-turn-cr-bottles-blue",
+            "product_8": "6-dram-push-turn-cr-bottles-amber"
+          }
+        },
+        "categories_info_dNn87P": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "ℹ️",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Reference Strain",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Haze lineage hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Sativa Dominant",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "65–80 days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "High / 20–25%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_6gFaew": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Euphoric",
+            "effect_tag_emoji_1": "🌬️",
+            "effect_tag_2": "Creative",
+            "effect_tag_emoji_2": "🎨",
+            "effect_tag_3": "Energizing",
+            "effect_tag_emoji_3": "⚡",
+            "effect_tag_4": "Uplifting",
+            "effect_tag_emoji_4": "☀️",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🍋",
+            "taste_tag_2": "Sweet",
+            "taste_tag_emoji_2": "🍬",
+            "taste_tag_3": "Earthy",
+            "taste_tag_emoji_3": "🌿",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "",
+            "terp_tag_1": "Terpinolene",
+            "terp_tag_emoji_1": "🌊",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Myrcene",
+            "terp_tag_emoji_3": "🫐",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "550–700 gr/m² Indoor / 600–750 gr per plant Outdoor (Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_ReexD3",
+        "description_PRJqgb",
+        "product_selection_xNaQ4E",
+        "categories_info_dNn87P",
+        "effects_yield_6gFaew"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_38tTrM"
+  ]
+}
