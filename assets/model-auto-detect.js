@@ -11,7 +11,7 @@
   /* ─── Config ─── */
   var CONFIGURATOR_BASE =
     window.__PACKTHC_CONFIGURATOR_URL__ ||
-    'https://dram-product-customizer.vercel.app';
+    'https://v0-product-design-tool.vercel.app/';
   var API_ENDPOINT = CONFIGURATOR_BASE + '/api/model-categories';
   var CACHE_KEY = 'packthc_3d_model_match';
   var CACHE_TTL = 1000 * 60 * 60; // 1 hour
