@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_3dWgeP": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_AEf8MG": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Diesel_fem_3.webp",
+            "image_description": "Diesel (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "emoji_main": "",
+            "product_name": "Diesel (fem)",
+            "genetics": "Diesel • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 18–24%",
+            "strain-badge_3": "CBD <1%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Uplifting",
+            "effect_emoji_2": "⬆️",
+            "effect_3": "Creative",
+            "effect_emoji_3": "💡",
+            "effect_4": "",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Caryophyllene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 50,
+            "thc_level": 70
+          }
+        },
+        "description_7gqwEg": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Diesel (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "description_2": "Diesel (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation. In a packaging context, highlighting the strain's balanced nature can help consumers quickly identify it among other options.\n\nAs a packaging company, emphasizing airtight, odor-resistant, and compliant packaging is essential for preserving the strain's terpene profile and potency. Proper labeling and protective materials ensure the product remains fresh from cultivation to consumer, aligning with regulatory requirements and customer expectations.",
+            "bud_image": "shopify://shop_images/Diesel_fem_4.webp",
+            "bud_image_2": "shopify://shop_images/Diesel_fem_2.webp",
+            "bud_image_3": "shopify://shop_images/Diesel_fem.webp",
+            "bud_image_4": "shopify://shop_images/Diesel_fem_3.webp",
+            "feature_1_emoji": "🔒",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "👃",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage during storage.",
+            "feature_3_emoji": "👶",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_xHPrNe": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1-grams-hollywood-haze-mylar-bag",
+            "product_2": "1-grams-king-runtz-mylar-bag",
+            "product_3": "1-grams-cherry-wine-mylar-bag",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "1-grams-bull-dog-mylar-bag",
+            "product_5": "1-grams-green-rush-mylar-bag",
+            "product_6": "1-grams-haze-mylar-bag",
+            "product_7": "1-grams-astro-high-mylar-bag",
+            "product_8": "1-grams-platinum-mylar-bag"
+          }
+        },
+        "categories_info_p3T6wq": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Flower",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "8–10 weeks",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–24%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "<1%"
+          }
+        },
+        "effects_yield_NiMYFd": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Calming relaxation",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Balanced euphoria",
+            "effect_tag_emoji_2": "😊",
+            "effect_tag_3": "Creative inspiration",
+            "effect_tag_emoji_3": "💡",
+            "effect_tag_4": "Gentle body relief",
+            "effect_tag_emoji_4": "🌿",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🍊",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🌍",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🌸",
+            "terp_tag_3": "Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "Indoor: Moderate yields with controlled environment | Outdoor: High yields in warm climates"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_AEf8MG",
+        "description_7gqwEg",
+        "product_selection_xHPrNe",
+        "categories_info_p3T6wq",
+        "effects_yield_NiMYFd"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_3dWgeP"
+  ]
+}

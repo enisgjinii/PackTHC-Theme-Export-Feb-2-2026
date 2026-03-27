@@ -1,0 +1,430 @@
+{% comment %}
+  Who It's For — Scroll-Triggered Card Fan Section
+  Cards fan out like a hand of playing cards as user scrolls
+{% endcomment %}
+
+<section
+  id="wif-{{ section.id }}"
+  class="wif-section"
+  style="
+    --wif-bg: {{ section.settings.bg_color | default: '#ffffff' }};
+    --wif-text: {{ section.settings.text_color | default: '#0a2e2e' }};
+    --wif-accent: {{ section.settings.accent_color | default: '#d6ffe8' }};
+  "
+>
+  <!-- Sticky container -->
+  <div class="wif-sticky-wrap">
+    <div class="wif-sticky">
+
+      <!-- Header -->
+      <div class="wif-header">
+        <span class="wif-badge">{{ section.settings.badge_text | default: 'ACCOUNTING FOR CREATIVES' }}</span>
+        <h2 class="wif-title">{{ section.settings.title | default: "WHO IT'S FOR" }}</h2>
+        <p class="wif-subtitle">{{ section.settings.subtitle | default: 'CREATIVES CREATE, WE CALCULATE' }}</p>
+      </div>
+
+      <!-- Cards Container -->
+      <div class="wif-cards" id="wif-cards-{{ section.id }}">
+        {% for block in section.blocks %}
+          <div
+            class="wif-card"
+            data-card-index="{{ forloop.index0 }}"
+            data-total-cards="{{ section.blocks.size }}"
+            style="
+              --card-bg: {{ block.settings.card_color | default: '#fde0e8' }};
+              --card-index: {{ forloop.index0 }};
+              z-index: {{ forloop.index }};
+            "
+          >
+            <h3 class="wif-card__title">{{ block.settings.card_title }}</h3>
+            <p class="wif-card__desc">{{ block.settings.card_description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── RESET & SECTION ── */
+  .wif-section {
+    background: var(--wif-bg);
+    color: var(--wif-text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wif-sticky-wrap {
+    height: 300vh;
+    position: relative;
+  }
+
+  .wif-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .wif-header {
+    text-align: center;
+    margin-bottom: 40px;
+    z-index: 0;
+    position: relative;
+  }
+
+  .wif-badge {
+    display: inline-block;
+    background: var(--wif-accent);
+    color: var(--wif-text);
+    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .wif-title {
+    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+    font-size: clamp(60px, 10vw, 140px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--wif-text);
+  }
+
+  .wif-subtitle {
+    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+    font-size: clamp(12px, 1.4vw, 18px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    color: var(--wif-text);
+  }
+
+  /* ── CARDS CONTAINER ── */
+  .wif-cards {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 420px;
+    pointer-events: none;
+  }
+
+  /* ── INDIVIDUAL CARD ── */
+  .wif-card {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 260px;
+    height: 360px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform-origin: bottom center;
+    /* Start state: all cards stacked, hidden below */
+    transform: translateX(-50%) translateY(100%) rotate(0deg);
+    opacity: 0;
+    transition: none;
+    pointer-events: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  }
+
+  .wif-card__title {
+    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--wif-text);
+    margin: 0;
+  }
+
+  .wif-card__desc {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--wif-text);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .wif-cards {
+      height: 340px;
+    }
+    .wif-card {
+      width: 200px;
+      height: 280px;
+      padding: 24px 20px;
+    }
+    .wif-card__title {
+      font-size: 22px;
+    }
+    .wif-card__desc {
+      font-size: 12px;
+    }
+    .wif-sticky-wrap {
+      height: 250vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wif-card {
+      width: 160px;
+      height: 230px;
+      padding: 18px 14px;
+    }
+    .wif-card__title {
+      font-size: 18px;
+    }
+    .wif-card__desc {
+      font-size: 11px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const sectionId = '{{ section.id }}';
+    const wrap = document.querySelector('#wif-' + sectionId + ' .wif-sticky-wrap');
+    const cards = document.querySelectorAll('#wif-' + sectionId + ' .wif-card');
+    const totalCards = cards.length;
+
+    if (!totalCards || !wrap) return;
+
+    // Fan layout config
+    // Cards spread from center like a hand of playing cards
+    const fanConfig = {
+      // Total arc angle for the fan (degrees)
+      totalArc: 70,
+      // Vertical offset for outer cards
+      ySpread: 30,
+      // Horizontal spread
+      xSpread: 100,
+    };
+
+    function getCardTransform(index, total) {
+      // Center index
+      const mid = (total - 1) / 2;
+      const offset = index - mid;
+      const normalizedOffset = total > 1 ? offset / mid : 0;
+
+      // Rotation: cards fan out from center
+      const rotation = normalizedOffset * (fanConfig.totalArc / 2);
+
+      // Horizontal position: spread cards
+      const xPercent = normalizedOffset * fanConfig.xSpread;
+
+      // Vertical: slight arc, center cards higher
+      const yOffset = Math.abs(normalizedOffset) * fanConfig.ySpread;
+
+      return {
+        rotation: rotation,
+        x: xPercent,
+        y: yOffset
+      };
+    }
+
+    function onScroll() {
+      const rect = wrap.getBoundingClientRect();
+      const wrapHeight = wrap.offsetHeight;
+      const viewH = window.innerHeight;
+
+      // Progress: 0 when top of wrap hits top of viewport, 1 when bottom hits
+      const scrolled = -rect.top;
+      const scrollableDistance = wrapHeight - viewH;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+
+      // Each card gets a portion of the scroll
+      const cardStep = 1 / (totalCards + 1);
+
+      cards.forEach(function(card, i) {
+        const cardStart = cardStep * (i + 0.5);
+        const cardEnd = cardStep * (i + 1.5);
+        const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / (cardEnd - cardStart)));
+
+        const target = getCardTransform(i, totalCards);
+
+        if (cardProgress <= 0) {
+          // Hidden below
+          card.style.opacity = '0';
+          card.style.transform = 'translateX(-50%) translateY(120%) rotate(0deg)';
+        } else {
+          // Ease out cubic
+          const ease = 1 - Math.pow(1 - cardProgress, 3);
+
+          const currentRotation = target.rotation * ease;
+          const currentX = -50 + (target.x * ease);
+          const currentY = 120 - (120 + target.y) * ease + target.y;
+
+          card.style.opacity = String(Math.min(1, cardProgress * 2));
+          card.style.transform =
+            'translateX(' + currentX + '%) translateY(' + currentY + '%) rotate(' + currentRotation + 'deg)';
+        }
+      });
+    }
+
+    // Throttle scroll
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          onScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial call
+    onScroll();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Who It's For Cards",
+  "tag": "section",
+  "class": "wif-section-wrapper",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#0a2e2e"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Badge Background",
+      "default": "#d6ffe8"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "ACCOUNTING FOR CREATIVES"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WHO IT'S FOR"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "CREATIVES CREATE, WE CALCULATE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "Creative Freelancers"
+        },
+        {
+          "type": "textarea",
+          "id": "card_description",
+          "label": "Card Description",
+          "default": "Providing support and expertise to clients, solo managing all deadlines."
+        },
+        {
+          "type": "color",
+          "id": "card_color",
+          "label": "Card Background Color",
+          "default": "#fde0e8"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Who It's For Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Freelancers",
+            "card_description": "Providing support and expertise to clients, solo managing all deadlines.",
+            "card_color": "#fde0e8"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Studios and Agencies",
+            "card_description": "Creative experiences that connect, convert and inspire audiences.",
+            "card_color": "#a8f5c8"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Collectives",
+            "card_description": "All-in-one creative workflows from concept to launch.",
+            "card_color": "#f2a0b5"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Production Houses",
+            "card_description": "Turning ideas into reality, defining brand values.",
+            "card_color": "#d6ffe8"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Contractors",
+            "card_description": "Expertly advising clients with creative leadership.",
+            "card_color": "#f5e6d8"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "card_title": "Media Businesses",
+            "card_description": "Guiding clients to their milestones through media management.",
+            "card_color": "#fde0e8"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

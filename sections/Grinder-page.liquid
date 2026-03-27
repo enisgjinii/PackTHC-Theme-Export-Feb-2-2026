@@ -1,0 +1,693 @@
+{% comment %}
+  Section: Video Hero with Animated Headings
+  Cinematic dark aesthetic | Animated text + floating video center
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<style>
+  .vhs-section {
+    --vhs-bg: {{ section.settings.bg_color }};
+    --vhs-accent: {{ section.settings.accent_color }};
+    --vhs-text: {{ section.settings.text_color }};
+    --vhs-subtext: {{ section.settings.subtext_color }};
+    --vhs-radius: {{ section.settings.video_radius }}px;
+
+    position: relative;
+    background-color: var(--vhs-bg);
+    overflow: hidden;
+    padding: 80px 40px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── noise grain overlay ── */
+  .vhs-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  /* ── ambient glow blobs ── */
+  .vhs-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+    animation: vhsFloat 8s ease-in-out infinite alternate;
+  }
+  .vhs-glow--left  { width: 480px; height: 480px; background: var(--vhs-accent); top: -80px; left: -120px; animation-delay: 0s; }
+  .vhs-glow--right { width: 380px; height: 380px; background: var(--vhs-accent); bottom: -60px; right: -80px; animation-delay: -4s; }
+
+  @keyframes vhsFloat {
+    from { transform: translateY(0px) scale(1); }
+    to   { transform: translateY(30px) scale(1.08); }
+  }
+
+  /* ── grid layout ── */
+  .vhs-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    gap: 0 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ── video wrapper ── */
+  .vhs-video-wrap {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    position: relative;
+    width: {{ section.settings.video_width }}px;
+    max-width: 90vw;
+    border-radius: var(--vhs-radius);
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 32px 80px rgba(0,0,0,0.55),
+      0 0 60px rgba({{ section.settings.accent_color | remove: '#' | color_extract: 'red' }},{{ section.settings.accent_color | remove: '#' | color_extract: 'green' }},{{ section.settings.accent_color | remove: '#' | color_extract: 'blue' }}, 0.12);
+    transform: translateY(60px) scale(0.92);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
+  }
+  .vhs-video-wrap.vhs-visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* floating ring decoration */
+  .vhs-video-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: calc(var(--vhs-radius) + 2px);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    pointer-events: none;
+    animation: vhsPulseRing 3s ease-in-out infinite;
+  }
+  @keyframes vhsPulseRing {
+    0%, 100% { opacity: 0.15; }
+    50%       { opacity: 0.45; }
+  }
+
+  .vhs-video-wrap video,
+  .vhs-video-wrap iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: {{ section.settings.video_aspect }};
+    object-fit: cover;
+    border: none;
+  }
+
+  /* play overlay */
+  .vhs-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .vhs-play-overlay.vhs-hidden { opacity: 0; pointer-events: none; }
+  .vhs-play-btn {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .vhs-play-btn:hover { transform: scale(1.12); background: rgba(255,255,255,0.25); }
+  .vhs-play-btn svg { margin-left: 4px; }
+
+  /* ── text blocks ── */
+  .vhs-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .vhs-text-block--left  { grid-column: 1; text-align: right; align-items: flex-end; }
+  .vhs-text-block--right { grid-column: 3; text-align: left; align-items: flex-start; }
+
+  /* row positioning */
+  .vhs-text-block--tl { grid-row: 1; align-self: start; padding-bottom: 32px; }
+  .vhs-text-block--ml { grid-row: 2; }
+  .vhs-text-block--bl { grid-row: 3; align-self: end; padding-top: 32px; }
+  .vhs-text-block--tr { grid-row: 1; align-self: start; padding-bottom: 32px; }
+  .vhs-text-block--mr { grid-row: 2; }
+  .vhs-text-block--br { grid-row: 3; align-self: end; padding-top: 32px; }
+
+  /* animated entry states */
+  .vhs-text-block { opacity: 0; }
+  .vhs-text-block--left  { transform: translateX(-50px); }
+  .vhs-text-block--right { transform: translateX(50px); }
+  .vhs-text-block.vhs-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .vhs-text-block--tl.vhs-visible,
+  .vhs-text-block--tr.vhs-visible { transition-delay: 0.15s; }
+  .vhs-text-block--ml.vhs-visible,
+  .vhs-text-block--mr.vhs-visible { transition-delay: 0.3s; }
+  .vhs-text-block--bl.vhs-visible,
+  .vhs-text-block--br.vhs-visible { transition-delay: 0.45s; }
+
+  /* ── label pill ── */
+  .vhs-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vhs-accent);
+    padding: 6px 14px;
+    border: 1px solid var(--vhs-accent);
+    border-radius: 100px;
+    width: fit-content;
+    opacity: 0.85;
+  }
+  .vhs-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--vhs-accent);
+    animation: vhsBlink 1.6s ease-in-out infinite;
+  }
+  @keyframes vhsBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.2; }
+  }
+
+  /* ── heading ── */
+  .vhs-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 54px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--vhs-text);
+    margin: 0;
+    overflow: hidden;
+  }
+  .vhs-heading span {
+    display: block;
+    transform: translateY(105%);
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .vhs-visible .vhs-heading span { transform: translateY(0); }
+  .vhs-heading--accent { color: var(--vhs-accent); }
+
+  /* ── body text ── */
+  .vhs-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--vhs-subtext);
+    max-width: 200px;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ── stat badge ── */
+  .vhs-stat {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 14px 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+    width: fit-content;
+  }
+  .vhs-stat__num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--vhs-text);
+    letter-spacing: 0.04em;
+  }
+  .vhs-stat__label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--vhs-subtext);
+    margin-top: 4px;
+  }
+
+  /* ── corner decorators ── */
+  .vhs-corner {
+    position: absolute;
+    width: 40px; height: 40px;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  .vhs-corner--tl { top: 0; left: 0; border-top: 1.5px solid var(--vhs-accent); border-left: 1.5px solid var(--vhs-accent); }
+  .vhs-corner--br { bottom: 0; right: 0; border-bottom: 1.5px solid var(--vhs-accent); border-right: 1.5px solid var(--vhs-accent); }
+
+  /* ── divider line ── */
+  .vhs-divider {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--vhs-accent), transparent);
+    opacity: 0.5;
+    align-self: center;
+    margin: 8px 0;
+  }
+
+  /* ── MOBILE responsive ── */
+  @media (max-width: 768px) {
+    .vhs-section { padding: 60px 20px; }
+    .vhs-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 32px;
+    }
+    .vhs-video-wrap { grid-column: 1; grid-row: 3; width: 100% !important; max-width: 100%; }
+    .vhs-text-block { text-align: center !important; align-items: center !important; }
+    .vhs-text-block--left,
+    .vhs-text-block--right {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .vhs-body { max-width: 90%; }
+    .vhs-glow--left  { width: 260px; height: 260px; }
+    .vhs-glow--right { width: 200px; height: 200px; }
+  }
+</style>
+
+<section
+  id="vhs-{{ section.id }}"
+  class="vhs-section"
+  data-section-id="{{ section.id }}"
+>
+  <!-- ambient glows -->
+  <div class="vhs-glow vhs-glow--left"></div>
+  <div class="vhs-glow vhs-glow--right"></div>
+
+  <div class="vhs-grid">
+
+    <!-- ── LEFT COLUMN ── -->
+    {% if section.settings.label_left != blank %}
+    <div class="vhs-text-block vhs-text-block--left vhs-text-block--tl">
+      <span class="vhs-label">{{ section.settings.label_left }}</span>
+      {% if section.settings.heading_left_top != blank %}
+      <h2 class="vhs-heading">
+        <span>{{ section.settings.heading_left_top }}</span>
+      </h2>
+      {% endif %}
+      {% if section.settings.body_left_top != blank %}
+      <p class="vhs-body">{{ section.settings.body_left_top }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="vhs-text-block vhs-text-block--left vhs-text-block--ml">
+      {% if section.settings.heading_left_mid != blank %}
+      <h2 class="vhs-heading vhs-heading--accent">
+        <span>{{ section.settings.heading_left_mid }}</span>
+      </h2>
+      {% endif %}
+      {% if section.settings.body_left_mid != blank %}
+      <p class="vhs-body">{{ section.settings.body_left_mid }}</p>
+      {% endif %}
+      <div class="vhs-divider"></div>
+    </div>
+
+    {% if section.settings.stat_num_left != blank %}
+    <div class="vhs-text-block vhs-text-block--left vhs-text-block--bl">
+      <div class="vhs-stat">
+        <span class="vhs-stat__num">{{ section.settings.stat_num_left }}</span>
+        <span class="vhs-stat__label">{{ section.settings.stat_label_left }}</span>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- ── CENTER VIDEO ── -->
+    <div class="vhs-video-wrap">
+      <div class="vhs-corner vhs-corner--tl"></div>
+      <div class="vhs-corner vhs-corner--br"></div>
+
+      {% if section.settings.video_type == 'mp4' %}
+        <video
+          id="vhs-vid-{{ section.id }}"
+          src="{{ section.settings.video_url }}"
+          {% if section.settings.autoplay %}autoplay muted playsinline{% else %}preload="metadata"{% endif %}
+          {% if section.settings.loop %}loop{% endif %}
+          poster="{{ section.settings.video_poster | img_url: '800x' }}"
+        ></video>
+        {% unless section.settings.autoplay %}
+        <div class="vhs-play-overlay" id="vhs-play-{{ section.id }}">
+          <div class="vhs-play-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <polygon points="5,3 19,12 5,21" fill="white"/>
+            </svg>
+          </div>
+        </div>
+        {% endunless %}
+
+      {% elsif section.settings.video_type == 'youtube' %}
+        <iframe
+          src="https://www.youtube.com/embed/{{ section.settings.youtube_id }}?autoplay={% if section.settings.autoplay %}1{% else %}0{% endif %}&mute={% if section.settings.autoplay %}1{% else %}0{% endif %}&loop={% if section.settings.loop %}1{% else %}0{% endif %}&playlist={{ section.settings.youtube_id }}&rel=0&modestbranding=1&controls={% if section.settings.show_controls %}1{% else %}0{% endif %}"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+
+      {% elsif section.settings.video_type == 'vimeo' %}
+        <iframe
+          src="https://player.vimeo.com/video/{{ section.settings.vimeo_id }}?autoplay={% if section.settings.autoplay %}1{% else %}0{% endif %}&muted={% if section.settings.autoplay %}1{% else %}0{% endif %}&loop={% if section.settings.loop %}1{% else %}0{% endif %}&title=0&byline=0&portrait=0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      {% endif %}
+    </div>
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="vhs-text-block vhs-text-block--right vhs-text-block--tr">
+      {% if section.settings.heading_right_top != blank %}
+      <h2 class="vhs-heading">
+        <span>{{ section.settings.heading_right_top }}</span>
+      </h2>
+      {% endif %}
+      {% if section.settings.body_right_top != blank %}
+      <p class="vhs-body">{{ section.settings.body_right_top }}</p>
+      {% endif %}
+      {% if section.settings.label_right != blank %}
+      <span class="vhs-label">{{ section.settings.label_right }}</span>
+      {% endif %}
+    </div>
+
+    <div class="vhs-text-block vhs-text-block--right vhs-text-block--mr">
+      <div class="vhs-divider"></div>
+      {% if section.settings.heading_right_mid != blank %}
+      <h2 class="vhs-heading vhs-heading--accent">
+        <span>{{ section.settings.heading_right_mid }}</span>
+      </h2>
+      {% endif %}
+      {% if section.settings.body_right_mid != blank %}
+      <p class="vhs-body">{{ section.settings.body_right_mid }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.stat_num_right != blank %}
+    <div class="vhs-text-block vhs-text-block--right vhs-text-block--br">
+      <div class="vhs-stat">
+        <span class="vhs-stat__num">{{ section.settings.stat_num_right }}</span>
+        <span class="vhs-stat__label">{{ section.settings.stat_label_right }}</span>
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var sectionId = "vhs-{{ section.id }}";
+  var section   = document.getElementById(sectionId);
+  if (!section) return;
+
+  /* ── IntersectionObserver animate-in ── */
+  var targets = section.querySelectorAll('.vhs-text-block, .vhs-video-wrap');
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('vhs-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    targets.forEach(function(el) { io.observe(el); });
+  } else {
+    targets.forEach(function(el) { el.classList.add('vhs-visible'); });
+  }
+
+  /* ── custom play button for mp4 ── */
+  var playOverlay = document.getElementById('vhs-play-{{ section.id }}');
+  var vid         = document.getElementById('vhs-vid-{{ section.id }}');
+  if (playOverlay && vid) {
+    playOverlay.addEventListener('click', function() {
+      vid.play();
+      playOverlay.classList.add('vhs-hidden');
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Video Hero Animated",
+  "tag": "section",
+  "class": "video-hero-animated",
+  "settings": [
+    {
+      "type": "header",
+      "content": "🎨 Design"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#ff4500"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Heading Color",
+      "default": "#f0ede8"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Body / Subtext Color",
+      "default": "#7a7a7a"
+    },
+    {
+      "type": "header",
+      "content": "🎬 Video Settings"
+    },
+    {
+      "type": "select",
+      "id": "video_type",
+      "label": "Video Source",
+      "options": [
+        { "value": "mp4",     "label": "Hosted MP4" },
+        { "value": "youtube", "label": "YouTube" },
+        { "value": "vimeo",   "label": "Vimeo" }
+      ],
+      "default": "mp4"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "MP4 Video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video Poster / Thumbnail"
+    },
+    {
+      "type": "text",
+      "id": "youtube_id",
+      "label": "YouTube Video ID",
+      "info": "e.g. dQw4w9WgXcQ from youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "type": "text",
+      "id": "vimeo_id",
+      "label": "Vimeo Video ID",
+      "info": "e.g. 123456789 from vimeo.com/123456789"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay (muted)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop Video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show Player Controls (YouTube/Vimeo)",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "video_width",
+      "label": "Video Width (px)",
+      "min": 280,
+      "max": 640,
+      "step": 20,
+      "default": 440
+    },
+    {
+      "type": "select",
+      "id": "video_aspect",
+      "label": "Video Aspect Ratio",
+      "options": [
+        { "value": "16/9", "label": "16:9 Landscape" },
+        { "value": "4/3",  "label": "4:3" },
+        { "value": "1/1",  "label": "1:1 Square" },
+        { "value": "9/16", "label": "9:16 Portrait (Reel)" }
+      ],
+      "default": "9/16"
+    },
+    {
+      "type": "range",
+      "id": "video_radius",
+      "label": "Video Corner Radius (px)",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "◀ Left Column — Top"
+    },
+    {
+      "type": "text",
+      "id": "label_left",
+      "label": "Label / Badge",
+      "default": "Now Playing"
+    },
+    {
+      "type": "text",
+      "id": "heading_left_top",
+      "label": "Heading",
+      "default": "Crafted for\nPerfection"
+    },
+    {
+      "type": "textarea",
+      "id": "body_left_top",
+      "label": "Description",
+      "default": "Every frame tells a story you won't forget."
+    },
+    {
+      "type": "header",
+      "content": "◀ Left Column — Middle"
+    },
+    {
+      "type": "text",
+      "id": "heading_left_mid",
+      "label": "Accent Heading",
+      "default": "Since 2019"
+    },
+    {
+      "type": "textarea",
+      "id": "body_left_mid",
+      "label": "Description",
+      "default": "A legacy built on bold vision and relentless craft."
+    },
+    {
+      "type": "header",
+      "content": "◀ Left Column — Bottom Stat"
+    },
+    {
+      "type": "text",
+      "id": "stat_num_left",
+      "label": "Stat Number",
+      "default": "200K+"
+    },
+    {
+      "type": "text",
+      "id": "stat_label_left",
+      "label": "Stat Label",
+      "default": "Happy Customers"
+    },
+    {
+      "type": "header",
+      "content": "▶ Right Column — Top"
+    },
+    {
+      "type": "text",
+      "id": "heading_right_top",
+      "label": "Heading",
+      "default": "Feel the\nDifference"
+    },
+    {
+      "type": "textarea",
+      "id": "body_right_top",
+      "label": "Description",
+      "default": "A product born from obsession with quality."
+    },
+    {
+      "type": "text",
+      "id": "label_right",
+      "label": "Label / Badge",
+      "default": "Premium Grade"
+    },
+    {
+      "type": "header",
+      "content": "▶ Right Column — Middle"
+    },
+    {
+      "type": "text",
+      "id": "heading_right_mid",
+      "label": "Accent Heading",
+      "default": "Award-Winning"
+    },
+    {
+      "type": "textarea",
+      "id": "body_right_mid",
+      "label": "Description",
+      "default": "Recognised globally for design and innovation."
+    },
+    {
+      "type": "header",
+      "content": "▶ Right Column — Bottom Stat"
+    },
+    {
+      "type": "text",
+      "id": "stat_num_right",
+      "label": "Stat Number",
+      "default": "4.9★"
+    },
+    {
+      "type": "text",
+      "id": "stat_label_right",
+      "label": "Stat Label",
+      "default": "Average Rating"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Hero Animated",
+      "category": "Video"
+    }
+  ]
+}
+{% endschema %}
+

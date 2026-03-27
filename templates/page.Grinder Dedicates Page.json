@@ -1,0 +1,133 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "grinder_page_yHcWG3": {
+      "type": "Grinder-page",
+      "disabled": true,
+      "name": "Hero — Video Center",
+      "settings": {
+        "bg_color": "#ffffff",
+        "accent_color": "#c4301c",
+        "text_color": "#1d349a",
+        "subtext_color": "#7a7a7a",
+        "video_type": "mp4",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/a8874ced32624855be6b4da01c3a38bc.mp4",
+        "youtube_id": "",
+        "vimeo_id": "",
+        "autoplay": true,
+        "loop": true,
+        "show_controls": false,
+        "video_width": 640,
+        "video_aspect": "9/16",
+        "video_radius": 16,
+        "label_left": "Now Playing",
+        "heading_left_top": "Crafted forPerfection",
+        "body_left_top": "Every frame tells a story you won't forget.",
+        "heading_left_mid": "Since 2019",
+        "body_left_mid": "A legacy built on bold vision and relentless craft.",
+        "stat_num_left": "200K+",
+        "stat_label_left": "Happy Customers",
+        "heading_right_top": "Feel theDifference",
+        "body_right_top": "A product born from obsession with quality.",
+        "label_right": "Premium Grade",
+        "heading_right_mid": "Award-Winning",
+        "body_right_mid": "Recognised globally for design and innovation.",
+        "stat_num_right": "4.9★",
+        "stat_label_right": "Average Rating"
+      }
+    },
+    "grinder_second_6EnxUL": {
+      "type": "grinder-second",
+      "blocks": {
+        "card_88FiHy": {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Freelancers",
+            "card_description": "Providing support and expertise to clients, solo managing all deadlines.",
+            "card_color": "#fde0e8"
+          }
+        },
+        "card_B7FddW": {
+          "type": "card",
+          "settings": {
+            "card_title": "Studios and Agencies",
+            "card_description": "Creative experiences that connect, convert and inspire audiences.",
+            "card_color": "#a8f5c8"
+          }
+        },
+        "card_Lk6fHk": {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Collectives",
+            "card_description": "All-in-one creative workflows from concept to launch.",
+            "card_color": "#f2a0b5"
+          }
+        },
+        "card_mkEEPT": {
+          "type": "card",
+          "settings": {
+            "card_title": "Production Houses",
+            "card_description": "Turning ideas into reality, defining brand values.",
+            "card_color": "#d6ffe8"
+          }
+        },
+        "card_eHaxRy": {
+          "type": "card",
+          "settings": {
+            "card_title": "Creative Contractors",
+            "card_description": "Expertly advising clients with creative leadership.",
+            "card_color": "#f5e6d8"
+          }
+        },
+        "card_3wVpFt": {
+          "type": "card",
+          "settings": {
+            "card_title": "Media Businesses",
+            "card_description": "Guiding clients to their milestones through media management.",
+            "card_color": "#fde0e8"
+          }
+        }
+      },
+      "block_order": [
+        "card_88FiHy",
+        "card_B7FddW",
+        "card_Lk6fHk",
+        "card_mkEEPT",
+        "card_eHaxRy",
+        "card_3wVpFt"
+      ],
+      "name": "Who It's For Cards",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#0a2e2e",
+        "accent_color": "#d6ffe8",
+        "badge_text": "ACCOUNTING FOR CREATIVES",
+        "title": "WHO IT'S FOR",
+        "subtitle": "CREATIVES CREATE, WE CALCULATE"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "grinder_page_yHcWG3",
+    "grinder_second_6EnxUL"
+  ]
+}
