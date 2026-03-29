@@ -1,0 +1,545 @@
+{% comment %}
+  Gallery Section — Masonry Layout with Scroll Reveal
+{% endcomment %}
+
+<section
+  id="gal-{{ section.id }}"
+  class="gal-section"
+  style="
+    --gal-bg: {{ section.settings.bg_color | default: '#faf8f4' }};
+    --gal-text: {{ section.settings.text_color | default: '#0a2e2e' }};
+    --gal-accent: {{ section.settings.accent_color | default: '#0a2e2e' }};
+  "
+>
+  <div class="gal-inner">
+
+    <!-- Header -->
+    {% if section.settings.badge_text != blank or section.settings.title != blank %}
+    <div class="gal-header">
+      {% if section.settings.badge_text != blank %}
+        <span class="gal-badge">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2 class="gal-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="gal-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Masonry Grid -->
+    <div class="gal-grid" id="gal-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="gal-item" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="gal-item__inner">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 900 }}"
+                alt="{{ block.settings.caption | default: '' }}"
+                class="gal-item__img"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="gal-item__placeholder"></div>
+            {% endif %}
+
+            {% if block.settings.caption != blank or block.settings.tag != blank %}
+              <div class="gal-item__overlay">
+                {% if block.settings.tag != blank %}
+                  <span class="gal-item__tag">{{ block.settings.tag }}</span>
+                {% endif %}
+                {% if block.settings.caption != blank %}
+                  <p class="gal-item__caption">{{ block.settings.caption }}</p>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Optional CTA -->
+    {% if section.settings.button_label != blank %}
+      <div class="gal-cta">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="gal-btn">
+          {{ section.settings.button_label }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .gal-section {
+    background: var(--gal-bg);
+    color: var(--gal-text);
+    position: relative;
+  }
+
+  .gal-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+  }
+
+  /* ── HEADER ── */
+  .gal-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 700px;
+  }
+
+  .gal-badge {
+    display: inline-block;
+    border: 1.5px solid var(--gal-text);
+    color: var(--gal-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    opacity: 0.5;
+  }
+
+  .gal-title {
+    font-size: clamp(52px, 8vw, 120px);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: var(--gal-text);
+    margin: 0;
+  }
+
+  .gal-subtitle {
+    font-size: clamp(14px, 1.2vw, 17px);
+    line-height: 1.6;
+    color: var(--gal-text);
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  /* ── MASONRY GRID ── */
+  .gal-grid {
+    width: 100%;
+    columns: 4;
+    column-gap: 16px;
+  }
+
+  .gal-item {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gal-item__inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #e8e4dd;
+    cursor: pointer;
+  }
+
+  .gal-item__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gal-item__placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(135deg, #e8e4dd 0%, #d4cfc8 100%);
+  }
+
+  /* Vary placeholder heights for visual interest */
+  .gal-item:nth-child(3n+1) .gal-item__placeholder { aspect-ratio: 3 / 4; }
+  .gal-item:nth-child(3n+2) .gal-item__placeholder { aspect-ratio: 4 / 5; }
+  .gal-item:nth-child(3n+3) .gal-item__placeholder { aspect-ratio: 1 / 1; }
+
+  /* ── OVERLAY ── */
+  .gal-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,46,46,0.75) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 18px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .gal-item__inner:hover .gal-item__overlay {
+    opacity: 1;
+  }
+
+  .gal-item__inner:hover .gal-item__img {
+    transform: scale(1.04);
+  }
+
+  .gal-item__tag {
+    display: inline-block;
+    align-self: flex-start;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-bottom: 8px;
+  }
+
+  .gal-item__caption {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ── CTA ── */
+  .gal-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--gal-text);
+    color: var(--gal-text);
+    background: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .gal-btn:hover {
+    background: var(--gal-text);
+    color: var(--gal-bg);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .gal-grid { columns: 3; }
+  }
+
+  @media (max-width: 768px) {
+    .gal-inner { padding: 70px 20px 80px; gap: 44px; }
+    .gal-grid { columns: 2; column-gap: 12px; }
+    .gal-item { margin-bottom: 12px; }
+  }
+
+  @media (max-width: 480px) {
+    .gal-grid { columns: 2; column-gap: 10px; }
+    .gal-item { margin-bottom: 10px; }
+  }
+
+  /* ── LIGHTBOX ── */
+  .gal-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .gal-lightbox.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .gal-lightbox__img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    transform: scale(0.95);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .gal-lightbox.is-open .gal-lightbox__img {
+    transform: scale(1);
+  }
+
+  .gal-lightbox__close {
+    position: fixed;
+    top: 24px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    line-height: 1;
+  }
+
+  .gal-lightbox__close:hover {
+    background: rgba(255,255,255,0.1);
+  }
+
+  .gal-lightbox__nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .gal-lightbox__nav:hover { background: rgba(255,255,255,0.1); }
+  .gal-lightbox__prev { left: 20px; }
+  .gal-lightbox__next { right: 20px; }
+
+  .gal-lightbox__counter {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+</style>
+
+<!-- Lightbox DOM -->
+<div class="gal-lightbox" id="gal-lb-{{ section.id }}">
+  <button class="gal-lightbox__close" id="gal-lb-close-{{ section.id }}">&#x2715;</button>
+  <img class="gal-lightbox__img" id="gal-lb-img-{{ section.id }}" src="" alt="">
+  <button class="gal-lightbox__nav gal-lightbox__prev" id="gal-lb-prev-{{ section.id }}">&#8592;</button>
+  <button class="gal-lightbox__nav gal-lightbox__next" id="gal-lb-next-{{ section.id }}">&#8594;</button>
+  <div class="gal-lightbox__counter" id="gal-lb-counter-{{ section.id }}"></div>
+</div>
+
+<script>
+(function () {
+  const sid      = '{{ section.id }}';
+  const items    = Array.from(document.querySelectorAll('#gal-grid-' + sid + ' .gal-item'));
+  const lb       = document.getElementById('gal-lb-' + sid);
+  const lbImg    = document.getElementById('gal-lb-img-' + sid);
+  const lbClose  = document.getElementById('gal-lb-close-' + sid);
+  const lbPrev   = document.getElementById('gal-lb-prev-' + sid);
+  const lbNext   = document.getElementById('gal-lb-next-' + sid);
+  const lbCtr    = document.getElementById('gal-lb-counter-' + sid);
+
+  // Collect image srcs
+  const srcs = items.map(function(item) {
+    var img = item.querySelector('.gal-item__img');
+    return img ? img.src : '';
+  }).filter(Boolean);
+
+  let current = 0;
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var idx = parseInt(entry.target.dataset.index);
+        setTimeout(function() {
+          entry.target.classList.add('is-visible');
+        }, idx % 4 * 80); // stagger per column
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  items.forEach(function(item) { observer.observe(item); });
+
+  // ── LIGHTBOX ──
+  function openLb(index) {
+    if (!srcs.length) return;
+    current = index;
+    lbImg.src = srcs[current];
+    lbCtr.textContent = (current + 1) + ' / ' + srcs.length;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLb() {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    current = (current + 1) % srcs.length;
+    lbImg.src = srcs[current];
+    lbCtr.textContent = (current + 1) + ' / ' + srcs.length;
+  }
+
+  function showPrev() {
+    current = (current - 1 + srcs.length) % srcs.length;
+    lbImg.src = srcs[current];
+    lbCtr.textContent = (current + 1) + ' / ' + srcs.length;
+  }
+
+  items.forEach(function(item, i) {
+    item.querySelector('.gal-item__inner').addEventListener('click', function() {
+      openLb(i);
+    });
+  });
+
+  lbClose.addEventListener('click', closeLb);
+  lbNext.addEventListener('click', showNext);
+  lbPrev.addEventListener('click', showPrev);
+
+  lb.addEventListener('click', function(e) {
+    if (e.target === lb) closeLb();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Masonry Gallery",
+  "tag": "section",
+  "class": "gal-section-wrapper",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#faf8f4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#0a2e2e"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#0a2e2e"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "OUR WORK"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "MOMENTS WE LOVE"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "A glimpse into the work and world we're building together."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "View all work"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (shown on hover)",
+          "default": "Tag"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption (shown on hover)",
+          "default": "Caption"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Masonry Gallery",
+      "blocks": [
+        { "type": "image", "settings": { "tag": "Branding", "caption": "Identity system for a creative studio" } },
+        { "type": "image", "settings": { "tag": "Editorial", "caption": "Annual report design" } },
+        { "type": "image", "settings": { "tag": "Photography", "caption": "Campaign shoot" } },
+        { "type": "image", "settings": { "tag": "Web", "caption": "E-commerce redesign" } },
+        { "type": "image", "settings": { "tag": "Motion", "caption": "Brand launch film" } },
+        { "type": "image", "settings": { "tag": "Print", "caption": "Limited edition poster series" } },
+        { "type": "image", "settings": { "tag": "Packaging", "caption": "Product line refresh" } },
+        { "type": "image", "settings": { "tag": "Social", "caption": "Content strategy & design" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

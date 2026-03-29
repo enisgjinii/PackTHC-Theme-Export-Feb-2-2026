@@ -1,0 +1,324 @@
+{% comment %}
+  Why Choose Us — Dark Feature Cards Section
+{% endcomment %}
+
+<section
+  id="wcu-{{ section.id }}"
+  class="wcu-section"
+  style="
+    --wcu-bg: {{ section.settings.bg_color | default: '#0a2e2e' }};
+    --wcu-text: {{ section.settings.text_color | default: '#ffffff' }};
+    --wcu-accent: {{ section.settings.accent_color | default: '#00f5a0' }};
+  "
+>
+  <div class="wcu-inner">
+
+    <!-- Header -->
+    <div class="wcu-header">
+      <span class="wcu-badge">{{ section.settings.badge_text | default: 'WHY CHOOSE US' }}</span>
+      <h2 class="wcu-title">{{ section.settings.title | default: "NUMBERS AREN'T FOR YOU" }}</h2>
+      <p class="wcu-subtitle">{{ section.settings.subtitle | default: 'BESPOKE ACCOUNTING FOR CREATIVES' }}</p>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="wcu-btn">
+          {{ section.settings.button_label }}
+          <span class="wcu-btn__arrow">›</span>
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Feature Cards -->
+    <div class="wcu-cards">
+      {% for block in section.blocks %}
+        <div class="wcu-card" {{ block.shopify_attributes }}>
+          <h3 class="wcu-card__title">{{ block.settings.title }}</h3>
+          <p class="wcu-card__desc">{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .wcu-section {
+    background: var(--wcu-bg);
+    color: var(--wcu-text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle noise texture overlay */
+  .wcu-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .wcu-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  /* ── HEADER ── */
+  .wcu-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .wcu-badge {
+    display: inline-block;
+    border: 1.5px solid var(--wcu-text);
+    color: var(--wcu-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+  }
+
+  .wcu-title {
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--wcu-text);
+    margin: 0;
+  }
+
+  .wcu-subtitle {
+    font-size: clamp(12px, 1.2vw, 16px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--wcu-accent);
+    margin: 0;
+  }
+
+  .wcu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    border: 1.5px solid var(--wcu-text);
+    color: var(--wcu-text);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .wcu-btn:hover {
+    background: var(--wcu-text);
+    color: var(--wcu-bg);
+  }
+
+  .wcu-btn__arrow {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* ── CARDS GRID ── */
+  .wcu-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    width: 100%;
+    border: 1.5px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .wcu-card {
+    padding: 36px 32px;
+    border-right: 1.5px solid rgba(255,255,255,0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.3s ease;
+  }
+
+  .wcu-card:last-child {
+    border-right: none;
+  }
+
+  .wcu-card:hover {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .wcu-card__title {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--wcu-accent);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .wcu-card__desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--wcu-text);
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .wcu-inner { padding: 70px 24px; gap: 44px; }
+    .wcu-cards {
+      grid-template-columns: 1fr 1fr;
+      border-radius: 12px;
+    }
+    .wcu-card {
+      border-right: none;
+      border-bottom: 1.5px solid rgba(255,255,255,0.18);
+    }
+    .wcu-card:nth-child(odd) {
+      border-right: 1.5px solid rgba(255,255,255,0.18);
+    }
+    .wcu-card:last-child,
+    .wcu-card:nth-last-child(2):nth-child(odd) {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wcu-cards { grid-template-columns: 1fr; }
+    .wcu-card {
+      border-right: none;
+      border-bottom: 1.5px solid rgba(255,255,255,0.18);
+    }
+    .wcu-card:last-child { border-bottom: none; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Grinder Forth",
+  "tag": "section",
+  "class": "wcu-section-wrapper",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0a2e2e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (card titles, subtitle)",
+      "default": "#00f5a0"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "WHY CHOOSE US"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "NUMBERS AREN'T FOR YOU"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "BESPOKE ACCOUNTING FOR CREATIVES"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Meet the team"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "WE SPEAK CREATIVE"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "We encounter and resolve your challenges every day."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grinder Forth",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "title": "WE SPEAK CREATIVE",
+            "description": "We encounter and resolve your challenges every day."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "YOU DON'T PANIC",
+            "description": "We handle everything and you have visibility of your position."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "WE PLAN AHEAD",
+            "description": "Actions are taken to keep taxes low, leaving no surprise tax bills."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "title": "WE'RE NOT ROBOTS (YET)",
+            "description": "Clear advice and genuine support for today's creatives."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

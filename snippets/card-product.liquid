@@ -130,7 +130,7 @@ endif
                 {%- assign first_image_widths = image_widths | append: ', ' | append: featured_media.width -%}
                 {{
                   featured_media
-                  | image_url: width: featured_media.width
+                  | image_url: width: 500
                   | image_tag:
                     loading: loading,
                     fetchpriority: fetchpriority,

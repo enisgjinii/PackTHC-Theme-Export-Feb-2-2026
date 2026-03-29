@@ -21,37 +21,38 @@
     },
     "grinder_page_yHcWG3": {
       "type": "Grinder-page",
-      "disabled": true,
       "name": "Hero — Video Center",
       "settings": {
-        "bg_color": "#ffffff",
-        "accent_color": "#c4301c",
-        "text_color": "#1d349a",
+        "accent_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
         "subtext_color": "#7a7a7a",
         "video_type": "mp4",
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/a8874ced32624855be6b4da01c3a38bc.mp4",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/1117a3cf6d954013992565a6bc9cc60a.mp4",
         "youtube_id": "",
         "vimeo_id": "",
         "autoplay": true,
         "loop": true,
-        "show_controls": false,
-        "video_width": 640,
-        "video_aspect": "9/16",
-        "video_radius": 16,
-        "label_left": "Now Playing",
-        "heading_left_top": "Crafted forPerfection",
-        "body_left_top": "Every frame tells a story you won't forget.",
-        "heading_left_mid": "Since 2019",
-        "body_left_mid": "A legacy built on bold vision and relentless craft.",
-        "stat_num_left": "200K+",
-        "stat_label_left": "Happy Customers",
-        "heading_right_top": "Feel theDifference",
-        "body_right_top": "A product born from obsession with quality.",
-        "label_right": "Premium Grade",
-        "heading_right_mid": "Award-Winning",
-        "body_right_mid": "Recognised globally for design and innovation.",
-        "stat_num_right": "4.9★",
-        "stat_label_right": "Average Rating"
+        "video_radius": 0,
+        "badge_text": "Accounting for Creatives",
+        "eyebrow": "Est. 2019",
+        "title_line1": "CREATIVES",
+        "title_line2": "CREATE",
+        "description": "Bespoke accounting for the creative industry. We handle the numbers so you can stay in your zone.",
+        "play_label": "",
+        "play_sub": "",
+        "button_label": "See The Products",
+        "button_link": "",
+        "button2_label": "Contact Us",
+        "button2_link": "",
+        "scroll_text": "Scroll",
+        "stat1_num": "200+",
+        "stat1_label": "CLIENTS",
+        "stat2_num": "8 YRS",
+        "stat2_label": "EXPERIENCE",
+        "stat3_num": "$2M+",
+        "stat3_label": "Tax Saved",
+        "tag1": "Creative Industry",
+        "tag2": "Est. 2019"
       }
     },
     "grinder_second_6EnxUL": {
@@ -123,11 +124,376 @@
         "title": "WHO IT'S FOR",
         "subtitle": "CREATIVES CREATE, WE CALCULATE"
       }
+    },
+    "grinder_third_8LGLjh": {
+      "type": "grinder-third",
+      "blocks": {
+        "step_UwCHde": {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 1",
+            "title": "TALK TO US",
+            "subtitle": "WHERE ARE YOU AT AND WHAT'S KEEPING YOU UP?",
+            "description": "We've heard it all before and nothing shocks us. We'll figure out exactly what needs fixing and how we'll fix it together.",
+            "card_bg": "#fde0e8"
+          }
+        },
+        "step_Bd9TPf": {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 2",
+            "title": "WE DIAGNOSE",
+            "subtitle": "DEEP DIVE INTO YOUR NUMBERS AND SYSTEMS",
+            "description": "We audit your books, identify the gaps and build a clear picture of where you stand financially.",
+            "card_bg": "#a8f5c8"
+          }
+        },
+        "step_iRWaPg": {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 3",
+            "title": "BUILD THE PLAN",
+            "subtitle": "A ROADMAP BUILT AROUND YOUR CREATIVE GOALS",
+            "description": "We create a custom financial strategy tailored to how you work, earn and grow.",
+            "card_bg": "#f2a0b5"
+          }
+        },
+        "step_gWLFEG": {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 4",
+            "title": "WE EXECUTE",
+            "subtitle": "HANDS ON DELIVERY, START TO FINISH",
+            "description": "From tax lodgements to bookkeeping, we handle the hard stuff so you can focus on your craft.",
+            "card_bg": "#f5e6d8"
+          }
+        },
+        "step_rckxXw": {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 5",
+            "title": "YOU GROW",
+            "subtitle": "ONGOING SUPPORT AS YOUR BUSINESS SCALES",
+            "description": "We stay by your side, adapting your financial strategy as your creative business evolves.",
+            "card_bg": "#fde0e8"
+          }
+        }
+      },
+      "block_order": [
+        "step_UwCHde",
+        "step_Bd9TPf",
+        "step_iRWaPg",
+        "step_gWLFEG",
+        "step_rckxXw"
+      ],
+      "name": "How It Works Stack",
+      "settings": {
+        "bg_color": "#f5ede0",
+        "text_color": "#0a2e2e"
+      }
+    },
+    "grinder_forth_qhme3t": {
+      "type": "grinder-forth",
+      "blocks": {
+        "feature_bQheqm": {
+          "type": "feature",
+          "settings": {
+            "title": "WE SPEAK CREATIVE",
+            "description": "We encounter and resolve your challenges every day."
+          }
+        },
+        "feature_fF6dqf": {
+          "type": "feature",
+          "settings": {
+            "title": "YOU DON'T PANIC",
+            "description": "We handle everything and you have visibility of your position."
+          }
+        },
+        "feature_rbHRDj": {
+          "type": "feature",
+          "settings": {
+            "title": "WE PLAN AHEAD",
+            "description": "Actions are taken to keep taxes low, leaving no surprise tax bills."
+          }
+        },
+        "feature_X8nEnN": {
+          "type": "feature",
+          "settings": {
+            "title": "WE'RE NOT ROBOTS (YET)",
+            "description": "Clear advice and genuine support for today's creatives."
+          }
+        }
+      },
+      "block_order": [
+        "feature_bQheqm",
+        "feature_fF6dqf",
+        "feature_rbHRDj",
+        "feature_X8nEnN"
+      ],
+      "name": "Grinder Forth",
+      "settings": {
+        "bg_color": "#0b3466",
+        "text_color": "#ffffff",
+        "accent_color": "#00f5a0",
+        "badge_text": "WHY CHOOSE US",
+        "title": "NUMBERS AREN'T FOR YOU",
+        "subtitle": "BESPOKE ACCOUNTING FOR CREATIVES",
+        "button_label": "Contact For Bulk",
+        "button_link": ""
+      }
+    },
+    "grinder_fifth_VteDMw": {
+      "type": "grinder-fifth",
+      "blocks": {
+        "image_pmQggE": {
+          "type": "image",
+          "settings": {
+            "tag": "Branding",
+            "caption": "Identity system for a creative studio"
+          }
+        },
+        "image_bb76Eq": {
+          "type": "image",
+          "settings": {
+            "tag": "Editorial",
+            "caption": "Annual report design"
+          }
+        },
+        "image_4G7ywa": {
+          "type": "image",
+          "settings": {
+            "tag": "Photography",
+            "caption": "Campaign shoot"
+          }
+        },
+        "image_3AyLLN": {
+          "type": "image",
+          "settings": {
+            "tag": "Web",
+            "caption": "E-commerce redesign"
+          }
+        },
+        "image_e4zKFf": {
+          "type": "image",
+          "settings": {
+            "tag": "Motion",
+            "caption": "Brand launch film"
+          }
+        },
+        "image_yCiDRa": {
+          "type": "image",
+          "settings": {
+            "tag": "Print",
+            "caption": "Limited edition poster series"
+          }
+        },
+        "image_XQjXVi": {
+          "type": "image",
+          "settings": {
+            "tag": "Packaging",
+            "caption": "Product line refresh"
+          }
+        },
+        "image_ThmVbH": {
+          "type": "image",
+          "settings": {
+            "tag": "Social",
+            "caption": "Content strategy & design"
+          }
+        }
+      },
+      "block_order": [
+        "image_pmQggE",
+        "image_bb76Eq",
+        "image_4G7ywa",
+        "image_3AyLLN",
+        "image_e4zKFf",
+        "image_yCiDRa",
+        "image_XQjXVi",
+        "image_ThmVbH"
+      ],
+      "name": "Masonry Gallery",
+      "settings": {
+        "bg_color": "#faf8f4",
+        "text_color": "#0a2e2e",
+        "accent_color": "#0a2e2e",
+        "badge_text": "OUR WORK",
+        "title": "MOMENTS WE LOVE",
+        "subtitle": "A glimpse into the work and world we're building together.",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "collapsible_tabs_ryCCJD": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "image_card_tx6KU3": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "desktop_image_position": "left",
+            "image_width": 40,
+            "alignment": "center",
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 0,
+            "content_position": "top-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "",
+            "subheading_style": "",
+            "heading": "Heading",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>Combine images with text and a stand-out offer</p>",
+            "button_label": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "order_first": false
+          }
+        },
+        "collapsible_item_yhAiHT": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_VkbXMG": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_yAfwPM": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_RMXxk7": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_hH8DPc": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_bFca8T": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        },
+        "collapsible_item_KPkPPQ": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Collapsible tab heading",
+            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false,
+            "use_subtext_color": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_tx6KU3",
+        "collapsible_item_yhAiHT",
+        "collapsible_item_VkbXMG",
+        "collapsible_item_yAfwPM",
+        "collapsible_item_RMXxk7",
+        "collapsible_item_hH8DPc",
+        "collapsible_item_bFca8T",
+        "collapsible_item_KPkPPQ"
+      ],
+      "name": "t:sections.collapsible-tabs.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-14",
+        "header_layout": "vertical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Collapsible tabs",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "card",
+        "item_color_scheme": "scheme-852be48a-c99d-4d8d-975e-5f71d4bec894",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
     }
   },
   "order": [
     "main",
     "grinder_page_yHcWG3",
-    "grinder_second_6EnxUL"
+    "grinder_second_6EnxUL",
+    "grinder_third_8LGLjh",
+    "grinder_forth_qhme3t",
+    "grinder_fifth_VteDMw",
+    "collapsible_tabs_ryCCJD"
   ]
 }

@@ -1,0 +1,356 @@
+{% comment %}
+  How It Works — Scroll Stack Section
+  Cards stack on top of each other as user scrolls
+{% endcomment %}
+
+<section
+  id="hiw-{{ section.id }}"
+  class="hiw-section"
+  style="
+    --hiw-bg: {{ section.settings.bg_color | default: '#f5ede0' }};
+    --hiw-text: {{ section.settings.text_color | default: '#0a2e2e' }};
+    --total-blocks: {{ section.blocks.size }};
+  "
+>
+  <div class="hiw-sticky" id="hiw-sticky-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div
+        class="hiw-card"
+        data-index="{{ forloop.index0 }}"
+        style="
+          --card-bg: {{ block.settings.card_bg | default: '#f5ede0' }};
+          --card-index: {{ forloop.index0 }};
+          z-index: {{ forloop.index }};
+        "
+      >
+        <div class="hiw-card__left">
+          <span class="hiw-step">{{ block.settings.step_label | default: 'STEP ' | append: forloop.index }}</span>
+          <h2 class="hiw-card__title">{{ block.settings.title }}</h2>
+          <p class="hiw-card__subtitle">{{ block.settings.subtitle }}</p>
+          <p class="hiw-card__desc">{{ block.settings.description }}</p>
+        </div>
+        <div class="hiw-card__right">
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              alt="{{ block.settings.title }}"
+              class="hiw-card__image"
+            >
+          {% else %}
+            <div class="hiw-card__image-placeholder"></div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .hiw-section {
+    background: var(--hiw-bg);
+    /* scroll height: each card gets 600px of scroll */
+    height: calc(var(--total-blocks) * 600px + 100vh);
+    position: relative;
+  }
+
+  .hiw-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* ── CARD ── */
+  .hiw-card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8vw;
+    box-sizing: border-box;
+    /* Start state: below viewport */
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                border-radius 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 0px;
+    will-change: transform;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* First card visible by default */
+  .hiw-card[data-index="0"] {
+    transform: translateY(0%);
+  }
+
+  /* ── LEFT CONTENT ── */
+  .hiw-card__left {
+    flex: 0 0 45%;
+    max-width: 500px;
+  }
+
+  .hiw-step {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--hiw-text);
+    opacity: 0.5;
+    border: 1.5px solid currentColor;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .hiw-card__title {
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--hiw-text);
+    margin: 0 0 16px 0;
+  }
+
+  .hiw-card__subtitle {
+    font-size: clamp(12px, 1.2vw, 16px);
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--hiw-text);
+    margin: 0 0 40px 0;
+  }
+
+  .hiw-card__desc {
+    font-size: clamp(14px, 1.1vw, 17px);
+    line-height: 1.7;
+    color: var(--hiw-text);
+    opacity: 0.75;
+    margin: 0;
+    max-width: 400px;
+  }
+
+  /* ── RIGHT IMAGE ── */
+  .hiw-card__right {
+    flex: 0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hiw-card__image {
+    width: 100%;
+    max-width: 480px;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 16px;
+  }
+
+  .hiw-card__image-placeholder {
+    width: 420px;
+    height: 420px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 16px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hiw-card {
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      padding: 60px 6vw;
+      text-align: center;
+    }
+    .hiw-card__left { flex: none; max-width: 100%; }
+    .hiw-card__right { flex: none; width: 100%; }
+    .hiw-card__image { max-width: 280px; max-height: 40vh; }
+    .hiw-card__image-placeholder { width: 240px; height: 240px; }
+    .hiw-step { font-size: 11px; }
+  }
+</style>
+
+<script>
+  (function () {
+    const sectionId = '{{ section.id }}';
+    const section   = document.querySelector('#hiw-' + sectionId);
+    const cards     = Array.from(document.querySelectorAll('#hiw-' + sectionId + ' .hiw-card'));
+    const total     = cards.length;
+
+    if (!total || !section) return;
+
+    const STEP_HEIGHT = 600; // px of scroll per card — matches CSS
+
+    function update() {
+      const rect     = section.getBoundingClientRect();
+      const scrolled = -rect.top;
+
+      cards.forEach(function (card, i) {
+        if (i === 0) {
+          // First card: always stays, shrinks slightly as next card comes
+          const nextProgress = Math.max(0, Math.min(1, scrolled / STEP_HEIGHT));
+          const scale        = 1 - nextProgress * 0.04;
+          const borderR      = nextProgress * 24;
+          card.style.transform      = 'translateY(0%) scale(' + scale + ')';
+          card.style.borderRadius   = borderR + 'px';
+          card.style.transformOrigin = 'top center';
+          return;
+        }
+
+        // Scroll range this card is responsible for
+        const start    = (i - 1) * STEP_HEIGHT; // when it starts sliding in
+        const end      = i * STEP_HEIGHT;        // when fully settled
+        const progress = Math.max(0, Math.min(1, (scrolled - start) / STEP_HEIGHT));
+
+        // Slide in from bottom
+        const translateY = (1 - progress) * 100;
+        card.style.transform    = 'translateY(' + translateY + '%)';
+        card.style.borderRadius = '0px';
+
+        // Once this card is settled, shrink it slightly when NEXT card comes in
+        if (i < total - 1) {
+          const nextStart    = i * STEP_HEIGHT;
+          const nextProgress = Math.max(0, Math.min(1, (scrolled - nextStart) / STEP_HEIGHT));
+          const scale        = 1 - nextProgress * 0.04;
+          const borderR      = nextProgress * 24;
+
+          if (progress >= 1) {
+            card.style.transform      = 'translateY(0%) scale(' + scale + ')';
+            card.style.borderRadius   = borderR + 'px';
+            card.style.transformOrigin = 'top center';
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "How It Works Stack",
+  "tag": "section",
+  "class": "hiw-section-wrapper",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#f5ede0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#0a2e2e"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step Label",
+          "default": "STEP 1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "TALK TO US"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "WHERE ARE YOU AT AND WHAT'S KEEPING YOU UP?"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We've heard it all before and nothing shocks us. We'll figure out exactly what needs fixing and how we'll fix it together."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Illustration"
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card Background",
+          "default": "#f5ede0"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works Stack",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 1",
+            "title": "TALK TO US",
+            "subtitle": "WHERE ARE YOU AT AND WHAT'S KEEPING YOU UP?",
+            "description": "We've heard it all before and nothing shocks us. We'll figure out exactly what needs fixing and how we'll fix it together.",
+            "card_bg": "#f5ede0"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 2",
+            "title": "WE DIAGNOSE",
+            "subtitle": "DEEP DIVE INTO YOUR NUMBERS AND SYSTEMS",
+            "description": "We audit your books, identify the gaps and build a clear picture of where you stand financially.",
+            "card_bg": "#fde0e8"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 3",
+            "title": "BUILD THE PLAN",
+            "subtitle": "A ROADMAP BUILT AROUND YOUR CREATIVE GOALS",
+            "description": "We create a custom financial strategy tailored to how you work, earn and grow.",
+            "card_bg": "#a8f5c8"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 4",
+            "title": "WE EXECUTE",
+            "subtitle": "HANDS ON DELIVERY, START TO FINISH",
+            "description": "From tax lodgements to bookkeeping, we handle the hard stuff so you can focus on your craft.",
+            "card_bg": "#d6ffe8"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_label": "STEP 5",
+            "title": "YOU GROW",
+            "subtitle": "ONGOING SUPPORT AS YOUR BUSINESS SCALES",
+            "description": "We stay by your side, adapting your financial strategy as your creative business evolves.",
+            "card_bg": "#f5e6d8"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -83,7 +83,7 @@
 
   {%- if _use_autodetect -%}
     <script>
-      window.__PACKTHC_CONFIGURATOR_URL__ = {{ settings.configurator_url | default: 'https://v0-product-design-tool.vercel.app/' | json }};
+      window.__PACKTHC_CONFIGURATOR_URL__ = {{ settings.configurator_url | default: 'https://dram-product-customizer.vercel.app' | json }};
     </script>
     <script src="{{ 'model-auto-detect.js' | asset_url }}" defer></script>
   {%- endif -%}

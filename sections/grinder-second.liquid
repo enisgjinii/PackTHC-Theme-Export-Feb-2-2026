@@ -1,6 +1,5 @@
 {% comment %}
-  Who It's For — Scroll-Triggered Card Fan Section
-  Cards fan out like a hand of playing cards as user scrolls
+  Who It's For — Scroll-Jacked Sticky Card Fan Section
 {% endcomment %}
 
 <section
@@ -10,11 +9,11 @@
     --wif-bg: {{ section.settings.bg_color | default: '#ffffff' }};
     --wif-text: {{ section.settings.text_color | default: '#0a2e2e' }};
     --wif-accent: {{ section.settings.accent_color | default: '#d6ffe8' }};
+    --total-cards: {{ section.blocks.size }};
   "
 >
-  <!-- Sticky container -->
-  <div class="wif-sticky-wrap">
-    <div class="wif-sticky">
+  <div class="wif-sticky">
+    <div class="wif-inner">
 
       <!-- Header -->
       <div class="wif-header">
@@ -29,7 +28,6 @@
           <div
             class="wif-card"
             data-card-index="{{ forloop.index0 }}"
-            data-total-cards="{{ section.blocks.size }}"
             style="
               --card-bg: {{ block.settings.card_color | default: '#fde0e8' }};
               --card-index: {{ forloop.index0 }};
@@ -47,16 +45,11 @@
 </section>
 
 <style>
-  /* ── RESET & SECTION ── */
   .wif-section {
     background: var(--wif-bg);
     color: var(--wif-text);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .wif-sticky-wrap {
-    height: 300vh;
+    /* Total scroll height = cards * 300px + 1 viewport */
+    height: calc(var(--total-cards) * 500px + 100vh);
     position: relative;
   }
 
@@ -64,26 +57,32 @@
     position: sticky;
     top: 0;
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .wif-inner {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    padding: 60px 20px 80px;
+    position: relative;
   }
 
   /* ── HEADER ── */
   .wif-header {
     text-align: center;
-    margin-bottom: 40px;
-    z-index: 0;
+    margin-bottom: 60px;
     position: relative;
+    z-index: 10;
   }
 
   .wif-badge {
     display: inline-block;
     background: var(--wif-accent);
     color: var(--wif-text);
-    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -94,7 +93,6 @@
   }
 
   .wif-title {
-    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
     font-size: clamp(60px, 10vw, 140px);
     font-weight: 900;
     line-height: 0.95;
@@ -105,7 +103,6 @@
   }
 
   .wif-subtitle {
-    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
     font-size: clamp(12px, 1.4vw, 18px);
     font-weight: 700;
     letter-spacing: 3px;
@@ -116,14 +113,10 @@
 
   /* ── CARDS CONTAINER ── */
   .wif-cards {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     width: 100%;
     max-width: 1200px;
     height: 420px;
-    pointer-events: none;
   }
 
   /* ── INDIVIDUAL CARD ── */
@@ -140,16 +133,17 @@
     flex-direction: column;
     justify-content: space-between;
     transform-origin: bottom center;
-    /* Start state: all cards stacked, hidden below */
-    transform: translateX(-50%) translateY(100%) rotate(0deg);
+    /* Start: hidden niche */
+    transform: translateX(-50%) translateY(120%) rotate(0deg);
     opacity: 0;
-    transition: none;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s ease,
+                box-shadow 0.3s ease;
     pointer-events: auto;
     box-shadow: 0 10px 40px rgba(0,0,0,0.08);
   }
 
   .wif-card__title {
-    font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
     font-size: clamp(24px, 3vw, 32px);
     font-weight: 900;
     text-transform: uppercase;
@@ -159,7 +153,6 @@
   }
 
   .wif-card__desc {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
     line-height: 1.5;
     font-style: italic;
@@ -170,23 +163,14 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .wif-cards {
-      height: 340px;
-    }
+    .wif-cards { height: 340px; }
     .wif-card {
       width: 200px;
       height: 280px;
       padding: 24px 20px;
     }
-    .wif-card__title {
-      font-size: 22px;
-    }
-    .wif-card__desc {
-      font-size: 12px;
-    }
-    .wif-sticky-wrap {
-      height: 250vh;
-    }
+    .wif-card__title { font-size: 22px; }
+    .wif-card__desc  { font-size: 12px; }
   }
 
   @media (max-width: 480px) {
@@ -195,110 +179,113 @@
       height: 230px;
       padding: 18px 14px;
     }
-    .wif-card__title {
-      font-size: 18px;
-    }
-    .wif-card__desc {
-      font-size: 11px;
-    }
+    .wif-card__title { font-size: 18px; }
+    .wif-card__desc  { font-size: 11px; }
   }
 </style>
 
 <script>
-  (function() {
-    const sectionId = '{{ section.id }}';
-    const wrap = document.querySelector('#wif-' + sectionId + ' .wif-sticky-wrap');
-    const cards = document.querySelectorAll('#wif-' + sectionId + ' .wif-card');
+  (function () {
+    const sectionId  = '{{ section.id }}';
+    const sectionEl  = document.querySelector('#wif-' + sectionId);
+    const cards      = Array.from(document.querySelectorAll('#wif-cards-' + sectionId + ' .wif-card'));
     const totalCards = cards.length;
 
-    if (!totalCards || !wrap) return;
+    if (!totalCards || !sectionEl) return;
 
-    // Fan layout config
-    // Cards spread from center like a hand of playing cards
     const fanConfig = {
-      // Total arc angle for the fan (degrees)
-      totalArc: 70,
-      // Vertical offset for outer cards
-      ySpread: 30,
-      // Horizontal spread
-      xSpread: 100,
+      totalArc : 70,
+      ySpread  : 30,
+      xSpread  : 100,
     };
 
     function getCardTransform(index, total) {
-      // Center index
-      const mid = (total - 1) / 2;
-      const offset = index - mid;
-      const normalizedOffset = total > 1 ? offset / mid : 0;
-
-      // Rotation: cards fan out from center
-      const rotation = normalizedOffset * (fanConfig.totalArc / 2);
-
-      // Horizontal position: spread cards
-      const xPercent = normalizedOffset * fanConfig.xSpread;
-
-      // Vertical: slight arc, center cards higher
-      const yOffset = Math.abs(normalizedOffset) * fanConfig.ySpread;
-
+      const mid  = (total - 1) / 2;
+      const norm = total > 1 ? (index - mid) / mid : 0;
       return {
-        rotation: rotation,
-        x: xPercent,
-        y: yOffset
+        rotation : norm * (fanConfig.totalArc / 2),
+        x        : norm * fanConfig.xSpread,
+        y        : Math.abs(norm) * fanConfig.ySpread
       };
     }
 
-    function onScroll() {
-      const rect = wrap.getBoundingClientRect();
-      const wrapHeight = wrap.offsetHeight;
-      const viewH = window.innerHeight;
-
-      // Progress: 0 when top of wrap hits top of viewport, 1 when bottom hits
-      const scrolled = -rect.top;
-      const scrollableDistance = wrapHeight - viewH;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
-
-      // Each card gets a portion of the scroll
-      const cardStep = 1 / (totalCards + 1);
-
-      cards.forEach(function(card, i) {
-        const cardStart = cardStep * (i + 0.5);
-        const cardEnd = cardStep * (i + 1.5);
-        const cardProgress = Math.max(0, Math.min(1, (progress - cardStart) / (cardEnd - cardStart)));
-
-        const target = getCardTransform(i, totalCards);
-
-        if (cardProgress <= 0) {
-          // Hidden below
-          card.style.opacity = '0';
-          card.style.transform = 'translateX(-50%) translateY(120%) rotate(0deg)';
-        } else {
-          // Ease out cubic
-          const ease = 1 - Math.pow(1 - cardProgress, 3);
-
-          const currentRotation = target.rotation * ease;
-          const currentX = -50 + (target.x * ease);
-          const currentY = 120 - (120 + target.y) * ease + target.y;
-
-          card.style.opacity = String(Math.min(1, cardProgress * 2));
-          card.style.transform =
-            'translateX(' + currentX + '%) translateY(' + currentY + '%) rotate(' + currentRotation + 'deg)';
-        }
-      });
-    }
-
-    // Throttle scroll
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          onScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
+    // Pre-calculate each card's fanned transform
+    const transforms = cards.map(function(_, i) {
+      const t = getCardTransform(i, totalCards);
+      return { xVal: -50 + t.x, y: t.y, r: t.rotation };
     });
 
-    // Initial call
-    onScroll();
+    // Track how many cards are currently visible
+    let visibleCount = 0;
+
+    function updateCards(newVisible) {
+      newVisible = Math.max(0, Math.min(totalCards, newVisible));
+      if (newVisible === visibleCount) return;
+
+      cards.forEach(function(card, i) {
+        const tf = transforms[i];
+        const originalZ = i + 1;
+
+        if (i < newVisible) {
+          // Fan out this card
+          card.style.transform =
+            'translateX(' + tf.xVal + '%) translateY(' + tf.y + 'px) rotate(' + tf.r + 'deg)';
+          card.style.opacity = '1';
+          card.style.zIndex  = originalZ;
+        } else {
+          // Hide this card back down
+          card.style.transform =
+            'translateX(-50%) translateY(120%) rotate(0deg)';
+          card.style.opacity = '0';
+          card.style.zIndex  = originalZ;
+        }
+      });
+
+      visibleCount = newVisible;
+    }
+
+    // Hover effect
+    cards.forEach(function(card, i) {
+      const originalZ = i + 1;
+      const tf = transforms[i];
+
+      card.addEventListener('mouseenter', function() {
+        if (i < visibleCount) {
+          card.style.transform =
+            'translateX(' + tf.xVal + '%) translateY(' + (tf.y - 25) + 'px) rotate(' + tf.r + 'deg)';
+          card.style.zIndex = 999;
+          card.style.boxShadow = '0 30px 60px rgba(0,0,0,0.18)';
+        }
+      });
+
+      card.addEventListener('mouseleave', function() {
+        if (i < visibleCount) {
+          card.style.transform =
+            'translateX(' + tf.xVal + '%) translateY(' + tf.y + 'px) rotate(' + tf.r + 'deg)';
+          card.style.zIndex = originalZ;
+          card.style.boxShadow = '';
+        }
+      });
+    });
+
+    // Scroll handler
+    function onScroll() {
+      const rect       = sectionEl.getBoundingClientRect();
+      const scrolled   = -rect.top; // how much user has scrolled into section
+      const stepHeight = 500;       // px of scroll per card (matches CSS height calc)
+
+      if (scrolled < 0) {
+        // Section not reached yet
+        updateCards(0);
+        return;
+      }
+
+      const newVisible = Math.floor(scrolled / stepHeight) + 1;
+      updateCards(newVisible);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // run once on load
   })();
 </script>
 
