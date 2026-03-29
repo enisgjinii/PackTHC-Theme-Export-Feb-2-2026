@@ -423,7 +423,7 @@
 
         var payload = {
           id: variantId,
-          quantity: 1,
+          quantity: parseInt(addToCartBtn.getAttribute('data-quantity'), 10) || 1,
           properties: {},
         };
 
@@ -458,6 +458,24 @@
       if (!event.data || !event.data.type) return;
 
       const type = event.data.type;
+
+      /* ─── Update Pricing from Iframe ─── */
+      if (type === 'updatePricing') {
+        const { variantId, quantity, subtotal } = event.data;
+        
+        // 1. Update Variant ID & Quantity on the "Add to Cart" button
+        const addToCartBtn = sectionEl.querySelector('.btn-add-to-cart');
+        if (addToCartBtn && variantId) {
+          addToCartBtn.setAttribute('data-variant-id', variantId);
+          addToCartBtn.setAttribute('data-quantity', quantity || 1);
+        }
+
+        // 2. Update the visual price text to show the subtotal
+        const priceEl = sectionEl.querySelector('.product-info-bar__price');
+        if (priceEl && subtotal !== undefined) {
+          priceEl.textContent = '$' + subtotal.toFixed(2);
+        }
+      }
 
       /* ─── Add to Cart ─── */
       if (type === 'addToCart') {
