@@ -34,6 +34,9 @@
     if (productData.vendor)    params.set('vendor',     productData.vendor);
     if (productData.image)     params.set('image',      productData.image);
     if (productData.price)     params.set('price',      productData.price);
+    if (productData.qtyTable != null)   params.set('qty_table',   typeof productData.qtyTable === 'string' ? productData.qtyTable : JSON.stringify(productData.qtyTable));
+    if (productData.priceTable != null) params.set('price_table', typeof productData.priceTable === 'string' ? productData.priceTable : JSON.stringify(productData.priceTable));
+    if (productData.unitTable != null)  params.set('unit_table',  typeof productData.unitTable === 'string' ? productData.unitTable : JSON.stringify(productData.unitTable));
 
     // Shop params
     if (shopData.domain)  params.set('shop',      shopData.domain);
@@ -171,7 +174,7 @@
       }
     }
 
-    const plusMatch = value.match(/(\d+)\s*\+/);
+    const plusMatch = value.match(/(\d+)(?:\s*[a-z]+)*\s*\+/);
     if (plusMatch) {
       const minQty = parseInt(plusMatch[1], 10);
       if (isFinite(minQty)) {
@@ -180,7 +183,7 @@
     }
 
     if (allowExact) {
-      const exactMatch = value.match(/^(\d+)$/);
+      const exactMatch = value.match(/^(\d+)(?:\s*[a-z]+)*$/);
       if (exactMatch) {
         const exactQty = parseInt(exactMatch[1], 10);
         if (isFinite(exactQty)) {
@@ -233,6 +236,101 @@
     };
   }
 
+  function parseJsonValue(rawValue) {
+    if (rawValue == null || rawValue === '') return null;
+
+    if (Array.isArray(rawValue) || (typeof rawValue === 'object' && rawValue !== null)) {
+      return rawValue;
+    }
+
+    try {
+      return JSON.parse(rawValue);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function normalizeStringList(rawValue) {
+    if (rawValue == null || rawValue === '') return null;
+
+    const parsed = parseJsonValue(rawValue);
+    if (Array.isArray(parsed)) {
+      const values = parsed
+        .map(function (item) { return item == null ? '' : String(item).trim(); })
+        .filter(Boolean);
+      return values.length ? values : null;
+    }
+
+    if (typeof parsed === 'string') {
+      return normalizeStringList(parsed);
+    }
+
+    const fallback = String(rawValue)
+      .split(/\r?\n|[,;|]/)
+      .map(function (item) { return item.trim(); })
+      .filter(Boolean);
+
+    return fallback.length ? fallback : null;
+  }
+
+  function buildCustomTableRows(qtyTable, priceTable, unitTable) {
+    const qtyValues = normalizeStringList(qtyTable);
+    const priceValues = normalizeStringList(priceTable);
+    const unitValues = normalizeStringList(unitTable);
+
+    if (!(qtyValues && priceValues && unitValues)) return [];
+
+    const rowCount = Math.min(qtyValues.length, priceValues.length, unitValues.length);
+    return Array.from({ length: rowCount }, function (_, index) {
+      return {
+        quantity: qtyValues[index] || '',
+        pricePerCase: priceValues[index] || '',
+        pricePerPiece: unitValues[index] || '',
+      };
+    }).filter(function (row) {
+      return row.quantity || row.pricePerCase || row.pricePerPiece;
+    });
+  }
+
+  function parseMoneyValue(rawValue) {
+    if (typeof rawValue === 'number') {
+      return isFinite(rawValue) ? rawValue : null;
+    }
+
+    if (typeof rawValue !== 'string') return null;
+
+    const normalized = rawValue.replace(/[^0-9.-]+/g, '');
+    if (!normalized) return null;
+
+    const parsed = parseFloat(normalized);
+    return isFinite(parsed) ? parsed : null;
+  }
+
+  function buildCustomPricingTiers(rows, fallbackVariantId) {
+    return rows
+      .map(function (row) {
+        const parsedRange = parseQuantityRange(row.quantity, true);
+        const pricePerCase = parseMoneyValue(row.pricePerCase);
+        const pricePerPiece = parseMoneyValue(row.pricePerPiece);
+
+        if (!parsedRange || pricePerCase === null) return null;
+
+        return {
+          label: parsedRange.label,
+          minQty: parsedRange.minQty,
+          maxQty: parsedRange.maxQty,
+          unitPrice: pricePerCase,
+          pricePerPiece: pricePerPiece,
+          compareAtPrice: null,
+          variantId: fallbackVariantId || null,
+        };
+      })
+      .filter(Boolean)
+      .sort(function (left, right) {
+        return (left.minQty || 0) - (right.minQty || 0);
+      });
+  }
+
   async function buildThemePricingResponse(productData, selectedColor) {
     if (!productData || !productData.handle) return null;
 
@@ -245,6 +343,11 @@
     const product = await res.json();
     const variants = Array.isArray(product.variants) ? product.variants : [];
     const preferredVariant = pickVariantForColor(variants, selectedColor);
+    const customTable = buildCustomTableRows(productData.qtyTable, productData.priceTable, productData.unitTable);
+    const customPricingTiers = buildCustomPricingTiers(
+      customTable,
+      parseVariantId((preferredVariant && preferredVariant.id) || productData.variantId)
+    );
     const quantityTiers = variants
       .map(extractQuantityTier)
       .filter(Boolean)
@@ -263,7 +366,11 @@
         }
       : null;
 
-    const resolvedTier = quantityTiers.length > 0 ? quantityTiers : fallbackTier ? [fallbackTier] : [];
+    const resolvedTier = customPricingTiers.length > 0
+      ? customPricingTiers
+      : quantityTiers.length > 0
+        ? quantityTiers
+        : fallbackTier ? [fallbackTier] : [];
 
     return {
       currencyCode: (product.currency || 'USD').toUpperCase(),
@@ -277,11 +384,11 @@
         resolvedTier.length > 0
           ? 'Pricing loaded from Shopify storefront context.'
           : 'No storefront pricing is available for this product yet.',
-      customTable: null,
+      customTable: customTable.length ? customTable : null,
       metafields: {
-        qtyTable: null,
-        priceTable: null,
-        unitTable: null,
+        qtyTable: customTable.length ? customTable.map(function (row) { return row.quantity; }) : normalizeStringList(productData.qtyTable),
+        priceTable: customTable.length ? customTable.map(function (row) { return row.pricePerCase; }) : normalizeStringList(productData.priceTable),
+        unitTable: customTable.length ? customTable.map(function (row) { return row.pricePerPiece; }) : normalizeStringList(productData.unitTable),
       },
     };
   }
@@ -466,6 +573,9 @@
       productData.vendor    = urlParams.get('vendor');
       productData.image     = urlParams.get('image');
       productData.price     = urlParams.get('price');
+      productData.qtyTable  = urlParams.get('qty_table');
+      productData.priceTable = urlParams.get('price_table');
+      productData.unitTable = urlParams.get('unit_table');
     }
 
     // If only partial product data is available, hydrate from Shopify by handle.

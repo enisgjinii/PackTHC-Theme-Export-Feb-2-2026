@@ -3,6 +3,9 @@
   assign configurator_url = section.settings.configurator_base_url | default: 'https://dram-product-customizer.vercel.app'
   assign iframe_height = section.settings.iframe_height | default: 800
   assign show_product_bar = section.settings.show_product_bar
+  assign product_qty_table = nil
+  assign product_price_table = nil
+  assign product_unit_table = nil
 
   assign _detect_mode = settings.configurator_detect_mode | default: 'auto'
   assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
@@ -11,6 +14,9 @@
   if product == blank
     assign _product_has_model = true
   else
+    assign product_qty_table = product.metafields.custom.quantity_table.value | default: product.metafields.custom.quantity_table
+    assign product_price_table = product.metafields.custom.price_table.value | default: product.metafields.custom.price_table
+    assign product_unit_table = product.metafields.custom.unit_table.value | default: product.metafields.custom.unit_table
     case _detect_mode
       when 'all'
         assign _product_has_model = true
@@ -109,7 +115,10 @@
           "sku": {{ product.selected_or_first_available_variant.sku | default: '' | json }},
           "vendor": {{ product.vendor | json }},
           "image": {{ product.featured_image | image_url: width: 400 | json }},
-          "price": {{ product.selected_or_first_available_variant.price | money_without_currency | json }}
+          "price": {{ product.selected_or_first_available_variant.price | money_without_currency | json }},
+          "qtyTable": {{ product_qty_table | json }},
+          "priceTable": {{ product_price_table | json }},
+          "unitTable": {{ product_unit_table | json }}
         {%- else -%}
           "handle": null,
           "productId": null,
@@ -118,7 +127,10 @@
           "sku": null,
           "vendor": null,
           "image": null,
-          "price": null
+          "price": null,
+          "qtyTable": null,
+          "priceTable": null,
+          "unitTable": null
         {%- endif -%}
       }
     }
@@ -160,7 +172,10 @@
         sku:       params.get('sku'),
         vendor:    params.get('vendor') ? decodeURIComponent(params.get('vendor')) : null,
         image:     params.get('image') ? decodeURIComponent(params.get('image')) : null,
-        price:     params.get('price')
+        price:     params.get('price'),
+        qtyTable:  params.get('qty_table') ? decodeURIComponent(params.get('qty_table')) : null,
+        priceTable: params.get('price_table') ? decodeURIComponent(params.get('price_table')) : null,
+        unitTable: params.get('unit_table') ? decodeURIComponent(params.get('unit_table')) : null
       };
 
       // Populate product info bar
@@ -196,6 +211,9 @@
       if (productData.vendor)    iframeParams.set('vendor', productData.vendor);
       if (productData.image)     iframeParams.set('image', productData.image);
       if (productData.price)     iframeParams.set('price', productData.price);
+      if (productData.qtyTable)  iframeParams.set('qty_table', productData.qtyTable);
+      if (productData.priceTable) iframeParams.set('price_table', productData.priceTable);
+      if (productData.unitTable) iframeParams.set('unit_table', productData.unitTable);
       iframeParams.set('shop', shopDomain);
       iframeParams.set('shop_name', shopName);
 

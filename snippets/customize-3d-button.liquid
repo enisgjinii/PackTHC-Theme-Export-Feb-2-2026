@@ -24,6 +24,9 @@
   assign _btn_text = button_text | default: settings.configurator_button_text | default: 'Customize in 3D'
   assign _show_badge = show_badge | default: settings.configurator_show_badge | default: true
   assign _detect_mode = settings.configurator_detect_mode | default: 'auto'
+  assign _qty_table = _product.metafields.custom.quantity_table.value | default: _product.metafields.custom.quantity_table
+  assign _price_table = _product.metafields.custom.price_table.value | default: _product.metafields.custom.price_table
+  assign _unit_table = _product.metafields.custom.unit_table.value | default: _product.metafields.custom.unit_table
 
   assign _model_tag = settings.configurator_product_tag | default: '3d-customizable'
   assign _show_button = false
@@ -49,7 +52,7 @@
 
 {%- if _product != blank and _enabled and _show_button -%}
   {%- capture _configurator_link -%}
-    {{ _page_url }}?product={{ _product.handle }}&product_id={{ _product.id }}&variant_id={{ _product.selected_or_first_available_variant.id }}&title={{ _product.title | url_encode }}&sku={{ _product.selected_or_first_available_variant.sku | url_encode }}&vendor={{ _product.vendor | url_encode }}&image={{ _product.featured_image | image_url: width: 400 | url_encode }}&price={{ _product.selected_or_first_available_variant.price | money_without_currency | url_encode }}
+    {{ _page_url }}?product={{ _product.handle }}&product_id={{ _product.id }}&variant_id={{ _product.selected_or_first_available_variant.id }}&title={{ _product.title | url_encode }}&sku={{ _product.selected_or_first_available_variant.sku | url_encode }}&vendor={{ _product.vendor | url_encode }}&image={{ _product.featured_image | image_url: width: 400 | url_encode }}&price={{ _product.selected_or_first_available_variant.price | money_without_currency | url_encode }}&qty_table={{ _qty_table | json | url_encode }}&price_table={{ _price_table | json | url_encode }}&unit_table={{ _unit_table | json | url_encode }}
   {%- endcapture -%}
 
   {{ 'product-configurator.css' | asset_url | stylesheet_tag }}
