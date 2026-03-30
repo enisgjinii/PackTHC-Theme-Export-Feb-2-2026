@@ -134,6 +134,158 @@
     return isNaN(parsed) ? null : parsed;
   }
 
+  function normalizeText(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/%20/g, ' ')
+      .replace(/[_/]+/g, ' ')
+      .replace(/[^a-z0-9+ -]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function scoreTextMatch(haystack, needle) {
+    if (!haystack || !needle) return 0;
+    if (haystack === needle) return 500;
+    if (haystack.indexOf(needle) >= 0) return 250;
+
+    const haystackTokens = new Set(haystack.split(' '));
+    return needle.split(' ').reduce(function (score, token) {
+      if (!token || token.length < 2) return score;
+      if (haystackTokens.has(token)) {
+        return score + token.length * 8 + (/\d/.test(token) ? 60 : 0);
+      }
+      if (/\d/.test(token)) return score - 25;
+      return score;
+    }, 0);
+  }
+
+  function parseQuantityRange(rawValue, allowExact) {
+    const value = String(rawValue || '').toLowerCase().replace(/,/g, '').trim();
+    const rangeMatch = value.match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (rangeMatch) {
+      const minQty = parseInt(rangeMatch[1], 10);
+      const maxQty = parseInt(rangeMatch[2], 10);
+      if (isFinite(minQty) && isFinite(maxQty)) {
+        return { label: minQty + '-' + maxQty, minQty: minQty, maxQty: maxQty };
+      }
+    }
+
+    const plusMatch = value.match(/(\d+)\s*\+/);
+    if (plusMatch) {
+      const minQty = parseInt(plusMatch[1], 10);
+      if (isFinite(minQty)) {
+        return { label: minQty + '+', minQty: minQty, maxQty: null };
+      }
+    }
+
+    if (allowExact) {
+      const exactMatch = value.match(/^(\d+)$/);
+      if (exactMatch) {
+        const exactQty = parseInt(exactMatch[1], 10);
+        if (isFinite(exactQty)) {
+          return { label: String(exactQty), minQty: exactQty, maxQty: exactQty };
+        }
+      }
+    }
+
+    return null;
+  }
+
+  function pickVariantForColor(variants, selectedColor) {
+    if (!Array.isArray(variants) || variants.length === 0) return null;
+
+    const colorNeedle = normalizeText(selectedColor);
+    if (!colorNeedle) {
+      return variants.find(function (variant) { return variant && variant.available; }) || variants[0] || null;
+    }
+
+    let bestVariant = variants[0] || null;
+    let bestScore = -Infinity;
+
+    variants.forEach(function (variant) {
+      if (!variant) return;
+      const optionText = [variant.option1, variant.option2, variant.option3].filter(Boolean).join(' ');
+      const searchText = normalizeText((variant.title || '') + ' ' + optionText);
+      const score = scoreTextMatch(searchText, colorNeedle);
+      if (score > bestScore) {
+        bestScore = score;
+        bestVariant = variant;
+      }
+    });
+
+    return bestVariant;
+  }
+
+  function extractQuantityTier(variant) {
+    if (!variant) return null;
+
+    const titleRange = parseQuantityRange(variant.title, false);
+    if (!titleRange) return null;
+
+    return {
+      label: titleRange.label,
+      minQty: titleRange.minQty,
+      maxQty: titleRange.maxQty,
+      unitPrice: Number(variant.price || 0) / 100,
+      compareAtPrice: variant.compare_at_price ? Number(variant.compare_at_price) / 100 : null,
+      variantId: parseVariantId(variant.id),
+    };
+  }
+
+  async function buildThemePricingResponse(productData, selectedColor) {
+    if (!productData || !productData.handle) return null;
+
+    const res = await fetch('/products/' + encodeURIComponent(productData.handle) + '.js', {
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    });
+
+    if (!res.ok) return null;
+    const product = await res.json();
+    const variants = Array.isArray(product.variants) ? product.variants : [];
+    const preferredVariant = pickVariantForColor(variants, selectedColor);
+    const quantityTiers = variants
+      .map(extractQuantityTier)
+      .filter(Boolean)
+      .sort(function (left, right) {
+        return (left.minQty || 0) - (right.minQty || 0);
+      });
+
+    const fallbackTier = preferredVariant
+      ? {
+          label: 'Standard price',
+          minQty: 1,
+          maxQty: null,
+          unitPrice: Number(preferredVariant.price || 0) / 100,
+          compareAtPrice: preferredVariant.compare_at_price ? Number(preferredVariant.compare_at_price) / 100 : null,
+          variantId: parseVariantId(preferredVariant.id),
+        }
+      : null;
+
+    const resolvedTier = quantityTiers.length > 0 ? quantityTiers : fallbackTier ? [fallbackTier] : [];
+
+    return {
+      currencyCode: (product.currency || 'USD').toUpperCase(),
+      product: {
+        handle: product.handle || productData.handle || 'custom-product',
+        title: product.title || productData.title || 'Custom Product',
+      },
+      tiers: resolvedTier,
+      shopifyLive: resolvedTier.length > 0,
+      message:
+        resolvedTier.length > 0
+          ? 'Pricing loaded from Shopify storefront context.'
+          : 'No storefront pricing is available for this product yet.',
+      customTable: null,
+      metafields: {
+        qtyTable: null,
+        priceTable: null,
+        unitTable: null,
+      },
+    };
+  }
+
   /** Truncate a string to `max` chars */
   function truncate(str, max) {
     if (!str) return '';
@@ -474,6 +626,30 @@
         const priceEl = sectionEl.querySelector('.product-info-bar__price');
         if (priceEl && subtotal !== undefined) {
           priceEl.textContent = '$' + subtotal.toFixed(2);
+        }
+      }
+
+      /* ─── Pricing Request from Iframe (no Storefront token mode) ─── */
+      if (type === 'requestThemePricing') {
+        try {
+          const payload = await buildThemePricingResponse(productData, event.data.selectedColor || null);
+          event.source.postMessage(
+            {
+              type: 'themePricingResponse',
+              requestId: event.data.requestId || null,
+              pricing: payload,
+            },
+            '*'
+          );
+        } catch (err) {
+          event.source.postMessage(
+            {
+              type: 'themePricingError',
+              requestId: event.data.requestId || null,
+              error: err && err.message ? err.message : 'Unable to read storefront pricing.',
+            },
+            '*'
+          );
         }
       }
 
