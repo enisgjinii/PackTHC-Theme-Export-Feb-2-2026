@@ -44,6 +44,15 @@
           break
         endif
       endfor
+      if _show_button == false
+        comment
+          Fallback: if tag mode is enabled but product tag is missing,
+          still allow JS auto-detect to decide using manifest matching.
+          This prevents valid 3D products from disappearing when tags are incomplete.
+        endcomment
+        assign _show_button = true
+        assign _use_autodetect = true
+      endif
     when 'auto'
       assign _show_button = true
       assign _use_autodetect = true

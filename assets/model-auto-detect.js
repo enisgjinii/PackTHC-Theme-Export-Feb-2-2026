@@ -14,9 +14,13 @@
     window.__PACKTHC_CONFIGURATOR_URL__ ||
     'https://v0-product-design-tool.vercel.app'
   ).replace(/\/$/, '');
-  var MANIFEST_URL = CONFIGURATOR_BASE + '/models-manifest.json';
-  var CACHE_KEY = 'packthc_3d_model_match_v4';
-  var MANIFEST_CACHE_KEY = 'packthc_3d_manifest_v1';
+  var FALLBACK_BASES = [
+    CONFIGURATOR_BASE,
+    'https://v0-product-design-tool.vercel.app',
+    'https://dram-product-customizer.vercel.app',
+  ];
+  var CACHE_KEY = 'packthc_3d_model_match_v7';
+  var MANIFEST_CACHE_KEY = 'packthc_3d_manifest_v3';
   var CACHE_TTL = 1000 * 60 * 60;       // 1 hour for match results
   var MANIFEST_TTL = 1000 * 60 * 60 * 6; // 6 hours for manifest
 
@@ -173,6 +177,10 @@
       if (!raw) return null;
       var obj = JSON.parse(raw);
       if (Date.now() - obj.ts > MANIFEST_TTL) { sessionStorage.removeItem(MANIFEST_CACHE_KEY); return null; }
+      // Reject empty/corrupt caches — old code could have stored [] before the fix.
+      if (!obj.models || !Array.isArray(obj.models) || obj.models.length < 10) {
+        sessionStorage.removeItem(MANIFEST_CACHE_KEY); return null;
+      }
       return obj.models;
     } catch(e){ return null; }
   }
@@ -184,13 +192,39 @@
   function getManifest() {
     var cached = getCachedManifest();
     if (cached) return Promise.resolve(cached);
-    return fetch(MANIFEST_URL, { mode: 'cors' })
-      .then(function(r){ return r.json(); })
-      .then(function(data){
-        var models = (data && Array.isArray(data.models)) ? data.models : [];
-        setCachedManifest(models);
-        return models;
-      });
+
+    function fetchManifestFrom(base) {
+      var manifestUrl = base.replace(/\/$/, '') + '/models-manifest.json';
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timer = controller ? setTimeout(function() { controller.abort(); }, 5000) : null;
+      return fetch(manifestUrl, { mode: 'cors', signal: controller ? controller.signal : undefined })
+        .then(function(r) {
+          if (timer) clearTimeout(timer);
+          if (!r.ok) throw new Error('manifest ' + r.status + ' @ ' + manifestUrl);
+          return r.json();
+        })
+        .then(function(data){
+          var models = (data && Array.isArray(data.models)) ? data.models : [];
+          if (!models.length) throw new Error('empty manifest @ ' + manifestUrl);
+          return models;
+        });
+    }
+
+    var uniqueBases = [];
+    for (var i = 0; i < FALLBACK_BASES.length; i++) {
+      var b = (FALLBACK_BASES[i] || '').replace(/\/$/, '');
+      if (b && uniqueBases.indexOf(b) === -1) uniqueBases.push(b);
+    }
+
+    var chain = Promise.reject(new Error('no manifest URL tried'));
+    uniqueBases.forEach(function(base) {
+      chain = chain.catch(function() { return fetchManifestFrom(base); });
+    });
+
+    return chain.then(function(models) {
+      setCachedManifest(models);
+      return models;
+    });
   }
 
   /* ─── Match result cache ─── */
@@ -209,7 +243,7 @@
   }
 
   /* ─── DOM helpers ─── */
-  function getWrapper() { return document.querySelector('[data-3d-autodetect]'); }
+  function getWrappers() { return document.querySelectorAll('[data-3d-autodetect]'); }
 
   function showWrapper(wrapper, category) {
     wrapper.style.display = '';
@@ -267,34 +301,71 @@
 
   /* ─── Main ─── */
   function checkAndReveal() {
-    var wrapper = getWrapper();
-    if (!wrapper) return;
+    var wrappers = getWrappers();
+    if (!wrappers || !wrappers.length) return;
 
-    wrapper.style.display = 'none'; // hidden until confirmed match
+    var pending = [];
 
-    var handle = getProductHandle(wrapper);
-    var title = getProductTitle(wrapper);
-    var productType = getProductType(wrapper);
-    var sku = getProductSku(wrapper);
+    for (var i = 0; i < wrappers.length; i++) {
+      var wrapper = wrappers[i];
+      wrapper.style.display = 'none'; // hidden until confirmed match
 
-    if (!handle && !title) return;
+      var handle = getProductHandle(wrapper);
+      var title = getProductTitle(wrapper);
+      var productType = getProductType(wrapper);
+      var sku = getProductSku(wrapper);
 
-    var cached = getCachedResult(handle);
-    if (cached !== null) { applyResult(wrapper, cached); return; }
+      if (!handle && !title) {
+        hideWrapper(wrapper);
+        continue;
+      }
 
-    var query = normalizeText([title, handle.replace(/-/g,' '), productType, sku].filter(Boolean).join(' '));
-    if (!query) return;
+      var cacheKeyHandle = handle || ('title:' + normalizeText(title));
+      var cached = getCachedResult(cacheKeyHandle);
+      if (cached !== null) {
+        applyResult(wrapper, cached);
+        continue;
+      }
+
+      var query = normalizeText([
+        title,
+        handle ? handle.replace(/-/g,' ') : '',
+        productType,
+        sku,
+      ].filter(Boolean).join(' '));
+
+      if (!query) {
+        hideWrapper(wrapper);
+        continue;
+      }
+
+      pending.push({
+        wrapper: wrapper,
+        handle: cacheKeyHandle,
+        query: query,
+      });
+    }
+
+    if (!pending.length) return;
 
     getManifest()
       .then(function(models) {
-        var result = findBestMatch(models, query);
-        var data = { matched: result.matched, category: result.matched && result.model ? result.model.category : null };
-        setCachedResult(handle, data);
-        applyResult(wrapper, data);
+        for (var j = 0; j < pending.length; j++) {
+          var item = pending[j];
+          var result = findBestMatch(models, item.query);
+          var data = {
+            matched: result.matched,
+            category: result.matched && result.model ? result.model.category : null,
+          };
+          setCachedResult(item.handle, data);
+          applyResult(item.wrapper, data);
+        }
       })
       .catch(function() {
-        // Manifest fetch failed (offline / CORS issue) — fail open so we don't permanently hide the button.
-        showWrapper(wrapper, null);
+        // Manifest fetch failed — fail CLOSED for all pending wrappers.
+        for (var k = 0; k < pending.length; k++) {
+          hideWrapper(pending[k].wrapper);
+        }
       });
   }
 
