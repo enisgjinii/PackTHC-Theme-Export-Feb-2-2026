@@ -15,7 +15,7 @@
     'https://v0-product-design-tool.vercel.app'
   ).replace(/\/$/, '');
   var MANIFEST_URL = CONFIGURATOR_BASE + '/models-manifest.json';
-  var CACHE_KEY = 'packthc_3d_model_match_v2';
+  var CACHE_KEY = 'packthc_3d_model_match_v4';
   var MANIFEST_CACHE_KEY = 'packthc_3d_manifest_v1';
   var CACHE_TTL = 1000 * 60 * 60;       // 1 hour for match results
   var MANIFEST_TTL = 1000 * 60 * 60 * 6; // 6 hours for manifest
@@ -29,7 +29,7 @@
     ['spiral',10],['sprial',10],['cartridge',10],
     ['dome',10],['pouch',10],['mylar',10],['grinder',10],['blunt',10],['acrylic',10]
   ];
-  var MIN_SCORE = 8;
+  var MIN_SCORE = 20;
 
   /**
    * Gate check: the product must explicitly contain at least one keyword that
@@ -46,21 +46,62 @@
     'unicorn',    // Unicorn Bottles
     'spiral', 'sprial',   // Spiral Containers/Bottles/Tubes
     'pouch',      // Pouch Containers
-    'preroll', 'pre roll', // Preroll Tubes
+    // NOTE: 'preroll'/'pre roll' handled separately below — needs "pre rolled" exclusion
     'blunt',      // Blunt Tubes
     'acrylic',    // Acrylic Boxes
     'dome',       // Dome Jars
     'cartridge'   // Cartridge Containers
   ];
 
+  /**
+   * These products can NEVER have a 3D model in our catalog.
+   * Checked before any gate keyword — disqualifier always wins.
+   */
+  var DISQUALIFIERS = [
+    'paper cone', 'paper cones',        // rolling cones, not tubes
+    'rice paper',                        // rolling papers
+    'rolling paper', 'rolling papers',   // papers
+    'hemp cone', 'hemp cones',           // natural leaf cones
+    'king palm',                         // palm leaf products
+    'blunt wrap', 'blunt wraps',         // blunt wraps (vs blunt TUBES which have models)
+    'hemp wrap', 'hemp wraps',           // wrap products
+    'wood tip', 'glass tip',             // accessories
+    'filter tip', 'filter tips',         // paper accessories
+  ];
+
+  /**
+   * Gate check: returns array of matched category keywords (non-empty = show button).
+   * Empty array = product doesn't qualify → hide button.
+   * Returning the matched keywords (not just true/false) lets findBestMatch restrict
+   * scoring to only models in the same category, preventing cross-category false positives.
+   */
   function passesGateCheck(query) {
-    for (var i = 0; i < GATE_KEYWORDS.length; i++) {
-      if (query.indexOf(GATE_KEYWORDS[i]) !== -1) return true;
+    // 1. Disqualifiers win unconditionally — these are never 3D-model products.
+    for (var d = 0; d < DISQUALIFIERS.length; d++) {
+      if (query.indexOf(DISQUALIFIERS[d]) !== -1) return [];
     }
-    // "jar" only qualifies when paired with "pet" (i.e. PET Jars, Pre Roll Pet Jars).
-    // A plain "Plastic Jar" or "Glass Jar" does NOT have a 3D model.
-    if (query.indexOf('jar') !== -1 && query.indexOf('pet') !== -1) return true;
-    return false;
+
+    var matched = [];
+    for (var i = 0; i < GATE_KEYWORDS.length; i++) {
+      if (query.indexOf(GATE_KEYWORDS[i]) !== -1) matched.push(GATE_KEYWORDS[i]);
+    }
+
+    // "preroll"/"pre roll" as TUBE products only.
+    // Block when: past-tense "pre rolled" present (paper cones/joints),
+    // OR "cone"/"cones" is in the query (paper cones called "Pre-Roll Cones").
+    var hasCone = (query.indexOf(' cone') !== -1 || query.indexOf('cone ') !== -1);
+    if (query.indexOf('preroll') !== -1 && query.indexOf('prerolled') === -1 && !hasCone) {
+      matched.push('preroll');
+    }
+    if (query.indexOf('pre roll') !== -1 && query.indexOf('pre rolled') === -1 && !hasCone) {
+      matched.push('pre roll');
+    }
+
+    // "jar" only qualifies when explicitly paired with "pet" (PET Jars in our catalog).
+    // Plain "Plastic Jar", "Glass Jar", "Mason Jar" do NOT have 3D models.
+    if (query.indexOf('jar') !== -1 && query.indexOf('pet') !== -1) matched.push('jar');
+
+    return matched;
   }
 
   function normalizeText(v) {
@@ -99,14 +140,26 @@
   }
 
   function findBestMatch(models, query) {
-    // Hard gate: product type must match a known 3D model category.
-    // This prevents generic terms ("jar", "plastic", "white") from creating false positives.
-    if (!passesGateCheck(query)) {
+    // Gate check returns which category keywords the product contains.
+    // Empty array = no qualifying keyword → hide button immediately.
+    var gateWords = passesGateCheck(query);
+    if (gateWords.length === 0) {
       return { score: -Infinity, model: null, matched: false };
     }
 
+    // Advanced filter: only score models that share at least one gate keyword
+    // with the product. This ensures a "blunt" product only competes against
+    // blunt-tube models, not pop-top or dram models that happened to share a
+    // color or size, preventing cross-category false positives.
     var best = -Infinity, bestModel = null;
     for (var i = 0; i < models.length; i++) {
+      var modelText = normalizeText((models[i].name||'') + ' ' + (models[i].category||'') + ' ' + (models[i].path||''));
+      var modelSharesCategory = false;
+      for (var g = 0; g < gateWords.length; g++) {
+        if (modelText.indexOf(gateWords[g]) !== -1) { modelSharesCategory = true; break; }
+      }
+      if (!modelSharesCategory) continue; // skip unrelated model categories
+
       var s = scoreModel(query, models[i]);
       if (s > best) { best = s; bestModel = models[i]; }
     }
