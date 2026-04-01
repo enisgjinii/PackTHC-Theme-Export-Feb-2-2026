@@ -21,10 +21,11 @@
     },
     "grinder_page_yHcWG3": {
       "type": "Grinder-page",
+      "disabled": true,
       "name": "Hero — Video Center",
       "settings": {
-        "accent_color": "#FFFFFF",
-        "text_color": "#FFFFFF",
+        "accent_color": "#ffffff",
+        "text_color": "#ffffff",
         "subtext_color": "#7a7a7a",
         "video_type": "mp4",
         "video_url": "https://cdn.shopify.com/videos/c/o/v/1117a3cf6d954013992565a6bc9cc60a.mp4",
@@ -55,6 +56,136 @@
         "tag2": "Est. 2019"
       }
     },
+    "grinder_gsap_p6JiHy": {
+      "type": "grinder-gsap",
+      "blocks": {
+        "scroll_heading_dTcgCr": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 0,
+            "show_until": 30,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "left",
+            "text_position": "middle"
+          }
+        },
+        "scroll_heading_pHB7zT": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 0,
+            "show_until": 30,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "right",
+            "text_position": "middle"
+          }
+        },
+        "scroll_heading_pUUXKQ": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 35,
+            "show_until": 60,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "left",
+            "text_position": "middle"
+          }
+        },
+        "scroll_heading_LDWxzf": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 35,
+            "show_until": 60,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "right",
+            "text_position": "middle"
+          }
+        },
+        "scroll_heading_cgJVhm": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 65,
+            "show_until": 95,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "left",
+            "text_position": "middle"
+          }
+        },
+        "scroll_heading_cPBGy8": {
+          "type": "scroll_heading",
+          "settings": {
+            "heading": "Crafted to Perfection",
+            "subheading": "Sub Title",
+            "show_from": 65,
+            "show_until": 95,
+            "heading_size": "large",
+            "heading_weight": "700",
+            "heading_tracking": "-0.02em",
+            "subheading_weight": "300",
+            "heading_color": "#0b3466",
+            "subheading_color": "#0b3466",
+            "text_align": "right",
+            "text_position": "middle"
+          }
+        }
+      },
+      "block_order": [
+        "scroll_heading_dTcgCr",
+        "scroll_heading_pHB7zT",
+        "scroll_heading_pUUXKQ",
+        "scroll_heading_LDWxzf",
+        "scroll_heading_cgJVhm",
+        "scroll_heading_cPBGy8"
+      ],
+      "name": "Image Sequence Animation",
+      "settings": {
+        "total_frames": 200,
+        "file_prefix": "frame_",
+        "file_extension": "webp",
+        "pad_length": 3,
+        "cdn_base_url": "https://cdn.shopify.com/s/files/1/0618/1925/6945/files/",
+        "scroll_speed": 3,
+        "section_bg": "#ffffff",
+        "show_progress": true,
+        "overlay_text": "",
+        "aria_label": "Product animation",
+        "mobile_fallback": "static",
+        "mobile_video": ""
+      }
+    },
     "grinder_second_6EnxUL": {
       "type": "grinder-second",
       "blocks": {
@@ -63,6 +194,7 @@
           "settings": {
             "card_title": "Creative Freelancers",
             "card_description": "Providing support and expertise to clients, solo managing all deadlines.",
+            "card_image": "shopify://shop_images/frame_353.webp",
             "card_color": "#fde0e8"
           }
         },
@@ -71,6 +203,7 @@
           "settings": {
             "card_title": "Studios and Agencies",
             "card_description": "Creative experiences that connect, convert and inspire audiences.",
+            "card_image": "shopify://shop_images/frame_350.webp",
             "card_color": "#a8f5c8"
           }
         },
@@ -490,6 +623,7 @@
   "order": [
     "main",
     "grinder_page_yHcWG3",
+    "grinder_gsap_p6JiHy",
     "grinder_second_6EnxUL",
     "grinder_third_8LGLjh",
     "grinder_forth_qhme3t",

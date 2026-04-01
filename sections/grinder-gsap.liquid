@@ -1,0 +1,774 @@
+{% comment %}
+  ============================================================
+  Section: Image Sequence Scroll Animation
+  Version: 2.0.0
+  Description: Apple-style scroll-pinned canvas animation
+               with GSAP ScrollTrigger + lazy frame loading
+               + scroll-triggered heading blocks.
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  assign total_frames = section.settings.total_frames | default: 357
+  assign file_prefix = section.settings.file_prefix | default: 'frame_'
+  assign file_ext = section.settings.file_extension | default: 'webp'
+  assign scroll_speed = section.settings.scroll_speed | default: 3
+  assign overlay_text = section.settings.overlay_text
+  assign show_progress = section.settings.show_progress
+  assign mobile_mode = section.settings.mobile_fallback | default: 'static'
+  assign mobile_image = section.settings.mobile_image
+  assign mobile_video = section.settings.mobile_video
+  assign section_bg = section.settings.section_bg | default: '#000000'
+-%}
+
+<style>
+    /* ── Reset & Custom Properties ──────────────────────────── */
+    #isa-{{ section.id }} {
+      --isa-bg:           {{ section_bg }};
+      --isa-accent:       #ffffff;
+      --isa-text:         #ffffff;
+      --isa-progress-h:   3px;
+      --isa-pin-h:        {{ scroll_speed | times: 100 }}vh;
+      background:         var(--isa-bg);
+      position:           relative;
+    }
+
+    /* ── Pin Wrapper (GSAP pins this) ───────────────────────── */
+    .isa-pin-wrapper {
+      position:   relative;
+      height:     var(--isa-pin-h);
+    }
+
+    /* ── Sticky Stage ────────────────────────────────────────── */
+    .isa-stage {
+      position:     sticky;
+      top:          0;
+      left:         0;
+      width:        100%;
+      height:       100vh;
+      overflow:     hidden;
+      display:      flex;
+      align-items:  center;
+      justify-content: center;
+    }
+
+    /* ── Canvas ──────────────────────────────────────────────── */
+    .isa-canvas {
+      display:    block;
+      width:      100%;
+      height:     100%;
+      object-fit: contain;
+    }
+
+    /* ── Legacy Overlay Text ─────────────────────────────────── */
+    .isa-overlay {
+      position:    absolute;
+      inset:       0;
+      display:     flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding:     clamp(2rem, 5vw, 5rem);
+      pointer-events: none;
+      z-index:     2;
+    }
+    .isa-overlay__text {
+      color:          var(--isa-text);
+      font-family:    system-ui, -apple-system, sans-serif;
+      font-size:      clamp(1rem, 2.5vw, 1.5rem);
+      font-weight:    300;
+      letter-spacing: 0.06em;
+      text-align:     center;
+      opacity:        0;
+      transform:      translateY(12px);
+      transition:     opacity 0.6s ease, transform 0.6s ease;
+      max-width:      600px;
+      text-shadow:    0 2px 16px rgba(0,0,0,0.5);
+    }
+    .isa-overlay__text.is-visible {
+      opacity:   1;
+      transform: translateY(0);
+    }
+
+    /* ── Scroll Heading Blocks ───────────────────────────────── */
+    .isa-heading-block {
+      position:        absolute;
+      inset:           0;
+      display:         flex;
+      align-items:     center;
+      justify-content: center;
+      pointer-events:  none;
+      z-index:         4;
+      padding:         clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* Horizontal alignment variants */
+    .isa-heading-block[data-align="left"]   { justify-content: flex-start; text-align: left; }
+    .isa-heading-block[data-align="right"]  { justify-content: flex-end;   text-align: right; }
+    .isa-heading-block[data-align="center"] { justify-content: center;     text-align: center; }
+
+    /* Vertical position variants */
+    .isa-heading-block[data-position="top"]    { align-items: flex-start; }
+    .isa-heading-block[data-position="middle"] { align-items: center; }
+    .isa-heading-block[data-position="bottom"] { align-items: flex-end; }
+
+    .isa-heading-block__inner {
+      opacity:    0;
+      transform:  translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      max-width:  720px;
+    }
+
+    .isa-heading-block__inner.is-visible {
+      opacity:   1;
+      transform: translateY(0);
+    }
+
+    .isa-heading-block__title {
+      margin:      0 0 0.35em;
+      line-height: 1.08;
+      text-shadow: 0 2px 28px rgba(0,0,0,0.65);
+    }
+
+    .isa-heading-block__subtitle {
+      margin:      0;
+      line-height: 1.5;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    }
+
+    /* ── Progress Bar ────────────────────────────────────────── */
+    .isa-progress-bar {
+      position:   absolute;
+      bottom:     0;
+      left:       0;
+      width:      0%;
+      height:     var(--isa-progress-h);
+      background: var(--isa-accent);
+      z-index:    3;
+      transform-origin: left;
+      transition: width 0.05s linear;
+    }
+
+    /* ── Loading Indicator ───────────────────────────────────── */
+    .isa-loader {
+      position:        absolute;
+      inset:           0;
+      display:         flex;
+      flex-direction:  column;
+      align-items:     center;
+      justify-content: center;
+      z-index:         10;
+      background:      var(--isa-bg);
+      transition:      opacity 0.4s ease;
+    }
+    .isa-loader.is-hidden {
+      opacity:        0;
+      pointer-events: none;
+    }
+    .isa-loader__ring {
+      width:  48px;
+      height: 48px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-top-color: #fff;
+      border-radius:    50%;
+      animation:        isa-spin 0.8s linear infinite;
+    }
+    .isa-loader__label {
+      color:          rgba(255,255,255,0.5);
+      font-family:    system-ui, sans-serif;
+      font-size:      0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top:     1rem;
+    }
+    @keyframes isa-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Mobile Fallback ─────────────────────────────────────── */
+    .isa-mobile-fallback {
+      display:  none;
+      width:    100%;
+      height:   100vh;
+      overflow: hidden;
+    }
+    .isa-mobile-fallback img,
+    .isa-mobile-fallback video {
+      width:      100%;
+      height:     100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 767px) {
+      .isa-mobile-fallback {
+        display: none !important;
+      }
+      .isa-pin-wrapper {
+        display: block !important;
+        height: var(--isa-pin-h);
+      }
+      .isa-stage {
+        display: flex !important;
+        height: 100svh;
+        height: 100vh;
+      }
+      .isa-canvas {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    @media (max-width: 767px) {
+  .isa-heading-block {
+    display: none !important;
+  }
+  .isa-overlay {
+    display: none !important;
+  }
+}
+</style>
+
+<section
+  id="isa-{{ section.id }}"
+  class="image-sequence-animation"
+  data-section-id="{{ section.id }}"
+>
+  <!-- ── Desktop: Pinned canvas animation ──────────────────── -->
+  <div
+    class="isa-pin-wrapper"
+    data-isa-pin
+    data-total-frames="{{ total_frames }}"
+    data-file-prefix="{{ file_prefix }}"
+    data-file-ext="{{ file_ext }}"
+    data-scroll-speed="{{ scroll_speed }}"
+  >
+    <div class="isa-stage">
+      <!-- Canvas -->
+      <canvas
+        class="isa-canvas"
+        id="isa-canvas-{{ section.id }}"
+        aria-label="{{ section.settings.aria_label | default: 'Product animation' }}"
+        role="img"
+      ></canvas>
+
+      <!-- ══ Scroll-triggered Heading Blocks ══════════════════ -->
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'scroll_heading' -%}
+          {%- liquid
+            assign show_from        = block.settings.show_from  | default: 0
+            assign show_until       = block.settings.show_until | default: 100
+            assign h_align          = block.settings.text_align    | default: 'center'
+            assign h_position       = block.settings.text_position | default: 'middle'
+            assign heading_color    = block.settings.heading_color    | default: '#ffffff'
+            assign subheading_color = block.settings.subheading_color | default: '#ffffff'
+            assign heading_size     = block.settings.heading_size     | default: 'large'
+          -%}
+          <div
+            class="isa-heading-block"
+            data-isa-heading
+            data-show-from="{{ show_from | divided_by: 100.0 }}"
+            data-show-until="{{ show_until | divided_by: 100.0 }}"
+            data-align="{{ h_align }}"
+            data-position="{{ h_position }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="isa-heading-block__inner">
+              {%- if block.settings.heading != blank -%}
+                <p
+                  class="isa-heading-block__title"
+                  style="
+                    color: {{ heading_color }};
+                    font-size: {%- if heading_size == 'small' -%}clamp(1.2rem, 3vw, 2rem){%- elsif heading_size == 'medium' -%}clamp(1.8rem, 4vw, 3rem){%- elsif heading_size == 'large' -%}clamp(2.4rem, 6vw, 5rem){%- else -%}clamp(3rem, 8vw, 7rem){%- endif -%};
+                    font-weight: {{ block.settings.heading_weight | default: '700' }};
+                    letter-spacing: {{ block.settings.heading_tracking | default: '-0.02em' }};
+                  "
+                >{{ block.settings.heading | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.subheading != blank -%}
+                <p
+                  class="isa-heading-block__subtitle"
+                  style="
+                    color: {{ subheading_color }};
+                    font-size: clamp(0.9rem, 2vw, 1.25rem);
+                    font-weight: {{ block.settings.subheading_weight | default: '300' }};
+                    letter-spacing: 0.04em;
+                    opacity: 0.85;
+                  "
+                >{{ block.settings.subheading | escape }}</p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <!-- Legacy overlay text -->
+      {%- if overlay_text != blank -%}
+        <div class="isa-overlay">
+          <p class="isa-overlay__text" data-isa-text>{{ overlay_text | escape }}</p>
+        </div>
+      {%- endif -%}
+
+      <!-- Progress bar -->
+      {%- if show_progress -%}
+        <div class="isa-progress-bar" data-isa-progress></div>
+      {%- endif -%}
+
+      <!-- Loader -->
+      <div class="isa-loader" data-isa-loader>
+        <div class="isa-loader__ring"></div>
+        <span class="isa-loader__label">Loading</span>
+      </div>
+    </div>
+    <!-- /.isa-stage -->
+  </div>
+  <!-- /.isa-pin-wrapper -->
+
+  <!-- ── Mobile Fallback ───────────────────────────────────── -->
+  <div class="isa-mobile-fallback" aria-hidden="true">
+    {%- if mobile_mode == 'video' and mobile_video != blank -%}
+      <video src="{{ mobile_video | file_url }}" autoplay muted loop playsinline></video>
+    {%- elsif mobile_image != blank -%}
+      <img
+        src="{{ mobile_image | image_url: width: 800 }}"
+        alt="{{ section.settings.aria_label | default: 'Product' }}"
+        loading="lazy"
+      >
+    {%- else -%}
+      {{- 'product-1' | placeholder_svg_tag: 'placeholder-svg' -}}
+    {%- endif -%}
+  </div>
+</section>
+
+<!-- ── Scripts ────────────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<script>
+(function () {
+  'use strict';
+
+  const SECTION_ID   = '{{ section.id }}';
+  const TOTAL_FRAMES = {{ total_frames }};
+  const FILE_PREFIX  = '{{ file_prefix }}';
+  const FILE_EXT     = '{{ file_ext }}';
+  const CDN_BASE     = '{{ section.settings.cdn_base_url | default: "" }}';
+  const PAD_LENGTH   = {{ section.settings.pad_length | default: 3 }};
+
+  function padNum(n, len) { return String(n).padStart(len, '0'); }
+  function frameUrl(i)    { return `${CDN_BASE}${FILE_PREFIX}${padNum(i + 1, PAD_LENGTH)}.${FILE_EXT}`; }
+
+  function init() {
+    const section    = document.getElementById(`isa-${SECTION_ID}`);
+    if (!section) return;
+
+    const pinWrapper = section.querySelector('[data-isa-pin]');
+    const canvas     = section.querySelector(`#isa-canvas-${SECTION_ID}`);
+    const loader     = section.querySelector('[data-isa-loader]');
+    const progressEl = section.querySelector('[data-isa-progress]');
+    const textEl     = section.querySelector('[data-isa-text]');
+    if (!canvas) return;
+
+    /* Collect heading blocks with scroll thresholds */
+    const headingBlocks = Array.from(section.querySelectorAll('[data-isa-heading]')).map(el => ({
+      inner:     el.querySelector('.isa-heading-block__inner'),
+      showFrom:  parseFloat(el.dataset.showFrom)  || 0,
+      showUntil: parseFloat(el.dataset.showUntil) || 1,
+    }));
+
+    const ctx = canvas.getContext('2d');
+
+    const frameCache   = new Array(TOTAL_FRAMES).fill(null);
+    const frameLoading = new Array(TOTAL_FRAMES).fill(false);
+    let   currentFrame = 0;
+    let   rafId        = null;
+    let   isReady      = false;
+
+    /* Canvas sizing */
+    function resizeCanvas() {
+      canvas.width  = window.innerWidth  * window.devicePixelRatio;
+      canvas.height = window.innerHeight * window.devicePixelRatio;
+      canvas.style.width  = '100%';
+      canvas.style.height = '100%';
+      drawFrame(currentFrame);
+    }
+    window.addEventListener('resize', debounce(resizeCanvas, 150));
+
+    /* Draw frame */
+    function drawFrame(index) {
+      const img = frameCache[index];
+      if (!img || !img.complete || img.naturalWidth === 0) {
+        for (let o = 1; o < 10; o++) {
+          const prev = frameCache[index - o];
+          if (prev && prev.complete && prev.naturalWidth > 0) {
+            const cW = canvas.width, cH = canvas.height;
+            const s  = Math.min(cW / prev.naturalWidth, cH / prev.naturalHeight);
+            ctx.clearRect(0, 0, cW, cH);
+            ctx.drawImage(prev, (cW - prev.naturalWidth * s) / 2, (cH - prev.naturalHeight * s) / 2, prev.naturalWidth * s, prev.naturalHeight * s);
+            return;
+          }
+        }
+        return;
+      }
+      const cW = canvas.width, cH = canvas.height;
+      const iW = img.naturalWidth, iH = img.naturalHeight;
+      const s  = Math.min(cW / iW, cH / iH);
+      ctx.clearRect(0, 0, cW, cH);
+      ctx.drawImage(img, (cW - iW * s) / 2, (cH - iH * s) / 2, iW * s, iH * s);
+    }
+
+    function requestDraw(index) {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => { drawFrame(index); rafId = null; });
+    }
+
+    /* Update headings based on scroll progress */
+    function updateHeadings(progress) {
+      headingBlocks.forEach(({ inner, showFrom, showUntil }) => {
+        inner.classList.toggle('is-visible', progress >= showFrom && progress <= showUntil);
+      });
+    }
+
+    /* Lazy loading */
+    const CRITICAL_FRAMES = 60, LOOKAHEAD = 40, LOOKBEHIND = 10;
+
+    function loadFrame(index) {
+      if (index < 0 || index >= TOTAL_FRAMES || frameCache[index] || frameLoading[index]) return;
+      frameLoading[index] = true;
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload  = () => {
+        frameCache[index]   = img;
+        frameLoading[index] = false;
+        if (index === 0 && !isReady) { resizeCanvas(); isReady = true; loader && loader.classList.add('is-hidden'); }
+        if (index === currentFrame) requestDraw(index);
+      };
+      img.onerror = () => { frameLoading[index] = false; };
+      img.src = frameUrl(index);
+    }
+
+    function loadRange(start, end) { for (let i = start; i <= end; i++) loadFrame(i); }
+
+    function evictDistantFrames(playhead) {
+      const s = Math.max(0, playhead - LOOKBEHIND - 5);
+      const e = Math.min(TOTAL_FRAMES - 1, playhead + LOOKAHEAD + 5);
+      for (let i = 0; i < TOTAL_FRAMES; i++) {
+        if (i < s || i > e) { frameCache[i] = null; frameLoading[i] = false; }
+      }
+    }
+
+    loadRange(0, Math.min(CRITICAL_FRAMES - 1, TOTAL_FRAMES - 1));
+
+    /* GSAP ScrollTrigger */
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger:       pinWrapper,
+        start:         'top top',
+        end:           'bottom bottom',
+        scrub:         0.5,
+        pin:           '.isa-stage',
+        pinSpacing:    false,
+        anticipatePin: 1,
+        onUpdate(self) {
+          const progress    = self.progress;
+          const targetFrame = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * (TOTAL_FRAMES - 1)));
+
+          if (targetFrame !== currentFrame) {
+            currentFrame = targetFrame;
+            loadRange(Math.max(0, targetFrame - LOOKBEHIND), Math.min(TOTAL_FRAMES - 1, targetFrame + LOOKAHEAD));
+            if (targetFrame % 30 === 0) evictDistantFrames(targetFrame);
+            requestDraw(targetFrame);
+          }
+
+          if (progressEl) progressEl.style.width = `${(progress * 100).toFixed(2)}%`;
+          if (textEl) textEl.classList.toggle('is-visible', progress >= 0.80);
+
+          updateHeadings(progress);
+        },
+      },
+    });
+
+    resizeCanvas();
+  }
+
+  function debounce(fn, delay) {
+    let t;
+    return function (...args) { clearTimeout(t); t = setTimeout(() => fn.apply(this, args), delay); };
+  }
+
+  function waitForGSAP(cb, retries = 40) {
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') { cb(); }
+    else if (retries > 0) { setTimeout(() => waitForGSAP(cb, retries - 1), 100); }
+    else { console.warn('[ISA] GSAP / ScrollTrigger not loaded.'); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => waitForGSAP(init));
+  } else {
+    waitForGSAP(init);
+  }
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Image Sequence Animation",
+  "tag": "section",
+  "class": "isa-section",
+  "blocks": [
+    {
+      "type": "scroll_heading",
+      "name": "Scroll Heading",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Crafted to Perfection"
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading (optional)",
+          "info": "Heading ke neeche chhota text. Blank chhodo agar nahi chahiye."
+        },
+        {
+          "type": "header",
+          "content": "Scroll Trigger Range"
+        },
+        {
+          "type": "range",
+          "id": "show_from",
+          "label": "Show From (% scroll)",
+          "min": 0,
+          "max": 95,
+          "step": 1,
+          "default": 0,
+          "info": "Yahan se heading fade-in hogi. 0 = animation ka shuruat, 100 = end."
+        },
+        {
+          "type": "range",
+          "id": "show_until",
+          "label": "Hide At (% scroll)",
+          "min": 5,
+          "max": 100,
+          "step": 1,
+          "default": 30,
+          "info": "Yahan ke baad heading fade-out ho jaayegi."
+        },
+        {
+          "type": "header",
+          "content": "Typography"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading Size",
+          "options": [
+            { "value": "small",  "label": "Small"   },
+            { "value": "medium", "label": "Medium"  },
+            { "value": "large",  "label": "Large"   },
+            { "value": "xlarge", "label": "X-Large" }
+          ],
+          "default": "large"
+        },
+        {
+          "type": "select",
+          "id": "heading_weight",
+          "label": "Heading Weight",
+          "options": [
+            { "value": "300", "label": "Light"    },
+            { "value": "400", "label": "Regular"  },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold"     },
+            { "value": "900", "label": "Black"    }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "text",
+          "id": "heading_tracking",
+          "label": "Letter Spacing",
+          "default": "-0.02em",
+          "info": "CSS letter-spacing. Example: -0.02em, 0, 0.1em"
+        },
+        {
+          "type": "select",
+          "id": "subheading_weight",
+          "label": "Subheading Weight",
+          "options": [
+            { "value": "300", "label": "Light"    },
+            { "value": "400", "label": "Regular"  },
+            { "value": "600", "label": "Semibold" }
+          ],
+          "default": "300"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Position & Alignment"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Horizontal Alignment",
+          "options": [
+            { "value": "left",   "label": "Left"   },
+            { "value": "center", "label": "Center" },
+            { "value": "right",  "label": "Right"  }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Vertical Position",
+          "options": [
+            { "value": "top",    "label": "Top"    },
+            { "value": "middle", "label": "Middle" },
+            { "value": "bottom", "label": "Bottom" }
+          ],
+          "default": "middle"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Frame Settings"
+    },
+    {
+      "type": "number",
+      "id": "total_frames",
+      "label": "Total Frames",
+      "default": 357,
+      "info": "Total number of image frames in your sequence (e.g. 357)."
+    },
+    {
+      "type": "text",
+      "id": "file_prefix",
+      "label": "File Name Prefix",
+      "default": "frame_",
+      "info": "Filename prefix before the frame number (e.g. 'frame_' → frame_001.webp)."
+    },
+    {
+      "type": "text",
+      "id": "file_extension",
+      "label": "File Extension",
+      "default": "webp",
+      "info": "Image file extension without the dot (webp, jpg, png)."
+    },
+    {
+      "type": "number",
+      "id": "pad_length",
+      "label": "Frame Number Padding Length",
+      "default": 3,
+      "info": "Zero-padding width of frame number. '3' = 001, '4' = 0001, etc."
+    },
+    {
+      "type": "header",
+      "content": "CDN Configuration"
+    },
+    {
+      "type": "text",
+      "id": "cdn_base_url",
+      "label": "Shopify Files CDN Base URL",
+      "info": "Your Shopify CDN base path. Upload one file, copy its URL, remove the filename. Example: https://cdn.shopify.com/s/files/1/0123/4567/files/"
+    },
+    {
+      "type": "header",
+      "content": "Scroll & Display"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "unit": "x",
+      "label": "Scroll Duration Multiplier",
+      "default": 3,
+      "info": "How many viewport-heights the section pins for. Higher = slower scroll."
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress",
+      "label": "Show Progress Bar",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "overlay_text",
+      "label": "Overlay Text (Legacy)",
+      "info": "Purana overlay text — ab 'Scroll Heading' blocks use karein."
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Accessibility Label",
+      "default": "Product animation"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Fallback"
+    },
+    {
+      "type": "select",
+      "id": "mobile_fallback",
+      "label": "Mobile Fallback Type",
+      "options": [
+        { "value": "static", "label": "Static Image" },
+        { "value": "video",  "label": "Video"        }
+      ],
+      "default": "static"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Fallback Image",
+      "info": "Shown on screens ≤ 767px when fallback type is 'Static Image'."
+    },
+    {
+      "type": "text",
+      "id": "mobile_video",
+      "label": "Mobile Fallback Video (file name in Shopify Files)",
+      "info": "Filename of a video uploaded to Shopify Files. Used when fallback type is 'Video'."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Sequence Animation",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+

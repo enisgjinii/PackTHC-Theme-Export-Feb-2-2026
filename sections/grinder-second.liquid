@@ -35,6 +35,13 @@
             "
           >
             <h3 class="wif-card__title">{{ block.settings.card_title }}</h3>
+            {% if block.settings.card_image %}
+  <img
+    src="{{ block.settings.card_image | img_url: '400x' }}"
+    alt="{{ block.settings.card_title }}"
+    class="wif-card__img"
+  />
+{% endif %}
             <p class="wif-card__desc">{{ block.settings.card_description }}</p>
           </div>
         {% endfor %}
@@ -48,7 +55,6 @@
   .wif-section {
     background: var(--wif-bg);
     color: var(--wif-text);
-    /* Total scroll height = cards * 300px + 1 viewport */
     height: calc(var(--total-cards) * 500px + 100vh);
     position: relative;
   }
@@ -131,9 +137,9 @@
     padding: 36px 28px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 12px;
     transform-origin: bottom center;
-    /* Start: hidden niche */
     transform: translateX(-50%) translateY(120%) rotate(0deg);
     opacity: 0;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -161,27 +167,85 @@
     margin: 0;
   }
 
-  /* ── RESPONSIVE ── */
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
-    .wif-cards { height: 340px; }
-    .wif-card {
-      width: 200px;
-      height: 280px;
-      padding: 24px 20px;
-    }
-    .wif-card__title { font-size: 22px; }
-    .wif-card__desc  { font-size: 12px; }
+  .wif-section {
+    height: calc(var(--total-cards) * 250px + 100vh);
   }
 
-  @media (max-width: 480px) {
-    .wif-card {
-      width: 160px;
-      height: 230px;
-      padding: 18px 14px;
-    }
-    .wif-card__title { font-size: 18px; }
-    .wif-card__desc  { font-size: 11px; }
+  .wif-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
   }
+
+  .wif-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px 20px;
+    gap: 0;
+  }
+
+  .wif-header {
+    margin-bottom: 16px;
+    z-index: 100;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .wif-title {
+    font-size: clamp(32px, 9vw, 52px);
+  }
+
+  .wif-subtitle {
+    font-size: 11px;
+  }
+
+  .wif-badge {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+
+  .wif-cards {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .wif-card {
+    width: 78vw;
+    max-width: 300px;
+    height: 200px;
+    padding: 20px 18px;
+    left: 50%;
+    bottom: 0;
+  }
+
+  .wif-card__title { font-size: 18px; }
+  .wif-card__desc  { font-size: 12px; }
+}
+
+.wif-card__img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .wif-card__img {
+    height: 80px;
+    margin-bottom: 8px;
+  }
+}
+  
 </style>
 
 <script>
@@ -193,76 +257,80 @@
 
     if (!totalCards || !sectionEl) return;
 
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+
     const fanConfig = {
       totalArc : 70,
       ySpread  : 30,
       xSpread  : 100,
     };
 
-    function getCardTransform(index, total) {
+    function getDesktopTransform(index, total) {
       const mid  = (total - 1) / 2;
       const norm = total > 1 ? (index - mid) / mid : 0;
       return {
-        rotation : norm * (fanConfig.totalArc / 2),
-        x        : norm * fanConfig.xSpread,
-        y        : Math.abs(norm) * fanConfig.ySpread
+        xVal : -50 + norm * fanConfig.xSpread,
+        y    : Math.abs(norm) * fanConfig.ySpread,
+        r    : norm * (fanConfig.totalArc / 2)
       };
     }
 
-    // Pre-calculate each card's fanned transform
-    const transforms = cards.map(function(_, i) {
-      const t = getCardTransform(i, totalCards);
-      return { xVal: -50 + t.x, y: t.y, r: t.rotation };
-    });
+    function getMobileTransform(index) {
+      // Each card stacks: card 0 is at bottom, last card on top
+      // Stack offset: each card moves up by stackOffset px
+      const stackOffset = 18;
+      return {
+        xVal : -50,
+        y    : -(index * stackOffset),
+        r    : 0
+      };
+    }
 
-    // Track how many cards are currently visible
     let visibleCount = 0;
 
     function updateCards(newVisible) {
       newVisible = Math.max(0, Math.min(totalCards, newVisible));
       if (newVisible === visibleCount) return;
 
-      cards.forEach(function(card, i) {
-        const tf = transforms[i];
-        const originalZ = i + 1;
+      const mobile = isMobile();
 
+      cards.forEach(function(card, i) {
         if (i < newVisible) {
-          // Fan out this card
+          const tf = mobile ? getMobileTransform(i) : getDesktopTransform(i, totalCards);
           card.style.transform =
             'translateX(' + tf.xVal + '%) translateY(' + tf.y + 'px) rotate(' + tf.r + 'deg)';
           card.style.opacity = '1';
-          card.style.zIndex  = originalZ;
+          card.style.zIndex  = i + 1;
         } else {
-          // Hide this card back down
-          card.style.transform =
-            'translateX(-50%) translateY(120%) rotate(0deg)';
-          card.style.opacity = '0';
-          card.style.zIndex  = originalZ;
+          card.style.transform = 'translateX(-50%) translateY(120%) rotate(0deg)';
+          card.style.opacity   = '0';
+          card.style.zIndex    = i + 1;
         }
       });
 
       visibleCount = newVisible;
     }
 
-    // Hover effect
+    // Hover effect — desktop only
     cards.forEach(function(card, i) {
-      const originalZ = i + 1;
-      const tf = transforms[i];
-
       card.addEventListener('mouseenter', function() {
-        if (i < visibleCount) {
+        if (i < visibleCount && !isMobile()) {
+          const tf = getDesktopTransform(i, totalCards);
           card.style.transform =
             'translateX(' + tf.xVal + '%) translateY(' + (tf.y - 25) + 'px) rotate(' + tf.r + 'deg)';
-          card.style.zIndex = 999;
+          card.style.zIndex    = 999;
           card.style.boxShadow = '0 30px 60px rgba(0,0,0,0.18)';
         }
       });
 
       card.addEventListener('mouseleave', function() {
-        if (i < visibleCount) {
+        if (i < visibleCount && !isMobile()) {
+          const tf = getDesktopTransform(i, totalCards);
           card.style.transform =
             'translateX(' + tf.xVal + '%) translateY(' + tf.y + 'px) rotate(' + tf.r + 'deg)';
-          card.style.zIndex = originalZ;
+          card.style.zIndex    = i + 1;
           card.style.boxShadow = '';
         }
       });
@@ -271,11 +339,10 @@
     // Scroll handler
     function onScroll() {
       const rect       = sectionEl.getBoundingClientRect();
-      const scrolled   = -rect.top; // how much user has scrolled into section
-      const stepHeight = 500;       // px of scroll per card (matches CSS height calc)
+      const scrolled   = -rect.top;
+      const stepHeight = 500;
 
       if (scrolled < 0) {
-        // Section not reached yet
         updateCards(0);
         return;
       }
@@ -285,7 +352,14 @@
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // run once on load
+
+    // Re-calculate on resize
+    window.addEventListener('resize', function() {
+      visibleCount = 0;
+      onScroll();
+    });
+
+    onScroll();
   })();
 </script>
 
@@ -349,6 +423,11 @@
           "label": "Card Description",
           "default": "Providing support and expertise to clients, solo managing all deadlines."
         },
+        {
+  "type": "image_picker",
+  "id": "card_image",
+  "label": "Card Image"
+},
         {
           "type": "color",
           "id": "card_color",

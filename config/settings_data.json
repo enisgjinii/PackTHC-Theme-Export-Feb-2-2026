@@ -147,11 +147,6 @@
           "social_font": "enable"
         }
       },
-      "558381514691908246": {
-        "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
-        "disabled": false,
-        "settings": {}
-      },
       "13768625480086291342": {
         "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
@@ -162,19 +157,9 @@
         "disabled": false,
         "settings": {}
       },
-      "7155349627714823297": {
-        "type": "shopify://apps/file-uploads-by-uploadkit/blocks/app-embed-block/d7b05810-6170-4288-808a-df45248c4d28",
-        "disabled": true,
-        "settings": {}
-      },
-      "9760743957074645847": {
-        "type": "shopify://apps/ea-email-popups/blocks/app-embed-block/559c6968-8916-4f43-b93f-91b8ea061003",
-        "disabled": true,
-        "settings": {}
-      },
-      "6174324309569838175": {
-        "type": "shopify://apps/smile-io/blocks/smile-shopify-app/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-        "disabled": true,
+      "558381514691908246": {
+        "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
+        "disabled": false,
         "settings": {}
       }
     },
