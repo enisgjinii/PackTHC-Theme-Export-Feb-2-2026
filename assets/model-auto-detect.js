@@ -1,7 +1,8 @@
 /**
  * PackTHC – 3D Model Auto-Detect
- * Automatically checks if the current product has a matching 3D model
- * by querying the configurator API. Shows/hides the "Customize in 3D" button.
+ * Checks whether the current product has a matching 3D model in the configurator
+ * by querying the /api/models/match endpoint. Shows the "Customize in 3D" button
+ * only when a real model match is found; hides it otherwise.
  *
  * Usage: loaded on product pages via the customize-3d-button snippet.
  */
@@ -12,73 +13,61 @@
   var CONFIGURATOR_BASE =
     window.__PACKTHC_CONFIGURATOR_URL__ ||
     'https://dram-product-customizer.vercel.app';
-  var API_ENDPOINT = CONFIGURATOR_BASE + '/api/model-categories';
-  var CACHE_KEY = 'packthc_3d_model_match';
+  var API_ENDPOINT = CONFIGURATOR_BASE + '/api/models/match';
+  var CACHE_KEY = 'packthc_3d_model_match_v2';
   var CACHE_TTL = 1000 * 60 * 60; // 1 hour
 
-  /* ─── Helpers ─── */
+  /* ─── DOM helpers ─── */
   function getWrapper() {
     return document.querySelector('[data-3d-autodetect]');
   }
 
-  function getProductMetaProduct() {
-    if (window.ShopifyAnalytics && window.ShopifyAnalytics.meta && window.ShopifyAnalytics.meta.product) {
-      return window.ShopifyAnalytics.meta.product;
-    }
-    return null;
+  function showWrapper(wrapper, category) {
+    wrapper.style.display = '';
+    if (category) wrapper.setAttribute('data-model-category', category);
+    else wrapper.removeAttribute('data-model-category');
+  }
+
+  function hideWrapper(wrapper) {
+    wrapper.style.display = 'none';
+  }
+
+  /* ─── Product info helpers ─── */
+  function getMetaProduct() {
+    return (
+      window.ShopifyAnalytics &&
+      window.ShopifyAnalytics.meta &&
+      window.ShopifyAnalytics.meta.product
+    ) || null;
   }
 
   function getProductTitle(wrapper) {
-    if (wrapper && wrapper.dataset.productTitle) {
-      return wrapper.dataset.productTitle;
-    }
-
-    var metaProduct = getProductMetaProduct();
-    if (metaProduct) {
-      return metaProduct.name || metaProduct.title || metaProduct.type || '';
-    }
-
-    var metaTitle = document.querySelector('meta[property="og:title"]');
-    if (metaTitle) return metaTitle.getAttribute('content') || '';
-
+    if (wrapper.dataset.productTitle) return wrapper.dataset.productTitle;
+    var meta = getMetaProduct();
+    if (meta) return meta.name || meta.title || meta.type || '';
+    var og = document.querySelector('meta[property="og:title"]');
+    if (og) return og.getAttribute('content') || '';
     var h1 = document.querySelector('.product__title h1, h1.product__title, [data-product-title]');
-    if (h1) return h1.textContent.trim();
-
-    return '';
+    return h1 ? h1.textContent.trim() : '';
   }
 
   function getProductHandle(wrapper) {
-    if (wrapper && wrapper.dataset.productHandle) {
-      return wrapper.dataset.productHandle;
-    }
-
-    var path = window.location.pathname;
-    var match = path.match(/\/products\/([^/?#]+)/);
-    if (match) return decodeURIComponent(match[1]);
-    return '';
+    if (wrapper.dataset.productHandle) return wrapper.dataset.productHandle;
+    var m = window.location.pathname.match(/\/products\/([^/?#]+)/);
+    return m ? decodeURIComponent(m[1]) : '';
   }
 
   function getProductType(wrapper) {
-    if (wrapper && wrapper.dataset.productType) {
-      return wrapper.dataset.productType;
-    }
-
-    var metaProduct = getProductMetaProduct();
-    if (metaProduct) {
-      return metaProduct.type || '';
-    }
-
-    return '';
+    if (wrapper.dataset.productType) return wrapper.dataset.productType;
+    var meta = getMetaProduct();
+    return meta ? meta.type || '' : '';
   }
 
   function getProductSku(wrapper) {
-    if (wrapper && wrapper.dataset.productSku) {
-      return wrapper.dataset.productSku;
-    }
-
-    return '';
+    return wrapper.dataset.productSku || '';
   }
 
+  /* ─── Cache ─── */
   function getCached(handle) {
     try {
       var raw = sessionStorage.getItem(CACHE_KEY + '_' + handle);
@@ -100,74 +89,70 @@
         CACHE_KEY + '_' + handle,
         JSON.stringify({ ts: Date.now(), data: data })
       );
-    } catch (e) {
-      /* storage full – ignore */
+    } catch (e) { /* storage full */ }
+  }
+
+  /* ─── Apply result ─── */
+  function applyResult(wrapper, data) {
+    if (data.matched) {
+      showWrapper(wrapper, data.category || null);
+      // Append model_category to the button href for auto-selection in the configurator
+      var link = wrapper.querySelector('.customize-3d-btn');
+      if (link && data.category) {
+        var href = link.getAttribute('href') || '';
+        if (href.indexOf('model_category=') === -1) {
+          var sep = href.indexOf('?') !== -1 ? '&' : '?';
+          link.setAttribute('href', href + sep + 'model_category=' + encodeURIComponent(data.category));
+        }
+      }
+    } else {
+      hideWrapper(wrapper);
     }
   }
 
-  /* ─── Main logic ─── */
+  /* ─── Main ─── */
   function checkAndReveal() {
     var wrapper = getWrapper();
     if (!wrapper) return;
+
+    // Start hidden; only reveal once we have a confirmed match.
+    wrapper.style.display = 'none';
 
     var handle = getProductHandle(wrapper);
     var title = getProductTitle(wrapper);
     var productType = getProductType(wrapper);
     var sku = getProductSku(wrapper);
 
-    // Build search query: combine title, handle, product type, and SKU.
-    var searchQuery = [title, handle.replace(/-/g, ' '), productType, sku]
-      .filter(Boolean)
-      .join(' ');
+    // If we have no product info at all, hide silently.
+    if (!handle && !title) return;
 
-    if (!searchQuery.trim()) {
-      // No product info → fail open so the configurator CTA never disappears entirely.
-      wrapper.style.display = '';
-      return;
-    }
-
-    // Check cache first
+    // Check session cache first to avoid redundant network requests.
     var cached = getCached(handle);
     if (cached !== null) {
-      if (cached.matched) {
-        wrapper.style.display = '';
-        wrapper.setAttribute('data-model-category', cached.category || '');
-      } else {
-        wrapper.style.display = '';
-        wrapper.removeAttribute('data-model-category');
-      }
+      applyResult(wrapper, cached);
       return;
     }
 
-    // Query the API
-    var url = API_ENDPOINT + '?product=' + encodeURIComponent(searchQuery);
+    // Build query params and call the configurator's match API.
+    var params = new URLSearchParams();
+    if (title) params.set('title', title);
+    if (handle) params.set('handle', handle.replace(/-/g, ' '));
+    if (productType) params.set('type', productType);
+    if (sku) params.set('sku', sku);
 
-    fetch(url, { method: 'GET', mode: 'cors' })
-      .then(function (res) { return res.json(); })
+    fetch(API_ENDPOINT + '?' + params.toString(), { method: 'GET', mode: 'cors' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
       .then(function (data) {
         setCache(handle, data);
-        if (data.matched) {
-          wrapper.style.display = '';
-          wrapper.setAttribute('data-model-category', data.category || '');
-          // Also update the link to include category for auto-selection
-          var link = wrapper.querySelector('.customize-3d-btn');
-          if (link && data.category) {
-            var href = link.getAttribute('href') || '';
-            if (href.indexOf('model_category=') === -1) {
-              var sep = href.indexOf('?') !== -1 ? '&' : '?';
-              link.setAttribute('href', href + sep + 'model_category=' + encodeURIComponent(data.category));
-            }
-          }
-        } else {
-          // Keep the CTA visible even when auto-detect cannot confidently classify the product.
-          // The configurator app has its own smarter fallback matcher and default model handling.
-          wrapper.style.display = '';
-          wrapper.removeAttribute('data-model-category');
-        }
+        applyResult(wrapper, data);
       })
       .catch(function () {
-        // On error, show the button as fallback (don't block users)
-        wrapper.style.display = '';
+        // On network error, hide the button so we don't show it for products
+        // that almost certainly have no model (rather than falsely advertising it).
+        hideWrapper(wrapper);
       });
   }
 

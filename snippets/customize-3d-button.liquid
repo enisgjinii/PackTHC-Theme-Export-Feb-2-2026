@@ -70,7 +70,7 @@
       data-product-type="{{ _product.type | escape }}"
       data-product-sku="{{ _product.selected_or_first_available_variant.sku | escape }}"
     {% endif %}
-    style="margin-top: 10px;"
+    style="margin-top: 10px;{% if _use_autodetect %} display: none;{% endif %}"
   >
     <a href="{{ _configurator_link | strip }}" class="btn btn--primary customize-3d-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;">
       <span class="btn__text" style="display: inline-flex; align-items: center; gap: 8px;">
