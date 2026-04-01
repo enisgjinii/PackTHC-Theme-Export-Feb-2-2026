@@ -14,8 +14,9 @@
 }
 
 .configurator-wrapper {
-  max-width: 1600px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   padding: 0;
 }
 
@@ -39,10 +40,12 @@
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+  height: 100svh !important;
   height: 100dvh !important;
 }
 
 .configurator-wrapper.is-fullscreen .configurator-iframe {
+  height: 100svh !important;
   height: 100dvh !important;
 }
 
@@ -227,20 +230,21 @@
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
-  padding: 0 20px;
-  margin-bottom: 12px;
+  padding: 0;
+  margin: 0;
 }
 
 /* ---------- Iframe Container ---------- */
 .configurator-iframe-container {
-  margin: 0 20px;
-  border: 1px solid var(--configurator-border);
-  border-radius: var(--configurator-radius);
+  margin: 0;
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--configurator-shadow);
+  box-shadow: none;
   position: relative;
   background: #fff;
   transition: all 0.3s ease;
+  height: 100svh;
 }
 
 .configurator-iframe {
@@ -248,7 +252,19 @@
   border: none;
   display: block;
   background: #fafafa;
-  min-height: 520px;
+  height: 100svh;
+  min-height: 100svh;
+}
+
+@supports (height: 100dvh) {
+  .configurator-iframe-container {
+    height: 100dvh;
+  }
+
+  .configurator-iframe {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
 }
 
 /* ---------- Loading ---------- */
@@ -262,6 +278,7 @@
   justify-content: center;
   gap: 16px;
   z-index: 10;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -290,8 +307,8 @@
   padding: 60px 24px;
   background: #fffbeb;
   border: 1px solid #fde68a;
-  border-radius: var(--configurator-radius);
-  margin: 0 20px;
+  border-radius: 0;
+  margin: 0;
 }
 
 .configurator-error__icon {
@@ -383,6 +400,7 @@
   gap: 12px;
   max-width: 400px;
   animation: toast-in 0.35s ease;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
@@ -469,23 +487,25 @@
   }
 
   .configurator-iframe-container {
-    margin: 0 12px;
-    border-radius: 10px;
+    margin: 0;
+    border-radius: 0;
+    height: 100svh;
   }
 
   .configurator-iframe {
-    min-height: min(72svh, 760px);
+    height: 100svh;
+    min-height: 100svh;
   }
 
   .configurator-toolbar {
-    padding: 0 12px;
+    padding: 0;
   }
 }
 
 @media (max-width: 480px) {
   .configurator-iframe-container {
-    margin: 0 8px;
-    border-radius: 8px;
+    margin: 0;
+    border-radius: 0;
   }
 
   .product-info-bar {
@@ -493,6 +513,7 @@
   }
 
   .configurator-iframe {
-    min-height: min(68svh, 680px);
+    height: 100svh;
+    min-height: 100svh;
   }
 }

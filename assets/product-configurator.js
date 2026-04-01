@@ -80,50 +80,6 @@
     }
   }
 
-  /** Populate product info bar if present in section */
-  function populateProductInfoBar(sectionEl, productData) {
-    const infoBar = sectionEl.querySelector('.product-info-bar');
-    if (!infoBar) return;
-
-    if (!(productData && (productData.title || productData.handle))) {
-      infoBar.style.display = 'none';
-      return;
-    }
-
-    const title = productData.title || productData.handle || 'Custom Product';
-    const productLink = productData.handle ? '/products/' + productData.handle : '/collections/all';
-
-    infoBar.style.display = 'flex';
-    infoBar.innerHTML =
-      (productData.image
-        ? '<img class="product-info-bar__image" src="' +
-          productData.image +
-          '" alt="' +
-          title.replace(/"/g, '&quot;') +
-          '" width="64" height="64">'
-        : '') +
-      '<div class="product-info-bar__details">' +
-      '<h2 class="product-info-bar__title">' +
-      title +
-      '</h2>' +
-      '</div>' +
-      (productData.price ? '<div class="product-info-bar__price">$' + productData.price + '</div>' : '') +
-      '<div class="product-info-bar__actions">' +
-      '<button type="button" class="btn-configurator btn-configurator--primary btn-add-to-cart" data-variant-id="' +
-      (productData.variantId || '') +
-      '">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
-      '<span class="btn-add-to-cart__text">Add to Cart</span>' +
-      '<svg class="btn-add-to-cart__spinner hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>' +
-      '</button>' +
-      '<a href="' +
-      productLink +
-      '" class="btn-configurator btn-configurator--secondary">' +
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
-      ' Back</a>' +
-      '</div>';
-  }
-
   /** Parse a Shopify variant GID to numeric id */
   function parseVariantId(raw) {
     if (!raw) return null;
@@ -596,8 +552,6 @@
       }
     }
 
-    populateProductInfoBar(sectionEl, productData);
-
     if (productData.handle || productData.productId) {
       const iframeUrl = buildIframeUrl(baseUrl, productData, shopData);
 
@@ -652,68 +606,6 @@
       });
     }
 
-    // ── Direct Add to Cart button (in product-info-bar) ──
-    const addToCartBtn = sectionEl.querySelector('.btn-add-to-cart');
-    if (addToCartBtn) {
-      addToCartBtn.addEventListener('click', async function () {
-        var variantId = parseVariantId(addToCartBtn.getAttribute('data-variant-id') || productData.variantId);
-        if (!variantId) {
-          showToast('Error: No product variant selected.', { type: 'error' });
-          return;
-        }
-
-        if (isAddingToCart) {
-          showToast('Already adding to cart…', { type: 'info', duration: 2000 });
-          return;
-        }
-
-        var now = Date.now();
-        if (now - lastCartAddTs < CART_ADD_COOLDOWN) {
-          showToast('Please wait a moment before adding again.', { type: 'info', duration: 2000 });
-          return;
-        }
-
-        isAddingToCart = true;
-        lastCartAddTs = now;
-
-        // UI: show spinner on button
-        var btnText = addToCartBtn.querySelector('.btn-add-to-cart__text');
-        var btnSpinner = addToCartBtn.querySelector('.btn-add-to-cart__spinner');
-        if (btnText) btnText.textContent = 'Adding…';
-        if (btnSpinner) btnSpinner.classList.remove('hidden');
-        addToCartBtn.disabled = true;
-
-        var payload = {
-          id: variantId,
-          quantity: parseInt(addToCartBtn.getAttribute('data-quantity'), 10) || 1,
-          properties: {},
-        };
-
-        try {
-          await addToCartWithRetry(payload);
-          isAddingToCart = false;
-          showToast('Product added to cart!', { type: 'success' });
-          refreshCartCount();
-
-          // Briefly show success state
-          if (btnText) btnText.textContent = 'Added ✓';
-          addToCartBtn.classList.add('btn-add-to-cart--success');
-          setTimeout(function () {
-            if (btnText) btnText.textContent = 'Add to Cart';
-            if (btnSpinner) btnSpinner.classList.add('hidden');
-            addToCartBtn.disabled = false;
-            addToCartBtn.classList.remove('btn-add-to-cart--success');
-          }, 2000);
-        } catch (err) {
-          isAddingToCart = false;
-          if (btnText) btnText.textContent = 'Add to Cart';
-          if (btnSpinner) btnSpinner.classList.add('hidden');
-          addToCartBtn.disabled = false;
-          showToast('Failed to add to cart: ' + err.message, { type: 'error' });
-        }
-      });
-    }
-
     // ── Listen for postMessage from iframe ──
     window.addEventListener('message', async function handler(event) {
       if (event.source !== iframe.contentWindow) return;
@@ -723,20 +615,7 @@
 
       /* ─── Update Pricing from Iframe ─── */
       if (type === 'updatePricing') {
-        const { variantId, quantity, subtotal } = event.data;
-        
-        // 1. Update Variant ID & Quantity on the "Add to Cart" button
-        const addToCartBtn = sectionEl.querySelector('.btn-add-to-cart');
-        if (addToCartBtn && variantId) {
-          addToCartBtn.setAttribute('data-variant-id', variantId);
-          addToCartBtn.setAttribute('data-quantity', quantity || 1);
-        }
-
-        // 2. Update the visual price text to show the subtotal
-        const priceEl = sectionEl.querySelector('.product-info-bar__price');
-        if (priceEl && subtotal !== undefined) {
-          priceEl.textContent = '$' + subtotal.toFixed(2);
-        }
+        // Product info bar is intentionally removed.
       }
 
       /* ─── Pricing Request from Iframe (no Storefront token mode) ─── */
