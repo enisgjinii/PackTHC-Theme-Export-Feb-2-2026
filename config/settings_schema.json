@@ -1923,7 +1923,7 @@
         "type": "text",
         "id": "configurator_url",
         "label": "Configurator App URL",
-        "default": "https://dram-product-customizer.vercel.app",
+        "default": "https://v0-product-design-tool.vercel.app/",
         "info": "The deployed URL of your Next.js 3D configurator app."
       },
       {
