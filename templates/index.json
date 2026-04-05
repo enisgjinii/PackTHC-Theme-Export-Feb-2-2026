@@ -123,6 +123,14 @@
             "image": "shopify://shop_images/Thermal_Papers_e0939335-47c1-4ef6-af37-11165d05f1b8.webp",
             "title": "Thermal Paper"
           }
+        },
+        "featured_collection_44kHfa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mylar-bags-new",
+            "image": "shopify://shop_images/Mylar_bags_62c082a4-482d-499a-a7f0-65beccd33c25.webp",
+            "title": "Mylar Bags"
+          }
         }
       },
       "block_order": [
@@ -139,7 +147,8 @@
         "featured_collection_J6V8fx",
         "featured_collection_NkFYeg",
         "featured_collection_eBphH3",
-        "featured_collection_URgPpX"
+        "featured_collection_URgPpX",
+        "featured_collection_44kHfa"
       ],
       "custom_css": [
         ".swiper-slide {margin-right: -22px !important;}",
@@ -183,26 +192,51 @@
     "slideshow_q3U4Jn": {
       "type": "slideshow",
       "blocks": {
-        "slide_rYaTXa": {
+        "slide_JhU8hg": {
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/25_off_b7e50417-507f-4264-8c64-334c9e1a2d9c.webp",
-            "background_mobile": "shopify://shop_images/3_a9c87ca6-5d02-4b50-9288-7f99343edceb.webp",
+            "background": "shopify://shop_images/Easter_Day_Web_Banner_compressed-optimized.webp",
+            "background_mobile": "shopify://shop_images/web_banner-02_compressed.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "Guaranteed Savings: 25%                           Less Packaging Cost",
+            "title": "Easter Deals Are Here – Stock Up & Save Big",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>Achieve dramatic cost savings with packthc's guarantee. Get high-quality, fully compliant, child-resistant packaging for 25% less than your current supplier. Experience risk-free cost reduction.<strong><br/></strong></p>",
+            "description": "<p>Celebrate Easter with premium cannabis packaging at unbeatable prices. Bulk discounts + fast USA shipping.<strong><br/></strong></p>",
             "description_size": "text-lg",
-            "button_label": "Shop Chubby Gorilla",
+            "button_label": "Shop Easter Sale",
             "button_link": "shopify://collections/chubby-gorilla",
+            "button_style": "btn--primary",
+            "button_icon": "arrow-right",
+            "enable_preload_image": true
+          }
+        },
+        "slide_cHrPNB": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/web_banners_1-04_1.webp",
+            "background_mobile": "shopify://shop_images/web_banners_1-05.webp",
+            "image_overlay_opacity": 25,
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
+            "title": "Introducing Grinder Jars – Grind & Store in One",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "description": "<p>Premium aluminum grinder jars designed for convenience, durability, and smell-proof storage.<br/></p>",
+            "description_size": "text-lg",
+            "button_label": "Shop Grinder Jar",
+            "button_link": "shopify://collections/grinder-jars",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
             "enable_preload_image": true
@@ -212,33 +246,33 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/CUSTOM_1_2_a4494c2a-3a20-490a-9a37-a23de20e81cd.webp",
-            "background_mobile": "shopify://shop_images/1_d9e1b160-0fe3-4ea4-9b86-c5f0e51e2b3c.webp",
+            "background": "shopify://shop_images/whole_sale_web_banner_compressed.webp",
+            "background_mobile": "shopify://shop_images/web_banner-01_compressed.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "Certified. Compliant. Manufactured.",
+            "title": "Wholesale Packaging for Growing Brands",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>PackTHC manufactures certified cannabis packaging designed to meet regulations, protect products, and support long-term brand trust.<strong><br/></strong></p>",
+            "description": "<p>Scale your business with bulk pricing, consistent quality, and fast fulfillment.</p>",
             "description_size": "text-lg",
-            "button_label": "Shop Chubby Gorilla",
+            "button_label": "Start Wholesale",
             "button_link": "shopify://collections/chubby-gorilla",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
             "enable_preload_image": true
           }
         },
-        "slide_JhU8hg": {
+        "slide_rYaTXa": {
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/CUSTOM_6_f46ec8e7-8255-4644-b0a9-71801f558673.webp",
-            "background_mobile": "shopify://shop_images/2_166e9551-aafa-4862-b31d-887ceb6b857a.webp",
+            "background": "shopify://shop_images/Price_table_web_banner_compressed-optimized.webp",
+            "background_mobile": "shopify://shop_images/web_banner-03_compressed.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
@@ -251,8 +285,8 @@
             "heading_size": "hd2",
             "description": "<p>As a manufacturer, PackTHC owns the production process ensuring packaging that meets compliance requirements without shifting risk to brands.</p>",
             "description_size": "text-lg",
-            "button_label": "Browse Chubby Gorilla Bottles",
-            "button_link": "shopify://collections/chubby-gorilla-bottles",
+            "button_label": "Shop Preroll Tubes",
+            "button_link": "shopify://collections/pop-top-preroll-tubes",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
             "enable_preload_image": true
@@ -260,9 +294,10 @@
         }
       },
       "block_order": [
-        "slide_rYaTXa",
+        "slide_JhU8hg",
+        "slide_cHrPNB",
         "slide_JU4VWJ",
-        "slide_JhU8hg"
+        "slide_rYaTXa"
       ],
       "custom_css": [
         ".section--slideshow.page-width .page-width {padding: 0 7rem;}",
@@ -279,6 +314,64 @@
         "show_text_below": true,
         "text_alignment_mobile": "left",
         "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "grinder_home_stripe_A6XCWi": {
+      "type": "Grinder-home-stripe",
+      "blocks": {
+        "product_image_meFgmt": {
+          "type": "product_image",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-red",
+            "product_title": "Product",
+            "product_url": ""
+          }
+        },
+        "product_image_fgLCdj": {
+          "type": "product_image",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-champagne",
+            "product_title": "Product",
+            "product_url": ""
+          }
+        },
+        "product_image_6k3FHx": {
+          "type": "product_image",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-black",
+            "product_title": "Product",
+            "product_url": ""
+          }
+        },
+        "product_image_HBDFYW": {
+          "type": "product_image",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-silver",
+            "product_title": "Product",
+            "product_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_image_meFgmt",
+        "product_image_fgLCdj",
+        "product_image_6k3FHx",
+        "product_image_HBDFYW"
+      ],
+      "name": "Flash Sale Banner",
+      "settings": {
+        "label_text": "PackTHC New Products",
+        "heading": "Grinder Jars",
+        "subheading": "Best sellers + More",
+        "button_label": "Learn More ⮞",
+        "button_url": "shopify://pages/packthc-new-grinder-jars-products",
+        "button_new_tab": false,
+        "promo_code": "",
+        "background_color": "#f4f691",
+        "text_color": "#1a1a1a",
+        "button_bg_color": "#1a1a1a",
+        "button_text_color": "#ffffff",
+        "border_radius": 16
       }
     },
     "image_with_feature_tfwMan": {
@@ -2055,6 +2148,7 @@
   "order": [
     "collection_list_slider_6qbNfj",
     "slideshow_q3U4Jn",
+    "grinder_home_stripe_A6XCWi",
     "image_with_feature_tfwMan",
     "custom_liquid_kFiP7r",
     "promotion_banner_VCkmzP",

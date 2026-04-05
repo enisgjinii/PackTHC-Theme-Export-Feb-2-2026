@@ -22,209 +22,223 @@
 -%}
 
 <style>
-    /* ── Reset & Custom Properties ──────────────────────────── */
-    #isa-{{ section.id }} {
-      --isa-bg:           {{ section_bg }};
-      --isa-accent:       #ffffff;
-      --isa-text:         #ffffff;
-      --isa-progress-h:   3px;
-      --isa-pin-h:        {{ scroll_speed | times: 100 }}vh;
-      background:         var(--isa-bg);
-      position:           relative;
-    }
-
-    /* ── Pin Wrapper (GSAP pins this) ───────────────────────── */
-    .isa-pin-wrapper {
-      position:   relative;
-      height:     var(--isa-pin-h);
-    }
-
-    /* ── Sticky Stage ────────────────────────────────────────── */
-    .isa-stage {
-      position:     sticky;
-      top:          0;
-      left:         0;
-      width:        100%;
-      height:       100vh;
-      overflow:     hidden;
-      display:      flex;
-      align-items:  center;
-      justify-content: center;
-    }
-
-    /* ── Canvas ──────────────────────────────────────────────── */
-    .isa-canvas {
-      display:    block;
-      width:      100%;
-      height:     100%;
-      object-fit: contain;
-    }
-
-    /* ── Legacy Overlay Text ─────────────────────────────────── */
-    .isa-overlay {
-      position:    absolute;
-      inset:       0;
-      display:     flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding:     clamp(2rem, 5vw, 5rem);
-      pointer-events: none;
-      z-index:     2;
-    }
-    .isa-overlay__text {
-      color:          var(--isa-text);
-      font-family:    system-ui, -apple-system, sans-serif;
-      font-size:      clamp(1rem, 2.5vw, 1.5rem);
-      font-weight:    300;
-      letter-spacing: 0.06em;
-      text-align:     center;
-      opacity:        0;
-      transform:      translateY(12px);
-      transition:     opacity 0.6s ease, transform 0.6s ease;
-      max-width:      600px;
-      text-shadow:    0 2px 16px rgba(0,0,0,0.5);
-    }
-    .isa-overlay__text.is-visible {
-      opacity:   1;
-      transform: translateY(0);
-    }
-
-    /* ── Scroll Heading Blocks ───────────────────────────────── */
-    .isa-heading-block {
-      position:        absolute;
-      inset:           0;
-      display:         flex;
-      align-items:     center;
-      justify-content: center;
-      pointer-events:  none;
-      z-index:         4;
-      padding:         clamp(1.5rem, 5vw, 4rem);
-    }
-
-    /* Horizontal alignment variants */
-    .isa-heading-block[data-align="left"]   { justify-content: flex-start; text-align: left; }
-    .isa-heading-block[data-align="right"]  { justify-content: flex-end;   text-align: right; }
-    .isa-heading-block[data-align="center"] { justify-content: center;     text-align: center; }
-
-    /* Vertical position variants */
-    .isa-heading-block[data-position="top"]    { align-items: flex-start; }
-    .isa-heading-block[data-position="middle"] { align-items: center; }
-    .isa-heading-block[data-position="bottom"] { align-items: flex-end; }
-
-    .isa-heading-block__inner {
-      opacity:    0;
-      transform:  translateY(22px);
-      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-      max-width:  720px;
-    }
-
-    .isa-heading-block__inner.is-visible {
-      opacity:   1;
-      transform: translateY(0);
-    }
-
-    .isa-heading-block__title {
-      margin:      0 0 0.35em;
-      line-height: 1.08;
-      text-shadow: 0 2px 28px rgba(0,0,0,0.65);
-    }
-
-    .isa-heading-block__subtitle {
-      margin:      0;
-      line-height: 1.5;
-      text-shadow: 0 2px 16px rgba(0,0,0,0.5);
-    }
-
-    /* ── Progress Bar ────────────────────────────────────────── */
-    .isa-progress-bar {
-      position:   absolute;
-      bottom:     0;
-      left:       0;
-      width:      0%;
-      height:     var(--isa-progress-h);
-      background: var(--isa-accent);
-      z-index:    3;
-      transform-origin: left;
-      transition: width 0.05s linear;
-    }
-
-    /* ── Loading Indicator ───────────────────────────────────── */
-    .isa-loader {
-      position:        absolute;
-      inset:           0;
-      display:         flex;
-      flex-direction:  column;
-      align-items:     center;
-      justify-content: center;
-      z-index:         10;
-      background:      var(--isa-bg);
-      transition:      opacity 0.4s ease;
-    }
-    .isa-loader.is-hidden {
-      opacity:        0;
-      pointer-events: none;
-    }
-    .isa-loader__ring {
-      width:  48px;
-      height: 48px;
-      border: 2px solid rgba(255,255,255,0.15);
-      border-top-color: #fff;
-      border-radius:    50%;
-      animation:        isa-spin 0.8s linear infinite;
-    }
-    .isa-loader__label {
-      color:          rgba(255,255,255,0.5);
-      font-family:    system-ui, sans-serif;
-      font-size:      0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-top:     1rem;
-    }
-    @keyframes isa-spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* ── Mobile Fallback ─────────────────────────────────────── */
-    .isa-mobile-fallback {
-      display:  none;
-      width:    100%;
-      height:   100vh;
-      overflow: hidden;
-    }
-    .isa-mobile-fallback img,
-    .isa-mobile-fallback video {
-      width:      100%;
-      height:     100%;
-      object-fit: cover;
-    }
-
-    @media (max-width: 767px) {
-      .isa-mobile-fallback {
-        display: none !important;
+      /* ── Reset & Custom Properties ──────────────────────────── */
+      #isa-{{ section.id }} {
+        --isa-bg:           {{ section_bg }};
+        --isa-accent:       #ffffff;
+        --isa-text:         #ffffff;
+        --isa-progress-h:   3px;
+        --isa-pin-h:        {{ scroll_speed | times: 100 }}vh;
+        background:         var(--isa-bg);
+        position:           relative;
       }
+
+      /* ── Pin Wrapper (GSAP pins this) ───────────────────────── */
       .isa-pin-wrapper {
-        display: block !important;
-        height: var(--isa-pin-h);
+        position:   relative;
+        height:     var(--isa-pin-h);
       }
+
+      /* ── Sticky Stage ────────────────────────────────────────── */
       .isa-stage {
-        display: flex !important;
-        height: 100svh;
-        height: 100vh;
+        position:     sticky;
+        top:          0;
+        left:         0;
+        width:        100%;
+        height:       100vh;
+        overflow:     hidden;
+        display:      flex;
+        align-items:  center;
+        justify-content: center;
       }
+
+      /* ── Canvas ──────────────────────────────────────────────── */
       .isa-canvas {
-        width: 100%;
-        height: 100%;
+        display:    block;
+        width:      100%;
+        height:     100%;
+        object-fit: contain;
       }
+
+      /* ── Legacy Overlay Text ─────────────────────────────────── */
+      .isa-overlay {
+        position:    absolute;
+        inset:       0;
+        display:     flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding:     clamp(2rem, 5vw, 5rem);
+        pointer-events: none;
+        z-index:     2;
+      }
+      .isa-overlay__text {
+        color:          var(--isa-text);
+        font-family:    system-ui, -apple-system, sans-serif;
+        font-size:      clamp(1rem, 2.5vw, 1.5rem);
+        font-weight:    300;
+        letter-spacing: 0.06em;
+        text-align:     center;
+        opacity:        0;
+        transform:      translateY(12px);
+        transition:     opacity 0.6s ease, transform 0.6s ease;
+        max-width:      600px;
+        text-shadow:    0 2px 16px rgba(0,0,0,0.5);
+      }
+      .isa-overlay__text.is-visible {
+        opacity:   1;
+        transform: translateY(0);
+      }
+
+      /* ── Scroll Heading Blocks ───────────────────────────────── */
+      .isa-heading-block {
+        position:        absolute;
+        inset:           0;
+        display:         flex;
+        align-items:     center;
+        justify-content: center;
+        pointer-events:  none;
+        z-index:         4;
+        padding:         clamp(1.5rem, 5vw, 4rem) clamp(2rem, 8vw, 6rem); /* ← sirf yeh change karo */
+      }
+
+      /* Horizontal alignment variants */
+      .isa-heading-block[data-align="left"]   { justify-content: flex-start; text-align: left; }
+      .isa-heading-block[data-align="right"]  { justify-content: flex-end;   text-align: right; }
+      .isa-heading-block[data-align="center"] { justify-content: center;     text-align: center; }
+
+      /* Vertical position variants */
+      .isa-heading-block[data-position="top"]    { align-items: flex-start; }
+      .isa-heading-block[data-position="middle"] { align-items: center; }
+      .isa-heading-block[data-position="bottom"] { align-items: flex-end; }
+
+      .isa-heading-block__inner {
+        opacity:    0;
+        transform:  translateY(22px);
+        transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        max-width:  720px;
+      }
+
+      .isa-heading-block__inner.is-visible {
+        opacity:   1;
+        transform: translateY(0);
+      }
+
+      .isa-heading-block__title {
+        margin:      0 0 0.35em;
+        line-height: 1.08;
+        text-shadow: 0 2px 28px rgba(0,0,0,0.65);
+      }
+
+      .isa-heading-block__subtitle {
+        margin:      0;
+        line-height: 1.5;
+        text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+      }
+
+      /* ── Progress Bar ────────────────────────────────────────── */
+      .isa-progress-bar {
+        position:   absolute;
+        bottom:     0;
+        left:       0;
+        width:      0%;
+        height:     var(--isa-progress-h);
+        background: var(--isa-accent);
+        z-index:    3;
+        transform-origin: left;
+        transition: width 0.05s linear;
+      }
+
+      /* ── Loading Indicator ───────────────────────────────────── */
+      .isa-loader {
+        position:        absolute;
+        inset:           0;
+        display:         flex;
+        flex-direction:  column;
+        align-items:     center;
+        justify-content: center;
+        z-index:         10;
+        background:      var(--isa-bg);
+        transition:      opacity 0.4s ease;
+      }
+      .isa-loader.is-hidden {
+        opacity:        0;
+        pointer-events: none;
+      }
+      .isa-loader__ring {
+        width:  48px;
+        height: 48px;
+        border: 2px solid rgba(255,255,255,0.15);
+        border-top-color: #fff;
+        border-radius:    50%;
+        animation:        isa-spin 0.8s linear infinite;
+      }
+      .isa-loader__label {
+        color:          rgba(255,255,255,0.5);
+        font-family:    system-ui, sans-serif;
+        font-size:      0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top:     1rem;
+      }
+      @keyframes isa-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      /* ── Mobile Fallback ─────────────────────────────────────── */
+      .isa-mobile-fallback {
+        display:  none;
+        width:    100%;
+        height:   100vh;
+        overflow: hidden;
+      }
+      .isa-mobile-fallback img,
+      .isa-mobile-fallback video {
+        width:      100%;
+        height:     100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 767px) {
+        .isa-mobile-fallback {
+          display: none !important;
+        }
+        .isa-pin-wrapper {
+          display: block !important;
+          height: var(--isa-pin-h);
+        }
+        .isa-stage {
+          display: flex !important;
+          height: 100svh;
+          height: 100vh;
+        }
+        .isa-canvas {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      @media (max-width: 767px) {
+    .isa-heading-block {
+      display: none !important;
     }
-    @media (max-width: 767px) {
-  .isa-heading-block {
-    display: none !important;
+    .isa-overlay {
+      display: none !important;
+    }
   }
-  .isa-overlay {
-    display: none !important;
+
+  .isa-first-frame {
+    position:   absolute;
+    inset:      0;
+    width:      100%;
+    height:     100%;
+    object-fit: contain;
+    z-index:    1;
+    transition: opacity 0.5s ease;
   }
-}
+  .isa-first-frame.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 
 <section
@@ -250,17 +264,27 @@
         role="img"
       ></canvas>
 
+      {%- if section.settings.first_frame_image != blank -%}
+        <img
+          class="isa-first-frame"
+          src="{{ section.settings.first_frame_image | image_url: width: 1920 }}"
+          alt=""
+          aria-hidden="true"
+          fetchpriority="high"
+        >
+      {%- endif -%}
+
       <!-- ══ Scroll-triggered Heading Blocks ══════════════════ -->
       {%- for block in section.blocks -%}
         {%- if block.type == 'scroll_heading' -%}
           {%- liquid
-            assign show_from        = block.settings.show_from  | default: 0
-            assign show_until       = block.settings.show_until | default: 100
-            assign h_align          = block.settings.text_align    | default: 'center'
-            assign h_position       = block.settings.text_position | default: 'middle'
-            assign heading_color    = block.settings.heading_color    | default: '#ffffff'
+            assign show_from = block.settings.show_from | default: 0
+            assign show_until = block.settings.show_until | default: 100
+            assign h_align = block.settings.text_align | default: 'center'
+            assign h_position = block.settings.text_position | default: 'middle'
+            assign heading_color = block.settings.heading_color | default: '#ffffff'
             assign subheading_color = block.settings.subheading_color | default: '#ffffff'
-            assign heading_size     = block.settings.heading_size     | default: 'large'
+            assign heading_size = block.settings.heading_size | default: 'large'
           -%}
           <div
             class="isa-heading-block"
@@ -281,7 +305,9 @@
                     font-weight: {{ block.settings.heading_weight | default: '700' }};
                     letter-spacing: {{ block.settings.heading_tracking | default: '-0.02em' }};
                   "
-                >{{ block.settings.heading | escape }}</p>
+                >
+                  {{ block.settings.heading | escape }}
+                </p>
               {%- endif -%}
               {%- if block.settings.subheading != blank -%}
                 <p
@@ -293,7 +319,9 @@
                     letter-spacing: 0.04em;
                     opacity: 0.85;
                   "
-                >{{ block.settings.subheading | escape }}</p>
+                >
+                  {{ block.settings.subheading | escape }}
+                </p>
               {%- endif -%}
             </div>
           </div>
@@ -438,7 +466,13 @@
       img.onload  = () => {
         frameCache[index]   = img;
         frameLoading[index] = false;
-        if (index === 0 && !isReady) { resizeCanvas(); isReady = true; loader && loader.classList.add('is-hidden'); }
+        // Nayi line:
+if (index === 0 && !isReady) { 
+  resizeCanvas(); 
+  isReady = true; 
+  loader && loader.classList.add('is-hidden');
+  // Image hide mat karo abhi — scroll pe hide hogi
+}
         if (index === currentFrame) requestDraw(index);
       };
       img.onerror = () => { frameLoading[index] = false; };
@@ -462,14 +496,38 @@
 
     gsap.timeline({
       scrollTrigger: {
-        trigger:       pinWrapper,
-        start:         'top top',
-        end:           'bottom bottom',
-        scrub:         0.5,
-        pin:           '.isa-stage',
-        pinSpacing:    false,
-        anticipatePin: 1,
-        onUpdate(self) {
+    trigger:       pinWrapper,
+    start:         'top top',
+    end:           'bottom bottom',
+    scrub:         0.5,
+    pin:           '.isa-stage',
+    pinSpacing:    false,
+    anticipatePin: 1,
+
+    // Yeh teen callbacks add karo:
+    onLeave() {
+      // User aage scroll karke section se bahar gaya
+      const firstFrame = section.querySelector('.isa-first-frame');
+      if (firstFrame) firstFrame.classList.remove('is-hidden');
+    },
+    onLeaveBack() {
+      // User upar scroll karke section se bahar gaya
+      const firstFrame = section.querySelector('.isa-first-frame');
+      if (firstFrame) firstFrame.classList.remove('is-hidden');
+    },
+    onEnter() {
+      // Dobara andar aaya — scroll hote hi hide ho jaayegi (onUpdate handle karega)
+    },
+    onEnterBack() {
+      // Upar se dobara andar aaya
+    },
+
+    onUpdate(self) {
+      // Pehli baar scroll hote hi image hide karo
+      const firstFrame = section.querySelector('.isa-first-frame');
+      if (firstFrame && !firstFrame.classList.contains('is-hidden')) {
+        firstFrame.classList.add('is-hidden');
+      }
           const progress    = self.progress;
           const targetFrame = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * (TOTAL_FRAMES - 1)));
 
@@ -571,9 +629,9 @@
           "id": "heading_size",
           "label": "Heading Size",
           "options": [
-            { "value": "small",  "label": "Small"   },
-            { "value": "medium", "label": "Medium"  },
-            { "value": "large",  "label": "Large"   },
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" },
             { "value": "xlarge", "label": "X-Large" }
           ],
           "default": "large"
@@ -583,11 +641,11 @@
           "id": "heading_weight",
           "label": "Heading Weight",
           "options": [
-            { "value": "300", "label": "Light"    },
-            { "value": "400", "label": "Regular"  },
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
             { "value": "600", "label": "Semibold" },
-            { "value": "700", "label": "Bold"     },
-            { "value": "900", "label": "Black"    }
+            { "value": "700", "label": "Bold" },
+            { "value": "900", "label": "Black" }
           ],
           "default": "700"
         },
@@ -603,8 +661,8 @@
           "id": "subheading_weight",
           "label": "Subheading Weight",
           "options": [
-            { "value": "300", "label": "Light"    },
-            { "value": "400", "label": "Regular"  },
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Regular" },
             { "value": "600", "label": "Semibold" }
           ],
           "default": "300"
@@ -634,9 +692,9 @@
           "id": "text_align",
           "label": "Horizontal Alignment",
           "options": [
-            { "value": "left",   "label": "Left"   },
+            { "value": "left", "label": "Left" },
             { "value": "center", "label": "Center" },
-            { "value": "right",  "label": "Right"  }
+            { "value": "right", "label": "Right" }
           ],
           "default": "center"
         },
@@ -645,7 +703,7 @@
           "id": "text_position",
           "label": "Vertical Position",
           "options": [
-            { "value": "top",    "label": "Top"    },
+            { "value": "top", "label": "Top" },
             { "value": "middle", "label": "Middle" },
             { "value": "bottom", "label": "Bottom" }
           ],
@@ -658,6 +716,12 @@
     {
       "type": "header",
       "content": "Frame Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "first_frame_image",
+      "label": "First Frame Image (Preload)",
+      "info": "Pehla frame upload karo — jab tak animation load ho tab yeh dikhega."
     },
     {
       "type": "number",
@@ -746,7 +810,7 @@
       "label": "Mobile Fallback Type",
       "options": [
         { "value": "static", "label": "Static Image" },
-        { "value": "video",  "label": "Video"        }
+        { "value": "video", "label": "Video" }
       ],
       "default": "static"
     },
@@ -771,4 +835,3 @@
   ]
 }
 {% endschema %}
-

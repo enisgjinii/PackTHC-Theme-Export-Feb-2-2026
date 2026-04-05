@@ -121,6 +121,25 @@
     </script>
 
     <script>
+      // Hide chat widget & special offer on /pages/configurator
+      (function () {
+        if (!window.location.pathname.includes('/pages/configurator')) return;
+
+        var style = document.createElement('style');
+        style.textContent =
+          ['#tidio-chat-root', '#tidio-chat', '.toggle-spotlight-drawer'].join(',') + ' { display: none !important; }';
+        document.head.appendChild(style);
+
+        // Also hide Tidio iframe if it loads late
+        var observer = new MutationObserver(function () {
+          var tidio = document.getElementById('tidio-chat-root') || document.getElementById('tidio-chat');
+          if (tidio) tidio.style.setProperty('display', 'none', 'important');
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+      })();
+    </script>
+
+    <script>
       (function () {
         // Title Case Function
         function toTitleCase(str) {

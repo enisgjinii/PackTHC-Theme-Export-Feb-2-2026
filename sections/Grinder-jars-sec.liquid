@@ -1,0 +1,514 @@
+{% comment %}
+  Featured Products Section - 4 Products
+  Section: featured-products.liquid
+{% endcomment %}
+
+<section class="fp-section" id="featured-products-{{ section.id }}">
+  <div class="fp-wrapper">
+
+    {% if section.settings.heading != blank %}
+      <div class="fp-header">
+        <span class="fp-label">{{ section.settings.label }}</span>
+        <h2 class="fp-heading">{{ section.settings.heading }}</h2>
+        {% if section.settings.subheading != blank %}
+          <p class="fp-subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="fp-grid">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        {% if product != blank %}
+          <div class="fp-card" {{ block.shopify_attributes }}>
+
+            <a href="{{ product.url }}" class="fp-card__image-wrap">
+              {% if product.featured_image %}
+                <img
+                  class="fp-card__img fp-card__img--primary"
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  width="600"
+                  height="600"
+                  loading="lazy"
+                >
+                {% if product.images[1] %}
+                  <img
+                    class="fp-card__img fp-card__img--hover"
+                    src="{{ product.images[1] | image_url: width: 600 }}"
+                    alt="{{ product.images[1].alt | escape }}"
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                  >
+                {% endif %}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'fp-card__placeholder' }}
+              {% endif %}
+
+              {% if product.compare_at_price > product.price %}
+                <span class="fp-card__badge fp-card__badge--sale">New</span>
+              {% elsif product.tags contains 'new' %}
+                <span class="fp-card__badge fp-card__badge--new">New</span>
+              {% endif %}
+            </a>
+
+            <div class="fp-card__body">
+              {% if product.vendor != blank %}
+                <span class="fp-card__vendor">{{ product.vendor }}</span>
+              {% endif %}
+
+              <h3 class="fp-card__title">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="fp-card__price">
+                {% if product.compare_at_price > product.price %}
+                  <span class="fp-card__price--compare">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+                <span class="fp-card__price--current">{{ product.price | money }}</span>
+              </div>
+
+              <a href="{{ product.url }}" class="fp-card__btn">
+                <span>{{ block.settings.btn_text | default: section.settings.btn_text | default: 'View Product' }}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+
+          </div>
+        {% else %}
+          {%- comment -%} Placeholder when no product is selected in editor {%- endcomment -%}
+          <div class="fp-card fp-card--placeholder" {{ block.shopify_attributes }}>
+            <div class="fp-card__image-wrap">
+              {{ 'product-' | append: forloop.index | placeholder_svg_tag: 'fp-card__placeholder' }}
+            </div>
+            <div class="fp-card__body">
+              <span class="fp-card__vendor">Brand Name</span>
+              <h3 class="fp-card__title"><a href="#">Sample Product Title</a></h3>
+              <div class="fp-card__price">
+                <span class="fp-card__price--current">$99.00</span>
+              </div>
+              <a href="#" class="fp-card__btn">
+                <span>View Product</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_view_all and section.settings.view_all_url != blank %}
+      <div class="fp-footer">
+        <a href="{{ section.settings.view_all_url }}" class="fp-view-all">
+          {{ section.settings.view_all_text | default: 'View All Products' }}
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* ── Variables ── */
+  #featured-products-{{ section.id }} {
+    --fp-bg:        {{ section.settings.bg_color }};
+    --fp-accent:    {{ section.settings.accent_color }};
+    --fp-text:      {{ section.settings.text_color }};
+    --fp-card-bg:   {{ section.settings.card_bg_color }};
+    --fp-radius:    12px;
+    --fp-gap:       24px;
+    --fp-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Section wrapper ── */
+  #featured-products-{{ section.id }} {
+    background: var(--fp-bg);
+    padding: {{ section.settings.section_padding_top }}px 0 {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .fp-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ── Header ── */
+  .fp-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .fp-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fp-accent);
+    margin-bottom: 10px;
+    padding: 4px 14px;
+    border: 1.5px solid var(--fp-accent);
+    border-radius: 100px;
+  }
+
+  .fp-heading {
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--fp-text);
+    margin: 12px 0 0;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .fp-subheading {
+    font-size: 15px;
+    color: var(--fp-text);
+    opacity: 0.55;
+    margin: 12px auto 0;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  /* ── Grid ── */
+  .fp-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--fp-gap);
+  }
+
+  @media (max-width: 1024px) {
+    .fp-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 580px) {
+    .fp-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  }
+
+  /* ── Card ── */
+  .fp-card {
+    background: var(--fp-card-bg);
+    border-radius: var(--fp-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--fp-transition), box-shadow var(--fp-transition);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .fp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+  }
+
+  /* ── Image area ── */
+  .fp-card__image-wrap {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #f5f5f5;
+  }
+
+  .fp-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--fp-transition), opacity var(--fp-transition);
+  }
+
+  .fp-card__img--primary  { opacity: 1; position: relative; z-index: 1; }
+  .fp-card__img--hover    {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform: scale(1.04);
+  }
+
+  .fp-card:hover .fp-card__img--primary { transform: scale(1.04); }
+  .fp-card:hover .fp-card__img--hover   { opacity: 1; transform: scale(1); }
+
+  .fp-card__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Badge */
+  .fp-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .fp-card__badge--sale { background: #e63b3b; color: #fff; }
+  .fp-card__badge--new  { background: var(--fp-accent); color: #fff; }
+
+  /* ── Card body ── */
+  .fp-card__body {
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .fp-card__vendor {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fp-accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .fp-card__title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--fp-text);
+    margin: 0 0 10px;
+    flex: 1;
+  }
+
+  .fp-card__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .fp-card__title a:hover { color: var(--fp-accent); }
+
+  /* Price */
+  .fp-card__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .fp-card__price--current {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--fp-text);
+  }
+
+  .fp-card__price--compare {
+    font-size: 13px;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  /* Button */
+  .fp-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--fp-accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: background var(--fp-transition), transform 0.2s, gap 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .fp-card__btn:hover {
+    background: color-mix(in srgb, var(--fp-accent) 80%, #000);
+    gap: 12px;
+  }
+
+  .fp-card__btn svg {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  .fp-card__btn:hover svg { transform: translateX(3px); }
+
+  /* ── Footer ── */
+  .fp-footer {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .fp-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 36px;
+    border: 2px solid var(--fp-accent);
+    color: var(--fp-accent);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background var(--fp-transition), color var(--fp-transition);
+  }
+
+  .fp-view-all:hover {
+    background: var(--fp-accent);
+    color: #fff;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Grinder Products",
+  "tag": "section",
+  "class": "section-featured-products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label (small text above heading)",
+      "default": "Handpicked For You"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover our most loved items, curated just for you."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Default Button Text",
+      "default": "View Product"
+    },
+    {
+      "type": "header",
+      "content": "View All Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show View All Button",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View All URL"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All Products"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Button Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button Text (overrides default)",
+          "placeholder": "View Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grinder Products",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}
+

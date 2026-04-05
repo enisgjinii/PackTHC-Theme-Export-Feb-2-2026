@@ -161,6 +161,11 @@
         "type": "shopify://apps/hulk-discounts/blocks/app-embed/25745434-52e7-4378-88f1-890df18a0110",
         "disabled": false,
         "settings": {}
+      },
+      "6143736321357441667": {
+        "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {

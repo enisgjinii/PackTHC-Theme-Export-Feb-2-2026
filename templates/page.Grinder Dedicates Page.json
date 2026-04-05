@@ -19,51 +19,14 @@
         "padding_bottom": 0
       }
     },
-    "grinder_page_yHcWG3": {
-      "type": "Grinder-page",
-      "disabled": true,
-      "name": "Hero — Video Center",
-      "settings": {
-        "accent_color": "#ffffff",
-        "text_color": "#ffffff",
-        "subtext_color": "#7a7a7a",
-        "video_type": "mp4",
-        "video_url": "https://cdn.shopify.com/videos/c/o/v/1117a3cf6d954013992565a6bc9cc60a.mp4",
-        "youtube_id": "",
-        "vimeo_id": "",
-        "autoplay": true,
-        "loop": true,
-        "video_radius": 0,
-        "badge_text": "Accounting for Creatives",
-        "eyebrow": "Est. 2019",
-        "title_line1": "CREATIVES",
-        "title_line2": "CREATE",
-        "description": "Bespoke accounting for the creative industry. We handle the numbers so you can stay in your zone.",
-        "play_label": "",
-        "play_sub": "",
-        "button_label": "See The Products",
-        "button_link": "",
-        "button2_label": "Contact Us",
-        "button2_link": "",
-        "scroll_text": "Scroll",
-        "stat1_num": "200+",
-        "stat1_label": "CLIENTS",
-        "stat2_num": "8 YRS",
-        "stat2_label": "EXPERIENCE",
-        "stat3_num": "$2M+",
-        "stat3_label": "Tax Saved",
-        "tag1": "Creative Industry",
-        "tag2": "Est. 2019"
-      }
-    },
     "grinder_gsap_p6JiHy": {
       "type": "grinder-gsap",
       "blocks": {
         "scroll_heading_dTcgCr": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Aircraft-Grade Aluminum",
+            "subheading": "Strong. Lightweight. Corrosion-resistant.",
             "show_from": 0,
             "show_until": 30,
             "heading_size": "large",
@@ -79,8 +42,8 @@
         "scroll_heading_pHB7zT": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Built to Last",
+            "subheading": "Premium durability for daily use.",
             "show_from": 0,
             "show_until": 30,
             "heading_size": "large",
@@ -96,8 +59,8 @@
         "scroll_heading_pUUXKQ": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Precision Grinding",
+            "subheading": "Sharp teeth, smooth grind every time.",
             "show_from": 35,
             "show_until": 60,
             "heading_size": "large",
@@ -113,8 +76,8 @@
         "scroll_heading_LDWxzf": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Airtight Storage",
+            "subheading": "Freshness locked in. Odor controlled.",
             "show_from": 35,
             "show_until": 60,
             "heading_size": "large",
@@ -130,8 +93,8 @@
         "scroll_heading_cgJVhm": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Your Brand. Every Day.",
+            "subheading": "Reusable packaging = free long-term branding.",
             "show_from": 65,
             "show_until": 95,
             "heading_size": "large",
@@ -147,8 +110,8 @@
         "scroll_heading_cPBGy8": {
           "type": "scroll_heading",
           "settings": {
-            "heading": "Crafted to Perfection",
-            "subheading": "Sub Title",
+            "heading": "Custom Finish",
+            "subheading": "Matte, metallic, and custom colors for a luxury look.",
             "show_from": 65,
             "show_until": 95,
             "heading_size": "large",
@@ -172,6 +135,7 @@
       ],
       "name": "Image Sequence Animation",
       "settings": {
+        "first_frame_image": "shopify://shop_images/frame_013.webp",
         "total_frames": 200,
         "file_prefix": "frame_",
         "file_extension": "webp",
@@ -192,51 +156,55 @@
         "card_88FiHy": {
           "type": "card",
           "settings": {
-            "card_title": "Creative Freelancers",
-            "card_description": "Providing support and expertise to clients, solo managing all deadlines.",
-            "card_image": "shopify://shop_images/frame_353.webp",
-            "card_color": "#fde0e8"
+            "card_title": "Flower Packaging",
+            "card_description": "Keep your flower fresh and your brand front and center with every use.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-04.webp",
+            "card_color": "#1883fe"
           }
         },
         "card_B7FddW": {
           "type": "card",
           "settings": {
-            "card_title": "Studios and Agencies",
-            "card_description": "Creative experiences that connect, convert and inspire audiences.",
-            "card_image": "shopify://shop_images/frame_350.webp",
-            "card_color": "#a8f5c8"
+            "card_title": "Pre-Roll Storage",
+            "card_description": "The perfect companion to store pre-rolls safely after the grind.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-02.webp",
+            "card_color": "#99caff"
           }
         },
         "card_Lk6fHk": {
           "type": "card",
           "settings": {
-            "card_title": "Creative Collectives",
-            "card_description": "All-in-one creative workflows from concept to launch.",
-            "card_color": "#f2a0b5"
+            "card_title": "Premium Retail SKUs",
+            "card_description": "Elevate your shelf presence with packaging that doubles as a product.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-06.webp",
+            "card_color": "#6eb7ff"
           }
         },
         "card_mkEEPT": {
           "type": "card",
           "settings": {
-            "card_title": "Production Houses",
-            "card_description": "Turning ideas into reality, defining brand values.",
-            "card_color": "#d6ffe8"
+            "card_title": "Subscription Boxes",
+            "card_description": "A reusable grinder jar your customers will love unboxing — every time.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-01.webp",
+            "card_color": "#67a2f9"
           }
         },
         "card_eHaxRy": {
           "type": "card",
           "settings": {
-            "card_title": "Creative Contractors",
-            "card_description": "Expertly advising clients with creative leadership.",
-            "card_color": "#f5e6d8"
+            "card_title": "High-End Cannabis Brands",
+            "card_description": "Built for brands that refuse to compromise on quality or experience.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-05.webp",
+            "card_color": "#439ef9"
           }
         },
         "card_3wVpFt": {
           "type": "card",
           "settings": {
-            "card_title": "Media Businesses",
-            "card_description": "Guiding clients to their milestones through media management.",
-            "card_color": "#fde0e8"
+            "card_title": "Custom Brand Drops",
+            "card_description": "Limited edition drops with full custom branding — logo, color, finish.",
+            "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-03.webp",
+            "card_color": "#1883fe"
           }
         }
       },
@@ -251,11 +219,11 @@
       "name": "Who It's For Cards",
       "settings": {
         "bg_color": "#ffffff",
-        "text_color": "#0a2e2e",
-        "accent_color": "#d6ffe8",
-        "badge_text": "ACCOUNTING FOR CREATIVES",
+        "text_color": "#ffffff",
+        "accent_color": "#033770",
+        "badge_text": "PERFECT FOR",
         "title": "WHO IT'S FOR",
-        "subtitle": "CREATIVES CREATE, WE CALCULATE"
+        "subtitle": "FROM FLOWER TO PREMIUM RETAIL — WE'VE GOT YOU COVERED"
       }
     },
     "grinder_third_8LGLjh": {
@@ -264,51 +232,56 @@
         "step_UwCHde": {
           "type": "step",
           "settings": {
-            "step_label": "STEP 1",
-            "title": "TALK TO US",
-            "subtitle": "WHERE ARE YOU AT AND WHAT'S KEEPING YOU UP?",
-            "description": "We've heard it all before and nothing shocks us. We'll figure out exactly what needs fixing and how we'll fix it together.",
-            "card_bg": "#fde0e8"
+            "step_label": "",
+            "title": "CHOOSE YOUR SIZE",
+            "subtitle": "FIND THE FORMAT THAT FITS YOUR PRODUCT",
+            "description": "We offer multiple size variants to match your flower weight, pre-roll count, or retail SKU requirements.",
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-02.webp",
+            "card_bg": "#1883fe"
           }
         },
         "step_Bd9TPf": {
           "type": "step",
           "settings": {
-            "step_label": "STEP 2",
-            "title": "WE DIAGNOSE",
-            "subtitle": "DEEP DIVE INTO YOUR NUMBERS AND SYSTEMS",
-            "description": "We audit your books, identify the gaps and build a clear picture of where you stand financially.",
-            "card_bg": "#a8f5c8"
+            "step_label": "",
+            "title": "CUSTOMIZE YOUR BRAND",
+            "subtitle": "ADD YOUR LOGO, COLORS & FINISH",
+            "description": "Upload your artwork and choose from matte, metallic, or custom color finishes. We handle the rest.",
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-01.webp",
+            "card_bg": "#99caff"
           }
         },
         "step_iRWaPg": {
           "type": "step",
           "settings": {
-            "step_label": "STEP 3",
-            "title": "BUILD THE PLAN",
-            "subtitle": "A ROADMAP BUILT AROUND YOUR CREATIVE GOALS",
-            "description": "We create a custom financial strategy tailored to how you work, earn and grow.",
-            "card_bg": "#f2a0b5"
+            "step_label": "",
+            "title": "PLACE YOUR ORDER",
+            "subtitle": "LOW MOQ — BUILT FOR SCALING BRANDS",
+            "description": "Order in bulk with low minimum quantities. Whether you're launching or scaling, we're ready.",
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-04.webp",
+            "card_bg": "#6eb7ff"
           }
         },
         "step_gWLFEG": {
           "type": "step",
           "settings": {
-            "step_label": "STEP 4",
-            "title": "WE EXECUTE",
-            "subtitle": "HANDS ON DELIVERY, START TO FINISH",
-            "description": "From tax lodgements to bookkeeping, we handle the hard stuff so you can focus on your craft.",
-            "card_bg": "#f5e6d8"
+            "step_label": "",
+            "title": "WE FULFILL FAST",
+            "subtitle": "RELIABLE SHIPPING ACROSS THE USA",
+            "description": "Your order is packed, quality-checked, and shipped with speed. No delays. No surprises.",
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-05.webp",
+            "card_bg": "#67a2f9"
           }
         },
         "step_rckxXw": {
           "type": "step",
           "settings": {
-            "step_label": "STEP 5",
-            "title": "YOU GROW",
-            "subtitle": "ONGOING SUPPORT AS YOUR BUSINESS SCALES",
-            "description": "We stay by your side, adapting your financial strategy as your creative business evolves.",
-            "card_bg": "#fde0e8"
+            "step_label": "",
+            "title": "YOUR CUSTOMERS KEEP IT",
+            "subtitle": "DAILY USE = DAILY BRAND VISIBILITY",
+            "description": "Unlike regular packaging, your grinder jar stays with the customer — reinforcing your brand every single day.",
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-03.webp",
+            "card_bg": "#1883fe"
           }
         }
       },
@@ -331,29 +304,29 @@
         "feature_bQheqm": {
           "type": "feature",
           "settings": {
-            "title": "WE SPEAK CREATIVE",
-            "description": "We encounter and resolve your challenges every day."
+            "title": "CONSISTENT QUALITY",
+            "description": "Manufactured with strict quality control standards — every jar, every time."
           }
         },
         "feature_fF6dqf": {
           "type": "feature",
           "settings": {
-            "title": "YOU DON'T PANIC",
-            "description": "We handle everything and you have visibility of your position."
+            "title": "CUSTOM BRANDING",
+            "description": "Your logo, your colors, your identity — fully printed and finished to spec."
           }
         },
         "feature_rbHRDj": {
           "type": "feature",
           "settings": {
-            "title": "WE PLAN AHEAD",
-            "description": "Actions are taken to keep taxes low, leaving no surprise tax bills."
+            "title": "BULK READY",
+            "description": "Low MOQ options available for brands at any stage — launch to scale."
           }
         },
         "feature_X8nEnN": {
           "type": "feature",
           "settings": {
-            "title": "WE'RE NOT ROBOTS (YET)",
-            "description": "Clear advice and genuine support for today's creatives."
+            "title": "INDUSTRY-FOCUSED",
+            "description": "We understand cannabis packaging better than any generic supplier. Period."
           }
         }
       },
@@ -368,9 +341,9 @@
         "bg_color": "#0b3466",
         "text_color": "#ffffff",
         "accent_color": "#00f5a0",
-        "badge_text": "WHY CHOOSE US",
-        "title": "NUMBERS AREN'T FOR YOU",
-        "subtitle": "BESPOKE ACCOUNTING FOR CREATIVES",
+        "badge_text": "WHY PACKTHC",
+        "title": "PACKAGING IS ONLY AS GOOD AS THE BRAND BEHIND IT",
+        "subtitle": "HERE'S WHY PREMIUM BRANDS CHOOSE PACKTHC",
         "button_label": "Contact For Bulk",
         "button_link": ""
       }
@@ -381,57 +354,65 @@
         "image_pmQggE": {
           "type": "image",
           "settings": {
-            "tag": "Branding",
-            "caption": "Identity system for a creative studio"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-03.webp",
+            "tag": "Grinder Jar",
+            "caption": ""
           }
         },
         "image_bb76Eq": {
           "type": "image",
           "settings": {
-            "tag": "Editorial",
-            "caption": "Annual report design"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-03.webp",
+            "tag": "Aluminum Grinder",
+            "caption": ""
           }
         },
         "image_4G7ywa": {
           "type": "image",
           "settings": {
-            "tag": "Photography",
-            "caption": "Campaign shoot"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-04.webp",
+            "tag": "Cannabis Packaging",
+            "caption": ""
           }
         },
         "image_3AyLLN": {
           "type": "image",
           "settings": {
-            "tag": "Web",
-            "caption": "E-commerce redesign"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-01.webp",
+            "tag": "Premium Packaging",
+            "caption": ""
           }
         },
         "image_e4zKFf": {
           "type": "image",
           "settings": {
-            "tag": "Motion",
-            "caption": "Brand launch film"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-05.webp",
+            "tag": "Custom Branding",
+            "caption": ""
           }
         },
         "image_yCiDRa": {
           "type": "image",
           "settings": {
-            "tag": "Print",
-            "caption": "Limited edition poster series"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-01.webp",
+            "tag": "Herb Grinder",
+            "caption": ""
           }
         },
         "image_XQjXVi": {
           "type": "image",
           "settings": {
-            "tag": "Packaging",
-            "caption": "Product line refresh"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-01.webp",
+            "tag": "Weed Grinder",
+            "caption": ""
           }
         },
         "image_ThmVbH": {
           "type": "image",
           "settings": {
-            "tag": "Social",
-            "caption": "Content strategy & design"
+            "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-04.webp",
+            "tag": "Smell Proof",
+            "caption": ""
           }
         }
       },
@@ -447,14 +428,69 @@
       ],
       "name": "Masonry Gallery",
       "settings": {
-        "bg_color": "#faf8f4",
+        "bg_color": "#ffffff",
         "text_color": "#0a2e2e",
         "accent_color": "#0a2e2e",
-        "badge_text": "OUR WORK",
-        "title": "MOMENTS WE LOVE",
-        "subtitle": "A glimpse into the work and world we're building together.",
+        "badge_text": "OUR PRODUCTS",
+        "title": "BUILT TO BE SEEN",
+        "subtitle": "A look at the grinder jars premium cannabis brands are choosing.",
         "button_label": "",
         "button_link": ""
+      }
+    },
+    "grinder_jars_sec_Xnkw4A": {
+      "type": "Grinder-jars-sec",
+      "blocks": {
+        "product_x4pXEh": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-red",
+            "btn_text": ""
+          }
+        },
+        "product_X3QTkJ": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-champagne",
+            "btn_text": ""
+          }
+        },
+        "product_8gNt7h": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-black",
+            "btn_text": ""
+          }
+        },
+        "product_WqiQjx": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-silver",
+            "btn_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_x4pXEh",
+        "product_X3QTkJ",
+        "product_8gNt7h",
+        "product_WqiQjx"
+      ],
+      "name": "Grinder Products",
+      "settings": {
+        "label": "PackTHC",
+        "heading": "PackTHC New Grinder Jar",
+        "subheading": "Discover our most loved items, curated just for you.",
+        "btn_text": "View Product",
+        "show_view_all": false,
+        "view_all_url": "",
+        "view_all_text": "View All Products",
+        "bg_color": "#ffffff",
+        "card_bg_color": "#ffffff",
+        "accent_color": "#111111",
+        "text_color": "#111111",
+        "section_padding_top": 40,
+        "section_padding_bottom": 80
       }
     },
     "collapsible_tabs_ryCCJD": {
@@ -463,20 +499,21 @@
         "image_card_tx6KU3": {
           "type": "image_card",
           "settings": {
-            "color_scheme": "scheme-1",
+            "color_scheme": "scheme-inverse",
             "desktop_image_position": "left",
             "image_width": 40,
             "alignment": "center",
+            "image": "shopify://shop_images/Questions-01.webp",
             "image_ratio": "adapt",
             "image_overlay_opacity": 0,
             "content_position": "top-center",
             "content_alignment": "center",
             "content_spacing": "medium",
             "content_gap": "fitted",
-            "card_link": "",
+            "card_link": "shopify://pages/contact",
             "subheading": "",
             "subheading_style": "",
-            "heading": "Heading",
+            "heading": "Got Questions?",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -484,8 +521,8 @@
             "heading_size": "h1",
             "heading_size_mobile": "inherit",
             "heading_size_custom": 18,
-            "description": "<p>Combine images with text and a stand-out offer</p>",
-            "button_label": "",
+            "description": "<p>Everything you need to know about our Aluminum Grinder Jars — answered.</p>",
+            "button_label": "Contact Now",
             "button_style": "btn--primary",
             "button_icon": "none",
             "order_first": false
@@ -495,8 +532,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "What material are the grinder jars made of?",
+            "content": "<p>Our grinder jars are made from high-grade aircraft aluminum — strong, lightweight, and corrosion-resistant for long-term daily use.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -507,8 +544,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "Can I add my own branding and logo?",
+            "content": "<p>Yes. We offer full custom branding — including logo printing, custom colors, and finish options (matte, metallic, or custom). Your brand, your way.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -519,8 +556,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "What is the minimum order quantity (MOQ)?",
+            "content": "<p>We offer low MOQ options designed for scaling cannabis brands. Whether you're just launching or placing bulk orders, we have a solution for you. Contact us for exact MOQ details.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -531,8 +568,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "What sizes are available?",
+            "content": "<p>We offer multiple size variants to suit different product types — from flower to pre-roll storage. Reach out to our team to find the right size for your SKU.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -543,8 +580,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "Is the storage airtight?",
+            "content": "<p>Yes. The grinder jar features a secure airtight closure designed to preserve freshness and control odor — keeping your product in perfect condition.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -555,8 +592,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "Do you ship across the USA?",
+            "content": "<p>Absolutely. PackTHC offers fast and reliable fulfillment with shipping across the entire USA. We handle quality control so your order arrives exactly as expected.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -567,8 +604,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Collapsible tab heading",
-            "content": "<p>Fill in the text content of the collapsible item here. You can provide details and explanation for the question here.</p>",
+            "heading": "How is this different from regular cannabis packaging?",
+            "content": "<p>Regular packaging gets thrown away. Our aluminum grinder jars are reusable, functional, and kept by customers for daily use — turning your packaging into a long-term branding tool that drives retention and perceived value.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false,
@@ -589,12 +626,12 @@
       "name": "t:sections.collapsible-tabs.name",
       "settings": {
         "container": "fixed",
-        "color_scheme": "scheme-14",
+        "color_scheme": "scheme-1",
         "header_layout": "vertical",
         "section_header_alignment": "left",
         "section_header_alignment_mobile": "inherit",
-        "subheading": "",
-        "heading": "Collapsible tabs",
+        "subheading": "FAQ",
+        "heading": "Frequently Asked Questions",
         "highlight_style": "none",
         "highlight_font_style": "italic",
         "highlight_style_color": "",
@@ -602,9 +639,9 @@
         "heading_size": "h1",
         "description": "",
         "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--primary",
+        "button_label": "Contact Us",
+        "button_link": "shopify://pages/contact",
+        "button_style": "btn--underline",
         "button_icon": "none",
         "column_gap": "large",
         "row_gap": "inherit",
@@ -622,12 +659,12 @@
   },
   "order": [
     "main",
-    "grinder_page_yHcWG3",
     "grinder_gsap_p6JiHy",
     "grinder_second_6EnxUL",
     "grinder_third_8LGLjh",
     "grinder_forth_qhme3t",
     "grinder_fifth_VteDMw",
+    "grinder_jars_sec_Xnkw4A",
     "collapsible_tabs_ryCCJD"
   ]
 }

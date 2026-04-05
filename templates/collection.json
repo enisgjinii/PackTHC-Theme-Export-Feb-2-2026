@@ -315,7 +315,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-1",
-        "products_per_page": 12,
+        "products_per_page": 36,
         "columns_desktop": 4,
         "column_gap": "medium",
         "row_gap": "large",
