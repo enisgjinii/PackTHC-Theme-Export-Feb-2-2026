@@ -271,15 +271,15 @@
 .configurator-loading {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, #f8fafb 0%, #eef2f6 50%, #f8fafb 100%);
+  background-size: 200% 200%;
+  animation: configurator-shimmer 2s ease infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
   z-index: 10;
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
 }
 
 .configurator-loading__spinner {
@@ -299,6 +299,11 @@
 
 @keyframes configurator-spin {
   to { transform: rotate(360deg); }
+}
+
+@keyframes configurator-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* ---------- Error State ---------- */

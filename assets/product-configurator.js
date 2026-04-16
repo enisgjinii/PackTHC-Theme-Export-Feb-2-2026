@@ -571,11 +571,23 @@
 
     // ── Loading state ──
     const loadingTimer = setTimeout(() => {
-      if (loadingOverlay) loadingOverlay.style.display = 'none';
+      if (loadingOverlay) {
+        // Show a "taking longer" message instead of just hiding
+        const loadingText = loadingOverlay.querySelector('.configurator-loading__text');
+        if (loadingText) {
+          loadingText.textContent = 'Still loading — this may take a few more seconds…';
+        }
+      }
     }, LOADING_TIMEOUT);
+
+    // Hard timeout: hide spinner after 30s no matter what
+    const hardTimer = setTimeout(() => {
+      if (loadingOverlay) loadingOverlay.style.display = 'none';
+    }, 30000);
 
     iframe.addEventListener('load', () => {
       clearTimeout(loadingTimer);
+      clearTimeout(hardTimer);
       if (loadingOverlay) loadingOverlay.style.display = 'none';
     });
 
