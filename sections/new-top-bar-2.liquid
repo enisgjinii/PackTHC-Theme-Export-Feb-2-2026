@@ -1,0 +1,155 @@
+{% comment %}
+  Section: Mobile Contact Bar
+  Shows phone number + "Request a Quote" button only on mobile
+  Place this section in your theme via Shopify Theme Editor
+{% endcomment %}
+
+<div class="mobile-contact-bar" id="mobile-contact-bar-{{ section.id }}">
+  <a href="tel:{{ section.settings.phone_number }}" class="mcb-phone">
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.39 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.55a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    {{ section.settings.phone_display }}
+  </a>
+
+  <a href="{{ section.settings.quote_url }}" class="mcb-quote-btn">
+    {{ section.settings.quote_label }}
+  </a>
+</div>
+
+<style>
+  /* ── Only show on mobile ── */
+  #mobile-contact-bar-{{ section.id }} {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    #mobile-contact-bar-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: {{ section.settings.bar_bg_color }};
+      padding: 8px 14px;
+      width: 100%;
+      box-sizing: border-box;
+      gap: 10px;
+      position: relative;
+    }
+
+    #mobile-contact-bar-{{ section.id }} .mcb-phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: {{ section.settings.phone_text_color }};
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    #mobile-contact-bar-{{ section.id }} .mcb-phone svg {
+      flex-shrink: 0;
+      color: {{ section.settings.phone_text_color }};
+      font-weight: 600;
+    }
+
+    #mobile-contact-bar-{{ section.id }} .mcb-quote-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: {{ section.settings.btn_bg_color }};
+      color: {{ section.settings.btn_text_color }};
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: opacity 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+
+    #mobile-contact-bar-{{ section.id }} .mcb-quote-btn:hover,
+    #mobile-contact-bar-{{ section.id }} .mcb-quote-btn:active {
+      opacity: 0.88;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Mobile Contact Bar",
+  "tag": "section",
+  "class": "mobile-contact-bar-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number (for tel: link)",
+      "default": "+18164722842",
+      "info": "Enter with country code, no spaces. E.g. +18164722842"
+    },
+    {
+      "type": "text",
+      "id": "phone_display",
+      "label": "Phone Display Text",
+      "default": "(816) PACKTHC",
+      "info": "Text shown to user on the bar"
+    },
+    {
+      "type": "header",
+      "content": "Quote Button"
+    },
+    {
+      "type": "text",
+      "id": "quote_label",
+      "label": "Button Label",
+      "default": "Request a Quote"
+    },
+    {
+      "type": "url",
+      "id": "quote_url",
+      "label": "Button Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bar_bg_color",
+      "label": "Bar Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "phone_text_color",
+      "label": "Phone Text & Icon Color",
+      "default": "#1a1a2e"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#22c55e"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mobile Contact Bar"
+    }
+  ]
+}
+{% endschema %}
+

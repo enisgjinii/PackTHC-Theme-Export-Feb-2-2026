@@ -50,6 +50,7 @@
         </div>
       </div>
       <div class="product-form__buttons flex items-center">
+        {% if customer %}
         <button
           type="submit"
           name="add"
@@ -64,6 +65,11 @@
           </span>
           {% render 'loading-spinner' %}
         </button>
+        {% else %}
+        <a href="/account/login?return_url={{ request.path }}" class="product-form__submit btn btn--primary btn--small w-full">
+          <span class="btn__text">🔒 Login to Purchase</span>
+        </a>
+        {% endif %}
       </div>
     </sticky-atc-bar-minimalist>
   {%- else -%}
@@ -196,6 +202,7 @@
           {% endif %}
           <div class="product-form__buttons flex items-center gap-2">
             {%- if block.settings.show_atc_button -%}
+            {% if customer %}
               <button
                 type="submit"
                 name="add"
@@ -213,11 +220,18 @@
                 </span>
                 {% render 'loading-spinner' %}
               </button>
+            {% else %}
+              <a href="/account/login?return_url={{ request.path }}" class="product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %} w-full">
+                <span class="btn__text">🔒 Login to Purchase</span>
+              </a>
             {% endif %}
+            {%- endif -%}
             {%- if show_dynamic_checkout_buttons -%}
+              {% if customer %}
               <div class="product-form__button-dynamic hidden md:block">
                 {{ form | payment_button }}
               </div>
+              {% endif %}
             {%- endif -%}
           </div>
         {%- endform -%}

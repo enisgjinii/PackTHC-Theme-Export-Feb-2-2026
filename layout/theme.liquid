@@ -139,112 +139,39 @@
       })();
     </script>
 
-    <script>
-      (function () {
-        // Title Case Function
-        function toTitleCase(str) {
-          return str
-            .toLowerCase()
-            .split(' ')
-            .map(function (word) {
-              return word.charAt(0).toUpperCase() + word.slice(1);
-            })
-            .join(' ');
-        }
 
-        // ML Formatter Function
-        function formatMLText(str) {
-          return str.replace(/(\d+)\s*ml\b/gi, function (match, number) {
-            return number + ' ML';
-          });
-        }
-
-        // ✅ SAFE text converter - sirf direct text nodes update karta hai, links safe rehte hain
-        function convertTextNodes(el) {
-          el.childNodes.forEach(function (node) {
-            if (node.nodeType === 3) {
-              // Text node
-              var trimmed = node.textContent.trim();
-              if (trimmed.length > 0) {
-                var converted = toTitleCase(trimmed);
-                node.textContent = node.textContent.replace(trimmed, formatMLText(converted));
-              }
-            } else if (node.nodeType === 1 && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
-              // Recursively handle child elements (like <a> tags ke andar ka text)
-              convertTextNodes(node);
-            }
-          });
-        }
-
-        // Main Conversion Function
-        function convertAllTitles() {
-          // 1. PRODUCT PAGE TITLES
-          document.querySelectorAll('.product__title').forEach(convertTextNodes);
-
-          // 2. PRODUCT CARD TITLES
-          document.querySelectorAll('.product-card__title .reversed-link__text').forEach(convertTextNodes);
-
-          // 3. COLLECTION CARD TITLES
-          document.querySelectorAll('.collection-card__title span').forEach(function (el) {
-            el.childNodes.forEach(function (node) {
-              if (node.nodeType === 3 && node.textContent.trim().length > 0) {
-                var converted = toTitleCase(node.textContent.trim());
-                node.textContent = formatMLText(converted);
-              }
-            });
-          });
-
-          // 4. BUTTON LIST ITEMS
-          document.querySelectorAll('.button-item__text').forEach(convertTextNodes);
-
-          // 5. BREADCRUMBS
-          document.querySelectorAll('.breadcrumbs .reversed-link, .breadcrumbs--last').forEach(convertTextNodes);
-
-          // 6. COLLECTION HERO TITLE
-          document.querySelectorAll('.collection-hero__title motion-element').forEach(convertTextNodes);
-
-          // 7. HEADINGS
-          document.querySelectorAll('h1.h1, h2.h1, h3.text-pcard-title').forEach(convertTextNodes);
-
-          // 8. SEARCH RESULTS
-          document.querySelectorAll('[class*="search"] [class*="title"]').forEach(convertTextNodes);
-
-          // 9. COLLECTION PILL BADGES
-          document.querySelectorAll('.collpill-label-text-3wh').forEach(convertTextNodes);
-
-          // Alt text for collection pills (links pe effect nahi)
-          document.querySelectorAll('.collpill-thumbnail-box-5jx img[alt]').forEach(function (el) {
-            var altText = toTitleCase(el.getAttribute('alt').trim());
-            el.setAttribute('alt', formatMLText(altText));
-          });
-        }
-        // Run on page load
-        document.addEventListener('DOMContentLoaded', function () {
-          convertAllTitles();
-        });
-
-        // Re-run for dynamic content
-        var observer = new MutationObserver(function (mutations) {
-          mutations.forEach(function (mutation) {
-            if (mutation.addedNodes.length) {
-              convertAllTitles();
-            }
-          });
-        });
-
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-        });
-      })();
-    </script>
     {% include 'hulk_po_vd' %}
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-M5NZHKV6');
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
 
   <body
     class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
     data-initializing
   >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-M5NZHKV6"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
     {{ shop.metafields.foxtheme.code_body.value }}
     {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
@@ -288,6 +215,31 @@
     {%- if settings.enable_product_compare -%}
       <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+      /* Cart login guard — blocks guest add-to-cart across all forms */
+      (function() {
+        var customer = {{ customer | json }};
+        var isLoggedIn = customer !== null && customer !== false;
+        if (!isLoggedIn) {
+          document.addEventListener('submit', function(e) {
+            var form = e.target;
+            if (form && form.getAttribute('action') && form.getAttribute('action').indexOf('/cart/add') !== -1) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              window.location.href = '/account/login?return_url=' + encodeURIComponent(window.location.pathname + window.location.search);
+            }
+          }, true); /* capture phase fires before theme Ajax handler */
+        }
+      })();
+    </script>
+    {% if request.page_type == 'index'
+      or request.page_type == 'product'
+      or request.page_type == 'collection'
+      or request.path contains '/pages/configurator'
+    %}
+      {% render 'login-popup' %}
+    {% endif %}
   </body>
 </html>
 <!-- v2 -->

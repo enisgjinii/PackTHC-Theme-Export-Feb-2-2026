@@ -18,9 +18,172 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "strain_details_GhwHRp": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_L73Ndc": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Melon_Gum_-_bud.webp",
+            "image_description": "Melon Gum (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "emoji_main": "",
+            "product_name": "Melon Gum (fem)",
+            "genetics": "Hybrid Cultivar",
+            "strain-badge_1": "Hybrid",
+            "strain-badge_2": "THC 18–24%",
+            "strain-badge_3": "CBD <1%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Uplifting",
+            "effect_emoji_2": "⬆️",
+            "effect_3": "Creative",
+            "effect_emoji_3": "💡",
+            "effect_4": "Balanced",
+            "effect_emoji_4": "⚖️",
+            "effect_5": "Gentle Relief",
+            "effect_emoji_5": "🌿",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Caryophyllene",
+            "terpene_4": "Pinene",
+            "terpene_5": "Humulene",
+            "terpene_6": "Cineole",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 50,
+            "thc_level": 70
+          }
+        },
+        "description_naGEJa": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "About Melon Gum (fem)",
+            "description_1": "Melon Gum (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "description_2": "In a packaging context, highlighting the strain's balanced nature can help consumers quickly identify it among other options. As a packaging company, emphasizing airtight, odor-resistant, and compliant packaging is essential for preserving the strain's terpene profile and potency. Proper labeling and protective materials ensure the product remains fresh from cultivation to consumer, aligning with regulatory requirements and customer expectations.",
+            "bud_image": "shopify://shop_images/Melon_Gum_-_trichome.webp",
+            "bud_image_2": "shopify://shop_images/Melon_Gum_-_bud.webp",
+            "bud_image_3": "shopify://shop_images/Melon_Gum_-_plant.webp",
+            "bud_image_4": "shopify://shop_images/Melon_Gum_-_macro.webp",
+            "feature_1_emoji": "🔐",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "💃",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage during storage.",
+            "feature_3_emoji": "🔒",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "🌟",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_rmURbq": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "Explore our complete range of packaging solutions designed to preserve and protect cannabis products.",
+            "product_1": "chubby-gorilla-10ml-unicorn-plastic-squeeze-bottle-pet-cr-clear-with-white-cap",
+            "product_2": "10ml-unicorn-bottle-clear-black-cap",
+            "product_3": "chubby-gorilla-15ml-unicorn-plastic-squeeze-bottle-pet-cr-clear-with-white-cap",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products. From jars and tubes to specialized containers, find the perfect packaging for your needs.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands. From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "15ml-unicorn-bottle-clear-black-cap",
+            "product_5": "chubby-gorilla-15ml-unicorn-plastic-squeeze-bottle-pet-cr-clear-with-clear-cap",
+            "product_6": "chubby-gorilla-20ml-unicorn-plastic-squeeze-bottle-pet-cr-clear-with-clear-cap",
+            "product_7": "chubby-gorilla-30ml-unicorn-plastic-squeeze-bottle-pet-cr-clear-with-black-cap",
+            "product_8": "30ml-unicorn-bottle-clear-white-cap"
+          }
+        },
+        "categories_info_CEjcQe": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Flower",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "8–10 weeks",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–24%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_7yU94j": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxing",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Uplifting",
+            "effect_tag_emoji_2": "⬆️",
+            "effect_tag_3": "Creative",
+            "effect_tag_emoji_3": "💡",
+            "effect_tag_4": "Balanced",
+            "effect_tag_emoji_4": "⚖️",
+            "effect_tag_5": "Body Relief",
+            "effect_tag_emoji_5": "👋",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🍊",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🌿",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Melon",
+            "taste_tag_emoji_4": "🌈",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "💛",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "💙",
+            "terp_tag_3": "Caryophyllene",
+            "terp_tag_emoji_3": "💝",
+            "terp_tag_4": "Pinene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Humulene",
+            "terp_tag_emoji_5": "🌻",
+            "terp_tag_6": "Cineole",
+            "terp_tag_emoji_6": "🌟",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "Indoor: Moderate yields with controlled environment. Outdoor: High yields in warm climates."
+          }
+        }
+      },
+      "block_order": [
+        "main_info_L73Ndc",
+        "description_naGEJa",
+        "product_selection_rmURbq",
+        "categories_info_CEjcQe",
+        "effects_yield_7yU94j"
+      ],
+      "name": "Strains Details",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "strain_details_GhwHRp"
   ]
 }

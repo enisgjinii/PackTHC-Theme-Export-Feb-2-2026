@@ -18,9 +18,172 @@
         "padding_top": 50,
         "padding_bottom": 0
       }
+    },
+    "strain_details_KEBkNJ": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_4mfjmX": {
+          "type": "main_info",
+          "settings": {
+            "trichome_image": "shopify://shop_images/Mochalope_-_trichome.webp",
+            "image_description": "Mochalope (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "emoji_main": "",
+            "product_name": "Mochalope (fem)",
+            "genetics": "Hybrid",
+            "strain-badge_1": "Hybrid",
+            "strain-badge_2": "THC 18–24%",
+            "strain-badge_3": "CBD <1%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxing",
+            "effect_emoji_1": "😌",
+            "effect_2": "Uplifting",
+            "effect_emoji_2": "⬆️",
+            "effect_3": "Creative",
+            "effect_emoji_3": "🎨",
+            "effect_4": "",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Limonene",
+            "terpene_2": "Myrcene",
+            "terpene_3": "Caryophyllene",
+            "terpene_4": "",
+            "terpene_5": "",
+            "terpene_6": "",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 50,
+            "thc_level": 70
+          }
+        },
+        "description_Yx7AnY": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "About Mochalope (fem)",
+            "description_1": "Mochalope (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation.",
+            "description_2": "Mochalope (fem) is a hybrid cannabis cultivar known for its balanced effects. Its versatile genetics make it suitable for a variety of preferences, offering a steady experience without extreme sedation or overstimulation. In a packaging context, highlighting the strain's balanced nature can help consumers quickly identify it among other options.\n\nAs a packaging company, emphasizing airtight, odor-resistant, and compliant packaging is essential for preserving the strain's terpene profile and potency. Proper labeling and protective materials ensure the product remains fresh from cultivation to consumer, aligning with regulatory requirements and customer expectations.",
+            "bud_image": "shopify://shop_images/Maui_Waui_-_plant.webp",
+            "bud_image_2": "shopify://shop_images/Maui_Waui_-_trichome.webp",
+            "bud_image_3": "shopify://shop_images/Mochalope_-_macro.webp",
+            "bud_image_4": "shopify://shop_images/Mochalope_-_bud.webp",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Maintains terpene integrity and freshness.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps reduce scent leakage during storage.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with compliant closures.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Professional containers trusted by cannabis brands."
+          }
+        },
+        "product_selection_AJK9U8": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "1oz-clear-glass-jar-with-matte-black-smooth-lid",
+            "product_2": "1oz-black-glass-jar-with-black-smooth-lid",
+            "product_3": "2oz-clear-glass-jar-with-matte-black-smooth-lid",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore containers designed for flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "Packaging formats suitable for dispensary brands.",
+            "product_4": "2oz-black-glass-jar-with-black-smooth-lid",
+            "product_5": "4oz-clear-screw-top-glass-jar-with-matte-black-smooth-lid",
+            "product_6": "4oz-black-screw-top-glass-jar-with-black-smooth-lid",
+            "product_7": "4oz-clear-screw-top-glass-jar-with-curved-matte-black-smooth-lid",
+            "product_8": "4oz-black-screw-top-glass-jar-with-wooden-smooth-lid"
+          }
+        },
+        "categories_info_jFABVp": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Flower",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Hybrid",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "8–10 weeks",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "18–24%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "<1%"
+          }
+        },
+        "effects_yield_UTQP9C": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Calming relaxation",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Balanced euphoria",
+            "effect_tag_emoji_2": "😊",
+            "effect_tag_3": "Creative inspiration",
+            "effect_tag_emoji_3": "🎨",
+            "effect_tag_4": "Gentle body relief",
+            "effect_tag_emoji_4": "🌿",
+            "effect_tag_5": "",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Citrus",
+            "taste_tag_emoji_1": "🍋",
+            "taste_tag_2": "Earthy",
+            "taste_tag_emoji_2": "🌿",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Limonene",
+            "terp_tag_emoji_1": "🍋",
+            "terp_tag_2": "Myrcene",
+            "terp_tag_emoji_2": "🌸",
+            "terp_tag_3": "Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Growing Information",
+            "yield_value": "Indoor: Moderate yields with controlled environment. Outdoor: High yields in warm climates. (Provided for reference only. Packaging does not influence cultivation yield.)"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_4mfjmX",
+        "description_Yx7AnY",
+        "product_selection_AJK9U8",
+        "categories_info_jFABVp",
+        "effects_yield_UTQP9C"
+      ],
+      "name": "Strains Details",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "strain_details_KEBkNJ"
   ]
 }

@@ -8291,3 +8291,34 @@ body.search-template #MainContent,
 
 
 
+
+
+
+
+
+/* MOBILE ONLY */
+@media (max-width: 767px) {
+
+  /* Title (Heading) */
+  .slideshow__title {
+    font-size: 25px !important;
+    line-height: 1.3;
+  }
+
+  /* Subtitle */
+  .slideshow__subtitle {
+    font-size: 12px !important;
+  }
+
+  /* Description */
+  .slideshow__description {
+    font-size: 13px !important;
+    line-height: 1.3 !important; 
+  }
+
+  /* Button text */
+  .slideshow__buttons .btn {
+    font-size: 12px !important;
+    padding: 8px 10px;
+  }
+}

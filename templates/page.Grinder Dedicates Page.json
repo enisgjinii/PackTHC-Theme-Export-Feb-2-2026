@@ -156,8 +156,8 @@
         "card_88FiHy": {
           "type": "card",
           "settings": {
-            "card_title": "Flower Packaging",
-            "card_description": "Keep your flower fresh and your brand front and center with every use.",
+            "card_title": "AIRCRAFT GRADE ALUMINIUM",
+            "card_description": "Zero flex. Zero compromise. Built from the same material as aircraft — because your grind deserves aerospace standards.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-04.webp",
             "card_color": "#1883fe"
           }
@@ -165,8 +165,8 @@
         "card_B7FddW": {
           "type": "card",
           "settings": {
-            "card_title": "Pre-Roll Storage",
-            "card_description": "The perfect companion to store pre-rolls safely after the grind.",
+            "card_title": "CHIP-PROOF STEP TEETH",
+            "card_description": "Designed to grip and grind without chipping or dulling — ever. Consistent performance, session after session.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-02.webp",
             "card_color": "#99caff"
           }
@@ -174,8 +174,8 @@
         "card_Lk6fHk": {
           "type": "card",
           "settings": {
-            "card_title": "Premium Retail SKUs",
-            "card_description": "Elevate your shelf presence with packaging that doubles as a product.",
+            "card_title": "AIRTIGHT STORAGE",
+            "card_description": "Lock in freshness every time. Your flower stays potent, aromatic, and ready — no matter how long it sits.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-06.webp",
             "card_color": "#6eb7ff"
           }
@@ -183,8 +183,8 @@
         "card_mkEEPT": {
           "type": "card",
           "settings": {
-            "card_title": "Subscription Boxes",
-            "card_description": "A reusable grinder jar your customers will love unboxing — every time.",
+            "card_title": "QUICK MAGNET CONNECT",
+            "card_description": "Snap-lock magnetic closure means no cross-threading, no fumbling. Just clean, fast assembly.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-01.webp",
             "card_color": "#67a2f9"
           }
@@ -192,8 +192,8 @@
         "card_eHaxRy": {
           "type": "card",
           "settings": {
-            "card_title": "High-End Cannabis Brands",
-            "card_description": "Built for brands that refuse to compromise on quality or experience.",
+            "card_title": "PRECISION NON-FRAYING SCREEN",
+            "card_description": "Ultra-fine mesh that filters perfectly — no screen sagging, no clogging, no waste.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-05.webp",
             "card_color": "#439ef9"
           }
@@ -201,8 +201,8 @@
         "card_3wVpFt": {
           "type": "card",
           "settings": {
-            "card_title": "Custom Brand Drops",
-            "card_description": "Limited edition drops with full custom branding — logo, color, finish.",
+            "card_title": "5-PIECE TITAN SYSTEM",
+            "card_description": "Grind chamber, storage, kief catcher — every layer serves a purpose. The complete setup, nothing missing.",
             "card_image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-03.webp",
             "card_color": "#1883fe"
           }
@@ -234,8 +234,8 @@
           "settings": {
             "step_label": "",
             "title": "CHOOSE YOUR SIZE",
-            "subtitle": "FIND THE FORMAT THAT FITS YOUR PRODUCT",
-            "description": "We offer multiple size variants to match your flower weight, pre-roll count, or retail SKU requirements.",
+            "subtitle": "",
+            "description": "FIND THE FORMAT THAT FITS YOUR PRODUCT We offer multiple size variants to match your flower weight, pre-roll count, or retail SKU requirements.",
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-02.webp",
             "card_bg": "#1883fe"
           }
@@ -244,9 +244,9 @@
           "type": "step",
           "settings": {
             "step_label": "",
-            "title": "CUSTOMIZE YOUR BRAND",
-            "subtitle": "ADD YOUR LOGO, COLORS & FINISH",
-            "description": "Upload your artwork and choose from matte, metallic, or custom color finishes. We handle the rest.",
+            "title": "PICK YOUR FINISH",
+            "subtitle": "",
+            "description": "GOLD, BLACK, RED OR SILVER — MAKE IT YOURS Every Titan comes in four premium colorways. Whether you're building a brand aesthetic or stocking for retail, choose the finish that turns heads on the shelf.",
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-01.webp",
             "card_bg": "#99caff"
           }
@@ -255,9 +255,9 @@
           "type": "step",
           "settings": {
             "step_label": "",
-            "title": "PLACE YOUR ORDER",
-            "subtitle": "LOW MOQ — BUILT FOR SCALING BRANDS",
-            "description": "Order in bulk with low minimum quantities. Whether you're launching or scaling, we're ready.",
+            "title": "ORDER YOUR QUANTITY",
+            "subtitle": "",
+            "description": "FLEXIBLE MOQ FOR WHOLESALE & RETAIL From single-unit retail to bulk wholesale orders — we've got tiers for every business size. The more you order, the better your margin.",
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-04.webp",
             "card_bg": "#6eb7ff"
           }
@@ -266,9 +266,9 @@
           "type": "step",
           "settings": {
             "step_label": "",
-            "title": "WE FULFILL FAST",
-            "subtitle": "RELIABLE SHIPPING ACROSS THE USA",
-            "description": "Your order is packed, quality-checked, and shipped with speed. No delays. No surprises.",
+            "title": "BRAND IT YOUR WAY",
+            "subtitle": "",
+            "description": "CUSTOM LOGO. CUSTOM BOX. CUSTOM DROP. Add your logo, choose your packaging, and make the Titan 100% yours. We handle the branding so you can focus on selling.",
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-05.webp",
             "card_bg": "#67a2f9"
           }
@@ -277,9 +277,9 @@
           "type": "step",
           "settings": {
             "step_label": "",
-            "title": "YOUR CUSTOMERS KEEP IT",
-            "subtitle": "DAILY USE = DAILY BRAND VISIBILITY",
-            "description": "Unlike regular packaging, your grinder jar stays with the customer — reinforcing your brand every single day.",
+            "title": "GET IT DELIVERED FAST",
+            "subtitle": "",
+            "description": "US WAREHOUSE. FAST DISPATCH. NO DELAYS. All Titan grinders ship from our US warehouse. Reliable fulfillment so your shelves are never empty and your customers never wait.",
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Steps_-03.webp",
             "card_bg": "#1883fe"
           }

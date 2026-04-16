@@ -9,6 +9,20 @@
  */
 {
   "sections": {
+    "new_top_bar_2_nD9g8b": {
+      "type": "new-top-bar-2",
+      "name": "Mobile Contact Bar",
+      "settings": {
+        "phone_number": "+18167225842",
+        "phone_display": "(816) PACKTHC",
+        "quote_label": "Request a Quote",
+        "quote_url": "shopify://pages/contact",
+        "bar_bg_color": "#ffffff",
+        "phone_text_color": "#1a1a2e",
+        "btn_bg_color": "#1a3c96",
+        "btn_text_color": "#ffffff"
+      }
+    },
     "collection_list_slider_6qbNfj": {
       "type": "collection-list-slider",
       "blocks": {
@@ -16,7 +30,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "point-of-sale-essentials",
-            "image": "shopify://shop_images/Icon_1.webp",
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-01.webp",
             "title": "Sale"
           }
         },
@@ -24,7 +38,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "pop-top-bottles",
-            "image": "shopify://shop_images/Icon_2.webp",
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-02.webp",
             "title": "Trend"
           }
         },
@@ -32,95 +46,95 @@
           "type": "featured_collection",
           "settings": {
             "collection": "6-dram-pop-top-vials",
-            "image": "shopify://shop_images/6_Dram.webp",
-            "title": "6 DRAM"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-03.webp",
+            "title": "6 dram"
           }
         },
         "featured_collection_gxdACj": {
           "type": "featured_collection",
           "settings": {
             "collection": "pop-top-preroll-tubes",
-            "image": "shopify://shop_images/Tubes_75c9fe60-9898-4f61-b295-7f35d27f0a52.webp",
-            "title": "TUBES"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-04.webp",
+            "title": "Tubes"
           }
         },
         "featured_collection_jQXtir": {
           "type": "featured_collection",
           "settings": {
             "collection": "5-ml-concentrate-jars",
-            "image": "shopify://shop_images/Containers.webp",
-            "title": "CONTAINERS"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-05.webp",
+            "title": "Containers"
           }
         },
         "featured_collection_4H9LzM": {
           "type": "featured_collection",
           "settings": {
             "collection": "screw-top-glass-jars",
-            "image": "shopify://shop_images/Glass_Jars_98cdd799-98d8-44e8-9fc3-51fec30b2d4d.webp",
-            "title": "GLASS JARS"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-06.webp",
+            "title": "Glass jars"
           }
         },
         "featured_collection_jMA9xm": {
           "type": "featured_collection",
           "settings": {
             "collection": "plastic-jars",
-            "image": "shopify://shop_images/Plastic_Jars.webp",
-            "title": "PLASTIC JARS"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-07.webp",
+            "title": "Plastic jars"
           }
         },
         "featured_collection_J6hxH9": {
           "type": "featured_collection",
           "settings": {
             "collection": "acrylic-boxes",
-            "image": "shopify://shop_images/Boxes.webp",
-            "title": "BOXES"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-08.webp",
+            "title": "Boxes"
           }
         },
         "featured_collection_HwzPfD": {
           "type": "featured_collection",
           "settings": {
             "collection": "vinyl-gloves",
-            "image": "shopify://shop_images/Gloves_7a9e84e2-9655-42b7-bbb5-e7e865b67941.webp",
-            "title": "GLOVES"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-09.webp",
+            "title": "Gloves"
           }
         },
         "featured_collection_GW3kAL": {
           "type": "featured_collection",
           "settings": {
             "collection": "dual-compartment-pouch-containers",
-            "image": "shopify://shop_images/Pouch.webp",
-            "title": "POUCH"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-10.webp",
+            "title": "Pouch"
           }
         },
         "featured_collection_J6V8fx": {
           "type": "featured_collection",
           "settings": {
             "collection": "spiral-containers",
-            "image": "shopify://shop_images/Spiral_37890249-f823-40d3-ba4f-3bd309646a39.webp",
-            "title": "SPIRAL"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-11.webp",
+            "title": "Spiral"
           }
         },
         "featured_collection_NkFYeg": {
           "type": "featured_collection",
           "settings": {
             "collection": "aviator-containers",
-            "image": "shopify://shop_images/Aviator_f4113983-b25d-46fa-8ef6-b0406fe331e2.webp",
-            "title": "AVIATOR"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-12.webp",
+            "title": "Aviator"
           }
         },
         "featured_collection_eBphH3": {
           "type": "featured_collection",
           "settings": {
             "collection": "pet-v3-unicorn-bottles",
-            "image": "shopify://shop_images/Unicorn_b85f9e58-6a9d-40ee-8449-3a2de59dc996.webp",
-            "title": "UNICORN"
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-13.webp",
+            "title": "Unicorn"
           }
         },
         "featured_collection_URgPpX": {
           "type": "featured_collection",
           "settings": {
             "collection": "thermal-papers",
-            "image": "shopify://shop_images/Thermal_Papers_e0939335-47c1-4ef6-af37-11165d05f1b8.webp",
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-14.webp",
             "title": "Thermal Paper"
           }
         },
@@ -128,7 +142,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "mylar-bags-new",
-            "image": "shopify://shop_images/Mylar_bags_62c082a4-482d-499a-a7f0-65beccd33c25.webp",
+            "image": "shopify://shop_images/01_Website_Thumbnails_1st_Anniversary-15.webp",
             "title": "Mylar Bags"
           }
         }
@@ -151,8 +165,7 @@
         "featured_collection_44kHfa"
       ],
       "custom_css": [
-        ".swiper-slide {margin-right: -22px !important;}",
-        "@media (max-width: 767px) {.section-template--18188501909617__collection_list_slider_6qbNfj {display: none !important; }}"
+        ".swiper-slide {margin-right: -22px !important;}"
       ],
       "settings": {
         "container": "fixed",
@@ -192,51 +205,51 @@
     "slideshow_q3U4Jn": {
       "type": "slideshow",
       "blocks": {
-        "slide_JhU8hg": {
+        "slide_cHrPNB": {
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/Easter_Day_Web_Banner_compressed-optimized.webp",
-            "background_mobile": "shopify://shop_images/web_banner-02_compressed.webp",
+            "background": "shopify://shop_images/Web_Banner_420_Anniversary_Grinder_Jars-01_1.webp",
+            "background_mobile": "shopify://shop_images/Web_Banner_420_Anniversary_Grinder_Jars-02.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "Easter Deals Are Here – Stock Up & Save Big",
+            "title": "BUILT FOR GRINDERS",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>Celebrate Easter with premium cannabis packaging at unbeatable prices. Bulk discounts + fast USA shipping.<strong><br/></strong></p>",
+            "description": "<p>Heavy-Duty. Smell-Proof. Premium Finish. <br/></p>",
             "description_size": "text-lg",
-            "button_label": "Shop Easter Sale",
-            "button_link": "shopify://collections/chubby-gorilla",
+            "button_label": "Shop Grinder Jar",
+            "button_link": "shopify://collections/grinder-jars",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
             "enable_preload_image": true
           }
         },
-        "slide_cHrPNB": {
+        "slide_JhU8hg": {
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/web_banners_1-04_1.webp",
-            "background_mobile": "shopify://shop_images/web_banners_1-05.webp",
+            "background": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-03.webp",
+            "background_mobile": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-06.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "Introducing Grinder Jars – Grind & Store in One",
+            "title": "LIMITED TIME 420 DROPS",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>Premium aluminum grinder jars designed for convenience, durability, and smell-proof storage.<br/></p>",
+            "description": "<p>Once It’s Gone, It’s Gone. Don’t Miss Anniversary Offers<br/><br/></p>",
             "description_size": "text-lg",
-            "button_label": "Shop Grinder Jar",
-            "button_link": "shopify://collections/grinder-jars",
+            "button_label": "Grab Now",
+            "button_link": "shopify://collections/chubby-gorilla",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
             "enable_preload_image": true
@@ -246,21 +259,21 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/whole_sale_web_banner_compressed.webp",
-            "background_mobile": "shopify://shop_images/web_banner-01_compressed.webp",
+            "background": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-01.webp",
+            "background_mobile": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-04.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "Wholesale Packaging for Growing Brands",
+            "title": "<strong> 420 SALE IS LIVE</strong>",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>Scale your business with bulk pricing, consistent quality, and fast fulfillment.</p>",
+            "description": "<p>Celebrating 1 Year of PACKTHC.  Premium Packaging. Better Prices. Limited Time.</p>",
             "description_size": "text-lg",
-            "button_label": "Start Wholesale",
+            "button_label": " Shop Now",
             "button_link": "shopify://collections/chubby-gorilla",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
@@ -271,21 +284,21 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "background": "shopify://shop_images/Price_table_web_banner_compressed-optimized.webp",
-            "background_mobile": "shopify://shop_images/web_banner-03_compressed.webp",
+            "background": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-02.webp",
+            "background_mobile": "shopify://shop_images/1st_Anniversary_Landing_Page_Banners-05.webp",
             "image_overlay_opacity": 25,
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "We Take Responsibility for Cannabis Packaging",
+            "title": "UP TO 40% OFF + BULK DEALS",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
             "highlight_text_color": "",
             "heading_size": "hd2",
-            "description": "<p>As a manufacturer, PackTHC owns the production process ensuring packaging that meets compliance requirements without shifting risk to brands.</p>",
+            "description": "<p>The More You Buy, The More You Save. Free Shipping on High Volume Orders</p>",
             "description_size": "text-lg",
-            "button_label": "Shop Preroll Tubes",
+            "button_label": "Unlock Deals",
             "button_link": "shopify://collections/pop-top-preroll-tubes",
             "button_style": "btn--primary",
             "button_icon": "arrow-right",
@@ -294,8 +307,8 @@
         }
       },
       "block_order": [
-        "slide_JhU8hg",
         "slide_cHrPNB",
+        "slide_JhU8hg",
         "slide_JU4VWJ",
         "slide_rYaTXa"
       ],
@@ -311,7 +324,7 @@
         "show_controls": false,
         "autoplay": true,
         "autoplay_delay": 6,
-        "show_text_below": true,
+        "show_text_below": false,
         "text_alignment_mobile": "left",
         "accessibility_info": "Slideshow about our brand"
       }
@@ -371,7 +384,7 @@
         "text_color": "#1a1a1a",
         "button_bg_color": "#1a1a1a",
         "button_text_color": "#ffffff",
-        "border_radius": 16
+        "border_radius": 0
       }
     },
     "image_with_feature_tfwMan": {
@@ -456,7 +469,7 @@
       "settings": {
         "container": "fixed",
         "color_scheme": "",
-        "image": "shopify://shop_images/Spiral_Cartridge_Containers.webp",
+        "image": "shopify://shop_images/03_Trusted_by_Thousands_of_Businesses.webp",
         "image_ratio": "1/1",
         "enable_sticky": false,
         "section_header_alignment": "left",
@@ -545,15 +558,15 @@
           "type": "featured_collection",
           "settings": {
             "collection": "dual-compartment-pouch-containers",
-            "image": "shopify://shop_images/Dual_Pouch_Container.webp",
-            "title": "DUAL POUCH CONTAINERS"
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-01.webp",
+            "title": "Dual Pouch Containers"
           }
         },
         "featured_collection_d8XGnb": {
           "type": "featured_collection",
           "settings": {
             "collection": "preroll-tubes",
-            "image": "shopify://shop_images/Pre-Roll_Tubes_fab5a047-7134-49ea-b66f-e1542277e5e5.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-02.webp",
             "title": "Pre-Roll Tubes"
           }
         },
@@ -561,7 +574,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "dab-containers",
-            "image": "shopify://shop_images/Dab_Containers.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-03.webp",
             "title": "Dab Containers"
           }
         },
@@ -569,7 +582,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "pop-top-bottles",
-            "image": "shopify://shop_images/Pop_Top_Vials_e00ea3b0-628c-4ec0-9643-5ea4cd375b21.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-04.webp",
             "title": "Pop Top Vials"
           }
         },
@@ -577,7 +590,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "paper-cones",
-            "image": "shopify://shop_images/Raw_5a5f5d71-8df1-4603-b86b-91b8f62d381c.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-05.webp",
             "title": "Paper Cones"
           }
         },
@@ -585,7 +598,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "smell-proof-solution",
-            "image": "shopify://shop_images/Smell_Proof_Solution.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-06.webp",
             "title": "Smell-Proof Solutions"
           }
         },
@@ -593,7 +606,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "cannabis-accessories",
-            "image": "shopify://shop_images/Cannabis_Accessories_153f23e2-17b5-42a7-8675-c8e7f5e1e981.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-07.webp",
             "title": "Cannabis Accessories"
           }
         },
@@ -601,7 +614,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "child-resistant-packaging",
-            "image": "shopify://shop_images/child__resistant_976cc9a6-4f2f-4aa1-957a-c5b8c58cac23.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-08.webp",
             "title": "Child Resistant"
           }
         },
@@ -609,7 +622,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "premium-jars-containers",
-            "image": "shopify://shop_images/premium_Packaging.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-09.webp",
             "title": "Premium Jars"
           }
         },
@@ -617,7 +630,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "edibles-packaging",
-            "image": "shopify://shop_images/Edibles_Packaging_40c0e410-a41d-40c8-bdea-28bffe3752ff.webp",
+            "image": "shopify://shop_images/04_PackTHC_Wholesale_Packaging-10.webp",
             "title": "Edibles Packaging"
           }
         }
@@ -729,7 +742,7 @@
           "settings": {
             "color_scheme": "scheme-inverse",
             "card_link": "shopify://pages/packthc-volume-calculator",
-            "banner_image": "shopify://shop_images/Volume_calculator.webp",
+            "banner_image": "shopify://shop_images/05_Volume_Calculator-01_1.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -883,7 +896,7 @@
           "type": "collection",
           "settings": {
             "collection": "glass-jars",
-            "image": "shopify://shop_images/Premium_Glass_Jars.webp",
+            "image": "shopify://shop_images/06_Featured_Collection-01_1.webp",
             "title": "Premium Glass Jars",
             "text": "",
             "button_label": "Shop Glass Jars",
@@ -895,7 +908,7 @@
           "type": "collection",
           "settings": {
             "collection": "mylar-bags-new",
-            "image": "shopify://shop_images/Mylar_bags_62c082a4-482d-499a-a7f0-65beccd33c25.webp",
+            "image": "shopify://shop_images/06_Featured_Collection-02_1.webp",
             "title": "Mylar Bags",
             "text": "",
             "button_label": "Shop Mylar Bags",
@@ -907,7 +920,7 @@
           "type": "collection",
           "settings": {
             "collection": "preroll-tubes",
-            "image": "shopify://shop_images/Pre-Roll_Tubes.webp",
+            "image": "shopify://shop_images/06_Featured_Collection-03_1.webp",
             "title": "Preroll Tubes",
             "text": "",
             "button_label": "Shop Preroll Tubes",
@@ -919,7 +932,7 @@
           "type": "collection",
           "settings": {
             "collection": "thermal-papers",
-            "image": "shopify://shop_images/Thermal_Papers_a51d4372-35b6-4183-a155-845a874ba0a5.webp",
+            "image": "shopify://shop_images/06_Featured_Collection-04_1.webp",
             "title": "Thermal Papers",
             "text": "",
             "button_label": "Shop Thermal Papers",
@@ -970,7 +983,7 @@
             ],
             "width": 59,
             "width_mobile": 90,
-            "image": "shopify://shop_images/1_lookbook-card-wrapper.webp",
+            "image": "shopify://shop_images/07_Wholesale_Marijuana_Packaging-01.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -991,7 +1004,7 @@
             ],
             "width": 29,
             "width_mobile": 65,
-            "image": "shopify://shop_images/2_lookbook-card-wrapper.webp",
+            "image": "shopify://shop_images/07_Wholesale_Marijuana_Packaging-02.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -1012,7 +1025,7 @@
             ],
             "width": 29,
             "width_mobile": 65,
-            "image": "shopify://shop_images/3_lookbook-card-wrapper.webp",
+            "image": "shopify://shop_images/07_Wholesale_Marijuana_Packaging-03.webp",
             "heading": "",
             "highlight_style": "none",
             "highlight_font_style": "italic",
@@ -1169,20 +1182,20 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/last_graphic.webp",
+            "image": "shopify://shop_images/08_Check_Our_Product_Range-01_1.webp",
             "image_ratio": "adapt",
             "product_1": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-500-count",
-            "top_1": 32,
-            "left_1": 18,
+            "top_1": 50,
+            "left_1": 5,
             "product_2": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-black-container-with-opaque-black-closure-500-count",
-            "top_2": 52,
-            "left_2": 40,
+            "top_2": 40,
+            "left_2": 25,
             "product_3": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-clear-natural-container-with-opaque-white-closure-500-count",
-            "top_3": 32,
-            "left_3": 60,
+            "top_3": 40,
+            "left_3": 50,
             "product_4": "65mm-aviator-cr-cartridge-container-flat-bottom-with-510-thread-tamper-evident-break-off-band-opaque-white-container-with-opaque-white-closure-500-count",
             "top_4": 52,
-            "left_4": 82,
+            "left_4": 72,
             "width": "33%",
             "alignment": "start",
             "block_custom_class": ""
@@ -1193,17 +1206,17 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/3_e9ce5061-6ce1-4a21-a94d-5990874f2130.webp",
+            "image": "shopify://shop_images/08_Check_Our_Product_Range-02_1.webp",
             "image_ratio": "adapt",
             "product_1": "116mm-cr-pop-top-tube-black",
-            "top_1": 60,
-            "left_1": 30,
+            "top_1": 80,
+            "left_1": 22,
             "product_2": "116mm-cr-pop-top-tube-clear",
-            "top_2": 40,
-            "left_2": 55,
+            "top_2": 80,
+            "left_2": 45,
             "product_3": "116mm-cr-pop-top-tube-white",
-            "top_3": 50,
-            "left_3": 84,
+            "top_3": 80,
+            "left_3": 73,
             "product_4": "",
             "top_4": 9,
             "left_4": 63,
@@ -1217,20 +1230,20 @@
           "settings": {
             "icon_style": "dot",
             "icon_color": "light",
-            "image": "shopify://shop_images/Changed_size_1.png",
+            "image": "shopify://shop_images/08_Check_Our_Product_Range-03_1.webp",
             "image_ratio": "3/4",
             "product_1": "6-dram-pop-top-vial-black",
-            "top_1": 57,
-            "left_1": 20,
+            "top_1": 70,
+            "left_1": 30,
             "product_2": "13-dram-pop-top-vial-black",
-            "top_2": 43,
-            "left_2": 52,
+            "top_2": 55,
+            "left_2": 60,
             "product_3": "19-dram-pop-top-vial-1-8oz-black",
-            "top_3": 42,
-            "left_3": 69,
+            "top_3": 55,
+            "left_3": 75,
             "product_4": "60-dram-pop-top-vial-1-2oz-black",
-            "top_4": 40,
-            "left_4": 88,
+            "top_4": 50,
+            "left_4": 95,
             "width": "33%",
             "alignment": "start",
             "block_custom_class": ""
@@ -1275,7 +1288,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/2_8e862581-ef69-4fe7-84f0-362dca47c17e.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-01_1.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1297,7 +1310,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/3_cf2c5656-5ddf-4b95-bacd-fcc2744a2a21.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-02_1.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1341,7 +1354,7 @@
           "type": "slide",
           "settings": {
             "color_scheme": "scheme-inverse",
-            "image": "shopify://shop_images/4_8a9335bc-bd5f-402e-a1a5-6ac7e4407ca1.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-04_1.webp",
             "image_overlay_opacity": 0,
             "content_position": "top-left",
             "content_alignment": "left",
@@ -1363,7 +1376,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Rectangle_4.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-05_1.webp",
             "content_alignment": "right",
             "heading": "",
             "highlight_style": "hand_drawn_circle",
@@ -1381,7 +1394,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Rectangle_1000002446.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-06_1.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",
@@ -1399,7 +1412,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Group_205.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-07_1.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",
@@ -1417,7 +1430,7 @@
           "type": "image-card",
           "settings": {
             "color_scheme": "",
-            "image": "shopify://shop_images/Group_206.webp",
+            "image": "shopify://shop_images/09_Wholesale_packaging-08_1.webp",
             "content_alignment": "center",
             "heading": "",
             "highlight_style": "none",
@@ -2146,6 +2159,7 @@
     }
   },
   "order": [
+    "new_top_bar_2_nD9g8b",
     "collection_list_slider_6qbNfj",
     "slideshow_q3U4Jn",
     "grinder_home_stripe_A6XCWi",

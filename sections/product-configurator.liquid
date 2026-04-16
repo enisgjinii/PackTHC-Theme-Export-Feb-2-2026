@@ -1,3 +1,11 @@
+{% unless customer %}
+  <script>
+    window.location.replace(
+      "{{ routes.account_login_url }}?return_url={{ request.path | append: '?' | append: request.query_string | url_encode }}"
+    );
+  </script>
+{% endunless %}
+
 {%- liquid
   assign section_id = '#shopify-section-' | append: section.id
   assign configurator_url = section.settings.configurator_base_url | default: 'https://v0-product-design-tool.vercel.app/'

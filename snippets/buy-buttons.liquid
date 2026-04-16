@@ -336,6 +336,7 @@
             </quantity-input>
           </div>
         {%- endif -%}
+        {% if customer %}
         <button
           id="ProductSubmitButton-{{ section_id }}"
           type="submit"
@@ -358,8 +359,15 @@
           </span>
           {%- render 'loading-spinner' -%}
         </button>
+        {% else %}
+        <a href="/account/login?return_url={{ request.path }}" class="product-form__submit btn{% if show_dynamic_checkout %} btn--secondary{% else %} btn--primary{% endif %}">
+          <span class="btn__text">🔒 Login to Purchase</span>
+        </a>
+        {% endif %}
         {%- if show_dynamic_checkout -%}
+          {% if customer %}
           {{ form | payment_button }}
+          {% endif %}
         {%- endif -%}
       </div>
       <div class="product-form__error-message blocks-radius-md alert alert--error" role="alert" hidden></div>

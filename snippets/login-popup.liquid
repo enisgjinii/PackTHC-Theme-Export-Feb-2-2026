@@ -1,0 +1,160 @@
+{%- unless customer -%}
+  {{ 'customer.css' | asset_url | stylesheet_tag }}
+
+  <div
+    id="login-popup-overlay"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:99999; align-items:center; justify-content:center;"
+  >
+    <div
+      class="customer login"
+      style="background:#fff; border-radius:14px; width:100%; max-width:420px; margin:1rem; padding:2rem 2rem 1.5rem; position:relative; max-height:90vh; overflow-y:auto;"
+    >
+      <button
+        id="login-popup-close"
+        aria-label="Close"
+        style="position:absolute; top:14px; right:14px; background:transparent; border:none; cursor:pointer; font-size:22px; line-height:1; color:#888; padding:0;"
+      >
+        &#10005;
+      </button>
+
+      <h2 class="text-center h2" style="margin:0 0 6px;">
+        {{- 'customer.login_page.title' | t -}}
+      </h2>
+      <p class="text-center text-subtext" style="margin:0 0 1.5rem;">If you have an account with us, please log in.</p>
+
+      {%- form 'customer_login', class: 'flex flex-col', id: 'popup-login-form' -%}
+        {%- if form.errors -%}
+          <div class="form-error alert alert--error blocks-radius">
+            <h2 class="form-message form-message--error h6 m-0" tabindex="-1" autofocus>
+              <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
+              {%- render 'icon-error', size: 'small' -%}
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <div class="form-field">
+          <label for="PopupCustomerEmail" class="form-label">
+            {{ 'customer.login_page.email' | t }}
+          </label>
+          <input
+            required
+            type="email"
+            name="customer[email]"
+            id="PopupCustomerEmail"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            placeholder="{{ 'customer.login_page.email' | t }}"
+            class="form-control"
+          >
+        </div>
+
+        <div class="form-field">
+          <label for="PopupCustomerPassword" class="form-label">
+            {{ 'customer.login_page.password' | t }}
+          </label>
+          <input
+            required
+            type="password"
+            value=""
+            name="customer[password]"
+            id="PopupCustomerPassword"
+            autocomplete="current-password"
+            placeholder="{{ 'customer.login_page.password' | t }}"
+            class="form-control"
+          >
+        </div>
+
+        <a
+          href="{{ routes.account_login_url }}#recover"
+          class="btn--link self-start text-subtext"
+          style="margin-bottom:1rem;"
+        >
+          {{ 'customer.login_page.forgot_password' | t }}
+        </a>
+
+        <button class="btn btn--primary w-full" type="submit">
+          <span class="btn__text">{{ 'customer.login_page.sign_in' | t }}</span>
+        </button>
+
+        <a href="{{ routes.account_register_url }}" class="btn btn--underline self-center" style="margin-top:0.5rem;">
+          {{ 'customer.login_page.create_account' | t }}
+        </a>
+      {%- endform -%}
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById('login-popup-overlay');
+      var closeBtn = document.getElementById('login-popup-close');
+
+      var pageType = '{{ request.page_type }}';
+      var pagePath = '{{ request.path }}';
+
+      var isHome = pageType === 'index';
+      var isCollection = pageType === 'collection';
+      var isProduct = pageType === 'product';
+      var isConfigurator = pagePath.indexOf('/pages/configurator') !== -1;
+
+      // Keys jo track karti hain user ne kahan close kiya
+      var HOME_CLOSED = 'popupClosed_home';
+      var COLLECTION_CLOSED = 'popupClosed_collection';
+
+      function showPopup() {
+        if (overlay) overlay.style.display = 'flex';
+      }
+
+      function closePopup() {
+        if (overlay) overlay.style.display = 'none';
+        if (isHome) sessionStorage.setItem(HOME_CLOSED, '1');
+        if (isCollection) sessionStorage.setItem(COLLECTION_CLOSED, '1');
+        // Product aur Configurator ke liye kuch save nahi karte
+      }
+
+      function decideAndShow() {
+        // CONFIGURATOR — hamesha dikhao, koi check nahi
+        if (isConfigurator) {
+          setTimeout(showPopup, 3000);
+          return;
+        }
+
+        // HOME — sirf tab jab pehle close nahi kiya, 10 sec delay
+        if (isHome) {
+          if (sessionStorage.getItem(HOME_CLOSED) !== '1') {
+            setTimeout(showPopup, 20000);
+          }
+          return;
+        }
+
+        // COLLECTION — sirf tab jab home par close kiya ho, 2 sec delay
+        // (matlab home par aaya, wahan se aagey gaya bina login ke)
+        if (isCollection) {
+          var homeWasClosed = sessionStorage.getItem(HOME_CLOSED) === '1';
+          var collectionAlreadyClosed = sessionStorage.getItem(COLLECTION_CLOSED) === '1';
+          if (homeWasClosed && !collectionAlreadyClosed) {
+            setTimeout(showPopup, 2000);
+          }
+          return;
+        }
+
+        // PRODUCT — bilkul mat dikhao
+        if (isProduct) {
+          return;
+        }
+      }
+
+      decideAndShow();
+
+      if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+      if (overlay) {
+        overlay.addEventListener('click', function (e) {
+          if (e.target === overlay) closePopup();
+        });
+      }
+    })();
+  </script>
+{%- endunless -%}
