@@ -625,6 +625,21 @@
 
       const type = event.data.type;
 
+      /* ─── Forwarded Wheel Scroll from Iframe ─── */
+      if (type === 'packthc:wheelScroll') {
+        const deltaY = Number(event.data.deltaY || 0);
+        const deltaX = Number(event.data.deltaX || 0);
+
+        if (deltaX || deltaY) {
+          window.scrollBy({
+            left: deltaX,
+            top: deltaY,
+            behavior: 'auto',
+          });
+        }
+        return;
+      }
+
       /* ─── Update Pricing from Iframe ─── */
       if (type === 'updatePricing') {
         // Product info bar is intentionally removed.
