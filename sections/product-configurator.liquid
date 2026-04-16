@@ -48,6 +48,16 @@
 
 {{ 'product-configurator.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+  Performance: Preconnect to the configurator origin so DNS + TLS handshake
+  happens before the iframe loads. Also preconnect to the CDN for 3D models.
+  This reduces perceived load time by 1-3 seconds (Bug #1 / B3-23).
+{%- endcomment -%}
+<link rel="preconnect" href="{{ configurator_url | split: '/' | first | append: '//' | append: configurator_url | remove: 'https://' | remove: 'http://' | split: '/' | first }}" crossorigin>
+<link rel="dns-prefetch" href="{{ configurator_url | split: '/' | first | append: '//' | append: configurator_url | remove: 'https://' | remove: 'http://' | split: '/' | first }}">
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+{%- comment -%} Preconnect to gstatic for Draco decoder WASM used by Three.js {%- endcomment -%}
+
 {%- style -%}
   {{ section_id }} {
     --section-padding-top: 0px;
