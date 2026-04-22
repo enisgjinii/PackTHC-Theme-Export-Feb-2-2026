@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "strain_details_CgLKWm": {
+      "type": "strain-details",
+      "blocks": {
+        "main_info_DYm38k": {
+          "type": "main_info",
+          "settings": {
+            "image_description": "Carefully selected cannabis strain developed from stable genetics to deliver consistent growth and premium-quality results.",
+            "emoji_main": "",
+            "product_name": "Cherry Pie",
+            "genetics": "Granddaddy Purple x F1 Durb • Hybrid",
+            "strain-badge_1": "Hybrid Strain",
+            "strain-badge_2": "THC 16–20%",
+            "strain-badge_3": "CBD > 2%",
+            "emoji_effects": "🎯",
+            "effect_1": "Relaxed",
+            "effect_emoji_1": "😌",
+            "effect_2": "Giggly",
+            "effect_emoji_2": "😄",
+            "effect_3": "Happy",
+            "effect_emoji_3": "😊",
+            "effect_4": "Euphoric",
+            "effect_emoji_4": "🌬️",
+            "effect_5": "Sleepy",
+            "effect_emoji_5": "😴",
+            "emoji_terpenes": "🌸",
+            "terpene_1": "Myrcene",
+            "terpene_2": "Caryophyllene",
+            "terpene_3": "Pinene",
+            "terpene_4": "Limonene",
+            "terpene_5": "Linalool",
+            "terpene_6": "Alpha Humulene",
+            "emoji_energy": "🧘",
+            "emoji_thc": "⚡",
+            "energy_level": 35,
+            "thc_level": 60
+          }
+        },
+        "description_LGmnBx": {
+          "type": "description",
+          "settings": {
+            "emoji_about": "",
+            "title": "Description",
+            "description_1": "Cherry Pie's parents are Granddaddy Purple and F1 Durb. With buds that are dense and full of orange hairs and a touch of purple, this hybrid strain smells of sweet and sour cherry pie.",
+            "description_2": "This strain is known for its distinctive flavor profile and reliable growth characteristics, making it a favorite among both recreational and medicinal users.",
+            "feature_1_emoji": "🌾",
+            "feature_1_title": "Airtight protection",
+            "feature_1_desc": "Designed to help preserve aroma, potency, and terpene integrity.",
+            "feature_2_emoji": "🌱",
+            "feature_2_title": "Odor control",
+            "feature_2_desc": "Helps minimize scent transfer during storage and transport.",
+            "feature_3_emoji": "👑",
+            "feature_3_title": "Child-resistant ready",
+            "feature_3_desc": "Compatible with child-resistant closures for compliant packaging.",
+            "feature_4_emoji": "✨",
+            "feature_4_title": "Dispensary-grade packaging",
+            "feature_4_desc": "Trusted by brands for professional presentation and storage."
+          }
+        },
+        "product_selection_xXGHWV": {
+          "type": "product_selection",
+          "settings": {
+            "header_small": "PackTHC",
+            "header_title": "Packaging Solutions & Storage Options",
+            "header_description": "",
+            "product_1": "",
+            "product_2": "",
+            "product_3": "",
+            "left_content_title": "220+ packaging solutions & storage options",
+            "left_content_description": "Explore a wide range of jars, tubes, and containers designed to support flower, concentrates, and infused products.",
+            "right_content_title": "115+ compliant packaging formats",
+            "right_content_description": "From child-resistant designs to odor-resistant storage, find packaging built for modern cannabis brands.",
+            "product_4": "",
+            "product_5": "",
+            "product_6": "",
+            "product_7": "",
+            "product_8": ""
+          }
+        },
+        "categories_info_nFzDcN": {
+          "type": "categories_info",
+          "settings": {
+            "emoji_info": "",
+            "info_title": "Basic Information",
+            "info_1_emoji": "📁",
+            "info_1_label": "Category",
+            "info_1_value": "Feminized Seeds",
+            "info_2_emoji": "🧬",
+            "info_2_label": "Genotype",
+            "info_2_value": "Granddaddy Purple x F1 Durb",
+            "info_3_emoji": "🌿",
+            "info_3_label": "Phenotype",
+            "info_3_value": "Hybrid",
+            "info_4_emoji": "⏱️",
+            "info_4_label": "Flowering Time",
+            "info_4_value": "60-70 Days",
+            "info_5_emoji": "🔥",
+            "info_5_label": "THC Level",
+            "info_5_value": "16%",
+            "info_6_emoji": "💚",
+            "info_6_label": "CBD Level",
+            "info_6_value": "2%"
+          }
+        },
+        "effects_yield_4LnNXq": {
+          "type": "effects_yield",
+          "settings": {
+            "emoji_effects": "✨",
+            "effects_title": "Effects & Experience",
+            "effect_tag_1": "Relaxed",
+            "effect_tag_emoji_1": "😌",
+            "effect_tag_2": "Giggly",
+            "effect_tag_emoji_2": "😄",
+            "effect_tag_3": "Happy",
+            "effect_tag_emoji_3": "😊",
+            "effect_tag_4": "Euphoric",
+            "effect_tag_emoji_4": "🌬️",
+            "effect_tag_5": "Sleepy",
+            "effect_tag_emoji_5": "😴",
+            "emoji_taste": "🍒",
+            "taste_title": "Taste & Aroma",
+            "taste_tag_1": "Tree Fruit",
+            "taste_tag_emoji_1": "🌳",
+            "taste_tag_2": "Berry",
+            "taste_tag_emoji_2": "🫐",
+            "taste_tag_3": "Sweet",
+            "taste_tag_emoji_3": "🍬",
+            "taste_tag_4": "Tropical",
+            "taste_tag_emoji_4": "🍑",
+            "terp_tag_1": "Myrcene",
+            "terp_tag_emoji_1": "🌸",
+            "terp_tag_2": "Limonene",
+            "terp_tag_emoji_2": "🍋",
+            "terp_tag_3": "Caryophyllene",
+            "terp_tag_emoji_3": "🌶️",
+            "terp_tag_4": "Pinene",
+            "terp_tag_emoji_4": "🌲",
+            "terp_tag_5": "Linalool",
+            "terp_tag_emoji_5": "🌺",
+            "terp_tag_6": "Alpha Humulene",
+            "terp_tag_emoji_6": "🌾",
+            "emoji_yield": "🌾",
+            "yield_section_title": "Yield & Growing Information",
+            "yield_label": "Expected Yield",
+            "yield_value": "300-450g per plant"
+          }
+        }
+      },
+      "block_order": [
+        "main_info_DYm38k",
+        "description_LGmnBx",
+        "product_selection_xXGHWV",
+        "categories_info_nFzDcN",
+        "effects_yield_4LnNXq"
+      ],
+      "name": "Strains Details",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "strain_details_CgLKWm"
+  ]
+}

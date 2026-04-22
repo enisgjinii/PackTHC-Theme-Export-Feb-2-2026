@@ -240,7 +240,7 @@
             "content_position": "middle-left",
             "text_alignment": "left",
             "subheading": "<strong>★★★★★</strong>  Excellent <strong>4.9</strong> | Trusted by 1,800+ PackTHC brands worldwide",
-            "title": "LIMITED TIME 420 DROPS",
+            "title": "4/20 Sale Extended",
             "highlight_style": "none",
             "highlight_font_style": "italic",
             "highlight_style_color": "",
@@ -1593,74 +1593,6 @@
         "padding_bottom": 36
       }
     },
-    "image_with_text_znVt7e": {
-      "type": "image-with-text",
-      "blocks": {
-        "badge_LD7XBy": {
-          "type": "badge",
-          "settings": {
-            "color_scheme": "",
-            "text": "image with text - spinning text -",
-            "position_mobile": "right"
-          }
-        },
-        "subheading_ny8iNh": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Add a tagline"
-          }
-        },
-        "heading_JFh7fq": {
-          "type": "heading",
-          "settings": {
-            "heading": "Talk about your brand",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "hd2"
-          }
-        },
-        "text_PNi9km": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "subtext_color": true
-          }
-        },
-        "button_3X43Et": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "badge_LD7XBy",
-        "subheading_ny8iNh",
-        "heading_JFh7fq",
-        "text_PNi9km",
-        "button_3X43Et"
-      ],
-      "disabled": true,
-      "name": "Request a sample Kit",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "image_position": "left",
-        "image_width": 50,
-        "desktop_content_position": "center",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "inherit",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 80,
-        "padding_bottom": 80
-      }
-    },
     "scrolling_gallery_image_nqJeBK": {
       "type": "scrolling-gallery-image",
       "blocks": {
@@ -2175,7 +2107,6 @@
     "custom_content_hUwAKV",
     "slider_with_multicolumn_aJwbrc",
     "lookbook_slider_TqGPbr",
-    "image_with_text_znVt7e",
     "scrolling_gallery_image_nqJeBK",
     "testimonials_mLThk7",
     "scrolling_promotion_9Hng8m",

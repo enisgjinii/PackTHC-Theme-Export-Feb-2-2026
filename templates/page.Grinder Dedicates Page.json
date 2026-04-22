@@ -136,10 +136,10 @@
       "name": "Image Sequence Animation",
       "settings": {
         "first_frame_image": "shopify://shop_images/frame_013.webp",
-        "total_frames": 200,
-        "file_prefix": "frame_",
+        "total_frames": 90,
+        "file_prefix": "packthc-jar-",
         "file_extension": "webp",
-        "pad_length": 3,
+        "pad_length": 4,
         "cdn_base_url": "https://cdn.shopify.com/s/files/1/0618/1925/6945/files/",
         "scroll_speed": 3,
         "section_bg": "#ffffff",

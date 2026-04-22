@@ -215,24 +215,7 @@
     {%- if settings.enable_product_compare -%}
       <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-
-    <script>
-      /* Cart login guard — blocks guest add-to-cart across all forms */
-      (function() {
-        var customer = {{ customer | json }};
-        var isLoggedIn = customer !== null && customer !== false;
-        if (!isLoggedIn) {
-          document.addEventListener('submit', function(e) {
-            var form = e.target;
-            if (form && form.getAttribute('action') && form.getAttribute('action').indexOf('/cart/add') !== -1) {
-              e.preventDefault();
-              e.stopImmediatePropagation();
-              window.location.href = '/account/login?return_url=' + encodeURIComponent(window.location.pathname + window.location.search);
-            }
-          }, true); /* capture phase fires before theme Ajax handler */
-        }
-      })();
-    </script>
+{% comment %}
     {% if request.page_type == 'index'
       or request.page_type == 'product'
       or request.page_type == 'collection'
@@ -240,6 +223,7 @@
     %}
       {% render 'login-popup' %}
     {% endif %}
+     {% endcomment %}
   </body>
 </html>
 <!-- v2 -->
