@@ -281,7 +281,7 @@
           "settings": {
             "color_scheme": "scheme-inverse",
             "image_position": 1,
-            "image": "shopify://shop_images/05_Volume_Calculator-01_1.webp",
+            "image": "shopify://shop_images/Volume_calculator.webp",
             "image_ratio": "adapt",
             "image_overlay_opacity": 10,
             "content_position": "split-bottom-button",

@@ -135,7 +135,7 @@
       ],
       "name": "Image Sequence Animation",
       "settings": {
-        "first_frame_image": "shopify://shop_images/frame_013.webp",
+        "first_frame_image": "shopify://shop_images/packthc-jar-0001.webp",
         "total_frames": 90,
         "file_prefix": "packthc-jar-",
         "file_extension": "webp",
@@ -231,6 +231,7 @@
       "blocks": {
         "step_UwCHde": {
           "type": "step",
+          "disabled": true,
           "settings": {
             "step_label": "",
             "title": "CHOOSE YOUR SIZE",
@@ -355,7 +356,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Grinder_Landing_Page_Graphics_Tiles_-03.webp",
-            "tag": "Grinder Jar",
+            "tag": "PackTHC Grinder",
             "caption": ""
           }
         },
@@ -479,7 +480,7 @@
       "name": "Grinder Products",
       "settings": {
         "label": "PackTHC",
-        "heading": "PackTHC New Grinder Jar",
+        "heading": "PackTHC New Grinder",
         "subheading": "Discover our most loved items, curated just for you.",
         "btn_text": "View Product",
         "show_view_all": false,

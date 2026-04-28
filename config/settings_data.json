@@ -10,9 +10,9 @@
 {
   "current": {
     "enable_back_to_top": false,
-    "logo": "shopify://shop_images/Untitled_75_x_50_px_250_x_150_px_1.gif",
-    "logo_width": 120,
-    "logo_mobile": "shopify://shop_images/Untitled_75_x_50_px_250_x_150_px_1.gif",
+    "logo": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
+    "logo_width": 100,
+    "logo_mobile": "shopify://shop_images/PACKTHC_WHITE_LOGO_8ff8219c-5b92-4d51-bb24-ba2e34e56fcc.webp",
     "logo_width_mobile": 80,
     "favicon": "shopify://shop_images/logo1.png",
     "color_badge_hot": "#1d349a",
@@ -164,6 +164,11 @@
       },
       "6143736321357441667": {
         "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc",
+        "disabled": false,
+        "settings": {}
+      },
+      "9760743957074645847": {
+        "type": "shopify://apps/ea-email-popups/blocks/app-embed-block/559c6968-8916-4f43-b93f-91b8ea061003",
         "disabled": false,
         "settings": {}
       }
@@ -460,7 +465,7 @@
           "border": "#e5e5e5",
           "text": "#ffffff",
           "subtext": "#666666",
-          "background": "#1a3c96",
+          "background": "#033770",
           "secondary_background": "#033770",
           "button": "#0f172a",
           "button_label": "#ffffff",

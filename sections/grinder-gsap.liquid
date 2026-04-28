@@ -505,16 +505,14 @@ if (index === 0 && !isReady) {
     anticipatePin: 1,
 
     // Yeh teen callbacks add karo:
-    onLeave() {
-      // User aage scroll karke section se bahar gaya
-      const firstFrame = section.querySelector('.isa-first-frame');
-      if (firstFrame) firstFrame.classList.remove('is-hidden');
-    },
-    onLeaveBack() {
-      // User upar scroll karke section se bahar gaya
-      const firstFrame = section.querySelector('.isa-first-frame');
-      if (firstFrame) firstFrame.classList.remove('is-hidden');
-    },
+onLeave() {
+  // Section end pe pohncha — first frame mat dikhao, kuch nahi karna
+},
+onLeaveBack() {
+  // User upar scroll karke section se UPAR bahar gaya — wapas dikhao
+  const firstFrame = section.querySelector('.isa-first-frame');
+  if (firstFrame) firstFrame.classList.remove('is-hidden');
+},
     onEnter() {
       // Dobara andar aaya — scroll hote hi hide ho jaayegi (onUpdate handle karega)
     },

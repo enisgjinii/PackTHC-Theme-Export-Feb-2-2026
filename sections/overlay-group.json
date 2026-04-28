@@ -160,7 +160,7 @@
         "image": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/09_Wholesale_packaging-01_1.webp",
+            "image": "shopify://shop_images/420x434_1.webp",
             "image_mobile": "shopify://shop_images/1_0182399e-6382-447a-b64b-7e2d67c57dc2.webp",
             "image_position": "left"
           }
@@ -168,13 +168,12 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "🎉 Celebrating Our 1st Anniversary! 🎉\nGet 10% OFF <br> Your First Order – Limited Time!",
-            "text_size": "h5"
+            "heading": "Sign up to get 10% OFF <br>your first order",
+            "text_size": "h2"
           }
         },
         "text": {
           "type": "text",
-          "disabled": true,
           "settings": {
             "text": "<p>PackTHC</p>",
             "text_size": "text-base"
@@ -182,7 +181,6 @@
         },
         "form": {
           "type": "form",
-          "disabled": true,
           "settings": {
             "button_label": "Get 10% OFF",
             "button_icon": "caret-right"
@@ -190,6 +188,7 @@
         },
         "code_WFGFfF": {
           "type": "code",
+          "disabled": true,
           "settings": {
             "discount_code": "4/20",
             "apply_button": "Copy code",
@@ -209,6 +208,7 @@
         "code_WFGFfF",
         "socials"
       ],
+      "disabled": true,
       "settings": {
         "enable": true,
         "show_for_homepage_only": true,
@@ -263,31 +263,11 @@
             "button_style": "btn--primary",
             "button_icon": "none"
           }
-        },
-        "discount_qHDzf7": {
-          "type": "discount",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "icon": "tag",
-            "icon_size": "large",
-            "heading": "PackTHC 1st Anniversary!",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "description": "<p>Use code 4/20 for 10% OFF</p>",
-            "discount_code": "4/20",
-            "button_label": "Copy",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
         }
       },
       "block_order": [
         "discount_1",
-        "discount_HVDjnj",
-        "discount_qHDzf7"
+        "discount_HVDjnj"
       ],
       "custom_css": [
         ".spotlight__item-content {max-width: 22rem;}"
