@@ -1,0 +1,127 @@
+{% comment %} Shop By Campaign {% endcomment %}
+
+<section class="sbc" id="sbc-{{ section.id }}">
+  <div class="sbc-head">
+    <h2>{{ section.settings.title }}</h2>
+    {% if section.settings.learn_more_url != blank %}
+      <a href="{{ section.settings.learn_more_url }}" class="sbc-learn">{{ section.settings.learn_more_text }}</a>
+    {% endif %}
+  </div>
+
+  <div class="sbc-outer">
+    <div class="sbc-track" id="track-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% assign p = all_products[block.settings.product] %}
+        {% if p != blank %}
+          <div class="sbc-card" onclick="location.href='{{ p.url }}'" style="cursor:pointer;" {{ block.shopify_attributes }}>
+            <a href="{{ p.url }}" class="sbc-img-wrap">
+              <div class="sbc-main">
+                {{ p.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: p.title }}
+              </div>
+              {% if p.images.size > 1 %}
+                <div class="sbc-thumbs">
+                  <div class="sbc-thumb-inner" style="animation-duration: {{ section.settings.speed }}s;">
+                    {% for img in p.images %}
+                      <div class="sbc-thumb">{{ img | image_url: width: 120 | image_tag: loading: 'lazy', alt: p.title }}</div>
+                    {% endfor %}
+                    {% for img in p.images %}
+                      <div class="sbc-thumb">{{ img | image_url: width: 120 | image_tag: loading: 'lazy', alt: p.title }}</div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </a>
+            <div class="sbc-info">
+              <div>
+                <p class="sbc-name">{{ p.title }}</p>
+                <p class="sbc-price">{{ p.price | money }}</p>
+              </div>
+              <a href="{{ p.url }}" class="sbc-shop">{{ section.settings.btn_text }}</a>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="sbc-fade"></div>
+  </div>
+</section>
+
+<style>
+.sbc { padding: 40px 0; max-width: 1400px; margin: 0 auto; }
+.sbc-head { padding: 0 20px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+.sbc-head h2 { font-size: 25px; font-weight: 700; margin: 0; }
+.sbc-learn { border: 1px solid #000; background:#000; color:#fff; padding:10px 22px; border-radius:25px; text-decoration:none; font-size:15px; font-weight:700; white-space:nowrap; display:inline-block; } 
+.sbc-learn:hover { background:#222; color:#fff; }
+.sbc-outer { position: relative; }
+.sbc-track { display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; padding: 0 20px; cursor: grab; }
+.sbc-track:active { cursor: grabbing; }
+.sbc-track::-webkit-scrollbar { display: none; }
+.sbc-fade { position: absolute; top: 0; right: 0; width: 80px; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.95)); pointer-events: none; transition: opacity 0.3s; }
+.sbc-fade.hidden { opacity: 0; }
+.sbc-card { min-width: 260px; flex: 1; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #fff; }
+.sbc-img-wrap { display: flex; gap: 8px; padding: 10px; background: #f5f5f5; text-decoration: none; height: 220px; box-sizing: border-box; }
+.sbc-main { flex: 1; border-radius: 8px; overflow: hidden; }
+.sbc-main img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
+.sbc-thumbs { width: 72px; overflow: hidden; border-radius: 6px; }
+.sbc-thumb-inner { display: flex; flex-direction: column; gap: 6px; animation: sbcScroll linear infinite; }
+.sbc-thumb img { width: 72px; height: 58px; object-fit: cover; display: block; border-radius: 6px; }
+@keyframes sbcScroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+.sbc-info { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; }
+.sbc-name { font-weight: 600; font-size: 14px; margin: 0 0 2px; color: #111; }
+.sbc-price { font-size: 13px; color: #666; margin: 0; }
+.sbc-shop { background: #033770; color: #ffffff; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; white-space: nowrap;font-weight:700; }
+.sbc-shop:hover { background: #000000; }
+@media (max-width: 600px) { .sbc-card { min-width: 230px; } .sbc-img-wrap { height: 190px; } .sbc-thumbs { width: 60px; } .sbc-thumb img { width: 60px; height: 50px; } }
+</style>
+
+<script>
+(function() {
+  var track = document.getElementById('track-{{ section.id }}');
+  var fade = track.parentElement.querySelector('.sbc-fade');
+
+  // Hide fade when scrolled to end
+  track.addEventListener('scroll', function() {
+    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 10;
+    fade.classList.toggle('hidden', atEnd);
+  });
+
+  // Mouse drag to scroll
+  var down = false, startX, scrollLeft;
+  track.addEventListener('mousedown', function(e) { down = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+  document.addEventListener('mouseup', function() { down = false; });
+  track.addEventListener('mousemove', function(e) { if (!down) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Shop By Campaign",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Shop By Campaign" },
+    { "type": "text", "id": "btn_text", "label": "Button Text", "default": "Shop" },
+    { "type": "text", "id": "learn_more_text", "label": "Learn More Button Text", "default": "Learn More" },
+    { "type": "url", "id": "learn_more_url", "label": "Learn More Button Link" },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Thumbnail Scroll Speed",
+      "min": 4, "max": 20, "step": 2, "default": 8, "unit": "s",
+      "info": "Zyada seconds = slow. Kam seconds = fast."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Select Product" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Shop By Campaign", "blocks": [{"type":"product"},{"type":"product"},{"type":"product"},{"type":"product"}] }
+  ]
+}
+{% endschema %}
+

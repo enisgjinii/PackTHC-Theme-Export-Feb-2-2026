@@ -357,6 +357,49 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "shop_by_campaign_eMqqrd": {
+      "type": "shop-by-campaign",
+      "blocks": {
+        "product_3iiDkC": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-red"
+          }
+        },
+        "product_QWXdh9": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-black"
+          }
+        },
+        "product_Eyp4yj": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-silver"
+          }
+        },
+        "product_pTPRpX": {
+          "type": "product",
+          "settings": {
+            "product": "titan-toothless-grinder-63mm-champagne"
+          }
+        }
+      },
+      "block_order": [
+        "product_3iiDkC",
+        "product_QWXdh9",
+        "product_Eyp4yj",
+        "product_pTPRpX"
+      ],
+      "name": "Shop By Campaign",
+      "settings": {
+        "title": "PackTHC New Grinders",
+        "btn_text": "Shop",
+        "learn_more_text": "Learn More",
+        "learn_more_url": "shopify://pages/packthc-new-grinder-jars-products",
+        "speed": 20
+      }
+    },
     "grinder_home_stripe_A6XCWi": {
       "type": "Grinder-home-stripe",
       "blocks": {
@@ -399,6 +442,7 @@
         "product_image_6k3FHx",
         "product_image_HBDFYW"
       ],
+      "disabled": true,
       "name": "Flash Sale Banner",
       "settings": {
         "label_text": "PackTHC New Products",
@@ -760,6 +804,125 @@
         "after_highlight": "Drain Your Profits, Slow Your Launches, And Dilute Your Brand.",
         "cta_text": "SHOW ME MY SAVINGS →",
         "cta_link": "shopify://pages/packthc-size-calculator"
+      }
+    },
+    "multicolumn_XVRTyD": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_JPqpHe": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CR.webp",
+            "title": "Certified Child-Resistant (CR) — No Compliance Risk",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "text": "<p>Your packaging isn’t just packaging—it’s regulation. All our products meet US 16 CFR 1700.20 standards, ensuring your brand stays legally protected and retail-ready across dispensaries.</p>",
+            "text_size": "text-sm",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_Fqh3Wf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/BPA.webp",
+            "title": "Product Protection That Preserves Potency",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "text": "<p>Your flower, edibles, and concentrates deserve better than average storage.<br/>Our BPA-free, food-grade materials are designed to lock in freshness, prevent contamination, and maintain terpene integrity.</p>",
+            "text_size": "text-sm",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_XRYPfL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Pickup.webp",
+            "title": "Fast Pickup & Reliable Fulfillment",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "text": "<p>When inventory runs low, delays cost you sales. With local pickup in California and fast dispatch options, you stay stocked and ready—without operational stress.</p>",
+            "text_size": "text-sm",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        },
+        "column_a9My3G": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Rec.webp",
+            "title": "Sustainable Without Sacrificing Performance",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "text": "<p>Eco-friendly shouldn’t mean fragile or cheap. Our recyclable packaging solutions are built for durability, compliance, and premium shelf appeal.</p>",
+            "text_size": "text-sm",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_JPqpHe",
+        "column_Fqh3Wf",
+        "column_XRYPfL",
+        "column_a9My3G"
+      ],
+      "custom_css": [
+        ".multicolumn-card__image {max-width: 100px; max-height: 100px; margin: 20px auto;}",
+        ".multicolumn-card__image .media-wrapper {width: 100px !important; height: 100px !important;}"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "center",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "center",
+        "show_col_count": true,
+        "show_image": true,
+        "columns_desktop": 4,
+        "column_gap": "extra-large",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 10
       }
     },
     "multiple_product_bundles_QDGiQz": {
@@ -2116,137 +2279,20 @@
         "review_count": "6 reviews",
         "trustpilot_url": "https://ca.trustpilot.com/review/packthc.com"
       }
-    },
-    "multicolumn_XVRTyD": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_JPqpHe": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/CR.webp",
-            "title": "Certified Child-Resistant (CR) — No Compliance Risk",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "text": "<p>Your packaging isn’t just packaging—it’s regulation. All our products meet US 16 CFR 1700.20 standards, ensuring your brand stays legally protected and retail-ready across dispensaries.</p>",
-            "text_size": "text-sm",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "column_Fqh3Wf": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/BPA.webp",
-            "title": "Product Protection That Preserves Potency",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "text": "<p>Your flower, edibles, and concentrates deserve better than average storage.<br/>Our BPA-free, food-grade materials are designed to lock in freshness, prevent contamination, and maintain terpene integrity.</p>",
-            "text_size": "text-sm",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "column_XRYPfL": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Pickup.webp",
-            "title": "Fast Pickup & Reliable Fulfillment",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "text": "<p>When inventory runs low, delays cost you sales. With local pickup in California and fast dispatch options, you stay stocked and ready—without operational stress.</p>",
-            "text_size": "text-sm",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        },
-        "column_a9My3G": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/Rec.webp",
-            "title": "Sustainable Without Sacrificing Performance",
-            "highlight_style": "none",
-            "highlight_font_style": "italic",
-            "highlight_style_color": "",
-            "highlight_text_color": "",
-            "heading_size": "h5",
-            "text": "<p>Eco-friendly shouldn’t mean fragile or cheap. Our recyclable packaging solutions are built for durability, compliance, and premium shelf appeal.</p>",
-            "text_size": "text-sm",
-            "button_label": "",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_icon": "none"
-          }
-        }
-      },
-      "block_order": [
-        "column_JPqpHe",
-        "column_Fqh3Wf",
-        "column_XRYPfL",
-        "column_a9My3G"
-      ],
-      "custom_css": [
-        ".multicolumn-card__image {max-width: 100px; max-height: 100px; margin: 20px auto;}",
-        ".multicolumn-card__image .media-wrapper {width: 100px !important; height: 100px !important;}"
-      ],
-      "name": "t:sections.multicolumn.name",
-      "settings": {
-        "container": "fixed",
-        "color_scheme": "",
-        "section_header_alignment": "center",
-        "section_header_alignment_mobile": "center",
-        "subheading": "",
-        "heading": "",
-        "highlight_style": "none",
-        "highlight_font_style": "normal",
-        "highlight_style_color": "",
-        "highlight_text_color": "",
-        "heading_size": "h1",
-        "description": "",
-        "text_size": "text-base",
-        "button_label": "",
-        "button_link": "",
-        "button_style": "btn--underline",
-        "button_icon": "none",
-        "content_alignment": "center",
-        "show_col_count": true,
-        "show_image": true,
-        "columns_desktop": 4,
-        "column_gap": "extra-large",
-        "row_gap": "inherit",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "padding_top": 0,
-        "padding_bottom": 10
-      }
     }
   },
   "order": [
     "new_top_bar_2_nD9g8b",
     "collection_list_slider_6qbNfj",
     "slideshow_q3U4Jn",
+    "shop_by_campaign_eMqqrd",
     "grinder_home_stripe_A6XCWi",
     "image_with_feature_tfwMan",
     "custom_liquid_kFiP7r",
     "promotion_banner_VCkmzP",
     "collection_list_Azm9te",
     "pronlems_solutions_C88rTB",
+    "multicolumn_XVRTyD",
     "multiple_product_bundles_QDGiQz",
     "collection_tabs_VexkkR",
     "lookbook_slider_9zCdQJ",
@@ -2259,7 +2305,6 @@
     "scrolling_promotion_9Hng8m",
     "multicolumn_Ff4Wbj",
     "featured_blog_DgFxXw",
-    "trust_score_kkfpfJ",
-    "multicolumn_XVRTyD"
+    "trust_score_kkfpfJ"
   ]
 }
